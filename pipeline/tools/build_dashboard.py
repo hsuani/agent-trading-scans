@@ -457,10 +457,13 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
     <a class="ml-auto text-blue-700 hover:underline" href="./SECTOR_OVERVIEWS.html" target="_blank">📖 族群 overview</a>
     <a class="text-blue-700 hover:underline" href="./HOWTO_READ.html" target="_blank">📘 閱讀指南</a>
     <a class="text-blue-700 hover:underline" href="./_catalysts.json" target="_blank">📅 catalyst JSON</a>
+    <a class="text-rose-700 hover:underline font-semibold" href="./alerts.html" target="_blank">🚨 L0 Alerts</a>
   </div>
 </nav>
 
 <main class="max-w-7xl mx-auto p-6 space-y-6">
+
+  __ALERTS__
 
   <section id="top20" class="bg-white rounded-lg shadow p-4">
     <div class="flex items-baseline justify-between mb-3 border-b pb-2">
@@ -1158,6 +1161,43 @@ def render_top20_rows(top20: list) -> str:
     return "\n".join(rows)
 
 
+def render_alert_banner() -> str:
+    """Top-of-dashboard L0 monitor banner from alerts.json (zero-LLM price
+    tracker output). Shows the most urgent actionable alerts (urgency<=2:
+    stop breached / near stop / T1-T2 hit / in entry zone). Empty if no file."""
+    f = SCANS / "alerts.json"
+    if not f.exists():
+        return ""
+    try:
+        data = json.loads(f.read_text(encoding="utf-8"))
+    except Exception:
+        return ""
+    hot = [a for a in data.get("alerts", []) if a.get("urgency", 9) <= 2]
+    if not hot:
+        return ""
+    chips = []
+    color = {0: "bg-rose-200 text-rose-900", 1: "bg-amber-200 text-amber-900",
+             2: "bg-sky-200 text-sky-900"}
+    for a in hot[:24]:
+        c = color.get(a["urgency"], "bg-slate-200 text-slate-800")
+        px = f"${a['price']:.2f}" if a.get("price") else "—"
+        flag = (a.get("flags") or ["—"])[0]
+        chips.append(
+            f'<span class="{c} px-2 py-1 rounded text-xs whitespace-nowrap" '
+            f'title="{_esc(", ".join(a.get("flags", [])))}">'
+            f'<b>{_esc(a["ticker"])}</b> {px} · {_esc(flag)}</span>'
+        )
+    gen = _esc(data.get("generated_at", ""))
+    return (
+        '<section class="bg-slate-900 text-white rounded-lg shadow p-4">'
+        '<div class="flex items-baseline justify-between mb-2 border-b border-slate-700 pb-2">'
+        f'<h2 class="text-lg font-bold">🚨 L0 Monitor — {len(hot)} 個觸發</h2>'
+        f'<span class="text-xs text-slate-400">價格追蹤 (零 LLM) · {gen} UTC · '
+        '<a class="text-blue-400 hover:underline" href="./alerts.html" target="_blank">完整 →</a></span>'
+        '</div><div class="flex flex-wrap gap-2">' + "".join(chips) + "</div></section>"
+    )
+
+
 def main():
     payload = collect_payload()
 
@@ -1170,6 +1210,7 @@ def main():
     html = (HTML_TEMPLATE
             .replace("__GENERATED__", payload["generated_at"])
             .replace("__NAV_LINKS__", "\n".join(nav_links))
+            .replace("__ALERTS__", render_alert_banner())
             .replace("__TOP20_ROWS__", top20_html)
             .replace("__DATA__", json.dumps(payload, ensure_ascii=False)))
 
