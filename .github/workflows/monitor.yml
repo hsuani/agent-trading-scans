@@ -1,0 +1,54 @@
+name: L0 price monitor
+
+# Pure-Python price tracker against locked trade levels. ZERO Claude usage.
+# Runs daily on a free GitHub-hosted runner; commits alerts.json/alerts.html.
+# Tracks held positions + R:R>2 BUY setups + catalyst-soon tickers.
+
+on:
+  schedule:
+    # 21:40 UTC = 05:40 Asia/Taipei — after the nightly/backfill scan routines,
+    # and US market has closed (post-close prices). Also catches pre-open.
+    - cron: "40 21 * * *"
+  workflow_dispatch: {}   # manual "Run workflow" button
+
+permissions:
+  contents: write          # allow committing alerts back
+
+concurrency:
+  group: monitor
+  cancel-in-progress: false
+
+jobs:
+  monitor:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install deps
+        run: pip install --quiet yfinance pandas
+
+      - name: Run L0 monitor
+        env:
+          TRADING_SCANS_ROOT: ${{ github.workspace }}
+          RR_MIN: "2.0"
+          CATALYST_DAYS: "5"
+          NEAR_PCT: "3.0"
+        run: python3 pipeline/tools/monitor.py
+
+      - name: Commit alerts
+        # Commit as YHT to honour the single-author policy on hsuani/* repos
+        # (CLAUDE.md): no extra bot contributor in the graph.
+        run: |
+          git config user.name  "YHT"
+          git config user.email "yhtseng91@gmail.com"
+          git add alerts.json alerts.html
+          if git diff --cached --quiet; then
+            echo "no change in alerts"
+          else
+            git commit -m "L0 monitor $(date -u +%F\ %H:%MZ)"
+            git push
+          fi
