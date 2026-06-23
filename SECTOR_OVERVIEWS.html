@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<title>族群總覽 — Sector Overviews</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+  body { font-family: "PingFang TC", -apple-system, BlinkMacSystemFont, "Microsoft JhengHei", sans-serif; }
+  h1, h2, h3 { font-weight: 700; }
+  table { border-collapse: collapse; margin: 0.5rem 0; width: 100%; font-size: 0.875rem; }
+  th, td { border: 1px solid #d1d5db; padding: 0.5rem 0.75rem; vertical-align: top; }
+  th { background: #f3f4f6; }
+  details > summary { cursor: pointer; padding: 0.5rem 0; }
+  .pill { display: inline-block; padding: 1px 8px; border-radius: 4px; font-size: 0.75rem; font-weight: 600; }
+  .pill-blue   { background: #dbeafe; color: #1e3a8a; }
+  .pill-green  { background: #dcfce7; color: #166534; }
+  .pill-amber  { background: #fef3c7; color: #92400e; }
+  .pill-rose   { background: #fee2e2; color: #991b1b; }
+  .pill-violet { background: #ede9fe; color: #6d28d9; }
+  .pill-slate  { background: #e2e8f0; color: #1e293b; }
+  td ul { margin-left: 1rem; list-style: disc; }
+</style>
+</head>
+<body class="bg-slate-50 text-slate-900">
+
+<header class="bg-slate-900 text-white p-6 shadow">
+  <div class="max-w-6xl mx-auto">
+    <h1 class="text-3xl">族群總覽 (Sector Overviews)</h1>
+    <p class="text-slate-300 text-sm mt-2">9 個 sector × ~56 ticker. 業務、規模、AI 暴露、優缺、護城河、產業鏈位置。</p>
+    <p class="text-amber-200 text-xs mt-1">⚠️ 結構性視角, 約 3-6 個月 review 一次即可 (見底部建議頻率)。當下市場條件以 daily scan 為準。</p>
+  </div>
+</header>
+
+<nav class="bg-slate-100 border-b border-slate-300 p-3 sticky top-0 z-10 text-sm">
+  <div class="max-w-6xl mx-auto flex flex-wrap gap-3">
+    <a class="text-blue-700 hover:underline" href="#semi">A. 半導體核心</a>
+    <a class="text-blue-700 hover:underline" href="#power">B. 電力 / 電網</a>
+    <a class="text-blue-700 hover:underline" href="#cooling">C. 散熱 / 網通 / 光通訊</a>
+    <a class="text-blue-700 hover:underline" href="#reit">D. 資料中心 REIT</a>
+    <a class="text-blue-700 hover:underline" href="#oem">E. AI 伺服器 OEM</a>
+    <a class="text-blue-700 hover:underline" href="#security">F. AI 安全</a>
+    <a class="text-blue-700 hover:underline" href="#robotics">G. 機器人 / 自駕</a>
+    <a class="text-blue-700 hover:underline" href="#materials">H. 原料 / 稀土</a>
+    <a class="text-blue-700 hover:underline" href="#hedge">I. 避險</a>
+    <a class="text-blue-700 hover:underline ml-auto" href="#frequency">📅 建議頻率</a>
+  </div>
+</nav>
+
+<main class="max-w-6xl mx-auto p-6 space-y-8 text-sm leading-relaxed">
+
+<!-- ==== A. SEMI ==== -->
+<section id="semi" class="bg-white rounded-lg shadow p-6">
+  <h2 class="text-2xl mb-2">A. 半導體核心 (semi)</h2>
+  <p class="text-slate-600">AI 算力底層: GPU / ASIC / 記憶體 / 設備 / IP。多數已 priced for perfection, 看 cycle / 替代風險 / capex 退場時點。</p>
+
+  <table>
+    <thead><tr><th>Ticker</th><th>業務 / 規模</th><th>AI 暴露</th><th>優勢 / 護城河</th><th>缺點 / 風險</th><th>產業鏈位置</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><b>NVDA</b><br>NVIDIA<br>mkt cap ~$5T</td>
+        <td>GPU 龍頭 (H200/B200/B300)。Datacenter 80%+ 營收, Compute + Networking (Mellanox) + Software (CUDA/Omniverse)。</td>
+        <td><span class="pill pill-green">95%+</span></td>
+        <td>
+          <ul><li>CUDA 生態 (15+ 年累積, 開發者鎖定)</li><li>頻寬+顯存+互聯三位一體</li><li>軟硬一體 (NIM, Earth-2, Drive)</li></ul>
+        </td>
+        <td>
+          <ul><li>客戶集中 (MSFT/META/GOOGL/AMZN 占 40%+)</li><li>自製 ASIC (TPU/Trainium/MTIA) 蠶食</li><li>對中出口管制</li><li>P/E 40+ 對成長依賴</li></ul>
+        </td>
+        <td>fab → TSM (代工), HBM → SK Hynix/Micron, 系統整合 → SMCI/Dell/Hon Hai</td>
+      </tr>
+      <tr>
+        <td><b>AMD</b><br>Advanced Micro Devices<br>~$300B</td>
+        <td>x86 CPU (EPYC + Ryzen) + GPU (MI300/MI350)。AI accelerator 已年化 ~$10B+。</td>
+        <td><span class="pill pill-green">60%</span></td>
+        <td>
+          <ul><li>x86 server 唯一強對手 (vs INTC)</li><li>ROCm 開放生態</li><li>Pensando DPU + Xilinx FPGA 整合</li></ul>
+        </td>
+        <td>
+          <ul><li>GPU 對 NVDA 仍 1-2 代落後</li><li>軟體 (ROCm) 體驗差距</li><li>低 GM vs NVDA</li></ul>
+        </td>
+        <td>TSM 代工, HBM 共用供應鏈</td>
+      </tr>
+      <tr>
+        <td><b>AVGO</b><br>Broadcom<br>~$1.5T</td>
+        <td>無晶圓 ASIC + 網通 + 軟體 (VMware)。為 GOOGL (TPU), META (MTIA) 設計客製 ASIC, 每 ASIC 案 $5-15B 規模。</td>
+        <td><span class="pill pill-green">50-60%</span></td>
+        <td>
+          <ul><li>客製 ASIC 設計能力 (僅 AVGO/MRVL 兩家做得起)</li><li>Tomahawk/Jericho switch 為 NVDA NVLink 競爭者</li><li>VMware ARR ~$13B 黏著度高</li></ul>
+        </td>
+        <td>
+          <ul><li>ASIC 仰賴 1-2 個大客戶, 案子取消即雪崩</li><li>VMware 漲價策略招客戶反彈</li><li>P/E 60+ 動能股</li></ul>
+        </td>
+        <td>TSM 代工, Marvell 是主要 ASIC 對手</td>
+      </tr>
+      <tr>
+        <td><b>MRVL</b><br>Marvell<br>~$70B</td>
+        <td>客製 ASIC (AMZN Trainium/Inferentia, MSFT Maia) + DPU (OCTEON) + 光網通 SerDes IP。</td>
+        <td><span class="pill pill-green">55%</span></td>
+        <td>
+          <ul><li>112G/224G SerDes IP 技術領先</li><li>AMZN 5 nm Trainium 2/3 主要設計夥伴</li></ul>
+        </td>
+        <td>
+          <ul><li>規模僅 AVGO 1/20, 議價弱</li><li>傳統 storage / carrier 業務拖累</li><li>對 AMZN 過度依賴</li></ul>
+        </td>
+        <td>TSM 5nm/3nm, Coherent 光元件互補</td>
+      </tr>
+      <tr>
+        <td><b>TSM</b><br>Taiwan Semi<br>~$1.2T</td>
+        <td>全球 90%+ 先進製程代工 (5nm/3nm/2nm)。NVDA, AMD, AAPL, AVGO, MRVL, QCOM 全在這裡做。</td>
+        <td><span class="pill pill-green">~70%</span></td>
+        <td>
+          <ul><li>製程技術獨家領先 (Intel/Samsung 都落後)</li><li>CoWoS 先進封裝 (NVDA 必需)</li><li>客戶切換成本極高</li></ul>
+        </td>
+        <td>
+          <ul><li>地緣政治 (兩岸風險)</li><li>capex 龐大 ($40B+/yr)</li><li>產能擴張對 ASML EUV 設備依賴</li></ul>
+        </td>
+        <td>位居產業鏈核心瓶頸. ASML 上游, fabless 全部下游</td>
+      </tr>
+      <tr>
+        <td><b>ASML</b><br>ASML Holding<br>~$400B</td>
+        <td>EUV 微影機唯一供應商 (High-NA $400M/台)。客戶 = TSM/Intel/Samsung。</td>
+        <td><span class="pill pill-green">~80%</span></td>
+        <td>
+          <ul><li>EUV 全球獨家 (~80% mkt share)</li><li>20+ 年技術領先, Tokai-Univ 級 R&D</li><li>Zeiss 光學夥伴鎖定</li></ul>
+        </td>
+        <td>
+          <ul><li>對中 EUV 全面封鎖, 對中 DUV 也漸縮</li><li>客戶數量少 (僅 3 家先進製程廠)</li><li>單台訂單延遲衝擊大</li></ul>
+        </td>
+        <td>產業鏈最上游. 沒 ASML 就沒先進製程</td>
+      </tr>
+      <tr>
+        <td><b>MU</b><br>Micron<br>~$160B</td>
+        <td>DRAM + NAND. HBM3E/HBM4 已是 NVDA 第三供應商, share 從 5% → 25%。</td>
+        <td><span class="pill pill-green">50%</span></td>
+        <td>
+          <ul><li>HBM 三強之一 (其他: SK Hynix, Samsung)</li><li>1β/1γ DRAM 製程 leading</li><li>美國本土生產 (CHIPS 補貼)</li></ul>
+        </td>
+        <td>
+          <ul><li>memory cyclical, 2026 已過 cycle 中段</li><li>低 GM 高 capex</li><li>傳統 PC/手機 NAND 拖累</li></ul>
+        </td>
+        <td>HBM 供 NVDA/AMD GPU package, fab 自有</td>
+      </tr>
+      <tr>
+        <td><b>ARM</b><br>Arm Holdings<br>~$170B</td>
+        <td>IP 授權 (CPU/GPU/NPU IP). 全球 99% 智慧型手機 + 60% datacenter (Graviton/Cobalt/Axion) 基於 ARM。</td>
+        <td><span class="pill pill-green">60%</span></td>
+        <td>
+          <ul><li>IP 模式: 一次設計 + 多次收費</li><li>ARMv9 Neoverse 在 datacenter 替代 x86</li><li>NVDA Grace + AAPL M-series 加速 ARM 滲透</li></ul>
+        </td>
+        <td>
+          <ul><li>P/E 100+ 估值極端</li><li>RISC-V 開源威脅 (中國加碼)</li><li>SoftBank 高度控股 / 流通低</li></ul>
+        </td>
+        <td>純 IP, 不碰製造. AAPL/NVDA/AMZN/GOOGL/QCOM 都是客戶</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ==== B. POWER ==== -->
+<section id="power" class="bg-white rounded-lg shadow p-6">
+  <h2 class="text-2xl mb-2">B. 電力 / 電網 (power)</h2>
+  <p class="text-slate-600">AI datacenter 吃電才是真核心瓶頸: GPU 散得快, 電網建得慢。Nuclear IPP (CEG/TLN/VST) + regulated utility (NEE/SO) + 燃氣 turbine (GEV) + 配電 (ETN) + 工程 (PWR)。</p>
+
+  <table>
+    <thead><tr><th>Ticker</th><th>業務 / 規模</th><th>AI 暴露</th><th>優勢 / 護城河</th><th>缺點 / 風險</th><th>產業鏈位置</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><b>VST</b><br>Vistra<br>~$50B</td>
+        <td>德州 nat gas + 核電 IPP, 44 GW 容量。pending Cogentrix 5.5 GW 併購。</td>
+        <td><span class="pill pill-amber">40-50%</span></td>
+        <td>
+          <ul><li>2026 100% hedged</li><li>德州 ERCOT 高電價區</li><li>Comanche Peak 核電 + 燃氣機隊</li></ul>
+        </td>
+        <td>
+          <ul><li>ND/EBITDA 3.81x 高槓桿</li><li>商品價格高度波動</li><li>NI 砍半 + FCF -47%</li></ul>
+        </td>
+        <td>ERCOT 區域售電, 客戶含 hyperscaler PPA</td>
+      </tr>
+      <tr>
+        <td><b>CEG</b><br>Constellation Energy<br>~$100B</td>
+        <td>美國最大核電業者 (32 GW 核能 + Calpine 併入後 55 GW)。MSFT TMI 20 年 PPA。</td>
+        <td><span class="pill pill-green">60%</span></td>
+        <td>
+          <ul><li>最大核電 fleet (低成本基荷)</li><li>ND/EBITDA 0.9x 模範 BS</li><li>MSFT/AMZN 簽 PPA 加持</li></ul>
+        </td>
+        <td>
+          <ul><li>P/E 23.9x 不便宜</li><li>FERC PJM ruling Q2'26 binary</li><li>Crane 重啟執行風險</li></ul>
+        </td>
+        <td>PJM 區域售電, Calpine 提供燃氣調峰</td>
+      </tr>
+      <tr>
+        <td><b>TLN</b><br>Talen Energy<br>~$15B</td>
+        <td>Susquehanna 核電 (2.5 GW) + 燃氣資產。AWS Cumulus PPA 為主軸。Ex-bankruptcy 2023。</td>
+        <td><span class="pill pill-green">55%</span></td>
+        <td>
+          <ul><li>AWS front-of-meter PPA = FERC 免疫</li><li>fwd P/E 10.3x 最便宜</li><li>$1.9B buyback</li></ul>
+        </td>
+        <td>
+          <ul><li>ND/EBITDA ~10x 槓桿極端</li><li>FY25 GAAP NI -$219M</li><li>Rubric (10% 股東) 賣 $114M</li></ul>
+        </td>
+        <td>PJM 直供 AWS datacenter, Cornerstone 為長期金主</td>
+      </tr>
+      <tr>
+        <td><b>GEV</b><br>GE Vernova<br>~$300B</td>
+        <td>燃氣/風力渦輪 + 電網設備 + 核能服務。$163B backlog (gas turbine 100 GW 進度 → 110 GW 目標)。</td>
+        <td><span class="pill pill-green">50%</span></td>
+        <td>
+          <ul><li>HA-class gas turbine 全球 oligopoly (vs SIE/MHI)</li><li>$7.7B net cash</li><li>FCF +118%</li></ul>
+        </td>
+        <td>
+          <ul><li>P/E 32 trailing / EV/EBITDA 84 極貴</li><li>FY25 $2.05B tax benefit 拉抬 NI</li><li>Wind 仍虧損 ($400M FY)</li></ul>
+        </td>
+        <td>turbine 供 IPP + utility, grid 設備供配電業者</td>
+      </tr>
+      <tr>
+        <td><b>ETN</b><br>Eaton<br>~$160B</td>
+        <td>Power management (UPS, 配電盤, switchgear, MV/LV 電器)。Q1 datacenter orders +240% YoY。</td>
+        <td><span class="pill pill-amber">25-30%</span></td>
+        <td>
+          <ul><li>UPS + switchgear 兩極之一 (vs Schneider/Siemens)</li><li>4 年 transformer lead time = 結構性護城河</li><li>FCF $3.55B</li></ul>
+        </td>
+        <td>
+          <ul><li>P/E 26 fwd / EV/EBITDA 28 鴻溝</li><li>Wind/auto 業務拖累</li><li>$131M insider sell</li></ul>
+        </td>
+        <td>賣到 hyperscaler datacenter, GEV/PWR 互補</td>
+      </tr>
+      <tr>
+        <td><b>PWR</b><br>Quanta Services<br>~$110B</td>
+        <td>輸電 / 配電工程 (T&D construction)。$48.5B record backlog, 765kV 高壓承包商。</td>
+        <td><span class="pill pill-amber">35%</span></td>
+        <td>
+          <ul><li>美國最大 T&D contractor</li><li>$1.3T US utility capex 2026-30 順風</li><li>勞工 + 設備兩缺擋住對手</li></ul>
+        </td>
+        <td>
+          <ul><li>P/E 108 / EV/EBITDA 46 priced for everything</li><li>CEO 賣 $120M at 高</li><li>analyst PT $747 BELOW spot $780 (已超 consensus)</li></ul>
+        </td>
+        <td>客戶: 全部 regulated utility + IPP. Peer: MTZ (MasTec)</td>
+      </tr>
+      <tr>
+        <td><b>NEE</b><br>NextEra Energy<br>~$200B</td>
+        <td>FPL (佛州 regulated utility) + NextEra Energy Resources (全球最大 renewable developer)。Meta 2.5 GW + Google multi-GW PPA pipeline。</td>
+        <td><span class="pill pill-amber">30%</span></td>
+        <td>
+          <ul><li>regulated cashflow + renewable growth dual engine</li><li>FPL rate settle 2026-2029 已搞定</li><li>低 beta 0.72</li></ul>
+        </td>
+        <td>
+          <ul><li>D/E 157%, ND $92.8B</li><li>IRA/OBBBA 2026-07-05 cliff (ITC/PTC)</li><li>P/E 21.8 fwd 比 utility peer (17-19x) 略貴</li></ul>
+        </td>
+        <td>佛州 regulated + 全美 renewable + hyperscaler PPA</td>
+      </tr>
+      <tr>
+        <td><b>SO</b><br>Southern Company<br>~$100B</td>
+        <td>Georgia Power + Alabama Power + nat gas dist。Vogtle 3/4 核電 (新上線). $26.5B DOE loan 5/13 加持。</td>
+        <td><span class="pill pill-amber">25-30%</span></td>
+        <td>
+          <ul><li>美國僅有的新核機組 (Vogtle 3/4)</li><li>GA 11GW large-load pipeline</li><li>25 年連續配息</li></ul>
+        </td>
+        <td>
+          <ul><li>FCF -$2.94B (capex 龐大)</li><li>ND ~5x EBITDA</li><li>GA base-rate freeze through 2028 (基本面上限)</li></ul>
+        </td>
+        <td>GA / AL 地區壟斷, 同 PJM/SERC 邊緣</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ==== C. COOLING / NET / OPTICAL ==== -->
+<section id="cooling" class="bg-white rounded-lg shadow p-6">
+  <h2 class="text-2xl mb-2">C. 散熱 / 網通 / 光通訊 (cooling)</h2>
+  <p class="text-slate-600">GPU 高功率 → 必須液冷 + 高頻寬光網路。VRT/MOD 散熱, ANET/CSCO 交換器, COHR/LITE/FN 光模組, IPGP 工業雷射。</p>
+
+  <table>
+    <thead><tr><th>Ticker</th><th>業務 / 規模</th><th>AI 暴露</th><th>優勢 / 護城河</th><th>缺點 / 風險</th><th>產業鏈位置</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><b>VRT</b><br>Vertiv<br>~$50B</td>
+        <td>液冷 (CDU/RDU)、UPS、電源、散熱整合。NVDA GB200 reference design 主供。</td>
+        <td><span class="pill pill-green">70%</span></td>
+        <td>
+          <ul><li>NVDA reference 液冷供應商</li><li>整櫃 turn-key 能力 (DLC + power)</li><li>多 hyperscaler 已 spec-in</li></ul>
+        </td>
+        <td>
+          <ul><li>P/E 50+ 動能股</li><li>對 NVDA GPU 出貨節奏敏感</li><li>競爭加劇 (Asia Vital/Boyd/CoolIT)</li></ul>
+        </td>
+        <td>NVDA partner, OEM (SMCI/Dell/HPE) 整機合作</td>
+      </tr>
+      <tr>
+        <td><b>MOD</b><br>Modine<br>~$8B</td>
+        <td>傳統 HVAC 起家, datacenter coolant distribution 業務 (Airedale) 暴衝。</td>
+        <td><span class="pill pill-amber">35%</span></td>
+        <td>
+          <ul><li>Airedale (英) 精密空調強</li><li>從 cyclical truck/auto 轉型 datacenter 故事</li></ul>
+        </td>
+        <td>
+          <ul><li>規模小 vs Vertiv</li><li>傳統車用業務拖累</li></ul>
+        </td>
+        <td>互補 VRT, 主供 colo + 區域 hyperscaler</td>
+      </tr>
+      <tr>
+        <td><b>ANET</b><br>Arista Networks<br>~$150B</td>
+        <td>Datacenter Ethernet switch (400G/800G)。META + MSFT 主供應商。</td>
+        <td><span class="pill pill-green">70%</span></td>
+        <td>
+          <ul><li>EOS 軟體生態 (CISCO 對手)</li><li>BCM Tomahawk5 平台領先</li><li>UEC (Ultra Ethernet) 推動者</li></ul>
+        </td>
+        <td>
+          <ul><li>客戶集中 (META 30%+)</li><li>NVDA NVLink/Quantum InfiniBand 蠶食</li><li>P/E 50+</li></ul>
+        </td>
+        <td>BCM Tomahawk silicon → ANET switch → hyperscaler datacenter</td>
+      </tr>
+      <tr>
+        <td><b>COHR</b><br>Coherent<br>~$15B</td>
+        <td>光通訊 transceiver (800G/1.6T) + 工業雷射 + EUV pellicle。</td>
+        <td><span class="pill pill-green">60%</span></td>
+        <td>
+          <ul><li>800G/1.6T VCSEL/EML 量產領先</li><li>EUV pellicle 獨家</li></ul>
+        </td>
+        <td>
+          <ul><li>歷史虧損 (II-VI 併購整合)</li><li>P/E 高度估計</li><li>Fabrinet 是其代工 = 利潤割據</li></ul>
+        </td>
+        <td>晶片給 ANET/CSCO/NVDA switch, Fabrinet 代工</td>
+      </tr>
+      <tr>
+        <td><b>LITE</b><br>Lumentum<br>~$5B</td>
+        <td>光元件 (laser, transceiver), 3D sensing。</td>
+        <td><span class="pill pill-amber">45%</span></td>
+        <td>
+          <ul><li>800G EML 三巨頭之一</li><li>AAPL ToF sensor 唯一</li></ul>
+        </td>
+        <td>
+          <ul><li>仍未完全轉虧為盈</li><li>傳統 Telecom 拖累</li><li>對手 COHR/Marvell SerDes 壓力</li></ul>
+        </td>
+        <td>晶片 fab 自家, packaging 外包</td>
+      </tr>
+      <tr>
+        <td><b>FN</b><br>Fabrinet<br>~$15B</td>
+        <td>光模組代工 (contract manufacturer for COHR/CSCO/ANET 等)。泰國產能。</td>
+        <td><span class="pill pill-green">65%</span></td>
+        <td>
+          <ul><li>光模組精密組裝 oligopoly</li><li>客戶分散 (沒單一 >25%)</li><li>NVDA Networking BU 主代工</li></ul>
+        </td>
+        <td>
+          <ul><li>純 contract 利潤率 < OEM</li><li>客戶整合風險 (COHR/LITE 自製)</li></ul>
+        </td>
+        <td>COHR/LITE/Marvell silicon → FN 組裝 → 賣 ANET/CSCO/NVDA</td>
+      </tr>
+      <tr>
+        <td><b>AAOI</b><br>Applied Optoelectronics<br>~$1B</td>
+        <td>中低階光模組 (cable TV + datacenter)。MSFT 100G/400G 二供。</td>
+        <td><span class="pill pill-amber">50%</span></td>
+        <td>
+          <ul><li>MSFT 撈到單就重生</li><li>價格甜 (低位毛利)</li></ul>
+        </td>
+        <td>
+          <ul><li>規模小, ZSL 風險</li><li>無 800G+ 量產能力</li></ul>
+        </td>
+        <td>中段, COHR/LITE 壓制</td>
+      </tr>
+      <tr>
+        <td><b>IPGP</b><br>IPG Photonics<br>~$3B</td>
+        <td>高功率工業光纖雷射 (切割/焊接)。中國市場主導 (~50%)。</td>
+        <td><span class="pill pill-rose">15%</span></td>
+        <td>
+          <ul><li>fiber laser oligopoly</li></ul>
+        </td>
+        <td>
+          <ul><li>中國對手 (Maxphotonics, Raycus) 蠶食</li><li>關稅戰受害</li><li>對工業 cycle 敏感</li></ul>
+        </td>
+        <td>邊緣 AI 相關 (some EUV/silicon use), 主要 industrial</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ==== D. REIT ==== -->
+<section id="reit" class="bg-white rounded-lg shadow p-6">
+  <h2 class="text-2xl mb-2">D. 資料中心 REIT (reit)</h2>
+  <p class="text-slate-600">實體 datacenter 不動產。EQIX/DLR 占核心, IRM/AMT 是轉型故事。受惠 AI 容量需求, 但對利率敏感。</p>
+
+  <table>
+    <thead><tr><th>Ticker</th><th>業務 / 規模</th><th>AI 暴露</th><th>優勢 / 護城河</th><th>缺點 / 風險</th><th>產業鏈位置</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><b>EQIX</b><br>Equinix<br>~$80B</td>
+        <td>全球最大 colocation REIT (~260 datacenter, 30+ 國)。Network exchange (PaaS) 是真護城河。</td>
+        <td><span class="pill pill-green">60%</span></td>
+        <td>
+          <ul><li>Network density (peer ecosystem 鎖客)</li><li>跨國 footprint hyperscale 也需要</li><li>長期合約 (3-15 yr)</li></ul>
+        </td>
+        <td>
+          <ul><li>P/FFO 25+ 估值偏貴</li><li>capex 龐大 (要持續擴 power)</li><li>hyperscaler 自建 trend 削弱 colo</li></ul>
+        </td>
+        <td>站在 carrier 與 hyperscaler 中介</td>
+      </tr>
+      <tr>
+        <td><b>DLR</b><br>Digital Realty<br>~$50B</td>
+        <td>大型 hyperscale-focused REIT (300+ datacenter)。SPAC PlatformDIGITAL。</td>
+        <td><span class="pill pill-green">65%</span></td>
+        <td>
+          <ul><li>對 hyperscaler 大型訂單能力 (50-100 MW campus)</li><li>Europe / APAC 擴張</li></ul>
+        </td>
+        <td>
+          <ul><li>大客戶議價弱</li><li>capex 沉重</li><li>Brookfield/Blackstone 私有競爭加劇</li></ul>
+        </td>
+        <td>Hyperscaler (AWS/Azure/GCP) 主供應商</td>
+      </tr>
+      <tr>
+        <td><b>IRM</b><br>Iron Mountain<br>~$30B</td>
+        <td>傳統文件 storage 轉型 datacenter (~30 facilities)。ALD-related growth。</td>
+        <td><span class="pill pill-amber">20-25%</span></td>
+        <td>
+          <ul><li>低成本土地 (從文件倉庫轉用)</li><li>政府客戶基礎</li></ul>
+        </td>
+        <td>
+          <ul><li>datacenter 規模仍小 (vs EQIX/DLR)</li><li>文件業務衰退</li></ul>
+        </td>
+        <td>邊緣 datacenter REIT</td>
+      </tr>
+      <tr>
+        <td><b>AMT</b><br>American Tower<br>~$95B</td>
+        <td>全球最大 cell tower REIT (220K+ 台基地台). CoreSite datacenter (40 facility) 是 AI 邊緣 plays。</td>
+        <td><span class="pill pill-amber">15%</span></td>
+        <td>
+          <ul><li>tower 高 occupancy 穩定 cashflow</li><li>5G 升級為核心題材</li></ul>
+        </td>
+        <td>
+          <ul><li>主業 tower, datacenter 才轉型</li><li>新興市場匯率風險</li><li>P/FFO 20+ 對利率敏感</li></ul>
+        </td>
+        <td>tower 5G + edge datacenter</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ==== E. OEM ==== -->
+<section id="oem" class="bg-white rounded-lg shadow p-6">
+  <h2 class="text-2xl mb-2">E. AI 伺服器 OEM (oem)</h2>
+  <p class="text-slate-600">把 NVDA chip + memory + cooling 組起來變整櫃。低毛利, 規模戰。SMCI 純度高但有會計爭議。</p>
+
+  <table>
+    <thead><tr><th>Ticker</th><th>業務 / 規模</th><th>AI 暴露</th><th>優勢 / 護城河</th><th>缺點 / 風險</th><th>產業鏈位置</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><b>SMCI</b><br>Super Micro<br>~$25B</td>
+        <td>客製化 AI server / GPU 整櫃 (HGX/MGX/B200 reference)。NVDA 早期合作夥伴。</td>
+        <td><span class="pill pill-green">90%</span></td>
+        <td>
+          <ul><li>NVDA partner 最久 (10+ yr)</li><li>液冷整櫃量產能力</li><li>BTO (build to order) 速度快</li></ul>
+        </td>
+        <td>
+          <ul><li>2024 會計案 (Hindenburg / Form 10-K 延遲)</li><li>毛利 15% 對手攻擊</li><li>客戶集中</li></ul>
+        </td>
+        <td>NVDA GPU + Hon Hai/Quanta 組裝 + hyperscaler/enterprise</td>
+      </tr>
+      <tr>
+        <td><b>DELL</b><br>Dell Technologies<br>~$80B</td>
+        <td>PowerEdge AI server + ISG 企業基礎建設 + CSG (PC). AI server backlog $14B+。</td>
+        <td><span class="pill pill-amber">35%</span></td>
+        <td>
+          <ul><li>企業客戶關係 + 服務</li><li>NVDA / AMD / Intel 全配 lineup</li><li>direct sales 全球佈局</li></ul>
+        </td>
+        <td>
+          <ul><li>毛利率 5-7% 極低</li><li>傳統 PC 衰退</li><li>SMCI / HPE 競爭</li></ul>
+        </td>
+        <td>NVDA OEM partner, ServiceNow + VMware 整合</td>
+      </tr>
+      <tr>
+        <td><b>HPE</b><br>Hewlett Packard Enterprise<br>~$25B</td>
+        <td>ProLiant AI server + GreenLake (Edge SaaS) + Juniper (網通併購 closing)。</td>
+        <td><span class="pill pill-amber">30%</span></td>
+        <td>
+          <ul><li>Juniper 整併後 networking 強化</li><li>HPC 傳統強 (Top500)</li></ul>
+        </td>
+        <td>
+          <ul><li>規模 vs DELL 弱</li><li>Juniper $14B 併購整合風險</li><li>毛利率 < DELL</li></ul>
+        </td>
+        <td>NVDA partner + Juniper switch + Aruba WiFi</td>
+      </tr>
+      <tr>
+        <td><b>2317.TW</b><br>Hon Hai (Foxconn)<br>~$80B</td>
+        <td>NVDA AI server 最大代工 (B200/GB200)。負責整櫃組裝出貨。</td>
+        <td><span class="pill pill-green">65%</span></td>
+        <td>
+          <ul><li>NVDA 整櫃 #1 代工</li><li>規模 + 整合製造能力</li><li>正在多元化 (EV)</li></ul>
+        </td>
+        <td>
+          <ul><li>毛利 3-5% 極低</li><li>蘋果業務佔比仍大, 智慧型手機衰退</li><li>地緣政治</li></ul>
+        </td>
+        <td>SMCI/Dell 代工 + 部分自有品牌 (FII 子公司)</td>
+      </tr>
+      <tr>
+        <td><b>2382.TW</b><br>Quanta<br>~$70B</td>
+        <td>NVDA AI server ODM (HGX/DGX) + 筆電。L10 整櫃能力。</td>
+        <td><span class="pill pill-green">60%</span></td>
+        <td>
+          <ul><li>第二大 NVDA AI server 代工</li><li>液冷整櫃量產領先</li></ul>
+        </td>
+        <td>
+          <ul><li>低毛利</li><li>對 NVDA / hyperscaler 集中度高</li></ul>
+        </td>
+        <td>NVDA + hyperscaler 直供, 與 Hon Hai 競爭</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ==== F. SECURITY ==== -->
+<section id="security" class="bg-white rounded-lg shadow p-6">
+  <h2 class="text-2xl mb-2">F. AI 安全 (security)</h2>
+  <p class="text-slate-600">企業 endpoint / firewall / identity / data 安全 SaaS。AI 兩面影響: 攻擊變強 (生成 phishing/malware) + 防禦變強 (自動 SOC). 同質性高, 客戶整合是大趨勢。</p>
+
+  <table>
+    <thead><tr><th>Ticker</th><th>業務 / 規模</th><th>AI 暴露</th><th>優勢 / 護城河</th><th>缺點 / 風險</th><th>產業鏈位置</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><b>CRWD</b><br>CrowdStrike<br>~$110B</td>
+        <td>Endpoint detection (Falcon platform) + XDR + SIEM 整合 (Charlotte AI)。</td>
+        <td><span class="pill pill-green">75%</span></td>
+        <td>
+          <ul><li>Falcon 雲端 agent 領先</li><li>2024 outage 後恢復 → 增強 trust</li><li>module ARR cross-sell 強</li></ul>
+        </td>
+        <td>
+          <ul><li>P/E 100+ priced for perfection</li><li>MSFT Defender for Endpoint 競爭</li><li>2024 outage 仍有影響</li></ul>
+        </td>
+        <td>endpoint → SIEM, Falcon Complete 整合 MSSP</td>
+      </tr>
+      <tr>
+        <td><b>PANW</b><br>Palo Alto Networks<br>~$130B</td>
+        <td>Firewall + SASE (Prisma) + XDR (Cortex/XSIAM)。三產品平台 ARR ~$5B。</td>
+        <td><span class="pill pill-green">70%</span></td>
+        <td>
+          <ul><li>Platformization 策略 (大客戶整合多產品)</li><li>Cortex XSIAM 是 SIEM 替代故事</li><li>CEO Nikesh 信用度高</li></ul>
+        </td>
+        <td>
+          <ul><li>P/E 60+ 動能股</li><li>Platformization 影響短期 ARR 認列</li><li>FW hardware cyclical</li></ul>
+        </td>
+        <td>FW hardware → SD-WAN → cloud-native SASE</td>
+      </tr>
+      <tr>
+        <td><b>ZS</b><br>Zscaler<br>~$35B</td>
+        <td>Zero Trust Exchange (cloud security platform). 替代傳統 VPN。</td>
+        <td><span class="pill pill-green">70%</span></td>
+        <td>
+          <ul><li>Zero trust 領先 (vs PANW Prisma)</li><li>純雲端架構, low CapEx 客戶</li></ul>
+        </td>
+        <td>
+          <ul><li>競爭加劇 (NET, AKAM, PANW 都進)</li><li>CFO 離職 / ARR 放緩</li><li>P/E 80+</li></ul>
+        </td>
+        <td>Zero trust 站在 hyperscaler edge + 客戶 endpoint 中</td>
+      </tr>
+      <tr>
+        <td><b>S</b><br>SentinelOne<br>~$8B</td>
+        <td>Endpoint XDR + Cloud + Identity (Attivo). Singularity platform。</td>
+        <td><span class="pill pill-green">70%</span></td>
+        <td>
+          <ul><li>Singularity AI 自動化 SOC</li><li>Lenovo OEM 預載</li></ul>
+        </td>
+        <td>
+          <ul><li>仍虧損 (FCF 接近 0)</li><li>CRWD 直接 head-to-head, share 弱</li><li>不少高層離職</li></ul>
+        </td>
+        <td>CRWD 的小對手</td>
+      </tr>
+      <tr>
+        <td><b>OKTA</b><br>Okta<br>~$15B</td>
+        <td>Identity (workforce + customer). Auth0 已整合 (CIAM)。</td>
+        <td><span class="pill pill-amber">50%</span></td>
+        <td>
+          <ul><li>identity 中立 (vs MSFT Entra 鎖死 Microsoft 客)</li><li>AI agent identity governance 新故事</li></ul>
+        </td>
+        <td>
+          <ul><li>2022 breach 之痛仍在</li><li>MSFT Entra ID 蠶食 enterprise</li><li>FY27 guide 個位數成長</li></ul>
+        </td>
+        <td>SaaS 上游 identity gateway</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ==== G. ROBOTICS ==== -->
+<section id="robotics" class="bg-white rounded-lg shadow p-6">
+  <h2 class="text-2xl mb-2">G. 機器人 / 自駕 / Physical AI (robotics)</h2>
+  <p class="text-slate-600">AI 從數位走向實體。autonomous driving (TSLA), surgical (ISRG), industrial (FANUY/ABBNY), warehouse (SYM)。NVDA Cosmos / Isaac 是底層平台, 但題材股仍以這些 OEM 為主。</p>
+
+  <table>
+    <thead><tr><th>Ticker</th><th>業務 / 規模</th><th>AI 暴露</th><th>優勢 / 護城河</th><th>缺點 / 風險</th><th>產業鏈位置</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><b>TSLA</b><br>Tesla<br>~$900B</td>
+        <td>EV + FSD (autopilot v13+) + Optimus humanoid + Dojo trainer + Energy storage。</td>
+        <td><span class="pill pill-green">60%</span></td>
+        <td>
+          <ul><li>FSD vision-only 大規模 fleet data 獨家</li><li>Optimus 量產時程 (2027 量產)</li><li>製造垂直整合</li></ul>
+        </td>
+        <td>
+          <ul><li>EV 銷量壓力 (中國對手, EU 關稅)</li><li>Musk 政治分心</li><li>P/E 60+ 高度反映期權</li></ul>
+        </td>
+        <td>自製 Dojo + NVDA H100 mixed, FSD vertical</td>
+      </tr>
+      <tr>
+        <td><b>ISRG</b><br>Intuitive Surgical<br>~$200B</td>
+        <td>da Vinci 手術機器人 + Ion 內視鏡。器械 (instruments) + 服務 (service) recurring 70%+。</td>
+        <td><span class="pill pill-amber">25%</span></td>
+        <td>
+          <ul><li>手術 robotics oligopoly</li><li>razor-blade model (耗材 ARR)</li><li>FDA / regulator 入門高</li></ul>
+        </td>
+        <td>
+          <ul><li>Medtronic Hugo / J&J Ottava 競爭</li><li>P/E 65+ priced for perfection</li><li>關稅對 instrument 成本壓力</li></ul>
+        </td>
+        <td>純手術 OEM, 不直接做泛 AI</td>
+      </tr>
+      <tr>
+        <td><b>ABBNY</b><br>ABB ADR<br>~$80B</td>
+        <td>Robotics + Motion + Electrification + Process Automation。工業機器人 #2 全球 (FANUY 並列)。</td>
+        <td><span class="pill pill-amber">25%</span></td>
+        <td>
+          <ul><li>工業 motor + drive 領先</li><li>EV charging 全球佈局</li><li>Robotics + Industrial Automation 整合</li></ul>
+        </td>
+        <td>
+          <ul><li>Robotics 業務僅 ~10%</li><li>對歐洲 industrial cycle 敏感</li><li>中國對手 (Inovance, Estun)</li></ul>
+        </td>
+        <td>賣 robot 給 automaker + warehouse</td>
+      </tr>
+      <tr>
+        <td><b>FANUY</b><br>Fanuc ADR<br>~$30B</td>
+        <td>CNC + 工業機器人 + Roboshot。日本工業自動化代表。</td>
+        <td><span class="pill pill-amber">20%</span></td>
+        <td>
+          <ul><li>CNC controller 全球 #1</li><li>arm robot 高精度</li><li>fortress BS (低槓桿, 大量現金)</li></ul>
+        </td>
+        <td>
+          <ul><li>對中國工具機 cycle 高度依賴</li><li>低成長 (mature)</li><li>低 ROE</li></ul>
+        </td>
+        <td>賣 CNC + robot 給工具機 / EV / 半導體設備廠</td>
+      </tr>
+      <tr>
+        <td><b>SYM</b><br>Symbotic<br>~$25B</td>
+        <td>倉儲全自動化系統 (Walmart 為最大客戶, 占 ARR 80%+)。</td>
+        <td><span class="pill pill-green">70%</span></td>
+        <td>
+          <ul><li>Walmart 大型展示客戶</li><li>WMS + robot + AI vision 端到端</li></ul>
+        </td>
+        <td>
+          <ul><li>單一客戶極度集中</li><li>不穩定的 revenue recognition</li><li>Audit 議題</li></ul>
+        </td>
+        <td>Walmart + Target / 大型 retailer</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ==== H. MATERIALS ==== -->
+<section id="materials" class="bg-white rounded-lg shadow p-6">
+  <h2 class="text-2xl mb-2">H. 原料 / 稀土 / 工業氣體 (materials)</h2>
+  <p class="text-slate-600">AI 蓋 datacenter 吃銅 (配電) + 稀土 (磁鐵, motor) + 工業氣體 (半導體製程) + 鋰 (電池儲能)。週期性高, 跟 AI 不同 phase 相關。</p>
+
+  <table>
+    <thead><tr><th>Ticker</th><th>業務 / 規模</th><th>AI 暴露</th><th>優勢 / 護城河</th><th>缺點 / 風險</th><th>產業鏈位置</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><b>FCX</b><br>Freeport-McMoRan<br>~$80B</td>
+        <td>銅 + 金 (Grasberg, Cerro Verde). 全球 #2 銅生產商。</td>
+        <td><span class="pill pill-amber">25%</span></td>
+        <td>
+          <ul><li>低成本礦山 (Indonesia, Peru)</li><li>銅供需缺口長期 (AI datacenter + EV + grid)</li></ul>
+        </td>
+        <td>
+          <ul><li>商品價格波動高</li><li>地緣政治 (Indonesia mining law)</li><li>capex 沉重</li></ul>
+        </td>
+        <td>Cu 上游, 賣到 ETN / Eaton / GE 等配電業者</td>
+      </tr>
+      <tr>
+        <td><b>MP</b><br>MP Materials<br>~$5B</td>
+        <td>Mountain Pass 美國唯一營運稀土礦 (NdPr 為主)。Magnetics 下游 (Fort Worth) 已啟動。</td>
+        <td><span class="pill pill-green">40%</span></td>
+        <td>
+          <ul><li>美國唯一稀土礦 (CHIPS / DoD 補貼)</li><li>下游磁鐵廠 vertical (2026 啟用)</li></ul>
+        </td>
+        <td>
+          <ul><li>對中國價格策略無還手 (90% 全球供應)</li><li>規模小</li><li>盈利仍負</li></ul>
+        </td>
+        <td>礦 → 精煉 → 磁鐵, 賣 EV motor / robotic motor</td>
+      </tr>
+      <tr>
+        <td><b>LIN</b><br>Linde<br>~$220B</td>
+        <td>全球最大工業氣體 (O2, N2, He, NH3, electronic gases)。半導體製程 (silane, NF3) 大量供應。</td>
+        <td><span class="pill pill-amber">25%</span></td>
+        <td>
+          <ul><li>industrial gas oligopoly (LIN + Air Liquide + APD)</li><li>客戶 fab 旁邊建廠, 50 年合約</li><li>低 CAPEX / 高 FCF cycle</li></ul>
+        </td>
+        <td>
+          <ul><li>P/E 30+ 慢成長股估值偏貴</li><li>Helium 供應緊張</li></ul>
+        </td>
+        <td>賣特殊氣體給 TSMC / Intel / Samsung fab</td>
+      </tr>
+      <tr>
+        <td><b>APD</b><br>Air Products<br>~$60B</td>
+        <td>工業氣體第三大 + 大型 hydrogen / blue ammonia 投資。</td>
+        <td><span class="pill pill-amber">25%</span></td>
+        <td>
+          <ul><li>半導體氣體業務穩</li><li>Hydrogen 賭注 (有政治風險)</li></ul>
+        </td>
+        <td>
+          <ul><li>NEOM / Saudi mega project 已大幅減損</li><li>動盪管理層 (Ackman 介入)</li></ul>
+        </td>
+        <td>賣特殊氣體 + 大型 hydrogen 應用</td>
+      </tr>
+      <tr>
+        <td><b>ALB</b><br>Albemarle<br>~$10B</td>
+        <td>鋰 (氫氧化鋰, 鋰精礦)。Talison Greenbushes JV (with IGO)。</td>
+        <td><span class="pill pill-amber">20%</span></td>
+        <td>
+          <ul><li>低成本 Greenbushes 鋰礦</li><li>EV 長期需求</li></ul>
+        </td>
+        <td>
+          <ul><li>鋰價自 2022 高點 -80%</li><li>產能過剩</li><li>對 EV 增速 sensitive</li></ul>
+        </td>
+        <td>鋰上游, 賣 LFP / NMC 電池業者</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ==== I. HEDGE ==== -->
+<section id="hedge" class="bg-white rounded-lg shadow p-6">
+  <h2 class="text-2xl mb-2">I. 避險 (hedge)</h2>
+  <p class="text-slate-600">非 AI 屬性, 用來沖掉組合 long beta。黃金 / 金礦 / 長債 / Muni / USD / 商品 / anti-beta / 反向 S&P。</p>
+
+  <table>
+    <thead><tr><th>Ticker</th><th>業務 / 規模</th><th>避險邏輯</th><th>優勢 / 護城河</th><th>缺點 / 風險</th><th>產業鏈位置</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><b>GLD</b><br>SPDR Gold Shares<br>AUM ~$80B</td>
+        <td>實物黃金 ETF。</td>
+        <td>滯漲 / 通膨 / 地緣風險 / 美元走弱</td>
+        <td>
+          <ul><li>流動性最高 (vs IAU)</li><li>對沖系統性風險</li></ul>
+        </td>
+        <td>
+          <ul><li>持倉成本 (expense 0.4%)</li><li>沒利息收益</li><li>跟實質利率反向</li></ul>
+        </td>
+        <td>避險核心配置</td>
+      </tr>
+      <tr>
+        <td><b>GDX</b><br>VanEck Gold Miners<br>~$15B</td>
+        <td>金礦股 ETF (NEM, GOLD, AEM, FNV 等)。</td>
+        <td>金價 leverage (1:2)</td>
+        <td>
+          <ul><li>金價漲時放大 (operating leverage)</li><li>分紅好</li></ul>
+        </td>
+        <td>
+          <ul><li>金價跌時放大下行</li><li>單礦事件風險</li></ul>
+        </td>
+        <td>GLD 進階版</td>
+      </tr>
+      <tr>
+        <td><b>TLT</b><br>iShares 20+ Year Treasury<br>~$50B</td>
+        <td>20+ 年美國公債 ETF。</td>
+        <td>降息 / 衰退 / risk-off</td>
+        <td>
+          <ul><li>直接 duration 暴露</li><li>美國信用最佳避險工具</li></ul>
+        </td>
+        <td>
+          <ul><li>升息時極弱 (2022 -30%)</li><li>美債發行量增加抑制反彈</li></ul>
+        </td>
+        <td>利率避險主力</td>
+      </tr>
+      <tr>
+        <td><b>MUB</b><br>iShares National Muni<br>~$40B</td>
+        <td>美國市政債 ETF (主要 IG)。</td>
+        <td>退稅 income + 利率敏感</td>
+        <td>
+          <ul><li>tax-free yield 對高稅率投資人</li><li>低違約</li></ul>
+        </td>
+        <td>
+          <ul><li>對長率仍敏感</li><li>跟 TLT 高度相關</li></ul>
+        </td>
+        <td>慢養避險</td>
+      </tr>
+      <tr>
+        <td><b>UUP</b><br>Invesco DB USD Bullish<br>~$1B</td>
+        <td>對籃子 G10 貨幣作多 USD。</td>
+        <td>USD 升值 (risk-off + Fed hawkish)</td>
+        <td>
+          <ul><li>單純 USD 直接押注</li><li>對沖海外曝險</li></ul>
+        </td>
+        <td>
+          <ul><li>規模小, 期貨 contango</li><li>USD 弱時連跌</li></ul>
+        </td>
+        <td>外匯避險</td>
+      </tr>
+      <tr>
+        <td><b>DBC</b><br>Invesco DB Commodity Index<br>~$1B</td>
+        <td>14 種商品 (能源 50%+ 權重)。</td>
+        <td>通膨 + 商品 supply shock</td>
+        <td>
+          <ul><li>抗通膨工具</li><li>diversifier</li></ul>
+        </td>
+        <td>
+          <ul><li>期貨 roll cost 拖累</li><li>能源加權重高, 對油價依賴</li></ul>
+        </td>
+        <td>通膨避險</td>
+      </tr>
+      <tr>
+        <td><b>BTAL</b><br>AGFiQ Anti-Beta<br>~$0.3B</td>
+        <td>long 低 beta / short 高 beta. Market-neutral by design.</td>
+        <td>系統性 sell-off / 高 beta 崩潰</td>
+        <td>
+          <ul><li>少數真 anti-beta 工具 (corr ~-0.6 vs S&P)</li><li>不靠 leverage</li></ul>
+        </td>
+        <td>
+          <ul><li>規模小 / 流動性弱</li><li>expense 高 (1%)</li><li>牛市拖累 portfolio</li></ul>
+        </td>
+        <td>戰術性避險</td>
+      </tr>
+      <tr>
+        <td><b>SH</b><br>ProShares Short S&P500<br>~$1.5B</td>
+        <td>每日 -1x S&P 500。</td>
+        <td>S&P 直接做空</td>
+        <td>
+          <ul><li>直接 1:1 對沖</li><li>無 leverage decay (vs SDS/SPXU)</li></ul>
+        </td>
+        <td>
+          <ul><li>daily reset 仍長期略偏負 drift</li><li>牛市持續拖累</li></ul>
+        </td>
+        <td>戰術性避險, 短期工具</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ==== Frequency ==== -->
+<section id="frequency" class="bg-white rounded-lg shadow p-6 border-l-4 border-amber-500">
+  <h2 class="text-2xl mb-3 text-amber-700">📅 建議跑 overview 頻率</h2>
+
+  <p class="mb-3"><b>結構性視角變動很慢, 不必常更新</b>。建議:</p>
+
+  <ul class="list-disc ml-6 space-y-1">
+    <li><b>3-6 個月一次</b> (季底盤點): 最低更新頻率, 跟著 quarterly earnings cycle 走</li>
+    <li><b>即時 ad-hoc 補</b>:
+      <ul class="list-circle ml-6">
+        <li>有大型 M&A 落地 (e.g. CEG-Calpine, HPE-Juniper)</li>
+        <li>新 IPO / spin-off (e.g. GEV 2024)</li>
+        <li>產業鏈結構性轉變 (e.g. NVDA 出 NVLink Fusion 開放 third-party CPU)</li>
+        <li>regulatory 重大 ruling (e.g. FERC PJM colocation 終裁)</li>
+        <li>地緣政治新限制 (e.g. EUV / HBM 出口管制升級)</li>
+      </ul>
+    </li>
+    <li><b>不需要</b>: 為了每日股價變動或單一 earnings 重寫 overview。那是 daily scan 的事。</li>
+  </ul>
+
+  <p class="mt-4 text-slate-600 text-xs">如何手動觸發更新: 直接告訴我 "更新 sector overview" 或單一 sector "更新 semi overview", 我會 review 變化 + 重寫 HTML。</p>
+</section>
+
+</main>
+
+<footer class="bg-slate-200 text-slate-600 text-xs p-4 text-center">
+  Sector overviews · 結構性視角 · 純研究 / 教學用途, 非投資建議
+</footer>
+
+</body>
+</html>

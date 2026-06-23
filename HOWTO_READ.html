@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<title>Trading Scan 報告閱讀指南</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+  body { font-family: "PingFang TC", -apple-system, BlinkMacSystemFont, "Microsoft JhengHei", sans-serif; }
+  h1, h2, h3 { font-weight: 700; }
+  table { border-collapse: collapse; margin: 0.5rem 0; }
+  th, td { border: 1px solid #d1d5db; padding: 0.4rem 0.75rem; text-align: left; font-size: 0.9rem; }
+  th { background: #f3f4f6; font-weight: 600; }
+  code { background: #f3f4f6; padding: 0.1rem 0.3rem; border-radius: 0.25rem; font-size: 0.875rem; }
+  .tag-BUY  { background: #dcfce7; color: #166534; padding: 2px 8px; border-radius: 4px; font-weight: 600; }
+  .tag-HOLD { background: #fef3c7; color: #92400e; padding: 2px 8px; border-radius: 4px; font-weight: 600; }
+  .tag-SELL { background: #fee2e2; color: #991b1b; padding: 2px 8px; border-radius: 4px; font-weight: 600; }
+  .term { color: #1e40af; font-weight: 600; }
+  blockquote { border-left: 4px solid #cbd5e1; padding: 0.5rem 1rem; background: #f8fafc; margin: 0.75rem 0; font-style: italic; }
+  ul li { margin: 0.25rem 0; }
+</style>
+</head>
+<body class="bg-slate-50 text-slate-900">
+
+<header class="bg-slate-900 text-white p-6 shadow-md">
+  <div class="max-w-5xl mx-auto">
+    <h1 class="text-3xl">Trading Scan 報告閱讀指南</h1>
+    <p class="text-slate-300 text-sm mt-2">以 <code>power_2026-05-15.html</code> 為範例。涵蓋報告結構、術語、縮寫、交易語法。</p>
+    <p class="text-red-300 text-xs mt-1">⚠️ Research only. 非投資建議。</p>
+  </div>
+</header>
+
+<nav class="bg-slate-100 border-b border-slate-300 p-3 sticky top-0 z-10 text-sm">
+  <div class="max-w-5xl mx-auto flex flex-wrap gap-3">
+    <a class="text-blue-700 hover:underline" href="#structure">1. 報告結構</a>
+    <a class="text-blue-700 hover:underline" href="#verdict">2. 判決顏色</a>
+    <a class="text-blue-700 hover:underline" href="#phases">3. 五階段流程</a>
+    <a class="text-blue-700 hover:underline" href="#agents">4. 角色 (Agents)</a>
+    <a class="text-blue-700 hover:underline" href="#chart">5. K 線圖怎麼看</a>
+    <a class="text-blue-700 hover:underline" href="#fundamentals">6. 基本面術語</a>
+    <a class="text-blue-700 hover:underline" href="#technical">7. 技術面術語</a>
+    <a class="text-blue-700 hover:underline" href="#trade">8. 交易語法</a>
+    <a class="text-blue-700 hover:underline" href="#sector">9. 電力族群特定詞</a>
+    <a class="text-blue-700 hover:underline" href="#hedge">10. 避險 / Option 工具</a>
+    <a class="text-blue-700 hover:underline" href="#warn">11. 重要警示</a>
+  </div>
+</nav>
+
+<main class="max-w-5xl mx-auto p-6 space-y-8 text-sm leading-relaxed">
+
+<!-- 1 -->
+<section id="structure" class="bg-white rounded-lg shadow p-6">
+  <h2 class="text-2xl mb-3">1. 報告結構</h2>
+  <p>整份 HTML 從上往下:</p>
+  <ol class="list-decimal ml-6 mt-2">
+    <li><b>Header</b> — 標題 + as-of 日期 + 產生時間</li>
+    <li><b>Nav bar</b> (黏在頂部) — 直接點 ticker 跳到對應區塊, 顏色=該股最終判決</li>
+    <li><b>Sector overview</b> — 跨股 ranking table、top pick、contrarian、pairs trade、relevant catalysts、correlation cluster、action sequencing、risk budget</li>
+    <li><b>每股 ticker card</b> (8 個, 大色塊):
+      <ul class="list-disc ml-6 mt-1">
+        <li>左半: Plotly K 線圖 (Close + MA20/50/200, 2 年)</li>
+        <li>右半: <code>Final decision</code> 卡 (Opus 4.7 拍板)</li>
+        <li>下方摺疊區:
+          <ul class="list-disc ml-6">
+            <li>Investment plan (research manager)</li>
+            <li>Trade proposal (trader)</li>
+            <li>Phase 1 — 四 analyst 並列 (fundamentals / market / news / sentiment)</li>
+            <li>Phase 2 — Bull vs Bear 辯論並列</li>
+            <li>Phase 4 — 三 risk debator 並列</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ol>
+  <blockquote>點任何 <code>▶</code> 摺疊符號展開細節。已展開時點再收合。</blockquote>
+</section>
+
+<!-- 2 -->
+<section id="verdict" class="bg-white rounded-lg shadow p-6">
+  <h2 class="text-2xl mb-3">2. 判決顏色 (Verdict color)</h2>
+  <table>
+    <tr><th>標籤</th><th>意義</th><th>實務</th></tr>
+    <tr><td><span class="tag-BUY">BUY</span></td><td>看多, 建議建倉做多</td><td>有明確 entry/stop/target 三點數字</td></tr>
+    <tr><td><span class="tag-HOLD">HOLD</span></td><td>觀望, 不在此價建倉</td><td>通常附 conditional triggers (e.g. 跌破 X 翻空, 突破 Y 翻多)</td></tr>
+    <tr><td><span class="tag-SELL">SELL</span></td><td>看空, 建議做空 (或減持)</td><td>有 short entry 與 stop, 對沖部位常見</td></tr>
+  </table>
+  <p class="mt-3">附加狀態詞 (Portfolio manager 對 trader 提案的處理):</p>
+  <ul class="list-disc ml-6">
+    <li><b>APPROVE</b> — 完全採納 trader 提案</li>
+    <li><b>MODIFY</b> — 結構保留但動 size/stop/tranches (本次 power 8 支大多落這)</li>
+    <li><b>REJECT</b> — 駁回, 不建倉</li>
+  </ul>
+  <p class="mt-2 text-slate-600">範例: <code>VST: HOLD</code> 意思是 $141.90 不建倉, 但短下 $138 翻空、長過 $155.71 (MA20) 翻多, 各 0.75% NAV。</p>
+</section>
+
+<!-- 3 -->
+<section id="phases" class="bg-white rounded-lg shadow p-6">
+  <h2 class="text-2xl mb-3">3. 五階段流程 (Pipeline phases)</h2>
+  <p>來自 <a href="https://github.com/TauricResearch/TradingAgents" class="text-blue-700 underline">TauricResearch/TradingAgents</a> 框架, 移植到 Claude Code subagent。</p>
+  <table class="mt-2">
+    <tr><th>Phase</th><th>內容</th><th>輸出檔</th></tr>
+    <tr><td>1</td><td>四 analyst 並行收資料</td><td><code>fundamentals.md</code>, <code>market.md</code>, <code>news.md</code>, <code>sentiment.md</code></td></tr>
+    <tr><td>2</td><td>Bull vs Bear 辯論, research-manager 裁決</td><td><code>debate/round_N_{bull,bear}.md</code> + <code>investment_plan.md</code></td></tr>
+    <tr><td>3</td><td>Trader 把 plan 轉成具體 entry/stop/target</td><td><code>trade_proposal.md</code></td></tr>
+    <tr><td>4</td><td>Aggressive vs Conservative vs Neutral 三角辯, portfolio-manager 拍板</td><td><code>risk_debate/{aggressive,conservative,neutral}.md</code> + <code>final_decision.md</code></td></tr>
+    <tr><td>5</td><td>Sector-comparator 跨股排序 + pairs idea</td><td><code>sector_report.md</code></td></tr>
+  </table>
+  <blockquote>單股全跑約 12-14 subagent 調用, 8 ticker sector ~100 calls, ~1-1.5 小時掛機。</blockquote>
+</section>
+
+<!-- 4 -->
+<section id="agents" class="bg-white rounded-lg shadow p-6">
+  <h2 class="text-2xl mb-3">4. 角色 (Agents)</h2>
+  <table>
+    <tr><th>角色</th><th>立場</th><th>Model</th><th>職責</th></tr>
+    <tr><td>fundamentals-analyst</td><td>中性</td><td>Haiku</td><td>讀財報 (rev/margin/FCF/balance sheet/insider txn/valuation)</td></tr>
+    <tr><td>market-analyst</td><td>中性</td><td>Haiku</td><td>抓技術指標 (MA/MACD/RSI/ATR/BB/levels)</td></tr>
+    <tr><td>news-analyst</td><td>中性</td><td>Haiku</td><td>近 14d 新聞 + 同業訊號 + macro</td></tr>
+    <tr><td>sentiment-analyst</td><td>中性</td><td>Haiku</td><td>analyst rating + Reddit + StockTwits + insider sentiment</td></tr>
+    <tr><td>bull-researcher</td><td>多方</td><td>Sonnet</td><td>建最強多單論述, 反駁空方</td></tr>
+    <tr><td>bear-researcher</td><td>空方</td><td>Sonnet</td><td>建最強空單論述, 反駁多方</td></tr>
+    <tr><td>research-manager</td><td>裁判</td><td>Sonnet</td><td>權衡證據, 出 LONG/NEUTRAL/SHORT verdict + 信心</td></tr>
+    <tr><td>trader</td><td>執行</td><td>Sonnet</td><td>把 verdict 翻成 entry zone/stop/T1/T2/size/horizon</td></tr>
+    <tr><td>risk-aggressive</td><td>進攻</td><td>Sonnet</td><td>主張上 size, 放寬 stop, 加 option overlay</td></tr>
+    <tr><td>risk-conservative</td><td>保守</td><td>Sonnet</td><td>主張降 size, 收緊 stop, 加 hedge</td></tr>
+    <tr><td>risk-neutral</td><td>居中</td><td>Sonnet</td><td>看哪邊論述較硬, 折衷</td></tr>
+    <tr><td>portfolio-manager</td><td>拍板</td><td><b>Opus</b></td><td>最終 APPROVE/MODIFY/REJECT, 鎖定 trade card</td></tr>
+    <tr><td>sector-comparator</td><td>跨股</td><td>Sonnet</td><td>同 sector ranking、top pick、pairs、risk budget</td></tr>
+  </table>
+  <p class="mt-3 text-slate-600">Model 分層省成本: 整理資料用 Haiku, 推理用 Sonnet, 最終決策用 Opus。</p>
+</section>
+
+<!-- 5 -->
+<section id="chart" class="bg-white rounded-lg shadow p-6">
+  <h2 class="text-2xl mb-3">5. K 線圖怎麼看</h2>
+  <p>每股右上 Plotly 互動圖 (2 年):</p>
+  <table>
+    <tr><th>線</th><th>顏色</th><th>意義</th></tr>
+    <tr><td>Close</td><td>黑</td><td>當日收盤價</td></tr>
+    <tr><td>MA20</td><td>藍點</td><td>20 日均線 — 短線趨勢</td></tr>
+    <tr><td>MA50</td><td>橘點</td><td>50 日均線 — 中線趨勢</td></tr>
+    <tr><td>MA200</td><td>紅虛</td><td>200 日均線 — 長線趨勢, 牛熊分界</td></tr>
+  </table>
+  <p class="mt-3"><b>判讀重點</b>:</p>
+  <ul class="list-disc ml-6">
+    <li><b>多頭排列</b> (bullish stack): MA20 &gt; MA50 &gt; MA200, 趨勢向上</li>
+    <li><b>空頭排列</b>: 反之, 趨勢向下</li>
+    <li><b>黃金交叉</b> (Golden cross): MA50 上穿 MA200</li>
+    <li><b>死亡交叉</b> (Death cross): MA50 下穿 MA200</li>
+    <li>滑鼠 hover 看具體日期/數值, 雙擊 reset zoom, 框選縮放</li>
+  </ul>
+</section>
+
+<!-- 6 -->
+<section id="fundamentals" class="bg-white rounded-lg shadow p-6">
+  <h2 class="text-2xl mb-3">6. 基本面術語</h2>
+  <table>
+    <tr><th>縮寫</th><th>全名</th><th>意義 / 解讀</th></tr>
+    <tr><td>P/E</td><td>Price / Earnings (本益比)</td><td>股價 / 每股盈餘。越高 = 越貴或成長預期高。一般 utility 16-20x, growth 30x+。</td></tr>
+    <tr><td>Trailing P/E</td><td>過去 12 個月 P/E</td><td>已實現的 earning</td></tr>
+    <tr><td>Forward P/E (fwd P/E)</td><td>未來 12 個月 P/E</td><td>用 analyst EPS 估值的 P/E, 比 trailing 更前瞻</td></tr>
+    <tr><td>PEG</td><td>P/E to Growth</td><td>P/E / 預期成長率。&lt;1 偏便宜, &gt;2 偏貴</td></tr>
+    <tr><td>EV/EBITDA</td><td>Enterprise Value / EBITDA</td><td>含負債的全企業估值倍數, 跨資本結構比較</td></tr>
+    <tr><td>P/B</td><td>Price / Book</td><td>市淨率</td></tr>
+    <tr><td>P/S</td><td>Price / Sales</td><td>市銷率</td></tr>
+    <tr><td>FCF</td><td>Free Cash Flow</td><td>自由現金流 = 營運現金 - 資本支出。正數健康, 越大越好</td></tr>
+    <tr><td>OCF</td><td>Operating Cash Flow</td><td>營運現金流</td></tr>
+    <tr><td>FCF/NI</td><td>FCF / Net Income</td><td>盈餘現金品質, &gt;0.9 健康, 太低代表 earning 是「帳上」</td></tr>
+    <tr><td>NI</td><td>Net Income</td><td>淨利 (扣稅後)</td></tr>
+    <tr><td>EPS</td><td>Earnings Per Share</td><td>每股盈餘</td></tr>
+    <tr><td>ROE</td><td>Return on Equity</td><td>股東權益報酬率, &gt;15% 算優</td></tr>
+    <tr><td>ROIC</td><td>Return on Invested Capital</td><td>投入資本報酬率, 比 ROE 更純</td></tr>
+    <tr><td>ND/EBITDA</td><td>Net Debt / EBITDA</td><td>淨負債倍數, &lt;2x 健康, &gt;4x 高槓桿。TLN 10x 是極端, CEG 0.9x 是模範生</td></tr>
+    <tr><td>D/E</td><td>Debt / Equity</td><td>負債權益比</td></tr>
+    <tr><td>Net debt</td><td>淨負債</td><td>= Total debt - Cash. 規模絕對值</td></tr>
+    <tr><td>Op margin</td><td>Operating Margin</td><td>營業利益率</td></tr>
+    <tr><td>Gross margin</td><td>毛利率</td><td></td></tr>
+    <tr><td>Capex</td><td>Capital expenditure</td><td>資本支出</td></tr>
+    <tr><td>Insider</td><td>內部人</td><td>公司高管 / 董事 / 10%+ 持股人</td></tr>
+    <tr><td>10b5-1</td><td>SEC 規則</td><td>預先排程的內部人賣股計劃, 法律允許, 訊號偏弱</td></tr>
+    <tr><td>Insider txn</td><td>內部人交易</td><td>Form 4 通報的買賣。買 = 強訊號, 賣 = 弱訊號 (但常因稅、生活、分散而賣)</td></tr>
+    <tr><td>Backlog</td><td>訂單積壓</td><td>已簽未交付營收。GEV $163B, PWR $48.5B 為例</td></tr>
+    <tr><td>Book-to-bill</td><td>訂單/出貨比</td><td>&gt;1 訂單成長, &lt;1 訂單減少</td></tr>
+  </table>
+</section>
+
+<!-- 7 -->
+<section id="technical" class="bg-white rounded-lg shadow p-6">
+  <h2 class="text-2xl mb-3">7. 技術面術語</h2>
+  <table>
+    <tr><th>縮寫</th><th>全名</th><th>意義 / 解讀</th></tr>
+    <tr><td>MA20 / MA50 / MA200</td><td>Moving Average</td><td>20/50/200 日簡單均線</td></tr>
+    <tr><td>MACD</td><td>Moving Average Convergence Divergence</td><td>動能指標。MACD 線 vs 訊號線; 柱狀 (histogram) 正值=多, 負值=空。<b>Bullish cross</b>: MACD 上穿訊號線</td></tr>
+    <tr><td>RSI (RSI14)</td><td>Relative Strength Index (14 日)</td><td>0-100. &gt;70 超買 (OB, overbought), &lt;30 超賣 (OS, oversold). NVDA 76.7 / VST 36.7 為例</td></tr>
+    <tr><td>BB / Bollinger Bands</td><td>布林通道</td><td>MA20 ± 2σ. <b>%B</b> 表示價格在通道中位置, &gt;1 在上軌之上 (延伸), &lt;0 在下軌之下</td></tr>
+    <tr><td>ATR (ATR14)</td><td>Average True Range</td><td>14 日平均真實波幅 = 平均日波動 $。用來算 stop 距離。VST $7.19 ≈ 4.9% 日均波動</td></tr>
+    <tr><td>20d ann. vol</td><td>20-day annualized volatility</td><td>近 20 日年化波動率。NEE 34.5% (低), GEV 62% (高)</td></tr>
+    <tr><td>Beta</td><td>β</td><td>對市場 (S&P) 的敏感度。SO 0.36 (低), TSLA &gt;2 (高)</td></tr>
+    <tr><td>52w high / low</td><td>52 週高/低</td><td>過去一年最高/低價</td></tr>
+    <tr><td>S/R</td><td>Support / Resistance</td><td>支撐 / 壓力位</td></tr>
+    <tr><td>Breakdown / Breakout</td><td>跌破 / 突破</td><td>跌破支撐 = 翻空; 突破壓力 = 翻多</td></tr>
+    <tr><td>Mom 1m/3m/6m/12m</td><td>動能 (return)</td><td>近 1/3/6/12 個月報酬率</td></tr>
+    <tr><td>Lower highs</td><td></td><td>連續更低高點, 下行趨勢徵兆</td></tr>
+    <tr><td>Higher highs</td><td></td><td>連續更高高點, 上行趨勢徵兆</td></tr>
+    <tr><td>Extended / extension</td><td>延伸</td><td>價格遠離均線, mean-revert 風險</td></tr>
+    <tr><td>Whipsaw</td><td>來回洗</td><td>急漲急跌, 把 stop 掃掉</td></tr>
+    <tr><td>Capitulation</td><td>恐慌出貨</td><td>放量崩跌, 通常見底訊號</td></tr>
+  </table>
+</section>
+
+<!-- 8 -->
+<section id="trade" class="bg-white rounded-lg shadow p-6">
+  <h2 class="text-2xl mb-3">8. 交易語法 (trade proposal)</h2>
+  <table>
+    <tr><th>詞</th><th>意義</th></tr>
+    <tr><td>Entry zone</td><td>進場區間, e.g. <code>$348-355</code></td></tr>
+    <tr><td>Stop / Stop-loss</td><td>停損, 跌到此價無條件出場</td></tr>
+    <tr><td>Hard stop</td><td>硬停損, 不可動</td></tr>
+    <tr><td>Daily-close stop</td><td>以「收盤價」判, 盤中觸碰不算 (避免 whipsaw)</td></tr>
+    <tr><td>Two-tier stop</td><td>兩層停損, e.g. $945 trim / $807 hard exit</td></tr>
+    <tr><td>T1 / T2</td><td>Target 1 / Target 2, 第一/第二止盈目標</td></tr>
+    <tr><td>R:R / RR</td><td>Risk-Reward ratio = (target - entry) / (entry - stop). &gt;2 才考慮做</td></tr>
+    <tr><td>NAV</td><td>Net Asset Value, 你的投組總值。1.5% NAV = 投組 1.5%</td></tr>
+    <tr><td>Tranche</td><td>分批, e.g. 50/35/15 = 立即 50% + 觸發 1 加 35% + 觸發 2 加 15%</td></tr>
+    <tr><td>Scale-in / Ladder</td><td>分批進場 (沿價位下單)</td></tr>
+    <tr><td>Stagger</td><td>分散進場時機</td></tr>
+    <tr><td>GTC</td><td>Good-Till-Cancelled (掛單到取消為止)</td></tr>
+    <tr><td>Horizon</td><td>持有期間, e.g. 1-3m 表示 1-3 個月</td></tr>
+    <tr><td>Catalyst</td><td>催化事件 (財報、PPA 簽約、FERC ruling 等)</td></tr>
+    <tr><td>Invalidation</td><td>論述破功的條件 = 出場訊號</td></tr>
+    <tr><td>Trigger</td><td>觸發 (進場 / 出場)</td></tr>
+    <tr><td>Conditional</td><td>條件式 (e.g. <b>conditional SHORT</b>: 等跌破才空)</td></tr>
+    <tr><td>Trim</td><td>減倉</td></tr>
+    <tr><td>Reclaim</td><td>(價格) 收復某位</td></tr>
+    <tr><td>Confirmation</td><td>確認訊號 (e.g. 2 closes &gt;X 才算)</td></tr>
+  </table>
+</section>
+
+<!-- 9 -->
+<section id="sector" class="bg-white rounded-lg shadow p-6">
+  <h2 class="text-2xl mb-3">9. 電力族群 (Power) 特定詞彙</h2>
+  <table>
+    <tr><th>詞</th><th>意義</th></tr>
+    <tr><td>IPP</td><td>Independent Power Producer (獨立發電業者) — VST, CEG, TLN, NRG, TLN</td></tr>
+    <tr><td>Regulated utility</td><td>受費率管制的公用事業 — NEE (FPL), SO (Georgia Power)</td></tr>
+    <tr><td>PPA</td><td>Power Purchase Agreement, 售電合約。AI datacenter 跟 IPP 簽 PPA 是核心題材</td></tr>
+    <tr><td>Hyperscaler</td><td>巨型雲端業者 (MSFT/GOOGL/META/AMZN)</td></tr>
+    <tr><td>Datacenter PPA</td><td>跟 hyperscaler 簽長期售電合約</td></tr>
+    <tr><td>Front-of-meter / Behind-the-meter</td><td>是否經過電網 meter。<b>Front-of-meter</b> 走公網, <b>behind-the-meter</b> 直連 (TMI/Susquehanna 屬此, 涉 FERC 監管)</td></tr>
+    <tr><td>FERC</td><td>Federal Energy Regulatory Commission, 美國能源監管委員會。FERC 對 hyperscaler 直連的 ruling 是 power IPP 重大 binary catalyst</td></tr>
+    <tr><td>PJM</td><td>美東/中西部最大區域電網營運商 (Pennsylvania-New Jersey-Maryland Interconnection)</td></tr>
+    <tr><td>BYOG</td><td>Bring Your Own Generation, hyperscaler 自帶發電容量併入電網的規範</td></tr>
+    <tr><td>Large-load colocation</td><td>大型負載與發電場共置 (hyperscaler 旁邊核電廠)</td></tr>
+    <tr><td>Two-Strike</td><td>FERC 對大型負載併網的限制機制</td></tr>
+    <tr><td>Vogtle 3/4</td><td>Southern Company 在喬治亞州的新核電機組 (2023/2024 上線)</td></tr>
+    <tr><td>TMI / Three Mile Island</td><td>賓州核電廠, CEG 跟 MSFT 簽 20 年 PPA 重啟</td></tr>
+    <tr><td>Susquehanna</td><td>賓州核電廠, TLN 跟 AWS 簽長期 PPA</td></tr>
+    <tr><td>Crane / Duane Arnold</td><td>正在重啟的核電廠</td></tr>
+    <tr><td>SMR</td><td>Small Modular Reactor, 小型模組化核反應爐</td></tr>
+    <tr><td>CCGT</td><td>Combined Cycle Gas Turbine, 燃氣複循環機組</td></tr>
+    <tr><td>HA</td><td>GE Vernova 的 H-class gas turbine 機種</td></tr>
+    <tr><td>IRA</td><td>Inflation Reduction Act (2022), 給再生能源 ITC/PTC 補貼。NEE 受影響大</td></tr>
+    <tr><td>OBBBA</td><td>One Big Beautiful Bill Act, 川普政府縮 IRA 條款的法案。2026-07-05 是 ITC/PTC 「begin-construction cliff」</td></tr>
+    <tr><td>ITC / PTC</td><td>Investment Tax Credit / Production Tax Credit, 再生能源稅收抵免</td></tr>
+    <tr><td>DOE loan</td><td>能源部貸款, e.g. SO 2026-05-13 拿 $26.5B</td></tr>
+    <tr><td>Calpine</td><td>CEG 用 $30B 併購的燃氣 IPP</td></tr>
+    <tr><td>Cogentrix</td><td>VST 正在併購的 5.5 GW 燃氣資產</td></tr>
+    <tr><td>GA PSC</td><td>Georgia Public Service Commission, 喬治亞公用事業委員會 (SO 主管機關)</td></tr>
+    <tr><td>Rate case / Rate freeze</td><td>費率調整案 / 凍漲 (e.g. SO 2026-2028 base rate freeze)</td></tr>
+    <tr><td>NEER</td><td>NextEra Energy Resources, NEE 的非管制再生能源子公司</td></tr>
+    <tr><td>FPL</td><td>Florida Power & Light, NEE 旗下管制公用事業</td></tr>
+    <tr><td>T&D</td><td>Transmission & Distribution, 輸電與配電。PWR 主業</td></tr>
+    <tr><td>765 kV</td><td>高壓輸電等級, PWR MSA 大標</td></tr>
+    <tr><td>MSA</td><td>Master Service Agreement, 主合約</td></tr>
+    <tr><td>Datacenter load</td><td>數據中心耗電量。CEG Q1 +42% 為例</td></tr>
+  </table>
+</section>
+
+<!-- 10 -->
+<section id="hedge" class="bg-white rounded-lg shadow p-6">
+  <h2 class="text-2xl mb-3">10. 避險 / Option 工具</h2>
+  <table>
+    <tr><th>工具</th><th>意義</th></tr>
+    <tr><td>Call option</td><td>看多買權, 賺漲</td></tr>
+    <tr><td>Put option</td><td>看空賣權, 賺跌 (避險用)</td></tr>
+    <tr><td>Call spread</td><td>買低履約價 call + 賣高履約價 call, 上限獲利但降成本。e.g. <code>$160/$185 call spread</code></td></tr>
+    <tr><td>Put spread</td><td>買高履約價 put + 賣低履約價 put, 下行避險</td></tr>
+    <tr><td>Pairs trade</td><td>同領域 long X / short Y, 沖掉 sector beta, 玩相對價值。e.g. <code>Long TLN / Short PWR</code></td></tr>
+    <tr><td>Sector hedge</td><td>用 sector ETF 反向部位避險, e.g. <b>XLU</b> (Utility ETF), <b>XLI</b> (Industrial ETF)</td></tr>
+    <tr><td>Rate hedge</td><td>利率對沖, 用 <b>TLT</b> (長債 ETF) 或其衍生品</td></tr>
+    <tr><td>VIX hedge</td><td>波動率對沖, 用 <b>VXX/UVXY</b></td></tr>
+    <tr><td>Anti-beta</td><td>反市場 beta, <b>BTAL</b> ETF 為例</td></tr>
+    <tr><td>Beta-neutral</td><td>淨 beta = 0, 對市場無方向暴露</td></tr>
+    <tr><td>Cohort hedge</td><td>同類股對沖</td></tr>
+    <tr><td>Net exposure</td><td>淨曝險 = long - short</td></tr>
+    <tr><td>Gross exposure</td><td>毛曝險 = long + short</td></tr>
+    <tr><td>Convexity</td><td>凸性, 非線性收益 (option 典型特徵, 一面下檔有限上檔開放)</td></tr>
+    <tr><td>Tail risk</td><td>尾端風險, 機率小但衝擊大</td></tr>
+    <tr><td>De-risk</td><td>降低風險, 通常砍 size 或加避險</td></tr>
+    <tr><td>Crowding</td><td>擁擠交易, 太多人同向, 解倉風險高</td></tr>
+  </table>
+</section>
+
+<!-- 11 -->
+<section id="warn" class="bg-white rounded-lg shadow p-6 border-l-4 border-red-500">
+  <h2 class="text-2xl mb-3 text-red-700">11. 重要警示</h2>
+  <ul class="list-disc ml-6 text-slate-800">
+    <li>本報告純研究用, <b>不構成投資建議</b>。任何 BUY/HOLD/SELL 都不是「應該買進」的指令。</li>
+    <li>LLM 推理有不確定性。同 prompt 跑兩遍 verdict 可能不同, 看高一致性的才信。</li>
+    <li>Data 來源 yfinance + 公開 web, 可能有延遲、缺漏、錯位。<b>不要</b>直接拿來下單。</li>
+    <li>Subagent 引用的「analyst target」「PT」是新聞抓的, 跟 Bloomberg/IBES 官方數字可能有差。</li>
+    <li>Insider trade、Reddit 情緒等都是 lagging 訊號, 別過度反應。</li>
+    <li>避險工具 (option/inverse ETF) 有時間衰減、追蹤誤差, 長期持有不一定划算。</li>
+    <li>Position sizing 是 LLM 建議, 沒考慮你的實際資金、稅務、風險承受能力。</li>
+    <li>Macro/regulatory binary (FERC ruling, IRA cliff, Fed rate) 在事件前後波動極大, 慎入。</li>
+    <li>結果跟原 <a href="https://github.com/TauricResearch/TradingAgents" class="text-blue-700 underline">TradingAgents</a> 論文聲明一致: <em>"It is not intended as financial, investment, or trading advice."</em></li>
+  </ul>
+</section>
+
+</main>
+
+<footer class="bg-slate-200 text-slate-600 text-xs p-4 text-center">
+  Trading scan 閱讀指南 · 自動產生於 Claude Code · 純研究 / 教學用途
+</footer>
+
+</body>
+</html>

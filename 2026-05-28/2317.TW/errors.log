@@ -1,0 +1,42 @@
+SENTIMENT ANALYSIS DATA COLLECTION LOG — 2026-05-28
+
+=== SUCCESSFUL DATA SOURCES ===
+✓ yfinance recommendations (20 analysts) — success
+✓ yfinance rec_summary (buy/hold/sell distribution) — success
+✓ yfinance fast_info (stock quote data) — success
+✓ yfinance info (company profile, fundamentals, targets) — success
+✓ yfinance major_holders (institutional ownership) — success
+✓ yfinance news (30 articles, 2026-05-14 to 2026-05-27) — success
+✓ WebSearch (analyst sentiment & forecasts) — partial success
+
+=== FAILED / RESTRICTED DATA SOURCES ===
+✗ yfinance insider_transactions — NO DATA
+  - insider_transactions returned empty array []
+  - No material insider buy/sell activity available through yfinance
+  - Note: Taiwan-listed stocks may have disclosure lag on Mops (公開資訊觀測站)
+
+✗ Reddit API (r/wallstreetbets, r/stocks) — 403 FORBIDDEN
+  - /r/wallstreetbets/search.json?q=2317.TW — unauthorized
+  - /r/stocks/search.json?q=2317.TW — unauthorized
+  - Reason: Claude Code cannot fetch from www.reddit.com (API restriction)
+
+✗ StockTwits API (streams/symbol/2317.json) — HTTP 403 FORBIDDEN
+  - API requires authentication key or has rate-limit enforcement
+  - Soft-fail: continued analysis with other sources
+
+=== DATA QUALITY NOTES ===
+1. Analyst consensus: Very reliable (20 distinct analysts tracked by yfinance)
+2. Institutional ownership: Complete (425 institutions identified)
+3. News coverage: Comprehensive 2-week recent window
+4. Insider transactions: Incomplete (yfinance limitation, not company-specific issue)
+5. Retail sentiment: Inferred from news tilt & search results, not primary social data
+
+=== ANALYSIS COMPLETION ===
+✓ Analyst consensus: 95% BUY (19/20 analysts)
+✓ Price target range: 245-400 TWD (mean 312.77 TWD)
+✓ Institutional holdings: 28.96% (425 firms)
+✓ News sentiment: Strongly bullish (AI server demand realized, NVIDIA investment doubled, Foxconn H200 distributor approved)
+✓ Overall sentiment: BULLISH with high confidence (85%)
+✓ Divergence flag: NO — analyst consensus matches news tilt, no conflicting signals detected
+
+Report written to: /Users/yht/Study/scans/2026-05-28/2317.TW/sentiment.md
