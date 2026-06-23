@@ -172,26 +172,26 @@ Phase 1 (parallel fanout via Task):
   Task(market-analyst,       TICKER, DATE)
   Task(news-analyst,         TICKER, DATE)
   Task(sentiment-analyst,    TICKER, DATE)
-  → ./scans/{DATE}/{TICKER}/{fundamentals|market|news|sentiment}.md
+  → {DATE}/{TICKER}/{fundamentals|market|news|sentiment}.md
 
 Phase 2 (debate loop, max `rounds`):
   for N in 1..rounds:
     Task(bull-researcher, TICKER, DATE, ROUND=N)
     Task(bear-researcher, TICKER, DATE, ROUND=N)
   Task(research-manager, TICKER, DATE)
-  → ./scans/{DATE}/{TICKER}/debate/round_N_{bull,bear}.md
-  → ./scans/{DATE}/{TICKER}/investment_plan.md
+  → {DATE}/{TICKER}/debate/round_N_{bull,bear}.md
+  → {DATE}/{TICKER}/investment_plan.md
 
 Phase 3:
   Task(trader, TICKER, DATE)
-  → ./scans/{DATE}/{TICKER}/trade_proposal.md
+  → {DATE}/{TICKER}/trade_proposal.md
 
 Phase 4 (risk debate, parallel then sync):
   parallel Task(risk-aggressive), Task(risk-conservative)
   then  Task(risk-neutral)
   then  Task(portfolio-manager)
-  → ./scans/{DATE}/{TICKER}/risk_debate/{aggressive,conservative,neutral}.md
-  → ./scans/{DATE}/{TICKER}/final_decision.md
+  → {DATE}/{TICKER}/risk_debate/{aggressive,conservative,neutral}.md
+  → {DATE}/{TICKER}/final_decision.md
 ```
 
 Across tickers in a sector: run pipelines sequentially per-ticker to avoid yfinance rate-limit. Phase 1 still fans out inside each ticker.
@@ -200,18 +200,18 @@ After all tickers done:
 ```
 Phase 5:
   Task(sector-comparator, SECTOR, DATE)
-  → ./scans/{DATE}/{SECTOR}/sector_report.md
+  → {DATE}/{SECTOR}/sector_report.md
 
 Phase 6 (mandatory, always run after Phase 5):
   Bash: python3 pipeline/tools/render_html.py {SECTOR} {DATE} \
-    --out ./scans/{DATE}/{SECTOR}/{SECTOR}_{DATE}.html
+    --out {DATE}/{SECTOR}/{SECTOR}_{DATE}.html
   Bash: python3 pipeline/tools/extract_catalysts.py
   Bash: python3 pipeline/tools/build_dashboard.py
   → ./dashboard.html (Top 20 跨族群排行自動刷新)
 ```
 
 **Top 20 全自動刷新** (mandatory step, do NOT skip):
-- `build_dashboard.py` 掃所有 `scans/{DATE}/{TICKER}/final_decision.md` 重算 score
+- `build_dashboard.py` 掃所有 `{DATE}/{TICKER}/final_decision.md` 重算 score
 - Score 公式 = verdict_weight × conviction% × (1 + min(R:R_T2, 5) / 5) × phase_modifier
 - verdict_weight: BUY=1.0, SELL=0.65, HOLD=0.3, UNKNOWN=0.05
 - phase_modifier: Phase-1-only × 0.35 (壓低 stragglers)
@@ -221,7 +221,7 @@ Phase 6 (mandatory, always run after Phase 5):
 ## Output tree
 
 ```
-./scans/{DATE}/
+{DATE}/
   {SECTOR}/
     sector_report.md
   {TICKER}/                  # symlinked or copied into {SECTOR}/
@@ -245,7 +245,7 @@ Phase 6 (mandatory, always run after Phase 5):
 
 1. Parse args. Resolve ticker list from `sector` or explicit `tickers`.
 2. Print plan (which tickers, which date, how many phases).
-3. For each ticker, run pipeline. On any phase failure, log to `./scans/{DATE}/{TICKER}/errors.log` and continue.
+3. For each ticker, run pipeline. On any phase failure, log to `{DATE}/{TICKER}/errors.log` and continue.
 4. After all tickers in a sector, run `sector-comparator`.
 5. Final summary: print sector ranking table to user (top 3 BUY, any SELL, top contrarian).
 
