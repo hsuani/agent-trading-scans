@@ -41,6 +41,9 @@ import os as _os
 # <repo>/pipeline/tools/, so parents[2] == repo root). Works bundled locally
 # and cloned anywhere in the cloud.
 SCANS_ROOT = Path(_os.environ.get("TRADING_SCANS_ROOT") or Path(__file__).resolve().parents[2])
+# Per-day scan output lives under daily/<date>/. OUT stays at the root.
+DAILY = SCANS_ROOT / "daily"
+_DBASE = DAILY if DAILY.is_dir() else SCANS_ROOT   # tolerate pre-migration root
 OUT = SCANS_ROOT / "_catalysts.json"
 
 SECTORS = {
@@ -152,7 +155,7 @@ def parse_verdict(final_md: str) -> str:
 
 
 def extract_for_ticker(ticker: str, scan_date: date) -> list[dict]:
-    base = SCANS_ROOT / scan_date.isoformat() / ticker
+    base = _DBASE / scan_date.isoformat() / ticker
     if not base.exists():
         return []
 
@@ -210,7 +213,7 @@ def main():
         scan_date = date.fromisoformat(args.scan_date)
     else:
         # pick the latest YYYY-MM-DD dir under scans/
-        dirs = sorted(d for d in SCANS_ROOT.iterdir() if d.is_dir() and re.fullmatch(r"\d{4}-\d{2}-\d{2}", d.name))
+        dirs = sorted(d for d in _DBASE.iterdir() if d.is_dir() and re.fullmatch(r"\d{4}-\d{2}-\d{2}", d.name))
         if not dirs:
             print("no scan dirs found", file=sys.stderr)
             sys.exit(1)

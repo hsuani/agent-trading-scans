@@ -27,6 +27,9 @@ from stockstats import wrap
 import os as _os
 # Portable root: env override, else repo root (<repo>/pipeline/tools/ → parents[2]).
 SCANS_ROOT = Path(_os.environ.get("TRADING_SCANS_ROOT") or Path(__file__).resolve().parents[2])
+# Per-day scan output lives under daily/<date>/.
+DAILY = SCANS_ROOT / "daily"
+_DBASE = DAILY if DAILY.is_dir() else SCANS_ROOT   # tolerate pre-migration root
 
 SECTORS = {
     "semi":       ["NVDA", "AMD", "AVGO", "MRVL", "TSM", "ASML", "MU", "ARM", "CBRS"],
@@ -381,7 +384,7 @@ TICKER_DESCRIPTIONS = {
 
 def render_ticker_block(date: str, ticker: str) -> tuple[str, str]:
     """Returns (nav_link_html, ticker_section_html)."""
-    base = SCANS_ROOT / date / ticker
+    base = _DBASE / date / ticker
     if not base.exists():
         return ("", f"<div class='bg-white p-4 mb-4 rounded shadow'>Missing data for {ticker}</div>")
 
@@ -449,10 +452,10 @@ def render(sector: str, date: str, out_path: Path | None = None) -> Path:
         print(f"unknown sector: {sector}; known: {list(SECTORS)}", file=sys.stderr)
         sys.exit(2)
 
-    sector_md_path = SCANS_ROOT / date / sector / "sector_report.md"
+    sector_md_path = _DBASE / date / sector / "sector_report.md"
     if not sector_md_path.exists():
         # Also try lowercase
-        alt = SCANS_ROOT / date / sector.lower() / "sector_report.md"
+        alt = _DBASE / date / sector.lower() / "sector_report.md"
         if alt.exists():
             sector_md_path = alt
     sector_md = read_md(sector_md_path) or f"_Sector report not found at {sector_md_path}_"
@@ -476,7 +479,7 @@ def render(sector: str, date: str, out_path: Path | None = None) -> Path:
     )
 
     if out_path is None:
-        out_path = SCANS_ROOT / date / sector / f"{sector}_{date}.html"
+        out_path = _DBASE / date / sector / f"{sector}_{date}.html"
     out_path.parent.mkdir(parents=True, exist_ok=True)
     out_path.write_text(html, encoding="utf-8")
     return out_path
