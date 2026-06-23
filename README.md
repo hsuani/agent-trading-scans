@@ -13,9 +13,10 @@ comparator and a cross-sector Top-20 dashboard. No paid API — market data via
 
 ```
 .
-├── <YYYY-MM-DD>/               # daily scan output, one dir per day
-│   ├── <TICKER>/               # fundamentals.md, market.md, …, final_decision.md
-│   └── <sector>/               # sector_report.md + <sector>_<date>.html
+├── daily/                      # all per-day scan output lives here
+│   └── <YYYY-MM-DD>/           # one dir per day
+│       ├── <TICKER>/           # fundamentals.md, market.md, …, final_decision.md
+│       └── <sector>/           # sector_report.md + <sector>_<date>.html
 ├── dashboard.html              # cross-sector Top-20 + per-position tracker
 ├── _catalysts.json             # consolidated catalyst calendar
 ├── HOWTO_READ.html, SECTOR_OVERVIEWS.html, daily_briefing.html
@@ -51,8 +52,8 @@ export TRADING_SCANS_ROOT="$PWD"
 ```
 
 then invoke the **trading-scan** skill (auto-discovered from `.claude/skills/`)
-for the day's sector(s), which writes `<date>/<TICKER>/*.md` and
-`<date>/<sector>/sector_report.md`; finally:
+for the day's sector(s), which writes `daily/<date>/<TICKER>/*.md` and
+`daily/<date>/<sector>/sector_report.md`; finally:
 
 ```bash
 python3 pipeline/tools/render_html.py <sector> <date>

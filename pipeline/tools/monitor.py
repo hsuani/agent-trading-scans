@@ -31,6 +31,9 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from build_dashboard import parse_final_decision, collect_ticker_history  # noqa: E402
 
 ROOT = Path(os.environ.get("TRADING_SCANS_ROOT") or Path(__file__).resolve().parents[2])
+# Per-day scan output under daily/<date>/ (tolerate pre-migration root).
+DAILY = ROOT / "daily"
+_DBASE = DAILY if DAILY.is_dir() else ROOT
 HELD_FILE = Path(__file__).resolve().parent / "held_tickers.txt"
 CATALYSTS = ROOT / "_catalysts.json"
 
@@ -62,7 +65,7 @@ def zone(s: str):
 def all_tickers():
     """Every ticker that has at least one final_decision.md under a date dir."""
     seen = set()
-    for d in ROOT.iterdir():
+    for d in _DBASE.iterdir():
         if not (d.is_dir() and DATE_RE.match(d.name)):
             continue
         for t in d.iterdir():

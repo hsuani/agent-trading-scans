@@ -26,6 +26,19 @@ from pathlib import Path
 import os as _os
 # Portable root: env override, else repo root (<repo>/pipeline/tools/ → parents[2]).
 SCANS = Path(_os.environ.get("TRADING_SCANS_ROOT") or Path(__file__).resolve().parents[2])
+# Per-day scan output lives under daily/<date>/. dashboard.html, _catalysts.json,
+# alerts.json and the doc HTMLs stay at the SCANS root.
+DAILY = SCANS / "daily"
+
+
+def _date_dirs():
+    """Yield date-named dirs from daily/ (tolerating a missing daily/ → root)."""
+    base = DAILY if DAILY.is_dir() else SCANS
+    for d in base.iterdir():
+        if d.is_dir() and re.fullmatch(r"\d{4}-\d{2}-\d{2}", d.name):
+            yield d
+
+
 OUT = SCANS / "dashboard.html"
 
 SECTOR_LABELS = {
@@ -53,9 +66,7 @@ SECTORS_ORDER = list(SECTOR_LABELS.keys())
 def latest_scan_for_sector(sector: str) -> Path | None:
     """Find the most recent date dir that has scans/{date}/{sector}/sector_report.md."""
     candidates = []
-    for d in SCANS.iterdir():
-        if not d.is_dir() or not re.fullmatch(r"\d{4}-\d{2}-\d{2}", d.name):
-            continue
+    for d in _date_dirs():
         rpt = d / sector / "sector_report.md"
         if rpt.exists():
             candidates.append((d.name, d))
@@ -188,9 +199,7 @@ def collect_ticker_history(ticker: str) -> dict:
     """Walk all dated scans/ dirs and collect any final_decision.md for this ticker.
     Returns {date: card_dict} ordered ascending."""
     history = {}
-    for d in sorted(SCANS.iterdir()):
-        if not d.is_dir() or not re.fullmatch(r"\d{4}-\d{2}-\d{2}", d.name):
-            continue
+    for d in sorted(_date_dirs()):
         final = d / ticker / "final_decision.md"
         if not final.exists():
             continue
@@ -274,7 +283,7 @@ def compute_top20(sectors_data: dict) -> list:
             # Re-read final_decision text for scoring
             scan_date = t.get("scan_date")
             ticker = t.get("ticker")
-            final_md = SCANS / scan_date / ticker / "final_decision.md"
+            final_md = DAILY / scan_date / ticker / "final_decision.md"
             text = ""
             if final_md.exists():
                 try:
@@ -348,23 +357,23 @@ def collect_payload() -> dict:
             # Find the sector_report HTML matching that ticker's scan_date
             # (may differ from sector_scan_dir.name if ad-hoc); fall back to
             # the sector scan_dir.
-            ticker_scan_dir = SCANS / latest_date
+            ticker_scan_dir = DAILY / latest_date
             data = history[latest_date].copy()
             data["ticker"] = tname
             data["scan_date"] = latest_date
             # Report URL: prefer same-date sector html, else latest sector html
             same_date_sector_html = ticker_scan_dir / sector / f"{sector}_{latest_date}.html"
             if same_date_sector_html.exists():
-                data["report_url"] = f"./{latest_date}/{sector}/{sector}_{latest_date}.html#ticker-{tname.replace('.', '_')}"
+                data["report_url"] = f"./daily/{latest_date}/{sector}/{sector}_{latest_date}.html#ticker-{tname.replace('.', '_')}"
             else:
-                data["report_url"] = f"./{scan_dir.name}/{sector}/{sector}_{scan_dir.name}.html#ticker-{tname.replace('.', '_')}"
+                data["report_url"] = f"./daily/{scan_dir.name}/{sector}/{sector}_{scan_dir.name}.html#ticker-{tname.replace('.', '_')}"
             data["history"] = history
             tickers.append(data)
 
         sectors_data[sector] = {
             "label":       SECTOR_LABELS.get(sector, sector),
             "scan_date":   scan_dir.name,
-            "report_url":  f"./{scan_dir.name}/{sector}/{sector}_{scan_dir.name}.html",
+            "report_url":  f"./daily/{scan_dir.name}/{sector}/{sector}_{scan_dir.name}.html",
             "sector_meta": parse_sector_report(sr_text),
             "tickers":     tickers,
         }

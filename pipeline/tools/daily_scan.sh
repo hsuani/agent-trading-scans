@@ -149,7 +149,7 @@ fi
 for SECTOR in "${SECTOR_LIST[@]}"; do
   RUN_LOG="$LOG_DIR/${SECTOR}_run.log"
   CLAUDE_LOG="$LOG_DIR/${SECTOR}_claude.log"
-  HTML_OUT="$SCAN_ROOT/$DATE/${SECTOR}/${SECTOR}_${DATE}.html"
+  HTML_OUT="$SCAN_ROOT/daily/$DATE/${SECTOR}/${SECTOR}_${DATE}.html"
 
   # Idempotency: if today's sector report already rendered, skip. Lets the
   # 07:35 fallback launchd slot be a no-op when the 01:26 run succeeded.
@@ -193,8 +193,8 @@ Required behaviour:
      (Sonnet/Opus) ONLY for those picks. Other tickers stop after Phase 1.
      Phase 5 sector-comparator notes which tickers got full pipeline.
 4. After all eligible tickers complete: run Phase 5 (sector-comparator).
-5. Each phase output writes to /Users/yht/Study/scans/${DATE}/{TICKER}/*.md
-   and /Users/yht/Study/scans/${DATE}/${SECTOR}/sector_report.md.
+5. Each phase output writes to /Users/yht/Study/scans/daily/${DATE}/{TICKER}/*.md
+   and /Users/yht/Study/scans/daily/${DATE}/${SECTOR}/sector_report.md.
 6. Do NOT pause for confirmation. Treat tool failures as soft (log+continue).
 7. No mid-run status reports. Final reply: one-line summary.
 
