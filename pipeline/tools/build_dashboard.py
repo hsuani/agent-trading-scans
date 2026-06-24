@@ -337,7 +337,7 @@ def collect_payload() -> dict:
         ("tw_optics",  ["3363.TWO", "4979.TWO", "4977.TW"]),
         ("tw_power",   ["2308.TW", "1513.TW", "1519.TW"]),
         ("tw_pkg",     ["3661.TW", "8021.TW", "6438.TW"]),
-        ("tw_photonics", ["3081.TWO", "2455.TW", "4908.TWO"]),
+        ("tw_photonics", ["3081.TWO", "2455.TW", "5455.TWO", "3163.TWO", "3008.TW", "4908.TWO", "3711.TW", "6830.TW", "3587.TWO", "3289.TWO"]),
     ])
 
     sectors_data = {}

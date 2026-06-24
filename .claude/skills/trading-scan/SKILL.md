@@ -29,7 +29,7 @@ SECTORS = {
   "tw_optics":  ["3363.TWO", "4979.TWO", "4977.TW"],
   "tw_power":   ["2308.TW", "1513.TW", "1519.TW"],
   "tw_pkg":     ["3661.TW", "8021.TW", "6438.TW"],
-  "tw_photonics": ["3081.TWO", "2455.TW", "4908.TWO"],
+  "tw_photonics": ["3081.TWO", "2455.TW", "5455.TWO", "3163.TWO", "3008.TW", "4908.TWO", "3711.TW", "6830.TW", "3587.TWO", "3289.TWO"],
 }
 ```
 
@@ -43,11 +43,32 @@ SECTORS = {
 | `tw_optics` | 光通訊 / CPO 供應鏈 | 上詮 3363 / 華星光 4979 / 眾達-KY 4977 |
 | `tw_power` | 電源 / 電網 (TW power) | 台達電 2308 / 中興電 1513 / 華城 1519 |
 | `tw_pkg` | 先進封裝 (CoWoS supply chain) | 世芯-KY 3661 / 尖點 8021 / 迅得 6438 |
-| `tw_photonics` | 矽光子 / 光元件磊晶 (TW) | 聯亞 3081 / 全新 2455 / 前鼎 4908 |
+| `tw_photonics` | 矽光子供應鏈上中下游+檢測 (TW) | 上游磊晶: 聯亞 3081 / 全新 2455 / 英特磊 5455 · 中游光模組/FAU: 波若威 3163 (NVDA Spectrum-X 夥伴) / 大立光 3008 / 前鼎 4908 · 下游封測: 日月光 3711 · 檢測三雄: 汎銓 6830 / 閎康 3587 / 宜特 3289 |
 
 `photonics` (US 矽光子純玩家): POET / CRDO / ALAB / GFS / INTC — CPO 大廠 AVGO/MRVL/COHR/LITE 已在 semi/cooling, 此族群補未涵蓋的純玩家.
+注意: 上詮 3363 (FAU 精密對準) 屬中游但留在 `tw_optics` (週三), 避免跨日重複. TPEx 上櫃股用 `.TWO` 後綴 (聯亞/英特磊/波若威/前鼎/閎康/宜特), 上市股用 `.TW`.
 
-新族群皆 TW listed, 與 SMCI/DELL/HPE 等 US oem 互補. yfinance 用 `.TW` suffix 抓 OTC.
+### TW ticker 對照 (股號 / 中文名 / 後綴 — 防誤認, 上櫃 TPEx 用 `.TWO`, 上市 TWSE 用 `.TW`)
+
+| 股號 | 中文名 | 後綴 | | 股號 | 中文名 | 後綴 |
+|---|---|---|---|---|---|---|
+| 2317 | 鴻海 | .TW | | 3661 | 世芯-KY | .TW |
+| 2382 | 廣達 | .TW | | 8021 | 尖點 | .TW |
+| 3037 | 欣興 | .TW | | 6438 | 迅得 | .TW |
+| 8046 | 南電 | .TW | | 3081 | 聯亞 | **.TWO** |
+| 3189 | 景碩 | .TW | | 2455 | 全新 | .TW |
+| 3324 | 雙鴻 | **.TWO** | | 5455 | 英特磊 | **.TWO** |
+| 8996 | 高力 | .TW | | 3163 | 波若威 | **.TWO** |
+| 3017 | 奇鋐 | .TW | | 3008 | 大立光 | .TW |
+| 6669 | 緯穎 | .TW | | 4908 | 前鼎 | **.TWO** |
+| 3231 | 緯創 | .TW | | 3711 | 日月光投控 | .TW |
+| 2356 | 英業達 | .TW | | 6830 | 汎銓 | .TW |
+| 3363 | 上詮 | **.TWO** | | 3587 | 閎康 | **.TWO** |
+| 4979 | 華星光 | **.TWO** | | 3289 | 宜特 | **.TWO** |
+| 4977 | 眾達-KY | .TW | | 2308 | 台達電 | .TW |
+| 1513 | 中興電 | .TW | | 1519 | 華城 | .TW |
+
+新族群皆 TW listed, 與 SMCI/DELL/HPE 等 US oem 互補.
 
 ## Daily scan schedule (19 sectors / 7 days)
 
@@ -59,11 +80,11 @@ SECTORS = {
 | Tue | 2 | `power tw_power quantum` | 8 + 3 + 8 = 19 | 電力 + TW 電源 + 量子運算 |
 | Wed | 3 | `cooling tw_cooling tw_optics` | 9 + 3 + 3 = 15 | 散熱 + 光通訊 |
 | Thu | 4 | `oem tw_server abf` | 5 + 3 + 3 = 11 | AI server + ABF 載板 |
-| Fri | 5 | `security materials` | 5 + 5 = 10 | 安全 + 原料 |
+| Fri | 5 | `security materials robotics` | 5 + 5 + 7 = 17 | 安全 + 原料 + 機器人 |
 | Sat | 6 | `hedge reit` | 8 + 4 = 12 | 避險 + 資料中心 REIT |
-| Sun | 7 | `robotics photonics tw_photonics` | 7 + 5 + 3 = 15 | 機器人 + 矽光子 (US+TW) |
+| Sun | 7 | `photonics tw_photonics` | 5 + 10 = 15 | 矽光子專日 (US 純玩家 + TW 上中下游+檢測) |
 
-Total: 約 89 tickers fully covered weekly (含 photonics 5 + tw_photonics 3).
+Total: 約 96 tickers fully covered weekly (含 photonics 5 + tw_photonics 10 全鏈).
 
 Multi-sector days run sequentially in `daily_scan.sh`; dashboard rebuild + catalyst extract happen once after all sectors finish.
 ```
