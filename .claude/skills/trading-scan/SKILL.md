@@ -20,6 +20,7 @@ SECTORS = {
   "robotics":   ["TSLA", "ISRG", "ABBNY", "FANUY", "SYM", "SPAI"],
   "materials":  ["FCX", "MP", "LIN", "APD", "ALB"],
   "quantum":    ["IONQ", "RGTI", "QBTS", "QUBT", "ARQQ", "LAES", "HON", "IBM"],
+  "photonics":  ["POET", "CRDO", "ALAB", "GFS", "INTC"],
   "hedge":      ["GLD", "GDX", "TLT", "MUB", "UUP", "DBC", "BTAL", "SH"],
   # Taiwan-focused supply chain sectors (no duplicates with above)
   "abf":        ["3037.TW", "8046.TW", "3189.TW"],
@@ -28,6 +29,7 @@ SECTORS = {
   "tw_optics":  ["3363.TW", "4979.TW", "4977.TW"],
   "tw_power":   ["2308.TW", "1513.TW", "1519.TW"],
   "tw_pkg":     ["3661.TW", "8021.TW", "6438.TW"],
+  "tw_photonics": ["3081.TW", "2455.TW", "4908.TW"],
 }
 ```
 
@@ -41,10 +43,13 @@ SECTORS = {
 | `tw_optics` | 光通訊 / CPO 供應鏈 | 上詮 3363 / 華星光 4979 / 眾達-KY 4977 |
 | `tw_power` | 電源 / 電網 (TW power) | 台達電 2308 / 中興電 1513 / 華城 1519 |
 | `tw_pkg` | 先進封裝 (CoWoS supply chain) | 世芯-KY 3661 / 尖點 8021 / 迅得 6438 |
+| `tw_photonics` | 矽光子 / 光元件磊晶 (TW) | 聯亞 3081 / 全新 2455 / 前鼎 4908 |
+
+`photonics` (US 矽光子純玩家): POET / CRDO / ALAB / GFS / INTC — CPO 大廠 AVGO/MRVL/COHR/LITE 已在 semi/cooling, 此族群補未涵蓋的純玩家.
 
 新族群皆 TW listed, 與 SMCI/DELL/HPE 等 US oem 互補. yfinance 用 `.TW` suffix 抓 OTC.
 
-## Daily scan schedule (17 sectors / 7 days)
+## Daily scan schedule (19 sectors / 7 days)
 
 `daily_scan.sh` runs multiple sectors per day grouped by theme (US + TW supply chain pairs):
 
@@ -56,9 +61,9 @@ SECTORS = {
 | Thu | 4 | `oem tw_server abf` | 5 + 3 + 3 = 11 | AI server + ABF 載板 |
 | Fri | 5 | `security materials` | 5 + 5 = 10 | 安全 + 原料 |
 | Sat | 6 | `hedge reit` | 8 + 4 = 12 | 避險 + 資料中心 REIT |
-| Sun | 7 | `robotics` | 6 | 機器人 / 自駕 (SPAI added) |
+| Sun | 7 | `robotics photonics tw_photonics` | 7 + 5 + 3 = 15 | 機器人 + 矽光子 (US+TW) |
 
-Total: 6 (TSLA/ISRG/ABBNY/FANUY/SYM/SPAI) + 75 = 81 tickers fully covered weekly.
+Total: 約 89 tickers fully covered weekly (含 photonics 5 + tw_photonics 3).
 
 Multi-sector days run sequentially in `daily_scan.sh`; dashboard rebuild + catalyst extract happen once after all sectors finish.
 ```
