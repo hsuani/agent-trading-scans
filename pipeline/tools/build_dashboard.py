@@ -332,12 +332,12 @@ def collect_payload() -> dict:
         ("photonics",  ["POET", "CRDO", "ALAB", "GFS", "INTC"]),
         ("hedge",      ["GLD", "GDX", "TLT", "MUB", "UUP", "DBC", "BTAL", "SH"]),
         ("abf",        ["3037.TW", "8046.TW", "3189.TW"]),
-        ("tw_cooling", ["3324.TW", "8996.TW", "3017.TW"]),
+        ("tw_cooling", ["3324.TWO", "8996.TW", "3017.TW"]),
         ("tw_server",  ["6669.TW", "3231.TW", "2356.TW"]),
-        ("tw_optics",  ["3363.TW", "4979.TW", "4977.TW"]),
+        ("tw_optics",  ["3363.TWO", "4979.TWO", "4977.TW"]),
         ("tw_power",   ["2308.TW", "1513.TW", "1519.TW"]),
         ("tw_pkg",     ["3661.TW", "8021.TW", "6438.TW"]),
-        ("tw_photonics", ["3081.TW", "2455.TW", "4908.TW"]),
+        ("tw_photonics", ["3081.TWO", "2455.TW", "4908.TWO"]),
     ])
 
     sectors_data = {}
