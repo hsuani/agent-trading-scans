@@ -44,12 +44,12 @@ SECTORS = {
     "photonics":  ["POET", "CRDO", "ALAB", "GFS", "INTC"],
     "hedge":      ["GLD", "GDX", "TLT", "MUB", "UUP", "DBC", "BTAL", "SH"],
     "abf":        ["3037.TW", "8046.TW", "3189.TW"],
-    "tw_cooling": ["3324.TW", "8996.TW", "3017.TW"],
+    "tw_cooling": ["3324.TWO", "8996.TW", "3017.TW"],
     "tw_server":  ["6669.TW", "3231.TW", "2356.TW"],
-    "tw_optics":  ["3363.TW", "4979.TW", "4977.TW"],
+    "tw_optics":  ["3363.TWO", "4979.TWO", "4977.TW"],
     "tw_power":   ["2308.TW", "1513.TW", "1519.TW"],
     "tw_pkg":     ["3661.TW", "8021.TW", "6438.TW"],
-    "tw_photonics": ["3081.TW", "2455.TW", "4908.TW"],
+    "tw_photonics": ["3081.TWO", "2455.TW", "4908.TWO"],
 }
 
 MD = markdown.Markdown(extensions=["tables", "fenced_code", "nl2br"])
@@ -379,9 +379,9 @@ TICKER_DESCRIPTIONS = {
     "GFS": "GlobalFoundries — silicon photonics foundry",
     "INTC": "Intel — integrated silicon photonics",
     # tw_photonics
-    "3081.TW": "聯亞光電 — 光通訊磊晶 / 雷射",
+    "3081.TWO": "聯亞光電 — 光通訊磊晶 / 雷射",
     "2455.TW": "全新光電 — VCSEL / 光元件磊晶片",
-    "4908.TW": "前鼎光電 — 光收發模組",
+    "4908.TWO": "前鼎光電 — 光收發模組",
     # hedge
     "GLD": "SPDR Gold Shares ETF",
     "GDX": "VanEck Gold Miners ETF",
