@@ -58,6 +58,8 @@ SECTOR_LABELS = {
     "tw_power":   "N. 電源 / 電網 (TW)",
     "tw_pkg":     "O. 先進封裝 (TW)",
     "quantum":    "P. 量子運算 (incl. Quantinuum=HON)",
+    "photonics":  "Q. 矽光子 (US pure-play)",
+    "tw_photonics": "R. 矽光子 / 光磊晶 (TW)",
 }
 
 SECTORS_ORDER = list(SECTOR_LABELS.keys())
@@ -327,6 +329,7 @@ def collect_payload() -> dict:
         ("robotics",   ["TSLA", "ISRG", "ABBNY", "FANUY", "SYM", "SPAI"]),
         ("materials",  ["FCX", "MP", "LIN", "APD", "ALB"]),
         ("quantum",    ["IONQ", "RGTI", "QBTS", "QUBT", "ARQQ", "LAES", "HON", "IBM"]),
+        ("photonics",  ["POET", "CRDO", "ALAB", "GFS", "INTC"]),
         ("hedge",      ["GLD", "GDX", "TLT", "MUB", "UUP", "DBC", "BTAL", "SH"]),
         ("abf",        ["3037.TW", "8046.TW", "3189.TW"]),
         ("tw_cooling", ["3324.TW", "8996.TW", "3017.TW"]),
@@ -334,6 +337,7 @@ def collect_payload() -> dict:
         ("tw_optics",  ["3363.TW", "4979.TW", "4977.TW"]),
         ("tw_power",   ["2308.TW", "1513.TW", "1519.TW"]),
         ("tw_pkg",     ["3661.TW", "8021.TW", "6438.TW"]),
+        ("tw_photonics", ["3081.TW", "2455.TW", "4908.TW"]),
     ])
 
     sectors_data = {}

@@ -47,7 +47,7 @@ declare -a DAY_SECTORS=(
   "oem tw_server abf"               # Thu: AI server build (US + TW ODM + ABF substrate)
   "security materials"              # Fri: Security + raw materials
   "hedge reit"                      # Sat: Defensive (hedge + data center REIT)
-  "robotics"                        # Sun: Robotics / autonomous (SPAI added)
+  "robotics photonics tw_photonics" # Sun: Robotics + silicon photonics (US POET/CRDO/ALAB/GFS/INTC + TW 3081/2455/4908)
 )
 
 SECTOR=""

@@ -56,7 +56,9 @@ SECTORS = {
     "robotics":  ["TSLA", "ISRG", "ABBNY", "FANUY", "SYM"],
     "materials": ["FCX", "MP", "LIN", "APD", "ALB"],
     "quantum":   ["IONQ", "RGTI", "QBTS", "QUBT", "ARQQ", "LAES", "HON", "IBM"],
+    "photonics": ["POET", "CRDO", "ALAB", "GFS", "INTC"],
     "hedge":     ["GLD", "GDX", "TLT", "MUB", "UUP", "DBC", "BTAL", "SH"],
+    "tw_photonics": ["3081.TW", "2455.TW", "4908.TW"],
 }
 TICKER_TO_SECTOR = {t: s for s, ts in SECTORS.items() for t in ts}
 

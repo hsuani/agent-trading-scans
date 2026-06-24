@@ -41,6 +41,7 @@ SECTORS = {
     "robotics":   ["TSLA", "ISRG", "ABBNY", "FANUY", "SYM", "SPAI"],
     "materials":  ["FCX", "MP", "LIN", "APD", "ALB"],
     "quantum":    ["IONQ", "RGTI", "QBTS", "QUBT", "ARQQ", "LAES", "HON", "IBM"],
+    "photonics":  ["POET", "CRDO", "ALAB", "GFS", "INTC"],
     "hedge":      ["GLD", "GDX", "TLT", "MUB", "UUP", "DBC", "BTAL", "SH"],
     "abf":        ["3037.TW", "8046.TW", "3189.TW"],
     "tw_cooling": ["3324.TW", "8996.TW", "3017.TW"],
@@ -48,6 +49,7 @@ SECTORS = {
     "tw_optics":  ["3363.TW", "4979.TW", "4977.TW"],
     "tw_power":   ["2308.TW", "1513.TW", "1519.TW"],
     "tw_pkg":     ["3661.TW", "8021.TW", "6438.TW"],
+    "tw_photonics": ["3081.TW", "2455.TW", "4908.TW"],
 }
 
 MD = markdown.Markdown(extensions=["tables", "fenced_code", "nl2br"])
@@ -370,6 +372,16 @@ TICKER_DESCRIPTIONS = {
     "LAES": "SEALSQ — post-quantum semiconductors",
     "HON": "Honeywell — Quantinuum parent (~54%)",
     "IBM": "IBM — superconducting quantum + Qiskit",
+    # photonics (silicon photonics / CPO pure-plays)
+    "POET": "POET Technologies — silicon photonics interposer",
+    "CRDO": "Credo — optical DSP / active electrical cables",
+    "ALAB": "Astera Labs — connectivity / retimers (CPO-adjacent)",
+    "GFS": "GlobalFoundries — silicon photonics foundry",
+    "INTC": "Intel — integrated silicon photonics",
+    # tw_photonics
+    "3081.TW": "聯亞光電 — 光通訊磊晶 / 雷射",
+    "2455.TW": "全新光電 — VCSEL / 光元件磊晶片",
+    "4908.TW": "前鼎光電 — 光收發模組",
     # hedge
     "GLD": "SPDR Gold Shares ETF",
     "GDX": "VanEck Gold Miners ETF",
