@@ -49,7 +49,7 @@ SECTORS = {
     "tw_optics":  ["3363.TWO", "4979.TWO", "4977.TW"],
     "tw_power":   ["2308.TW", "1513.TW", "1519.TW"],
     "tw_pkg":     ["3661.TW", "8021.TW", "6438.TW"],
-    "tw_photonics": ["3081.TWO", "2455.TW", "4908.TWO"],
+    "tw_photonics": ["3081.TWO", "2455.TW", "5455.TWO", "3163.TWO", "3008.TW", "4908.TWO", "3711.TW", "6830.TW", "3587.TWO", "3289.TWO"],
 }
 
 MD = markdown.Markdown(extensions=["tables", "fenced_code", "nl2br"])
@@ -378,10 +378,35 @@ TICKER_DESCRIPTIONS = {
     "ALAB": "Astera Labs — connectivity / retimers (CPO-adjacent)",
     "GFS": "GlobalFoundries — silicon photonics foundry",
     "INTC": "Intel — integrated silicon photonics",
-    # tw_photonics
-    "3081.TWO": "聯亞光電 — 光通訊磊晶 / 雷射",
-    "2455.TW": "全新光電 — VCSEL / 光元件磊晶片",
-    "4908.TWO": "前鼎光電 — 光收發模組",
+    # tw_photonics (矽光子供應鏈 上中下游 + 檢測)
+    "3081.TWO": "聯亞光電 (3081) — 上游 光通訊磊晶 / 雷射",
+    "2455.TW":  "全新光電 (2455) — 上游 VCSEL / 光元件磊晶片",
+    "5455.TWO": "英特磊 (5455) — 上游 InP/GaAs 磊晶",
+    "3163.TWO": "波若威 (3163) — 中游 光模組 (NVDA Spectrum-X 夥伴)",
+    "3008.TW":  "大立光 (3008) — 中游 光纖陣列 FAU / 稜鏡準直鏡頭",
+    "3711.TW":  "日月光投控 (3711) — 下游 CPO 先進封裝",
+    "6830.TW":  "汎銓 (6830) — 檢測 矽光子製程分析",
+    "3587.TWO": "閎康 (3587) — 檢測 材料/良率分析",
+    "3289.TWO": "宜特 (3289) — 檢測 可靠度驗證",
+    # 其餘 TW tickers — 中文名 (避免股號誤認)
+    "3037.TW":  "欣興 (3037) — ABF 載板",
+    "8046.TW":  "南電 (8046) — ABF 載板",
+    "3189.TW":  "景碩 (3189) — ABF 載板",
+    "3324.TWO": "雙鴻 (3324) — 散熱模組",
+    "8996.TW":  "高力 (8996) — 散熱 / 熱交換器",
+    "3017.TW":  "奇鋐 (3017) — 散熱模組",
+    "6669.TW":  "緯穎 (6669) — AI server ODM",
+    "3231.TW":  "緯創 (3231) — AI server ODM",
+    "2356.TW":  "英業達 (2356) — AI server ODM",
+    "3363.TWO": "上詮 (3363) — 光通訊 / FAU 精密對準 (CPO)",
+    "4979.TWO": "華星光 (4979) — 光通訊 / 光收發",
+    "4977.TW":  "眾達-KY (4977) — 光通訊連接器",
+    "2308.TW":  "台達電 (2308) — 電源 / 電網",
+    "1513.TW":  "中興電 (1513) — 重電 / 電網",
+    "1519.TW":  "華城 (1519) — 重電 / 變壓器",
+    "3661.TW":  "世芯-KY (3661) — 先進封裝 ASIC 設計",
+    "8021.TW":  "尖點 (8021) — 先進封裝 / 探針",
+    "6438.TW":  "迅得 (6438) — 先進封裝 設備",
     # hedge
     "GLD": "SPDR Gold Shares ETF",
     "GDX": "VanEck Gold Miners ETF",

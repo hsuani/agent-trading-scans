@@ -45,9 +45,9 @@ declare -a DAY_SECTORS=(
   "power tw_power quantum"          # Tue: Power infrastructure (US + TW grid/PSU) + quantum computing (incl. HON=Quantinuum proxy)
   "cooling tw_cooling tw_optics"    # Wed: Thermal + optics (US + TW)
   "oem tw_server abf"               # Thu: AI server build (US + TW ODM + ABF substrate)
-  "security materials"              # Fri: Security + raw materials
+  "security materials robotics"     # Fri: Security + raw materials + robotics (moved off Sun to make room for photonics)
   "hedge reit"                      # Sat: Defensive (hedge + data center REIT)
-  "robotics photonics tw_photonics" # Sun: Robotics + silicon photonics (US POET/CRDO/ALAB/GFS/INTC + TW 3081/2455/4908)
+  "photonics tw_photonics"          # Sun: Silicon photonics day (US POET/CRDO/ALAB/GFS/INTC + TW 上中下游+檢測 10 檔)
 )
 
 SECTOR=""
