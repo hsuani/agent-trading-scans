@@ -42,14 +42,14 @@ SECTORS = {
     "materials":  ["FCX", "MP", "LIN", "APD", "ALB"],
     "quantum":    ["IONQ", "RGTI", "QBTS", "QUBT", "ARQQ", "LAES", "HON", "IBM"],
     "photonics":  ["POET", "CRDO", "ALAB", "GFS", "INTC"],
-    "hedge":      ["GLD", "GDX", "TLT", "MUB", "UUP", "DBC", "BTAL", "SH"],
+    "hedge":      ["GLD", "TLT", "UUP", "SH"],
     "abf":        ["3037.TW", "8046.TW", "3189.TW"],
     "tw_cooling": ["3324.TWO", "8996.TW", "3017.TW"],
     "tw_server":  ["6669.TW", "3231.TW", "2356.TW"],
-    "tw_optics":  ["3363.TWO", "4979.TWO", "4977.TW"],
     "tw_power":   ["2308.TW", "1513.TW", "1519.TW"],
     "tw_pkg":     ["3661.TW", "8021.TW", "6438.TW"],
-    "tw_photonics": ["3081.TWO", "2455.TW", "5455.TWO", "3163.TWO", "3008.TW", "4908.TWO", "3711.TW", "6830.TW", "3587.TWO", "3289.TWO"],
+    "tw_photonics": ["3081.TWO", "2455.TW", "5455.TWO", "3163.TWO", "3008.TW", "4908.TWO", "3363.TWO", "4979.TWO", "4977.TW", "3711.TW", "6830.TW", "3587.TWO", "3289.TWO"],
+    "tw_probe":   ["6510.TWO", "6223.TWO", "6515.TW", "6257.TW", "2449.TW", "3443.TW", "6217.TWO"],
 }
 
 MD = markdown.Markdown(extensions=["tables", "fenced_code", "nl2br"])
@@ -407,6 +407,14 @@ TICKER_DESCRIPTIONS = {
     "3661.TW":  "世芯-KY (3661) — 先進封裝 ASIC 設計",
     "8021.TW":  "尖點 (8021) — 先進封裝 / 探針",
     "6438.TW":  "迅得 (6438) — 先進封裝 設備",
+    # tw_probe (探針測試 / IC 測試 / ASIC 服務)
+    "6510.TWO": "中華精測 (6510) — 探針卡龍頭",
+    "6223.TWO": "旺矽 (6223) — 探針卡 / 光電測試",
+    "6515.TW":  "穎崴 (6515) — 探針卡 / test socket",
+    "6257.TW":  "矽格 (6257) — IC 測試 / 封裝",
+    "2449.TW":  "京元電 (2449) — IC 終測龍頭",
+    "3443.TW":  "創意電子 (3443) — ASIC 設計服務 (GUC, TSMC 轉投資)",
+    "6217.TWO": "中探針 (6217) — 探針 / 測試介面",
     # hedge
     "GLD": "SPDR Gold Shares ETF",
     "GDX": "VanEck Gold Miners ETF",
