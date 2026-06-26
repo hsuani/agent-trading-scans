@@ -29,6 +29,19 @@ ROOT = Path(os.environ.get("TRADING_SCANS_ROOT") or Path(__file__).resolve().par
 DAILY = ROOT / "daily"
 PENDING = ROOT / "pending.txt"
 
+# Full sector universe (every sector that should get a complete scan once per
+# cycle). Used by `detect` to find sectors whose most recent complete run is
+# stale — catching whole days that died (e.g. session limit) without ever
+# updating pending.txt. Keep in sync with SKILL.md SECTORS / daily_scan.sh.
+ALL_SECTORS = [
+    "semi", "power", "cooling", "reit", "oem", "security", "robotics",
+    "materials", "quantum", "photonics", "hedge",
+    "abf", "tw_cooling", "tw_server", "tw_optics", "tw_power", "tw_pkg",
+    "tw_photonics",
+]
+
+DATE_RE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
+
 HEADER = """\
 # Pending scans — sectors/tickers that failed to complete and need a FRESH run
 # at the LATEST date (never re-run a stale past date; prices have moved on).
@@ -62,6 +75,39 @@ def sector_of(entry):
     return entry.split(":", 1)[0]
 
 
+def latest_complete(sector):
+    """Most recent date (str) with a non-empty daily/<date>/<sector>/sector_report.md,
+    or None if the sector has never completed."""
+    best = None
+    if not DAILY.is_dir():
+        return None
+    for d in DAILY.iterdir():
+        if not (d.is_dir() and DATE_RE.match(d.name)):
+            continue
+        rpt = d / sector / "sector_report.md"
+        if rpt.exists() and rpt.stat().st_size > 0:
+            if best is None or d.name > best:
+                best = d.name
+    return best
+
+
+def detect_stale(stale_days, today):
+    """Sectors whose latest complete run is older than stale_days (or never run).
+    Returns list of sector names. `today` is YYYY-MM-DD str."""
+    from datetime import date as _date
+    t = _date.fromisoformat(today)
+    stale = []
+    for sec in ALL_SECTORS:
+        last = latest_complete(sec)
+        if last is None:
+            stale.append((sec, "never"))
+            continue
+        age = (t - _date.fromisoformat(last)).days
+        if age > stale_days:
+            stale.append((sec, f"{last} ({age}d)"))
+    return stale
+
+
 def main():
     ap = argparse.ArgumentParser()
     sub = ap.add_subparsers(dest="cmd", required=True)
@@ -70,6 +116,10 @@ def main():
     a = sub.add_parser("add"); a.add_argument("items", nargs="+")
     r = sub.add_parser("remove"); r.add_argument("items", nargs="+")
     p = sub.add_parser("prune"); p.add_argument("--date", required=True)
+    dt = sub.add_parser("detect")
+    dt.add_argument("--today", required=True)
+    dt.add_argument("--stale-days", type=int, default=7)
+    dt.add_argument("--add", action="store_true", help="add detected stale sectors to pending")
     args = ap.parse_args()
 
     entries = read_entries()
@@ -106,6 +156,20 @@ def main():
         write_entries(kept)
         print(f"pruned {len(pruned)} done @ {args.date}: {' '.join(pruned) or '—'}")
         print(f"remaining: {' '.join(kept) or '—'}")
+    elif args.cmd == "detect":
+        if not re.fullmatch(r"\d{4}-\d{2}-\d{2}", args.today):
+            print("bad --today (YYYY-MM-DD)", file=sys.stderr); sys.exit(2)
+        stale = detect_stale(args.stale_days, args.today)
+        if not stale:
+            print(f"no stale sectors (all ran within {args.stale_days}d)")
+            return
+        print(f"stale (>{args.stale_days}d) sectors:")
+        for sec, why in stale:
+            print(f"  {sec:14} last={why}")
+        if args.add:
+            secs = [s for s, _ in stale]
+            write_entries(entries + secs)
+            print(f"added {len(secs)} to pending: {' '.join(secs)}")
 
 
 if __name__ == "__main__":
