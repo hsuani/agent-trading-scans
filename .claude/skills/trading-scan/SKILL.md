@@ -21,15 +21,16 @@ SECTORS = {
   "materials":  ["FCX", "MP", "LIN", "APD", "ALB"],
   "quantum":    ["IONQ", "RGTI", "QBTS", "QUBT", "ARQQ", "LAES", "HON", "IBM"],
   "photonics":  ["POET", "CRDO", "ALAB", "GFS", "INTC"],
-  "hedge":      ["GLD", "GDX", "TLT", "MUB", "UUP", "DBC", "BTAL", "SH"],
+  "hedge":      ["GLD", "TLT", "UUP", "SH"],   # trimmed from 8 — macro ETFs don't need full pipeline
   # Taiwan-focused supply chain sectors (no duplicates with above)
   "abf":        ["3037.TW", "8046.TW", "3189.TW"],
   "tw_cooling": ["3324.TWO", "8996.TW", "3017.TW"],
   "tw_server":  ["6669.TW", "3231.TW", "2356.TW"],
-  "tw_optics":  ["3363.TWO", "4979.TWO", "4977.TW"],
   "tw_power":   ["2308.TW", "1513.TW", "1519.TW"],
   "tw_pkg":     ["3661.TW", "8021.TW", "6438.TW"],
-  "tw_photonics": ["3081.TWO", "2455.TW", "5455.TWO", "3163.TWO", "3008.TW", "4908.TWO", "3711.TW", "6830.TW", "3587.TWO", "3289.TWO"],
+  # tw_photonics absorbs the old tw_optics members (上詮/華星光/眾達 = CPO 中游)
+  "tw_photonics": ["3081.TWO", "2455.TW", "5455.TWO", "3163.TWO", "3008.TW", "4908.TWO", "3363.TWO", "4979.TWO", "4977.TW", "3711.TW", "6830.TW", "3587.TWO", "3289.TWO"],
+  "tw_probe":   ["6510.TWO", "6223.TWO", "6515.TW", "6257.TW", "2449.TW", "3443.TW", "6217.TWO"],   # 探針卡/IC測試/ASIC設計服務
 }
 ```
 
@@ -40,10 +41,12 @@ SECTORS = {
 | `abf` | ABF 載板三雄 (AI CPU/GPU substrate) | 欣興 3037 / 南電 8046 / 景碩 3189 |
 | `tw_cooling` | 散熱模組 (TW VRT/MOD analogue) | 雙鴻 3324 / 高力 8996 / 奇鋐 3017 |
 | `tw_server` | AI server ODM (補 oem 2317/2382) | 緯穎 6669 / 緯創 3231 / 英業達 2356 |
-| `tw_optics` | 光通訊 / CPO 供應鏈 | 上詮 3363 / 華星光 4979 / 眾達-KY 4977 |
 | `tw_power` | 電源 / 電網 (TW power) | 台達電 2308 / 中興電 1513 / 華城 1519 |
 | `tw_pkg` | 先進封裝 (CoWoS supply chain) | 世芯-KY 3661 / 尖點 8021 / 迅得 6438 |
-| `tw_photonics` | 矽光子供應鏈上中下游+檢測 (TW) | 上游磊晶: 聯亞 3081 / 全新 2455 / 英特磊 5455 · 中游光模組/FAU: 波若威 3163 (NVDA Spectrum-X 夥伴) / 大立光 3008 / 前鼎 4908 · 下游封測: 日月光 3711 · 檢測三雄: 汎銓 6830 / 閎康 3587 / 宜特 3289 |
+| `tw_photonics` | 矽光子供應鏈上中下游+檢測 (TW) | 上游磊晶: 聯亞 3081 / 全新 2455 / 英特磊 5455 · 中游光模組/FAU: 波若威 3163 (NVDA Spectrum-X 夥伴) / 大立光 3008 / 前鼎 4908 / 上詮 3363 / 華星光 4979 / 眾達 4977 · 下游封測: 日月光 3711 · 檢測三雄: 汎銓 6830 / 閎康 3587 / 宜特 3289 |
+| `tw_probe` | 探針測試 / IC 測試 / ASIC 服務 (TW) | 探針卡: 中華精測 6510 / 旺矽 6223 / 穎崴 6515 / 中探針 6217 · IC 測試: 矽格 6257 / 京元電 2449 · ASIC 服務: 創意電子 3443 |
+
+註: 舊 `tw_optics` (上詮/華星光/眾達) 已併入 `tw_photonics` 中游 (都是 CPO 光通訊); tw_optics sector key 已停用, 歷史資料保留.
 
 `photonics` (US 矽光子純玩家): POET / CRDO / ALAB / GFS / INTC — CPO 大廠 AVGO/MRVL/COHR/LITE 已在 semi/cooling, 此族群補未涵蓋的純玩家.
 注意: 上詮 3363 (FAU 精密對準) 屬中游但留在 `tw_optics` (週三), 避免跨日重複. TPEx 上櫃股用 `.TWO` 後綴 (聯亞/英特磊/波若威/前鼎/閎康/宜特), 上市股用 `.TW`.
@@ -67,6 +70,10 @@ SECTORS = {
 | 4979 | 華星光 | **.TWO** | | 3289 | 宜特 | **.TWO** |
 | 4977 | 眾達-KY | .TW | | 2308 | 台達電 | .TW |
 | 1513 | 中興電 | .TW | | 1519 | 華城 | .TW |
+| 6510 | 中華精測 | **.TWO** | | 2449 | 京元電 | .TW |
+| 6223 | 旺矽 | **.TWO** | | 3443 | 創意電子 | .TW |
+| 6515 | 穎崴 | .TW | | 6217 | 中探針 | **.TWO** |
+| 6257 | 矽格 | .TW | | | | |
 
 新族群皆 TW listed, 與 SMCI/DELL/HPE 等 US oem 互補.
 
@@ -78,13 +85,13 @@ SECTORS = {
 |---|---|---|---|---|
 | Mon | 1 | `semi tw_pkg` | 9 + 3 = 12 | AI core compute + 先進封裝 |
 | Tue | 2 | `power tw_power quantum` | 8 + 3 + 8 = 19 | 電力 + TW 電源 + 量子運算 |
-| Wed | 3 | `cooling tw_cooling tw_optics` | 9 + 3 + 3 = 15 | 散熱 + 光通訊 |
+| Wed | 3 | `cooling tw_cooling` | 9 + 3 = 12 | 散熱 (US + TW) |
 | Thu | 4 | `oem tw_server abf` | 5 + 3 + 3 = 11 | AI server + ABF 載板 |
 | Fri | 5 | `security materials robotics` | 5 + 5 + 7 = 17 | 安全 + 原料 + 機器人 |
-| Sat | 6 | `hedge reit` | 8 + 4 = 12 | 避險 + 資料中心 REIT |
-| Sun | 7 | `photonics tw_photonics` | 5 + 10 = 15 | 矽光子專日 (US 純玩家 + TW 上中下游+檢測) |
+| Sat | 6 | `hedge reit tw_probe` | 4 + 4 + 7 = 15 | 避險 + REIT + 探針測試 |
+| Sun | 7 | `photonics tw_photonics` | 5 + 13 = 18 | 矽光子專日 (US 純玩家 + TW 上中下游+檢測, 含舊 tw_optics) |
 
-Total: 約 96 tickers fully covered weekly (含 photonics 5 + tw_photonics 10 全鏈).
+Total: 約 104 tickers fully covered weekly. 重日 (Tue 19 / Sun 18 / Fri 17) 靠 pending+detect 自癒, 不致命.
 
 Multi-sector days run sequentially in `daily_scan.sh`; dashboard rebuild + catalyst extract happen once after all sectors finish.
 ```
@@ -110,10 +117,11 @@ QMCO (Quantum Corp) 是儲存公司, 非量子運算, 名稱碰撞, 刻意排除
 
 ## Hedge sector composition
 
-The `hedge` sector is intentionally non-AI: gold (GLD/GDX), long Treasuries (TLT),
-muni bonds (MUB), USD index (UUP), broad commodities (DBC), market-neutral
-anti-beta (BTAL), and short S&P (SH). Use it to balance equity-cluster
-correlation when the other sectors are net-long.
+The `hedge` sector is intentionally non-AI, trimmed to 4 core instruments:
+gold (GLD), long Treasuries (TLT), USD index (UUP), short S&P (SH). (Dropped
+GDX/MUB/DBC/BTAL — macro ETFs don't need the full multi-agent debate; they are
+instruments, not companies.) Use it to balance equity-cluster correlation when
+the other sectors are net-long.
 
 ## Output language policy
 

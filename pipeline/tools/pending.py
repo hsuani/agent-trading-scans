@@ -36,8 +36,8 @@ PENDING = ROOT / "pending.txt"
 ALL_SECTORS = [
     "semi", "power", "cooling", "reit", "oem", "security", "robotics",
     "materials", "quantum", "photonics", "hedge",
-    "abf", "tw_cooling", "tw_server", "tw_optics", "tw_power", "tw_pkg",
-    "tw_photonics",
+    "abf", "tw_cooling", "tw_server", "tw_power", "tw_pkg",
+    "tw_photonics", "tw_probe",
 ]
 
 DATE_RE = re.compile(r"^\d{4}-\d{2}-\d{2}$")

@@ -57,8 +57,9 @@ SECTORS = {
     "materials": ["FCX", "MP", "LIN", "APD", "ALB"],
     "quantum":   ["IONQ", "RGTI", "QBTS", "QUBT", "ARQQ", "LAES", "HON", "IBM"],
     "photonics": ["POET", "CRDO", "ALAB", "GFS", "INTC"],
-    "hedge":     ["GLD", "GDX", "TLT", "MUB", "UUP", "DBC", "BTAL", "SH"],
-    "tw_photonics": ["3081.TWO", "2455.TW", "5455.TWO", "3163.TWO", "3008.TW", "4908.TWO", "3711.TW", "6830.TW", "3587.TWO", "3289.TWO"],
+    "hedge":     ["GLD", "TLT", "UUP", "SH"],
+    "tw_photonics": ["3081.TWO", "2455.TW", "5455.TWO", "3163.TWO", "3008.TW", "4908.TWO", "3363.TWO", "4979.TWO", "4977.TW", "3711.TW", "6830.TW", "3587.TWO", "3289.TWO"],
+    "tw_probe":  ["6510.TWO", "6223.TWO", "6515.TW", "6257.TW", "2449.TW", "3443.TW", "6217.TWO"],
 }
 TICKER_TO_SECTOR = {t: s for s, ts in SECTORS.items() for t in ts}
 

@@ -54,12 +54,12 @@ SECTOR_LABELS = {
     "abf":        "J. ABF 載板 (TW)",
     "tw_cooling": "K. 散熱模組 (TW)",
     "tw_server":  "L. AI server ODM (TW)",
-    "tw_optics":  "M. 光通訊 / CPO (TW)",
     "tw_power":   "N. 電源 / 電網 (TW)",
     "tw_pkg":     "O. 先進封裝 (TW)",
     "quantum":    "P. 量子運算 (incl. Quantinuum=HON)",
     "photonics":  "Q. 矽光子 (US pure-play)",
-    "tw_photonics": "R. 矽光子 / 光磊晶 (TW)",
+    "tw_photonics": "R. 矽光子供應鏈 上中下游+檢測 (TW)",
+    "tw_probe":   "S. 探針測試 / IC 測試 / ASIC 服務 (TW)",
 }
 
 SECTORS_ORDER = list(SECTOR_LABELS.keys())
@@ -330,14 +330,14 @@ def collect_payload() -> dict:
         ("materials",  ["FCX", "MP", "LIN", "APD", "ALB"]),
         ("quantum",    ["IONQ", "RGTI", "QBTS", "QUBT", "ARQQ", "LAES", "HON", "IBM"]),
         ("photonics",  ["POET", "CRDO", "ALAB", "GFS", "INTC"]),
-        ("hedge",      ["GLD", "GDX", "TLT", "MUB", "UUP", "DBC", "BTAL", "SH"]),
+        ("hedge",      ["GLD", "TLT", "UUP", "SH"]),
         ("abf",        ["3037.TW", "8046.TW", "3189.TW"]),
         ("tw_cooling", ["3324.TWO", "8996.TW", "3017.TW"]),
         ("tw_server",  ["6669.TW", "3231.TW", "2356.TW"]),
-        ("tw_optics",  ["3363.TWO", "4979.TWO", "4977.TW"]),
         ("tw_power",   ["2308.TW", "1513.TW", "1519.TW"]),
         ("tw_pkg",     ["3661.TW", "8021.TW", "6438.TW"]),
-        ("tw_photonics", ["3081.TWO", "2455.TW", "5455.TWO", "3163.TWO", "3008.TW", "4908.TWO", "3711.TW", "6830.TW", "3587.TWO", "3289.TWO"]),
+        ("tw_photonics", ["3081.TWO", "2455.TW", "5455.TWO", "3163.TWO", "3008.TW", "4908.TWO", "3363.TWO", "4979.TWO", "4977.TW", "3711.TW", "6830.TW", "3587.TWO", "3289.TWO"]),
+        ("tw_probe",   ["6510.TWO", "6223.TWO", "6515.TW", "6257.TW", "2449.TW", "3443.TW", "6217.TWO"]),
     ])
 
     sectors_data = {}
