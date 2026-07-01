@@ -23,10 +23,10 @@ SECTORS = {
   "photonics":  ["POET", "CRDO", "ALAB", "GFS", "INTC"],
   "hedge":      ["GLD", "TLT", "UUP", "SH"],   # trimmed from 8 — macro ETFs don't need full pipeline
   # Taiwan-focused supply chain sectors (no duplicates with above)
-  "abf":        ["3037.TW", "8046.TW", "3189.TW"],
-  "tw_cooling": ["3324.TWO", "8996.TW", "3017.TW"],
-  "tw_server":  ["6669.TW", "3231.TW", "2356.TW"],
-  "tw_power":   ["2308.TW", "1513.TW", "1519.TW"],
+  "abf":        ["3037.TW", "8046.TW", "3189.TW", "4958.TW", "2368.TW"],   # +臻鼎/金像電 (Vera Rubin 載板PCB)
+  "tw_cooling": ["3324.TWO", "8996.TW", "3017.TW", "3653.TW", "6805.TW"],  # +健策/富世達 (Vera Rubin 散熱)
+  "tw_server":  ["6669.TW", "3231.TW", "2356.TW", "2376.TW"],              # +技嘉 (Vera Rubin ODM)
+  "tw_power":   ["2308.TW", "1513.TW", "1519.TW", "2301.TW"],              # +光寶科 (Vera Rubin 電源)
   "tw_pkg":     ["3661.TW", "8021.TW", "6438.TW"],
   # tw_photonics absorbs the old tw_optics members (上詮/華星光/眾達 = CPO 中游)
   "tw_photonics": ["3081.TWO", "2455.TW", "5455.TWO", "3163.TWO", "3008.TW", "4908.TWO", "3363.TWO", "4979.TWO", "4977.TW", "3711.TW", "6830.TW", "3587.TWO", "3289.TWO"],
@@ -73,7 +73,12 @@ SECTORS = {
 | 6510 | 中華精測 | **.TWO** | | 2449 | 京元電 | .TW |
 | 6223 | 旺矽 | **.TWO** | | 3443 | 創意電子 | .TW |
 | 6515 | 穎崴 | .TW | | 6217 | 中探針 | **.TWO** |
-| 6257 | 矽格 | .TW | | | | |
+| 6257 | 矽格 | .TW | | 4958 | 臻鼎-KY | .TW |
+| 2368 | 金像電 | .TW | | 2376 | 技嘉 | .TW |
+| 2301 | 光寶科 | .TW | | 3653 | 健策 | .TW |
+| 6805 | 富世達 | .TW | | | | |
+
+Vera Rubin 台灣供應鏈新增 (2026-07): 載板 臻鼎4958/金像電2368 → `abf`; ODM 技嘉2376 → `tw_server`; 電源 光寶科2301 → `tw_power`; 散熱 健策3653/富世達6805 → `tw_cooling`. (旺矽/穎崴/日月光/欣興/南電/景碩/鴻海/廣達/緯穎/緯創/台達電/奇鋐/雙鴻 已在既有 sector)
 
 新族群皆 TW listed, 與 SMCI/DELL/HPE 等 US oem 互補.
 
