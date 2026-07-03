@@ -31,6 +31,11 @@ set -uo pipefail
 # this script's PID. Harmless if caffeinate is absent (macOS always ships it).
 command -v caffeinate >/dev/null 2>&1 && caffeinate -i -m -s -w "$$" &
 
+# Headless `claude -p` otherwise terminates background tasks after 600s — which
+# kills a trading-scan Workflow mid-run (leaving no final_decision/sector_report).
+# 0 = wait indefinitely for the pipeline's subagents/workflow to finish.
+export CLAUDE_CODE_PRINT_BG_WAIT_CEILING_MS=0
+
 TOOL_DIR="$HOME/.claude/tools/trading"
 PY="$TOOL_DIR/venv/bin/python"
 LOG_ROOT="$TOOL_DIR/logs"
