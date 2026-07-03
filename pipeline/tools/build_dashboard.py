@@ -60,9 +60,24 @@ SECTOR_LABELS = {
     "photonics":  "Q. 矽光子 (US pure-play)",
     "tw_photonics": "R. 矽光子供應鏈 上中下游+檢測 (TW)",
     "tw_probe":   "S. 探針測試 / IC 測試 / ASIC 服務 (TW)",
+    "serenity":   "T. Serenity 追蹤標的 (@aleabitoreddit picks)",
 }
 
 SECTORS_ORDER = list(SECTOR_LABELS.keys())
+
+
+def serenity_universe():
+    """Serenity's dynamic pick list from serenity/universe.txt (his top new
+    mentions). Empty list if the file is missing."""
+    f = SCANS / "serenity" / "universe.txt"
+    if not f.is_file():
+        return []
+    out = []
+    for line in f.read_text(encoding="utf-8").splitlines():
+        s = line.split("#", 1)[0].strip()
+        if s:
+            out.append(s)
+    return out
 
 
 def latest_scan_for_sector(sector: str) -> Path | None:
@@ -339,6 +354,10 @@ def collect_payload() -> dict:
         ("tw_photonics", ["3081.TWO", "2455.TW", "5455.TWO", "3163.TWO", "3008.TW", "4908.TWO", "3363.TWO", "4979.TWO", "4977.TW", "3711.TW", "6830.TW", "3587.TWO", "3289.TWO"]),
         ("tw_probe",   ["6510.TWO", "6223.TWO", "6515.TW", "6257.TW", "2449.TW", "3443.TW", "6217.TWO"]),
     ])
+    # serenity sector is dynamic — his current picks from serenity/universe.txt
+    _ser = serenity_universe()
+    if _ser:
+        SECTOR_TICKERS["serenity"] = _ser
 
     sectors_data = {}
     for sector in SECTORS_ORDER:

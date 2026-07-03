@@ -82,13 +82,15 @@ Vera Rubin 台灣供應鏈新增 (2026-07): 載板 臻鼎4958/金像電2368 → 
 
 新族群皆 TW listed, 與 SMCI/DELL/HPE 等 US oem 互補.
 
-## Daily scan schedule (19 sectors / 7 days)
+`serenity` is a DYNAMIC sector: its universe = Serenity's (@aleabitoreddit) current picks in `serenity/universe.txt` (auto-refreshed by `pipeline/tools/serenity.py` from trackserenity.com). Scan it with `tickers=<contents of universe.txt>` not a fixed list. His already-covered mentions (NVDA/MRVL/etc) are skipped; only his NEW picks scan here.
+
+## Daily scan schedule (20 sectors / 7 days)
 
 `daily_scan.sh` runs multiple sectors per day grouped by theme (US + TW supply chain pairs):
 
 | Day | DOW | Sectors | Tickers | Theme |
 |---|---|---|---|---|
-| Mon | 1 | `semi tw_pkg` | 9 + 3 = 12 | AI core compute + 先進封裝 |
+| Mon | 1 | `semi tw_pkg serenity` | 9 + 3 + ~8 = ~20 | AI compute + 先進封裝 + Serenity picks |
 | Tue | 2 | `power tw_power quantum` | 8 + 3 + 8 = 19 | 電力 + TW 電源 + 量子運算 |
 | Wed | 3 | `cooling tw_cooling` | 9 + 3 = 12 | 散熱 (US + TW) |
 | Thu | 4 | `oem tw_server abf` | 5 + 3 + 3 = 11 | AI server + ABF 載板 |
