@@ -39,16 +39,26 @@ jobs:
           NEAR_PCT: "3.0"
         run: python3 pipeline/tools/monitor.py
 
-      - name: Commit alerts
+      - name: Fetch Serenity feed
+        env:
+          TRADING_SCANS_ROOT: ${{ github.workspace }}
+        run: python3 pipeline/tools/serenity.py || echo "serenity fetch failed (non-fatal)"
+
+      - name: Rebuild dashboard (pick up serenity + alerts)
+        env:
+          TRADING_SCANS_ROOT: ${{ github.workspace }}
+        run: python3 pipeline/tools/build_dashboard.py || echo "dashboard rebuild failed (non-fatal)"
+
+      - name: Commit
         # Commit as YHT to honour the single-author policy on hsuani/* repos
         # (CLAUDE.md): no extra bot contributor in the graph.
         run: |
           git config user.name  "YHT"
           git config user.email "yhtseng91@gmail.com"
-          git add alerts.json alerts.html
+          git add alerts.json alerts.html dashboard.html serenity/
           if git diff --cached --quiet; then
-            echo "no change in alerts"
+            echo "no change"
           else
-            git commit -m "L0 monitor $(date -u +%F\ %H:%MZ)"
+            git commit -m "L0 monitor + Serenity feed $(date -u +%F\ %H:%MZ)"
             git push
           fi
