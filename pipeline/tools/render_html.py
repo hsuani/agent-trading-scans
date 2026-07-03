@@ -52,6 +52,14 @@ SECTORS = {
     "tw_probe":   ["6510.TWO", "6223.TWO", "6515.TW", "6257.TW", "2449.TW", "3443.TW", "6217.TWO"],
 }
 
+# serenity sector is dynamic — load his current picks from serenity/universe.txt
+_ser_uni = SCANS_ROOT / "serenity" / "universe.txt"
+if _ser_uni.is_file():
+    _picks = [l.split("#", 1)[0].strip() for l in _ser_uni.read_text(encoding="utf-8").splitlines()]
+    _picks = [p for p in _picks if p]
+    if _picks:
+        SECTORS["serenity"] = _picks
+
 MD = markdown.Markdown(extensions=["tables", "fenced_code", "nl2br"])
 
 

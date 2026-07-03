@@ -41,7 +41,7 @@ SCAN_ROOT="$HOME/Study/scans"
 # 16 sectors covered across 7 days, grouped by theme (US + TW supply chain pairs).
 declare -a DAY_SECTORS=(
   ""                                # padding for index 0
-  "semi tw_pkg"                     # Mon: AI core compute (US + TW advanced packaging)
+  "semi tw_pkg serenity"            # Mon: AI core compute (US + TW packaging) + Serenity picks (dynamic)
   "power tw_power quantum"          # Tue: Power infrastructure (US + TW grid/PSU) + quantum computing (incl. HON=Quantinuum proxy)
   "cooling tw_cooling"              # Wed: Thermal (US + TW) — tw_optics merged into tw_photonics (Sun)
   "oem tw_server abf"               # Thu: AI server build (US + TW ODM + ABF substrate)
@@ -151,6 +151,17 @@ for SECTOR in "${SECTOR_LIST[@]}"; do
   CLAUDE_LOG="$LOG_DIR/${SECTOR}_claude.log"
   HTML_OUT="$SCAN_ROOT/daily/$DATE/${SECTOR}/${SECTOR}_${DATE}.html"
 
+  # serenity is a DYNAMIC sector — its universe is Serenity's current picks in
+  # serenity/universe.txt (refreshed by serenity.py). Refresh + resolve now.
+  SECTOR_TICKERS_ARG=""
+  if [[ "$SECTOR" == "serenity" ]]; then
+    "$PY" "$TOOL_DIR/serenity.py" >> "$RUN_LOG" 2>&1 || true
+    SECTOR_TICKERS_ARG=$(grep -vE '^\s*#|^\s*$' "$SCAN_ROOT/serenity/universe.txt" 2>/dev/null | tr '\n' ',' | sed 's/,$//')
+    if [[ -z "$SECTOR_TICKERS_ARG" ]]; then
+      echo "serenity universe empty — skip" >> "$RUN_LOG"; continue
+    fi
+  fi
+
   # Idempotency: if today's sector report already rendered, skip. Lets the
   # 07:35 fallback launchd slot be a no-op when the 01:26 run succeeded.
   # --force bypasses (re-run on demand).
@@ -177,7 +188,10 @@ for SECTOR in "${SECTOR_LIST[@]}"; do
   fi
 
   # Headless Claude invocation
-  PROMPT="Run the \`trading-scan\` skill (via Skill tool) for sector=${SECTOR}
+  # For serenity, pass the explicit dynamic ticker list; else scan by sector name.
+  SECTOR_SPEC="sector=${SECTOR}"
+  [[ -n "$SECTOR_TICKERS_ARG" ]] && SECTOR_SPEC="sector=${SECTOR} tickers=${SECTOR_TICKERS_ARG}"
+  PROMPT="Run the \`trading-scan\` skill (via Skill tool) for ${SECTOR_SPEC}
 date=${DATE} rounds=1 mode=${SCAN_MODE}. The skill is defined in
 ~/.claude/skills/trading-scan/SKILL.md and orchestrates 12+ subagents per
 ticker.
