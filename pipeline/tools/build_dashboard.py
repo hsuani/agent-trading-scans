@@ -1227,8 +1227,20 @@ def render_serenity_panel() -> str:
                 f"<polyline points='{pts}' fill='none' stroke='{col}' stroke-width='1'/>"
                 f"{dots}</svg>")
 
-    SENT = {"bull": "🟢多", "bear": "🔴空", "neutral": "⚪中"}
-    # His top tickers + his sentiment + our latest verdict (agree/diverge).
+    # LLM-judged stance timeline (accurate) — falls back to keyword if absent.
+    llm_sent = {}
+    sf = SCANS / "serenity" / "sentiment.json"
+    if sf.exists():
+        try:
+            llm_sent = json.loads(sf.read_text(encoding="utf-8")).get("tickers", {})
+        except Exception:
+            llm_sent = {}
+
+    def latest_badge(tl):
+        if not tl:
+            return "⚪中"
+        return "🟢多" if tl[-1] > 0 else "🔴空" if tl[-1] < 0 else "⚪中"
+
     rows = []
     for t in d.get("tickers", [])[:16]:
         tk = t["ticker"]
@@ -1236,14 +1248,15 @@ def render_serenity_panel() -> str:
         ours = hist[sorted(hist)[-1]]["verdict"] if hist else "—"
         vcls = {"BUY": "v-BUY", "HOLD": "v-HOLD", "SELL": "v-SELL"}.get(ours, "")
         tag = "" if t["in_universe"] else "<span class='text-teal-400 text-[10px]'>★</span>"
-        sen = t.get("sentiment", {})
-        badge = SENT.get(sen.get("latest", "neutral"), "⚪")
-        counts = f"<span class='text-[10px] text-slate-400'>+{sen.get('pos',0)}/-{sen.get('neg',0)}</span>"
+        # prefer LLM stance timeline; fall back to keyword heuristic
+        tl = llm_sent.get(tk) or t.get("sentiment", {}).get("timeline", [])
+        pos = sum(1 for x in tl if x > 0); neg = sum(1 for x in tl if x < 0)
+        counts = f"<span class='text-[10px] text-slate-400'>+{pos}/-{neg}</span>"
         rows.append(
             f"<tr><td class='tk'>{_esc(tk)} {tag}</td>"
             f"<td class='text-center'>{t['mentions']}</td>"
-            f"<td class='text-center whitespace-nowrap'>{badge} {counts}</td>"
-            f"<td>{sparkline(sen.get('timeline', []))}</td>"
+            f"<td class='text-center whitespace-nowrap'>{latest_badge(tl)} {counts}</td>"
+            f"<td>{sparkline(tl)}</td>"
             f"<td class='text-center'><span class='{vcls} px-1 rounded'>{_esc(ours)}</span></td>"
             f"<td class='text-[10px] text-slate-500'>{_esc(t['last_seen'])}</td></tr>"
         )
