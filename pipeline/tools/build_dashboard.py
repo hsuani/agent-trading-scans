@@ -462,6 +462,14 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
     background: #1e293b; color: #f8fafc; padding: 10px 14px;
     border-radius: 6px; font-size: 0.85rem; line-height: 1.5;
   }
+  .ser-md h1 { font-size: 1rem; font-weight: 700; margin: 0.5rem 0 0.25rem; }
+  .ser-md h2 { font-size: 0.9rem; font-weight: 700; margin: 0.5rem 0 0.25rem; color:#0f766e; }
+  .ser-md h3 { font-size: 0.82rem; font-weight: 600; margin: 0.4rem 0 0.2rem; }
+  .ser-md ul { list-style: disc; margin-left: 1.1rem; margin-bottom: 0.4rem; }
+  .ser-md li { margin: 0.15rem 0; line-height: 1.45; }
+  .ser-md p  { margin: 0.3rem 0; line-height: 1.45; }
+  .ser-md strong { font-weight: 700; color:#0f172a; }
+  .ser-md blockquote { border-left: 3px solid #99f6e4; padding-left: 0.6rem; color:#64748b; margin:0.3rem 0; }
 </style>
 </head>
 <body class="bg-slate-50 text-slate-900">
@@ -1210,22 +1218,29 @@ def render_serenity_panel() -> str:
         return ""
 
     def sparkline(tl):
-        """Inline SVG of his sentiment sequence (-1/0/1) over time."""
+        """Inline SVG of his sentiment sequence (-1/0/1) over time. Larger dots +
+        colour bands (top=多 綠, mid=中, bottom=空 紅) so the trend reads clearly."""
         if not tl:
-            return ""
-        w, h, n = 64, 16, len(tl)
-        step = w / max(1, n - 1) if n > 1 else w
-        pts = " ".join(f"{i*step:.1f},{h/2 - v*(h/2-2):.1f}" for i, v in enumerate(tl))
+            return "<span class='text-slate-300 text-xs'>—</span>"
+        pad, h, gap = 6, 34, 16
+        n = len(tl)
+        w = pad * 2 + gap * max(1, n - 1)
+        yv = {1: 8, 0: h / 2, -1: h - 8}
+        xs = [pad + i * gap for i in range(n)]
+        pts = " ".join(f"{x},{yv[v]:.0f}" for x, v in zip(xs, tl))
         last = tl[-1]
-        col = "#16a34a" if last > 0 else "#dc2626" if last < 0 else "#94a3b8"
+        lcol = "#16a34a" if last > 0 else "#dc2626" if last < 0 else "#9ca3af"
         dots = "".join(
-            f"<circle cx='{i*step:.1f}' cy='{h/2 - v*(h/2-2):.1f}' r='1.5' "
+            f"<circle cx='{x}' cy='{yv[v]:.0f}' r='3.5' "
             f"fill='{'#16a34a' if v>0 else '#dc2626' if v<0 else '#cbd5e1'}'/>"
-            for i, v in enumerate(tl))
-        return (f"<svg width='{w}' height='{h}' viewBox='0 0 {w} {h}'>"
-                f"<line x1='0' y1='{h/2}' x2='{w}' y2='{h/2}' stroke='#e5e7eb' stroke-width='0.5'/>"
-                f"<polyline points='{pts}' fill='none' stroke='{col}' stroke-width='1'/>"
-                f"{dots}</svg>")
+            for x, v in zip(xs, tl))
+        return (
+            f"<svg width='{w}' height='{h}' viewBox='0 0 {w} {h}' style='vertical-align:middle'>"
+            f"<line x1='0' y1='8' x2='{w}' y2='8' stroke='#dcfce7' stroke-width='1'/>"
+            f"<line x1='0' y1='{h/2}' x2='{w}' y2='{h/2}' stroke='#e5e7eb' stroke-width='1' stroke-dasharray='2 2'/>"
+            f"<line x1='0' y1='{h-8}' x2='{w}' y2='{h-8}' stroke='#fee2e2' stroke-width='1'/>"
+            f"<polyline points='{pts}' fill='none' stroke='{lcol}' stroke-width='2'/>"
+            f"{dots}</svg>")
 
     # LLM-judged stance timeline (accurate) — falls back to keyword if absent.
     llm_sent = {}
@@ -1277,10 +1292,16 @@ def render_serenity_panel() -> str:
     sdir = SCANS / "serenity"
     strat_files = sorted(sdir.glob("strategy_*.md")) if sdir.is_dir() else []
     if strat_files:
-        txt = strat_files[-1].read_text(encoding="utf-8")[:1500]
-        strat = (f"<details open><summary class='font-semibold text-sm cursor-pointer'>"
-                 f"📝 今日策略摘要 ({strat_files[-1].stem.replace('strategy_','')})</summary>"
-                 f"<div class='text-xs whitespace-pre-wrap mt-1'>{_esc(txt)}</div></details>")
+        txt = strat_files[-1].read_text(encoding="utf-8")
+        try:
+            import markdown as _md
+            body = _md.markdown(txt, extensions=["tables", "nl2br"])
+        except Exception:
+            body = "<pre class='whitespace-pre-wrap'>" + _esc(txt) + "</pre>"
+        strat = (
+            f"<details open><summary class='font-semibold text-sm cursor-pointer'>"
+            f"📝 今日策略摘要 ({strat_files[-1].stem.replace('strategy_','')})</summary>"
+            f"<div class='ser-md text-xs mt-1'>{body}</div></details>")
 
     picks = " ".join(f"<span class='bg-teal-100 text-teal-800 px-1.5 py-0.5 rounded text-xs'>{_esc(p)}</span>"
                      for p in d.get("new_picks", []))
