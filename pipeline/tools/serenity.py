@@ -47,6 +47,33 @@ OUR_UNIVERSE = set((
 NOISE = {"DRAM", "KOSPI", "KORU", "EWY", "SHA", "SOXL", "LPK", "SIVEF", "SPCX"}
 TICKER_RE = re.compile(r"^[A-Z]{1,5}$")
 
+# Bilingual (EN/中文) sentiment lexicon for a fast, zero-LLM heuristic polarity.
+# Crude on sarcasm — the nightly LLM digest carries the authoritative narrative;
+# this drives the per-ticker 🟢/🔴 badges + trend sparkline.
+BULL = ["long", "buy", "bought", "add", "adding", "accumulate", "breakout", "moon",
+        "undervalued", "cheap", "upside", "beat", "beats", "strong", "bullish",
+        "rip", "ripping", "squeeze", "all-time high", "ath", "outperform", "load",
+        "看多", "做多", "買進", "買", "加碼", "突破", "低估", "上漲", "噴", "強",
+        "利多", "看好", "抄底", "進場"]
+BEAR = ["short", "sell", "sold", "trim", "trimmed", "dump", "crash", "crashing",
+        "overvalued", "expensive", "downside", "miss", "misses", "weak", "bearish",
+        "avoid", "puts", "drop", "fall", "falling", "scathing", "delay", "delays",
+        "看空", "做空", "賣出", "賣", "減碼", "跌", "崩", "高估", "利空", "看壞",
+        "出貨", "停損", "泡沫", "警示"]
+NEGATORS = ["not ", "no ", "isn't", "aren't", "don't", "avoid", "沒", "不", "非"]
+
+
+def tweet_polarity(text: str) -> int:
+    """+1 bull / -1 bear / 0 neutral from lexicon hit counts (naive)."""
+    low = (text or "").lower()
+    b = sum(low.count(w) for w in BULL)
+    s = sum(low.count(w) for w in BEAR)
+    if b > s:
+        return 1
+    if s > b:
+        return -1
+    return 0
+
 
 def fetch_feed():
     req = urllib.request.Request(FEED_URL, headers={"User-Agent": "Mozilla/5.0"})
@@ -66,23 +93,35 @@ def main():
         json.dumps(feed, ensure_ascii=False, indent=2), encoding="utf-8")
 
     tweets = feed.get("tweets", []) or []
-    # Mention count (from per-tweet cashtags) + most-recent timestamp per ticker.
+    # Mention count + most-recent timestamp + sentiment timeline per ticker.
     mentions = Counter()
     last_seen = {}
-    for t in tweets:
+    timeline = {}   # ticker -> [(time, polarity)] oldest..newest
+    # tweets come newest-first; reverse for chronological timeline
+    for t in reversed(tweets):
         ts = t.get("displayTime") or t.get("createdAt") or ""
+        pol = tweet_polarity(t.get("text", ""))
         for c in (t.get("cashtags") or []):
             c = c.upper()
             mentions[c] += 1
             if c not in last_seen or ts > last_seen[c]:
                 last_seen[c] = ts
+            timeline.setdefault(c, []).append({"time": ts, "pol": pol})
 
     ranked = []
     for tk, n in mentions.most_common():
+        tl = timeline.get(tk, [])
+        pos = sum(1 for x in tl if x["pol"] > 0)
+        neg = sum(1 for x in tl if x["pol"] < 0)
+        neu = sum(1 for x in tl if x["pol"] == 0)
+        latest_pol = tl[-1]["pol"] if tl else 0
+        latest = "bull" if latest_pol > 0 else "bear" if latest_pol < 0 else "neutral"
         ranked.append({
             "ticker": tk, "mentions": n,
             "last_seen": last_seen.get(tk, ""),
             "in_universe": tk in OUR_UNIVERSE,
+            "sentiment": {"latest": latest, "pos": pos, "neg": neg, "neu": neu,
+                          "timeline": [x["pol"] for x in tl]},
         })
 
     # "new picks" = real-looking US tickers he mentions >= MIN_MENTIONS that we
