@@ -159,9 +159,12 @@ for SECTOR in "${SECTOR_LIST[@]}"; do
   # serenity is a DYNAMIC sector — its universe is Serenity's current picks in
   # serenity/universe.txt (refreshed by serenity.py). Refresh + resolve now.
   SECTOR_TICKERS_ARG=""
+  SECTOR_FORCE_FULL=""
   if [[ "$SECTOR" == "serenity" ]]; then
     "$PY" "$TOOL_DIR/serenity.py" >> "$RUN_LOG" 2>&1 || true
     SECTOR_TICKERS_ARG=$(grep -vE '^\s*#|^\s*$' "$SCAN_ROOT/serenity/universe.txt" 2>/dev/null | tr '\n' ',' | sed 's/,$//')
+    # his high-conviction picks (mention>=threshold) force full Phase 2-4
+    SECTOR_FORCE_FULL=$(grep -vE '^\s*#|^\s*$' "$SCAN_ROOT/serenity/force_full.txt" 2>/dev/null | tr '\n' ',' | sed 's/,$//')
     if [[ -z "$SECTOR_TICKERS_ARG" ]]; then
       echo "serenity universe empty — skip" >> "$RUN_LOG"; continue
     fi
@@ -221,6 +224,9 @@ Sector=${SECTOR}, Date=${DATE}, Mode=${SCAN_MODE}.
 
 HELD TICKERS (已持倉 / 掛單中): ${HELD_TICKERS:-（none）}
 Rule: any ticker in the HELD TICKERS list that appears in today's sector universe MUST receive full Phase 2-4 pipeline regardless of quota cap or mode cap. Do not stub them out. They are active positions requiring fresh analysis every scan cycle.
+
+FORCE FULL (Serenity 高信念 picks): ${SECTOR_FORCE_FULL:-（none）}
+Rule: same as HELD — every ticker in this FORCE FULL list MUST receive complete Phase 2-4 pipeline (bull/bear debate, trader, risk debate, portfolio manager) EVEN IF its Phase-1 positive-signal score is below the normal threshold. These are Serenity's most-repeated conviction calls; we want our own full read on them regardless of the Phase-1 screen. Do not stub them as Phase-1-only.
 
 Begin."
 
