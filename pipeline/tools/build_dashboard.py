@@ -471,12 +471,15 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
     <a class="text-blue-700 hover:underline" href="./HOWTO_READ.html" target="_blank">📘 閱讀指南</a>
     <a class="text-blue-700 hover:underline" href="./_catalysts.json" target="_blank">📅 catalyst JSON</a>
     <a class="text-rose-700 hover:underline font-semibold" href="./alerts.html" target="_blank">🚨 L0 Alerts</a>
+    <a class="text-teal-700 hover:underline font-semibold" href="#serenity">🧘 Serenity</a>
   </div>
 </nav>
 
 <main class="max-w-7xl mx-auto p-6 space-y-6">
 
   __ALERTS__
+
+  __SERENITY__
 
   <section id="top20" class="bg-white rounded-lg shadow p-4">
     <div class="flex items-baseline justify-between mb-3 border-b pb-2">
@@ -1174,6 +1177,76 @@ def render_top20_rows(top20: list) -> str:
     return "\n".join(rows)
 
 
+def render_serenity_panel() -> str:
+    """🧘 Serenity panel from serenity/serenity.json (trackserenity.com feed of
+    @aleabitoreddit). Shows his most-mentioned tickers with OUR latest verdict
+    (agree/diverge), his newest posts, and the daily strategy summary if present.
+    Zero-LLM at render time."""
+    f = SCANS / "serenity" / "serenity.json"
+    if not f.exists():
+        return ""
+    try:
+        d = json.loads(f.read_text(encoding="utf-8"))
+    except Exception:
+        return ""
+
+    # His top tickers + our latest verdict (look up per-ticker final_decision).
+    rows = []
+    for t in d.get("tickers", [])[:16]:
+        tk = t["ticker"]
+        hist = collect_ticker_history(tk)
+        ours = hist[sorted(hist)[-1]]["verdict"] if hist else "—"
+        vcls = {"BUY": "v-BUY", "HOLD": "v-HOLD", "SELL": "v-SELL"}.get(ours, "")
+        tag = "" if t["in_universe"] else "<span class='text-teal-400 text-[10px]'>★new</span>"
+        rows.append(
+            f"<tr><td class='tk'>{_esc(tk)} {tag}</td>"
+            f"<td class='text-center'>{t['mentions']}</td>"
+            f"<td class='text-center'><span class='{vcls} px-1 rounded'>{_esc(ours)}</span></td>"
+            f"<td class='text-[10px] text-slate-500'>{_esc(t['last_seen'])}</td></tr>"
+        )
+
+    tweets = []
+    for tw in d.get("tweets", [])[:8]:
+        cts = " ".join(f"<span class='text-teal-600'>${_esc(c)}</span>" for c in tw.get("cashtags", []))
+        rt = "🔁 " if tw.get("is_retweet") else ""
+        tweets.append(
+            f"<div class='border-b border-slate-200 py-1.5'>"
+            f"<div class='text-[11px] text-slate-500'>{rt}{_esc(tw['time'])} · {cts} "
+            f"<a href='{_esc(tw['url'])}' target='_blank' class='text-blue-600'>↗</a></div>"
+            f"<div class='text-xs'>{_esc(tw['text'][:280])}</div></div>"
+        )
+
+    # daily strategy summary (task #11) — newest serenity/strategy_*.md
+    strat = ""
+    sdir = SCANS / "serenity"
+    strat_files = sorted(sdir.glob("strategy_*.md")) if sdir.is_dir() else []
+    if strat_files:
+        txt = strat_files[-1].read_text(encoding="utf-8")[:1500]
+        strat = (f"<details open><summary class='font-semibold text-sm cursor-pointer'>"
+                 f"📝 今日策略摘要 ({strat_files[-1].stem.replace('strategy_','')})</summary>"
+                 f"<div class='text-xs whitespace-pre-wrap mt-1'>{_esc(txt)}</div></details>")
+
+    picks = " ".join(f"<span class='bg-teal-100 text-teal-800 px-1.5 py-0.5 rounded text-xs'>{_esc(p)}</span>"
+                     for p in d.get("new_picks", []))
+    return (
+        '<section id="serenity" class="bg-white rounded-lg shadow p-4">'
+        '<div class="flex items-baseline justify-between mb-2 border-b pb-2">'
+        '<h2 class="text-xl font-bold">🧘 Serenity 追蹤 <span class="text-xs font-normal text-slate-500">'
+        f'{_esc(d.get("account",""))}</span></h2>'
+        f'<span class="text-xs text-slate-400">feed {_esc(d.get("source_updated_at",""))} · '
+        '<a class="text-blue-600" href="https://x.com/aleabitoreddit" target="_blank">X ↗</a></span></div>'
+        f'<div class="mb-2 text-xs"><b>新 picks (掃描中):</b> {picks or "—"}</div>'
+        '<div class="grid grid-cols-1 lg:grid-cols-2 gap-4">'
+        '<div><table class="w-full text-sm"><tr class="text-slate-500 text-xs">'
+        '<th class="text-left">Ticker</th><th>提及</th><th>我方 verdict</th><th class="text-left">最近</th></tr>'
+        + "".join(rows) + "</table></div>"
+        '<div><div class="font-semibold text-sm mb-1">最新貼文</div>'
+        + "".join(tweets) + "</div></div>"
+        + (f'<div class="mt-3 border-t pt-2">{strat}</div>' if strat else "")
+        + "</section>"
+    )
+
+
 def render_alert_banner() -> str:
     """Top-of-dashboard L0 monitor banner from alerts.json (zero-LLM price
     tracker output). Shows the most urgent actionable alerts (urgency<=2:
@@ -1224,6 +1297,7 @@ def main():
             .replace("__GENERATED__", payload["generated_at"])
             .replace("__NAV_LINKS__", "\n".join(nav_links))
             .replace("__ALERTS__", render_alert_banner())
+            .replace("__SERENITY__", render_serenity_panel())
             .replace("__TOP20_ROWS__", top20_html)
             .replace("__DATA__", json.dumps(payload, ensure_ascii=False)))
 
