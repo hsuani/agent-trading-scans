@@ -1209,17 +1209,41 @@ def render_serenity_panel() -> str:
     except Exception:
         return ""
 
-    # His top tickers + our latest verdict (look up per-ticker final_decision).
+    def sparkline(tl):
+        """Inline SVG of his sentiment sequence (-1/0/1) over time."""
+        if not tl:
+            return ""
+        w, h, n = 64, 16, len(tl)
+        step = w / max(1, n - 1) if n > 1 else w
+        pts = " ".join(f"{i*step:.1f},{h/2 - v*(h/2-2):.1f}" for i, v in enumerate(tl))
+        last = tl[-1]
+        col = "#16a34a" if last > 0 else "#dc2626" if last < 0 else "#94a3b8"
+        dots = "".join(
+            f"<circle cx='{i*step:.1f}' cy='{h/2 - v*(h/2-2):.1f}' r='1.5' "
+            f"fill='{'#16a34a' if v>0 else '#dc2626' if v<0 else '#cbd5e1'}'/>"
+            for i, v in enumerate(tl))
+        return (f"<svg width='{w}' height='{h}' viewBox='0 0 {w} {h}'>"
+                f"<line x1='0' y1='{h/2}' x2='{w}' y2='{h/2}' stroke='#e5e7eb' stroke-width='0.5'/>"
+                f"<polyline points='{pts}' fill='none' stroke='{col}' stroke-width='1'/>"
+                f"{dots}</svg>")
+
+    SENT = {"bull": "🟢多", "bear": "🔴空", "neutral": "⚪中"}
+    # His top tickers + his sentiment + our latest verdict (agree/diverge).
     rows = []
     for t in d.get("tickers", [])[:16]:
         tk = t["ticker"]
         hist = collect_ticker_history(tk)
         ours = hist[sorted(hist)[-1]]["verdict"] if hist else "—"
         vcls = {"BUY": "v-BUY", "HOLD": "v-HOLD", "SELL": "v-SELL"}.get(ours, "")
-        tag = "" if t["in_universe"] else "<span class='text-teal-400 text-[10px]'>★new</span>"
+        tag = "" if t["in_universe"] else "<span class='text-teal-400 text-[10px]'>★</span>"
+        sen = t.get("sentiment", {})
+        badge = SENT.get(sen.get("latest", "neutral"), "⚪")
+        counts = f"<span class='text-[10px] text-slate-400'>+{sen.get('pos',0)}/-{sen.get('neg',0)}</span>"
         rows.append(
             f"<tr><td class='tk'>{_esc(tk)} {tag}</td>"
             f"<td class='text-center'>{t['mentions']}</td>"
+            f"<td class='text-center whitespace-nowrap'>{badge} {counts}</td>"
+            f"<td>{sparkline(sen.get('timeline', []))}</td>"
             f"<td class='text-center'><span class='{vcls} px-1 rounded'>{_esc(ours)}</span></td>"
             f"<td class='text-[10px] text-slate-500'>{_esc(t['last_seen'])}</td></tr>"
         )
@@ -1257,7 +1281,7 @@ def render_serenity_panel() -> str:
         f'<div class="mb-2 text-xs"><b>新 picks (掃描中):</b> {picks or "—"}</div>'
         '<div class="grid grid-cols-1 lg:grid-cols-2 gap-4">'
         '<div><table class="w-full text-sm"><tr class="text-slate-500 text-xs">'
-        '<th class="text-left">Ticker</th><th>提及</th><th>我方 verdict</th><th class="text-left">最近</th></tr>'
+        '<th class="text-left">Ticker</th><th>提及</th><th>他態度</th><th>趨勢</th><th>我方 verdict</th><th class="text-left">最近</th></tr>'
         + "".join(rows) + "</table></div>"
         '<div><div class="font-semibold text-sm mb-1">最新貼文</div>'
         + "".join(tweets) + "</div></div>"
