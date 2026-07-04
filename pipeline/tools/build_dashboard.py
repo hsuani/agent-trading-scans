@@ -470,6 +470,8 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
   .ser-md p  { margin: 0.3rem 0; line-height: 1.45; }
   .ser-md strong { font-weight: 700; color:#0f172a; }
   .ser-md blockquote { border-left: 3px solid #99f6e4; padding-left: 0.6rem; color:#64748b; margin:0.3rem 0; }
+  /* offset anchor jumps so the sticky nav doesn't cover the target section */
+  section[id], [id] { scroll-margin-top: 72px; }
 </style>
 </head>
 <body class="bg-slate-50 text-slate-900">
@@ -1353,20 +1355,36 @@ def render_leverage_panel() -> str:
         cell.format(k=f"前高後最低 ({_esc(lv['trough_date'])})", v=lv["trough"]),
         f"<div class='bg-white/70 rounded p-2'><div class='text-[10px] text-slate-500'>現回撤</div>"
         f"<div class='font-bold text-sm {ddcol}'>{dd:.1f}%</div></div>",
-        cell.format(k=f"距 {lv['trigger_pct']:.0f}% 觸發", v=f"{lv['gap_pp']:.1f}pp"),
         cell.format(k="最深回撤", v=f"{lv['max_drawdown_pct']:.1f}%"),
         cell.format(k=_esc(lv["etf"]),
                     v=(f"${lv['etf_price']:.2f}" if lv.get("etf_price") else "—")),
     ])
+    # threshold ladder — crossed 紅實心✓ / next 琥珀高亮 / pending 灰空心
+    chips = []
+    for step in lv.get("ladder", []):
+        pct = step["pct"]; crossed = step["crossed"]
+        is_next = (lv.get("next_trigger") == pct)
+        cls = ("bg-rose-600 text-white" if crossed else
+               "bg-amber-200 text-amber-900 ring-2 ring-amber-400" if is_next else
+               "bg-white text-slate-400 border border-slate-300")
+        chips.append(f"<span class='{cls} px-2 py-0.5 rounded text-xs font-semibold'>"
+                     f"-{pct:.0f}%{'✓' if crossed else ''}</span>")
+    gapline = (f"　下一觸發 <b>-{lv['next_trigger']:.0f}%</b>，還差 <b>{lv['gap_pp']:.1f}pp</b>"
+               if lv.get("next_trigger") is not None else "　已達最深門檻")
+    ladder_html = (
+        "<div class='flex flex-wrap items-center gap-1.5 mt-2'>"
+        "<span class='text-[11px] text-slate-500 mr-1'>回撤門檻階梯:</span>"
+        + "".join(chips) + f"<span class='text-[11px] text-slate-600'>{gapline}</span></div>")
     return (
         f'<section id="leverage" class="{bg} border rounded-lg shadow-sm p-4">'
         '<div class="flex items-baseline justify-between mb-2">'
         '<h2 class="text-lg font-bold">⚖️ 正2 Beta 調整規則 <span class="text-xs font-normal text-slate-500">'
         f'00631L 機械式回測規則</span></h2></div>'
         f'<div class="text-sm font-semibold mb-2">{_esc(lv["action"])}</div>'
-        f'<div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-2">{grid}</div>'
+        f'<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-2">{grid}</div>'
+        f'{ladder_html}'
         '<div class="text-[11px] text-slate-500 mt-2">規則：平常 Beta 1 (≈50% 00631L + 50% 現金) · '
-        '0050 回撤 ≥28% → 現金全買 00631L (Beta→2) · 回前高 → 回 Beta 1 重建現金。'
+        '0050 回撤越深越加碼 00631L (Beta→2) · 回前高 → 回 Beta 1 重建現金。'
         '工具/回測規則，非投資建議。</div></section>'
     )
 

@@ -1,0 +1,50 @@
+name: 正2 leverage intraday
+
+# Intraday 0050 drawdown / Beta-rule tracker. Pure Python (yfinance), ZERO
+# Claude usage. Runs every 30 min during Taiwan market hours on weekdays so the
+# ⚖️ 正2 panel + threshold ladder stay fresh while TW market is open.
+
+on:
+  schedule:
+    # 01:00–05:30 UTC = 09:00–13:30 Asia/Taipei, Mon–Fri (TW trading session).
+    - cron: "0,30 1-5 * * 1-5"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: leverage
+  cancel-in-progress: false
+
+jobs:
+  leverage:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install deps
+        run: pip install --quiet yfinance pandas markdown
+
+      - name: Update monitor + leverage
+        env:
+          TRADING_SCANS_ROOT: ${{ github.workspace }}
+          LEVERAGE_TRIGGERS: "10,15,20,25,30"
+        run: |
+          python3 pipeline/tools/monitor.py
+          python3 pipeline/tools/build_dashboard.py
+
+      - name: Commit
+        run: |
+          git config user.name  "YHT"
+          git config user.email "yhtseng91@gmail.com"
+          git add alerts.json alerts.html dashboard.html
+          if git diff --cached --quiet; then
+            echo "no change"
+          else
+            git commit -m "正2 intraday $(date -u +%F\ %H:%MZ)"
+            git pull --rebase --autostash origin main 2>/dev/null || true
+            git push
+          fi

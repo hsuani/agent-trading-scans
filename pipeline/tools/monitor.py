@@ -173,7 +173,8 @@ def leverage_rule():
             LEVERAGE_TRIGGER (28), LEVERAGE_NEAR (1), LEVERAGE_LOOKBACK (2y)."""
     und = os.environ.get("LEVERAGE_UNDERLYING", "0050.TW")
     etf = os.environ.get("LEVERAGE_ETF", "00631L.TW")
-    trig = float(os.environ.get("LEVERAGE_TRIGGER", "28"))
+    trigs = sorted(float(x) for x in
+                   os.environ.get("LEVERAGE_TRIGGERS", "10,15,20,25,30").split(",") if x.strip())
     near = float(os.environ.get("LEVERAGE_NEAR", "1"))
     lookback = os.environ.get("LEVERAGE_LOOKBACK", "2y")
     try:
@@ -185,22 +186,37 @@ def leverage_rule():
         cur = float(c.iloc[-1])
         after = c[c.index >= c.idxmax()]
         trough = float(after.min()); trough_dt = str(after.idxmin().date())
-        dd = (cur - peak) / peak * 100.0            # current drawdown %
+        dd = (cur - peak) / peak * 100.0            # current drawdown % (negative)
+        add = abs(dd)                               # drawdown magnitude
         max_dd = (trough - peak) / peak * 100.0     # deepest drawdown since peak
-        gap = trig - abs(dd)                         # pp still needed to trigger
         epx = price(etf)
-        if abs(dd) >= trig:
-            sig, action, urg = "TRIGGER", f"🔴 回撤 {dd:.1f}% ≥{trig:.0f}% → 現金全買 {etf}, Beta→2", 0
-        elif dd >= -near:
-            sig, action, urg = "AT_HIGH", f"🟢 已回前高 → 回 Beta 1, 重建現金彈藥", 1
+
+        ladder = [{"pct": t, "crossed": add >= t} for t in trigs]
+        crossed = [t for t in trigs if add >= t]
+        pending = [t for t in trigs if add < t]
+        next_t = pending[0] if pending else None
+        gap = (next_t - add) if next_t is not None else None
+        deepest = crossed[-1] if crossed else None
+
+        if dd >= -near:
+            sig = "AT_HIGH"; urg = 1
+            action = "🟢 已回前高 → 回 Beta 1, 重建現金彈藥"
+        elif deepest is not None:
+            sig = "TRIGGER"; urg = 0 if deepest >= trigs[-1] else 2
+            nxt = (f"，下一檔 -{next_t:.0f}% 還差 {gap:.1f}pp" if next_t is not None
+                   else "（已達最深門檻，Beta 接近 2）")
+            action = f"🔴 回撤 -{add:.1f}% 已跨 -{deepest:.0f}% 門檻 → 加碼 {etf}{nxt}"
         else:
-            sig, action, urg = "NORMAL", f"⚪ Beta 1 · 現回撤 {dd:.1f}% · 距 {trig:.0f}% 觸發還差 {gap:.1f}pp", 3
+            sig = "NORMAL"; urg = 3
+            action = (f"⚪ Beta 1 · 現回撤 {dd:.1f}% · 距首檔 -{next_t:.0f}% 還差 {gap:.1f}pp"
+                      if next_t is not None else f"⚪ Beta 1 · 現回撤 {dd:.1f}%")
         return {
-            "underlying": und, "etf": etf, "trigger_pct": trig,
+            "underlying": und, "etf": etf, "triggers": trigs, "ladder": ladder,
             "price": round(cur, 2), "peak": round(peak, 2), "peak_date": peak_dt,
             "trough": round(trough, 2), "trough_date": trough_dt,
             "drawdown_pct": round(dd, 2), "max_drawdown_pct": round(max_dd, 2),
-            "gap_pp": round(gap, 2), "etf_price": epx,
+            "next_trigger": next_t, "gap_pp": round(gap, 2) if gap is not None else None,
+            "deepest_crossed": deepest, "etf_price": epx,
             "signal": sig, "action": action, "urgency": urg,
         }
     except Exception as e:
