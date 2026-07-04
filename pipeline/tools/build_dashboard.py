@@ -498,6 +498,7 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
     <a class="text-blue-700 hover:underline" href="./HOWTO_READ.html" target="_blank">📘 閱讀指南</a>
     <a class="text-blue-700 hover:underline" href="./_catalysts.json" target="_blank">📅 catalyst JSON</a>
     <a class="text-rose-700 hover:underline font-semibold" href="./alerts.html" target="_blank">🚨 L0 Alerts</a>
+    <a class="text-amber-700 hover:underline font-semibold" href="#leverage">⚖️ 正2</a>
     <a class="text-teal-700 hover:underline font-semibold" href="#serenity">🧘 Serenity</a>
   </div>
 </nav>
@@ -505,6 +506,8 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
 <main class="max-w-7xl mx-auto p-6 space-y-6">
 
   __ALERTS__
+
+  __LEVERAGE__
 
   __SERENITY__
 
@@ -1324,6 +1327,50 @@ def render_serenity_panel() -> str:
     )
 
 
+def render_leverage_panel() -> str:
+    """正2 (00631L) Beta 調整規則面板 — reads alerts.json['leverage']. Shows
+    0050 drawdown from peak, prior high/low, distance to the 28% deploy trigger,
+    and the current Beta action."""
+    f = SCANS / "alerts.json"
+    if not f.exists():
+        return ""
+    try:
+        lv = json.loads(f.read_text(encoding="utf-8")).get("leverage")
+    except Exception:
+        lv = None
+    if not lv or lv.get("error"):
+        return ""
+    urg = lv.get("urgency", 3)
+    bg = {0: "bg-rose-100 border-rose-300", 1: "bg-green-100 border-green-300",
+          3: "bg-slate-100 border-slate-300"}.get(urg, "bg-slate-100 border-slate-300")
+    dd = lv.get("drawdown_pct", 0)
+    ddcol = "text-rose-700" if dd <= -10 else "text-slate-700"
+    cell = ("<div class='bg-white/70 rounded p-2'><div class='text-[10px] text-slate-500'>{k}</div>"
+            "<div class='font-bold text-sm'>{v}</div></div>")
+    grid = "".join([
+        cell.format(k="現價 " + _esc(lv["underlying"]), v=lv["price"]),
+        cell.format(k=f"前高 ({_esc(lv['peak_date'])})", v=lv["peak"]),
+        cell.format(k=f"前高後最低 ({_esc(lv['trough_date'])})", v=lv["trough"]),
+        f"<div class='bg-white/70 rounded p-2'><div class='text-[10px] text-slate-500'>現回撤</div>"
+        f"<div class='font-bold text-sm {ddcol}'>{dd:.1f}%</div></div>",
+        cell.format(k=f"距 {lv['trigger_pct']:.0f}% 觸發", v=f"{lv['gap_pp']:.1f}pp"),
+        cell.format(k="最深回撤", v=f"{lv['max_drawdown_pct']:.1f}%"),
+        cell.format(k=_esc(lv["etf"]),
+                    v=(f"${lv['etf_price']:.2f}" if lv.get("etf_price") else "—")),
+    ])
+    return (
+        f'<section id="leverage" class="{bg} border rounded-lg shadow-sm p-4">'
+        '<div class="flex items-baseline justify-between mb-2">'
+        '<h2 class="text-lg font-bold">⚖️ 正2 Beta 調整規則 <span class="text-xs font-normal text-slate-500">'
+        f'00631L 機械式回測規則</span></h2></div>'
+        f'<div class="text-sm font-semibold mb-2">{_esc(lv["action"])}</div>'
+        f'<div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-2">{grid}</div>'
+        '<div class="text-[11px] text-slate-500 mt-2">規則：平常 Beta 1 (≈50% 00631L + 50% 現金) · '
+        '0050 回撤 ≥28% → 現金全買 00631L (Beta→2) · 回前高 → 回 Beta 1 重建現金。'
+        '工具/回測規則，非投資建議。</div></section>'
+    )
+
+
 def render_alert_banner() -> str:
     """Top-of-dashboard L0 monitor banner from alerts.json (zero-LLM price
     tracker output). Shows the most urgent actionable alerts (urgency<=2:
@@ -1374,6 +1421,7 @@ def main():
             .replace("__GENERATED__", payload["generated_at"])
             .replace("__NAV_LINKS__", "\n".join(nav_links))
             .replace("__ALERTS__", render_alert_banner())
+            .replace("__LEVERAGE__", render_leverage_panel())
             .replace("__SERENITY__", render_serenity_panel())
             .replace("__TOP20_ROWS__", top20_html)
             .replace("__DATA__", json.dumps(payload, ensure_ascii=False)))
