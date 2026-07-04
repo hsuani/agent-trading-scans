@@ -162,6 +162,51 @@ def status(card, px):
     return (urg, flags or ["— in range"])
 
 
+def leverage_rule():
+    """正2 (2x leveraged ETF) Beta-adjustment rule tracker — mechanical, zero-LLM.
+    Tracks the underlying index (0050) drawdown from its trailing peak and emits
+    the deploy/rebalance signal per the 00631L strategy:
+      - 0050 回撤 >= TRIGGER% from peak  -> 現金全買 00631L (Beta -> ~2)
+      - 0050 回前高 (within NEAR% of peak) -> 回 Beta 1, 重建現金彈藥
+      - else                              -> Beta 1, 顯示回撤 + 距觸發還差
+    Config: LEVERAGE_UNDERLYING (0050.TW), LEVERAGE_ETF (00631L.TW),
+            LEVERAGE_TRIGGER (28), LEVERAGE_NEAR (1), LEVERAGE_LOOKBACK (2y)."""
+    und = os.environ.get("LEVERAGE_UNDERLYING", "0050.TW")
+    etf = os.environ.get("LEVERAGE_ETF", "00631L.TW")
+    trig = float(os.environ.get("LEVERAGE_TRIGGER", "28"))
+    near = float(os.environ.get("LEVERAGE_NEAR", "1"))
+    lookback = os.environ.get("LEVERAGE_LOOKBACK", "2y")
+    try:
+        df = yf.Ticker(und).history(period=lookback, auto_adjust=True)
+        c = df["Close"] if "Close" in df else df["close"]
+        if c.empty:
+            return None
+        peak = float(c.max()); peak_dt = str(c.idxmax().date())
+        cur = float(c.iloc[-1])
+        after = c[c.index >= c.idxmax()]
+        trough = float(after.min()); trough_dt = str(after.idxmin().date())
+        dd = (cur - peak) / peak * 100.0            # current drawdown %
+        max_dd = (trough - peak) / peak * 100.0     # deepest drawdown since peak
+        gap = trig - abs(dd)                         # pp still needed to trigger
+        epx = price(etf)
+        if abs(dd) >= trig:
+            sig, action, urg = "TRIGGER", f"🔴 回撤 {dd:.1f}% ≥{trig:.0f}% → 現金全買 {etf}, Beta→2", 0
+        elif dd >= -near:
+            sig, action, urg = "AT_HIGH", f"🟢 已回前高 → 回 Beta 1, 重建現金彈藥", 1
+        else:
+            sig, action, urg = "NORMAL", f"⚪ Beta 1 · 現回撤 {dd:.1f}% · 距 {trig:.0f}% 觸發還差 {gap:.1f}pp", 3
+        return {
+            "underlying": und, "etf": etf, "trigger_pct": trig,
+            "price": round(cur, 2), "peak": round(peak, 2), "peak_date": peak_dt,
+            "trough": round(trough, 2), "trough_date": trough_dt,
+            "drawdown_pct": round(dd, 2), "max_drawdown_pct": round(max_dd, 2),
+            "gap_pp": round(gap, 2), "etf_price": epx,
+            "signal": sig, "action": action, "urgency": urg,
+        }
+    except Exception as e:
+        return {"error": str(e)}
+
+
 def main():
     held = set()
     if HELD_FILE.exists():
@@ -218,6 +263,7 @@ def main():
         "generated_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
         "rr_min": RR_MIN, "catalyst_days": CATALYST_DAYS,
         "count": len(rows), "alerts": rows,
+        "leverage": leverage_rule(),
     }
     (ROOT / "alerts.json").write_text(json.dumps(payload, ensure_ascii=False, indent=2),
                                       encoding="utf-8")
