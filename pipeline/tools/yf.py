@@ -162,23 +162,44 @@ def main():
     if k == "info":
         out = _retry(lambda: t.info)
     elif k == "fast_info":
-        try:
-            fi = _retry(lambda: t.fast_info)
-        except Exception:
-            fi = None
-        out = {key: (getattr(fi, key, None) if fi else None) for key in [
-            "last_price", "previous_close", "open", "day_high", "day_low",
-            "fifty_day_average", "two_hundred_day_average",
-            "year_high", "year_low", "market_cap", "currency",
-            "exchange", "quote_type", "shares", "ten_day_average_volume",
-        ]}
-        # Fallbacks when Yahoo gives no price (403 rate-limit). cnyes covers US
-        # + TW universally; TWSE is the official TW-only secondary.
-        if out.get("last_price") in (None, 0):
-            cn = _cnyes_quote(args.ticker)
-            if cn:
-                out.update(cn); out["source"] = "cnyes"
-            elif args.ticker.upper().endswith((".TW", ".TWO")):
+        # PRIMARY: 鉅亨網 (cnyes) — covers US + TW, no Yahoo 403 rate-limit, so
+        # scan subagents get real prices. Yahoo yfinance is the FALLBACK (adds
+        # richer fields: MA/year hi-lo/market cap) when cnyes is unavailable.
+        out = None
+        cn = _cnyes_quote(args.ticker)
+        if cn and cn.get("last_price"):
+            out = {"last_price": None, "previous_close": None, "open": None,
+                   "day_high": None, "day_low": None, "fifty_day_average": None,
+                   "two_hundred_day_average": None, "year_high": None,
+                   "year_low": None, "market_cap": None, "currency": None,
+                   "exchange": None, "quote_type": None, "shares": None,
+                   "ten_day_average_volume": None}
+            out.update(cn); out["source"] = "cnyes"
+            # enrich with Yahoo's extra fields if reachable (best-effort)
+            try:
+                fi = _retry(lambda: t.fast_info, tries=2)
+                if fi:
+                    for key in ("fifty_day_average", "two_hundred_day_average",
+                                "year_high", "year_low", "market_cap",
+                                "ten_day_average_volume"):
+                        v = getattr(fi, key, None)
+                        if v:
+                            out[key] = v
+            except Exception:
+                pass
+        else:
+            # cnyes miss -> Yahoo, then TWSE for TW
+            try:
+                fi = _retry(lambda: t.fast_info)
+            except Exception:
+                fi = None
+            out = {key: (getattr(fi, key, None) if fi else None) for key in [
+                "last_price", "previous_close", "open", "day_high", "day_low",
+                "fifty_day_average", "two_hundred_day_average",
+                "year_high", "year_low", "market_cap", "currency",
+                "exchange", "quote_type", "shares", "ten_day_average_volume",
+            ]}
+            if out.get("last_price") in (None, 0) and args.ticker.upper().endswith((".TW", ".TWO")):
                 tw = _twse_quote(args.ticker)
                 if tw:
                     out.update(tw); out["source"] = "twse"
