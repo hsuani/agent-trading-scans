@@ -1174,6 +1174,36 @@ def _esc(s) -> str:
     return (str(s) if s is not None else "").replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
 
 
+def _first_nums(s, n=2):
+    """First n numeric values in a string (ignores R:R 'x' ratios & %)."""
+    if not s:
+        return []
+    # strip R:R-style "3.9x" / "1.5 x" and percentages so they don't leak in
+    cleaned = re.sub(r"\d+(?:\.\d+)?\s*[xX]", " ", s)
+    cleaned = re.sub(r"\d+(?:\.\d+)?\s*%", " ", cleaned)
+    return [float(x) for x in re.findall(r"\d+(?:\.\d+)?", cleaned.replace(",", ""))][:n]
+
+
+def derive_targets(entry, stop, rr):
+    """Compute (entry_mid, stop_num, T1, T2) from entry range + stop + R:R(T2),
+    rather than trusting the report's T1/T2 (often empty or an 'x' ratio).
+    Long assumption: T = entry_mid + R:R * (entry_mid - stop). T1 at half R:R.
+    Returns (entry_mid, stop_num, t1, t2) with None where not derivable."""
+    en = _first_nums(entry, 2)
+    sn = _first_nums(stop, 1)
+    if not en or not sn:
+        return (sum(en) / len(en) if en else None,
+                sn[0] if sn else None, None, None)
+    entry_mid = sum(en) / len(en)
+    stop_num = sn[0]
+    risk = entry_mid - stop_num
+    if not rr or rr <= 0 or risk <= 0:
+        return entry_mid, stop_num, None, None
+    t2 = entry_mid + rr * risk
+    t1 = entry_mid + (rr / 2) * risk
+    return entry_mid, stop_num, round(t1, 2), round(t2, 2)
+
+
 def render_top20_rows(top20: list) -> str:
     rows = []
     for i, t in enumerate(top20, 1):
@@ -1188,6 +1218,13 @@ def render_top20_rows(top20: list) -> str:
         rank_color = ("bg-yellow-100 text-yellow-900 font-bold" if i == 1 else
                       "bg-slate-100 text-slate-700 font-semibold" if i <= 3 else
                       "text-slate-600")
+        # T1/T2 computed from entry+stop+R:R (not parsed — report values are
+        # often empty or an 'x' ratio). entry/stop shown as clean numbers.
+        emid, snum, ct1, ct2 = derive_targets(t.get("entry"), t.get("stop"), t.get("rr_t2"))
+        entry_disp = f"{emid:g}" if emid is not None else "—"
+        stop_disp = f"{snum:g}" if snum is not None else "—"
+        t1_disp = f"{ct1:g}" if ct1 is not None else "—"
+        t2_disp = f"{ct2:g}" if ct2 is not None else "—"
         rows.append(f"""
           <tr class="hover:bg-slate-50">
             <td class="text-center {rank_color}">{i}</td>
@@ -1198,10 +1235,10 @@ def render_top20_rows(top20: list) -> str:
             <td class="text-right font-mono {conv_color}">{t['conviction']}%</td>
             <td class="text-right font-mono {rr_color}">{t['rr_t2']:.2f}x</td>
             <td>{phase_cell}</td>
-            <td class="text-xs">{_esc(t['entry'])[:30]}</td>
-            <td class="text-xs">{_esc(t['stop'])[:20]}</td>
-            <td class="text-xs">{_esc(t['t1'])[:20]}</td>
-            <td class="text-xs">{_esc(t['t2'])[:20]}</td>
+            <td class="text-xs font-mono" title="{_esc(t['entry'])}">{entry_disp}</td>
+            <td class="text-xs font-mono" title="{_esc(t['stop'])}">{stop_disp}</td>
+            <td class="text-xs font-mono">{t1_disp}</td>
+            <td class="text-xs font-mono">{t2_disp}</td>
             <td class="text-xs">{_esc(t['size'])[:25]}</td>
             <td class="text-xs text-slate-500">{_esc(t['scan_date'])}</td>
             <td><a href="{_esc(t['report_url'])}" target="_blank" class="text-blue-700 hover:underline text-xs">↗</a></td>
