@@ -215,6 +215,16 @@ Phase 1 (parallel fanout via Task):
   Task(sentiment-analyst,    TICKER, DATE)
   → daily/{DATE}/{TICKER}/{fundamentals|market|news|sentiment}.md
 
+**PRICE-DATA INTEGRITY (critical):** the market analyst gets prices via
+`pipeline/tools/ta.py <TICKER> snapshot` / `yf.py <TICKER> fast_info` (both now
+retry on Yahoo 403 rate-limiting). If after retries it STILL cannot obtain a
+real price, it MUST NOT invent/estimate price levels from news or narrative.
+Instead: report `PRICE_DATA_UNAVAILABLE`, set no RSI/MA/levels, and the
+downstream trader/portfolio-manager MUST NOT emit fabricated entry/stop/target
+numbers — the final_decision states "無即時價格，暫不給進出場價位" and stays
+Phase-1-only. NEVER present a made-up price as if real (e.g. FN 7/8 showed
+$685-850 entry while the stock was ~$470 — that was hallucinated from a 403).
+
 Phase 2 (debate loop, max `rounds`):
   for N in 1..rounds:
     Task(bull-researcher, TICKER, DATE, ROUND=N)

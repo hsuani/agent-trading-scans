@@ -77,10 +77,27 @@ def main():
     t = yf.Ticker(args.ticker)
     k = args.kind
 
+    # Retry wrapper — Yahoo 403-rate-limits under scan concurrency; retry so
+    # subagents get real quotes instead of hallucinating levels.
+    import time as _time
+    def _retry(fn, tries=5):
+        last = None
+        for i in range(tries):
+            try:
+                r = fn()
+                if r is not None:
+                    return r
+            except Exception as e:
+                last = e
+            _time.sleep(1.5 * (i + 1))
+        if last:
+            raise last
+        return None
+
     if k == "info":
-        out = t.info
+        out = _retry(lambda: t.info)
     elif k == "fast_info":
-        fi = t.fast_info
+        fi = _retry(lambda: t.fast_info)
         out = {key: getattr(fi, key, None) for key in [
             "last_price", "previous_close", "open", "day_high", "day_low",
             "fifty_day_average", "two_hundred_day_average",
