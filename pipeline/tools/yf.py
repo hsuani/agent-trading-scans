@@ -39,6 +39,40 @@ warnings.filterwarnings("ignore")
 import yfinance as yf  # noqa: E402
 
 
+def _twse_quote(ticker):
+    """Real-time quote from the TWSE official MIS API for a TW ticker.
+    .TW -> 上市 (tse_), .TWO -> 上櫃 (otc_). Returns fast_info-shaped dict or
+    None. No Yahoo rate limit; reliable primary/fallback for Taiwan stocks."""
+    import json as _json
+    import urllib.request as _u
+    num = ticker.upper().replace(".TWO", "").replace(".TW", "")
+    ex = "otc" if ticker.upper().endswith(".TWO") else "tse"
+    url = (f"https://mis.twse.com.tw/stock/api/getStockInfo.jsp?"
+           f"ex_ch={ex}_{num}.tw&json=1")
+    try:
+        req = _u.Request(url, headers={"User-Agent": "Mozilla/5.0"})
+        with _u.urlopen(req, timeout=12) as r:
+            d = _json.loads(r.read().decode("utf-8"))
+        arr = d.get("msgArray") or []
+        if not arr:
+            return None
+        m = arr[0]
+        def f(k):
+            v = m.get(k, "")
+            try:
+                return float(v)
+            except (TypeError, ValueError):
+                return None
+        last = f("z")                      # 最新成交價 ("-" if no trade)
+        if last is None:
+            last = f("y") or f("o")        # fall back to prev-close / open
+        return {"last_price": last, "previous_close": f("y"), "open": f("o"),
+                "day_high": f("h"), "day_low": f("l"), "currency": "TWD",
+                "name": m.get("n"), "as_of": m.get("t")}
+    except Exception:
+        return None
+
+
 def _df(df):
     if df is None:
         return None
@@ -97,13 +131,22 @@ def main():
     if k == "info":
         out = _retry(lambda: t.info)
     elif k == "fast_info":
-        fi = _retry(lambda: t.fast_info)
-        out = {key: getattr(fi, key, None) for key in [
+        try:
+            fi = _retry(lambda: t.fast_info)
+        except Exception:
+            fi = None
+        out = {key: (getattr(fi, key, None) if fi else None) for key in [
             "last_price", "previous_close", "open", "day_high", "day_low",
             "fifty_day_average", "two_hundred_day_average",
             "year_high", "year_low", "market_cap", "currency",
             "exchange", "quote_type", "shares", "ten_day_average_volume",
         ]}
+        # TWSE official fallback for Taiwan tickers when Yahoo gives no price
+        # (.TW = 上市 tse_, .TWO = 上櫃 otc_). Real-time, no Yahoo rate limit.
+        if out.get("last_price") in (None, 0) and args.ticker.upper().endswith((".TW", ".TWO")):
+            tw = _twse_quote(args.ticker)
+            if tw:
+                out.update(tw); out["source"] = "twse"
     elif k == "history":
         kw = {"period": args.period} if not (args.start or args.end) else {}
         if args.start: kw["start"] = args.start
