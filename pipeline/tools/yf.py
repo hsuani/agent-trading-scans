@@ -39,6 +39,37 @@ warnings.filterwarnings("ignore")
 import yfinance as yf  # noqa: E402
 
 
+def _cnyes_quote(ticker):
+    """Real-time quote from the 鉅亨網 (cnyes) public API — covers US AND TW
+    (and global). Universal fallback when Yahoo rate-limits. .TW/.TWO ->
+    TWS:<num>:STOCK, else US -> USS:<TICKER>:STOCK. fast_info-shaped or None."""
+    import json as _json
+    import urllib.request as _u
+    u = ticker.upper()
+    if u.endswith((".TW", ".TWO")):
+        sym = "TWS:" + u.replace(".TWO", "").replace(".TW", "") + ":STOCK"
+    else:
+        sym = "USS:" + u + ":STOCK"
+    url = f"https://ws.api.cnyes.com/ws/api/v1/quote/quotes/{sym}"
+    try:
+        req = _u.Request(url, headers={"User-Agent": "Mozilla/5.0"})
+        with _u.urlopen(req, timeout=12) as r:
+            d = _json.loads(r.read().decode("utf-8"))
+        arr = d.get("data") or []
+        if not arr:
+            return None
+        m = arr[0]
+        last = m.get("6")
+        if not last:
+            return None
+        return {"last_price": float(last), "previous_close": m.get("21"),
+                "day_high": m.get("12"), "day_low": m.get("13"),
+                "currency": "TWD" if u.endswith((".TW", ".TWO")) else "USD",
+                "name": m.get("200009")}
+    except Exception:
+        return None
+
+
 def _twse_quote(ticker):
     """Real-time quote from the TWSE official MIS API for a TW ticker.
     .TW -> 上市 (tse_), .TWO -> 上櫃 (otc_). Returns fast_info-shaped dict or
@@ -141,12 +172,16 @@ def main():
             "year_high", "year_low", "market_cap", "currency",
             "exchange", "quote_type", "shares", "ten_day_average_volume",
         ]}
-        # TWSE official fallback for Taiwan tickers when Yahoo gives no price
-        # (.TW = 上市 tse_, .TWO = 上櫃 otc_). Real-time, no Yahoo rate limit.
-        if out.get("last_price") in (None, 0) and args.ticker.upper().endswith((".TW", ".TWO")):
-            tw = _twse_quote(args.ticker)
-            if tw:
-                out.update(tw); out["source"] = "twse"
+        # Fallbacks when Yahoo gives no price (403 rate-limit). cnyes covers US
+        # + TW universally; TWSE is the official TW-only secondary.
+        if out.get("last_price") in (None, 0):
+            cn = _cnyes_quote(args.ticker)
+            if cn:
+                out.update(cn); out["source"] = "cnyes"
+            elif args.ticker.upper().endswith((".TW", ".TWO")):
+                tw = _twse_quote(args.ticker)
+                if tw:
+                    out.update(tw); out["source"] = "twse"
     elif k == "history":
         kw = {"period": args.period} if not (args.start or args.end) else {}
         if args.start: kw["start"] = args.start
