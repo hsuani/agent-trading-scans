@@ -21,7 +21,6 @@ SECTORS = {
   "materials":  ["FCX", "MP", "LIN", "APD", "ALB"],
   "quantum":    ["IONQ", "RGTI", "QBTS", "QUBT", "ARQQ", "LAES", "HON", "IBM"],
   "photonics":  ["POET", "CRDO", "ALAB", "GFS", "INTC"],
-  "memory":     ["000660.KS", "005930.KS", "SNDK", "WDC"],   # HBM/DRAM/NAND (MU 已在 semi)
   "hedge":      ["GLD", "TLT", "UUP", "SH"],   # trimmed from 8 — macro ETFs don't need full pipeline
   # Taiwan-focused supply chain sectors (no duplicates with above)
   "abf":        ["3037.TW", "8046.TW", "3189.TW", "4958.TW", "2368.TW"],   # +臻鼎/金像電 (Vera Rubin 載板PCB)
@@ -32,7 +31,6 @@ SECTORS = {
   # tw_photonics absorbs the old tw_optics members (上詮/華星光/眾達 = CPO 中游)
   "tw_photonics": ["3081.TWO", "2455.TW", "5455.TWO", "3163.TWO", "3008.TW", "4908.TWO", "3363.TWO", "4979.TWO", "4977.TW", "3711.TW", "6830.TW", "3587.TWO", "3289.TWO"],
   "tw_probe":   ["6510.TWO", "6223.TWO", "6515.TW", "6257.TW", "2449.TW", "3443.TW", "6217.TWO"],   # 探針卡/IC測試/ASIC設計服務
-  "tw_memory":  ["2408.TW", "2344.TW", "8299.TWO", "3260.TW"],   # 南亞科/華邦/群聯/威剛 (TW DRAM/NAND)
 }
 ```
 
@@ -47,9 +45,6 @@ SECTORS = {
 | `tw_pkg` | 先進封裝 (CoWoS supply chain) | 世芯-KY 3661 / 尖點 8021 / 迅得 6438 |
 | `tw_photonics` | 矽光子供應鏈上中下游+檢測 (TW) | 上游磊晶: 聯亞 3081 / 全新 2455 / 英特磊 5455 · 中游光模組/FAU: 波若威 3163 (NVDA Spectrum-X 夥伴) / 大立光 3008 / 前鼎 4908 / 上詮 3363 / 華星光 4979 / 眾達 4977 · 下游封測: 日月光 3711 · 檢測三雄: 汎銓 6830 / 閎康 3587 / 宜特 3289 |
 | `tw_probe` | 探針測試 / IC 測試 / ASIC 服務 (TW) | 探針卡: 中華精測 6510 / 旺矽 6223 / 穎崴 6515 / 中探針 6217 · IC 測試: 矽格 6257 / 京元電 2449 · ASIC 服務: 創意電子 3443 |
-| `tw_memory` | 記憶體 DRAM/NAND (TW) | 南亞科 2408 / 華邦電 2344 / 群聯 8299 / 威剛 3260 |
-
-`memory` (US/韓 HBM/DRAM/NAND): SK海力士 000660.KS (HBM 龍頭, NVDA 主供) / 三星 005930.KS / SanDisk SNDK / Western Digital WDC — MU (美光) 已在 semi。韓股用 `.KS` 後綴 (yfinance)。
 
 註: 舊 `tw_optics` (上詮/華星光/眾達) 已併入 `tw_photonics` 中游 (都是 CPO 光通訊); tw_optics sector key 已停用, 歷史資料保留.
 
@@ -97,8 +92,8 @@ Vera Rubin 台灣供應鏈新增 (2026-07): 載板 臻鼎4958/金像電2368 → 
 |---|---|---|---|---|
 | Mon | 1 | `semi tw_pkg serenity` | 9 + 3 + ~8 = ~20 | AI compute + 先進封裝 + Serenity picks |
 | Tue | 2 | `power tw_power quantum` | 8 + 3 + 8 = 19 | 電力 + TW 電源 + 量子運算 |
-| Wed | 3 | `cooling tw_cooling memory` | 9 + 5 + 4 = 18 | 散熱 + 記憶體 HBM |
-| Thu | 4 | `oem tw_server abf tw_memory` | 5 + 4 + 5 + 4 = 18 | AI server + ABF + TW 記憶體 |
+| Wed | 3 | `cooling tw_cooling` | 9 + 3 = 12 | 散熱 (US + TW) |
+| Thu | 4 | `oem tw_server abf` | 5 + 3 + 3 = 11 | AI server + ABF 載板 |
 | Fri | 5 | `security materials robotics` | 5 + 5 + 7 = 17 | 安全 + 原料 + 機器人 |
 | Sat | 6 | `hedge reit tw_probe` | 4 + 4 + 7 = 15 | 避險 + REIT + 探針測試 |
 | Sun | 7 | `photonics tw_photonics` | 5 + 13 = 18 | 矽光子專日 (US 純玩家 + TW 上中下游+檢測, 含舊 tw_optics) |

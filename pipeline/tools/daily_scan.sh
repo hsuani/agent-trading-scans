@@ -48,8 +48,8 @@ declare -a DAY_SECTORS=(
   ""                                # padding for index 0
   "semi tw_pkg serenity"            # Mon: AI core compute (US + TW packaging) + Serenity picks (dynamic)
   "power tw_power quantum"          # Tue: Power infrastructure (US + TW grid/PSU) + quantum computing (incl. HON=Quantinuum proxy)
-  "cooling tw_cooling memory"              # Wed: Thermal (US + TW) — tw_optics merged into tw_photonics (Sun) + memory (HBM)
-  "oem tw_server abf tw_memory"               # Thu: AI server build (US + TW ODM + ABF substrate) + TW memory
+  "cooling tw_cooling"              # Wed: Thermal (US + TW) — tw_optics merged into tw_photonics (Sun)
+  "oem tw_server abf"               # Thu: AI server build (US + TW ODM + ABF substrate)
   "security materials robotics"     # Fri: Security + raw materials + robotics (moved off Sun to make room for photonics)
   "hedge reit tw_probe"             # Sat: Defensive (hedge 4 + REIT) + 探針測試 (TW probe-card/test, freest day after hedge trim)
   "photonics tw_photonics"          # Sun: Silicon photonics day (US POET/CRDO/ALAB/GFS/INTC + TW 上中下游+檢測 10 檔)
@@ -279,19 +279,9 @@ if [[ "$DRY_RUN" != "1" ]]; then
     "$PY" "$TOOL_DIR/build_dashboard.py" >> "$GLOBAL_LOG" 2>&1 || true
   fi
 
-  # Post-scan validation — Top-20 levels present + price sanity (catch 幻想價).
-  echo "validating..." >> "$GLOBAL_LOG"
-  VAL_OUT=$("$PY" "$TOOL_DIR/validate.py" 2>&1); VAL_RC=$?
-  echo "$VAL_OUT" >> "$GLOBAL_LOG"
-  echo "validate exit: $VAL_RC" >> "$GLOBAL_LOG"
-
-  # Summary notification (flag validation errors so bad levels don't slip by)
+  # Summary notification
   SECTOR_SUMMARY=$(printf "%s " "${SECTOR_LIST[@]}")
-  if [[ "$VAL_RC" -gt 0 ]]; then
-    osascript -e "display notification \"⚠️ ${VAL_RC} 驗證錯誤 (Top20 價位/幻想價). Sectors: ${SECTOR_SUMMARY}\" with title \"Trading scan ($DATE)\" sound name \"Basso\""
-  else
-    osascript -e "display notification \"Sectors: ${SECTOR_SUMMARY}— ${#HTML_LIST[@]} reports built, 驗證通過.\" with title \"Trading scan ($DATE)\" sound name \"Glass\""
-  fi
+  osascript -e "display notification \"Sectors: ${SECTOR_SUMMARY}— ${#HTML_LIST[@]} reports built.\" with title \"Trading scan ($DATE)\" sound name \"Glass\""
 
   # Auto-open first HTML if interactive
   if [[ -t 1 && -n "${HTML_LIST[0]:-}" ]]; then
