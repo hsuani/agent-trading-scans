@@ -23,8 +23,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0   # full history so the status-banner git log sees scan/backfill commits
 
       - uses: actions/setup-python@v5
         with:
@@ -62,7 +60,5 @@ jobs:
             echo "no change"
           else
             git commit -m "L0 monitor + Serenity feed $(date -u +%F\ %H:%MZ)"
-            # keep OUR regenerated dashboard/alerts on rebase conflict (no markers)
-            git pull --rebase -X theirs origin main 2>/dev/null || git rebase --abort 2>/dev/null || true
             git push
           fi

@@ -58,10 +58,8 @@ SECTOR_LABELS = {
     "tw_pkg":     "O. 先進封裝 (TW)",
     "quantum":    "P. 量子運算 (incl. Quantinuum=HON)",
     "photonics":  "Q. 矽光子 (US pure-play)",
-    "memory":     "Q2. 記憶體 HBM/DRAM/NAND",
     "tw_photonics": "R. 矽光子供應鏈 上中下游+檢測 (TW)",
     "tw_probe":   "S. 探針測試 / IC 測試 / ASIC 服務 (TW)",
-    "tw_memory":  "T2. 記憶體 DRAM/NAND (TW)",
     "serenity":   "T. Serenity 追蹤標的 (@aleabitoreddit picks)",
 }
 
@@ -347,7 +345,6 @@ def collect_payload() -> dict:
         ("materials",  ["FCX", "MP", "LIN", "APD", "ALB"]),
         ("quantum",    ["IONQ", "RGTI", "QBTS", "QUBT", "ARQQ", "LAES", "HON", "IBM"]),
         ("photonics",  ["POET", "CRDO", "ALAB", "GFS", "INTC"]),
-        ("memory",     ["000660.KS", "005930.KS", "SNDK", "WDC"]),
         ("hedge",      ["GLD", "TLT", "UUP", "SH"]),
         ("abf",        ["3037.TW", "8046.TW", "3189.TW", "4958.TW", "2368.TW"]),
         ("tw_cooling", ["3324.TWO", "8996.TW", "3017.TW", "3653.TW", "6805.TW"]),
@@ -356,7 +353,6 @@ def collect_payload() -> dict:
         ("tw_pkg",     ["3661.TW", "8021.TW", "6438.TW"]),
         ("tw_photonics", ["3081.TWO", "2455.TW", "5455.TWO", "3163.TWO", "3008.TW", "4908.TWO", "3363.TWO", "4979.TWO", "4977.TW", "3711.TW", "6830.TW", "3587.TWO", "3289.TWO"]),
         ("tw_probe",   ["6510.TWO", "6223.TWO", "6515.TW", "6257.TW", "2449.TW", "3443.TW", "6217.TWO"]),
-        ("tw_memory",  ["2408.TW", "2344.TW", "8299.TWO", "3260.TW"]),
     ])
     # serenity sector is dynamic — his current picks from serenity/universe.txt
     _ser = serenity_universe()
@@ -511,8 +507,6 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
 
 <main class="max-w-7xl mx-auto p-6 space-y-6">
 
-  __STATUS__
-
   __ALERTS__
 
   __LEVERAGE__
@@ -522,8 +516,8 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
   <section id="top20" class="bg-white rounded-lg shadow p-4">
     <div class="flex items-baseline justify-between mb-3 border-b pb-2">
       <div>
-        <h2 class="text-xl font-bold">🏆 Top 20 綜合排行 <span class="text-xs font-normal text-slate-400">更新 __GENERATED__</span></h2>
-        <p class="text-xs text-slate-500">跨族群 score = verdict × conviction × (1 + R:R T2 / 5) × phase modifier · Phase-1-only 標 × 0.35 · 各 ticker 分析日期見「掃描」欄</p>
+        <h2 class="text-xl font-bold">🏆 Top 20 綜合排行</h2>
+        <p class="text-xs text-slate-500">跨族群 score = verdict × conviction × (1 + R:R T2 / 5) × phase modifier · Phase-1-only 標 × 0.35</p>
       </div>
       <div class="text-xs text-slate-500">指標說明: Score 為相對分數 · Conv 信心% · R:R T2 目標報酬風險比 · Phase1=只跑 Phase 1</div>
     </div>
@@ -1372,147 +1366,6 @@ def render_serenity_panel() -> str:
     )
 
 
-def render_status_banner() -> str:
-    """Top status strip: 各排程最近成功/失敗. Derives from git history (scan/
-    backfill/monitor/正2 commits) + today's sector completion + pending +
-    validation. Lets the user see at a glance which schedule ran/failed."""
-    import subprocess
-    from datetime import date as _date
-
-    def git(*a):
-        try:
-            return subprocess.run(["git", "-C", str(SCANS), *a],
-                                  capture_output=True, text=True, timeout=15).stdout
-        except Exception:
-            return ""
-
-    # recent commits (time + subject) → classify by schedule type
-    # -300: the trading-scan skill commits per-phase (dozens/day), so a small
-    # window gets flooded by ticker-phase commits and never reaches the
-    # scan/backfill/finalize wrapper commits → empty history. 300 spans a day.
-    log = git("log", "-300", "--pretty=format:%cI|%s")
-    TYPES = [("scan", "🌙 nightly scan"), ("backfill", "🔁 backfill"),
-             ("L0 monitor", "📊 L0 monitor"), ("正2", "⚖️ 正2 盤中"),
-             ("Serenity", "🧘 Serenity")]
-    last_of = {}   # label -> (iso_time, subject)
-    for line in log.splitlines():
-        if "|" not in line:
-            continue
-        ts, subj = line.split("|", 1)
-        for key, label in TYPES:
-            if key in subj and label not in last_of:
-                last_of[label] = (ts, subj.strip())
-
-    # today's scan — per-sector done/missing (weekday sectors)
-    DAY = {1: ["semi", "tw_pkg", "serenity"], 2: ["power", "tw_power", "quantum"],
-           3: ["cooling", "tw_cooling", "memory"], 4: ["oem", "tw_server", "abf", "tw_memory"],
-           5: ["security", "materials", "robotics"], 6: ["hedge", "reit", "tw_probe"],
-           7: ["photonics", "tw_photonics"]}
-    WK = ["", "一", "二", "三", "四", "五", "六", "日"]
-    today = _date.today()
-    dow = today.isoweekday()
-    exp = DAY.get(dow, [])
-    done_secs = [s for s in exp if (DAILY / today.isoformat() / s / "sector_report.md").exists()]
-    miss_secs = [s for s in exp if s not in done_secs]
-
-    # pending + validation + freshness (L0 / Serenity digest)
-    pend = []
-    pf = SCANS / "pending.txt"
-    if pf.exists():
-        pend = [l.split("#", 1)[0].strip() for l in pf.read_text(encoding="utf-8").splitlines()
-                if l.split("#", 1)[0].strip()]
-    verr = 0
-    vf = SCANS / "validation.json"
-    if vf.exists():
-        try:
-            verr = json.loads(vf.read_text(encoding="utf-8")).get("errors", 0)
-        except Exception:
-            pass
-    l0 = ""
-    af = SCANS / "alerts.json"
-    if af.exists():
-        try:
-            l0 = json.loads(af.read_text(encoding="utf-8")).get("generated_at", "")
-        except Exception:
-            pass
-    sdir = SCANS / "serenity"
-    sfiles = sorted(sdir.glob("strategy_*.md")) if sdir.is_dir() else []
-    ser_date = sfiles[-1].stem.replace("strategy_", "") if sfiles else ""
-    ser_stale = bool(ser_date) and ser_date < (today.isoformat())
-
-    def short(ts):
-        return _esc(ts.replace("T", " ")[:16]) if ts else "—"
-
-    def chip(text, kind):
-        c = {"ok": "bg-emerald-100 text-emerald-800 border-emerald-200",
-             "warn": "bg-amber-100 text-amber-800 border-amber-200",
-             "err": "bg-rose-100 text-rose-800 border-rose-200",
-             "info": "bg-slate-100 text-slate-600 border-slate-200"}[kind]
-        return f"<span class='{c} border px-2 py-0.5 rounded'>{text}</span>"
-
-    # today scan chip — explicit sector names
-    if not exp:
-        scan_chip = ""
-    elif not miss_secs:
-        scan_chip = chip(f"✅ 今日(週{WK[dow]}) scan 全完: {_esc(' '.join(done_secs))}", "ok")
-    else:
-        parts = []
-        if done_secs:
-            parts.append("已完成 " + _esc(' '.join(done_secs)))
-        parts.append("待跑 " + _esc(' '.join(miss_secs)))
-        scan_chip = chip(f"⏳ 今日(週{WK[dow]}) scan · " + " · ".join(parts), "warn")
-
-    last_scan = short(last_of.get("🌙 nightly scan", ("", ""))[0])
-    last_bf = short(last_of.get("🔁 backfill", ("", ""))[0])
-    time_chip = chip(f"🌙 scan {last_scan} · 🔁 backfill {last_bf}", "info")
-
-    pend_chip = (chip(f"⚠️ pending {len(pend)}: {_esc(' '.join(pend[:8]))}", "err")
-                 if pend else chip("pending 0", "ok"))
-    val_chip = chip(f"❌ 驗證 {verr} 錯", "err") if verr else chip("✅ 驗證通過", "ok")
-    l0_chip = chip(f"📊 L0 {short(l0)}", "info")
-    ser_chip = (chip(f"🧘 摘要 {ser_date} (過期!)", "warn") if ser_stale
-                else chip(f"🧘 摘要 {ser_date}", "info") if ser_date else "")
-
-    hist = "".join(
-        f"<tr><td class='pr-3 whitespace-nowrap font-medium'>{label}</td>"
-        f"<td class='pr-3 text-slate-500 whitespace-nowrap'>{short(last_of[label][0])}</td>"
-        f"<td class='text-slate-600'>{_esc(last_of[label][1])[:64]}</td></tr>"
-        for _key, label in TYPES if label in last_of)
-
-    return (
-        '<section class="bg-white border border-slate-200 rounded-lg shadow-sm p-3">'
-        '<div class="flex flex-wrap items-center gap-2 text-xs">'
-        '<span class="font-bold text-slate-700">🛠 排程狀態</span>'
-        f'{scan_chip}{time_chip}{pend_chip}{val_chip}{l0_chip}{ser_chip}'
-        '<details class="ml-auto"><summary class="cursor-pointer text-slate-500">最近各排程 ▾</summary>'
-        f'<table class="text-[11px] mt-2 text-slate-600">{hist}</table></details>'
-        '</div></section>'
-    )
-
-
-def render_validation_banner() -> str:
-    """Red banner if validation.json has ERROR-level issues (missing Top-20
-    levels or hallucinated prices). Empty when clean."""
-    f = SCANS / "validation.json"
-    if not f.exists():
-        return ""
-    try:
-        d = json.loads(f.read_text(encoding="utf-8"))
-    except Exception:
-        return ""
-    errs = [i for i in d.get("issues", []) if i.get("level") == "ERROR"]
-    if not errs:
-        return ""
-    items = "".join(
-        f"<li><b>{_esc(i['ticker'])}</b>: {_esc(i['msg'])}</li>" for i in errs[:12])
-    return (
-        '<section class="bg-rose-50 border border-rose-300 rounded-lg p-3">'
-        f'<div class="font-bold text-rose-800 text-sm">⚠️ 驗證錯誤 {len(errs)} 項 '
-        '<span class="font-normal text-xs text-rose-600">(Top-20 價位缺失 / 疑似幻想價 — 勿直接採用)</span></div>'
-        f'<ul class="text-xs text-rose-700 list-disc ml-5 mt-1">{items}</ul></section>'
-    )
-
-
 def render_leverage_panel() -> str:
     """正2 (00631L) Beta 調整規則面板 — reads alerts.json['leverage']. Shows
     0050 drawdown from peak, prior high/low, distance to the 28% deploy trigger,
@@ -1622,8 +1475,7 @@ def main():
     html = (HTML_TEMPLATE
             .replace("__GENERATED__", payload["generated_at"])
             .replace("__NAV_LINKS__", "\n".join(nav_links))
-            .replace("__STATUS__", render_status_banner())
-            .replace("__ALERTS__", render_validation_banner() + render_alert_banner())
+            .replace("__ALERTS__", render_alert_banner())
             .replace("__LEVERAGE__", render_leverage_panel())
             .replace("__SERENITY__", render_serenity_panel())
             .replace("__TOP20_ROWS__", top20_html)
