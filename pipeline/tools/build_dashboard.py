@@ -1370,6 +1370,29 @@ def render_serenity_panel() -> str:
     )
 
 
+def render_validation_banner() -> str:
+    """Red banner if validation.json has ERROR-level issues (missing Top-20
+    levels or hallucinated prices). Empty when clean."""
+    f = SCANS / "validation.json"
+    if not f.exists():
+        return ""
+    try:
+        d = json.loads(f.read_text(encoding="utf-8"))
+    except Exception:
+        return ""
+    errs = [i for i in d.get("issues", []) if i.get("level") == "ERROR"]
+    if not errs:
+        return ""
+    items = "".join(
+        f"<li><b>{_esc(i['ticker'])}</b>: {_esc(i['msg'])}</li>" for i in errs[:12])
+    return (
+        '<section class="bg-rose-50 border border-rose-300 rounded-lg p-3">'
+        f'<div class="font-bold text-rose-800 text-sm">⚠️ 驗證錯誤 {len(errs)} 項 '
+        '<span class="font-normal text-xs text-rose-600">(Top-20 價位缺失 / 疑似幻想價 — 勿直接採用)</span></div>'
+        f'<ul class="text-xs text-rose-700 list-disc ml-5 mt-1">{items}</ul></section>'
+    )
+
+
 def render_leverage_panel() -> str:
     """正2 (00631L) Beta 調整規則面板 — reads alerts.json['leverage']. Shows
     0050 drawdown from peak, prior high/low, distance to the 28% deploy trigger,
@@ -1479,7 +1502,7 @@ def main():
     html = (HTML_TEMPLATE
             .replace("__GENERATED__", payload["generated_at"])
             .replace("__NAV_LINKS__", "\n".join(nav_links))
-            .replace("__ALERTS__", render_alert_banner())
+            .replace("__ALERTS__", render_validation_banner() + render_alert_banner())
             .replace("__LEVERAGE__", render_leverage_panel())
             .replace("__SERENITY__", render_serenity_panel())
             .replace("__TOP20_ROWS__", top20_html)
