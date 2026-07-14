@@ -48,8 +48,8 @@ declare -a DAY_SECTORS=(
   ""                                # padding for index 0
   "semi tw_pkg serenity"            # Mon: AI core compute (US + TW packaging) + Serenity picks (dynamic)
   "power tw_power quantum"          # Tue: Power infrastructure (US + TW grid/PSU) + quantum computing (incl. HON=Quantinuum proxy)
-  "cooling tw_cooling"              # Wed: Thermal (US + TW) — tw_optics merged into tw_photonics (Sun)
-  "oem tw_server abf"               # Thu: AI server build (US + TW ODM + ABF substrate)
+  "cooling tw_cooling memory"              # Wed: Thermal (US + TW) — tw_optics merged into tw_photonics (Sun) + memory (HBM)
+  "oem tw_server abf tw_memory"               # Thu: AI server build (US + TW ODM + ABF substrate) + TW memory
   "security materials robotics"     # Fri: Security + raw materials + robotics (moved off Sun to make room for photonics)
   "hedge reit tw_probe"             # Sat: Defensive (hedge 4 + REIT) + 探針測試 (TW probe-card/test, freest day after hedge trim)
   "photonics tw_photonics"          # Sun: Silicon photonics day (US POET/CRDO/ALAB/GFS/INTC + TW 上中下游+檢測 10 檔)
