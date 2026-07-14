@@ -58,8 +58,10 @@ SECTOR_LABELS = {
     "tw_pkg":     "O. 先進封裝 (TW)",
     "quantum":    "P. 量子運算 (incl. Quantinuum=HON)",
     "photonics":  "Q. 矽光子 (US pure-play)",
+    "memory":     "Q2. 記憶體 HBM/DRAM/NAND",
     "tw_photonics": "R. 矽光子供應鏈 上中下游+檢測 (TW)",
     "tw_probe":   "S. 探針測試 / IC 測試 / ASIC 服務 (TW)",
+    "tw_memory":  "T2. 記憶體 DRAM/NAND (TW)",
     "serenity":   "T. Serenity 追蹤標的 (@aleabitoreddit picks)",
 }
 
@@ -345,6 +347,7 @@ def collect_payload() -> dict:
         ("materials",  ["FCX", "MP", "LIN", "APD", "ALB"]),
         ("quantum",    ["IONQ", "RGTI", "QBTS", "QUBT", "ARQQ", "LAES", "HON", "IBM"]),
         ("photonics",  ["POET", "CRDO", "ALAB", "GFS", "INTC"]),
+        ("memory",     ["000660.KS", "005930.KS", "SNDK", "WDC"]),
         ("hedge",      ["GLD", "TLT", "UUP", "SH"]),
         ("abf",        ["3037.TW", "8046.TW", "3189.TW", "4958.TW", "2368.TW"]),
         ("tw_cooling", ["3324.TWO", "8996.TW", "3017.TW", "3653.TW", "6805.TW"]),
@@ -353,6 +356,7 @@ def collect_payload() -> dict:
         ("tw_pkg",     ["3661.TW", "8021.TW", "6438.TW"]),
         ("tw_photonics", ["3081.TWO", "2455.TW", "5455.TWO", "3163.TWO", "3008.TW", "4908.TWO", "3363.TWO", "4979.TWO", "4977.TW", "3711.TW", "6830.TW", "3587.TWO", "3289.TWO"]),
         ("tw_probe",   ["6510.TWO", "6223.TWO", "6515.TW", "6257.TW", "2449.TW", "3443.TW", "6217.TWO"]),
+        ("tw_memory",  ["2408.TW", "2344.TW", "8299.TWO", "3260.TW"]),
     ])
     # serenity sector is dynamic — his current picks from serenity/universe.txt
     _ser = serenity_universe()

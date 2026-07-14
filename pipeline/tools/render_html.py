@@ -42,6 +42,7 @@ SECTORS = {
     "materials":  ["FCX", "MP", "LIN", "APD", "ALB"],
     "quantum":    ["IONQ", "RGTI", "QBTS", "QUBT", "ARQQ", "LAES", "HON", "IBM"],
     "photonics":  ["POET", "CRDO", "ALAB", "GFS", "INTC"],
+    "memory":     ["000660.KS", "005930.KS", "SNDK", "WDC"],
     "hedge":      ["GLD", "TLT", "UUP", "SH"],
     "abf":        ["3037.TW", "8046.TW", "3189.TW", "4958.TW", "2368.TW"],
     "tw_cooling": ["3324.TWO", "8996.TW", "3017.TW", "3653.TW", "6805.TW"],
@@ -50,6 +51,7 @@ SECTORS = {
     "tw_pkg":     ["3661.TW", "8021.TW", "6438.TW"],
     "tw_photonics": ["3081.TWO", "2455.TW", "5455.TWO", "3163.TWO", "3008.TW", "4908.TWO", "3363.TWO", "4979.TWO", "4977.TW", "3711.TW", "6830.TW", "3587.TWO", "3289.TWO"],
     "tw_probe":   ["6510.TWO", "6223.TWO", "6515.TW", "6257.TW", "2449.TW", "3443.TW", "6217.TWO"],
+    "tw_memory":  ["2408.TW", "2344.TW", "8299.TWO", "3260.TW"],
 }
 
 # serenity sector is dynamic — load his current picks from serenity/universe.txt
@@ -429,6 +431,15 @@ TICKER_DESCRIPTIONS = {
     "2449.TW":  "京元電 (2449) — IC 終測龍頭",
     "3443.TW":  "創意電子 (3443) — ASIC 設計服務 (GUC, TSMC 轉投資)",
     "6217.TWO": "中探針 (6217) — 探針 / 測試介面",
+    # memory (HBM/DRAM/NAND)
+    "000660.KS": "SK海力士 (000660) — HBM 龍頭 (NVDA 供應)",
+    "005930.KS": "三星電子 (005930) — HBM/DRAM/NAND",
+    "SNDK": "SanDisk — NAND 儲存",
+    "WDC": "Western Digital — HDD/NAND",
+    "2408.TW": "南亞科 (2408) — DRAM",
+    "2344.TW": "華邦電 (2344) — DRAM/Flash",
+    "8299.TWO": "群聯 (8299) — NAND 控制晶片",
+    "3260.TW": "威剛 (3260) — 記憶體模組",
     # hedge
     "GLD": "SPDR Gold Shares ETF",
     "GDX": "VanEck Gold Miners ETF",
