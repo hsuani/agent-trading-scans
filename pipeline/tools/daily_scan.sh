@@ -279,9 +279,19 @@ if [[ "$DRY_RUN" != "1" ]]; then
     "$PY" "$TOOL_DIR/build_dashboard.py" >> "$GLOBAL_LOG" 2>&1 || true
   fi
 
-  # Summary notification
+  # Post-scan validation — Top-20 levels present + price sanity (catch 幻想價).
+  echo "validating..." >> "$GLOBAL_LOG"
+  VAL_OUT=$("$PY" "$TOOL_DIR/validate.py" 2>&1); VAL_RC=$?
+  echo "$VAL_OUT" >> "$GLOBAL_LOG"
+  echo "validate exit: $VAL_RC" >> "$GLOBAL_LOG"
+
+  # Summary notification (flag validation errors so bad levels don't slip by)
   SECTOR_SUMMARY=$(printf "%s " "${SECTOR_LIST[@]}")
-  osascript -e "display notification \"Sectors: ${SECTOR_SUMMARY}— ${#HTML_LIST[@]} reports built.\" with title \"Trading scan ($DATE)\" sound name \"Glass\""
+  if [[ "$VAL_RC" -gt 0 ]]; then
+    osascript -e "display notification \"⚠️ ${VAL_RC} 驗證錯誤 (Top20 價位/幻想價). Sectors: ${SECTOR_SUMMARY}\" with title \"Trading scan ($DATE)\" sound name \"Basso\""
+  else
+    osascript -e "display notification \"Sectors: ${SECTOR_SUMMARY}— ${#HTML_LIST[@]} reports built, 驗證通過.\" with title \"Trading scan ($DATE)\" sound name \"Glass\""
+  fi
 
   # Auto-open first HTML if interactive
   if [[ -t 1 && -n "${HTML_LIST[0]:-}" ]]; then
