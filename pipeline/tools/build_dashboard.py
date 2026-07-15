@@ -1449,7 +1449,7 @@ def render_status_banner() -> str:
         f"<tr><td class='pr-3 whitespace-nowrap'>{label}</td>"
         f"<td class='pr-3 text-slate-500 whitespace-nowrap'>{short(last_of[label][0])}</td>"
         f"<td class='text-slate-600'>{_esc(last_of[label][1])[:60]}</td></tr>"
-        for label, _ in TYPES if label in last_of)
+        for _key, label in TYPES if label in last_of)
 
     return (
         '<section class="bg-slate-900 text-white rounded-lg shadow p-3">'
