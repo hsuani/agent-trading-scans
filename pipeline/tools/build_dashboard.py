@@ -511,6 +511,8 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
 
 <main class="max-w-7xl mx-auto p-6 space-y-6">
 
+  __STATUS__
+
   __ALERTS__
 
   __LEVERAGE__
@@ -1370,6 +1372,97 @@ def render_serenity_panel() -> str:
     )
 
 
+def render_status_banner() -> str:
+    """Top status strip: 各排程最近成功/失敗. Derives from git history (scan/
+    backfill/monitor/正2 commits) + today's sector completion + pending +
+    validation. Lets the user see at a glance which schedule ran/failed."""
+    import subprocess
+    from datetime import date as _date
+
+    def git(*a):
+        try:
+            return subprocess.run(["git", "-C", str(SCANS), *a],
+                                  capture_output=True, text=True, timeout=15).stdout
+        except Exception:
+            return ""
+
+    # recent commits (time + subject) → classify by schedule type
+    log = git("log", "-40", "--pretty=format:%cI|%s")
+    TYPES = [("scan", "🌙 nightly scan"), ("backfill", "🔁 backfill"),
+             ("L0 monitor", "📊 L0 monitor"), ("正2", "⚖️ 正2 盤中"),
+             ("Serenity", "🧘 Serenity")]
+    last_of = {}   # label -> (iso_time, subject)
+    for line in log.splitlines():
+        if "|" not in line:
+            continue
+        ts, subj = line.split("|", 1)
+        for key, label in TYPES:
+            if key in subj and label not in last_of:
+                last_of[label] = (ts, subj.strip())
+
+    # today's scan completion vs expected (weekday sectors)
+    DAY = {1: ["semi", "tw_pkg", "serenity"], 2: ["power", "tw_power", "quantum"],
+           3: ["cooling", "tw_cooling", "memory"], 4: ["oem", "tw_server", "abf", "tw_memory"],
+           5: ["security", "materials", "robotics"], 6: ["hedge", "reit", "tw_probe"],
+           7: ["photonics", "tw_photonics"]}
+    today = _date.today()
+    dow = today.isoweekday()
+    exp = DAY.get(dow, [])
+    done = sum(1 for s in exp
+               if (DAILY / today.isoformat() / s / "sector_report.md").exists())
+    scan_ok = done >= len(exp) and exp
+
+    # pending + validation + L0 freshness
+    pend = []
+    pf = SCANS / "pending.txt"
+    if pf.exists():
+        pend = [l.split("#", 1)[0].strip() for l in pf.read_text(encoding="utf-8").splitlines()
+                if l.split("#", 1)[0].strip()]
+    verr = 0
+    vf = SCANS / "validation.json"
+    if vf.exists():
+        try:
+            verr = json.loads(vf.read_text(encoding="utf-8")).get("errors", 0)
+        except Exception:
+            pass
+    l0 = ""
+    af = SCANS / "alerts.json"
+    if af.exists():
+        try:
+            l0 = json.loads(af.read_text(encoding="utf-8")).get("generated_at", "")
+        except Exception:
+            pass
+
+    def short(ts):
+        return _esc(ts.replace("T", " ")[:16]) if ts else "—"
+
+    scan_chip = (f"<span class='bg-green-100 text-green-800 px-2 py-0.5 rounded'>✅ 今日 scan {done}/{len(exp)}</span>"
+                 if scan_ok else
+                 f"<span class='bg-amber-100 text-amber-800 px-2 py-0.5 rounded'>⏳ 今日 scan {done}/{len(exp)}</span>"
+                 if exp else "")
+    pend_chip = (f"<span class='bg-rose-100 text-rose-800 px-2 py-0.5 rounded'>⚠️ pending {len(pend)}: {_esc(' '.join(pend[:6]))}</span>"
+                 if pend else "<span class='bg-green-100 text-green-800 px-2 py-0.5 rounded'>pending 0</span>")
+    val_chip = (f"<span class='bg-rose-100 text-rose-800 px-2 py-0.5 rounded'>❌ 驗證 {verr} 錯</span>"
+                if verr else "<span class='bg-green-100 text-green-800 px-2 py-0.5 rounded'>✅ 驗證通過</span>")
+
+    hist = "".join(
+        f"<tr><td class='pr-3 whitespace-nowrap'>{label}</td>"
+        f"<td class='pr-3 text-slate-500 whitespace-nowrap'>{short(last_of[label][0])}</td>"
+        f"<td class='text-slate-600'>{_esc(last_of[label][1])[:60]}</td></tr>"
+        for label, _ in TYPES if label in last_of)
+
+    return (
+        '<section class="bg-slate-900 text-white rounded-lg shadow p-3">'
+        '<div class="flex flex-wrap items-center gap-2 text-xs">'
+        '<span class="font-bold">🛠 排程狀態</span>'
+        f'{scan_chip}{pend_chip}{val_chip}'
+        f'<span class="bg-slate-700 px-2 py-0.5 rounded">📊 L0 {short(l0)}</span>'
+        '<details class="ml-auto"><summary class="cursor-pointer text-slate-300">最近各排程 ▾</summary>'
+        f'<table class="text-[11px] mt-2 text-slate-200">{hist}</table></details>'
+        '</div></section>'
+    )
+
+
 def render_validation_banner() -> str:
     """Red banner if validation.json has ERROR-level issues (missing Top-20
     levels or hallucinated prices). Empty when clean."""
@@ -1502,6 +1595,7 @@ def main():
     html = (HTML_TEMPLATE
             .replace("__GENERATED__", payload["generated_at"])
             .replace("__NAV_LINKS__", "\n".join(nav_links))
+            .replace("__STATUS__", render_status_banner())
             .replace("__ALERTS__", render_validation_banner() + render_alert_banner())
             .replace("__LEVERAGE__", render_leverage_panel())
             .replace("__SERENITY__", render_serenity_panel())
