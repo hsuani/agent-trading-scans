@@ -1,0 +1,3 @@
+PRICE_DATA_UNAVAILABLE
+
+HTTP 403 代理錯誤 - 無法取得 4958.TW 價格數據。
