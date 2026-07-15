@@ -45,6 +45,9 @@ jobs:
             echo "no change"
           else
             git commit -m "正2 intraday $(date -u +%F\ %H:%MZ)"
-            git pull --rebase --autostash origin main 2>/dev/null || true
+            # generated files (dashboard/alerts) — keep OUR freshly-built version
+            # on rebase conflict (-X theirs favours the commits being replayed)
+            # so no <<<<<<< conflict markers leak into the committed HTML.
+            git pull --rebase -X theirs origin main 2>/dev/null || git rebase --abort 2>/dev/null || true
             git push
           fi
