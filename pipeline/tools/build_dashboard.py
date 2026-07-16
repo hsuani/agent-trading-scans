@@ -522,8 +522,8 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
   <section id="top20" class="bg-white rounded-lg shadow p-4">
     <div class="flex items-baseline justify-between mb-3 border-b pb-2">
       <div>
-        <h2 class="text-xl font-bold">🏆 Top 20 綜合排行</h2>
-        <p class="text-xs text-slate-500">跨族群 score = verdict × conviction × (1 + R:R T2 / 5) × phase modifier · Phase-1-only 標 × 0.35</p>
+        <h2 class="text-xl font-bold">🏆 Top 20 綜合排行 <span class="text-xs font-normal text-slate-400">更新 __GENERATED__</span></h2>
+        <p class="text-xs text-slate-500">跨族群 score = verdict × conviction × (1 + R:R T2 / 5) × phase modifier · Phase-1-only 標 × 0.35 · 各 ticker 分析日期見「掃描」欄</p>
       </div>
       <div class="text-xs text-slate-500">指標說明: Score 為相對分數 · Conv 信心% · R:R T2 目標報酬風險比 · Phase1=只跑 Phase 1</div>
     </div>
@@ -1400,19 +1400,19 @@ def render_status_banner() -> str:
             if key in subj and label not in last_of:
                 last_of[label] = (ts, subj.strip())
 
-    # today's scan completion vs expected (weekday sectors)
+    # today's scan — per-sector done/missing (weekday sectors)
     DAY = {1: ["semi", "tw_pkg", "serenity"], 2: ["power", "tw_power", "quantum"],
            3: ["cooling", "tw_cooling", "memory"], 4: ["oem", "tw_server", "abf", "tw_memory"],
            5: ["security", "materials", "robotics"], 6: ["hedge", "reit", "tw_probe"],
            7: ["photonics", "tw_photonics"]}
+    WK = ["", "一", "二", "三", "四", "五", "六", "日"]
     today = _date.today()
     dow = today.isoweekday()
     exp = DAY.get(dow, [])
-    done = sum(1 for s in exp
-               if (DAILY / today.isoformat() / s / "sector_report.md").exists())
-    scan_ok = done >= len(exp) and exp
+    done_secs = [s for s in exp if (DAILY / today.isoformat() / s / "sector_report.md").exists()]
+    miss_secs = [s for s in exp if s not in done_secs]
 
-    # pending + validation + L0 freshness
+    # pending + validation + freshness (L0 / Serenity digest)
     pend = []
     pf = SCANS / "pending.txt"
     if pf.exists():
@@ -1432,33 +1432,57 @@ def render_status_banner() -> str:
             l0 = json.loads(af.read_text(encoding="utf-8")).get("generated_at", "")
         except Exception:
             pass
+    sdir = SCANS / "serenity"
+    sfiles = sorted(sdir.glob("strategy_*.md")) if sdir.is_dir() else []
+    ser_date = sfiles[-1].stem.replace("strategy_", "") if sfiles else ""
+    ser_stale = bool(ser_date) and ser_date < (today.isoformat())
 
     def short(ts):
         return _esc(ts.replace("T", " ")[:16]) if ts else "—"
 
-    scan_chip = (f"<span class='bg-green-100 text-green-800 px-2 py-0.5 rounded'>✅ 今日 scan {done}/{len(exp)}</span>"
-                 if scan_ok else
-                 f"<span class='bg-amber-100 text-amber-800 px-2 py-0.5 rounded'>⏳ 今日 scan {done}/{len(exp)}</span>"
-                 if exp else "")
-    pend_chip = (f"<span class='bg-rose-100 text-rose-800 px-2 py-0.5 rounded'>⚠️ pending {len(pend)}: {_esc(' '.join(pend[:6]))}</span>"
-                 if pend else "<span class='bg-green-100 text-green-800 px-2 py-0.5 rounded'>pending 0</span>")
-    val_chip = (f"<span class='bg-rose-100 text-rose-800 px-2 py-0.5 rounded'>❌ 驗證 {verr} 錯</span>"
-                if verr else "<span class='bg-green-100 text-green-800 px-2 py-0.5 rounded'>✅ 驗證通過</span>")
+    def chip(text, kind):
+        c = {"ok": "bg-emerald-100 text-emerald-800 border-emerald-200",
+             "warn": "bg-amber-100 text-amber-800 border-amber-200",
+             "err": "bg-rose-100 text-rose-800 border-rose-200",
+             "info": "bg-slate-100 text-slate-600 border-slate-200"}[kind]
+        return f"<span class='{c} border px-2 py-0.5 rounded'>{text}</span>"
+
+    # today scan chip — explicit sector names
+    if not exp:
+        scan_chip = ""
+    elif not miss_secs:
+        scan_chip = chip(f"✅ 今日(週{WK[dow]}) scan 全完: {_esc(' '.join(done_secs))}", "ok")
+    else:
+        parts = []
+        if done_secs:
+            parts.append("已完成 " + _esc(' '.join(done_secs)))
+        parts.append("待跑 " + _esc(' '.join(miss_secs)))
+        scan_chip = chip(f"⏳ 今日(週{WK[dow]}) scan · " + " · ".join(parts), "warn")
+
+    last_scan = short(last_of.get("🌙 nightly scan", ("", ""))[0])
+    last_bf = short(last_of.get("🔁 backfill", ("", ""))[0])
+    time_chip = chip(f"🌙 scan {last_scan} · 🔁 backfill {last_bf}", "info")
+
+    pend_chip = (chip(f"⚠️ pending {len(pend)}: {_esc(' '.join(pend[:8]))}", "err")
+                 if pend else chip("pending 0", "ok"))
+    val_chip = chip(f"❌ 驗證 {verr} 錯", "err") if verr else chip("✅ 驗證通過", "ok")
+    l0_chip = chip(f"📊 L0 {short(l0)}", "info")
+    ser_chip = (chip(f"🧘 摘要 {ser_date} (過期!)", "warn") if ser_stale
+                else chip(f"🧘 摘要 {ser_date}", "info") if ser_date else "")
 
     hist = "".join(
-        f"<tr><td class='pr-3 whitespace-nowrap'>{label}</td>"
+        f"<tr><td class='pr-3 whitespace-nowrap font-medium'>{label}</td>"
         f"<td class='pr-3 text-slate-500 whitespace-nowrap'>{short(last_of[label][0])}</td>"
-        f"<td class='text-slate-600'>{_esc(last_of[label][1])[:60]}</td></tr>"
+        f"<td class='text-slate-600'>{_esc(last_of[label][1])[:64]}</td></tr>"
         for _key, label in TYPES if label in last_of)
 
     return (
-        '<section class="bg-slate-900 text-white rounded-lg shadow p-3">'
+        '<section class="bg-white border border-slate-200 rounded-lg shadow-sm p-3">'
         '<div class="flex flex-wrap items-center gap-2 text-xs">'
-        '<span class="font-bold">🛠 排程狀態</span>'
-        f'{scan_chip}{pend_chip}{val_chip}'
-        f'<span class="bg-slate-700 px-2 py-0.5 rounded">📊 L0 {short(l0)}</span>'
-        '<details class="ml-auto"><summary class="cursor-pointer text-slate-300">最近各排程 ▾</summary>'
-        f'<table class="text-[11px] mt-2 text-slate-200">{hist}</table></details>'
+        '<span class="font-bold text-slate-700">🛠 排程狀態</span>'
+        f'{scan_chip}{time_chip}{pend_chip}{val_chip}{l0_chip}{ser_chip}'
+        '<details class="ml-auto"><summary class="cursor-pointer text-slate-500">最近各排程 ▾</summary>'
+        f'<table class="text-[11px] mt-2 text-slate-600">{hist}</table></details>'
         '</div></section>'
     )
 
