@@ -1,0 +1,55 @@
+name: dashboard rebuild
+
+# Guarantees dashboard.html is always current. Fires on ANY push that touches
+# scan data (daily/**) or serenity/**, so every per-sector checkpoint commit
+# from the scan/backfill routines triggers a fresh rebuild — the dashboard no
+# longer depends on the fragile scan session reaching its finalize step.
+# Zero Claude usage (pure Python). Commits only dashboard.html / _catalysts.json,
+# which are NOT under the trigger paths, so it never re-triggers itself.
+
+on:
+  push:
+    paths:
+      - "daily/**"
+      - "serenity/**"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  # A burst of per-sector pushes → keep only the latest rebuild; the final
+  # sector's push always lands a final rebuild.
+  group: dashboard
+  cancel-in-progress: true
+
+jobs:
+  rebuild:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install deps
+        run: pip install --quiet yfinance pandas markdown
+
+      - name: Rebuild dashboard
+        env:
+          TRADING_SCANS_ROOT: ${{ github.workspace }}
+        run: |
+          python3 pipeline/tools/extract_catalysts.py || true
+          python3 pipeline/tools/build_dashboard.py
+
+      - name: Commit
+        run: |
+          git config user.name  "YHT"
+          git config user.email "yhtseng91@gmail.com"
+          git add dashboard.html _catalysts.json
+          if git diff --cached --quiet; then
+            echo "no change"
+          else
+            git commit -m "dashboard rebuild $(date -u +%F\ %H:%MZ)"
+            git pull --rebase -X theirs origin main 2>/dev/null || git rebase --abort 2>/dev/null || true
+            git push
+          fi
