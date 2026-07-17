@@ -1387,7 +1387,10 @@ def render_status_banner() -> str:
             return ""
 
     # recent commits (time + subject) → classify by schedule type
-    log = git("log", "-40", "--pretty=format:%cI|%s")
+    # -300: the trading-scan skill commits per-phase (dozens/day), so a small
+    # window gets flooded by ticker-phase commits and never reaches the
+    # scan/backfill/finalize wrapper commits → empty history. 300 spans a day.
+    log = git("log", "-300", "--pretty=format:%cI|%s")
     TYPES = [("scan", "🌙 nightly scan"), ("backfill", "🔁 backfill"),
              ("L0 monitor", "📊 L0 monitor"), ("正2", "⚖️ 正2 盤中"),
              ("Serenity", "🧘 Serenity")]
