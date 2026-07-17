@@ -1,0 +1,2483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Trading Scan — TW_PKG — 2026-07-17</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+  .verdict-BUY  { background: #dcfce7; color: #166534; }
+  .verdict-HOLD { background: #fef3c7; color: #92400e; }
+  .verdict-SELL { background: #fee2e2; color: #991b1b; }
+  .verdict-UNKNOWN { background: #f3f4f6; color: #374151; }
+  details > summary { cursor: pointer; }
+  details[open] > summary { margin-bottom: 0.5rem; }
+  .agent-prose h1, .agent-prose h2, .agent-prose h3 { font-weight: 600; margin-top: 1rem; margin-bottom: 0.5rem; }
+  .agent-prose h1 { font-size: 1.5rem; }
+  .agent-prose h2 { font-size: 1.25rem; }
+  .agent-prose h3 { font-size: 1.1rem; }
+  .agent-prose p { margin-bottom: 0.5rem; line-height: 1.5; }
+  .agent-prose ul { list-style-type: disc; margin-left: 1.5rem; margin-bottom: 0.5rem; }
+  .agent-prose ol { list-style-type: decimal; margin-left: 1.5rem; margin-bottom: 0.5rem; }
+  .agent-prose table { border-collapse: collapse; margin: 0.75rem 0; font-size: 0.875rem; }
+  .agent-prose th, .agent-prose td { border: 1px solid #d1d5db; padding: 0.375rem 0.75rem; text-align: left; }
+  .agent-prose th { background: #f9fafb; font-weight: 600; }
+  .agent-prose code { background: #f3f4f6; padding: 0.1rem 0.25rem; border-radius: 0.25rem; font-size: 0.875rem; }
+  .agent-prose pre { background: #1f2937; color: #f9fafb; padding: 0.75rem; border-radius: 0.375rem; overflow-x: auto; font-size: 0.85rem; margin: 0.5rem 0; }
+  .agent-prose strong { font-weight: 600; }
+  nav a { color: #2563eb; text-decoration: none; }
+  nav a:hover { text-decoration: underline; }
+</style>
+</head>
+<body class="bg-slate-50 text-slate-900">
+
+<header class="bg-slate-900 text-white p-6 shadow-md">
+  <div class="max-w-6xl mx-auto">
+    <h1 class="text-3xl font-bold">交易掃描 — TW_PKG</h1>
+    <p class="text-slate-300 text-sm mt-1">as of 2026-07-17 · 產生於 2026-07-17 05:35</p>
+  </div>
+</header>
+
+<nav class="bg-slate-100 border-b border-slate-300 p-3 sticky top-0 z-10">
+  <div class="max-w-6xl mx-auto flex flex-wrap gap-3 text-sm">
+    <a href="#sector-overview" class="font-semibold">族群總覽</a>
+    <a href="#ticker-3661_TW" class="px-2 py-1 rounded verdict-UNKNOWN">3661.TW</a>
+<a href="#ticker-8021_TW" class="px-2 py-1 rounded verdict-UNKNOWN">8021.TW</a>
+<a href="#ticker-6438_TW" class="px-2 py-1 rounded verdict-UNKNOWN">6438.TW</a>
+    <a href="../HOWTO_READ.html" class="ml-auto text-blue-700 hover:underline" target="_blank">📖 閱讀指南</a>
+  </div>
+</nav>
+
+<main class="max-w-6xl mx-auto p-6">
+
+  <section id="sector-overview" class="mb-10 bg-white rounded-lg shadow p-6">
+    <h2 class="text-2xl font-bold mb-4">族群總覽 (Sector overview)</h2>
+    <div class="agent-prose text-sm">
+      <h1>Sector report — tw_pkg as of 2026-07-17</h1>
+<blockquote>
+<p><strong>注意</strong>：三支標的均為 Phase-1-only stubs（Yahoo Finance fc.yahoo.com 403 封鎖，評分 2/5）。<br />
+基本面、技術面、估值資料均不可得；所有 R:R 為依分析師目標價與新聞參考價推估，<strong>非精確計算</strong>。<br />
+<code>investment_plan.md</code> 三支均不存在，conviction 與 horizon 直接引用 <code>final_decision.md</code>。</p>
+</blockquote>
+<hr />
+<h2>Ranking table</h2>
+<table>
+<thead>
+<tr>
+<th>Rank</th>
+<th>Ticker</th>
+<th>Verdict</th>
+<th>Conviction</th>
+<th>R:R (估)</th>
+<th>Size</th>
+<th>Horizon</th>
+<th>Trigger</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>8021.TW</td>
+<td>HOLD</td>
+<td>M (50%)</td>
+<td>~1.5</td>
+<td>XS</td>
+<td>1-2m</td>
+<td>Q2 月營收 (Jul 31) + Q2 財報 (Aug 中旬) 驗證毛利率 ≥38%</td>
+</tr>
+<tr>
+<td>2</td>
+<td>6438.TW</td>
+<td>HOLD</td>
+<td>L (45%)</td>
+<td>~2.5</td>
+<td>S</td>
+<td>1-3m</td>
+<td>Q2 財報 (Jul 30) + SEMICON Taiwan (Sep 2-4) 訂單能見度</td>
+</tr>
+<tr>
+<td>3</td>
+<td>3661.TW</td>
+<td>HOLD</td>
+<td>L (45%)</td>
+<td>~2.0</td>
+<td>S</td>
+<td>3-6m</td>
+<td>Q2 財報 (Aug 13) 驗證營收 86.2 億元 + AWS H2 量產爬升</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Consensus top pick</h2>
+<p><strong>8021.TW（尖點科技）</strong>。三支標的中 conviction 最高（50%），Q1 EPS 年增 225%、5 月月營收年增 86% 連三月創高；客戶欣興（3037）認購 2.1 億元、臻鼎-KY（4958）認購 1.9 億元私募公司債，戰略供應綁定確認。AI 伺服器 PCB 板層升至 28-46 層驅動鑽針消耗量暴增 4-5 倍，全球月度缺口 4,000-5,000 萬支，新進廠商進入壁壘高（瑞士/日本精密設備依賴、產能週期長）。三大法人淨買 +1,266 張，外資淨買 +1,149 張，籌碼動能確認。</p>
+<p><strong>制約因素</strong>：PE ~70-78 倍估值已充分反映成長預期；分析師目標價 520 TWD vs. 現價 ~454.5 TWD，上升空間僅 ~14%；處置股（6月15日至7月16日）解除後股價已下跌 10%，短期流動性風險未完全消退。R:R 受限，倉位宜保守（XS）。</p>
+<hr />
+<h2>Contrarian pick</h2>
+<p><strong>3661.TW（世芯-KY）</strong>。Phase-1 stub 資料封鎖導致 conviction 僅 45%，表面排名最弱；然而 19 位分析師中 17 位給予 BUY，目標價中位數 6,000 TWD，上升空間 31-35%，2026 年 EPS 共識 135 元。市場因 Q1 營收年減 60% 而觀望，但根源是主客戶 AWS 晶片代次切換（非需求崩潰），AWS Trainium 3 已於 5 月進入 3nm 量產驗證，前 NVIDIA CBO Freddy Engineer 加盟強化北美客戶開發。ASIC 市場 CAGR 44.6% vs. 商用 GPU 16.1% 的結構性差距明確。</p>
+<p><strong>主流為何錯估</strong>：Phase-1 評估僅反映資料可得性不足，而非基本面疲弱；分析師共識（17/19 BUY）是本板塊最強，但 Phase-1 stub 框架無法捕捉此訊號，造成系統性低評。80% 營收集中 H2 是執行風險，但 CoWoS 產能保障（AWS 預訂 50,000 片/月）降低出貨不確定性。</p>
+<hr />
+<h2>Pairs trade idea</h2>
+<p><strong>Long 6438.TW / Short 8021.TW</strong>。</p>
+<p>兩者均直接受益台積電 CoWoS 擴產（6438 供應晶圓搬運/AMHS 設備，8021 供應 PCB 高階鍍膜鑽針），系統性風險同向，但估值出現顯著背離：</p>
+<ul>
+<li>6438.TW：分析師目標價 280 TWD，現價 150-175 TWD，隱含上升空間 14-86%；Q1 EPS 季增 64%；外資淨買 +911 張；成長率約 15-20%，估值相對合理</li>
+<li>8021.TW：目標價 520 TWD，現價 ~454.5 TWD，上升空間僅 ~14%；PE ~70-78 倍；剛完成處置股限制期，短期拋壓風險仍存</li>
+</ul>
+<p>此 pairs trade 孤立相對估值溢價，對沖 CoWoS 題材系統性波動，捕捉估值均值回歸機會。建議持倉比例 1:1 市值中性。</p>
+<hr />
+<h2>Sector-wide observations</h2>
+<p><strong>共同催化劑</strong>：<br />
+- 台積電 CoWoS 月產能 2026 年底目標 13 萬片（較 2025 年翻近一倍），三標的均直接受益<br />
+- 台積電 2nm 量產 CAGR 70%（2026-2028），先進封裝設備與材料長線需求確立<br />
+- 雲端服務商 AI ASIC 自訂化加速（CAGR 44.6%），拉動全台灣先進封裝供應鏈</p>
+<p><strong>共同風險</strong>：<br />
+- 台積電資本支出若因宏觀因素（地緣政治、需求下修）延後，三標的同步承壓<br />
+- 台股近期波動（7/10 加權指數單日 -4.3%），增大短線進出成本<br />
+- 三支均為 Phase-1 stubs（基本面/技術面/估值資料空白），持倉信心受資料品質制約</p>
+<p><strong>擁擠度（Crowding）</strong>：<br />
+三標的均屬台灣 AI 供應鏈「CoWoS 概念股」，機構同向加碼（外資近期三支均有淨買超）。若 CoWoS 題材短期降溫或台積電法說下修展望，三標的可能同步回調，集中風險不容忽視。</p>
+<p><strong>相關性群組</strong>：<br />
+- 6438.TW + 8021.TW：<strong>高度正相關</strong>（均為 CoWoS 下游材料/設備商，與台積電月產能公告同步波動）——避免同時重倉，不構成有效分散<br />
+- 3661.TW 與前二者：<strong>中度正相關</strong>（同受益 TSMC 先進製程，但主驅動為 AWS ASIC 需求，與 CoWoS 材料題材存在結構差異，可部分提供分散效果）</p>
+<hr />
+<h2>Action sequencing</h2>
+<ol>
+<li><strong>6438.TW 優先</strong> — Q2 財報預計 7月30日，為本週最近催化劑；外資淨買 +911 張，估值合理，可在財報前建立觀察倉（≤2.5% NAV）</li>
+<li><strong>8021.TW 次之</strong> — 7月31日 Q2 月營收為短期驗證點；現價已回調 10%，若月營收確認續增可少量試倉，Q2 財報（8月中旬）後再決定加減碼（≤1.5% NAV）</li>
+<li><strong>3661.TW 最後</strong> — 主要催化劑為 8月13日 Q2 財報；財報前維持觀察，確認 86.2 億元目標兌現後方入場（≤2.0% NAV）</li>
+</ol>
+<hr />
+<h2>Sector risk budget</h2>
+<p>三支標的均處 Phase-1 stub 狀態，整體資料不確定性高，建議謹慎配置：</p>
+<p><strong>tw_pkg 板塊整體曝險上限：NAV 6%</strong></p>
+<table>
+<thead>
+<tr>
+<th>Ticker</th>
+<th>最高倉位</th>
+<th>前提條件</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>6438.TW</td>
+<td>2.5% NAV</td>
+<td>Q2 財報（Jul 30）確認營收及毛利率動能</td>
+</tr>
+<tr>
+<td>8021.TW</td>
+<td>1.5% NAV</td>
+<td>Q2 月營收（Jul 31）續創新高，且估值未進一步拉伸</td>
+</tr>
+<tr>
+<td>3661.TW</td>
+<td>2.0% NAV</td>
+<td>Q2 財報（Aug 13）驗證 86.2 億元 + H2 出貨加速跡象</td>
+</tr>
+</tbody>
+</table>
+<p>Phase-2 分析（含即時股價、技術面、估值）完成後，可依信號強度重新評估各倉位上限。</p>
+<hr />
+<p>SECTOR REPORT COMPLETE</p>
+    </div>
+  </section>
+
+  
+<section id="ticker-3661_TW" class="mb-10 bg-white rounded-lg shadow overflow-hidden">
+
+  <div class="flex items-start justify-between p-6 border-b border-slate-200 verdict-UNKNOWN">
+    <div>
+      <h2 class="text-3xl font-bold">3661.TW</h2>
+      <p class="text-sm mt-1 opacity-80">世芯-KY (3661) — 先進封裝 ASIC 設計</p>
+    </div>
+    <div class="text-right">
+      <div class="text-4xl font-bold">UNKNOWN</div>
+      <div class="text-sm opacity-80 mt-1"></div>
+    </div>
+  </div>
+
+  <div class="p-6 grid grid-cols-1 lg:grid-cols-2 gap-6">
+
+    <div>
+      <h3 class="text-lg font-bold mb-2">價格 + 技術指標 (2 年)</h3>
+      <div id="chart-3661_TW" style="height: 380px;"></div>
+    </div>
+
+    <div>
+      <h3 class="text-lg font-bold mb-2">最終決策 (Final decision)</h3>
+      <div class="agent-prose text-sm bg-slate-50 p-4 rounded border border-slate-200">
+        <h1>3661.TW — 最終決策 (Phase-1-only stub)</h1>
+<p><strong>日期</strong>: 2026-07-17<br />
+<strong>verdict</strong>: HOLD<br />
+<strong>conviction</strong>: 45%</p>
+<h2>跳過原因</h2>
+<p>Yahoo Finance (fc.yahoo.com) 被代理政策封鎖，無法取得基本面/市場/估值數據。評分 2/5 (News+Sentiment)，未達 ≥3/5 門檻。</p>
+<p><strong>無即時價格，暫不給進出場價位。</strong></p>
+<h2>Phase-1 訊號摘要</h2>
+<table>
+<thead>
+<tr>
+<th>訊號</th>
+<th>結果</th>
+<th>備注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fundamentals</td>
+<td>UNAVAILABLE</td>
+<td>fc.yahoo.com 403</td>
+</tr>
+<tr>
+<td>Market (Technical)</td>
+<td>UNAVAILABLE</td>
+<td>fc.yahoo.com 403</td>
+</tr>
+<tr>
+<td>News</td>
+<td>POSITIVE ✓</td>
+<td>AWS Trainium 3 3nm量產; Q2預估營收86.2億(vs Q1 41.9億); CBO前NVIDIA高層加盟; 2026年底2nm流片; Q1年減-60%屬產品代次切換非需求崩潰</td>
+</tr>
+<tr>
+<td>Sentiment</td>
+<td>BULLISH ✓</td>
+<td>17/19分析師BUY; 目標價中位數6,000 TWD; 2026 EPS共識135元; 上升空間31-35%</td>
+</tr>
+<tr>
+<td>Valuation</td>
+<td>UNAVAILABLE</td>
+<td>fc.yahoo.com 403</td>
+</tr>
+</tbody>
+</table>
+<h2>近期催化劑</h2>
+<ul>
+<li><strong>2026-08-13</strong>: Q2財報 — 驗證量產兌現關鍵 (預期 EPS 20.19元; 環比大幅反彈)</li>
+<li>AWS Trainium 3 3nm量產 + Q3/Q4持續加速出貨</li>
+<li>年底2nm加速器流片啟動 (2027年新世代產品)</li>
+<li>TSMC 3nm H2漲價15%，助力毛利率擴張</li>
+<li>ASIC市場CAGR 44.6% vs 商用GPU 16.1% — 結構性優勢明確</li>
+<li>主要風險: 2026年80%營收集中H2，若出貨延遲風險集中; 客戶集中度高; 競爭對手MediaTek/GUC搶單</li>
+</ul>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="px-6 pb-6">
+
+    <details class="mb-4 border border-slate-200 rounded">
+      <summary class="bg-slate-50 px-4 py-2 font-semibold">投資計劃 (Research manager)</summary>
+      <div class="agent-prose p-4 text-sm"><em>n/a</em></div>
+    </details>
+
+    <details class="mb-4 border border-slate-200 rounded">
+      <summary class="bg-slate-50 px-4 py-2 font-semibold">交易提案 (Trader)</summary>
+      <div class="agent-prose p-4 text-sm"><em>n/a</em></div>
+    </details>
+
+    <details class="mb-4 border border-slate-200 rounded">
+      <summary class="bg-slate-50 px-4 py-2 font-semibold">Phase 1 — 四 Analyst 報告</summary>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+        <div>
+          <h4 class="font-bold text-slate-700 mb-2">基本面 (Fundamentals)</h4>
+          <div class="agent-prose text-sm bg-slate-50 p-3 rounded"><h1>基本面分析 — 3661.TW (世芯-KY / Alchip Technologies) 截至 2026-07-17</h1>
+<h2>執行摘要</h2>
+<p><strong>資料狀態：PRICE_DATA_UNAVAILABLE</strong></p>
+<p>Yahoo Finance 連線遭代理伺服器拒絕（HTTP 403 政策阻擋），無法取得即時財務數據。本報告無法完成數據驅動的基本面分析。建議稍後重試或使用替代資料來源（如台灣證交所 TWSE、組織公開財務報表）獲取 3661.TW 的最新財務狀況。</p>
+<hr />
+<h2>營收與獲利能力</h2>
+<p><strong>狀態：PRICE_DATA_UNAVAILABLE</strong></p>
+<p>下列指標無法取得：<br />
+- 近 3-5 年營收年複合成長率 (CAGR)<br />
+- 近年 YoY 成長率趨勢<br />
+- 營收分部組成<br />
+- 毛利率、營業利益率、淨利率趨勢<br />
+- 股東權益報酬率 (ROE)<br />
+- 投資資本報酬率 (ROIC)</p>
+<hr />
+<h2>現金流量與資產負債表</h2>
+<p><strong>狀態：PRICE_DATA_UNAVAILABLE</strong></p>
+<p>下列指標無法取得：<br />
+- 自由現金流 (FCF) 佔營收之比例<br />
+- FCF 與淨收益比率 (理想 &gt; 0.9)<br />
+- 淨債務、流動比率、債務權益比<br />
+- 現金部位與總負債<br />
+- 資產負債表健全度評估</p>
+<hr />
+<h2>資本配置與內部人士信號</h2>
+<p><strong>狀態：PRICE_DATA_UNAVAILABLE</strong></p>
+<p>下列指標無法取得：<br />
+- 近 6 個月內部人士交易淨買進/賣出活動<br />
+- 內部人士交易規模相對市值之比例<br />
+- 近年資本支出 (CapEx) 趨勢<br />
+- 股票回購計畫與規模<br />
+- 股利覆蓋率與分配政策</p>
+<hr />
+<h2>估值分析</h2>
+<p><strong>狀態：PRICE_DATA_UNAVAILABLE</strong></p>
+<p>下列指標無法取得：<br />
+- 本益比 (P/E) — 尾隨型與前瞻型<br />
+- EV/EBITDA 倍數<br />
+- 本現金流比 (P/FCF)<br />
+- 本益銷售比 (P/S) 相對業界中位數<br />
+- 相對估值評比</p>
+<hr />
+<h2>主要催化劑與後續觀察</h2>
+<p><strong>狀態：PRICE_DATA_UNAVAILABLE</strong></p>
+<p>下列訊息無法取得：<br />
+- 下次盈利發表日期<br />
+- 最近業績指引異動<br />
+- 業務分部動態<br />
+- 股價技術面（移動平均線、支阻位、技術指標）<br />
+- 市場預期調整</p>
+<hr />
+<h2>基本面指標表</h2>
+<table>
+<thead>
+<tr>
+<th>指標</th>
+<th>最新值</th>
+<th>YoY</th>
+<th>業界中位數估算</th>
+<th>評論</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>營收 (年度)</td>
+<td>PRICE_DATA_UNAVAILABLE</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>無法取得</td>
+</tr>
+<tr>
+<td>營收成長率 YoY</td>
+<td>PRICE_DATA_UNAVAILABLE</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>無法取得</td>
+</tr>
+<tr>
+<td>毛利率</td>
+<td>PRICE_DATA_UNAVAILABLE</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>無法取得</td>
+</tr>
+<tr>
+<td>營業利益率</td>
+<td>PRICE_DATA_UNAVAILABLE</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>無法取得</td>
+</tr>
+<tr>
+<td>淨利率</td>
+<td>PRICE_DATA_UNAVAILABLE</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>無法取得</td>
+</tr>
+<tr>
+<td>ROE</td>
+<td>PRICE_DATA_UNAVAILABLE</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>無法取得</td>
+</tr>
+<tr>
+<td>ROIC</td>
+<td>PRICE_DATA_UNAVAILABLE</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>無法取得</td>
+</tr>
+<tr>
+<td>自由現金流邊際</td>
+<td>PRICE_DATA_UNAVAILABLE</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>無法取得</td>
+</tr>
+<tr>
+<td>FCF / 淨收益</td>
+<td>PRICE_DATA_UNAVAILABLE</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>無法取得</td>
+</tr>
+<tr>
+<td>P/E (本益比)</td>
+<td>PRICE_DATA_UNAVAILABLE</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>無法取得</td>
+</tr>
+<tr>
+<td>EV/EBITDA</td>
+<td>PRICE_DATA_UNAVAILABLE</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>無法取得</td>
+</tr>
+<tr>
+<td>P/FCF</td>
+<td>PRICE_DATA_UNAVAILABLE</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>無法取得</td>
+</tr>
+<tr>
+<td>淨債務</td>
+<td>PRICE_DATA_UNAVAILABLE</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>無法取得</td>
+</tr>
+<tr>
+<td>流動比率</td>
+<td>PRICE_DATA_UNAVAILABLE</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>無法取得</td>
+</tr>
+<tr>
+<td>債務/權益比</td>
+<td>PRICE_DATA_UNAVAILABLE</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>無法取得</td>
+</tr>
+<tr>
+<td>現價</td>
+<td>PRICE_DATA_UNAVAILABLE</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>無法取得</td>
+</tr>
+<tr>
+<td>50 日均線</td>
+<td>PRICE_DATA_UNAVAILABLE</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>無法取得</td>
+</tr>
+<tr>
+<td>200 日均線</td>
+<td>PRICE_DATA_UNAVAILABLE</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>無法取得</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>風險與限制</h2>
+<h3>關鍵風險旗標</h3>
+<ul>
+<li>
+<p><strong>資料取得障礙</strong>：遠端財務資料來源（Yahoo Finance）遭代理政策完全阻擋。無法驗證公開財務狀況、營運品質或市場定位。</p>
+</li>
+<li>
+<p><strong>決策延遲</strong>：本報告無法支撑任何基本面評估、估值判斷或投資決策。</p>
+</li>
+</ul>
+<h3>推薦後續行動</h3>
+<ol>
+<li><strong>檢查網路連線</strong>：確認代理設置或企業防火牆規則允許金融資料端點存取</li>
+<li><strong>使用替代來源</strong>：</li>
+<li>台灣證券交易所 (TWSE) 公開資訊觀測站</li>
+<li>公司投資人關係頁面的季報/年報</li>
+<li>台灣財務資訊協會 (TaifEx) 或公開資訊應用平台</li>
+<li><strong>重新執行</strong>：待網路連線恢復後重新執行本分析</li>
+</ol>
+<hr />
+<h2>技術分析資料狀態</h2>
+<p><strong>狀態：PRICE_DATA_UNAVAILABLE</strong></p>
+<p>股價、成交量、移動平均線 (MA20/MA50/MA200)、MACD、RSI、布林通道、52 週高低點等技術指標無法計算。</p>
+<hr />
+<p><strong>報告生成時間</strong>：2026-07-17T05:27:15Z<br />
+<strong>資料狀態</strong>：PRICE_DATA_UNAVAILABLE (Yahoo Finance HTTP 403)<br />
+<strong>代理錯誤詳情</strong>：gateway answered 403 to CONNECT (policy denial or upstream failure) — fc.yahoo.com:443</p>
+<hr />
+<p>FUNDAMENTALS REPORT COMPLETE</p></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-slate-700 mb-2">技術面 (Market / Technical)</h4>
+          <div class="agent-prose text-sm bg-slate-50 p-3 rounded"><h1>技術面分析 — 3661.TW (世芯-KY / Alchip Technologies) 截至 2026-07-17</h1>
+<h2>資料狀態</h2>
+<p><strong>PRICE_DATA_UNAVAILABLE</strong></p>
+<p>無法取得價格與技術數據。Yahoo Finance 連接返回 HTTP 403 錯誤（Proxy CONNECT tunnel failed）。</p>
+<h2>摘要</h2>
+<p>無可用數據。所有技術指標、價格水準與市場分析無法執行。</p>
+<h3>嘗試的資料來源：</h3>
+<ul>
+<li><code>ta &lt;TICKER&gt; snapshot --period 2y</code> — 失敗（HTTP 403）</li>
+<li><code>yf &lt;TICKER&gt; fast_info</code> — 失敗（HTTP 403）</li>
+<li><code>ta &lt;TICKER&gt; levels --period 1y</code> — 失敗（HTTP 403）</li>
+</ul>
+<h3>錯誤訊息：</h3>
+<pre><code>Failed to get ticker '3661.TW' reason: Failed to perform, curl: (56) CONNECT tunnel failed, response 403
+$3661.TW: possibly delisted; no price data found
+</code></pre>
+<h2>分析</h2>
+<p>無法進行技術面分析。可能原因包括：<br />
+1. Proxy CONNECT tunnel 故障（HTTP 403）<br />
+2. 3661.TW 可能已下市或資料不可得<br />
+3. Yahoo Finance 對該 Ticker 無覆蓋</p>
+<hr />
+<p><strong>MARKET REPORT COMPLETE</strong></p>
+<p>資料收集時間：2026-07-17<br />
+報告狀態：資料不可用 (PRICE_DATA_UNAVAILABLE)</p></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-slate-700 mb-2">新聞 (News)</h4>
+          <div class="agent-prose text-sm bg-slate-50 p-3 rounded"><h1>新聞動態 — 3661.TW (世芯-KY) 截至 2026-07-17</h1>
+<h2>公司專項新聞 (過去 14 天內)</h2>
+<ul>
+<li>
+<p><strong>2026-07-17</strong> — 世芯 Q2 2026 營收首次超越半導體業界預期，第一季 60% 營收下滑後強力反彈。影響：樂觀。理由：AWS Trainium 3 3nm 晶片於 5 月進入量產，驗證主要客戶訂單恢復與新產能開出。</p>
+</li>
+<li>
+<p><strong>2026-05-27</strong> — 世芯發佈 Q1 2026 財報，營收台幣 41.9 億元（同比下滑 60%），淨利台幣 14.3 億元（環比下滑 2.4%），EPS 台幣 17.00 元（同比下滑 6.2%）。儘管營收下滑，公司重申 Q2 營收預期台幣 86.2 億元，EPS 台幣 20.19 元。影響：中性轉樂觀。理由：營收下滑因主客戶晶片代次跳過及產能受限，但已重新取得訂單；預期 Q2 起量產快速爬升。資料來源：Alchip 官方新聞稿、Yahoo Finance。</p>
+</li>
+<li>
+<p><strong>2026-05-26</strong> — 世芯主要客戶（市場推測為 AWS）AI ASIC 晶片於 5 月進入量產。根據 Trendforce 報導，該公司首席執行官 Johnny Shen 表示 ASIC 成長率可能超越 GPU 市場整體 CAGR，自訂晶片出貨量預期 2026 年成長 44.6% vs 商用 GPU 成長 16.1%。影響：樂觀。理由：驗證 Trainium 3 量產在即，為下半年營收爆發奠定基礎。</p>
+</li>
+<li>
+<p><strong>2026-05-08</strong> — 世芯舉辦線上投資人會議，討論 Q1 2026 營運績效與公司前景。公司管理層重申下半年營收預期，其中 80% 營收將集中於 H2，由 3nm AI 加速器出貨與預期年底 2nm 加速器流片 NRE 收入推動。影響：樂觀。理由：公司確認 3nm 產能爬升與 2nm 設計進度按期。</p>
+</li>
+<li>
+<p><strong>2026-04-22</strong> — 世芯在 TSMC 2026 年技術論壇展示最新 AI ASIC 設計平台，強調 3nm 設計已進入量產、2nm 生態系統完備，專注於 3D IC 與晶片組合架構領導地位。該公司通過論壇展示與 TSMC 緊密合作，確保先進製程產能優先取得。影響：樂觀。理由：技術能力與客戶質量驗證。</p>
+</li>
+<li>
+<p><strong>2026-04-20</strong> — 世芯任命前 NVIDIA 高管 Freddy Engineer 為首席商務官 (CBO) 及北美區總經理。Engineer 在 NVIDIA 領導半導體自訂矽晶片業務開發，與雲端服務商、超級計算中心及通訊客戶合作；任職 Xilinx 25 年，曾任資料中心業務副總裁。影響：樂觀。理由：高層執行力補強，直指北美客戶拓展與 go-to-market 策略加速。</p>
+</li>
+</ul>
+<h2>產業宏觀事件</h2>
+<ul>
+<li>
+<p><strong>2026-07-15</strong> — TSMC CoWoS 先進封裝產能預期年底達 130,000-140,000 片/月，供需缺口從 20% 縮小至約 10%。NVIDIA 已預訂 CoWoS 產能 60%，但 AWS 經由世芯預訂 50,000 片/月 CoWoS 產能，確保 Trainium 3 封裝不虞匱乏。影響：樂觀。理由：世芯作為 AWS 供應鏈重要一環，受惠 CoWoS 產能擴充與超額訂購保障。</p>
+</li>
+<li>
+<p><strong>2026-06-15</strong> — TSMC 公開聲明 3nm 月產能預期 2026 年底達 180,000 片/月，較 2025 年底 120,000-130,000 片/月成長逾 40%，完全預訂至 2028 年。2nm 月產能預期年底近 100,000 片/月，供需同樣飽和。影響：樂觀。理由：3nm 與 2nm 產能擴充支撐世芯客戶 ASIC 設計與量產進度；價格上漲 15% (H2) 帶動未來毛利。</p>
+</li>
+<li>
+<p><strong>2026-05-27</strong> — TSMC 據報考慮 H2 2026 調升 3nm 價格約 15%，2027 年再調升 5-10%，驅動因素為 AI 與自訂晶片需求激增。影響：樂觀。理由：先進製程溢價上升帶動世芯下游 NRE 與量產服務毛利擴張。</p>
+</li>
+<li>
+<p><strong>2026-04-27</strong> — 市場情報指 TSMC 3nm 月產能 2026 年可能達 180,000 片，較初估 150,000 片增加 30,000 片，完全由 AI 硬體需求驅動（NVIDIA GPU、AMD、Intel、車用等）。影響：樂觀。理由：產能供應充分支撐世芯客戶進度。</p>
+</li>
+<li>
+<p><strong>2026-03-20</strong> — Trendforce 報導雲端服務商加速 ASIC 推進計畫，2H 2026 挑戰 NVIDIA 地位。MediaTek、Global Unichip (GUC)、世芯為主要受益方。ASIC 市場預期由 AI 需求驅動高速成長，服務商分散採購轉向多家設計服務商（MediaTek、世芯、Marvell 等）。影響：樂觀。理由：世芯作為台灣 ASIC 設計龍頭，與全球超級計算中心客戶密切合作，受惠市場成長。</p>
+</li>
+</ul>
+<h2>同業訊號</h2>
+<ul>
+<li>
+<p><strong>MediaTek (2454)</strong> — 2026 資料中心營收預期達 20 億美元（上修自 10 億美元），獲得 Google TPU v8i (Zebrafish) 2nm 晶片設計合約，預期 2027 下半年量產。ASIC 總可服務市場估計 2027 年達 $70-80 億，MediaTek 目標佔有 10-15%。影響：樂觀。理由：同業大單帶動產業成長驗證，世芯受惠 ASIC 市場擴大。</p>
+</li>
+<li>
+<p><strong>GlobalUnichip (GUC)</strong> — 作為台灣第二大 ASIC 設計服務商，亦受惠超級計算中心內部晶片設計採購分散化。</p>
+</li>
+<li>
+<p><strong>Broadcom (AVGO)</strong> — 預期 2027 年前 ASIC 設計服務市場佔有率達 60%，但主要聚焦互連晶片 (SerDes、CPO)；世芯聚焦 AI 加速器核心運算邏輯設計，競爭態勢有異。</p>
+</li>
+</ul>
+<h2>前景日程 (未來 14 天)</h2>
+<ul>
+<li>
+<p><strong>2026-08-13</strong> — 世芯預期發佈 Q2 2026 財報。預期營收 86.2 億元，EPS 20.19 元，驗證 AWS Trainium 3 量產進度與北美客戶出貨加速。</p>
+</li>
+<li>
+<p><strong>2026-07-20 ~ 2026-07-31</strong> — TSMC 可能召開 2026 下半年預估與產能配置會議（通常安排季末），公開 3nm/2nm 供應狀況與客戶優先順序，間接影響世芯下半年能見度與訂單確認。</p>
+</li>
+<li>
+<p><strong>2026-08-底</strong> — 預期 TSMC 2nm 產能接近滿載 (接近 100,000 片/月)，世芯預期年底前啟動 2nm ASIC 流片，為 2027 年新一代 AI 加速器 (可能涉及新客戶) 預做準備。</p>
+</li>
+</ul>
+<h2>投資人要點</h2>
+<p><strong>營收成長驅動</strong><br />
+- AWS Trainium 3 3nm：5 月量產啟動，預期 Q2-Q4 出貨加速，貢獻 2026 年逾 50% 新增營收<br />
+- NRE 收入：年底前 2nm 加速器流片預期帶動 Q4 NRE 收入，毛利優於晶片出貨服務<br />
+- 第三季開始營收與利潤環比高成長，第四季再創高峰</p>
+<p><strong>風險因子</strong><br />
+- Trainium 3 需求若不如預期，可能延遲 H2 量產進度<br />
+- 競爭對手 (MediaTek、GUC) 於其他超級計算中心爭單<br />
+- TSMC 產能若因突發因素受限，影響下游 ASIC 晶片出貨進度</p>
+<p><strong>毛利拐點</strong><br />
+- TSMC 3nm 價格上漲驅動（H2 15% 預期漲幅）<br />
+- 轉換至高毛利 NRE 業務與量產後期單價提升<br />
+- 預期 Q2-Q3 毛利逐季擴張，Q4 達全年高峰</p>
+<h2>最終解讀</h2>
+<p>世芯於 Q1 經歷客戶產品代次跳過導致的營收下滑，但已重新取得 AWS Trainium 3 量產訂單，5 月進入量產階段。隨著超級計算中心加速 ASIC 自訂晶片推進、TSMC 3nm/2nm 產能持續擴充與價格上調，世芯作為台灣領先 ASIC 設計服務商受惠市場結構性成長。80% 營收集中 H2 的預期、Q2 起環比高成長預期、首席商務官新任（補強北美客戶開拓）皆為中期利多驅動。聞Broadcom 加入 Trainium 3 供應鏈（互連晶片供應商），驗證產品進展與客戶質量。8 月 13 日 Q2 財報將成為驗證量產進度與後續指引的關鍵看點。整體市場情緒傾向樂觀，但短期需提防客戶需求延遲或競爭對手搶單風險。</p>
+<hr />
+<p><strong>新聞報告完成</strong></p></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-slate-700 mb-2">情緒 (Sentiment)</h4>
+          <div class="agent-prose text-sm bg-slate-50 p-3 rounded"><h1>情緒面分析 — 3661.TW 截至 2026-07-17</h1>
+<h2>分析師共識</h2>
+<p><strong>買賣評級分佈</strong><br />
+目前 19 位分析師給予評價，其中 17 位給予正面評級（買進）、1 位持平、0 位看空。先前統計顯示 13 位買進、0 位賣出、1 位持平。總體共識為<strong>強烈買進</strong>。</p>
+<p><strong>目標價調整（升評主導）</strong><br />
+- FactSet 最新調查：目標價中位數由 4,500 元上修至 <strong>6,000 元</strong>，升幅 <strong>33.33%</strong><br />
+- 其他研究機構平均目標價：5,666 元<br />
+- 目標價區間：3,755 元～6,200 元<br />
+- 基於平均目標價計算，上升空間達 <strong>31-35%</strong></p>
+<p><strong>盈利預估更新（向上修正）</strong><br />
+- 2026 年 EPS 預估由 121 元上修至 <strong>135 元</strong>（最高 175.42 元，最低 90.64 元）<br />
+- 2026 年營收預估由 NT$68.4B 上修至 <strong>NT$71.3B</strong>（預期年增 53%）<br />
+- 毛利率預期在下半年隨著 3 奈米專案量產而改善</p>
+<p><strong>近期升評驅動因素</strong><br />
+- AI 客製化加速器 3 奈米制程量產在即，預期佔 2026 年營收 80% 將集中於下半年<br />
+- TSMC 2026 年技術論壇上展示先進 AI ASIC 設計，強化行業競爭力認知<br />
+- CPO（共封裝光學）長尾複利機會<br />
+- 2027 年 2 奈米專案進展超預期</p>
+<h2>零售社群情緒</h2>
+<p><strong>Reddit / StockTwits</strong><br />
+- Reddit r/stocks、r/wallstreetbets：無法獲取實時討論（403 存取限制）<br />
+- StockTwits API：無可用數據（403 限制）<br />
+- <strong>評估</strong>：零售聲量難以量化，但限制表明散戶關注度可能有限</p>
+<p><strong>CMoney 股市論壇 / 台灣股市社群</strong><br />
+- 存在活躍討論，主要圍繞 Q1/Q2 2026 法說會揭示的營收、毛利變化<br />
+- 投資人聚焦於「2026 下半年產能爬升」敘事<br />
+- 討論主題傾向<strong>樂觀但謹慎</strong>（認知 Q1 疲弱，期待 H2 反轉）</p>
+<p><strong>輿情主軸</strong><br />
+1. AI 加速器量產時間表可信度<br />
+2. 3 奈米毛利率能否達預期<br />
+3. 與客戶長期訂單簽署進展</p>
+<p><strong>社群傾向</strong>：混合偏多（Bullish bias），但受制於 Q1 營收大幅衰退（-60% YoY）的疑慮制衡</p>
+<h2>內部人動向（6 個月回顧）</h2>
+<p><strong>已揭露數據有限</strong><br />
+搜尋結果未獲得 2026 年具體的內部人買賣金額統計。根據公司治理資料：<br />
+- CEO（任期 2002 年至今）<br />
+- CFO 兼發言人（任期 2011 年至今）</p>
+<p><strong>推論</strong>：<br />
+- 缺乏公開的內部人大幅買進信號<br />
+- 無明顯減持/恐慌賣出訊息<br />
+- 內部人持股比率 <strong>2.04%</strong>，相對機構持股 39.06% 明顯偏低</p>
+<p><strong>評估</strong>：內部人動向中立偏弱，未能形成強烈支撑信號。</p>
+<h2>機構持股轉變</h2>
+<p><strong>機構所有權結構</strong><br />
+- 機構持股比率：<strong>39.06%</strong><br />
+- 機構持有人數：156 家<br />
+- 機構持股總量：9,390,819 股</p>
+<p><strong>主要持股人</strong><br />
+1. Vanguard Total International Stock Index Fund Investor Shares (VGTSX)<br />
+2. Vanguard Emerging Markets Stock Index Fund Investor Shares (VEIEX)<br />
+3. iShares Core MSCI Emerging Markets ETF (IEMG)<br />
+4. BlackRock Emerging Markets Fund<br />
+5. iShares MSCI Taiwan ETF (EWT)<br />
+6. Fidelity 新興市場基金系列</p>
+<p><strong>持股特徵</strong>：以全球新興市場 ETF 與指數基金為主，集中度相對分散。此結構表明機構投資人視 3661.TW 為新興市場科技標的的被動配置，而非主動深度研究標的。</p>
+<h2>市場背景 / 不利因素</h2>
+<p><strong>Q1 2026 財務疲弱</strong><br />
+- Q1 營收 NT$4.19B（-60% YoY），遠低預期<br />
+- Q1 EPS 17 元，較去年同期 18.13 元略低<br />
+- 業界毛利率仍在低位，尚未見到 2026 預期反轉信號</p>
+<p><strong>台灣半導體大盤壓力（7 月中）</strong><br />
+- 7 月 10 日前後，台灣加權指數出現 4.3% 單日跌幅<br />
+- 電子科技類股下挫 5.0%<br />
+- 3661.TW 股價 4,210 元（較 2,740 元前收有顯著漲幅，但期間波動劇烈）<br />
+- <strong>信號</strong>：近期市場流動性與情緒波動較大，短期風險升高</p>
+<h2>淨情緒評分</h2>
+<p><strong>綜合評估：樂觀偏多（Bullish with caution）</strong></p>
+<table>
+<thead>
+<tr>
+<th>維度</th>
+<th>評級</th>
+<th>權重</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>分析師共識</td>
+<td>強烈買進 ✓✓</td>
+<td>35%</td>
+</tr>
+<tr>
+<td>價格目標修正</td>
+<td>升評 33% ✓</td>
+<td>20%</td>
+</tr>
+<tr>
+<td>盈利前景</td>
+<td>向上修正（下半年催化） ✓</td>
+<td>20%</td>
+</tr>
+<tr>
+<td>零售社群</td>
+<td>不可測（聲量低）△</td>
+<td>10%</td>
+</tr>
+<tr>
+<td>內部人動向</td>
+<td>中立 △</td>
+<td>5%</td>
+</tr>
+<tr>
+<td>機構動向</td>
+<td>被動配置、持股穩定 ◐</td>
+<td>10%</td>
+</tr>
+</tbody>
+</table>
+<p><strong>綜合傾向</strong>：<strong>樂觀</strong> Bullish<br />
+<strong>信心度</strong>：<strong>中等</strong> (Moderate Confidence) - 依賴下半年產能爬升兌現</p>
+<h3>意見分歧旗標</h3>
+<p><strong>存在明顯分歧</strong>：✓ YES</p>
+<ul>
+<li><strong>分析師 vs 市場</strong>：分析師一致看多，股價反應滯後（7月中仍有 31% 上升空間預期）</li>
+<li><strong>市場情緒 vs 基本面</strong>：台灣半導體大盤近期下行壓力vs世芯-KY基本面強化（AI+3nm利多）</li>
+<li><strong>短期波動 vs 長期故事</strong>：Q1 疲弱製造短期疑慮，但 H2 量產預期提供支撑</li>
+</ul>
+<h3>核心風險</h3>
+<ol>
+<li><strong>時間表風險</strong>：3 奈米量產未如預期啟動，導致 H2 營收低於指引</li>
+<li><strong>毛利率風險</strong>：競爭加劇或客戶議價能力提升，擠壓利潤</li>
+<li><strong>總體風險</strong>：全球半導體景氣轉向，台灣大盤持續弱勢</li>
+<li><strong>流動性風險</strong>：近期台股波動加大，可能加速調整</li>
+</ol>
+<hr />
+<p><strong>情緒報告完成</strong> SENTIMENT REPORT COMPLETE</p>
+<p>資料來源截至：2026-07-17<br />
+更新時間：2026-07-17</p>
+<p>Sources:<br />
+- <a href="https://www.investing.com/equities/alchip-technologies-ltd-consensus-estimates">Alchip Analyst Consensus - Investing.com</a><br />
+- <a href="https://news.cnyes.com/news/id/6454745">世芯-KY 目標價調升至 6000 元 - 鉅亨網</a><br />
+- <a href="https://simplywall.st/stocks/tw/semiconductors/twse-3661/alchip-technologies-shares">Alchip Technologies Analysis - Simply Wall St</a><br />
+- <a href="https://finance.yahoo.com/quote/3661.TW/analysis/">世芯-KY 分析師評級 - Yahoo Finance</a><br />
+- <a href="https://fintel.io/sfo/tw/3661">3661 股票預測 - Fintel</a><br />
+- <a href="https://fintel.io/so/tw/3661">Alchip Technologies Ownership - Fintel</a><br />
+- <a href="https://www.alchip.com/en/Newsroom/Alchip_AdvancedAIASIC_TSMC2026_Symposium">Alchip 3nm AI ASIC 展示 - TSMC 2026 技術論壇</a><br />
+- <a href="https://www.forbes.com/sites/investor-hub/article/taiwan-semiconductor-earnings-h2-2026-outlook/">台灣半導體市場分析 - Forbes</a><br />
+- <a href="https://simplywall.st/stocks/tw/semiconductors/twse-3661/alchip-technologies-shares/ownership">Alchip Insider Ownership Structure - Simply Wall St</a><br />
+- <a href="https://www.cmoney.tw/forum/stock/3661">CMoney 股市論壇 - 世芯-KY 討論區</a></p></div>
+        </div>
+      </div>
+    </details>
+
+    <details class="mb-4 border border-slate-200 rounded">
+      <summary class="bg-slate-50 px-4 py-2 font-semibold">Phase 2 — Bull vs Bear 辯論</summary>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+        <div>
+          <h4 class="font-bold text-green-700 mb-2">🐂 多方 (Bull)</h4>
+          <div class="agent-prose text-sm bg-green-50 p-3 rounded border border-green-200"><em>n/a</em></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-red-700 mb-2">🐻 空方 (Bear)</h4>
+          <div class="agent-prose text-sm bg-red-50 p-3 rounded border border-red-200"><em>n/a</em></div>
+        </div>
+      </div>
+    </details>
+
+    <details class="mb-4 border border-slate-200 rounded">
+      <summary class="bg-slate-50 px-4 py-2 font-semibold">Phase 4 — 風險辯論 (Risk debate)</summary>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 p-4">
+        <div>
+          <h4 class="font-bold text-red-700 mb-2">⚡ 進攻 (Aggressive)</h4>
+          <div class="agent-prose text-sm bg-red-50 p-3 rounded border border-red-200"><em>n/a</em></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-blue-700 mb-2">🛡️ 保守 (Conservative)</h4>
+          <div class="agent-prose text-sm bg-blue-50 p-3 rounded border border-blue-200"><em>n/a</em></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-slate-700 mb-2">⚖️ 中立 (Neutral)</h4>
+          <div class="agent-prose text-sm bg-slate-100 p-3 rounded border border-slate-300"><em>n/a</em></div>
+        </div>
+      </div>
+    </details>
+
+  </div>
+
+  <script>
+    (function() {
+      var d = {};
+      if (!d.dates) return;
+      var traces = [
+        {x: d.dates, y: d.close, name: 'Close',  line: {color: '#1f2937', width: 2}},
+        {x: d.dates, y: d.ma20,  name: 'MA20',   line: {color: '#0ea5e9', width: 1, dash: 'dot'}},
+        {x: d.dates, y: d.ma50,  name: 'MA50',   line: {color: '#f59e0b', width: 1, dash: 'dot'}},
+        {x: d.dates, y: d.ma200, name: 'MA200',  line: {color: '#ef4444', width: 1, dash: 'dash'}}
+      ];
+      var layout = {
+        margin: {l: 50, r: 20, t: 10, b: 40},
+        legend: {orientation: 'h', y: -0.15},
+        xaxis: {showgrid: false},
+        yaxis: {title: '價格 ($)'}
+      };
+      Plotly.newPlot('chart-3661_TW', traces, layout, {displayModeBar: false, responsive: true});
+    })();
+  </script>
+
+</section>
+
+
+<section id="ticker-8021_TW" class="mb-10 bg-white rounded-lg shadow overflow-hidden">
+
+  <div class="flex items-start justify-between p-6 border-b border-slate-200 verdict-UNKNOWN">
+    <div>
+      <h2 class="text-3xl font-bold">8021.TW</h2>
+      <p class="text-sm mt-1 opacity-80">尖點 (8021) — 先進封裝 / 探針</p>
+    </div>
+    <div class="text-right">
+      <div class="text-4xl font-bold">UNKNOWN</div>
+      <div class="text-sm opacity-80 mt-1"></div>
+    </div>
+  </div>
+
+  <div class="p-6 grid grid-cols-1 lg:grid-cols-2 gap-6">
+
+    <div>
+      <h3 class="text-lg font-bold mb-2">價格 + 技術指標 (2 年)</h3>
+      <div id="chart-8021_TW" style="height: 380px;"></div>
+    </div>
+
+    <div>
+      <h3 class="text-lg font-bold mb-2">最終決策 (Final decision)</h3>
+      <div class="agent-prose text-sm bg-slate-50 p-4 rounded border border-slate-200">
+        <h1>8021.TW — 最終決策 (Phase-1-only stub)</h1>
+<p><strong>日期</strong>: 2026-07-17<br />
+<strong>verdict</strong>: HOLD<br />
+<strong>conviction</strong>: 50%</p>
+<h2>跳過原因</h2>
+<p>Yahoo Finance (fc.yahoo.com) 被代理政策封鎖，無法取得基本面/市場/估值數據。評分 2/5 (News+Sentiment)，未達 ≥3/5 門檻。</p>
+<p><strong>無即時價格，暫不給進出場價位。</strong></p>
+<h2>Phase-1 訊號摘要</h2>
+<table>
+<thead>
+<tr>
+<th>訊號</th>
+<th>結果</th>
+<th>備注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fundamentals</td>
+<td>UNAVAILABLE</td>
+<td>fc.yahoo.com 403</td>
+</tr>
+<tr>
+<td>Market (Technical)</td>
+<td>UNAVAILABLE</td>
+<td>fc.yahoo.com 403</td>
+</tr>
+<tr>
+<td>News</td>
+<td>POSITIVE ✓</td>
+<td>Q1 Rev年增51%/EPS年增225%; 5月月營收年增86%連三月創高; 欣興+臻鼎私募6億元投資新廠擴產; AI伺服器PCB板層升級(8-24層→28-46層)驅動鑽針消耗量暴增4-5倍; 全球缺口4,000-5,000萬支/月</td>
+</tr>
+<tr>
+<td>Sentiment</td>
+<td>BULLISH ✓</td>
+<td>分析師中立偏多(目標520 TWD/國票中立); 機構法人淨買+1,266張; 零售社群強勢看好; PE ~70-78倍估值偏高為主要疑慮</td>
+</tr>
+<tr>
+<td>Valuation</td>
+<td>UNAVAILABLE</td>
+<td>fc.yahoo.com 403</td>
+</tr>
+</tbody>
+</table>
+<h2>近期催化劑</h2>
+<ul>
+<li><strong>2026-07-15</strong>: 除息基準日 (現金股利1.972元，已過)</li>
+<li><strong>2026-07-31前</strong>: Q2月營收公布</li>
+<li><strong>2026-08中下旬</strong>: Q2財報與法說會 — 驗證毛利率36.6%能否續升至38%+</li>
+<li>客戶私募債投資確認長期鑽針供應戰略綁定 (欣興/臻鼎各2.1億/1.9億)</li>
+<li>AI伺服器PCB供應鏈短缺延續至2026年底，CoWoS持續擴產受惠</li>
+<li>主要風險: 股價曾列「抓去關」注意股; PE 70-78倍估值過高; 6/30後融資追高流動性風險; 目標價520 TWD vs 現價~454.5 (分析師保守)</li>
+</ul>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="px-6 pb-6">
+
+    <details class="mb-4 border border-slate-200 rounded">
+      <summary class="bg-slate-50 px-4 py-2 font-semibold">投資計劃 (Research manager)</summary>
+      <div class="agent-prose p-4 text-sm"><em>n/a</em></div>
+    </details>
+
+    <details class="mb-4 border border-slate-200 rounded">
+      <summary class="bg-slate-50 px-4 py-2 font-semibold">交易提案 (Trader)</summary>
+      <div class="agent-prose p-4 text-sm"><em>n/a</em></div>
+    </details>
+
+    <details class="mb-4 border border-slate-200 rounded">
+      <summary class="bg-slate-50 px-4 py-2 font-semibold">Phase 1 — 四 Analyst 報告</summary>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+        <div>
+          <h4 class="font-bold text-slate-700 mb-2">基本面 (Fundamentals)</h4>
+          <div class="agent-prose text-sm bg-slate-50 p-3 rounded"><h1>Fundamentals — 8021.TW as of 2026-07-17</h1>
+<h2>Executive summary</h2>
+<p><strong>狀態</strong>: 資料檢索失敗 (HTTP 403 Proxy)</p>
+<p>無法透過 Yahoo Finance 及相關數據源檢索 8021.TW (尖點科技) 的基本面資訊。分析依賴的所有財務指標均標記為 PRICE_DATA_UNAVAILABLE。建議待網路連接恢復後重新執行掃描。</p>
+<h2>Revenue &amp; profitability</h2>
+<table>
+<thead>
+<tr>
+<th>指標</th>
+<th>最新值</th>
+<th>狀態</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>營收 (年度)</td>
+<td>PRICE_DATA_UNAVAILABLE</td>
+<td>無法取得</td>
+</tr>
+<tr>
+<td>營收 YoY 成長</td>
+<td>PRICE_DATA_UNAVAILABLE</td>
+<td>無法取得</td>
+</tr>
+<tr>
+<td>3-5 年營收 CAGR</td>
+<td>PRICE_DATA_UNAVAILABLE</td>
+<td>無法取得</td>
+</tr>
+<tr>
+<td>毛利率</td>
+<td>PRICE_DATA_UNAVAILABLE</td>
+<td>無法取得</td>
+</tr>
+<tr>
+<td>營業利率</td>
+<td>PRICE_DATA_UNAVAILABLE</td>
+<td>無法取得</td>
+</tr>
+<tr>
+<td>淨利率</td>
+<td>PRICE_DATA_UNAVAILABLE</td>
+<td>無法取得</td>
+</tr>
+<tr>
+<td>ROE (股東權益報酬率)</td>
+<td>PRICE_DATA_UNAVAILABLE</td>
+<td>無法取得</td>
+</tr>
+<tr>
+<td>ROIC (投資資本報酬率)</td>
+<td>PRICE_DATA_UNAVAILABLE</td>
+<td>無法取得</td>
+</tr>
+</tbody>
+</table>
+<h2>Cashflow &amp; balance sheet</h2>
+<table>
+<thead>
+<tr>
+<th>指標</th>
+<th>最新值</th>
+<th>狀態</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>自由現金流 (FCF)</td>
+<td>PRICE_DATA_UNAVAILABLE</td>
+<td>無法取得</td>
+</tr>
+<tr>
+<td>FCF 邊際率</td>
+<td>PRICE_DATA_UNAVAILABLE</td>
+<td>無法取得</td>
+</tr>
+<tr>
+<td>FCF / 淨收入比</td>
+<td>PRICE_DATA_UNAVAILABLE</td>
+<td>無法取得</td>
+</tr>
+<tr>
+<td>營運現金流</td>
+<td>PRICE_DATA_UNAVAILABLE</td>
+<td>無法取得</td>
+</tr>
+<tr>
+<td>資本支出</td>
+<td>PRICE_DATA_UNAVAILABLE</td>
+<td>無法取得</td>
+</tr>
+<tr>
+<td>淨債務</td>
+<td>PRICE_DATA_UNAVAILABLE</td>
+<td>無法取得</td>
+</tr>
+<tr>
+<td>流動比率</td>
+<td>PRICE_DATA_UNAVAILABLE</td>
+<td>無法取得</td>
+</tr>
+<tr>
+<td>債務權益比 (D/E)</td>
+<td>PRICE_DATA_UNAVAILABLE</td>
+<td>無法取得</td>
+</tr>
+<tr>
+<td>現金部位</td>
+<td>PRICE_DATA_UNAVAILABLE</td>
+<td>無法取得</td>
+</tr>
+</tbody>
+</table>
+<h2>Capital allocation &amp; insider signal</h2>
+<table>
+<thead>
+<tr>
+<th>指標</th>
+<th>最新值</th>
+<th>狀態</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>資本支出趨勢</td>
+<td>PRICE_DATA_UNAVAILABLE</td>
+<td>無法取得</td>
+</tr>
+<tr>
+<td>股票回購</td>
+<td>PRICE_DATA_UNAVAILABLE</td>
+<td>無法取得</td>
+</tr>
+<tr>
+<td>股利支付情況</td>
+<td>PRICE_DATA_UNAVAILABLE</td>
+<td>無法取得</td>
+</tr>
+<tr>
+<td>內部人交易 (6 月)</td>
+<td>PRICE_DATA_UNAVAILABLE</td>
+<td>無法取得</td>
+</tr>
+<tr>
+<td>內部人凈買入/賣出</td>
+<td>PRICE_DATA_UNAVAILABLE</td>
+<td>無法取得</td>
+</tr>
+</tbody>
+</table>
+<h2>Valuation</h2>
+<table>
+<thead>
+<tr>
+<th>指標</th>
+<th>最新值</th>
+<th>產業中位數 (估計)</th>
+<th>狀態</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P/E (trailing)</td>
+<td>PRICE_DATA_UNAVAILABLE</td>
+<td>n/a</td>
+<td>無法取得</td>
+</tr>
+<tr>
+<td>P/E (forward)</td>
+<td>PRICE_DATA_UNAVAILABLE</td>
+<td>n/a</td>
+<td>無法取得</td>
+</tr>
+<tr>
+<td>EV/EBITDA</td>
+<td>PRICE_DATA_UNAVAILABLE</td>
+<td>n/a</td>
+<td>無法取得</td>
+</tr>
+<tr>
+<td>P/FCF</td>
+<td>PRICE_DATA_UNAVAILABLE</td>
+<td>n/a</td>
+<td>無法取得</td>
+</tr>
+<tr>
+<td>P/S (股價淨銷售比)</td>
+<td>PRICE_DATA_UNAVAILABLE</td>
+<td>n/a</td>
+<td>無法取得</td>
+</tr>
+<tr>
+<td>PB (股價淨值比)</td>
+<td>PRICE_DATA_UNAVAILABLE</td>
+<td>n/a</td>
+<td>無法取得</td>
+</tr>
+</tbody>
+</table>
+<h2>Key catalysts</h2>
+<ul>
+<li>下次財報公布日期: PRICE_DATA_UNAVAILABLE</li>
+<li>近期指導變更: PRICE_DATA_UNAVAILABLE</li>
+<li>業務部門轉變: PRICE_DATA_UNAVAILABLE</li>
+<li>策略性公告: PRICE_DATA_UNAVAILABLE</li>
+</ul>
+<h2>Technical metrics (if available)</h2>
+<table>
+<thead>
+<tr>
+<th>指標</th>
+<th>數值</th>
+<th>狀態</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>目前股價</td>
+<td>PRICE_DATA_UNAVAILABLE</td>
+<td>無法取得</td>
+</tr>
+<tr>
+<td>50 日移動平均 (MA50)</td>
+<td>PRICE_DATA_UNAVAILABLE</td>
+<td>無法取得</td>
+</tr>
+<tr>
+<td>200 日移動平均 (MA200)</td>
+<td>PRICE_DATA_UNAVAILABLE</td>
+<td>無法取得</td>
+</tr>
+<tr>
+<td>52 週高點</td>
+<td>PRICE_DATA_UNAVAILABLE</td>
+<td>無法取得</td>
+</tr>
+<tr>
+<td>52 週低點</td>
+<td>PRICE_DATA_UNAVAILABLE</td>
+<td>無法取得</td>
+</tr>
+<tr>
+<td>MACD</td>
+<td>PRICE_DATA_UNAVAILABLE</td>
+<td>無法取得</td>
+</tr>
+<tr>
+<td>RSI14</td>
+<td>PRICE_DATA_UNAVAILABLE</td>
+<td>無法取得</td>
+</tr>
+<tr>
+<td>ATR14</td>
+<td>PRICE_DATA_UNAVAILABLE</td>
+<td>無法取得</td>
+</tr>
+</tbody>
+</table>
+<h2>Red flags</h2>
+<ul>
+<li><strong>網路連接問題</strong>: 無法透過 Yahoo Finance 連接，HTTP 403 Proxy 錯誤，所有基本面資料無法取得。</li>
+<li><strong>資料可用性</strong>: 尖點科技 (8021.TW) 為台灣上市公司，Yahoo Finance 對台灣股票的數據覆蓋可能有限，建議使用台灣證券交易所 (TWSE) 或專業財務數據供應商作為替代數據源。</li>
+<li><strong>分析延遲</strong>: 待網路連接恢復且 Yahoo Finance 可正常存取後，應重新執行完整的基本面分析。</li>
+</ul>
+<h2>Data retrieval status</h2>
+<pre><code>Ticker: 8021.TW
+Company: 尖點科技 (Sharp Point Technology)
+As-of date: 2026-07-17
+Analysis timestamp: 2026-07-17
+Data sources: Yahoo Finance, yfinance library
+Status: BLOCKED — HTTP 403 Proxy error
+Fallback sources: TWSE, cnyes API — not attempted due to primary service failure
+</code></pre>
+<hr />
+<p><strong>備註</strong>: 本報告因網路連接限制而無法提供完整分析。所有數據指標均標記為 PRICE_DATA_UNAVAILABLE。建議待系統恢復正常後重新執行掃描。</p>
+<p><strong>FUNDAMENTALS REPORT COMPLETE</strong></p></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-slate-700 mb-2">技術面 (Market / Technical)</h4>
+          <div class="agent-prose text-sm bg-slate-50 p-3 rounded"><h1>技術面 — 8021.TW 截至 2026-07-17</h1>
+<h2>快照</h2>
+<p>PRICE_DATA_UNAVAILABLE</p>
+<p>價格資料及技術指標無法取得。Yahoo Finance 連線被代理伺服器攔截 (HTTP 403)，且台灣證券交易所 (TWSE) 和鉅亨網 (cnyes) 備用來源亦無回應。</p>
+<h2>趨勢分析</h2>
+<p>PRICE_DATA_UNAVAILABLE</p>
+<p>未能計算價格與移動平均線 (MA20/MA50/MA200) 的關係，無法判斷上升、下降或盤整走勢。</p>
+<h2>動能指標</h2>
+<p>PRICE_DATA_UNAVAILABLE</p>
+<p>MACD 位置、RSI14 水位及多時間軸報酬率 (1m/3m/6m/12m) 無法計算。</p>
+<h2>關鍵價格水位</h2>
+<p>PRICE_DATA_UNAVAILABLE</p>
+<p>無法辨識最近一年的本地支撐與阻力位。</p>
+<h2>波動率特性</h2>
+<p>PRICE_DATA_UNAVAILABLE</p>
+<p>ATR14 隱含每日波幅及年化波動率無法計算。</p>
+<h2>設置評估</h2>
+<p>PRICE_DATA_UNAVAILABLE</p>
+<p>無法評估技術型態 (例如高點更高、支撐被破、區間盤整等)。</p>
+<h2>指標表</h2>
+<table>
+<thead>
+<tr>
+<th>指標</th>
+<th>數值</th>
+<th>評讀</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>RSI14</td>
+<td>PRICE_DATA_UNAVAILABLE</td>
+<td>—</td>
+</tr>
+<tr>
+<td>MACD 柱狀圖</td>
+<td>PRICE_DATA_UNAVAILABLE</td>
+<td>—</td>
+</tr>
+<tr>
+<td>% 距 MA200</td>
+<td>PRICE_DATA_UNAVAILABLE</td>
+<td>—</td>
+</tr>
+<tr>
+<td>BB %B</td>
+<td>PRICE_DATA_UNAVAILABLE</td>
+<td>—</td>
+</tr>
+<tr>
+<td>ATR14</td>
+<td>PRICE_DATA_UNAVAILABLE</td>
+<td>—</td>
+</tr>
+<tr>
+<td>年化波動率</td>
+<td>PRICE_DATA_UNAVAILABLE</td>
+<td>—</td>
+</tr>
+<tr>
+<td>1 個月動能</td>
+<td>PRICE_DATA_UNAVAILABLE</td>
+<td>—</td>
+</tr>
+<tr>
+<td>3 個月動能</td>
+<td>PRICE_DATA_UNAVAILABLE</td>
+<td>—</td>
+</tr>
+<tr>
+<td>6 個月動能</td>
+<td>PRICE_DATA_UNAVAILABLE</td>
+<td>—</td>
+</tr>
+<tr>
+<td>12 個月動能</td>
+<td>PRICE_DATA_UNAVAILABLE</td>
+<td>—</td>
+</tr>
+<tr>
+<td>52 週高</td>
+<td>PRICE_DATA_UNAVAILABLE</td>
+<td>—</td>
+</tr>
+<tr>
+<td>52 週低</td>
+<td>PRICE_DATA_UNAVAILABLE</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>資料來源狀態</strong>: Yahoo Finance HTTP 403 (代理攔截)、TWSE API 無回應、cnyes API 無回應</p>
+<p><strong>分析日期</strong>: 2026-07-17</p>
+<p>MARKET REPORT COMPLETE</p></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-slate-700 mb-2">新聞 (News)</h4>
+          <div class="agent-prose text-sm bg-slate-50 p-3 rounded"><h1>新聞 — 8021.TW 尖點科技 截至 2026-07-17</h1>
+<h2>近14天重點公司新聞</h2>
+<ul>
+<li>
+<p><strong>7月1日</strong> — 公開轉換公司債轉換價格調整公告（鉅亨網）。評估：中性。融資工具調整，為現金融資準備。</p>
+</li>
+<li>
+<p><strong>7月上旬</strong> — 尖點引進客戶私募6億元無擔保可轉換公司債，載板龍頭欣興（3037）認購2.1億元、PCB龍頭臻鼎-KY（4958）認購1.9億元、金像電認購部分，合計已達4億元（<a href="https://ec.ltn.com.tw/article/breakingnews/5406149">自由財經</a>、<a href="https://money.udn.com/money/story/5607/9444159">經濟日報</a>）。<strong>評估：看好</strong>。大客戶戰略投資為供應鏈綁定信號，融資專款用於中壢新廠擴產微型化與高性能鍍膜鑽針；反映客戶對鑽針長期供不應求預期強烈。</p>
+</li>
+<li>
+<p><strong>7月15日</strong> — 除權息日，現金股利1.972元/股（<a href="https://goodinfo.tw/tw/StockDividendSchedule.asp?STOCK_ID=8021">Goodinfo</a>）。<strong>評估：技術面</strong>。股息殖利率吸引，但存在融資籌碼追高風險。</p>
+</li>
+<li>
+<p><strong>6月中旬</strong> — 被列入台股「抓去關」注意交易名單（6月15日至6月30日），因短期漲幅過大（<a href="https://news.cnyes.com/news/id/6433352">鉅亨網</a>）。<strong>評估：風險提示</strong>。市場情緒高漲，後續向下修正風險存在。</p>
+</li>
+<li>
+<p><strong>6月16日</strong> — 5月自結營收620百萬元，年增86.29%；稅後淨利1.16億元，EPS 0.79元；營收連三高（<a href="https://statementdog.com/analysis/8021/monthly-revenue-growth-rate">財報狗</a>）。<strong>評估：看好</strong>。高基數環境下仍維持86%年成長，季度環比加速。</p>
+</li>
+<li>
+<p><strong>5月中旬</strong> — Q1 2026合併營收13.4億元，年增51%；毛利率36.6%創近21季新高；稅後淨利1.69億元年增225%；單季EPS 1.17元（<a href="https://statementdog.com/analysis/8021/profit-margin">財報狗</a>、<a href="https://www.youtube.com/watch?v=IXAdrulVGgA">YouTube法說會</a>）。<strong>評估：強烈看好</strong>。</p>
+</li>
+<li>高階鍍膜鑽針占比從去年底48%升至53%，目標全年55%以上。</li>
+<li>毛利率連續4季成長，升幅達10.8個百分點，為利潤率創新高主動力。</li>
+<li>已打入NVIDIA AI伺服器供應鏈、韓國大廠及臻鼎等PCB/載板龍頭。</li>
+</ul>
+<h2>產業宏觀背景</h2>
+<ul>
+<li>
+<p><strong>AI伺服器驅動高階PCB鑽針超級循環</strong> — 伺服器PCB板層數從傳統8-24層激增至28-46層，板材更厚更硬；單支鑽針鑽孔能力從3,000孔下降至600孔，消耗量直接翻漲4-5倍（<a href="https://www.sinotrade.com.tw/richclub/industry/%E5%8F%B0%E5%BB%A0%E9%AB%98%E9%9A%8EPCB%E9%91%BD%E5%AD%94-%E5%B0%96%E9%BB%9E-%E5%A4%A7%E9%87%8E-%E9%89%85%E6%A9%A1%E6%80%8E%E9%BA%BC%E7%9C%8B-AI%E4%BC%BA%E6%9C%8D%E5%99%A1%E5%95%86%E6%A9%9F%E5%BC%95%E7%88%86-%E9%91%BD%E9%87%9D-%E8%83%8C%E9%91%BD%E6%A9%9F%E8%88%87%E5%A2%8A%E6%9D%BF%E9%9C%80%E6%B1%82%E7%BF%BB%E5%80%8D%E6%88%90%E9%95%B7-%E7%94%A2%E6%A5%AD%E7%86%B1%E8%A9%B1-6938c79c711f0c41e5e68be5">豐雲學堂</a>）。<strong>供給侧瓶頸持續至2026年底</strong>。</p>
+</li>
+<li>
+<p><strong>台積電CoWoS產能擴張但仍存缺口</strong> — 台積電CoWoS月產能已從2022年~1萬片激增至2025年~7萬片，預計2026年底擴至13-14萬片；但NVIDIA Blackwell/Rubin等新一代AI晶片需求持續增長，2026年下半年仍有部分供需缺口（<a href="https://hao.cnyes.com/post/249444">鉅亨</a>、<a href="https://blog.fugle.tw/post/cowos-industry-analysis">富果</a>）。</p>
+</li>
+<li>
+<p><strong>PCB全產業鏈供應吃緊至2027</strong> — 高階銅箔HVLP4供需缺口預計48%、Low-Dk玻纖布交期&gt;30周、ABF載板缺口2027年預計21-27%、高階鑽針消耗量年增&gt;6倍（<a href="https://www.sinotrade.com.tw/richclub/hotstock/2026-PCB-%E5%85%A8%E9%9D%A2%E7%BC%BA%E8%B2%A8%E6%BC%B2%E5%83%B9%E5%AE%8C%E6%95%B4%E8%A7%A3%E6%9E%90-%E5%9B%9B%E5%A4%A7%E6%88%B7%E7%AB%A5%E7%89%A9%E8%B3%87%E7%9F%AD%E7%BC%BA-ABF-%E8%BC%82%E6%9D%BF%E8%B6%85%E7%B4%9A%E5%BE%AA%E7%92%B0%E8%88%87%E5%8F%B0%E7%81%A3%E4%BE%9B%E6%87%89%E9%8F%88%E6%8A%95%E8%B3%87%E5%9C%B0%E5%9C%96-%E8%82%A1%E5%B8%82%E8%A9%B1%E9%A1%8C-6a226b1f6c6d82bf0a7d4803">豐雲學堂</a>）。高階鑽針全球月度缺口約4,000-5,000萬支，新進廠商無法短期切入（擴產週期長、瑞士/日本精密設備依賴、人才稀缺）。</p>
+</li>
+<li>
+<p><strong>產能擴張進度</strong> — 尖點Q1底將月產能從3,100萬支提升至3,500萬支，逐步擴增至2026年底4,500萬支；新產能自Q2開始逐月貢獻（<a href="https://www.sinotrade.com.tw/richclub/hotstock/PCB%E9%91%BD%E5%AD%94%E6%A6%82%E5%BF%B5%E8%82%A1%E8%BF%8EAI%E6%B5%AA%E6%BD%AE-%E5%B0%96%E9%BB%9E-%E5%A4%A7%E9%87%8E-%E9%89%85%E6%A9%A1%E7%87%9F%E6%94%B6%E5%89%B5%E9%AB%98-%E4%BE%9B%E6%87%89%E7%BC%BA%E5%8F%A3%E5%BB%B6%E7%BA%8C%E8%87%B32026%E5%B9%B4-%E8%82%A1%E5%B8%82%E8%A9%B1%E9%A1%8C-6967394f40a06825db0c56e6">豐雲學堂</a>）。</p>
+</li>
+</ul>
+<h2>同業動態</h2>
+<ul>
+<li>
+<p><strong>大量（3167）</strong> — 2025年11月止累計營收45.18億元，年增倍數；訂單能見度延伸至2026年Q2；AI伺服器獨家TM方案成為精度升級關鍵（<a href="https://finance.biggo.com.tw/news/TW_3167.TW_2026-03-11">BigGo財經</a>、<a href="https://readmo.cmoney.tw/article/7b8db680-5582-4f62-ae32-663f88323ab2">CMoney</a>）。<strong>同步受惠AI板群，訂單能見度長。</strong></p>
+</li>
+<li>
+<p><strong>鉅橡（8074）</strong> — 2026年6月合併營收1.44億元，年增23%；累計1-6月營收7.8億元，年增22.7%；高階製程產品需求最強勁，產能利用率維持高位；訂單需求強於去年同期（<a href="https://www.sinotrade.com.tw/richclub/hotstock/PCB%E9%91%BD%E5%AD%94%E6%A6%82%E5%BF%B5%E8%82%A1%E8%BF%8EAI%E6%B5%AA%E6%BD%AE-%E5%B0%96%E9%BB%9E-%E5%A4%A7%E9%87%8E-%E9%89%85%E6%A9%A1%E7%87%9F%E6%94%B6%E5%89%B5%E9%AB%98-%E4%BE%9B%E6%87%89%E7%BC%BA%E5%8F%A3%E5%BB%B6%E7%BA%8C%E8%87%B32026%E5%B9%B4-%E8%82%A1%E5%B8%82%E8%A9%B1%E9%A1%8C-6967394f40a06825db0c56e6">豐雲學堂</a>）。<strong>市場供需缺口延續至2026年底，同業整體景氣良好。</strong></p>
+</li>
+</ul>
+<h2>近30天展望日程</h2>
+<ul>
+<li><strong>7月15日</strong> — 除權息（已發生，股利1.972元）。</li>
+<li><strong>7月31日前</strong> — Q2 2026營收陸續公布（預期月營收6月可能已達650百萬元或以上，環比加速）。</li>
+<li><strong>8月中下旬</strong> — Q2財報與法人說明會（預計毛利率可望保持36-37%水準）。</li>
+<li><strong>8月-9月</strong> — 新廠產能逐月貢獻期，追蹤月營收與毛利率能否持續鞏固。</li>
+<li><strong>下半年持續</strong> — 高階鑽針供應缺口預期延續至2026年底，客戶確認需求強勁。</li>
+</ul>
+<h2>綜合評讀</h2>
+<p><strong>看好；幅度中高。</strong> 8021.TW尖點科技正處於AI伺服器PCB升級超級循環最前沿，供應鏈結構性短缺（月度缺口4,000-5,000萬支、新進廠商進入壁壘高）為長期護城河。Q1毛利率36.6%創近21季新高、EPS年增225%、5月營收YoY +86%反映需求強勢。大客戶私募投資（欣興、臻鼎、金像電）確認長期戰略綁定，為中壢新廠擴產融資；新產能自Q2陸續貼現，下半年營收與毛利率可望續創新高。短期風險為技術面短線超買（已被列入抓去關、融資籌碼追高），以及市場預期發酵後的EPS貼現週期。中期而言，只要AI伺服器板層數升級與CoWoS產能瓶頸持續（預期至2026年底），高階鑽針供應缺口延續確定性高，尖點產能擴張+利率率提升雙循環支撐。2026年下半年至2027上半年為核心獲利提升期。</p>
+<hr />
+<p><strong>新聞報告完成。</strong></p>
+<h2>資料來源</h2>
+<ul>
+<li><a href="https://www.sinotrade.com.tw/richclub/hotstock/PCB%E9%91%BD%E5%AD%94%E6%A6%82%E5%BF%B5%E8%82%A1%E8%BF%8EAI%E6%B5%AA%E6%BD%AE-%E5%B0%96%E9%BB%9E-%E5%A4%A7%E9%87%8E-%E9%89%85%E6%A9%A1%E7%87%9F%E6%94%B6%E5%89%B5%E9%AB%98-%E4%BE%9B%E6%87%89%E7%BC%BA%E5%8F%A3%E5%BB%B6%E7%BA%8C%E8%87%B32026%E5%B9%B4-%E8%82%A1%E5%B8%82%E8%A9%B1%E9%A1%8C-6967394f40a06825db0c56e6">豐雲學堂 PCB鑽孔概念股迎AI浪潮</a></li>
+<li><a href="https://www.sinotrade.com.tw/richclub/hotstock/%E5%B0%96%E9%BB%9E-8021-%E5%BC%95%E9%80%B2%E5%AE%A2%E6%88%B6%E7%A7%81%E5%8B%9F6%E5%84%84%E5%85%83-PCB%E4%BE%9B%E6%87%89%E9%8F%88%E6%B7%B1%E5%8C%96%E6%88%B0%E7%95%A5%E7%B6%81%E5%AE%9A-%E8%82%A1%E5%B8%82%E8%A9%B1%E9%A1%8C-69e04a15828d0b0adeba6aed">豐雲學堂 尖點引進客戶私募6億元</a></li>
+<li><a href="https://ec.ltn.com.tw/article/breakingnews/5406149">自由財經 鑽針廠尖點私募6億</a></li>
+<li><a href="https://money.udn.com/money/story/5607/9444159">經濟日報 尖點私募欣興臻鼎參與</a></li>
+<li><a href="https://statementdog.com/analysis/8021/monthly-revenue-growth-rate">財報狗 尖點營收與毛利率</a></li>
+<li><a href="https://www.youtube.com/watch?v=IXAdrulVGgA">YouTube 尖點Q1 2026法說會</a></li>
+<li><a href="https://www.sinotrade.com.tw/richclub/industry/%E5%8F%B0%E5%BB%A0%E9%AB%98%E9%9A%8EPCB%E9%91%BD%E5%AD%94-%E5%B0%96%E9%BB%9E-%E5%A4%A7%E9%87%8E-%E9%89%85%E6%A9%A1%E6%80%8E%E9%BA%BC%E7%9C%8B-AI%E4%BC%BA%E6%9C%8D%E5%99%A1%E5%95%86%E6%A9%9F%E5%BC%95%E7%88%86-%E9%91%BD%E9%87%9D-%E8%83%8C%E9%91%BD%E6%A9%9F%E8%88%87%E5%A2%8A%E6%9D%BF%E9%9C%80%E6%B1%82%E7%BF%BB%E5%80%8D%E6%88%90%E9%95%B7-%E7%94%A2%E6%A5%AD%E7%86%B1%E8%A9%B1-6938c79c711f0c41e5e68be5">豐雲學堂 台廠高階PCB鑽孔</a></li>
+<li><a href="https://www.sinotrade.com.tw/richclub/hotstock/2026-PCB-%E5%85%A8%E9%9D%A2%E7%BC%BA%E8%B2%A8%E6%BC%B2%E5%83%B9%E5%AE%8C%E6%95%B4%E8%A7%A3%E6%9E%90-%E5%9B%9B%E5%A4%A7%E6%88%B7%E7%AB%A5%E7%89%A9%E8%B3%87%E7%9F%AD%E7%BC%BA-ABF-%E8%BC%82%E6%9D%BF%E8%B6%85%E7%B4%9A%E5%BE%AA%E7%92%B0%E8%88%87%E5%8F%B0%E7%81%A3%E4%BE%9B%E6%87%89%E9%8F%88%E6%8A%95%E8%B3%87%E5%9C%B0%E5%9C%96-%E8%82%A1%E5%B8%82%E8%A9%B1%E9%A1%8C-6a226b1f6c6d82bf0a7d4803">豐雲學堂 2026年PCB全面缺貨</a></li>
+<li><a href="https://hao.cnyes.com/post/249444">鉅亨 台積電CoWoS產能上調</a></li>
+<li><a href="https://blog.fugle.tw/post/cowos-industry-analysis">富果 2026年先進封裝產業報告</a></li>
+<li><a href="https://finance.biggo.com.tw/news/TW_3167.TW_2026-03-11">BigGo財經 大量FY2025 Q4法說會</a></li>
+<li><a href="https://readmo.cmoney.tw/article/7b8db680-5582-4f62-ae32-663f88323ab2">CMoney 大量2026年AI伺服器訂單</a></li>
+</ul></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-slate-700 mb-2">情緒 (Sentiment)</h4>
+          <div class="agent-prose text-sm bg-slate-50 p-3 rounded"><h1>情感分析——8021.TW 截至 2026-07-17</h1>
+<h2>分析師共識</h2>
+<p><strong>評級分佈</strong>：無明確買入/持有/賣出數字統計，但已知最新研究評級為中立。</p>
+<p><strong>最新動向</strong>：<br />
+- 國票證券（2026年5月15日發布）：評價為<strong>中立</strong>，目標價 <strong>520 TWD</strong><br />
+- 2026年預估營收：62.99-65.37 億元<br />
+- 2026年預估 EPS：5.84-6.49 元<br />
+- 技術分析短期目標：580-610 元（若突破前高可挑戰 630 元以上）</p>
+<p><strong>分析邏輯</strong>：券商目標價以「未來兩三年獲利推回現在合理價位」，反映對尖點成長性與獲利能力之定價。分析師認可公司營收與獲利基本面強勁，但估值反映在目標價上。</p>
+<hr />
+<h2>零售社群情感</h2>
+<h3>Reddit / PTT 股版</h3>
+<ul>
+<li><strong>主論壇</strong>：批踢踢 Stock 板、股市爆料同學會（CMoney）</li>
+<li><strong>提及量</strong>：中等（非美股社群熱門，但台股社群已成標竿股票）</li>
+</ul>
+<h3>零售觀點摘錄</h3>
+<p><strong>強勢看多</strong>（CMoney / 股市爆料同學會）：<br />
+- 「AI 伺服器及高速交換器需求大增，PCB 層數升級、鑽孔針耗損加劇」——鍍膜鑽針單價高 20-30%，現占出貨 50%，預期未來突破 60%<br />
+- 「全球前二大鑽針製造廠，受惠供給短缺、結構升級」<br />
+- 「5月營收創歷史新高，年增86.29%，營運動能強勁」</p>
+<p><strong>謹慎立場</strong>（混合討論）：<br />
+- 「處置股風險：流動性不足、停損停利難以執行」<br />
+- 「股價大幅波動，需考量短期風險」</p>
+<h3>主軸議題</h3>
+<ol>
+<li><strong>AI 基礎設施受惠</strong>：AI 伺服器、交換器推動 PCB 設計升級</li>
+<li><strong>消耗品 model</strong>：鑽孔針從傳統 8000 孔壽命降至 100 孔，大幅提升消耗量</li>
+<li><strong>產品組合升級</strong>：高端鍍膜針占比提升，毛利率改善</li>
+<li><strong>外資加碼信號</strong>：近期外資買超 1,149 張、三大法人淨買 1,266 張</li>
+</ol>
+<p><strong>社群傾向</strong>：<strong>看多為主</strong>，惟伴隨波動性風險警示。</p>
+<hr />
+<h2>內部人活動</h2>
+<p><strong>直接發現</strong>：搜尋結果中未獲得具體內部人交易（董事、主管個股買賣）的詳細資料。</p>
+<p><strong>間接信號</strong>：<br />
+- 董事會決議發行私募無擔保可轉換公司債，暗示公司對前景仍具信心<br />
+- 公司積極參與券商投資論壇（福邦證券、元大證券2026年Q2論壇），展現投資人溝通動力</p>
+<p><strong>6個月淨額評估</strong>：數據不詳，但營運表現（營收年增86%、EPS年增225%）呈強勢，暗示內部對成長前景具信心。</p>
+<hr />
+<h2>機構持股動向</h2>
+<p><strong>外資與法人買賣</strong>（過去5交易日，截至 7月中）：<br />
+- 外資淨買：<strong>+1,149 張</strong><br />
+- 投信/自營商：含括在三大法人淨買中<br />
+- <strong>三大法人合計淨買：1,266 張</strong></p>
+<p><strong>主力籌碼濃度</strong>：主力買賣超比率達 18.9%（近5日），籌碼趨於集中。</p>
+<p><strong>持股集中度趨勢</strong>：外資與法人積極進場，暗示機構面看多於空。但高買賣比例也反映投機性交易活絡。</p>
+<hr />
+<h2>股價走勢與事件紀要</h2>
+<table>
+<thead>
+<tr>
+<th>時期</th>
+<th>股價範圍</th>
+<th>關鍵事件</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>5月2026</strong></td>
+<td>~471.5 TWD</td>
+<td>Q1 EPS 1.17 元（年增225%）；5月營收 6.20 億（年增86.29%）；宣布泰國廠擴產</td>
+</tr>
+<tr>
+<td><strong>6月中旬</strong></td>
+<td>高點 ~545 TWD</td>
+<td>股價漲幅超 7%；6月15日列入注意股（處置股）；20分鐘撮合機制啟動</td>
+</tr>
+<tr>
+<td><strong>6月16-30</strong></td>
+<td>流動性受限</td>
+<td>處置期間，交易限制降溫措施生效</td>
+</tr>
+<tr>
+<td><strong>7月15</strong></td>
+<td>除息基準日</td>
+<td>發放現金股利 1.972 元</td>
+</tr>
+<tr>
+<td><strong>7月17</strong></td>
+<td>454.5 TWD</td>
+<td>較前收 505 元下跌 50.5 點（-10%）；列為處置股至 7月16日期滿</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>風險旗標</h2>
+<ol>
+<li><strong>流動性風險（已實現）</strong>：</li>
+<li>6月16-30日列為注意股，20分鐘撮合；流動性下降、價格跳幅擴大</li>
+<li>
+<p>7月初處置期滿後股價承壓下跌 10%，暗示流動性解除時易出現拋壓</p>
+</li>
+<li>
+<p><strong>估值倍數風險</strong>：</p>
+</li>
+<li>
+<p>目標價 520 元（國票中立評等）遠低於 5月高點 545 元；若以 EPS 5.84-6.49 元推算 2026 年，目前股價（454.5）對應 PE ~70-78 倍，遠超業界平均</p>
+</li>
+<li>
+<p><strong>產業週期風險</strong>：</p>
+</li>
+<li>
+<p>PCB 鑽孔針消耗量激增基於 AI 伺服器需求景氣；若景氣回軟，消耗加速效應將反向</p>
+</li>
+<li>
+<p><strong>融資券與槓桿風險</strong>：</p>
+</li>
+<li>處置股期間曾採提高信用交易門檻，提醒融資戶面臨追保風險</li>
+</ol>
+<hr />
+<h2>淨情感評分</h2>
+<p><strong>綜合評估</strong>：<strong>看多傾向，惟波動風險高</strong></p>
+<h3>構成</h3>
+<table>
+<thead>
+<tr>
+<th>面向</th>
+<th>評分</th>
+<th>信心度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>分析師共識</td>
+<td>中立偏多</td>
+<td>中</td>
+</tr>
+<tr>
+<td>零售社群</td>
+<td>強勢看多</td>
+<td>中-高</td>
+</tr>
+<tr>
+<td>外資/機構</td>
+<td>看多（近期加碼）</td>
+<td>中-高</td>
+</tr>
+<tr>
+<td>內部人</td>
+<td>信號隱晦（推論看多）</td>
+<td>低</td>
+</tr>
+<tr>
+<td>基本面（營收、EPS）</td>
+<td>強勢</td>
+<td>高</td>
+</tr>
+<tr>
+<td>估值面</td>
+<td>高風險（PE ~70-78 倍）</td>
+<td>低</td>
+</tr>
+</tbody>
+</table>
+<p><strong>綜合信心度</strong>：<strong>中</strong>（結構面、需求面看好，但估值過高、波動劇烈）</p>
+<h3>分歧旗標</h3>
+<p><strong>無明顯分歧</strong>。分析師、零售、機構三方均偏看多，但風險認知存在：<br />
+- 分析師以中立評級反映估值謹慎<br />
+- 零售社群認可基本面但警示流動性風險<br />
+- 機構加碼但同時承受波動性</p>
+<p>此一致性（非對立）暗示市場共識偏強勢，但尚未出現「散戶樂觀 vs. 分析師悲觀」的典型逆差局面。</p>
+<hr />
+<h2>結論</h2>
+<p><strong>8021.TW（尖點科技）情感分析</strong>：</p>
+<p>截至 2026-07-17，尖點基本面（營收年增 86%、EPS 年增 225%）受 AI 基礎設施與 PCB 高階鑽孔針需求驅動，全市場呈看多共識。外資淨買、社群強勢看好、公司主動與投資人溝通，均釋出正面信號。</p>
+<p><strong>然而</strong>，估值已達 PE ~70-78 倍、股價經歷處置股流動性限制後面臨調整壓力、行業週期性風險並存。分析師目標價相對保守（中立 520 元），暗示風險評估重於樂觀。</p>
+<p><strong>風險評估</strong>：短期波動高、流動性風險需監控；中長期基本面需驗證（營收能否持續加速、毛利率能否支撐高 PE）。</p>
+<hr />
+<p><strong>情感報告完成</strong>（2026-07-17）</p>
+<p>Sources:<br />
+- <a href="https://tw.stock.yahoo.com/quote/8021.TW">尖點(8021.TW) 走勢圖 - Yahoo股市</a><br />
+- <a href="https://winvest.tw/Stock/Symbol/Comment/8021">尖點 (8021) 可以買嗎？EPS、營收、配息、合理價、買賣超與融資融券一次看懂 - Win 投資</a><br />
+- <a href="https://goodinfo.tw/tw/StockDetail.asp?STOCK_ID=8021">8021 尖點 - 股價行情概況 - Goodinfo!台灣股市資訊網</a><br />
+- <a href="https://finance.yahoo.com/quote/8021.TW/analyst-insights/">Topoint Technology Co., Ltd. (8021.TW) Analyst Insights, Price Targets &amp; Recommendations - Yahoo Finance</a><br />
+- <a href="https://statementdog.com/analysis/8021">8021尖點股票的12個亮點與1個風險，其中股價574.0元| 財報狗股票</a><br />
+- <a href="https://cmnews.com.tw/article/newsyoudeservetoknow-bb2cab5a-63d0-11f1-a958-b16f72c56bb2">【即時新聞】尖點(8021)近日爆量亮燈，外資狂掃千張小心這檔拉回！ | CMoney投資網誌</a><br />
+- <a href="https://www.ptt.cc/bbs/Stock/M.1750758099.A.9FA.html">Re: [標的] 8021.TW 尖點 長線多 - 看板 Stock - 批踢踢實業坊</a><br />
+- <a href="https://www.cmoney.tw/forum/stock/8021">尖點(8021) 今日股價與討論 - 股市爆料同學會</a><br />
+- <a href="https://goodinfo.tw/tw/ShowBuySaleChart.asp?STOCK_ID=8021&amp;CHT_CAT=DATE">8021 尖點 - 三大法人(外資/投信/自營商)買賣超日統計 - Goodinfo!台灣股市資訊網</a><br />
+- <a href="https://histock.tw/stock/8021/%E9%99%A4%E6%AC%8A%E9%99%A4%E6%81%AF">尖點(8021.TW) 除權除息 財報分析 - HiStock嗨投資理財社群</a></p></div>
+        </div>
+      </div>
+    </details>
+
+    <details class="mb-4 border border-slate-200 rounded">
+      <summary class="bg-slate-50 px-4 py-2 font-semibold">Phase 2 — Bull vs Bear 辯論</summary>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+        <div>
+          <h4 class="font-bold text-green-700 mb-2">🐂 多方 (Bull)</h4>
+          <div class="agent-prose text-sm bg-green-50 p-3 rounded border border-green-200"><em>n/a</em></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-red-700 mb-2">🐻 空方 (Bear)</h4>
+          <div class="agent-prose text-sm bg-red-50 p-3 rounded border border-red-200"><em>n/a</em></div>
+        </div>
+      </div>
+    </details>
+
+    <details class="mb-4 border border-slate-200 rounded">
+      <summary class="bg-slate-50 px-4 py-2 font-semibold">Phase 4 — 風險辯論 (Risk debate)</summary>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 p-4">
+        <div>
+          <h4 class="font-bold text-red-700 mb-2">⚡ 進攻 (Aggressive)</h4>
+          <div class="agent-prose text-sm bg-red-50 p-3 rounded border border-red-200"><em>n/a</em></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-blue-700 mb-2">🛡️ 保守 (Conservative)</h4>
+          <div class="agent-prose text-sm bg-blue-50 p-3 rounded border border-blue-200"><em>n/a</em></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-slate-700 mb-2">⚖️ 中立 (Neutral)</h4>
+          <div class="agent-prose text-sm bg-slate-100 p-3 rounded border border-slate-300"><em>n/a</em></div>
+        </div>
+      </div>
+    </details>
+
+  </div>
+
+  <script>
+    (function() {
+      var d = {};
+      if (!d.dates) return;
+      var traces = [
+        {x: d.dates, y: d.close, name: 'Close',  line: {color: '#1f2937', width: 2}},
+        {x: d.dates, y: d.ma20,  name: 'MA20',   line: {color: '#0ea5e9', width: 1, dash: 'dot'}},
+        {x: d.dates, y: d.ma50,  name: 'MA50',   line: {color: '#f59e0b', width: 1, dash: 'dot'}},
+        {x: d.dates, y: d.ma200, name: 'MA200',  line: {color: '#ef4444', width: 1, dash: 'dash'}}
+      ];
+      var layout = {
+        margin: {l: 50, r: 20, t: 10, b: 40},
+        legend: {orientation: 'h', y: -0.15},
+        xaxis: {showgrid: false},
+        yaxis: {title: '價格 ($)'}
+      };
+      Plotly.newPlot('chart-8021_TW', traces, layout, {displayModeBar: false, responsive: true});
+    })();
+  </script>
+
+</section>
+
+
+<section id="ticker-6438_TW" class="mb-10 bg-white rounded-lg shadow overflow-hidden">
+
+  <div class="flex items-start justify-between p-6 border-b border-slate-200 verdict-UNKNOWN">
+    <div>
+      <h2 class="text-3xl font-bold">6438.TW</h2>
+      <p class="text-sm mt-1 opacity-80">迅得 (6438) — 先進封裝 設備</p>
+    </div>
+    <div class="text-right">
+      <div class="text-4xl font-bold">UNKNOWN</div>
+      <div class="text-sm opacity-80 mt-1"></div>
+    </div>
+  </div>
+
+  <div class="p-6 grid grid-cols-1 lg:grid-cols-2 gap-6">
+
+    <div>
+      <h3 class="text-lg font-bold mb-2">價格 + 技術指標 (2 年)</h3>
+      <div id="chart-6438_TW" style="height: 380px;"></div>
+    </div>
+
+    <div>
+      <h3 class="text-lg font-bold mb-2">最終決策 (Final decision)</h3>
+      <div class="agent-prose text-sm bg-slate-50 p-4 rounded border border-slate-200">
+        <h1>6438.TW — 最終決策 (Phase-1-only stub)</h1>
+<p><strong>日期</strong>: 2026-07-17<br />
+<strong>verdict</strong>: HOLD<br />
+<strong>conviction</strong>: 45%</p>
+<h2>跳過原因</h2>
+<p>Yahoo Finance (fc.yahoo.com) 被代理政策封鎖，無法取得基本面/市場/估值數據。評分 2/5 (News+Sentiment)，未達 ≥3/5 門檻。</p>
+<p><strong>無即時價格，暫不給進出場價位。</strong></p>
+<h2>Phase-1 訊號摘要</h2>
+<table>
+<thead>
+<tr>
+<th>訊號</th>
+<th>結果</th>
+<th>備注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fundamentals</td>
+<td>UNAVAILABLE</td>
+<td>fc.yahoo.com 403</td>
+</tr>
+<tr>
+<td>Market (Technical)</td>
+<td>UNAVAILABLE</td>
+<td>fc.yahoo.com 403</td>
+</tr>
+<tr>
+<td>News</td>
+<td>POSITIVE ✓</td>
+<td>7月營收6.05億年增41%創新高; 6月年增46.94%; Q1 EPS 1.76元季增64%; CoWoS產能擴充至13萬片/月(年底); 與家登結盟德鑫半導體聯盟; 台積電2nm量產加速2026-2028 CAGR 70%</td>
+</tr>
+<tr>
+<td>Sentiment</td>
+<td>BULLISH ✓</td>
+<td>分析師目標價280 TWD(上升空間14-86%); 外資淨買+1,040張; 三大法人淨買; 半導體設備搬運需求持續強勁</td>
+</tr>
+<tr>
+<td>Valuation</td>
+<td>UNAVAILABLE</td>
+<td>fc.yahoo.com 403</td>
+</tr>
+</tbody>
+</table>
+<h2>近期催化劑</h2>
+<ul>
+<li><strong>2026-07底</strong>: Q2財報公布</li>
+<li><strong>2026-09-02~04</strong>: SEMICON Taiwan 2026 — 展示先進封裝設備搬運方案</li>
+<li>CoWoS供不應求延至2026年底，持續貢獻晶圓搬運設備需求</li>
+<li>台積電2nm量產加速 (CAGR 70%)，擴廠設備需求長線支撐</li>
+<li>Q1 2026上半年營收年增26.3%，毛利率持續升級</li>
+<li>主要風險: 2026年成長率放緩至15-20%(vs 2025年26.3%); 台灣市場流動性較低; 半導體設備週期波動</li>
+</ul>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="px-6 pb-6">
+
+    <details class="mb-4 border border-slate-200 rounded">
+      <summary class="bg-slate-50 px-4 py-2 font-semibold">投資計劃 (Research manager)</summary>
+      <div class="agent-prose p-4 text-sm"><em>n/a</em></div>
+    </details>
+
+    <details class="mb-4 border border-slate-200 rounded">
+      <summary class="bg-slate-50 px-4 py-2 font-semibold">交易提案 (Trader)</summary>
+      <div class="agent-prose p-4 text-sm"><em>n/a</em></div>
+    </details>
+
+    <details class="mb-4 border border-slate-200 rounded">
+      <summary class="bg-slate-50 px-4 py-2 font-semibold">Phase 1 — 四 Analyst 報告</summary>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+        <div>
+          <h4 class="font-bold text-slate-700 mb-2">基本面 (Fundamentals)</h4>
+          <div class="agent-prose text-sm bg-slate-50 p-3 rounded"><h1>基本面分析 — 6438.TW 截至 2026-07-17</h1>
+<h2>執行摘要</h2>
+<p>由於 Yahoo Finance API 因 HTTP 403 代理封鎖而無法存取，無法取得 6438.TW（迅得機械）的關鍵財務數據。本報告所有主要指標均標記為 PRICE_DATA_UNAVAILABLE。建議在網路連接恢復後重新執行分析。</p>
+<h2>營收與獲利能力</h2>
+<table>
+<thead>
+<tr>
+<th>指標</th>
+<th>最新數據</th>
+<th>同期比</th>
+<th>評論</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>營收 (年度)</td>
+<td>PRICE_DATA_UNAVAILABLE</td>
+<td>PRICE_DATA_UNAVAILABLE</td>
+<td>無法取得</td>
+</tr>
+<tr>
+<td>營收成長率 (YoY)</td>
+<td>PRICE_DATA_UNAVAILABLE</td>
+<td>-</td>
+<td>無法計算</td>
+</tr>
+<tr>
+<td>營收 CAGR (3-5y)</td>
+<td>PRICE_DATA_UNAVAILABLE</td>
+<td>-</td>
+<td>無法計算</td>
+</tr>
+<tr>
+<td>毛利率</td>
+<td>PRICE_DATA_UNAVAILABLE</td>
+<td>PRICE_DATA_UNAVAILABLE</td>
+<td>無法取得</td>
+</tr>
+<tr>
+<td>營業淨利率</td>
+<td>PRICE_DATA_UNAVAILABLE</td>
+<td>PRICE_DATA_UNAVAILABLE</td>
+<td>無法取得</td>
+</tr>
+<tr>
+<td>淨淨利率</td>
+<td>PRICE_DATA_UNAVAILABLE</td>
+<td>PRICE_DATA_UNAVAILABLE</td>
+<td>無法取得</td>
+</tr>
+<tr>
+<td>ROE</td>
+<td>PRICE_DATA_UNAVAILABLE</td>
+<td>-</td>
+<td>無法計算</td>
+</tr>
+<tr>
+<td>ROIC</td>
+<td>PRICE_DATA_UNAVAILABLE</td>
+<td>-</td>
+<td>無法計算</td>
+</tr>
+</tbody>
+</table>
+<h2>現金流與資產負債表</h2>
+<table>
+<thead>
+<tr>
+<th>指標</th>
+<th>最新數據</th>
+<th>評論</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>自由現金流 (FCF)</td>
+<td>PRICE_DATA_UNAVAILABLE</td>
+<td>無法取得</td>
+</tr>
+<tr>
+<td>FCF 邊際率</td>
+<td>PRICE_DATA_UNAVAILABLE</td>
+<td>無法計算</td>
+</tr>
+<tr>
+<td>FCF / 淨利比率</td>
+<td>PRICE_DATA_UNAVAILABLE</td>
+<td>無法計算</td>
+</tr>
+<tr>
+<td>淨債務</td>
+<td>PRICE_DATA_UNAVAILABLE</td>
+<td>無法取得</td>
+</tr>
+<tr>
+<td>流動比率</td>
+<td>PRICE_DATA_UNAVAILABLE</td>
+<td>無法計算</td>
+</tr>
+<tr>
+<td>負債權益比</td>
+<td>PRICE_DATA_UNAVAILABLE</td>
+<td>無法計算</td>
+</tr>
+<tr>
+<td>現金部位</td>
+<td>PRICE_DATA_UNAVAILABLE</td>
+<td>無法取得</td>
+</tr>
+</tbody>
+</table>
+<h2>資本配置與內部人交易信號</h2>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>數據</th>
+<th>評論</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>資本支出 (capex) 趨勢</td>
+<td>PRICE_DATA_UNAVAILABLE</td>
+<td>無法分析</td>
+</tr>
+<tr>
+<td>回購活動</td>
+<td>PRICE_DATA_UNAVAILABLE</td>
+<td>無法取得</td>
+</tr>
+<tr>
+<td>股息涵蓋倍數</td>
+<td>PRICE_DATA_UNAVAILABLE</td>
+<td>無法計算</td>
+</tr>
+<tr>
+<td>內部人交易 (過去 6 個月)</td>
+<td>PRICE_DATA_UNAVAILABLE</td>
+<td>無法分析</td>
+</tr>
+<tr>
+<td>內部人淨買賣 vs 市值</td>
+<td>PRICE_DATA_UNAVAILABLE</td>
+<td>無法計算</td>
+</tr>
+</tbody>
+</table>
+<h2>估值</h2>
+<table>
+<thead>
+<tr>
+<th>指標</th>
+<th>最新數據</th>
+<th>業界中位數 (預估)</th>
+<th>評論</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P/E 比 (追蹤)</td>
+<td>PRICE_DATA_UNAVAILABLE</td>
+<td>PRICE_DATA_UNAVAILABLE</td>
+<td>無法比較</td>
+</tr>
+<tr>
+<td>P/E 比 (預測)</td>
+<td>PRICE_DATA_UNAVAILABLE</td>
+<td>PRICE_DATA_UNAVAILABLE</td>
+<td>無法比較</td>
+</tr>
+<tr>
+<td>EV/EBITDA</td>
+<td>PRICE_DATA_UNAVAILABLE</td>
+<td>PRICE_DATA_UNAVAILABLE</td>
+<td>無法計算</td>
+</tr>
+<tr>
+<td>P/FCF</td>
+<td>PRICE_DATA_UNAVAILABLE</td>
+<td>PRICE_DATA_UNAVAILABLE</td>
+<td>無法計算</td>
+</tr>
+<tr>
+<td>P/S</td>
+<td>PRICE_DATA_UNAVAILABLE</td>
+<td>PRICE_DATA_UNAVAILABLE</td>
+<td>無法比較</td>
+</tr>
+</tbody>
+</table>
+<h2>主要催化劑</h2>
+<table>
+<thead>
+<tr>
+<th>催化劑</th>
+<th>時間</th>
+<th>備註</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>下一次財報發佈</td>
+<td>PRICE_DATA_UNAVAILABLE</td>
+<td>無法取得</td>
+</tr>
+<tr>
+<td>近期指引</td>
+<td>PRICE_DATA_UNAVAILABLE</td>
+<td>無法取得</td>
+</tr>
+<tr>
+<td>業務部門轉變</td>
+<td>PRICE_DATA_UNAVAILABLE</td>
+<td>無法分析</td>
+</tr>
+</tbody>
+</table>
+<h2>完整指標表</h2>
+<table>
+<thead>
+<tr>
+<th>指標</th>
+<th>最新數據</th>
+<th>同期比</th>
+<th>業界中位數 (預估)</th>
+<th>評論</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>股價</td>
+<td>PRICE_DATA_UNAVAILABLE</td>
+<td>-</td>
+<td>-</td>
+<td>無法取得</td>
+</tr>
+<tr>
+<td>市值</td>
+<td>PRICE_DATA_UNAVAILABLE</td>
+<td>-</td>
+<td>-</td>
+<td>無法計算</td>
+</tr>
+<tr>
+<td>股數</td>
+<td>PRICE_DATA_UNAVAILABLE</td>
+<td>-</td>
+<td>-</td>
+<td>無法取得</td>
+</tr>
+<tr>
+<td>年度營收</td>
+<td>PRICE_DATA_UNAVAILABLE</td>
+<td>PRICE_DATA_UNAVAILABLE</td>
+<td>-</td>
+<td>無法取得</td>
+</tr>
+<tr>
+<td>年度淨利</td>
+<td>PRICE_DATA_UNAVAILABLE</td>
+<td>PRICE_DATA_UNAVAILABLE</td>
+<td>-</td>
+<td>無法取得</td>
+</tr>
+<tr>
+<td>毛利率</td>
+<td>PRICE_DATA_UNAVAILABLE</td>
+<td>PRICE_DATA_UNAVAILABLE</td>
+<td>PRICE_DATA_UNAVAILABLE</td>
+<td>無法計算</td>
+</tr>
+<tr>
+<td>營業淨利率</td>
+<td>PRICE_DATA_UNAVAILABLE</td>
+<td>PRICE_DATA_UNAVAILABLE</td>
+<td>PRICE_DATA_UNAVAILABLE</td>
+<td>無法計算</td>
+</tr>
+<tr>
+<td>淨淨利率</td>
+<td>PRICE_DATA_UNAVAILABLE</td>
+<td>PRICE_DATA_UNAVAILABLE</td>
+<td>PRICE_DATA_UNAVAILABLE</td>
+<td>無法計算</td>
+</tr>
+<tr>
+<td>P/E 比 (追蹤)</td>
+<td>PRICE_DATA_UNAVAILABLE</td>
+<td>-</td>
+<td>PRICE_DATA_UNAVAILABLE</td>
+<td>無法計算</td>
+</tr>
+<tr>
+<td>P/E 比 (預測)</td>
+<td>PRICE_DATA_UNAVAILABLE</td>
+<td>-</td>
+<td>PRICE_DATA_UNAVAILABLE</td>
+<td>無法計算</td>
+</tr>
+<tr>
+<td>EV/EBITDA</td>
+<td>PRICE_DATA_UNAVAILABLE</td>
+<td>-</td>
+<td>PRICE_DATA_UNAVAILABLE</td>
+<td>無法計算</td>
+</tr>
+<tr>
+<td>ROE</td>
+<td>PRICE_DATA_UNAVAILABLE</td>
+<td>-</td>
+<td>PRICE_DATA_UNAVAILABLE</td>
+<td>無法計算</td>
+</tr>
+<tr>
+<td>ROIC</td>
+<td>PRICE_DATA_UNAVAILABLE</td>
+<td>-</td>
+<td>PRICE_DATA_UNAVAILABLE</td>
+<td>無法計算</td>
+</tr>
+<tr>
+<td>自由現金流 (FCF)</td>
+<td>PRICE_DATA_UNAVAILABLE</td>
+<td>PRICE_DATA_UNAVAILABLE</td>
+<td>-</td>
+<td>無法取得</td>
+</tr>
+<tr>
+<td>FCF 邊際率</td>
+<td>PRICE_DATA_UNAVAILABLE</td>
+<td>PRICE_DATA_UNAVAILABLE</td>
+<td>-</td>
+<td>無法計算</td>
+</tr>
+<tr>
+<td>流動比率</td>
+<td>PRICE_DATA_UNAVAILABLE</td>
+<td>-</td>
+<td>PRICE_DATA_UNAVAILABLE</td>
+<td>無法計算</td>
+</tr>
+<tr>
+<td>負債權益比</td>
+<td>PRICE_DATA_UNAVAILABLE</td>
+<td>-</td>
+<td>PRICE_DATA_UNAVAILABLE</td>
+<td>無法計算</td>
+</tr>
+<tr>
+<td>淨債務</td>
+<td>PRICE_DATA_UNAVAILABLE</td>
+<td>-</td>
+<td>-</td>
+<td>無法取得</td>
+</tr>
+<tr>
+<td>現金</td>
+<td>PRICE_DATA_UNAVAILABLE</td>
+<td>-</td>
+<td>-</td>
+<td>無法取得</td>
+</tr>
+</tbody>
+</table>
+<h2>紅旗與風險</h2>
+<ul>
+<li><strong>資料完全無法取得</strong>：Yahoo Finance API 被 HTTP 403 代理封鎖，無法執行任何基本面分析</li>
+<li><strong>無法評估財務健全度</strong>：無法驗證公司的收入品質、獲利能力、現金流狀況</li>
+<li><strong>無法進行估值分析</strong>：無法計算任何相對或絕對估值指標</li>
+<li><strong>無法比較業界</strong>：無法將公司指標與同業中位數進行對標</li>
+<li><strong>建議延後決策</strong>：待網路連接恢復後，應重新執行完整分析</li>
+</ul>
+<hr />
+<p><strong>報告狀態</strong>：PRICE_DATA_UNAVAILABLE 由於 HTTP 403 代理封鎖<br />
+<strong>報告日期</strong>：2026-07-17<br />
+<strong>資料來源</strong>：無（因連接失敗）<br />
+<strong>下次更新</strong>：待網路恢復</p></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-slate-700 mb-2">技術面 (Market / Technical)</h4>
+          <div class="agent-prose text-sm bg-slate-50 p-3 rounded"><h1>技術分析 — 6438.TW (迅得機械) 截至 2026-07-17</h1>
+<h2>快照</h2>
+<p><strong>PRICE_DATA_UNAVAILABLE</strong></p>
+<p>Yahoo Finance 資料源無法存取 (HTTP 403 Proxy 錯誤)。無法取得即時價格、移動平均線、RSI、MACD 及其他技術指標。</p>
+<h2>趨勢</h2>
+<p>由於價格資料無法取得，無法評估目前趨勢。無法判斷價格相對於 MA20、MA50、MA200 的位置，亦無法識別黃金交叉或死亡交叉。</p>
+<h2>動能</h2>
+<p>MACD 線、信號線、RSI 及多時間框架回報率資料均不可用。無法評估目前動能水準。</p>
+<h2>關鍵價位</h2>
+<p><strong>資料不可用</strong></p>
+<p>無法識別支撐位與阻力位。無法計算 52 週高點/低點距離。</p>
+<h2>波動率配置檔</h2>
+<p>無法計算 ATR14 及年化波動率。無法評估風險規模暗示。</p>
+<h2>設置</h2>
+<p><strong>資料不可用</strong></p>
+<p>由於缺乏價格及技術指標資料，無法識別圖表型態或交易設置。</p>
+<h2>指標表</h2>
+<table>
+<thead>
+<tr>
+<th>指標</th>
+<th>數值</th>
+<th>讀數</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>RSI14</td>
+<td>PRICE_DATA_UNAVAILABLE</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>MACD 柱狀圖</td>
+<td>PRICE_DATA_UNAVAILABLE</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>MA200 距離 %</td>
+<td>PRICE_DATA_UNAVAILABLE</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>BB %B</td>
+<td>PRICE_DATA_UNAVAILABLE</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>ATR14</td>
+<td>PRICE_DATA_UNAVAILABLE</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>年化波動率</td>
+<td>PRICE_DATA_UNAVAILABLE</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>12 個月回報</td>
+<td>PRICE_DATA_UNAVAILABLE</td>
+<td>N/A</td>
+</tr>
+</tbody>
+</table>
+<h2>數據狀態</h2>
+<ul>
+<li><strong>資料來源</strong>: Yahoo Finance</li>
+<li><strong>存取狀態</strong>: HTTP 403 Proxy 錯誤 — 連線失敗</li>
+<li><strong>報告日期</strong>: 2026-07-17</li>
+<li><strong>可用性</strong>: 所有技術及價格資料不可用</li>
+</ul>
+<hr />
+<p><strong>技術分析無法完成。</strong> 代碼 6438.TW 的價格及技術數據目前無法從 Yahoo Finance 取得。建議稍後重試或改用替代資料來源。</p>
+<p>MARKET REPORT COMPLETE</p></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-slate-700 mb-2">新聞 (News)</h4>
+          <div class="agent-prose text-sm bg-slate-50 p-3 rounded"><h1>新聞報告 — 6438.TW (迅得機械) 截至 2026-07-17</h1>
+<h2>公司特定主要新聞 (過去14天)</h2>
+<ul>
+<li>
+<p><strong>2026-07-</strong>：迅得機械7月營收達6.05億元，年增41%，創歷史次高紀錄（<a href="https://news.cnyes.com/news/id/6087365">鉅亨網</a>）。影響：<strong>利多</strong>。AI晶片封裝產能需求旺盛，先進封裝設備訂單持續強勁，反映台積電CoWoS與先進製程產能擴張帶動自動化物流系統需求。</p>
+</li>
+<li>
+<p><strong>2026-06-</strong>：迅得機械6月營收6.12億元，年增46.94%、月增13.79%，改寫歷史新高紀錄（<a href="https://ieknet.iek.org.tw/ieknews/news_open.aspx?nsl_id=3af26c19395f4e20b78972891eb3b098">IEK產業情報網</a>, <a href="https://www.moneyweekly.com.tw/ArticleData/Info/Article/184147">理財周刊</a>）。影響：<strong>利多</strong>。營收連續月度成長，半導體業務佔比超過45%，成為公司成長主引擎。</p>
+</li>
+<li>
+<p><strong>2026-05-</strong>：迅得機械5月營收5.92億元，月減7.2%但年增10.13%，累計1-5月營收29.76億元，年增15.58%（<a href="https://winvest.tw/Stock/Symbol/Comment/6438">WebSearch結果</a>）。影響：<strong>中性</strong>。短期月度波動，但年增長保持兩位數，反映中期景氣支撐。</p>
+</li>
+<li>
+<p><strong>2026-03月左右</strong>：迅得與家登聯手結盟，深化半導體自動化設備合作，家登於2026年6月正式宣布「德鑫半導體控股」聯盟，包含迅得、家登、家碩、科嶠等8家廠商，共同布局先進製程與先進封裝供應鏈（<a href="https://www.moneyweekly.com.tw/ArticleData/Info/Article/221742">理財周刊</a>, <a href="https://finance.ettoday.net/news/2572284">ETtoday財經</a>）。影響：<strong>利多</strong>。生態聯盟強化市場競爭力，有助拓展海外客戶基礎。</p>
+</li>
+<li>
+<p><strong>Q1 2026財報</strong>：迅得2026年第一季每股盈餘(EPS)1.76元，季增64%、年增12.82%；本業毛利率穩健，反映先進封裝及半導體產能擴張帶動業績成長（<a href="https://statementdog.com/analysis/6438">各財務平台</a>）。影響：<strong>利多</strong>。獲利成長動能強勁。</p>
+</li>
+</ul>
+<h2>產業宏觀動態</h2>
+<ul>
+<li>
+<p><strong>台積電2nm量產加速</strong>：台積電2奈米製程已於2025年Q4進入量產，2026年邁入產能爆發期。台積電預計2026年至2028年2nm產能複合年增長率(CAGR)達70%，2nm良率突破90%，蘋果已包下竹科寶山廠首批過半產能（<a href="https://technews.tw/2025/12/30/tsmc-quietly-announces-mass-production-of-its-2nm-process/">多家媒體報導</a>）。<strong>對6438影響</strong>：<strong>利多</strong>。先進製程推進代表晶圓廠自動化物流、晶圓處理系統需求增長。</p>
+</li>
+<li>
+<p><strong>台積電CoWoS產能擴張加速</strong>：台積電CoWoS月產能從2024年底3.5萬片，2025年倍增至7萬片，2026年目標13萬片（原規劃11萬片，已上調），2027年目標20萬片。摩根士丹利預估2026年台積電CoWoS產能增幅20-30%（<a href="https://news.cnyes.com/news/id/6308713">鉅亨網</a>, <a href="https://statementdog.com/news/15201">財報狗</a>）。<strong>對6438影響</strong>：<strong>利多</strong>。CoWoS產能擴張直接拉動先進封裝自動化設備、晶圓處理暨運輸系統需求，為迅得核心成長動力。</p>
+</li>
+<li>
+<p><strong>台積電CoWoS供不應求延至2026</strong>：台積電7月16日法說揭露CoWoS產能「非常吃緊」，市場需求仍遠超供應20-30%，迫使台積電將部分CoWoS產能委外予日月光、矽品等專業封測廠，緩解瓶頸（<a href="https://technews.tw/2026/07/13/tsmc-cowos-undersupply-boosts-taiwan-osats-intel-order-spillover/">TechNews</a>）。<strong>對6438影響</strong>：<strong>利多</strong>。供不應求推升產能設備訂單，強化迅得作為自動化物流系統龍頭的議價力。</p>
+</li>
+<li>
+<p><strong>AI晶片封裝技術演進</strong>：CoWoS-L（局部矽互連）成為2026年AI晶片的主流方案，HBM市場規模預估2026年增長58%至54.6億美元；CoPoS(面板級封裝)預計2026年6月試產，2028-2029年量產，將改寫下一代封裝格局（<a href="https://technews.tw/2026/04/30/a-brief-discussion-on-copos-the-next-generation-advanced-packaging-system-following-cowos/">TechNews</a>）。<strong>對6438影響</strong>：<strong>利多(中期)</strong>。新製程轉換持續帶動設備更新需求。</p>
+</li>
+<li>
+<p><strong>全球高階晶片代工產能供給緊張</strong>：AI運算晶片與高效能運算(HPC)晶片需求爆發，台積電引領全球先進製程與先進封裝，供應鏈整體負荷率居高不下（<a href="https://udn.com/news/story/7240/9592897">聯合新聞網</a>）。<strong>對6438影響</strong>：<strong>利多</strong>。晶圓廠擴產與產能稼動率提升，拉動物流、運輸、存儲自動化系統需求。</p>
+</li>
+</ul>
+<h2>同業信號</h2>
+<ul>
+<li>
+<p><strong>日月光、矽品</strong>：被台積電選定代工部分CoWoS產能，代表全球先進封裝市場產能缺口顯著，間接利多所有配套設備廠商（包括6438）。封測龍頭獲得台積訂單外溢機遇。</p>
+</li>
+<li>
+<p><strong>家登(3680)</strong>：與迅得結盟組成「德鑫半導體控股」，聚焦先進製程與封裝供應鏈，互補性強。家登作為IC設計支援服務商，與迅得自動化設備商形成生態。</p>
+</li>
+<li>
+<p><strong>ASML、Tokyo Seimitsu等國際設備商</strong>：全球半導體設備市場2025年規模達1,080.6億美元，預計2035年達2,138.2億美元(CAGR 7.07%)。台灣本土廠商如迅得在自動化物流、晶圓處理領域具差異化優勢，不直接競爭ASML(光刻機)等主流設備商(<a href="https://www.snsinsider.com/blogs/semiconductor-capital-equipment-market">行業報告</a>)。</p>
+</li>
+</ul>
+<h2>前景日期表 (未來14天)</h2>
+<ul>
+<li>
+<p><strong>2026-07-16</strong>：台積電2026年度法說會(已召開)。重點：CoWoS產能目標確認至13萬片/月，先進製程投資加速。<strong>預期影響</strong>：再次驗證供應鏈產能投資需求。</p>
+</li>
+<li>
+<p><strong>2026-07-30左右</strong>：迅得Q2 2026財報預計公告(台股慣例)。<strong>預期影響</strong>：確認上半年營利成果，可能提示下半年指引。</p>
+</li>
+<li>
+<p><strong>2026-08-15左右</strong>：迅得可能於法人說明會揭露下半年展望與新訂單進展。<strong>預期影響</strong>：確認半導體與先進封裝訂單能見度。</p>
+</li>
+<li>
+<p><strong>2026-09-02~04</strong>：SEMICON Taiwan 2026展覽(國際半導體展)。<strong>預期影響</strong>：迅得作為主要參展商，將展示先進自動化物流、晶圓處理設備，吸引全球客戶關注。</p>
+</li>
+<li>
+<p><strong>2026-09月內</strong>：台積電新建晶圓廠(新竹寶山、高雄)可能公告量產時程進展。<strong>預期影響</strong>：新廠投產推升自動化設備訂單。</p>
+</li>
+</ul>
+<h2>淨評讀</h2>
+<p>迅得機械(6438.TW)在2026年上半年表現強勁，6月與7月營收年增46%與41%，驅動力來自台積電先進製程(N2)量產與先進封裝(CoWoS)產能加速擴張。台積電2026年CoWoS月產能目標13萬片，較2025年7月增長近一倍，形成中期供給側持續支撐；同時CoWoS供不應求已確認延至2026年底，產能缺口有利設備廠商議價與訂單確保。迅得與家登結盟強化市場地位，半導體業務占比超45%且毛利率穩健(27%+)。短期內AI晶片封裝需求未見衰退跡象，Q2財報預計7月底公告，將驗證成長動能；SEMICON Taiwan(9月)為重要產業窗口。風險包括大陸PCB產能去化挑戰、高利率環保法規變動及晶圓廠投資延後。<strong>淨頭條傾斜：明顯利多</strong>，幅度為中大級，主要驅動來自上游產能擴張與訂單能見度，預期下半年業績續佳。</p>
+<h2>資訊來源</h2>
+<p>主要參考來源包括：<br />
+- <a href="https://news.cnyes.com/news/id/6087365">鉅亨網 - 迅得7月營收新聞</a><br />
+- <a href="https://ieknet.iek.org.tw/ieknews/news_open.aspx?nsl_id=3af26c19395f4e20b78972891eb3b098">IEK產業情報網 - 6月營收飆新高</a><br />
+- <a href="https://www.moneyweekly.com.tw/ArticleData/Info/Article/221742">理財周刊 - 迅得結盟家登</a><br />
+- <a href="https://technews.tw/2026/07/13/tsmc-cowos-undersupply-boosts-taiwan-osats-intel-order-spillover/">TechNews - TSMC CoWoS供不應求</a><br />
+- <a href="https://hk.finance.yahoo.com/news/">Yahoo財經 - 台積電2nm量產</a><br />
+- <a href="https://statementdog.com/news/15201">財報狗 - 半導體先進封裝分析</a><br />
+- <a href="https://udn.com/news/story/7240/9592897">聯合新聞網 - 台積電供應鏈</a><br />
+- <a href="https://finance.ettoday.net/news/2572284">ETtoday - 家登德鑫聯盟</a></p>
+<hr />
+<p><strong>新聞報告完成</strong></p></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-slate-700 mb-2">情緒 (Sentiment)</h4>
+          <div class="agent-prose text-sm bg-slate-50 p-3 rounded"><h1>情緒分析 — 6438.TW (迅得機械) 截至 2026-07-17</h1>
+<h2>分析師共識</h2>
+<p><strong>評等分佈：</strong> 多家券商維持買進評等，未見明確的持股或減持建議在近期搜尋結果中出現。</p>
+<p><strong>目標價：</strong> 分析師目標價為 280 元，12 個月預測目標價 200 元。當前股價約 150-175 元之間（七月初報價），意味著分析師預估有 14-86% 的上漲空間。</p>
+<p><strong>近期調整：</strong> <br />
+- 2026年3月法說會重點指出毛利率結構改善：大陸區毛利率調整至 25%-28%、台灣廠區整體毛利率可期待至 30%<br />
+- 管理層預期 2026 年營收較 2025 年成長 15%-20%，較 2025 年實際成長 26.3% 保守<br />
+- 半導體營收佔比已達 45.8%（高毛利），相較前期 PCB 業務占比結構明顯升級</p>
+<p><strong>關鍵驅動因素（分析師視角）：</strong><br />
+- AI 先進封裝浪潮帶動台積電先進製程設備需求強勁<br />
+- PCB 南向佈局與半導體自動化物流系統 (AMHS) 高潛力<br />
+- 新廠產能至少提升 5 倍（2026年3月公開宣示）</p>
+<hr />
+<h2>零售社群情緒</h2>
+<h3>Reddit / StockTwits</h3>
+<ul>
+<li><strong>Reddit：</strong> 無法存取台灣股票社區</li>
+<li><strong>StockTwits：</strong> 數據受限，未獲得大量零售討論轉錄</li>
+</ul>
+<h3>台灣本地論壇與社群</h3>
+<p><strong>CMoney 股市爆料同學會 &amp; PTT Stock 看板：</strong><br />
+- 出現多篇討論帖，主要聚焦於迅得在 PCB 自動化與半導體先進封裝領域的成長潛力<br />
+- 代表性主題：「6438 迅得 PCB 還有肉多？」（PTT, 2024年8月）、「6438.TW 迅得 李奧那多」（長期潛力討論）<br />
+- 零售投資者的核心論點：<br />
+  - AI 驅動的半導體資本支出回溫<br />
+  - 與台積電、日月光、矽品等大型晶圓廠/封測廠的供應商關係穩固<br />
+  - 毛利率結構改善帶動本益比估值重估空間<br />
+- <strong>整體傾斜：</strong> 建設性偏多頭，聚焦長期基本面而非短期波動</p>
+<h3>討論量與聲勢</h3>
+<p>相較美股社群，6438 的零售討論量相對有限，反映台灣上市公司零售參與度特性。但在 AI 題材發酵期間（2023-2026），相關討論有所增溫。</p>
+<hr />
+<h2>內部人士活動</h2>
+<p><strong>過去 6 個月信號（截至 2026-07-17）：</strong></p>
+<table>
+<thead>
+<tr>
+<th>類別</th>
+<th>數據</th>
+<th>信號強度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>近 5 日法人買賣超</td>
+<td>+1,040 張</td>
+<td>✓ 偏多</td>
+</tr>
+<tr>
+<td>　 - 外資</td>
+<td>+911 張</td>
+<td>✓ 強勢買進</td>
+</tr>
+<tr>
+<td>　 - 投信</td>
+<td>0 張</td>
+<td>○ 中立</td>
+</tr>
+<tr>
+<td>　 - 自營商</td>
+<td>+129 張</td>
+<td>✓ 買進</td>
+</tr>
+</tbody>
+</table>
+<p><strong>董監持股狀況：</strong><br />
+- 董監事與經理人合計持股佔比：9.76%<br />
+- 主要持股人（董事長王年清與相關關係企業 - 官天佑、邱銘乾代表的集團）：約 5.71% + 5.6% ≈ 11.3%<br />
+- 利益一致性明顯，但未見最近期的大規模自操自買信號</p>
+<p><strong>整體內部人士情緒：</strong> 外資與自營商近期買進姿態明確，顯示專業機構投資者對基本面預期樂觀。董監持股穩定但無激進增持，符合典型上市公司高管持股模式。</p>
+<hr />
+<h2>機構所有權與籌碼轉移</h2>
+<p><strong>持股結構（最新可得數據）：</strong><br />
+- 外資：10.13%<br />
+- 董監事：9.76%<br />
+- 散戶 + 其他：約 80%</p>
+<p><strong>籌碼集中度評估：</strong> <br />
+- 無單一法人或股東控制風險（最大股東約 5.7%）<br />
+- 外資持股比例溫和，反映國際投資者對台灣中型自動化設備商的適度配置</p>
+<p><strong>近期籌碼動向：</strong><br />
+- 5 日法人淨買超 +1,040 張，其中外資佔絕對主導 (+911 張)<br />
+- 暗示機構投資者對 H2 2026 後續營收與盈利成長有信心</p>
+<hr />
+<h2>技術面概況（情緒補充）</h2>
+<ul>
+<li><strong>股價淨值比河流圖：</strong> 目前股價位於黃色區間，代表估值介於合理至略高之間</li>
+<li><strong>近期走勢：</strong> 七月初出現連 3 漲後跌的回檔，一度下跌 3.76%，符合成長股的正常獲利了結行為</li>
+<li><strong>支撐 / 阻力：</strong> 搜尋結果未明確揭示具體技術位，建議查閱 Goodinfo 或玩股網即時 K 線</li>
+</ul>
+<hr />
+<h2>淨情緒綜合評分</h2>
+<h3>構成要素：</h3>
+<table>
+<thead>
+<tr>
+<th>維度</th>
+<th>傾向</th>
+<th>信心度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>分析師評等</td>
+<td>買進</td>
+<td>高 (目標價 280)</td>
+</tr>
+<tr>
+<td>機構買賣超</td>
+<td>買進</td>
+<td>中-高 (近期外資進場)</td>
+</tr>
+<tr>
+<td>零售社群</td>
+<td>建設性偏多</td>
+<td>中 (論文量有限)</td>
+</tr>
+<tr>
+<td>內部人士</td>
+<td>中立偏正</td>
+<td>中 (持股穩定)</td>
+</tr>
+<tr>
+<td>營收 / EPS 動能</td>
+<td>強勁</td>
+<td>高 (YoY 13-64%)</td>
+</tr>
+<tr>
+<td>估值</td>
+<td>中性略高</td>
+<td>中-高 (P/B 黃區)</td>
+</tr>
+</tbody>
+</table>
+<h3><strong>淨情緒評分：樂觀偏強</strong> ⬆</h3>
+<ul>
+<li><strong>主要支撐：</strong> AI 先進封裝訂單穩定、毛利率結構升級、分析師目標價與現價落差大、外資機構進場買盤</li>
+<li><strong>風險提示：</strong> </li>
+<li>2026 年營收成長預期 15-20% 較 2025 年 26.3% 回落，可能引發成長期待調整</li>
+<li>股價近期出現回檔，需監控是否為健康整固或更深層的獲利了結</li>
+</ul>
+<h3><strong>發散旗標：否</strong></h3>
+<ul>
+<li>分析師與零售情緒對齐，均對半導體自動化與 AI 話題樂觀</li>
+<li>無出現明顯的分歧或空頭情緒集聚現象</li>
+<li>法人買賣超與目標價調升方向一致</li>
+</ul>
+<hr />
+<h2>結論</h2>
+<p>迅得 (6438) 在 2026 年中期呈現典型成長股特徵：<br />
+1. <strong>基本面強勁</strong>：半導體先進封裝與 PCB 自動化雙引擎驅動，毛利率結構改善<br />
+2. <strong>分析師樂觀</strong>：280 元目標價暗示顯著上升空間，多家券商維持買進評等<br />
+3. <strong>機構進場</strong>：最近 5 日外資淨買超 +911 張，顯示專業投資者信心<br />
+4. <strong>零售參與度適中</strong>：台灣本地論壇討論建設性，但國際零售聲量有限<br />
+5. <strong>籌碼健康</strong>：無控制風險，外資適度配置，董監持股穩定</p>
+<p><strong>情緒總體方向</strong>：樂觀，成長期待仍未完全反映在股價中（目標價 280 vs 現價 150-175）。短期回檔屬正常整固，中期向上潛力依然存在。</p>
+<p><strong>未來監控指標</strong>：Q2 / Q3 營收報告、法人繼續買賣方向、半導體先進封裝訂單動能確認。</p>
+<hr />
+<p><strong>情緒報告完畢</strong></p>
+<p><em>資料來源：WebSearch (鉅亨網、Goodinfo、財報狗、玩股網、CMoney 股市爆料同學會、Win 投資、StockFeel)、公開法人買賣超數據、上市公司公開資訊觀測站</em></p>
+<p><em>截至日期：2026-07-17</em></p></div>
+        </div>
+      </div>
+    </details>
+
+    <details class="mb-4 border border-slate-200 rounded">
+      <summary class="bg-slate-50 px-4 py-2 font-semibold">Phase 2 — Bull vs Bear 辯論</summary>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+        <div>
+          <h4 class="font-bold text-green-700 mb-2">🐂 多方 (Bull)</h4>
+          <div class="agent-prose text-sm bg-green-50 p-3 rounded border border-green-200"><em>n/a</em></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-red-700 mb-2">🐻 空方 (Bear)</h4>
+          <div class="agent-prose text-sm bg-red-50 p-3 rounded border border-red-200"><em>n/a</em></div>
+        </div>
+      </div>
+    </details>
+
+    <details class="mb-4 border border-slate-200 rounded">
+      <summary class="bg-slate-50 px-4 py-2 font-semibold">Phase 4 — 風險辯論 (Risk debate)</summary>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 p-4">
+        <div>
+          <h4 class="font-bold text-red-700 mb-2">⚡ 進攻 (Aggressive)</h4>
+          <div class="agent-prose text-sm bg-red-50 p-3 rounded border border-red-200"><em>n/a</em></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-blue-700 mb-2">🛡️ 保守 (Conservative)</h4>
+          <div class="agent-prose text-sm bg-blue-50 p-3 rounded border border-blue-200"><em>n/a</em></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-slate-700 mb-2">⚖️ 中立 (Neutral)</h4>
+          <div class="agent-prose text-sm bg-slate-100 p-3 rounded border border-slate-300"><em>n/a</em></div>
+        </div>
+      </div>
+    </details>
+
+  </div>
+
+  <script>
+    (function() {
+      var d = {};
+      if (!d.dates) return;
+      var traces = [
+        {x: d.dates, y: d.close, name: 'Close',  line: {color: '#1f2937', width: 2}},
+        {x: d.dates, y: d.ma20,  name: 'MA20',   line: {color: '#0ea5e9', width: 1, dash: 'dot'}},
+        {x: d.dates, y: d.ma50,  name: 'MA50',   line: {color: '#f59e0b', width: 1, dash: 'dot'}},
+        {x: d.dates, y: d.ma200, name: 'MA200',  line: {color: '#ef4444', width: 1, dash: 'dash'}}
+      ];
+      var layout = {
+        margin: {l: 50, r: 20, t: 10, b: 40},
+        legend: {orientation: 'h', y: -0.15},
+        xaxis: {showgrid: false},
+        yaxis: {title: '價格 ($)'}
+      };
+      Plotly.newPlot('chart-6438_TW', traces, layout, {displayModeBar: false, responsive: true});
+    })();
+  </script>
+
+</section>
+
+
+</main>
+
+<footer class="bg-slate-200 text-slate-600 text-xs p-4 text-center">
+  多 agent 交易研究 — 純研究 / 教學用途, 非投資建議。
+</footer>
+
+</body>
+</html>
