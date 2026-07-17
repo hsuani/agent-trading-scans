@@ -1,0 +1,2835 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Trading Scan — TW_SERVER — 2026-07-17</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+  .verdict-BUY  { background: #dcfce7; color: #166534; }
+  .verdict-HOLD { background: #fef3c7; color: #92400e; }
+  .verdict-SELL { background: #fee2e2; color: #991b1b; }
+  .verdict-UNKNOWN { background: #f3f4f6; color: #374151; }
+  details > summary { cursor: pointer; }
+  details[open] > summary { margin-bottom: 0.5rem; }
+  .agent-prose h1, .agent-prose h2, .agent-prose h3 { font-weight: 600; margin-top: 1rem; margin-bottom: 0.5rem; }
+  .agent-prose h1 { font-size: 1.5rem; }
+  .agent-prose h2 { font-size: 1.25rem; }
+  .agent-prose h3 { font-size: 1.1rem; }
+  .agent-prose p { margin-bottom: 0.5rem; line-height: 1.5; }
+  .agent-prose ul { list-style-type: disc; margin-left: 1.5rem; margin-bottom: 0.5rem; }
+  .agent-prose ol { list-style-type: decimal; margin-left: 1.5rem; margin-bottom: 0.5rem; }
+  .agent-prose table { border-collapse: collapse; margin: 0.75rem 0; font-size: 0.875rem; }
+  .agent-prose th, .agent-prose td { border: 1px solid #d1d5db; padding: 0.375rem 0.75rem; text-align: left; }
+  .agent-prose th { background: #f9fafb; font-weight: 600; }
+  .agent-prose code { background: #f3f4f6; padding: 0.1rem 0.25rem; border-radius: 0.25rem; font-size: 0.875rem; }
+  .agent-prose pre { background: #1f2937; color: #f9fafb; padding: 0.75rem; border-radius: 0.375rem; overflow-x: auto; font-size: 0.85rem; margin: 0.5rem 0; }
+  .agent-prose strong { font-weight: 600; }
+  nav a { color: #2563eb; text-decoration: none; }
+  nav a:hover { text-decoration: underline; }
+</style>
+</head>
+<body class="bg-slate-50 text-slate-900">
+
+<header class="bg-slate-900 text-white p-6 shadow-md">
+  <div class="max-w-6xl mx-auto">
+    <h1 class="text-3xl font-bold">交易掃描 — TW_SERVER</h1>
+    <p class="text-slate-300 text-sm mt-1">as of 2026-07-17 · 產生於 2026-07-17 06:35</p>
+  </div>
+</header>
+
+<nav class="bg-slate-100 border-b border-slate-300 p-3 sticky top-0 z-10">
+  <div class="max-w-6xl mx-auto flex flex-wrap gap-3 text-sm">
+    <a href="#sector-overview" class="font-semibold">族群總覽</a>
+    <a href="#ticker-6669_TW" class="px-2 py-1 rounded verdict-UNKNOWN">6669.TW</a>
+<a href="#ticker-3231_TW" class="px-2 py-1 rounded verdict-UNKNOWN">3231.TW</a>
+<a href="#ticker-2356_TW" class="px-2 py-1 rounded verdict-UNKNOWN">2356.TW</a>
+<a href="#ticker-2376_TW" class="px-2 py-1 rounded verdict-UNKNOWN">2376.TW</a>
+    <a href="../HOWTO_READ.html" class="ml-auto text-blue-700 hover:underline" target="_blank">📖 閱讀指南</a>
+  </div>
+</nav>
+
+<main class="max-w-6xl mx-auto p-6">
+
+  <section id="sector-overview" class="mb-10 bg-white rounded-lg shadow p-6">
+    <h2 class="text-2xl font-bold mb-4">族群總覽 (Sector overview)</h2>
+    <div class="agent-prose text-sm">
+      <h1>Sector report — tw_server as of 2026-07-17</h1>
+<blockquote>
+<p>注意：所有標的均為 Phase-1-only stub。Yahoo Finance (fc.yahoo.com) 遭代理封鎖，Fundamentals、Market (Technical)、Valuation 三項訊號均無法取得，評分 ≤2/5，未達 ≥3/5 進場門檻。下表依 conviction × 現有訊號強度排序，反映「相對強弱」而非正式 BUY/SELL 信號。investment_plan.md 四檔均不存在，R:R 為分析師目標隱含上漲空間粗估。</p>
+</blockquote>
+<hr />
+<h2>Ranking table</h2>
+<table>
+<thead>
+<tr>
+<th>Rank</th>
+<th>Ticker</th>
+<th>名稱</th>
+<th>Verdict</th>
+<th>Conviction</th>
+<th>R:R (估)</th>
+<th>Size</th>
+<th>Horizon</th>
+<th>觸發條件</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>6669.TW</td>
+<td>緯穎科技</td>
+<td>HOLD*</td>
+<td>45%</td>
+<td>~2.5</td>
+<td>S</td>
+<td>1-3m</td>
+<td>Q2財報+GB300量產時程確認</td>
+</tr>
+<tr>
+<td>2</td>
+<td>3231.TW</td>
+<td>緯創資通</td>
+<td>HOLD*</td>
+<td>45%</td>
+<td>~3.5</td>
+<td>S</td>
+<td>1-3m</td>
+<td>Q2財報(08-18)毛利率改善確認</td>
+</tr>
+<tr>
+<td>3</td>
+<td>2356.TW</td>
+<td>英業達</td>
+<td>HOLD*</td>
+<td>42%</td>
+<td>~1.5</td>
+<td>XS</td>
+<td>1-3m</td>
+<td>Q2財報(08-07)+供應鏈改善</td>
+</tr>
+<tr>
+<td>4</td>
+<td>2376.TW</td>
+<td>技嘉科技</td>
+<td>HOLD*</td>
+<td>38%</td>
+<td>~1.2</td>
+<td>XS</td>
+<td>2-4m</td>
+<td>Vera Rubin H2量產確認、8/3除息填息觀察</td>
+</tr>
+</tbody>
+</table>
+<p>*資料完整(Yahoo Finance 恢復)前，HOLD 為預設裁定。S = Small (≤3% NAV)，XS = Extra Small (≤1.5% NAV)。</p>
+<hr />
+<h2>共識首選</h2>
+<p><strong>6669.TW (緯穎科技)</strong>。理由：22-25 位分析師 100% 買進，板塊內唯一全面一致看多標的；目標價 6,600-7,575 元 (現價 5,445 元，隱含 +21~39%)；GPU 加速系統佔比已達 60% (前年 35%)，轉型完成度最高；6月單月營收 NT$1,113 億創新高 (+29.8% YoY、+33% MoM)；三大法人投信連10買、外資連2買，持續淨買超 24份。EPS 2026E 349 元、2027E 逾 410 元均有具體估算。於板塊內 AI 純度、機構一致性、成長加速度三項均領先。</p>
+<hr />
+<h2>逆向選股</h2>
+<p><strong>2376.TW (技嘉科技)</strong>。摩根士丹利 7 月降評至「持平大市」(目標 290 元，前 370 元) 帶動市場偏空，然而：P/E&lt;13x 對比同業普遍 &gt;20x，估值折價顯著；14 位分析師中仍有 7 位維持買進，共識目標 415 元隱含 +24%；8/3 除息 12 元提供短期買盤支撐；若 Vera Rubin H2 2026 高階伺服器主機板如期量產，可逆轉消費主機板衰退 (-22%) 的悲觀敘事。主流觀點因 MS 降評集體看空，壞消息多已反映於估值，具不對稱反彈潛力。</p>
+<hr />
+<h2>配對交易建議</h2>
+<p><strong>Long 6669.TW / Short 2376.TW</strong>。</p>
+<ul>
+<li><strong>作多 6669.TW</strong>：純 AI 伺服器曝險 (GPU 系統 60%)，分析師全面買進，法人持續增持，受惠 Blackwell/GB300 供應鏈需求上行。</li>
+<li><strong>放空 2376.TW</strong>：消費主機板崩跌 -22%，MS 降評目標暗示現價仍有下行空間至 290 元；CCL 原料 +74.5% YoY 壓縮毛利；CoWoS 滿載至 2027 中延誤 Vera Rubin 出貨，H2 加速假設面臨供應鏈風險。</li>
+<li><strong>配對邏輯</strong>：同屬台灣伺服器/板卡生態但 AI 純度差距巨大，配對可隔離個股 α、對沖大盤 AI 主題系統性波動。</li>
+</ul>
+<hr />
+<h2>全板塊觀察</h2>
+<p><strong>共同催化劑</strong><br />
+- 財報密集期：2356.TW (08-07) → 3231.TW (08-18) → 6669.TW (08中旬)，板塊訊息傳遞效應強，首個財報結果具前瞻指引作用。<br />
+- GB300/Blackwell/Vera Rubin 量產進度：下半年股價主要驅動變數，供應端能見度決定估值重評速度。</p>
+<p><strong>共同風險</strong><br />
+- 記憶體缺料：DRAM/HBM 前置 40+ 週交期為四檔共同供應瓶頸；CoWoS 封裝滿載至 2027 中影響多家出貨節奏。<br />
+- 毛利率偏薄且承壓：3231.TW 6.13%、2356.TW 1.2%、2376.TW Q1 12.01%；零組件漲價 (DRAM、CCL) 短期難緩解。<br />
+- 客戶集中度：6669.TW (AWS/超微)、3231.TW (NVIDIA 全產能)、2356.TW (Google &gt;50% AI 伺服器銷售)，單一超大客戶波動傳導迅速。</p>
+<p><strong>擁擠觀察</strong><br />
+- 6669.TW + 3231.TW 為外資、投信共同增持熱門標的，板塊擁擠度高；AI 投資主題若動搖，同步拋壓風險顯著。<br />
+- 2356.TW 情緒分歧 (技術面偏空)，擁擠度中等。<br />
+- 2376.TW 因 MS 降評形成反向壓力，相對低擁擠。</p>
+<p><strong>相關性群集</strong><br />
+- <strong>高度正相關</strong>：6669.TW、3231.TW、2356.TW (AI 伺服器機箱/系統三角)，避免同時重壓三者，否則等同單一主題集中賭注。<br />
+- <strong>相對低相關</strong>：2376.TW 因消費主機板曝險造成走勢分歧，可作為板塊內對沖或相對價值交易的另一腿。</p>
+<hr />
+<h2>建倉優先順序</h2>
+<p>Yahoo Finance 恢復、資料評分達 ≥3/5 後，依序執行：</p>
+<ol>
+<li><strong>6669.TW</strong> — 訊號最強，優先確認技術支撐與即時價格後建 S 倉。</li>
+<li><strong>3231.TW</strong> — 成長動能板塊最高 (H1 +94%)，待 08-18 Q2 財報確認毛利率改善後跟進，避免提前追高。</li>
+<li><strong>2356.TW</strong> — 等待多空分歧收斂；Google TPU 多元化為中期正面因素，供應鏈改善後介入。</li>
+<li><strong>2376.TW</strong> — 逆向/極小倉位，或作為配對交易空頭腿；8/3 除息填息能力為關鍵觀察點。</li>
+</ol>
+<hr />
+<h2>Sector 風險預算</h2>
+<p>四檔高度 AI 主題相關、全部仍為 Phase-1-only stub (缺乏 Fundamentals/Technical 確認)，建議：</p>
+<ul>
+<li><strong>板塊總曝險上限：NAV 8%</strong></li>
+<li>單檔上限：NAV 3% (完整資料取得後可視訊號調升至 5%)</li>
+<li>2376.TW 若作為逆向/配對空頭腿：NAV 1-2%</li>
+<li>Yahoo Finance 恢復後重新全面評估，屆時個股評分有望顯著調升，板塊預算上限可放寬至 NAV 12-15%。</li>
+</ul>
+<hr />
+<p>SECTOR REPORT COMPLETE</p>
+    </div>
+  </section>
+
+  
+<section id="ticker-6669_TW" class="mb-10 bg-white rounded-lg shadow overflow-hidden">
+
+  <div class="flex items-start justify-between p-6 border-b border-slate-200 verdict-UNKNOWN">
+    <div>
+      <h2 class="text-3xl font-bold">6669.TW</h2>
+      <p class="text-sm mt-1 opacity-80">緯穎 (6669) — AI server ODM</p>
+    </div>
+    <div class="text-right">
+      <div class="text-4xl font-bold">UNKNOWN</div>
+      <div class="text-sm opacity-80 mt-1"></div>
+    </div>
+  </div>
+
+  <div class="p-6 grid grid-cols-1 lg:grid-cols-2 gap-6">
+
+    <div>
+      <h3 class="text-lg font-bold mb-2">價格 + 技術指標 (2 年)</h3>
+      <div id="chart-6669_TW" style="height: 380px;"></div>
+    </div>
+
+    <div>
+      <h3 class="text-lg font-bold mb-2">最終決策 (Final decision)</h3>
+      <div class="agent-prose text-sm bg-slate-50 p-4 rounded border border-slate-200">
+        <h1>6669.TW — 最終決策 (Phase-1-only stub)</h1>
+<p><strong>日期</strong>: 2026-07-17<br />
+<strong>verdict</strong>: HOLD<br />
+<strong>conviction</strong>: 45%</p>
+<h2>跳過原因</h2>
+<p>Yahoo Finance (fc.yahoo.com) 被代理政策封鎖，無法取得基本面/市場/估值數據。評分 2/5 (News+Sentiment)，未達 ≥3/5 門檻。</p>
+<p><strong>無即時價格，暫不給進出場價位。</strong></p>
+<h2>Phase-1 訊號摘要</h2>
+<table>
+<thead>
+<tr>
+<th>訊號</th>
+<th>結果</th>
+<th>備注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fundamentals</td>
+<td>UNAVAILABLE</td>
+<td>fc.yahoo.com 403</td>
+</tr>
+<tr>
+<td>Market (Technical)</td>
+<td>UNAVAILABLE</td>
+<td>fc.yahoo.com 403</td>
+</tr>
+<tr>
+<td>News</td>
+<td>POSITIVE ✓</td>
+<td>6月營收NT$1,113億創單月新高(年增29.8%/月增33%); H1累計NT$5,547億+42%YoY; GPU加速系統占比60%(前年35%); 記憶體代理採購模式降低成本風險</td>
+</tr>
+<tr>
+<td>Sentiment</td>
+<td>BULLISH ✓</td>
+<td>22-25位分析師100%買進; 目標價6,600-7,575元(現價5,445元+21-39%); EPS 2026預估349元/2027逾410元; 投信連10買、外資連2買; 三大法人合計淨買超24份</td>
+</tr>
+<tr>
+<td>Valuation</td>
+<td>UNAVAILABLE</td>
+<td>fc.yahoo.com 403</td>
+</tr>
+</tbody>
+</table>
+<h2>近期催化劑</h2>
+<ul>
+<li><strong>2026-08-中旬</strong>: Q2完整財報 — GB300量產時程與客戶備貨週期關鍵變數</li>
+<li>AWS T3 Q3量產、AMD MI450 前景 — 客戶多元化進展</li>
+<li>北美產能擴張 (德州/墨西哥) 時程</li>
+<li>主要風險: 記憶體缺料40+週交期; CoWoS封裝產能短缺2026年缺口20-40%; 客戶集中度(AWS/超微)</li>
+</ul>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="px-6 pb-6">
+
+    <details class="mb-4 border border-slate-200 rounded">
+      <summary class="bg-slate-50 px-4 py-2 font-semibold">投資計劃 (Research manager)</summary>
+      <div class="agent-prose p-4 text-sm"><em>n/a</em></div>
+    </details>
+
+    <details class="mb-4 border border-slate-200 rounded">
+      <summary class="bg-slate-50 px-4 py-2 font-semibold">交易提案 (Trader)</summary>
+      <div class="agent-prose p-4 text-sm"><em>n/a</em></div>
+    </details>
+
+    <details class="mb-4 border border-slate-200 rounded">
+      <summary class="bg-slate-50 px-4 py-2 font-semibold">Phase 1 — 四 Analyst 報告</summary>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+        <div>
+          <h4 class="font-bold text-slate-700 mb-2">基本面 (Fundamentals)</h4>
+          <div class="agent-prose text-sm bg-slate-50 p-3 rounded"><h1>基本面分析 — 6669.TW（緯穎科技）截至 2026-07-17</h1>
+<h2>執行摘要</h2>
+<p><strong>資料取得失敗</strong>：本報告所有財務數據因 Yahoo Finance 代理伺服器 HTTP 403 錯誤而無法取得，導致無法進行完整的基本面分析。緯穎科技為台灣 AI 伺服器代工大廠（ODM），主要客戶涵蓋全球超大規模資料中心營運商，業務成長主要驅動因素為生成式 AI 服務需求擴張。根據市場資訊，該公司在高效能運算伺服器領域具有領導地位，惟本次分析因數據不可得而無法提供具體的財務健康度評估及價值評判。</p>
+<h2>營收及獲利能力</h2>
+<table>
+<thead>
+<tr>
+<th>指標</th>
+<th>取值</th>
+<th>備註</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>營收（年度）</td>
+<td>UNAVAILABLE</td>
+<td>Yahoo Finance 資料無法取得</td>
+</tr>
+<tr>
+<td>營收 YoY 成長率</td>
+<td>UNAVAILABLE</td>
+<td>Yahoo Finance 資料無法取得</td>
+</tr>
+<tr>
+<td>毛利率趨勢</td>
+<td>UNAVAILABLE</td>
+<td>Yahoo Finance 資料無法取得</td>
+</tr>
+<tr>
+<td>營業利潤率趨勢</td>
+<td>UNAVAILABLE</td>
+<td>Yahoo Finance 資料無法取得</td>
+</tr>
+<tr>
+<td>淨利率趨勢</td>
+<td>UNAVAILABLE</td>
+<td>Yahoo Finance 資料無法取得</td>
+</tr>
+<tr>
+<td>ROE</td>
+<td>UNAVAILABLE</td>
+<td>Yahoo Finance 資料無法取得</td>
+</tr>
+<tr>
+<td>ROIC</td>
+<td>UNAVAILABLE</td>
+<td>Yahoo Finance 資料無法取得</td>
+</tr>
+</tbody>
+</table>
+<p>由於無法取得 3-5 年歷史財務數據，無法計算營收複合年增長率（CAGR）或評估盈利趨勢。</p>
+<h2>現金流與資產負債表</h2>
+<table>
+<thead>
+<tr>
+<th>指標</th>
+<th>取值</th>
+<th>備註</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>自由現金流（FCF）</td>
+<td>UNAVAILABLE</td>
+<td>Yahoo Finance 資料無法取得</td>
+</tr>
+<tr>
+<td>FCF 利潤率</td>
+<td>UNAVAILABLE</td>
+<td>Yahoo Finance 資料無法取得</td>
+</tr>
+<tr>
+<td>FCF / 淨收益</td>
+<td>UNAVAILABLE</td>
+<td>Yahoo Finance 資料無法取得</td>
+</tr>
+<tr>
+<td>淨債務</td>
+<td>UNAVAILABLE</td>
+<td>Yahoo Finance 資料無法取得</td>
+</tr>
+<tr>
+<td>流動比率</td>
+<td>UNAVAILABLE</td>
+<td>Yahoo Finance 資料無法取得</td>
+</tr>
+<tr>
+<td>債權人權益比</td>
+<td>UNAVAILABLE</td>
+<td>Yahoo Finance 資料無法取得</td>
+</tr>
+<tr>
+<td>現金及約當現金</td>
+<td>UNAVAILABLE</td>
+<td>Yahoo Finance 資料無法取得</td>
+</tr>
+</tbody>
+</table>
+<p>無法評估現金流品質或資產負債表的穩健度。</p>
+<h2>資本配置與內部人士信號</h2>
+<table>
+<thead>
+<tr>
+<th>指標</th>
+<th>取值</th>
+<th>備註</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>資本支出趨勢</td>
+<td>UNAVAILABLE</td>
+<td>Yahoo Finance 資料無法取得</td>
+</tr>
+<tr>
+<td>股票回購</td>
+<td>UNAVAILABLE</td>
+<td>Yahoo Finance 資料無法取得</td>
+</tr>
+<tr>
+<td>股利配發</td>
+<td>UNAVAILABLE</td>
+<td>Yahoo Finance 資料無法取得</td>
+</tr>
+<tr>
+<td>股利覆蓋率</td>
+<td>UNAVAILABLE</td>
+<td>Yahoo Finance 資料無法取得</td>
+</tr>
+<tr>
+<td>內部人士淨買賣（6 個月）</td>
+<td>UNAVAILABLE</td>
+<td>Yahoo Finance 資料無法取得</td>
+</tr>
+<tr>
+<td>內部人士交易相對市值</td>
+<td>UNAVAILABLE</td>
+<td>Yahoo Finance 資料無法取得</td>
+</tr>
+</tbody>
+</table>
+<p>無法獲得內部人士交易活動或資本配置決策的信息。</p>
+<h2>估值</h2>
+<table>
+<thead>
+<tr>
+<th>指標</th>
+<th>取值</th>
+<th>備註</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>本益比（P/E）- 追蹤型</td>
+<td>UNAVAILABLE</td>
+<td>Yahoo Finance 資料無法取得</td>
+</tr>
+<tr>
+<td>本益比（P/E）- 前瞻型</td>
+<td>UNAVAILABLE</td>
+<td>Yahoo Finance 資料無法取得</td>
+</tr>
+<tr>
+<td>EV/EBITDA</td>
+<td>UNAVAILABLE</td>
+<td>Yahoo Finance 資料無法取得</td>
+</tr>
+<tr>
+<td>P/FCF</td>
+<td>UNAVAILABLE</td>
+<td>Yahoo Finance 資料無法取得</td>
+</tr>
+<tr>
+<td>P/S（本淨比）</td>
+<td>UNAVAILABLE</td>
+<td>Yahoo Finance 資料無法取得</td>
+</tr>
+<tr>
+<td>當前股價</td>
+<td>UNAVAILABLE</td>
+<td>Yahoo Finance 資料無法取得</td>
+</tr>
+<tr>
+<td>50 日移動平均線</td>
+<td>UNAVAILABLE</td>
+<td>Yahoo Finance 資料無法取得</td>
+</tr>
+<tr>
+<td>200 日移動平均線</td>
+<td>UNAVAILABLE</td>
+<td>Yahoo Finance 資料無法取得</td>
+</tr>
+</tbody>
+</table>
+<p>無法進行相對產業中位數的估值比較。</p>
+<h2>關鍵催化劑</h2>
+<table>
+<thead>
+<tr>
+<th>事項</th>
+<th>狀態</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>下次財報公佈日期</td>
+<td>UNAVAILABLE</td>
+</tr>
+<tr>
+<td>近期指引</td>
+<td>UNAVAILABLE</td>
+</tr>
+<tr>
+<td>業務線重大轉變</td>
+<td>UNAVAILABLE</td>
+</tr>
+<tr>
+<td>市場預期 EPS 驚喜</td>
+<td>UNAVAILABLE</td>
+</tr>
+</tbody>
+</table>
+<h2>完整指標表</h2>
+<table>
+<thead>
+<tr>
+<th>指標</th>
+<th>最新值</th>
+<th>YoY 變化</th>
+<th>產業中位數（估計）</th>
+<th>評價</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>營收成長率（YoY）</td>
+<td>UNAVAILABLE</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>無法評估</td>
+</tr>
+<tr>
+<td>毛利率</td>
+<td>UNAVAILABLE</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>無法評估</td>
+</tr>
+<tr>
+<td>營業利潤率</td>
+<td>UNAVAILABLE</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>無法評估</td>
+</tr>
+<tr>
+<td>淨利率</td>
+<td>UNAVAILABLE</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>無法評估</td>
+</tr>
+<tr>
+<td>ROE</td>
+<td>UNAVAILABLE</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>無法評估</td>
+</tr>
+<tr>
+<td>FCF 利潤率</td>
+<td>UNAVAILABLE</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>無法評估</td>
+</tr>
+<tr>
+<td>流動比率</td>
+<td>UNAVAILABLE</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>無法評估</td>
+</tr>
+<tr>
+<td>債權人權益比</td>
+<td>UNAVAILABLE</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>無法評估</td>
+</tr>
+<tr>
+<td>本益比（P/E）</td>
+<td>UNAVAILABLE</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>無法評估</td>
+</tr>
+<tr>
+<td>EV/EBITDA</td>
+<td>UNAVAILABLE</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>無法評估</td>
+</tr>
+</tbody>
+</table>
+<h2>風險標誌</h2>
+<ul>
+<li><strong>資料不可得</strong>：Yahoo Finance API 受到代理伺服器 403 限制，無法取得任何基本面數據</li>
+<li><strong>分析延遲</strong>：建議在 Yahoo Finance 服務恢復後重新執行分析</li>
+<li><strong>台灣上市公司資料覆蓋不完整</strong>：某些台灣 TWSE 上市公司在 Yahoo Finance 上的財務覆蓋範圍可能有限，替代數據源可能包括 Taiwan Stock Exchange（台灣證交所）、公司投資者關係部門或其他本地財務數據提供商</li>
+</ul>
+<hr />
+<p><strong>分析日期</strong>：2026-07-17<br />
+<strong>資料來源狀態</strong>：所有資料無法取得（HTTP 403）<br />
+<strong>建議後續步驟</strong>：聯繫系統管理員解決代理伺服器配置，或考慮使用替代財務數據源</p>
+<p>FUNDAMENTALS REPORT COMPLETE</p></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-slate-700 mb-2">技術面 (Market / Technical)</h4>
+          <div class="agent-prose text-sm bg-slate-50 p-3 rounded"><h1>技術面分析 — 6669.TW (緯穎科技) 截至 2026-07-17</h1>
+<h2>狀態</h2>
+<p><strong>PRICE_DATA_UNAVAILABLE</strong></p>
+<p>無法取得 6669.TW 的價格資料。Yahoo Finance 連線被網關以政策拒絕 (HTTP 403) 阻止。不進行技術分析，以避免基於假設數據進行評論。</p>
+<h3>技術細節</h3>
+<ul>
+<li>資料來源：Yahoo Finance API (fc.yahoo.com)</li>
+<li>錯誤代碼：CONNECT tunnel failed, HTTP 403 (gateway policy denial)</li>
+<li>嘗試時間：2026-07-17 06:26 UTC</li>
+</ul>
+<p>請重試或聯繫網路管理人員以恢復 Yahoo Finance 存取。</p>
+<hr />
+<p><strong>市場報告結束</strong></p></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-slate-700 mb-2">新聞 (News)</h4>
+          <div class="agent-prose text-sm bg-slate-50 p-3 rounded"><h1>新聞簡訊 — 6669.TW（緯穎科技）至 2026-07-17</h1>
+<h2>公司特定頭條新聞（過去 14 日）</h2>
+<p><strong>2026-07-08</strong> — 緯穎 6 月合併營收 NT$1,113.71 億元創單月歷史新高，年增 29.79%、月增 33%。上半年累計營收 NT$5,546.6 億元創歷史同期新高，年增 42%。[來源：CMoney / MoneyDJ / Yahoo Finance TW]。</p>
+<p>影響：看多。6月營收再創新高且月增幅度達 33%，反映 AI 伺服器及 ASIC 伺服器出貨動能同步暢旺，市場對緯穎高階伺服器產品需求持續強勁。</p>
+<p><strong>2026-07-08</strong> — 第二季合併營收 NT$2,781.53 億元，季增 0.6%、年增 26%，連續二季創新高。GPU 加速系統出貨年增 45%，已占營收比重 60%（前年同期 35%）。[來源：Digitimes / Wiwynn 投資人關係]。</p>
+<p>影響：看多。GPU 加速系統占比從 35% 增至 60% 顯示緯穎成功轉向高端 AI 伺服器產品組合，帶動單位毛利率改善。</p>
+<p><strong>2026-06-26</strong> — 緯穎實施記憶體代理採購模式，將記憶體成本外部化，實現 margin 結構優化。實施後 4 月營收 NT$827.31 億元（年增 29.67%），實際伺服器機架出貨及毛利率改善。[來源：Wiwynn 投資人關係 / Yahoo Finance TW]。</p>
+<p>影響：看多。商業模式轉變將毛利率風險轉移至供應商，緯穎得以聚焦伺服器設計製造核心能力，改善營運槓桿。</p>
+<p><strong>2026-06-01</strong> — 緯穎於 Computex 2026 展示下一代資料中心設計願景，包括機架式 AI 伺服器、突破性液體冷卻、光學擴展及高壓直流（HVDC）電力傳輸架構。[來源：Wiwynn 官網 / YouTube]。</p>
+<p>影響：看多。ASIC 伺服器 2026-2027 年起功率 80-100kW/機架以上，需液冷解決方案，單位價格大幅上升，緯穎主動展示技術領先地位強化客戶信心。</p>
+<p><strong>2026-05-26</strong> — 緯穎首季創歷史新高：合併營收 NT$276.508 億元（年增 62%）、稅後淨利 NT$14.114 億元（年增 44.1%）、基本 EPS NT$75.95。2026 年營收挑戰 NT$1.25-1.35 兆目標。[來源：Wiwynn / Taipei Times]。</p>
+<p>影響：看多。全年營收目標達成基礎穩固，2026 年預期雙位數出貨成長。</p>
+<hr />
+<h2>產業宏觀面</h2>
+<p><strong>2026-07-16</strong> — Inventec（台灣主要伺服器主機板製造商及超大規模雲商供應商）警示記憶體及 CPU 供應缺口擴大，恐影響 2026 年第 3 季伺服器出貨量。記憶體鉛週期達 40+ 週。[來源：TechTimes / Supply Chain Connect]。</p>
+<p>產業衝擊：中性偏空。AI 伺服器記憶體短缺成為新瓶頸，惟超大規模廠商已建立長期供應協議，緯穎等一線 ODM 優先地位相對穩固。</p>
+<p><strong>2026-07-15</strong> — TSMC CoWoS 高階封裝產能 2026 年底預計達 12-13 萬片/月（2025 年底 7.5 萬片），惟供需缺口仍 20-40%。TSMC CEO 表示 AI 晶片短缺將持續數年，MediaTek 發出漲價通知。[來源：NextWave Insight / Manufacturing Dive]。</p>
+<p>產業衝擊：看空。CoWoS 成為 NVIDIA GB200/GB300 交付瓶頸，成本上升恐轉嫁 ODM，影響毛利率。</p>
+<p><strong>2026-07-15</strong> — 台灣基板廠面臨 T-Glass 及 Ajinomoto ABF 供應限制，預期 10-20% 供應缺口。八大類零組件進入主動短缺，鉛週期 20-128+ 週（含氦、功率元件、光學、熱管理基礎設施）。[來源：Supply Chain Connect / Manufacturing Dive]。</p>
+<p>產業衝擊：看空。非晶片類元件短缺將延遲伺服器量產，但高端 AI 伺服器毛利率高足以承受成本上升。</p>
+<p><strong>2026-07-14</strong> — AI 伺服器電源及熱管理供應商 6 月營收成長最快，台灣 AI 供應鏈單月年增率逾 100%。NVIDIA GB300 機架平台訂單加速流入 H2 2026。[來源：Digitimes]。</p>
+<p>產業衝擊：看多。台灣熱管理及電源業者吃香，緯穎因自製液冷能力及系統整合地位受惠。</p>
+<p><strong>2026-07-10</strong> — 全球超大規模廠商 2026 年資本支出預計超 US$710 億用於 GPU 及 ASIC 投資。Google、AWS、Meta、Microsoft 加速定製矽投資，ASIC 伺服器出貨占比預計達 27.8%（年增 44.6%）。[來源：InfotechLead / Tom's Hardware]。</p>
+<p>產業衝擊：看多。超大規模廠商 ASIC 策略升溫、採購來源多元化，緯穎及 Quanta 為早期受惠者。</p>
+<hr />
+<h2>同業信號</h2>
+<p><strong>Foxconn（鴻海）</strong> — 占 AI 伺服器機架組裝約 40% 市占率，為最大參與者。Q1 2026 營收 US$66.6 億（年增 30%）。2025 年突破 NT$1 兆營收關卡。[來源：Digitimes / Tech-Insider]。</p>
+<p><strong>Quanta Computer（廣達）</strong> — 占 NVIDIA 訂單 25-30%，訂單能見度延伸至 2027。AI 伺服器需求 2026 年預期再翻倍。與 Wiwynn 並列早期受惠自定義 ASIC 出貨廠商。[來源：Digitimes]。</p>
+<p><strong>Wistron（緯創）</strong> — 緯穎母公司，6 月營收 NT$321.82 億元（年增 53.9%）創次高單月記錄，季增 10.9%。上半年營運動能超預期，2026-2027 年可望迎結構性成長。[來源：Ming-Chi Kuo Medium / Digitimes]。</p>
+<p><strong>評論</strong>：緯穎於母公司 Wistron 旗下獨立運營，受惠超大規模客戶（Microsoft/Meta/Google）直接訂單，毛利率結構優於母公司整體。Foxconn 量大但毛利率受制於低階標準伺服器；Quanta 與緯穎競爭高端 ASIC 市場，但緯穎液冷及系統整合技術領先。</p>
+<hr />
+<h2>前瞻日程（未來 14 日）</h2>
+<p><strong>2026-07-</strong> — 緯穎 Q2 2026 完整財報及法說會預期於 8 月中旬公開（預估 2-3 週內）。焦點為毛利率指引、第三季出貨預期、超大規模客戶備貨週期。</p>
+<p><strong>2026-07-31 前</strong> — NVIDIA 官方可能公開 GB300 出貨量及客戶生產時程，影響後續機架出貨預測。</p>
+<p><strong>2026-08 月</strong> — ASML（荷蘭極紫外光刻機製造商）可能更新 2026 晶圓代工產能預測，牽動 CoWoS 及基板供應鏈定價。</p>
+<p><strong>2026-08 月中</strong> — 超大規模廠商（Microsoft Azure、AWS、Google Cloud）可能公開 H2 2026 基礎設施投資或客戶 AI 需求更新，直接影響機架訂單能見度。</p>
+<hr />
+<h2>淨部位分析</h2>
+<p><strong>看多傾向，中高強度。</strong></p>
+<p>緯穎 6 月營收創單月新高、上半年年增 42%，展現 AI 伺服器強勁需求韌性。GPU 加速系統占比快速從 35% 增至 60%，毛利率結構持續優化；記憶體代理模式將成本風險外部化，管理層確信全年營收可達 NT$1.25-1.35 兆、出貨雙位數成長。超大規模廠商 ASIC 及 GPU 投資 2026 年將超 US$710 億，採購來源多元化、Wiwynn 客戶群（Microsoft、Meta、Google）ASIC 出貨占比高，位置優越。</p>
+<p>弱勢面：(1) 記憶體及 CoWoS 供應短缺延遲交期、推升成本 40+ 週鉛週期；(2) 基板及元件供應缺口 10-20%、非晶片類零組件成本上行恐侵蝕毛利；(3) 標準伺服器毛利率持續壓低、ASIC 出貨不確定性（客戶驗證週期）。</p>
+<p><strong>新聞面淨傾斜：POSITIVE（正面）。</strong> 營收動能超預期、產品組合轉高端、供應鏈挑戰可管理、客戶投資計畫穩定，缺點已反映在市場預期，機構法人多數維持買進或增持評等。</p>
+<hr />
+<p><strong>新聞簡訊完成。</strong></p>
+<p><strong>來源引用：</strong><br />
+- <a href="https://www.digitimes.com/news/a20260708PD254/wistron-ai-server-shipments-revenue-2026.html">Digitimes - Wistron and Wiwynn post record-high revenue in 1H26</a><br />
+- <a href="https://cmnews.com.tw/article/cmoneyaicurator-43caca03-7aa0-11f1-9e10-13a451c4ccec">CMoney - 緯穎 6 月營收公告</a><br />
+- <a href="https://www.ttv.com.tw/finance/view/0720260908323FF4C3E9CC2144FCA27C242CCE63F7D22E23/587">MoneyDJ / 台視財經 - 緯穎 6 月營收月增 33%</a><br />
+- <a href="https://tw.stock.yahoo.com/news/%E5%85%AC%E5%91%8A-%E7%B7%AF%E7%A9%8E-2026%E5%B9%B46%E6%9C%88%E5%90%88%E4%BD%B5%E7%87%9F%E6%94%B61113-71%E5%84%84%E5%85%83-%E5%B9%B4%E5%A2%9E29-061355120.html">Yahoo Finance TW - 緯穎營收公告</a><br />
+- <a href="https://www.wiwynn.com/investors">Wiwynn 投資人關係</a><br />
+- <a href="https://www.taipeitimes.com/News/biz/archives/2026/05/26/2003857955">Taipei Times - Wiwynn upbeat as AI drives demand</a><br />
+- <a href="https://www.digitimes.com/news/a20260210PD205/taiwan-ai-server-odm-demand-supply-chain-2026.html">Digitimes - Taiwan server ODMs set for record first quarter</a><br />
+- <a href="https://www.digitimes.com/news/a20260714VL217/taiwan-monthly-tracker-ai-server-revenue-growth.html">Digitimes - AI server tracker June revenue growth</a><br />
+- <a href="https://www.techtimes.com/articles/320681/20260716/inventec-warns-ai-memory-crunch-has-reached-servers-lead-times-hit-40-plus-weeks.htm">TechTimes - Inventec warns AI memory crunch</a><br />
+- <a href="https://www.manufacturingdive.com/news/opinion-omdia-ai-semiconductor-chip-scarcity/817172/">Manufacturing Dive - The great data center delay</a><br />
+- <a href="https://nextwavesinsight.com/ai-semiconductor-supply-chain-tsmc-capacity-2026/">NextWave Insight - AI Semiconductor Supply Chain</a><br />
+- <a href="https://www.supplychainconnect.com/procurement/article/55384522/the-2026-supply-chain-supercycle-why-ai-infrastructure-shortages-run-deeper-than-the-chip">Supply Chain Connect - 2026 Supply Chain Supercycle</a><br />
+- <a href="https://infotechlead.com/cloud/ai-server-market-2026-global-csp-capex-to-exceed-710-bn-as-google-aws-meta-microsoft-accelerate-gpu-and-asic-investments-93903">InfotechLead - AI Server Market 2026 Global CSP Capex</a><br />
+- <a href="https://www.tomshardware.com/tech-industry/semiconductors/custom-ai-asics-examined-from-broadcom-to-mtia">Tom's Hardware - Custom AI ASIC state of play May 2026</a><br />
+- <a href="https://medium.com/@mingchikuo/%E7%B7%AF%E7%A9%8E2025%E5%B9%B4%E7%87%9F%E9%81%8B%E5%8B%95%E8%83%BD%E6%88%96%E8%B6%85%E9%A0%84%E6%9C%9F-2026-2027%E5%8F%AF%E6%9C%9B%E8%BF%8E%E4%BE%86%E7%B5%90%E6%A7%8B%E6%80%A7%E6%88%90%E9%95%B3-795b944c6cba">Ming-Chi Kuo Medium - 緯穎 2025-2026 展望</a><br />
+- <a href="https://tech-insider.org/foxconn-q1-2026-ai-server-revenue-66-billion/">Tech-Insider - Foxconn Q1 2026 AI Server Revenue</a><br />
+- <a href="https://www.digitimes.com/news/a20260109PD249/revenue-ai-server-foxconn-wistron-quanta.html">Digitimes - Taiwan Leads Global AI Server Shift</a></p></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-slate-700 mb-2">情緒 (Sentiment)</h4>
+          <div class="agent-prose text-sm bg-slate-50 p-3 rounded"><h1>情緒分析 — 6669.TW (緯穎科技) 截至 2026-07-17</h1>
+<h2>分析師共識</h2>
+<h3>買賣評級分布</h3>
+<ul>
+<li><strong>買進/強力買進</strong>: 22-25位（100% 積極樂觀）</li>
+<li><strong>持有</strong>: 0位</li>
+<li><strong>賣出/強力賣出</strong>: 0位</li>
+</ul>
+<h3>近期評等變動</h3>
+<p>分析師普遍維持買進評等並持續上修目標價：<br />
+- FactSet最新調查（18位分析師）：2026年EPS預估中位數上修至 348.72元<br />
+- 目標價調升至 6600-6670元（部分機構喊到 7575元、8000元高價）<br />
+- 目標價上修幅度約 4.23%<br />
+- 預估上行空間約 23-28%（基礎價位 5340-5445元）</p>
+<h3>2026-2028年盈餘預估</h3>
+<ul>
+<li>2026年EPS：325-350元</li>
+<li>2027年EPS：410-440元</li>
+<li>2028年EPS：410元以上</li>
+</ul>
+<hr />
+<h2>零售社群情緒</h2>
+<h3>Reddit/PTT/Dcard（台灣股市論壇）</h3>
+<ul>
+<li><strong>話題熱度</strong>: 中等（相對於大型權值股，討論量中等偏低）</li>
+<li><strong>討論焦點</strong>：</li>
+<li>6月營收公告 (840.5億元，月增 1.59%、年增 18.16%) </li>
+<li>季度EPS報告 (Q1 2026：75.95元，季增 2%、年增 44%)</li>
+<li>股利配發政策 (現金股利 145元 + 股票股利 20元)</li>
+<li>AI伺服器供應鏈地位</li>
+<li>技術面與長期估值</li>
+</ul>
+<h3>CMoney 股市爆料同學會</h3>
+<ul>
+<li><strong>情緒傾向</strong>: <strong>強烈看漲</strong></li>
+<li><strong>熱門論點</strong>：</li>
+<li>「AI伺服器純度最高的公司」</li>
+<li>「下一檔萬金股」潛力</li>
+<li>法人預估「年賺 30個股本」</li>
+<li>AWS T3平台量產接近，催化劑強勁</li>
+<li><strong>風險警示</strong>: 除息行情挫折（貼息下跌 ~2%，逾 10萬股東受損）</li>
+</ul>
+<h3>零售觀點綜合</h3>
+<p>投資人聚焦於：<br />
+1. <strong>AI伺服器超級週期</strong> — 全球AI基礎建設投資持續爆發<br />
+2. <strong>訂單能見度</strong> — AWS、超微新品推出帶動強勁訂單<br />
+3. <strong>估值重定價</strong> — 股利政策與股本結構調整引發市場重新評估<br />
+4. <strong>供應鏈卡點</strong> — 缺料風險普遍認知，但未形成恐慌</p>
+<p><strong>零售買氣整體向上</strong>，但對除息行情與股本稀釋有疑慮。</p>
+<hr />
+<h2>內部人/法人籌碼</h2>
+<h3>近6個月內部人交易信號</h3>
+<ul>
+<li>2026年5月舉行股東常會，進行董事全面改選</li>
+<li>新任董事長已就位</li>
+<li>無明顯大額董事/管理層拋售跡象</li>
+<li>內部人持股比例維持穩定</li>
+</ul>
+<h3>機構投資人活動（2026年7月中旬）</h3>
+<p><strong>三大法人買賣淨額</strong>（連日統計）：<br />
+- <strong>外資</strong>：淨買超（連 2買），日均買賣量平穩<br />
+- <strong>投信</strong>：強勢淨買超（<strong>連 10買</strong>），持續加碼跡象明顯<br />
+- <strong>自營商</strong>：淨賣超（波動中性）<br />
+- <strong>合計</strong>：淨買超 24份（連 3買）</p>
+<p><strong>結論</strong>：機構尤其是投信展現堅定買進態度，外資維持買進但更為審慎，自營商選擇獲利了結，反映機構對長期前景信心強但波段操作分歧。</p>
+<hr />
+<h2>業務驅動因子與近期催化劑</h2>
+<h3>正面信號</h3>
+<ol>
+<li><strong>AI伺服器需求爆發</strong></li>
+<li>TrendForce 預估全球AI伺服器市場 2026年成長 &gt;28% YoY</li>
+<li>
+<p>緯穎為全球超大規模資料中心伺服器領導廠商</p>
+</li>
+<li>
+<p><strong>客戶新品週期</strong></p>
+</li>
+<li>AWS T3 平台預計 Q3 2026 開始量產</li>
+<li>超微 MI450 前景優於預期</li>
+<li>
+<p>水冷散熱解決方案滲透率上升</p>
+</li>
+<li>
+<p><strong>地理擴張與產能</strong></p>
+</li>
+<li>德州 El Paso 廠已開始量產</li>
+<li>北美 5廠聯動布局（3廠台灣、3廠墨西哥規劃中）</li>
+<li>
+<p>雙基地戰略降低供應鏈風險</p>
+</li>
+<li>
+<p><strong>盈餘品質</strong></p>
+</li>
+<li>2025年全年 EPS 275.06元，年增 117.3%</li>
+<li>AI產品占比已突破 50%</li>
+<li>股利配發積極（現金 145元）</li>
+</ol>
+<h3>風險/負面信號</h3>
+<ol>
+<li><strong>供應鏈挑戰</strong></li>
+<li>訂單強勁但<strong>缺料為最大困擾</strong></li>
+<li>高階晶片（GPU）供應波動性風險</li>
+<li>
+<p>關鍵零組件成本波動</p>
+</li>
+<li>
+<p><strong>集中風險</strong></p>
+</li>
+<li>營收高度依賴少數大型雲端服務供應商（AWS、超微等）</li>
+<li>
+<p>客戶集中度風險</p>
+</li>
+<li>
+<p><strong>估值與除息風險</strong></p>
+</li>
+<li>股價已反映樂觀前景（目標價上行空間相對有限）</li>
+<li>除息行情不如預期（貼息現象）</li>
+<li>
+<p>股本稀釋風險</p>
+</li>
+<li>
+<p><strong>宏觀風險</strong></p>
+</li>
+<li>全球經濟放緩恐抑制企業資本支出</li>
+<li>競爭對手技術進展與市佔率蠶食</li>
+</ol>
+<hr />
+<h2>情緒淨值評分</h2>
+<h3>綜合情緒判定：<strong>強烈看漲 (BULLISH)</strong></h3>
+<p><strong>信心指數</strong>：8.5/10</p>
+<h3>評分細節</h3>
+<table>
+<thead>
+<tr>
+<th>維度</th>
+<th>評分</th>
+<th>根據</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>分析師共識</td>
+<td>9/10</td>
+<td>100% 買進；目標價持續上修；盈餘預估上調</td>
+</tr>
+<tr>
+<td>零售情緒</td>
+<td>7.5/10</td>
+<td>論壇討論樂觀；AI伺服器主題熱度高；除息挫折略抵消</td>
+</tr>
+<tr>
+<td>法人籌碼</td>
+<td>8.5/10</td>
+<td>投信連 10買；外資持續買進；淨買超連 3日</td>
+</tr>
+<tr>
+<td>內部人信心</td>
+<td>7/10</td>
+<td>董事會改選完成無異動；無大額拋售；穩定持股</td>
+</tr>
+<tr>
+<td>業務基本面</td>
+<td>9/10</td>
+<td>AI週期確定；客戶新品催化；地理擴張進行中</td>
+</tr>
+<tr>
+<td>風險管理</td>
+<td>6.5/10</td>
+<td>缺料風險存在；客戶集中度高；估值已相對高位</td>
+</tr>
+</tbody>
+</table>
+<h3>分岐標誌（Divergence Flag）</h3>
+<p><strong>否</strong> — 無明顯分岐</p>
+<ul>
+<li>分析師看漲 ✓</li>
+<li>零售買氣向上 ✓</li>
+<li>法人淨買超 ✓</li>
+<li>基本面支撑 ✓</li>
+</ul>
+<p>機構、零售、分析師三方向一致指向樂觀，但幅度與節奏存在分歧（零售謹慎度高於機構）。</p>
+<hr />
+<h2>情緒概述</h2>
+<p><strong>6669 緯穎科技</strong> 當前處於強烈看漲的市場共識中：</p>
+<ol>
+<li>
+<p><strong>分析師陣營</strong>一致性高達 100%，罕見的全面買進局面，目標價持續上修至 6600-7575元，反映對 2026-2027年 AI伺服器超級週期的高度確信。</p>
+</li>
+<li>
+<p><strong>零售投資人</strong>對 AI伺服器產業故事接受度高，論壇討論樂觀，但對除息行情與股本稀釋有務實性擔憂，整體情緒偏向「樂觀但謹慎」。</p>
+</li>
+<li>
+<p><strong>機構投資人</strong>尤其投信展現堅定加碼態度（連 10買），外資穩健買進，自營商小幅獲利了結，反映機構對中長期前景信心堅定。</p>
+</li>
+<li>
+<p><strong>籌碼面</strong>正面，法人淨買超連 3日，董事會改選完成無負面信號。</p>
+</li>
+<li>
+<p><strong>催化劑充足</strong>：AWS T3 量產在即、超微 MI450 強勢、北美產能擴張、全年盈餘預估上調，支撑股價上揚。</p>
+</li>
+<li>
+<p><strong>風險點</strong>包括：供應鏈缺料挑戰、客戶集中風險、估值相對高位、宏觀經濟不確定性。</p>
+</li>
+</ol>
+<p><strong>綜合判定</strong>：在 AI伺服器超級週期背景下，緯穎兼具基本面、籌碼、情緒三重正面信號，但須警惕估值風險與供應鏈瓶頸。</p>
+<hr />
+<p><strong>情緒報告完成</strong></p>
+<p>資料蒐集日期：2026-07-17<br />
+報告產生時間：2026-07-17<br />
+資料來源：FactSet、Bloomberg、Yahoo 台灣股市、鉅亨網、Goodinfo、CMoney、PTT Stock 版、簡易投資 (Win投資)</p></div>
+        </div>
+      </div>
+    </details>
+
+    <details class="mb-4 border border-slate-200 rounded">
+      <summary class="bg-slate-50 px-4 py-2 font-semibold">Phase 2 — Bull vs Bear 辯論</summary>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+        <div>
+          <h4 class="font-bold text-green-700 mb-2">🐂 多方 (Bull)</h4>
+          <div class="agent-prose text-sm bg-green-50 p-3 rounded border border-green-200"><em>n/a</em></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-red-700 mb-2">🐻 空方 (Bear)</h4>
+          <div class="agent-prose text-sm bg-red-50 p-3 rounded border border-red-200"><em>n/a</em></div>
+        </div>
+      </div>
+    </details>
+
+    <details class="mb-4 border border-slate-200 rounded">
+      <summary class="bg-slate-50 px-4 py-2 font-semibold">Phase 4 — 風險辯論 (Risk debate)</summary>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 p-4">
+        <div>
+          <h4 class="font-bold text-red-700 mb-2">⚡ 進攻 (Aggressive)</h4>
+          <div class="agent-prose text-sm bg-red-50 p-3 rounded border border-red-200"><em>n/a</em></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-blue-700 mb-2">🛡️ 保守 (Conservative)</h4>
+          <div class="agent-prose text-sm bg-blue-50 p-3 rounded border border-blue-200"><em>n/a</em></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-slate-700 mb-2">⚖️ 中立 (Neutral)</h4>
+          <div class="agent-prose text-sm bg-slate-100 p-3 rounded border border-slate-300"><em>n/a</em></div>
+        </div>
+      </div>
+    </details>
+
+  </div>
+
+  <script>
+    (function() {
+      var d = {};
+      if (!d.dates) return;
+      var traces = [
+        {x: d.dates, y: d.close, name: 'Close',  line: {color: '#1f2937', width: 2}},
+        {x: d.dates, y: d.ma20,  name: 'MA20',   line: {color: '#0ea5e9', width: 1, dash: 'dot'}},
+        {x: d.dates, y: d.ma50,  name: 'MA50',   line: {color: '#f59e0b', width: 1, dash: 'dot'}},
+        {x: d.dates, y: d.ma200, name: 'MA200',  line: {color: '#ef4444', width: 1, dash: 'dash'}}
+      ];
+      var layout = {
+        margin: {l: 50, r: 20, t: 10, b: 40},
+        legend: {orientation: 'h', y: -0.15},
+        xaxis: {showgrid: false},
+        yaxis: {title: '價格 ($)'}
+      };
+      Plotly.newPlot('chart-6669_TW', traces, layout, {displayModeBar: false, responsive: true});
+    })();
+  </script>
+
+</section>
+
+
+<section id="ticker-3231_TW" class="mb-10 bg-white rounded-lg shadow overflow-hidden">
+
+  <div class="flex items-start justify-between p-6 border-b border-slate-200 verdict-UNKNOWN">
+    <div>
+      <h2 class="text-3xl font-bold">3231.TW</h2>
+      <p class="text-sm mt-1 opacity-80">緯創 (3231) — AI server ODM</p>
+    </div>
+    <div class="text-right">
+      <div class="text-4xl font-bold">UNKNOWN</div>
+      <div class="text-sm opacity-80 mt-1"></div>
+    </div>
+  </div>
+
+  <div class="p-6 grid grid-cols-1 lg:grid-cols-2 gap-6">
+
+    <div>
+      <h3 class="text-lg font-bold mb-2">價格 + 技術指標 (2 年)</h3>
+      <div id="chart-3231_TW" style="height: 380px;"></div>
+    </div>
+
+    <div>
+      <h3 class="text-lg font-bold mb-2">最終決策 (Final decision)</h3>
+      <div class="agent-prose text-sm bg-slate-50 p-4 rounded border border-slate-200">
+        <h1>3231.TW — 最終決策 (Phase-1-only stub)</h1>
+<p><strong>日期</strong>: 2026-07-17<br />
+<strong>verdict</strong>: HOLD<br />
+<strong>conviction</strong>: 45%</p>
+<h2>跳過原因</h2>
+<p>Yahoo Finance (fc.yahoo.com) 被代理政策封鎖，無法取得基本面/市場/估值數據。評分 2/5 (News+Sentiment)，未達 ≥3/5 門檻。</p>
+<p><strong>無即時價格，暫不給進出場價位。</strong></p>
+<h2>Phase-1 訊號摘要</h2>
+<table>
+<thead>
+<tr>
+<th>訊號</th>
+<th>結果</th>
+<th>備注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fundamentals</td>
+<td>UNAVAILABLE</td>
+<td>fc.yahoo.com 403</td>
+</tr>
+<tr>
+<td>Market (Technical)</td>
+<td>UNAVAILABLE</td>
+<td>fc.yahoo.com 403</td>
+</tr>
+<tr>
+<td>News</td>
+<td>POSITIVE ✓</td>
+<td>Q2營收8,954億+62.4%YoY歷史新高; H1 1.74兆+94.1%; AI基礎設施占比79%; NVIDIA簽訂台灣廠全產能至年底; 竹北第二廠規劃啟動</td>
+</tr>
+<tr>
+<td>Sentiment</td>
+<td>BULLISH ✓</td>
+<td>14/16買入(87.5%); 目標價201.5-203.56 TWD(現139 TWD+46.86%); 外資+投信持股68.89%; CEO Simon Lin表示AI需求非泡沫</td>
+</tr>
+<tr>
+<td>Valuation</td>
+<td>UNAVAILABLE</td>
+<td>fc.yahoo.com 403</td>
+</tr>
+</tbody>
+</table>
+<h2>近期催化劑</h2>
+<ul>
+<li><strong>2026-08-18</strong>: Q2財報 — 毛利率(6.13%)改善與現金流轉正進度為關鍵檢驗</li>
+<li>美國達拉斯/休士頓廠 Blackwell 量產啟動 (12-15個月)</li>
+<li>竹北第二廠機架產能翻倍進程</li>
+<li>主要風險: FCF為負/負債率攀升; 毛利率偏低(6.13%); AI業務集中度79%; 除息後股價貼息下跌(-2%)</li>
+</ul>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="px-6 pb-6">
+
+    <details class="mb-4 border border-slate-200 rounded">
+      <summary class="bg-slate-50 px-4 py-2 font-semibold">投資計劃 (Research manager)</summary>
+      <div class="agent-prose p-4 text-sm"><em>n/a</em></div>
+    </details>
+
+    <details class="mb-4 border border-slate-200 rounded">
+      <summary class="bg-slate-50 px-4 py-2 font-semibold">交易提案 (Trader)</summary>
+      <div class="agent-prose p-4 text-sm"><em>n/a</em></div>
+    </details>
+
+    <details class="mb-4 border border-slate-200 rounded">
+      <summary class="bg-slate-50 px-4 py-2 font-semibold">Phase 1 — 四 Analyst 報告</summary>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+        <div>
+          <h4 class="font-bold text-slate-700 mb-2">基本面 (Fundamentals)</h4>
+          <div class="agent-prose text-sm bg-slate-50 p-3 rounded"><h1>基本面分析 — 3231.TW (緯創資通) 截至 2026-07-17</h1>
+<h2>執行摘要</h2>
+<p>UNAVAILABLE - Yahoo Finance 數據因代理伺服器阻擋 (HTTP 403) 無法獲取。所有財務數據、指標與分析無法進行。建議稍後重試或使用替代數據源。</p>
+<h2>收入與獲利能力</h2>
+<p><strong>狀態</strong>: UNAVAILABLE</p>
+<p>無法獲取以下數據:<br />
+- 年度收入與年增率 (YoY)<br />
+- 3-5年收入複合年增長率 (CAGR)<br />
+- 毛利率 (Gross Margin)<br />
+- 營業利率 (Operating Margin)<br />
+- 淨利率 (Net Margin)<br />
+- 股本回報率 (ROE)<br />
+- 投資資本回報率 (ROIC)</p>
+<h2>現金流與資產負債表</h2>
+<p><strong>狀態</strong>: UNAVAILABLE</p>
+<p>無法獲取以下數據:<br />
+- 自由現金流 (FCF)<br />
+- FCF margin<br />
+- FCF / NI 比率<br />
+- 淨債務 (Net Debt)<br />
+- 流動比率 (Current Ratio)<br />
+- 債務/股本比率 (Debt/Equity)<br />
+- 現金與等價物頭寸 (Cash Position)</p>
+<h2>資本配置與內部人士信號</h2>
+<p><strong>狀態</strong>: UNAVAILABLE</p>
+<p>無法獲取以下數據:<br />
+- 資本支出 (CapEx) 趨勢<br />
+- 股票回購活動 (Buyback)<br />
+- 股息支付覆蓋率 (Dividend Coverage)<br />
+- 過去 6 個月內部人士交易 (Insider Transactions)<br />
+- 機構持股集中度 (Major Holders)<br />
+- 主要機構持有者 (Top Institutional Holders)</p>
+<h2>估值</h2>
+<p><strong>狀態</strong>: UNAVAILABLE</p>
+<p>無法獲取以下數據:<br />
+- 追蹤本益比 (Trailing P/E)<br />
+- 預期本益比 (Forward P/E)<br />
+- 企業價值/息稅折舊攤銷前利潤 (EV/EBITDA)<br />
+- 價格/自由現金流 (P/FCF)<br />
+- 價格/銷售比 (P/S)<br />
+- 產業中位數比較</p>
+<h2>主要催化劑</h2>
+<p><strong>狀態</strong>: UNAVAILABLE</p>
+<p>無法獲取以下數據:<br />
+- 下次財報公告日期 (Next Earnings Date)<br />
+- 最近指導意見 (Recent Guidance)<br />
+- EPS 驚喜歷史 (EPS Surprise History)<br />
+- 業務部門轉變</p>
+<h2>指標表</h2>
+<table>
+<thead>
+<tr>
+<th>指標</th>
+<th>最新值</th>
+<th>年增率</th>
+<th>產業中位數 (估計)</th>
+<th>評判</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>收入 (Revenue)</td>
+<td>UNAVAILABLE</td>
+<td>UNAVAILABLE</td>
+<td>n/a</td>
+<td>-</td>
+</tr>
+<tr>
+<td>收入增長 (Revenue Growth)</td>
+<td>UNAVAILABLE</td>
+<td>UNAVAILABLE</td>
+<td>n/a</td>
+<td>-</td>
+</tr>
+<tr>
+<td>3-5Y CAGR</td>
+<td>UNAVAILABLE</td>
+<td>UNAVAILABLE</td>
+<td>n/a</td>
+<td>-</td>
+</tr>
+<tr>
+<td>毛利率 (Gross Margin)</td>
+<td>UNAVAILABLE</td>
+<td>UNAVAILABLE</td>
+<td>n/a</td>
+<td>-</td>
+</tr>
+<tr>
+<td>營業利率 (Operating Margin)</td>
+<td>UNAVAILABLE</td>
+<td>UNAVAILABLE</td>
+<td>n/a</td>
+<td>-</td>
+</tr>
+<tr>
+<td>淨利率 (Net Margin)</td>
+<td>UNAVAILABLE</td>
+<td>UNAVAILABLE</td>
+<td>n/a</td>
+<td>-</td>
+</tr>
+<tr>
+<td>ROE</td>
+<td>UNAVAILABLE</td>
+<td>UNAVAILABLE</td>
+<td>n/a</td>
+<td>-</td>
+</tr>
+<tr>
+<td>ROIC</td>
+<td>UNAVAILABLE</td>
+<td>UNAVAILABLE</td>
+<td>n/a</td>
+<td>-</td>
+</tr>
+<tr>
+<td>FCF Margin</td>
+<td>UNAVAILABLE</td>
+<td>UNAVAILABLE</td>
+<td>n/a</td>
+<td>-</td>
+</tr>
+<tr>
+<td>FCF / NI</td>
+<td>UNAVAILABLE</td>
+<td>UNAVAILABLE</td>
+<td>n/a</td>
+<td>-</td>
+</tr>
+<tr>
+<td>淨債務 (Net Debt)</td>
+<td>UNAVAILABLE</td>
+<td>UNAVAILABLE</td>
+<td>n/a</td>
+<td>-</td>
+</tr>
+<tr>
+<td>債務/股本 (Debt/Equity)</td>
+<td>UNAVAILABLE</td>
+<td>UNAVAILABLE</td>
+<td>n/a</td>
+<td>-</td>
+</tr>
+<tr>
+<td>流動比率 (Current Ratio)</td>
+<td>UNAVAILABLE</td>
+<td>UNAVAILABLE</td>
+<td>n/a</td>
+<td>-</td>
+</tr>
+<tr>
+<td>追蹤 P/E (Trailing P/E)</td>
+<td>UNAVAILABLE</td>
+<td>UNAVAILABLE</td>
+<td>n/a</td>
+<td>-</td>
+</tr>
+<tr>
+<td>預期 P/E (Forward P/E)</td>
+<td>UNAVAILABLE</td>
+<td>UNAVAILABLE</td>
+<td>n/a</td>
+<td>-</td>
+</tr>
+<tr>
+<td>EV/EBITDA</td>
+<td>UNAVAILABLE</td>
+<td>UNAVAILABLE</td>
+<td>n/a</td>
+<td>-</td>
+</tr>
+<tr>
+<td>P/FCF</td>
+<td>UNAVAILABLE</td>
+<td>UNAVAILABLE</td>
+<td>n/a</td>
+<td>-</td>
+</tr>
+<tr>
+<td>P/S</td>
+<td>UNAVAILABLE</td>
+<td>UNAVAILABLE</td>
+<td>n/a</td>
+<td>-</td>
+</tr>
+<tr>
+<td>現價 (Current Price)</td>
+<td>UNAVAILABLE</td>
+<td>UNAVAILABLE</td>
+<td>n/a</td>
+<td>-</td>
+</tr>
+<tr>
+<td>50日移動平均 (50-day MA)</td>
+<td>UNAVAILABLE</td>
+<td>UNAVAILABLE</td>
+<td>n/a</td>
+<td>-</td>
+</tr>
+<tr>
+<td>200日移動平均 (200-day MA)</td>
+<td>UNAVAILABLE</td>
+<td>UNAVAILABLE</td>
+<td>n/a</td>
+<td>-</td>
+</tr>
+<tr>
+<td>Beta</td>
+<td>UNAVAILABLE</td>
+<td>UNAVAILABLE</td>
+<td>n/a</td>
+<td>-</td>
+</tr>
+<tr>
+<td>市值 (Market Cap)</td>
+<td>UNAVAILABLE</td>
+<td>UNAVAILABLE</td>
+<td>n/a</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<h2>紅色警旗</h2>
+<ul>
+<li><strong>數據獲取失敗</strong>: Yahoo Finance API 因代理伺服器安全政策被阻擋 (HTTP 403)</li>
+<li><strong>分析無法進行</strong>: 沒有可用的財務數據進行基本面分析</li>
+<li><strong>建議</strong>: 待網路連接恢復或嘗試替代數據源</li>
+</ul>
+<hr />
+<p><strong>狀態</strong>: 數據不可用 (DATA UNAVAILABLE - HTTP 403)<br />
+<strong>日期</strong>: 2026-07-17<br />
+<strong>Ticker</strong>: 3231.TW (緯創資通, Wistron)<br />
+<strong>交易所</strong>: TWSE (台灣證券交易所)</p>
+<p><strong>FUNDAMENTALS REPORT COMPLETE</strong></p></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-slate-700 mb-2">技術面 (Market / Technical)</h4>
+          <div class="agent-prose text-sm bg-slate-50 p-3 rounded"><h1>技術分析 — 3231.TW 於 2026-07-17</h1>
+<h2>資料狀態</h2>
+<p><strong>PRICE_DATA_UNAVAILABLE</strong></p>
+<p>無法連接 Yahoo Finance 以取得 3231.TW (緯創資通) 的價格與技術指標數據。</p>
+<h3>錯誤詳情</h3>
+<ul>
+<li>代理連線失敗: HTTP 403 CONNECT tunnel failed</li>
+<li>兩個數據源 (pipeline/tools/ta.py 與 pipeline/tools/yf.py) 均無法取得歷史行情</li>
+<li>無法計算移動平均線、MACD、RSI 等技術指標</li>
+</ul>
+<h3>後續建議</h3>
+<p>請檢查：<br />
+1. 代理伺服器連接狀態<br />
+2. Yahoo Finance 對台灣股票 (TW) 資料的可用性<br />
+3. 網路連線設置 (/root/.ccr/README.md)</p>
+<p><strong>報告無法完成</strong>——未發明任何價格數據，符合規範。</p>
+<hr />
+<p>MARKET REPORT INCOMPLETE — PRICE_DATA_UNAVAILABLE</p></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-slate-700 mb-2">新聞 (News)</h4>
+          <div class="agent-prose text-sm bg-slate-50 p-3 rounded"><h1>新聞速讀 — 3231.TW 截至 2026-07-17</h1>
+<h2>公司重點新聞（過去14天）</h2>
+<ul>
+<li>
+<p><strong>2026-07-08</strong> — 緯創6月營收3,218.22億元，月增10.9%、年增53.8%，創歷史同期新高（自由財經）。影響：<strong>正面</strong>。AI伺服器出貨續強，單月表現再寫新猷，反映訂單能見度佳。</p>
+</li>
+<li>
+<p><strong>2026-07-08</strong> — 緯創第二季營收8,954.42億元，季增5.8%、年增62.4%，為歷史單季最高（經濟日報）。影響：<strong>正面</strong>。上半年累計營收1兆7,417.45億元，年增94.1%，創歷年最強表現，AI基礎設施營收佔比達79%。</p>
+</li>
+<li>
+<p><strong>2026-07-08</strong> — 緯創除息基準日，現金股利5.5元/股（Yahoo股市）。影響：<strong>中性</strong>。股東報酬維持穩定，反映獲利強勁。</p>
+</li>
+<li>
+<p><strong>2026-07-10左右</strong> — 緯創股價142.01元，6個交易日下跌6.29%，總跌幅-1.05%（台股報價）。影響：<strong>警示</strong>。儘管基本面強勁，股價近期承壓，可能反映獲利預期調整或短期獲利了結。</p>
+</li>
+</ul>
+<h2>產業關鍵事件</h2>
+<ul>
+<li>
+<p><strong>2026-07-中</strong> — 台灣PCB產業Q2 2026輸出值達256.1億元，年增動能強勁，由AI伺服器需求驅動（Digitimes）。影響於ODM供應鏈：<strong>正面</strong>。緯創作為台灣五大ODM之一，受惠於整體產業景氣上升。</p>
+</li>
+<li>
+<p><strong>2026-Q2</strong> — 台灣五大ODM廠商Q1 2026合計營收超過2兆台幣，由NVIDIA GB300/GB200機架和超大型AI晶片訂單推動（Digitimes）。影響於緯創：<strong>正面</strong>。印證整體AI伺服器需求持續強勁，緯創在此浪潮中處於受惠位置。</p>
+</li>
+<li>
+<p><strong>2026-06初</strong> — 被動元件廠商進入下半年時訂單轉強，AI資料中心、網通設備、電源系統需求增溫（Digitimes）。影響於供應鏈：<strong>正面</strong>。支撑緯創伺服器事業部的上游供應穩定性。</p>
+</li>
+</ul>
+<h2>競爭對手信號</h2>
+<ul>
+<li>
+<p><strong>鴻海 (2317.TW)</strong> — 美國AI伺服器廠產能Q2 2026達每週2,000機架，全球市佔約40%，年內機架出貨可望翻倍（Tech Insider, Digitimes）。影響：<strong>競爭壓力</strong>。鴻海在美國及馬來西亞擴產搶佔規模優勢，與緯創進行直接競爭。</p>
+</li>
+<li>
+<p><strong>廣達 (2382.TW)</strong> — 掌握NVIDIA AI伺服器訂單25-30%，為第二大ODM（Digitimes）。影響：<strong>競爭壓力</strong>。廣達訂單能見度強，惟緯創台灣及美國設施專款NVIDIA Blackwell產能應有差異化。</p>
+</li>
+<li>
+<p><strong>和碩 (4938.TW)</strong> — 與鴻海、緯創一同佈局德州製造（Tom's Hardware, Dallas Innovates）。影響：<strong>競爭加劇</strong>。美國近岸製造趨勢下，ODM間競爭白熱化。</p>
+</li>
+</ul>
+<h2>展望（未來14天）</h2>
+<ul>
+<li>
+<p><strong>2026-08-18</strong> — 緯創公告Q2 2026合併財務報告（預定），將揭露具體毛利率、營業利益等邊際指標（投資人關注）。預期：<strong>關鍵指標</strong>。市場關注AI產品高成長中是否獲利率維持，影響後續股價反應。</p>
+</li>
+<li>
+<p><strong>2026-07-25左右</strong> — 聯準會可能公佈最新通膨及就業數據，影響科技股整體估值環境（宏觀關注）。預期：<strong>中性至負面風險</strong>。若數據強勁可能抬升美債殖利率，壓低科技股本益比。</p>
+</li>
+<li>
+<p><strong>2026-Q3</strong> — 緯創美國德州廠房（達拉斯、休士頓）外觀工程預計完成（Digitimes, Yahoo Finance）。預期：<strong>正面</strong>。標誌NVIDIA Blackwell伺服器生產能力國際化進展，強化客戶黏著度。</p>
+</li>
+</ul>
+<h2>重要背景</h2>
+<h3>AI伺服器產能擴張</h3>
+<ul>
+<li>
+<p><strong>台灣</strong> —— NVIDIA已簽訂緯創竹北廠全產能至2026年底，並規劃鄰近第二廠房預計2026年啟動，料可使台灣機架產能翻倍。</p>
+</li>
+<li>
+<p><strong>美國</strong> —— 達拉斯廠負責組裝，休士頓廠（與鴻海合作）負責測試與模組整合，預計12-15個月內啟動量產（CEO Jeff Lin確認）。</p>
+</li>
+</ul>
+<h3>產品結構演變</h3>
+<ul>
+<li>AI基礎設施營收占比：2024年46% → 2025年71% → Q1 2026年79%，證明業務結構快速轉向。</li>
+<li>網通產品創造額外亮點，CEO指出年度出貨成長10倍潛力。</li>
+<li>筆記本電腦業務受惠記憶體漲價風潮，但市場預期產業量衰5-10%下，公司仍有望相對超額表現。</li>
+</ul>
+<h3>印度製造進展與退出</h3>
+<ul>
+<li>2025年初，緯創印度廠房（卡納塔克邦、泰米爾納都邦）以1.25億美元售予塔塔電子，不再是直接成長引擎。</li>
+<li>此舉釋放資本，允許公司加倍投入台灣及美國高價值AI伺服器產能。</li>
+</ul>
+<h2>淨讀</h2>
+<p>緯創上半年營收成長94.1%、Q2刷新紀錄，AI伺服器業務（占營收79%）成為絕對驅動力；NVIDIA Blackwell全球擴張中台灣及美國專款產能帶來多年合約保證；惟近期股價下挫6.29%儘管基本面強勁，可能反映投資人對高度AI集中度及競爭加劇的憂慮。產業層面，台灣ODM廠商受惠於全球AI基礎設施投資浪潮，但鴻海及廣達規模優勢構成直接威脅。主要看點為8月中旬Q2毛利率揭露，以及美國廠房進度；若毛利率在高成長中能維持或擴張，將為股價反轉信號。整體而言，基本面傾向<strong>正面</strong>，惟估值與競爭風險值得密切追蹤。</p>
+<hr />
+<p><strong>淨情緒：POSITIVE（+偏）</strong><br />
+<strong>幅度：中等幅度正面，惟近期回調需驗證基本面支持。</strong></p>
+<p><strong>情報完成。</strong></p>
+<hr />
+<h3>資訊來源</h3>
+<ul>
+<li><a href="https://ec.ltn.com.tw/article/breakingnews/5498289">緯創6月營收3,218.22億元創歷史同期新高 — 自由財經</a></li>
+<li><a href="https://money.udn.com/money/story/5607/9615787">緯創第二季營收8,954.42億元創單季最強表現 — 經濟日報</a></li>
+<li><a href="https://tw.stock.yahoo.com/d/s/earning_3231.html">緯創6月營收報告 — Yahoo股市</a></li>
+<li><a href="https://www.digitimes.com/news/a20260624PD223/demand-pcb-taiwan-high-end-materials.html">台灣PCB產業Q2 2026輸出值256.1億元 — Digitimes</a></li>
+<li><a href="https://www.digitimes.com/news/a20260210PD205/taiwan-ai-server-odm-demand-supply-chain-2026.html">台灣五大ODM Q1 2026營收超2兆 — Digitimes</a></li>
+<li><a href="https://www.digitimes.com/news/a20260702PD220/component-demand-passive-taiwan-2026.html">被動元件廠商AI伺服器和汽車需求增溫 — Digitimes</a></li>
+<li><a href="https://tech-insider.org/foxconn-q1-2026-ai-server-revenue-66-billion/">鴻海美國AI伺服器廠產能Q2 2026達周產2,000機架 — Tech Insider</a></li>
+<li><a href="https://www.tomshardware.com/desktops/servers/nvidia-books-entire-server-plant-capacity-through-2026-pushing-out-other-potential-customers-to-build-blackwell-and-rubin-ai-servers">NVIDIA簽訂鴻海機架出貨至2026年 — Tom's Hardware</a></li>
+<li><a href="https://dallasinnovates.com/nvidia-to-manufacture-american-made-ai-supercomputers-in-north-texas-as-part-of-half%E2%80%91trillion-dollar-push/">緯創、和碩、鴻海德州製造佈局 — Dallas Innovates</a></li>
+<li><a href="https://www.gurufocus.com/news/2871084/wistron-says-us-nvidia-server-plants-ready-in-2026">緯創CEO Jeff Lin確認美國廠房Blackwell量產時程 — Yahoo Finance</a></li>
+<li><a href="https://matrixbcg.com/blogs/growth-strategy/wistron">Wistron資本支出與未來成長策略 — MatrixBCG</a></li>
+</ul></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-slate-700 mb-2">情緒 (Sentiment)</h4>
+          <div class="agent-prose text-sm bg-slate-50 p-3 rounded"><h1>情緒分析 — 3231.TW (緯創資通) 截至 2026-07-17</h1>
+<h2>分析師共識</h2>
+<p><strong>評級分布</strong>：14買 / 3持有 / 0賣（16位分析師）<br />
+<strong>平均目標價</strong>：201.5–203.56 TWD<br />
+<strong>當前股價</strong>：139.0 TWD（截至2026-07-17收盤）<br />
+<strong>上漲潛力</strong>：+46.86%（基於分析師平均目標價）</p>
+<p><strong>近期評級異動</strong>：FactSet調查顯示目標價調升至201.5 TWD，幅度約3.33%。所有分析師評級均傾向積極樂觀，買入共識強勁無人看空。</p>
+<hr />
+<h2>機構投資者持股</h2>
+<p><strong>外資持股比例</strong>：31.11%<br />
+<strong>國內機構投資人</strong>：27.28%<br />
+<strong>自營商持股</strong>：10.50%<br />
+<strong>機構總持股</strong>：~68.89%</p>
+<p><strong>持股動向</strong>：外資為最大機構投資方，持股持續增加。大型外資指數基金（如Yuanta Taiwan Dividend Plus ETF）及國際投資者（包括Norges Bank等）均有實質部位。機構集中度高且持續積累，反映對緯創中長期前景信心。</p>
+<hr />
+<h2>零售社群情緒</h2>
+<h3>市場聲音</h3>
+<p><strong>整體傾向</strong>：樂觀偏謹慎<br />
+<strong>平均評分</strong>（股市爆料同學會）：6.4/10（評語：合乎標準，整體還不錯）</p>
+<p><strong>看多主軸</strong>：<br />
+- AI伺服器供應鏈地位穩固；NVIDIA已鎖定緯創全部產能至2026年底<br />
+- H1 2026營收再創新高，達1.74兆 TWD，六月營收321.82億 TWD（歷史第二高）<br />
+- 伺服器業務占比激增：Q1 2026伺服器銷售占整體營收79%，AI營收占比達71%<br />
+- CEO Simon Lin稱AI市場需求強勁，非泡沫而是「新時代開始」<br />
+- 股價相對低估：儘管EPS、ROE、本業獲利與AI供應鏈地位均已轉變，股價尚未充分反應</p>
+<p><strong>看衰/謹慎觀點</strong>：<br />
+- <strong>現金流惡化</strong>：2025年自由現金流大幅轉負，營運資金需求劇增<br />
+- <strong>毛利率受壓</strong>：2025年毛利率僅6.13%（2024年更高），因系統級機架訂單與高價組件買賣業務拉低<br />
+- <strong>槓桿上升</strong>：負債比、金融借款規模同步擴大，應收帳款與存貨增幅特別高<br />
+- <strong>財務風險</strong>：資本支出計畫2026年達600億 TWD，現金流負與舉債成本上升風險<br />
+- 股價自140元左右回檔至139元，短期承壓</p>
+<h3>零售主題摘錄</h3>
+<ol>
+<li><em>「存股老手賣一半鴻海換緯創，2027年目標賺1倍」</em>（今周刊）— 認為股價被低估、AI位置核心</li>
+<li><em>「毛利率雖低但EPS爆發，ROE大幅改善」</em> — 強調營收端成長超過成本上升</li>
+<li><em>「現金流為負、庫存積壓，要觀察後續改善」</em> — 風險提示型評論占多數</li>
+</ol>
+<hr />
+<h2>內部人士交易活動</h2>
+<p><strong>淨6月來動向</strong>：未查獲具體內部人買賣公告（2026年6月–7月）</p>
+<p><strong>管理層態度</strong>：<br />
+- CEO Simon Lin於7月發表樂觀言論，強調AI需求非泡沫，而是新產業時代的開始<br />
+- 公司董事會已批准：<br />
+  - 配息5.5 TWD/股（H1 2026首次配息）<br />
+  - 資本支出600億 TWD用於台灣、美國擴產（美國工廠預計Q1–Q2 2026開始出貨）</p>
+<p><strong>內部人信心指標</strong>：高額配息與積極擴產計畫反映管理層對中期盈利能力與需求前景的信心；配息恢復（2025配息停止，2026恢復）意味現金流與獲利預期已改善。</p>
+<hr />
+<h2>最新市場新聞與事件驅動</h2>
+<h3>6–7月關鍵進展</h3>
+<ol>
+<li><strong>H1 2026營收創高</strong>：1.74兆 TWD，年增108%</li>
+<li><strong>6月單月營收</strong>：321.82億 TWD，年增53.9%，歷史第二高</li>
+<li><strong>NVIDIA訂單確認</strong>：全部產能鎖定至年底，供應鏈穩定性獲確認</li>
+<li><strong>美廠擴張加速</strong>：加州與台灣同步擴產，以應對北美客戶10倍訂單成長</li>
+<li><strong>AI營收爆發</strong>：71%營收來自AI基礎設施（2024年僅46%）</li>
+</ol>
+<h3>市場風險/懸念</h3>
+<ul>
+<li><strong>毛利率持續低位</strong>：系統級方案與買賣模式進一步壓縮單位邊際</li>
+<li><strong>庫存與應收墊高</strong>：H1快速成長伴隨營運資金需求激增，現金流管理成關鍵</li>
+<li><strong>中東地政局勢</strong>：法說會期間曾提及密切關注，若戲劇化惡化恐影響供應鏈/客戶投資</li>
+<li><strong>競爭加劇</strong>：第二梯隊伺服器廠商（含華碩旗下Wiwynn）亦受惠AI浪潮，市占爭奪加劇</li>
+</ul>
+<hr />
+<h2>淨情緒評分</h2>
+<h3>複合情緒判斷：<strong>看多偏謹慎（BULLISH with CAUTION）</strong></h3>
+<p><strong>信心度</strong>：中–高（68/100）</p>
+<p><strong>論證</strong>：<br />
+- <strong>買方力量</strong>：分析師14/16買入、外資持續淨買、AI供應鏈地位堅固，基本面營收與訂單強勁<br />
+- <strong>空方隱憂</strong>：現金流為負、毛利率低迷、槓桿上升、庫存應收膨脹，短期財務壓力不容忽視<br />
+- <strong>估值錯位</strong>：股價138–140 TWD對應EPS與AI位置明顯偏低，存在上升空間；但現金流改善幅度與時間點存不確定性</p>
+<h3>零售 vs. 分析師共識背離旗標：<strong>否（中度一致性）</strong></h3>
+<p>零售投資人與分析師均看多，但零售側較關注風險（現金流、槓桿、毛利率），分析師目標價更激進。此為正常的樂觀 vs. 風險平衡，而非根本性背離。</p>
+<hr />
+<h2>結論與風險</h2>
+<h3>情緒主線</h3>
+<p>緯創受惠AI伺服器景氣爆發，供應鏈地位無可替代，分析師與機構投資人均高度看好；但短期財務槓桿上升與現金流倒掛是市場主要擔憂。零售投資人認為股價相對低估，但對後續毛利率與資本密集度有保留。</p>
+<h3>主要風險清單</h3>
+<ol>
+<li><strong>財務風險</strong>：自由現金流轉負、負債率攀升、資本支出600億 TWD壓力</li>
+<li><strong>業務風險</strong>：毛利率長期低位（6%–7%）、買賣模式利潤受限、競爭加劇</li>
+<li><strong>地政風險</strong>：中東局勢、台灣海峽情勢變動可能干擾供應鏈或客戶投資計畫</li>
+<li><strong>市場風險</strong>：若NVIDIA或客戶新一代平台延遲發佈，訂單成長可能減速</li>
+</ol>
+<h3>買入訊號確認度</h3>
+<p>✅ 分析師共識：強買入<br />
+✅ 機構持股：高且持續買進<br />
+✅ 供應鏈位置：無可替代（NVIDIA獨家供應商之一）<br />
+✅ 營收與訂單基本面：創新高、強勁<br />
+⚠️ 現金流與毛利率：短期承壓<br />
+⚠️ 股價相對位置：雖低於目標價，但近期回檔至140元下方，收斂進場點</p>
+<hr />
+<p><strong>情緒報告完成</strong></p>
+<p><strong>Sources:</strong><br />
+- <a href="https://www.investing.com/equities/wistron-corp-consensus-estimates">Wistron Analyst Forecasts - Investing.com</a><br />
+- <a href="https://www.tradingview.com/symbols/TWSE-3231/forecast/">Wistron Price Target - TradingView</a><br />
+- <a href="https://www.marketscreener.com/quote/stock/WISTRON-CORPORATION-6496539/consensus/">Wistron Consensus - MarketScreener</a><br />
+- <a href="https://stockanalysis.com/quote/tpe/3231/forecast/">Stock Analysis - 3231</a><br />
+- <a href="https://news.cnyes.com/news/id/6455314">緯創目標價調升 - 鉅亨網</a><br />
+- <a href="https://www.digitimes.com/news/a20260708PD254/wistron-ai-server-shipments-revenue-2026.html">Wistron H1 2026 Revenue - DigiTimes</a><br />
+- <a href="https://focustaiwan.tw/sci-tech/202606040021">AI Boom Server Makers - Focus Taiwan</a><br />
+- <a href="https://statementdog.com/analysis/3231">緯創 3231 AI投資評論 - 財報狗</a><br />
+- <a href="https://winvest.tw/Stock/Symbol/Comment/3231">Win投資 - 緯創可以買嗎</a><br />
+- <a href="https://vocus.cc/article/6a26442dfd89780001941234">緯創法說會 2026/03/13 - Vocus</a><br />
+- <a href="https://www.cmoney.tw/forum/stock/3231?s=institutional">緯創機構持股 - CMoney</a><br />
+- <a href="https://www.gurufocus.com/stock/TPE:3231/ownership">Wistron Ownership - GuruFocus</a></p></div>
+        </div>
+      </div>
+    </details>
+
+    <details class="mb-4 border border-slate-200 rounded">
+      <summary class="bg-slate-50 px-4 py-2 font-semibold">Phase 2 — Bull vs Bear 辯論</summary>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+        <div>
+          <h4 class="font-bold text-green-700 mb-2">🐂 多方 (Bull)</h4>
+          <div class="agent-prose text-sm bg-green-50 p-3 rounded border border-green-200"><em>n/a</em></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-red-700 mb-2">🐻 空方 (Bear)</h4>
+          <div class="agent-prose text-sm bg-red-50 p-3 rounded border border-red-200"><em>n/a</em></div>
+        </div>
+      </div>
+    </details>
+
+    <details class="mb-4 border border-slate-200 rounded">
+      <summary class="bg-slate-50 px-4 py-2 font-semibold">Phase 4 — 風險辯論 (Risk debate)</summary>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 p-4">
+        <div>
+          <h4 class="font-bold text-red-700 mb-2">⚡ 進攻 (Aggressive)</h4>
+          <div class="agent-prose text-sm bg-red-50 p-3 rounded border border-red-200"><em>n/a</em></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-blue-700 mb-2">🛡️ 保守 (Conservative)</h4>
+          <div class="agent-prose text-sm bg-blue-50 p-3 rounded border border-blue-200"><em>n/a</em></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-slate-700 mb-2">⚖️ 中立 (Neutral)</h4>
+          <div class="agent-prose text-sm bg-slate-100 p-3 rounded border border-slate-300"><em>n/a</em></div>
+        </div>
+      </div>
+    </details>
+
+  </div>
+
+  <script>
+    (function() {
+      var d = {};
+      if (!d.dates) return;
+      var traces = [
+        {x: d.dates, y: d.close, name: 'Close',  line: {color: '#1f2937', width: 2}},
+        {x: d.dates, y: d.ma20,  name: 'MA20',   line: {color: '#0ea5e9', width: 1, dash: 'dot'}},
+        {x: d.dates, y: d.ma50,  name: 'MA50',   line: {color: '#f59e0b', width: 1, dash: 'dot'}},
+        {x: d.dates, y: d.ma200, name: 'MA200',  line: {color: '#ef4444', width: 1, dash: 'dash'}}
+      ];
+      var layout = {
+        margin: {l: 50, r: 20, t: 10, b: 40},
+        legend: {orientation: 'h', y: -0.15},
+        xaxis: {showgrid: false},
+        yaxis: {title: '價格 ($)'}
+      };
+      Plotly.newPlot('chart-3231_TW', traces, layout, {displayModeBar: false, responsive: true});
+    })();
+  </script>
+
+</section>
+
+
+<section id="ticker-2356_TW" class="mb-10 bg-white rounded-lg shadow overflow-hidden">
+
+  <div class="flex items-start justify-between p-6 border-b border-slate-200 verdict-UNKNOWN">
+    <div>
+      <h2 class="text-3xl font-bold">2356.TW</h2>
+      <p class="text-sm mt-1 opacity-80">英業達 (2356) — AI server ODM</p>
+    </div>
+    <div class="text-right">
+      <div class="text-4xl font-bold">UNKNOWN</div>
+      <div class="text-sm opacity-80 mt-1"></div>
+    </div>
+  </div>
+
+  <div class="p-6 grid grid-cols-1 lg:grid-cols-2 gap-6">
+
+    <div>
+      <h3 class="text-lg font-bold mb-2">價格 + 技術指標 (2 年)</h3>
+      <div id="chart-2356_TW" style="height: 380px;"></div>
+    </div>
+
+    <div>
+      <h3 class="text-lg font-bold mb-2">最終決策 (Final decision)</h3>
+      <div class="agent-prose text-sm bg-slate-50 p-4 rounded border border-slate-200">
+        <h1>2356.TW — 最終決策 (Phase-1-only stub)</h1>
+<p><strong>日期</strong>: 2026-07-17<br />
+<strong>verdict</strong>: HOLD<br />
+<strong>conviction</strong>: 42%</p>
+<h2>跳過原因</h2>
+<p>Yahoo Finance (fc.yahoo.com) 被代理政策封鎖，無法取得基本面/市場/估值數據。評分 2/5 (News+Sentiment)，未達 ≥3/5 門檻。</p>
+<p><strong>無即時價格，暫不給進出場價位。</strong></p>
+<h2>Phase-1 訊號摘要</h2>
+<table>
+<thead>
+<tr>
+<th>訊號</th>
+<th>結果</th>
+<th>備注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fundamentals</td>
+<td>UNAVAILABLE</td>
+<td>fc.yahoo.com 403</td>
+</tr>
+<tr>
+<td>Market (Technical)</td>
+<td>UNAVAILABLE</td>
+<td>fc.yahoo.com 403</td>
+</tr>
+<tr>
+<td>News</td>
+<td>POSITIVE ✓</td>
+<td>6月營收NT$102.26億+61.6%YoY歷史新高; H1+36.8%; Google TPU訂單占比提升降低NVIDIA集中風險; 記憶體缺料40+週交期為短期風險</td>
+</tr>
+<tr>
+<td>Sentiment</td>
+<td>BULLISH ✓</td>
+<td>3買/1賣(75%); 目標價53.88 TWD(折價); 分歧旗標YES — 基本面強勁vs技術面短期偏空; 長期BULLISH; 除息2元後回吐</td>
+</tr>
+<tr>
+<td>Valuation</td>
+<td>UNAVAILABLE</td>
+<td>fc.yahoo.com 403</td>
+</tr>
+</tbody>
+</table>
+<h2>近期催化劑</h2>
+<ul>
+<li><strong>2026-08-07</strong>: Q2財報 — 供應鏈改善進度/Q3展望/AI伺服器出貨預期</li>
+<li>AI伺服器營收占比目標50%+ — 轉型進度確認</li>
+<li>Google TPU + AMD客戶貢獻占比 (中國客戶&gt;50% AI伺服器銷售)</li>
+<li>主要風險: DRAM前置40週/Q2漲幅58-63%; CPU供應缺口Q3出貨壓力; 毛利率僅1.2%受元器件漲價壓縮; 筆記本業務Q3進入淡季</li>
+</ul>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="px-6 pb-6">
+
+    <details class="mb-4 border border-slate-200 rounded">
+      <summary class="bg-slate-50 px-4 py-2 font-semibold">投資計劃 (Research manager)</summary>
+      <div class="agent-prose p-4 text-sm"><em>n/a</em></div>
+    </details>
+
+    <details class="mb-4 border border-slate-200 rounded">
+      <summary class="bg-slate-50 px-4 py-2 font-semibold">交易提案 (Trader)</summary>
+      <div class="agent-prose p-4 text-sm"><em>n/a</em></div>
+    </details>
+
+    <details class="mb-4 border border-slate-200 rounded">
+      <summary class="bg-slate-50 px-4 py-2 font-semibold">Phase 1 — 四 Analyst 報告</summary>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+        <div>
+          <h4 class="font-bold text-slate-700 mb-2">基本面 (Fundamentals)</h4>
+          <div class="agent-prose text-sm bg-slate-50 p-3 rounded"><h1>基本面分析 — 2356.TW (英業達) 截至 2026-07-17</h1>
+<h2>執行摘要</h2>
+<p>由於 Yahoo Finance 被代理伺服器封鎖（HTTP 403 政策拒絕），無法取得 2356.TW 的基本面數據。所有財務指標均標示為 UNAVAILABLE。建議在網絡連接恢復時重新進行分析。</p>
+<h2>營收與獲利能力</h2>
+<p><strong>狀態</strong>: UNAVAILABLE</p>
+<p>以下數據無法獲取：<br />
+- 3-5年收入複合增長率 (CAGR)<br />
+- 同比營收成長趨勢<br />
+- 毛利率、營業利潤率、淨利潤率趨勢<br />
+- ROE (股東權益報酬率)<br />
+- ROIC (投入資本回報率)</p>
+<h2>現金流與資產負債表</h2>
+<p><strong>狀態</strong>: UNAVAILABLE</p>
+<p>以下數據無法獲取：<br />
+- 自由現金流 (FCF) 邊際率<br />
+- FCF / 淨收入比例<br />
+- 淨負債金額<br />
+- 流動比率<br />
+- 負債/股權比率<br />
+- 現金持有量</p>
+<h2>資本配置與內部人士信號</h2>
+<p><strong>狀態</strong>: UNAVAILABLE</p>
+<p>以下數據無法獲取：<br />
+- 過去 6 個月內部人士交易淨買入/賣出<br />
+- 相對市值的交易規模<br />
+- 資本支出 (CapEx) 趨勢<br />
+- 股票回購活動<br />
+- 股利覆蓋率</p>
+<h2>估值</h2>
+<p><strong>狀態</strong>: UNAVAILABLE</p>
+<p>以下數據無法獲取：<br />
+- 追蹤型 P/E 比率<br />
+- 遠期 P/E 比率<br />
+- EV/EBITDA<br />
+- P/FCF (價格/自由現金流)<br />
+- P/S (價格/銷售)<br />
+- 相對於產業中位數的估值</p>
+<h2>關鍵催化劑</h2>
+<p><strong>狀態</strong>: UNAVAILABLE</p>
+<p>以下信息無法獲取：<br />
+- 下次財報發佈日期<br />
+- 最近指導意見<br />
+- 業務部門轉變<br />
+- 市場預期變化</p>
+<h2>指標表</h2>
+<table>
+<thead>
+<tr>
+<th>指標</th>
+<th>最新值</th>
+<th>同比</th>
+<th>產業中位數 (估計)</th>
+<th>評估</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>營收 (年度)</td>
+<td>UNAVAILABLE</td>
+<td>UNAVAILABLE</td>
+<td>UNAVAILABLE</td>
+<td>UNAVAILABLE</td>
+</tr>
+<tr>
+<td>淨利潤 (年度)</td>
+<td>UNAVAILABLE</td>
+<td>UNAVAILABLE</td>
+<td>UNAVAILABLE</td>
+<td>UNAVAILABLE</td>
+</tr>
+<tr>
+<td>毛利率</td>
+<td>UNAVAILABLE</td>
+<td>UNAVAILABLE</td>
+<td>UNAVAILABLE</td>
+<td>UNAVAILABLE</td>
+</tr>
+<tr>
+<td>營業利潤率</td>
+<td>UNAVAILABLE</td>
+<td>UNAVAILABLE</td>
+<td>UNAVAILABLE</td>
+<td>UNAVAILABLE</td>
+</tr>
+<tr>
+<td>淨利潤率</td>
+<td>UNAVAILABLE</td>
+<td>UNAVAILABLE</td>
+<td>UNAVAILABLE</td>
+<td>UNAVAILABLE</td>
+</tr>
+<tr>
+<td>ROE</td>
+<td>UNAVAILABLE</td>
+<td>UNAVAILABLE</td>
+<td>UNAVAILABLE</td>
+<td>UNAVAILABLE</td>
+</tr>
+<tr>
+<td>ROIC</td>
+<td>UNAVAILABLE</td>
+<td>UNAVAILABLE</td>
+<td>UNAVAILABLE</td>
+<td>UNAVAILABLE</td>
+</tr>
+<tr>
+<td>FCF 邊際率</td>
+<td>UNAVAILABLE</td>
+<td>UNAVAILABLE</td>
+<td>UNAVAILABLE</td>
+<td>UNAVAILABLE</td>
+</tr>
+<tr>
+<td>FCF / 淨收入</td>
+<td>UNAVAILABLE</td>
+<td>UNAVAILABLE</td>
+<td>UNAVAILABLE</td>
+<td>UNAVAILABLE</td>
+</tr>
+<tr>
+<td>淨負債</td>
+<td>UNAVAILABLE</td>
+<td>UNAVAILABLE</td>
+<td>UNAVAILABLE</td>
+<td>UNAVAILABLE</td>
+</tr>
+<tr>
+<td>流動比率</td>
+<td>UNAVAILABLE</td>
+<td>UNAVAILABLE</td>
+<td>UNAVAILABLE</td>
+<td>UNAVAILABLE</td>
+</tr>
+<tr>
+<td>負債/股權</td>
+<td>UNAVAILABLE</td>
+<td>UNAVAILABLE</td>
+<td>UNAVAILABLE</td>
+<td>UNAVAILABLE</td>
+</tr>
+<tr>
+<td>P/E (追蹤)</td>
+<td>UNAVAILABLE</td>
+<td>UNAVAILABLE</td>
+<td>UNAVAILABLE</td>
+<td>UNAVAILABLE</td>
+</tr>
+<tr>
+<td>P/E (遠期)</td>
+<td>UNAVAILABLE</td>
+<td>UNAVAILABLE</td>
+<td>UNAVAILABLE</td>
+<td>UNAVAILABLE</td>
+</tr>
+<tr>
+<td>EV/EBITDA</td>
+<td>UNAVAILABLE</td>
+<td>UNAVAILABLE</td>
+<td>UNAVAILABLE</td>
+<td>UNAVAILABLE</td>
+</tr>
+<tr>
+<td>P/FCF</td>
+<td>UNAVAILABLE</td>
+<td>UNAVAILABLE</td>
+<td>UNAVAILABLE</td>
+<td>UNAVAILABLE</td>
+</tr>
+<tr>
+<td>P/S</td>
+<td>UNAVAILABLE</td>
+<td>UNAVAILABLE</td>
+<td>UNAVAILABLE</td>
+<td>UNAVAILABLE</td>
+</tr>
+<tr>
+<td>股價</td>
+<td>UNAVAILABLE</td>
+<td>UNAVAILABLE</td>
+<td>UNAVAILABLE</td>
+<td>UNAVAILABLE</td>
+</tr>
+<tr>
+<td>50 日均線</td>
+<td>UNAVAILABLE</td>
+<td>UNAVAILABLE</td>
+<td>UNAVAILABLE</td>
+<td>UNAVAILABLE</td>
+</tr>
+<tr>
+<td>200 日均線</td>
+<td>UNAVAILABLE</td>
+<td>UNAVAILABLE</td>
+<td>UNAVAILABLE</td>
+<td>UNAVAILABLE</td>
+</tr>
+</tbody>
+</table>
+<h2>紅旗警訊</h2>
+<p><strong>狀態</strong>: UNAVAILABLE</p>
+<p>無法評估以下潛在風險：<br />
+- 營收成長放緩<br />
+- 利潤率壓縮<br />
+- 負債升高<br />
+- 現金流惡化<br />
+- 內部人士拋售<br />
+- 估值過高</p>
+<h2>數據完整性說明</h2>
+<p><strong>代理問題</strong>: Yahoo Finance 伺服器 (fc.yahoo.com) 被代理伺服器以 HTTP 403 政策拒絕封鎖。嘗試的服務包括：<br />
+- 公司信息與估值指標<br />
+- 財務報表 (損益表、資產負債表、現金流量表)<br />
+- 股價與技術指標<br />
+- 內部人士交易活動<br />
+- 持股人集中度</p>
+<p><strong>建議後續步驟</strong>:<br />
+1. 確認網絡連接與代理設定<br />
+2. 聯絡系統管理員確認 Yahoo Finance 訪問許可<br />
+3. 一旦連接恢復，重新執行完整基本面分析</p>
+<hr />
+<p><strong>分析日期</strong>: 2026-07-17<br />
+<strong>股票代碼</strong>: 2356.TW<br />
+<strong>公司</strong>: 英業達 Inventec Corporation<br />
+<strong>上市交易所</strong>: 台灣證券交易所 (TWSE)<br />
+<strong>行業</strong>: 電子設備製造業 (伺服器/筆記本 ODM)</p>
+<p><strong>數據來源</strong>: Yahoo Finance (無法訪問)<br />
+<strong>狀態</strong>: UNAVAILABLE - 代理封鎖</p></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-slate-700 mb-2">技術面 (Market / Technical)</h4>
+          <div class="agent-prose text-sm bg-slate-50 p-3 rounded"><h1>技術分析 — 2356.TW (英業達, Inventec) 截至 2026-07-17</h1>
+<h2>狀態</h2>
+<p><strong>PRICE_DATA_UNAVAILABLE</strong></p>
+<p>無法取得價格數據。代理閘道拒絕了對 Yahoo Finance (fc.yahoo.com:443) 的連線，HTTP 狀態碼 403。</p>
+<h2>詳細</h2>
+<ul>
+<li><strong>連線錯誤</strong>: gateway answered 403 to CONNECT (policy denial or upstream failure)</li>
+<li><strong>影響</strong>: 無法執行技術分析快照或取得即時價格資訊</li>
+<li><strong>無法計算指標</strong>: MACD、RSI14、布林帶、移動平均線、ATR、支撐位/阻力位等所有技術指標</li>
+</ul>
+<h2>結論</h2>
+<p>由於無法取得價格數據，本日無法提供 2356.TW 的技術分析。建議待網路連線恢復後重新執行掃描。</p>
+<hr />
+<p>技術分析報告完成</p></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-slate-700 mb-2">新聞 (News)</h4>
+          <div class="agent-prose text-sm bg-slate-50 p-3 rounded"><h1>新聞概況 — 2356.TW 英業達 (截至 2026-07-17)</h1>
+<h2>核心公司新聞 (過去14天)</h2>
+<ul>
+<li>
+<p><strong>2026-07-16</strong> — 英業達示警AI記憶體供應危機衝擊伺服器生產，DRAM前置時間達40週以上。影響：<strong>負面</strong>。供應約束威脅Q3伺服器出貨，企業級DRAM價格Q2環比上漲58-63%，為歷史最大季度漲幅。(<a href="https://www.techtimes.com/articles/320681/20260716/inventec-warns-ai-memory-crunch-has-reached-servers-lead-times-hit-40-plus-weeks.htm">TechTimes</a>, <a href="https://www.digitimes.com/news/a20260716PD222/inventec-cpu-shipments-demand-2026.html">DigiTimes</a>)</p>
+</li>
+<li>
+<p><strong>2026-07-08</strong> — 6月營收達NT$102.26億，環比增23.5%、年增61.6%，創歷史單月新高。影響：<strong>正面</strong>。H1營收累計NT$470.168億，年增36.8%，AI伺服器業務成長動能強勁。(<a href="https://finance.technews.tw/2026/07/08/inventec-2356-202606-financial-report/">TechNews</a>)</p>
+</li>
+<li>
+<p><strong>2026-07-08</strong> — 英業達預期Q3伺服器出貨環比持平至小幅上升，但DRAM及CPU供應缺口擴大可能制約。影響：<strong>中性轉負面</strong>。供應鏈瓶頸成為近期最大風險，估計可能延遲部分訂單交付。(<a href="https://www.digitimes.com/news/a20260708PD255/inventec-revenue-server-shipments-2026.html">DigiTimes</a>)</p>
+</li>
+<li>
+<p><strong>2026-05-12</strong> — Q1營收突破NT$200.3億歷史新高，年增28%；伺服器業務占營收超過50%，中國客戶貢獻超50% AI伺服器銷售。影響：<strong>正面</strong>。客群多元化降低單一客戶風險，Google TPU訂單占比提升。(<a href="https://www.digitimes.com/news/a20260409PD244/inventec-revenue-shipments-ai-server-2026.html">DigiTimes</a>)</p>
+</li>
+</ul>
+<h2>產業巨觀面</h2>
+<ul>
+<li>
+<p><strong>2026-07-中</strong> — 台灣伺服器ODM (英業達、廣達、華碩、聯寶)於2025Q4掌握全球市占率53.2%。影響於<strong>伺服器供應鏈</strong>：台灣製造業持續鞏固AI基礎設施主導地位，惟面臨供應零件短缺威脅。需求面持續動能強勁，由雲端服務商資料中心建設推動。(<a href="https://www.digitimes.com/news/a20260601PD205/servers-odm-demand-growth-taiwan-2026.html">DigiTimes</a>)</p>
+</li>
+<li>
+<p><strong>2026-07中</strong> — DRAM合約價格Q1季度漲幅達90-95%，Q2再漲58-63%，為記錄最高。影響於<strong>成本與毛利率</strong>：元器件成本飆升制約ODM毛利率，英業達Q1毛利率僅1.2%，管理層強調應聚焦絕對獲利額而非毛利率百分比。(<a href="https://sourceability.com/post/the-memory-shortage-is-set-to-grow-through-2026">Sourceability</a>)</p>
+</li>
+<li>
+<p><strong>2026-06</strong> — 全球筆記本電腦ODM需求於H1 2026超季節性強勁，但傳統旺季自Q3起失動能，預期出貨環比將下滑。影響於<strong>筆記本業務</strong>：英業達筆記本部門面臨需求疲軟與記憶體短缺雙重壓力，年初預期全年筆記本業務持平至低個位數下滑。(<a href="https://www.digitimes.com/news/a20260601PD205/servers-odm-demand-growth-taiwan-2026.html">DigiTimes</a>)</p>
+</li>
+</ul>
+<h2>競爭對手動向</h2>
+<ul>
+<li>
+<p><strong>聯寶科技 (Quanta)</strong> — 2025H1營收超過淨估，但於H1被華碩超越，未入前三大。聚焦ASIC及AMD生態，採差異化策略對標英業達。</p>
+</li>
+<li>
+<p><strong>華碩 (Wistron)</strong> — 2025H1營收突破NT$2兆，年增108%，首度超越聯寶躍居第三，得益於NVIDIA GB200機架早期大單。2026年德州新廠試產啟動，強化L11機架級整合能力。(<a href="https://www.digitimes.com/news/a20260109PD249/revenue-ai-server-foxconn-wistron-quanta.html">DigiTimes</a>)</p>
+</li>
+<li>
+<p><strong>和碩 (Pegatron)</strong> — 德州新廠計畫於2026H1開啟試產，主打系統組裝(L10)及機架集成(L11)，聚焦Dell、HP生態；惟在Google TPU領域競爭力弱於英業達。</p>
+</li>
+<li>
+<p><strong>富士康 (Foxconn)</strong> — 2026H1全球AI伺服器市占約40%，預期可於全年翻倍增長。英業達透過Google TPU及AMD路線獲得差異化競爭優勢。</p>
+</li>
+</ul>
+<h2>未來14天重點行事曆</h2>
+<ul>
+<li>
+<p><strong>2026-08-07</strong> — 英業達Q2 2026財報發布。預期焦點：Q3展望、供應鏈改善時程、DRAM價格穩定性預期、伺服器出貨環比成長幅度。市場預估Q2 EPS 0.81 TWD、營收NT$223.01B。</p>
+</li>
+<li>
+<p><strong>2026-08上</strong> — H1財報季高峰，Dell、HP等英業達主要客戶財報陸續發布，將提供AI伺服器需求趨勢訊號。</p>
+</li>
+</ul>
+<h2>淨觀點</h2>
+<p>英業達於AI伺服器週期受惠最大，H1成績亮眼(營收36.8%年增、6月創單月新高)，且透過Google TPU及AMD多元客群布局降低NVIDIA單一生態風險。然近期元器件短缺(DRAM前置時間40+週、價格飆升)對Q3出貨構成短期制約，筆記本業務需求亦面臨疲軟；絕對獲利成長被相對毛利率壓縮所掩蓋，需關注Q2財報管理層對供應鏈改善時程之指引。台灣伺服器ODM於全球市占53.2%地位穩固，長期AI基礎設施建設需求韌性足，但近期供應瓶頸風險不容輕忽。</p>
+<p><strong>淨情緒：POSITIVE</strong> — AI伺服器成長軌跡確立(目標40%+年增)、客群多元化進展(Google TPU)、歷史高位營收獲利，短期供應約束屬暫時性，不改中期向上趨勢。</p>
+<hr />
+<p>NEWS REPORT COMPLETE</p>
+<p><strong>資料來源：</strong><br />
+- <a href="https://www.techtimes.com/articles/320681/20260716/inventec-warns-ai-memory-crunch-has-reached-servers-lead-times-hit-40-plus-weeks.htm">TechTimes</a><br />
+- <a href="https://www.digitimes.com/news/a20260716PD222/inventec-cpu-shipments-demand-2026.html">DigiTimes</a><br />
+- <a href="https://finance.technews.tw/2026/07/08/inventec-2356-202606-financial-report/">TechNews</a><br />
+- <a href="https://www.digitimes.com/news/a20260409PD244/inventec-revenue-shipments-ai-server-2026.html">DigiTimes Q1績效</a><br />
+- <a href="https://sourceability.com/post/the-memory-shortage-is-set-to-grow-through-2026">Sourceability</a><br />
+- <a href="https://www.digitimes.com/news/a20260601PD205/servers-odm-demand-growth-taiwan-2026.html">DigiTimes 台灣ODM競爭</a><br />
+- <a href="https://www.digitimes.com/news/a20260109PD249/revenue-ai-server-foxconn-wistron-quanta.html">DigiTimes 競爭對手</a></p></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-slate-700 mb-2">情緒 (Sentiment)</h4>
+          <div class="agent-prose text-sm bg-slate-50 p-3 rounded"><h1>情緒分析 — 2356.TW 英業達 / Inventec，截至 2026-07-17</h1>
+<h2>分析師共識</h2>
+<p><strong>評級分佈</strong>：3買 / 1賣 / 未知持有<br />
+<strong>平均目標價</strong>：53.88 TWD（低估）<br />
+<strong>高估價</strong>：77 TWD<br />
+<strong>低估價</strong>：36 TWD<br />
+<strong>評級傾向</strong>：中立略偏多（3:1買賣比）</p>
+<p><strong>最近調整動向</strong>：<br />
+- Factset 調查：2026年EPS預估上修至2.97元，目標價設定48元<br />
+- 5月12日法說會後有報喜行情（股價翻紅漲8%）<br />
+- 6月8-9日參加BofA舉辦海外法說會，進行海外投資人溝通<br />
+- 近期分析師對AI伺服器成長前景保持樂觀，但對估值有保留</p>
+<h2>零售社交情緒</h2>
+<h3>Reddit</h3>
+<ul>
+<li><strong>數據可得性</strong>：Reddit 無法訪問，無法蒐集台灣股市討論區數據</li>
+<li><strong>替代來源</strong>：CMoney股市爆料討論區存在英業達專版，但無法抓取具體情緒摘要</li>
+</ul>
+<h3>StockTwits / X</h3>
+<ul>
+<li><strong>數據可得性</strong>：未能直接蒐集到特定情緒提及，X/新聞討論難以定量化</li>
+<li><strong>推測方向</strong>：基於法說會資訊發佈時間點，6月中旬後市場情緒轉向謹慎</li>
+</ul>
+<h3>主要議題與零售看法</h3>
+<ol>
+<li>
+<p><strong>AI伺服器成長樂觀</strong> — 分析師和官方預期2026年伺服器營收年增30%+，AI伺服器佔比有望突破50%；客戶包括NVIDIA、AMD等主流晶片商。</p>
+</li>
+<li>
+<p><strong>股價技術走勢分歧</strong> — 5月底至6月初上漲至80元以上，但6月中旬後逆轉，7月初跌破MA5/MA20形成死叉，短期承壓。</p>
+</li>
+<li>
+<p><strong>除息與籌碼調整</strong> — 7月15日除息2元（參考價61.7元），可能觸發預期套利回吐。</p>
+</li>
+<li>
+<p><strong>融資融券動向</strong> — HiStock、Win投資等平台可查閱具體籌碼，但搜尋時無法取得即時數據；三大法人動向可於CMoney等平台跟蹤。</p>
+</li>
+</ol>
+<h2>內部人活動</h2>
+<p><strong>淨6個月動向</strong>：無具體重大內部人買賣紀錄可獲得</p>
+<p><strong>重要人物觀察</strong>：<br />
+- 董監事持股比例：12.45–12.59%（相對穩定，無明顯大量減持訊號）<br />
+- 無近期大宗交易公告（基於公開資訊觀測站搜尋限制）</p>
+<p><strong>推測意義</strong>：內部人持股穩定，未見恐慌性減持，但也無明顯加碼信號。管理層對長期前景信心有限（或無積極買進機制）。</p>
+<h2>機構所有權動向</h2>
+<p><strong>持股濃度</strong>：<br />
+- 董監合計：12.45–12.59%<br />
+- 機構投資人詳細持股比例：無法精確取得（需透過台灣證券交易所 TWSE 官方揭露或券商數據）<br />
+- 外資、投信、自營商動向：可於HiStock、CMoney平台查閱，但搜尋期無即時數據</p>
+<p><strong>推測</strong>：機構持股分散，未見集中度異常變化，反映市場對長期前景認可但短期謹慎。</p>
+<h2>淨情緒評分</h2>
+<h3>複合評分：<strong>中立偏多 → 短期NEUTRAL，長期BULLISH</strong></h3>
+<p><strong>根據</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>向度</th>
+<th>判決</th>
+<th>信心</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>基本面</strong></td>
+<td>強勁看漲</td>
+<td>高</td>
+<td>AI伺服器拉貨力道確認延伸至2028年，營收成長30%+有執行力；客戶陣容（NVIDIA、AMD、中國通用型伺服器廠）堅強；資本支出倍增反映管理層對需求信心</td>
+</tr>
+<tr>
+<td><strong>技術面</strong></td>
+<td>短期看跌</td>
+<td>中</td>
+<td>連跌3天，死叉成形，支撐位在64–65元；除息後股價可能進一步承壓；短期RSI/MACD偏弱</td>
+</tr>
+<tr>
+<td><strong>分析師共識</strong></td>
+<td>中立略多</td>
+<td>中</td>
+<td>3買1賣，但平均目標價53.88元低於最近股價（62–65元區間），暗示下行風險；Factset上修EPS但下調目標價至48元</td>
+</tr>
+<tr>
+<td><strong>內部人</strong></td>
+<td>無信號</td>
+<td>低</td>
+<td>持股穩定但無加碼；無大宗減持；觀望態度</td>
+</tr>
+<tr>
+<td><strong>機構籌碼</strong></td>
+<td>無明確方向</td>
+<td>低</td>
+<td>數據難得，無法判斷三大法人最新動向；外資動向待確認</td>
+</tr>
+</tbody>
+</table>
+<h3><strong>分歧旗標</strong>：YES ✓</h3>
+<p><strong>本質分歧</strong>：基本面強勁（營收成長、AI周期紅利確認）與技術面疲軟（短期賣壓、估值調整）形成正交對立。</p>
+<ul>
+<li>
+<p><strong>多方論點</strong>：AI伺服器是2026年確定性成長動能，Inventec作為主流ODMC廠獲益確定，長期ROI優厚；近期股價下跌屬消化過往漲幅（5月50元→6月80元）與除息預期回吐，非基本面惡化。</p>
+</li>
+<li>
+<p><strong>空方論點</strong>：平均目標價53.88元與最新股價形成明顯折價預期，短期技術面死叉已成；融資失血與短期套利回吐可能加劇拋壓；AI伺服器成長雖確認但估值溢價已反映，邊際樂觀遞減。</p>
+</li>
+</ul>
+<hr />
+<h2>最終情緒判決</h2>
+<p><strong>SHORT-TERM (1–4週)：NEUTRAL → 偏BEARISH</strong><br />
+<strong>MEDIUM-TERM (1–3個月)：NEUTRAL</strong><br />
+<strong>LONG-TERM (6–12個月)：BULLISH</strong></p>
+<p><strong>合理性說明</strong>：<br />
+- 短期（1–4週）：技術面死叉、除息回吐、分析師目標價折價，建議觀望支撐位確認。<br />
+- 中期（1–3個月）：基本面與技術面拉鋸，取決於能否收復MA20/MA5；Q2財報數據與下半年訂單指引將決定方向。<br />
+- 長期（6–12個月）：AI伺服器成長確認、通用型伺服器復甦、資本支出倍增，都支持業績持續擴張；只要不發生客戶砍單或產能閒置，長期前景應為上行。</p>
+<p><strong>建議監測指標</strong>：<br />
+1. 支撐位64–65元能否守住（若跌破，可能觸發第二波賣壓）<br />
+2. 三大法人最新動向（外資、投信進出）<br />
+3. 下季營收與毛利率新高確認<br />
+4. 客戶訂單能見度變化（通過后续法說會或公告）<br />
+5. 資本支出執行進度</p>
+<hr />
+<p><strong>情緒報告完成</strong></p>
+<p>Sources:<br />
+- <a href="https://tw.stock.yahoo.com/quote/2356.TW">Yahoo Taiwan Stock - 英業達走勢圖</a><br />
+- <a href="https://www.investing.com/equities/inventec-corp">Investing.com - Inventec Corp Stock</a><br />
+- <a href="https://www.inventec.com/en/investor.htm">Inventec Investor Relations</a><br />
+- <a href="https://www.sinotrade.com.tw/richclub/news/69c9e02fb4c42963342ccc08">Factset 英業達EPS預估上修</a><br />
+- <a href="https://tw.stock.yahoo.com/news/%E8%8B%B1%E6%A5%AD%E9%81%94%E6%B3%95%E8%AA%AA%E5%A0%B1%E5%96%9C%EF%BC%81%E8%82%A1%E5%83%B9%E7%BF%BB%E7%B4%85%E6%94%B6%E6%BC%B28-%E5%88%86%E6%9E%90%E5%B8%AB%E6%9B%9D%E3%80%8C%E7%AA%81%E7%A0%B4%E5%89%8D%E9%AB%98%E3%80%8D%E9%97%9C%E9%8D%B5%E5%83%B9-014210793.html">英業達法說報喜新聞</a><br />
+- <a href="https://blog.fugle.tw/post/earnings-call-2356-2026-05-12">富果直送 - 英業達法說會重點</a><br />
+- <a href="https://www.cmoney.tw/forum/stock/2356">CMoney - 英業達討論區</a><br />
+- <a href="https://histock.tw/stock/chips.aspx?no=2356">HiStock - 英業達籌碼分析</a><br />
+- <a href="https://winvest.tw/Stock/Symbol/MarginShort/2356">Win投資 - 英業達融資融券</a><br />
+- <a href="https://cmnews.com.tw/article/newsyoudeservetoknow-ff4b9f2c-d17e-11f0-a45d-d1b8d48ae0e0">CMoney - 英業達AI伺服器占比</a><br />
+- <a href="https://news.cnyes.com/news/id/6455294">鉅亨網 - AI及通用型伺服器法說</a><br />
+- <a href="https://money.udn.com/money/story/5612/9278333">經濟日報 - 英業達衝ASIC伺服器單</a><br />
+- <a href="https://goodinfo.tw/tw/BasicInfo.asp?STOCK_ID=2356">GoodInfo - 英業達基本資訊</a></p></div>
+        </div>
+      </div>
+    </details>
+
+    <details class="mb-4 border border-slate-200 rounded">
+      <summary class="bg-slate-50 px-4 py-2 font-semibold">Phase 2 — Bull vs Bear 辯論</summary>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+        <div>
+          <h4 class="font-bold text-green-700 mb-2">🐂 多方 (Bull)</h4>
+          <div class="agent-prose text-sm bg-green-50 p-3 rounded border border-green-200"><em>n/a</em></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-red-700 mb-2">🐻 空方 (Bear)</h4>
+          <div class="agent-prose text-sm bg-red-50 p-3 rounded border border-red-200"><em>n/a</em></div>
+        </div>
+      </div>
+    </details>
+
+    <details class="mb-4 border border-slate-200 rounded">
+      <summary class="bg-slate-50 px-4 py-2 font-semibold">Phase 4 — 風險辯論 (Risk debate)</summary>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 p-4">
+        <div>
+          <h4 class="font-bold text-red-700 mb-2">⚡ 進攻 (Aggressive)</h4>
+          <div class="agent-prose text-sm bg-red-50 p-3 rounded border border-red-200"><em>n/a</em></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-blue-700 mb-2">🛡️ 保守 (Conservative)</h4>
+          <div class="agent-prose text-sm bg-blue-50 p-3 rounded border border-blue-200"><em>n/a</em></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-slate-700 mb-2">⚖️ 中立 (Neutral)</h4>
+          <div class="agent-prose text-sm bg-slate-100 p-3 rounded border border-slate-300"><em>n/a</em></div>
+        </div>
+      </div>
+    </details>
+
+  </div>
+
+  <script>
+    (function() {
+      var d = {};
+      if (!d.dates) return;
+      var traces = [
+        {x: d.dates, y: d.close, name: 'Close',  line: {color: '#1f2937', width: 2}},
+        {x: d.dates, y: d.ma20,  name: 'MA20',   line: {color: '#0ea5e9', width: 1, dash: 'dot'}},
+        {x: d.dates, y: d.ma50,  name: 'MA50',   line: {color: '#f59e0b', width: 1, dash: 'dot'}},
+        {x: d.dates, y: d.ma200, name: 'MA200',  line: {color: '#ef4444', width: 1, dash: 'dash'}}
+      ];
+      var layout = {
+        margin: {l: 50, r: 20, t: 10, b: 40},
+        legend: {orientation: 'h', y: -0.15},
+        xaxis: {showgrid: false},
+        yaxis: {title: '價格 ($)'}
+      };
+      Plotly.newPlot('chart-2356_TW', traces, layout, {displayModeBar: false, responsive: true});
+    })();
+  </script>
+
+</section>
+
+
+<section id="ticker-2376_TW" class="mb-10 bg-white rounded-lg shadow overflow-hidden">
+
+  <div class="flex items-start justify-between p-6 border-b border-slate-200 verdict-UNKNOWN">
+    <div>
+      <h2 class="text-3xl font-bold">2376.TW</h2>
+      <p class="text-sm mt-1 opacity-80">技嘉 (2376) — AI server ODM (Vera Rubin Rack)</p>
+    </div>
+    <div class="text-right">
+      <div class="text-4xl font-bold">UNKNOWN</div>
+      <div class="text-sm opacity-80 mt-1"></div>
+    </div>
+  </div>
+
+  <div class="p-6 grid grid-cols-1 lg:grid-cols-2 gap-6">
+
+    <div>
+      <h3 class="text-lg font-bold mb-2">價格 + 技術指標 (2 年)</h3>
+      <div id="chart-2376_TW" style="height: 380px;"></div>
+    </div>
+
+    <div>
+      <h3 class="text-lg font-bold mb-2">最終決策 (Final decision)</h3>
+      <div class="agent-prose text-sm bg-slate-50 p-4 rounded border border-slate-200">
+        <h1>2376.TW — 最終決策 (Phase-1-only stub)</h1>
+<p><strong>日期</strong>: 2026-07-17<br />
+<strong>verdict</strong>: HOLD<br />
+<strong>conviction</strong>: 38%</p>
+<h2>跳過原因</h2>
+<p>Yahoo Finance (fc.yahoo.com) 被代理政策封鎖，無法取得基本面/市場/估值數據。評分 1/5 (Sentiment)，未達 ≥3/5 門檻。</p>
+<p><strong>無即時價格，暫不給進出場價位。</strong></p>
+<h2>Phase-1 訊號摘要</h2>
+<table>
+<thead>
+<tr>
+<th>訊號</th>
+<th>結果</th>
+<th>備注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fundamentals</td>
+<td>UNAVAILABLE</td>
+<td>fc.yahoo.com 403</td>
+</tr>
+<tr>
+<td>Market (Technical)</td>
+<td>UNAVAILABLE</td>
+<td>fc.yahoo.com 403</td>
+</tr>
+<tr>
+<td>News</td>
+<td>NEGATIVE ✗</td>
+<td>摩根士丹利7月降評至「持平大市」目標290元(前370元); 消費主機板出貨下修900萬(-22%); 記憶體+CCL成本上升壓縮毛利(Q1僅12.01%); 供應鏈瓶頸延遲Vera Rubin出貨加速</td>
+</tr>
+<tr>
+<td>Sentiment</td>
+<td>BULLISH ✓</td>
+<td>14分析師7買/5持/2賣; 目標415 TWD(現334-346 TWD+24%); P/E&lt;13倍vs同業&gt;20倍; 外資淨買進1,214張; 股利12元(8/3除息)</td>
+</tr>
+<tr>
+<td>Valuation</td>
+<td>UNAVAILABLE</td>
+<td>fc.yahoo.com 403</td>
+</tr>
+</tbody>
+</table>
+<h2>近期催化劑</h2>
+<ul>
+<li><strong>2026-08-03</strong>: 除息12元 — 填息能力觀測</li>
+<li>Vera Rubin H2 2026量產進度 — OAM加速器/高階伺服器主機板供應</li>
+<li>Q2財報: AI伺服器71.5%占比與毛利率趨勢</li>
+<li>主要風險: MS降評至持平大市(目標290元); 消費主機板崩跌-22%; CCL+74.5%YoY/記憶體漲價侵蝕毛利; Blackwell售罄至中期/CoWoS滿載至2027中延誤Vera Rubin出貨</li>
+</ul>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="px-6 pb-6">
+
+    <details class="mb-4 border border-slate-200 rounded">
+      <summary class="bg-slate-50 px-4 py-2 font-semibold">投資計劃 (Research manager)</summary>
+      <div class="agent-prose p-4 text-sm"><em>n/a</em></div>
+    </details>
+
+    <details class="mb-4 border border-slate-200 rounded">
+      <summary class="bg-slate-50 px-4 py-2 font-semibold">交易提案 (Trader)</summary>
+      <div class="agent-prose p-4 text-sm"><em>n/a</em></div>
+    </details>
+
+    <details class="mb-4 border border-slate-200 rounded">
+      <summary class="bg-slate-50 px-4 py-2 font-semibold">Phase 1 — 四 Analyst 報告</summary>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+        <div>
+          <h4 class="font-bold text-slate-700 mb-2">基本面 (Fundamentals)</h4>
+          <div class="agent-prose text-sm bg-slate-50 p-3 rounded"><h1>基本面分析 — 2376.TW（技嘉科技） 截至 2026-07-17</h1>
+<h2>執行摘要</h2>
+<p><strong>資料可用性狀態：UNAVAILABLE — Yahoo Finance 代理連線已被阻擋 (HTTP 403)</strong></p>
+<p>由於代理伺服器無法連接至 Yahoo Finance，無法取得技嘉科技 (2376.TW) 的財務資料。所有關鍵指標、基本面評估與估值分析均無法進行。建議待代理連線恢復後重試數據抓取。</p>
+<h2>營收與獲利能力</h2>
+<table>
+<thead>
+<tr>
+<th>指標</th>
+<th>狀態</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>營收（年度）</td>
+<td>UNAVAILABLE</td>
+</tr>
+<tr>
+<td>營收 YoY 成長</td>
+<td>UNAVAILABLE</td>
+</tr>
+<tr>
+<td>營收 3-5 年複合成長率 (CAGR)</td>
+<td>UNAVAILABLE</td>
+</tr>
+<tr>
+<td>毛利率趨勢</td>
+<td>UNAVAILABLE</td>
+</tr>
+<tr>
+<td>營業利潤率趨勢</td>
+<td>UNAVAILABLE</td>
+</tr>
+<tr>
+<td>淨利率趨勢</td>
+<td>UNAVAILABLE</td>
+</tr>
+<tr>
+<td>ROE</td>
+<td>UNAVAILABLE</td>
+</tr>
+<tr>
+<td>ROIC</td>
+<td>UNAVAILABLE</td>
+</tr>
+<tr>
+<td>業務分部結構</td>
+<td>UNAVAILABLE</td>
+</tr>
+</tbody>
+</table>
+<h2>現金流與資產負債表</h2>
+<table>
+<thead>
+<tr>
+<th>指標</th>
+<th>狀態</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>年度自由現金流 (FCF)</td>
+<td>UNAVAILABLE</td>
+</tr>
+<tr>
+<td>FCF 與淨收益比率</td>
+<td>UNAVAILABLE</td>
+</tr>
+<tr>
+<td>FCF 利潤率</td>
+<td>UNAVAILABLE</td>
+</tr>
+<tr>
+<td>淨債務</td>
+<td>UNAVAILABLE</td>
+</tr>
+<tr>
+<td>流動比率</td>
+<td>UNAVAILABLE</td>
+</tr>
+<tr>
+<td>債務/股權比</td>
+<td>UNAVAILABLE</td>
+</tr>
+<tr>
+<td>現金及等價物</td>
+<td>UNAVAILABLE</td>
+</tr>
+<tr>
+<td>季度現金流狀況</td>
+<td>UNAVAILABLE</td>
+</tr>
+</tbody>
+</table>
+<h2>資本配置與內部人士信號</h2>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>狀態</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>資本支出 (CapEx) 趨勢</td>
+<td>UNAVAILABLE</td>
+</tr>
+<tr>
+<td>股票回購活動</td>
+<td>UNAVAILABLE</td>
+</tr>
+<tr>
+<td>股息政策與涵蓋率</td>
+<td>UNAVAILABLE</td>
+</tr>
+<tr>
+<td>內部人士交易（過去 6 個月）</td>
+<td>UNAVAILABLE</td>
+</tr>
+<tr>
+<td>內部人士淨買賣規模</td>
+<td>UNAVAILABLE</td>
+</tr>
+<tr>
+<td>相對市值的信號強度</td>
+<td>UNAVAILABLE</td>
+</tr>
+</tbody>
+</table>
+<h2>估值分析</h2>
+<table>
+<thead>
+<tr>
+<th>指標</th>
+<th>狀態</th>
+<th>評論</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>當前股價</td>
+<td>UNAVAILABLE</td>
+<td>無法確定</td>
+</tr>
+<tr>
+<td>尾隨本益比 (P/E)</td>
+<td>UNAVAILABLE</td>
+<td>無法評估</td>
+</tr>
+<tr>
+<td>前瞻本益比</td>
+<td>UNAVAILABLE</td>
+<td>無法評估</td>
+</tr>
+<tr>
+<td>EV/EBITDA</td>
+<td>UNAVAILABLE</td>
+<td>無法評估</td>
+</tr>
+<tr>
+<td>本益比對成長比 (PEG)</td>
+<td>UNAVAILABLE</td>
+<td>無法評估</td>
+</tr>
+<tr>
+<td>價格/自由現金流 (P/FCF)</td>
+<td>UNAVAILABLE</td>
+<td>無法評估</td>
+</tr>
+<tr>
+<td>價格/銷售比 (P/S)</td>
+<td>UNAVAILABLE</td>
+<td>無法評估</td>
+</tr>
+<tr>
+<td>相對業界中位數</td>
+<td>UNAVAILABLE</td>
+<td>無法評估</td>
+</tr>
+<tr>
+<td>貝塔 (Beta)</td>
+<td>UNAVAILABLE</td>
+<td>無法評估</td>
+</tr>
+</tbody>
+</table>
+<h2>關鍵催化劑與事件</h2>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>狀態</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>下次財報公告日期</td>
+<td>UNAVAILABLE</td>
+</tr>
+<tr>
+<td>EPS 意外歷史</td>
+<td>UNAVAILABLE</td>
+</tr>
+<tr>
+<td>最近指引更新</td>
+<td>UNAVAILABLE</td>
+</tr>
+<tr>
+<td>業務分部變化</td>
+<td>UNAVAILABLE</td>
+</tr>
+<tr>
+<td>大型機構持股</td>
+<td>UNAVAILABLE</td>
+</tr>
+<tr>
+<td>主要股東集中度</td>
+<td>UNAVAILABLE</td>
+</tr>
+<tr>
+<td>Vera Rubin 供應鏈參與狀況</td>
+<td>UNAVAILABLE</td>
+</tr>
+</tbody>
+</table>
+<h2>重點監控項目</h2>
+<h3>技嘉科技 (2376.TW) 背景</h3>
+<p>技嘉科技為台灣上市的主機板、GPU 與伺服器硬體製造商，在 PC 運算與資料中心硬體領域擁有重要市場地位。公司為 Vera Rubin 天文台的供應鏈參與者。</p>
+<h3>企業風險因素（基於歷史背景）</h3>
+<ol>
+<li><strong>PC 市場週期性</strong>：主機板業務高度受 PC 更新週期影響</li>
+<li><strong>GPU 晶片短缺與產能依賴</strong>：伺服器 GPU 產品受上游晶片供應限制</li>
+<li><strong>競爭格局</strong>：競爭對手包括華碩、微星等台灣廠商</li>
+<li><strong>匯率風險</strong>：出口業務面臨新台幣升值風險</li>
+<li><strong>供應鏈集中風險</strong>：晶片、記憶體等關鍵零組件依賴少數供應商</li>
+</ol>
+<h2>資料缺失說明</h2>
+<p>無法取得的數據類別：</p>
+<ul>
+<li><strong>公司基本資訊</strong>：市值、產業分類、完整公司摘要、官方聯繫方式</li>
+<li><strong>即時行情</strong>：當前股價、52 週高低、移動平均線</li>
+<li><strong>財務報表</strong>：</li>
+<li>年度損益表（營收、毛利、營運利潤、淨利）</li>
+<li>年度資產負債表（資產、負債、股東權益）</li>
+<li>年度現金流量表（營運、投資、融資現金流）</li>
+<li>季度財務報表</li>
+<li><strong>估值指標</strong>：本益比、企業價值、EBITDA、各種倍數比較</li>
+<li><strong>公司治理</strong>：內部人士交易、主要股東、機構投資者持股</li>
+<li><strong>市場信號</strong>：盈利驚喜、財報日期、分析師預期</li>
+</ul>
+<h2>結論</h2>
+<p><strong>狀態</strong>：由於網路連線限制，無法完成完整的基本面分析。所有財務數據、估值指標與投資評估均標記為 UNAVAILABLE。</p>
+<p><strong>後續行動</strong>：<br />
+1. 確認代理伺服器設定或 Yahoo Finance 連線狀態<br />
+2. 待連線恢復後重新抓取完整資料集<br />
+3. 對本財報進行完整分析與評級</p>
+<p><strong>交易建議</strong>：基於本報告無法提供任何交易建議。待完整基本面數據可用後，下游分析人員將進行全面評估。</p>
+<hr />
+<p><em>報告生成時間</em>：2026-07-17<br />
+<em>資料來源</em>：Yahoo Finance (連線中斷)<br />
+<em>覆蓋對象</em>：2376.TW — 技嘉科技股份有限公司 (TWSE)</p>
+<p><strong>FUNDAMENTALS REPORT COMPLETE</strong></p></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-slate-700 mb-2">技術面 (Market / Technical)</h4>
+          <div class="agent-prose text-sm bg-slate-50 p-3 rounded"><h1>技術分析 — 2376.TW（技嘉科技）於 2026-07-17</h1>
+<h2>資料狀態</h2>
+<p><strong>PRICE_DATA_UNAVAILABLE</strong></p>
+<p>技術分析無法完成。Yahoo Finance 資料源返回 HTTP 403 代理連接錯誤，無法取得以下必要資訊：</p>
+<ul>
+<li>實時價格與 MA20/MA50/MA200</li>
+<li>RSI14、MACD、Bollinger Bands 等技術指標</li>
+<li>52 週高低點</li>
+<li>成交量數據</li>
+</ul>
+<h3>建議行動</h3>
+<p>請檢查網路代理設定及 Yahoo Finance 連接狀態。待資料源恢復後重新執行分析。</p>
+<hr />
+<p><strong>分析報告未能完成 — 無價格資料</strong></p></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-slate-700 mb-2">新聞 (News)</h4>
+          <div class="agent-prose text-sm bg-slate-50 p-3 rounded"><h1>新聞分析 — 2376.TW（技嘉科技）截至2026-07-17</h1>
+<h2>公司層面頭條（過去14天）</h2>
+<ul>
+<li>
+<p><strong>2026年7月8日</strong> — 技嘉科技股價交易於335元台幣，上漲8元（+2.45%）。分析師共識目標價為419.50元，較現價高23.93%。影響：<strong>中性偏正面</strong>。股價反映機構樂觀預期，但仍未完全定價AI伺服器成長潛力。</p>
+</li>
+<li>
+<p><strong>2026年7月上旬</strong> — 摩根士丹利自「優於大市」評級調降至「持平大市」，目標價自370元下調至290元，理由為記憶體價格上升對業務的衝擊。影響：<strong>小幅利空</strong>。儘管論證指向記憶體成本（佔伺服器物料清單35%），但調降力道略超預期，反映投行對短期邊際利潤的保守看法。</p>
+</li>
+<li>
+<p><strong>2026年6月2-5日（Computex 2026）</strong> — 技嘉推出「ENTER INFINITY」全系列新品，包括X870 AORUS INFINITY主機板（DDR5速率達11,400 MT/s、時序CL24）、AI TOP 100 B850本地AI超級電腦（支援200B+參數模型）、GeForce RTX 5090/5080等GPU卡、AORUS MASTER 16 GEN 2 AI遊戲筆電。影響：<strong>中性偏正面</strong>。產品陣容展示多元化策略，涵蓋伺服器、AI計算、遊戲生態，但主要是現有技術的迭代升級而非破壞性創新。</p>
+</li>
+</ul>
+<h2>產業巨集觀事件</h2>
+<ul>
+<li>
+<p><strong>2026年7月</strong> — NVIDIA Vera Rubin平台進入H2 2026量產出貨階段，第三季度啟動、第四季度加速上量。AWS、Google Cloud、Microsoft Azure、Oracle Cloud、CoreWeave等8家雲端服務商確認參與。影響：<strong>強烈正面</strong>。Vera Rubin量產意味著技嘉OAM加速器模組、高階伺服器主機板供應機會擴大；但同時暴露供應鏈瓶頸（見下述）。</p>
+</li>
+<li>
+<p><strong>2026年中</strong> — NVIDIA Blackwell（GB200）晶片已售罄至2026年中期，現存3.6百萬台單位訂單積壓。CoWoS封裝產能全數預訂至2027年中期，成為全球AI晶片產出的核心制約。影響：<strong>雙刃劍</strong>。高需求確保伺服器主機板訂單能見度，但供應鏈瓶頸（CoWoS、HBM、PCB高端材料）將延遲出貨、壓低邊際利潤。</p>
+</li>
+<li>
+<p><strong>2026年上半年</strong> — 台灣PCB業廠商開工率滿負荷，高端產線預留予AI客戶。南韓CCL進口價格衝至$20,728/噸，同比上升74.5%；台灣PCB產值預估全年NT$1.05兆，年增15.1%。影響：<strong>利空邊際利潤</strong>。成本上升（記憶體、PCB基材）侵蝕伺服器主機板毛利率；Q1 2026毛利率12.01%、營業利益率7.06%，後續可能面臨壓力。</p>
+</li>
+<li>
+<p><strong>2026年5-7月</strong> — 消費者PC主機板市場崩潰。ASUS、技嘉、MSI、ASRock全體下修2026年主機板出貨目標；ASUS年度目標砍至1000萬片（-33% YoY）、技嘉900萬片（-22%）、MSI 840萬片（-24%）、ASRock 270萬片（-37%）。根本原因：晶片短缺驅動CPU/GPU價格飆升，消費者PC升級意願消滅。影響：<strong>重大利空</strong>。技嘉消費者主機板營收預期大幅下滑；但集團層級因伺服器（占71.5%營收）盈利強勁而得以抵銷。</p>
+</li>
+</ul>
+<h2>競爭對手動態</h2>
+<ul>
+<li>
+<p><strong>ASUS（3008.TW）</strong> — 2026上半年出貨量約500萬片主機板，全年目標僅1000萬片，較2025年狂瀉33%。伺服器產品營收占比逾60%，AI基礎設施成為利潤引擎。與技嘉差異：ASUS消費端客戶基盤更廣，跌幅更重；伺服器端滲透率相近。</p>
+</li>
+<li>
+<p><strong>MSI（2377.TW）</strong> — 2026年主機板出貨下修至840萬片（-24% YoY）。伺服器/企業業務占比約50%，邊際利潤受記憶體成本上升衝擊。</p>
+</li>
+<li>
+<p><strong>ASRock</strong> — 2026年主機板出貨最差，預計跌至270萬片（-37%）。伺服器業務占比相對較小（推估20-30%），故消費端坍塌對其整體營收衝擊最深。</p>
+</li>
+</ul>
+<p><strong>結論</strong>：技嘉伺服器業務占比（71.5%）領先同業，抗風險能力更強；但消費者主機板萎縮仍為集團營收增長率的拖累。</p>
+<h2>前瞻日程（未來14天，至2026-07-31）</h2>
+<ul>
+<li>
+<p><strong>2026年7月中下旬</strong> — NVIDIA第二季度財報發布（預期時間），將釐清Vera Rubin量產進度、GB200供應瓶頸、OEM客戶需求強度。對技嘉伺服器主機板需求預測有直接影響。</p>
+</li>
+<li>
+<p><strong>2026年8月中旬預期</strong> — 台灣相關上市公司將陸續發表7月營收數據，技嘉月營收年增動能預期仍正（伺服器強勁），但環比增速可能趨緩（Vera Rubin出貨尚在初期）。</p>
+</li>
+</ul>
+<h2>淨觀點</h2>
+<p>技嘉科技在2026年展現AIサーバー駆動的強勁獲利成長（Q1 EPS NT$7.86創高，伺服器營收110% YoY狂增），構築了相對於同業的護城河。然而，近期宏觀逆風交織：(1) 消費PC主機板市場坍塌（集團層級-22%），(2) 記憶體/PCB原料成本飆漲（CCL +74.5% YoY、DDR5 DRAM價格上升），侵蝕邊際利潤，(3) Vera Rubin供應鏈瓶頸（CoWoS至2027年中滿載）限制出貨加速。摩根士丹利調降評級反映這些成本壓力。股價儘管享有23.93%上漲空間至目標價419.50元，惟短期（2-3季度）盈利可見度存疑；長期則因AI基礎設施需求堅實而維持正面預期。</p>
+<p><strong>淨情緒：混合/審慎樂觀（MIXED/CAUTIOUSLY POSITIVE）</strong> — 強度中等</p>
+<hr />
+<p><strong>新聞報告完成</strong></p></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-slate-700 mb-2">情緒 (Sentiment)</h4>
+          <div class="agent-prose text-sm bg-slate-50 p-3 rounded"><h1>情緒分析 — 2376.TW（技嘉科技）報告日期 2026-07-17</h1>
+<h2>分析師共識</h2>
+<p><strong>最新調查</strong>（FactSet 十四位分析師）<br />
+- 買進：7 位 | 持有：5 位 | 賣出：2 位<br />
+- 目標價中位數：415 元（TWD）<br />
+- 目標價範圍：265～495 元<br />
+- 2026年 EPS 預估中位數：28.31 元<br />
+- EPS 預估範圍：17.28～37.84 元</p>
+<p><strong>近期評級調整</strong><br />
+- 花旗（Citi）：升級至 385 元目標價<br />
+- 前期評級調整：曾下調至 300 元（近期回升至 415 元）<br />
+- 上升趨勢：目標價調升至 410 元（6.49% 漲幅）→ 415 元（3.75% 漲幅）</p>
+<p><strong>當前股價與隱含上檔空間</strong><br />
+- 股價（2026年7月中）：約 334～346 元<br />
+- 隱含上檔空間：24% 至 415 元目標</p>
+<h2>零售社交面情緒</h2>
+<p><strong>股市爆料同學會討論重點</strong><br />
+- 普遍看好算力剛需持續成長<br />
+- 「AI伺服器需求強勁，訂單能見度至年底」<br />
+- PEG 指標評價極具吸引力<br />
+- 認為估值被低估（P/E &lt; 13 倍 vs 其他 AI 公司 &gt; 20 倍）</p>
+<p><strong>技術面警示信號（短期謹慎）</strong><br />
+- RSI 達 85.21（極度超買）<br />
+- 布林帶 %B 值 1.111（突破上軌）<br />
+- 短期回調風險點位：340 元<br />
+- 建議近期關注技術性整理風險</p>
+<p><strong>主流聲浪</strong><br />
+- 基本面樂觀：AI伺服器市場需求強勁<br />
+- 財務面看好：營收與獲利雙創新高<br />
+- 股利支撐：現金股利 12 元（除權息日 8/3）<br />
+- 估值面吸引：相對同業仍有空間</p>
+<h2>內部人士活動</h2>
+<p><strong>董監持股</strong><br />
+- 董事長：葉培城<br />
+- 執行長：李宜泰 / 林英宇<br />
+- 董監持股比例：5.22%<br />
+- 董事、監察人及大股東持股：34.08%（截至 2026/6/5）</p>
+<p><strong>內部人士買賣信號</strong><br />
+- 無特殊大幅內部人交易訊號出現<br />
+- 董監持股穩定，無異常減持跡象<br />
+- 持股比例適度，無集中度過高風險</p>
+<h2>機構持股變化</h2>
+<p><strong>法人籌碼</strong><br />
+- 外資持股比重：23.47%（截至 2026/6/10）<br />
+- 外資買賣超：近期淨買進 1,214 張<br />
+- 投信買賣超：淨買進 17 張<br />
+- 三大法人合計：淨買進 873 張</p>
+<p><strong>持股集中度</strong><br />
+- 機構投資人主動買進<br />
+- 外資領跑，投信持續小幅買進<br />
+- 法人籌碼呈現淨流入態勢</p>
+<h2>業績與市場催化劑</h2>
+<p><strong>財務成績（2026上半年）</strong><br />
+- 上半年累計營收：2,492.69 億元，年增 48.37%（歷史同期新高）<br />
+- Q2 營收：1,442.12 億元（季增 37%、年增 41%）<br />
+- Q1 稅後淨利：52.68 億元（季增 77.4%、年增 69%）<br />
+- Q1 EPS：7.86 元</p>
+<p><strong>全年預估</strong><br />
+- 2026年全年 EPS 預估：21.5 元<br />
+- 預期年成長：20% 以上</p>
+<p><strong>業務亮點</strong><br />
+- AI伺服器營收占比 &gt; 70%（產品組合最大支柱）<br />
+- AI伺服器成長率：三位數增長<br />
+- 主要客戶專案：日本理化學研究所「ROQUO」超級電腦（配備 NVIDIA GB200 NVL4 運算節點）<br />
+- 年底前在手訂單已排滿，供應能見度高<br />
+- H2 B300 產品拉貨主力<br />
+- Vera Rubin 新產品下半年開始交付</p>
+<p><strong>資本支出計畫</strong><br />
+- 2026年資本支出計畫：20～25 億元<br />
+- 用途：購置辦公建築、建設自有運算容量、擴大伺服器相關產能</p>
+<h2>淨情緒評分</h2>
+<h3>綜合判定</h3>
+<p><strong>🔺 BULLISH（樂觀）— 信心度 78%</strong></p>
+<h3>評分細則</h3>
+<table>
+<thead>
+<tr>
+<th>維度</th>
+<th>評價</th>
+<th>評分</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>分析師共識</td>
+<td>買進數量領先，升級主導</td>
+<td>★★★★☆</td>
+</tr>
+<tr>
+<td>獲利動能</td>
+<td>營收年增 48%、淨利年增 69%</td>
+<td>★★★★★</td>
+</tr>
+<tr>
+<td>股利支撐</td>
+<td>12 元現金股利穩定</td>
+<td>★★★★☆</td>
+</tr>
+<tr>
+<td>法人籌碼</td>
+<td>外資投信持續買進</td>
+<td>★★★★☆</td>
+</tr>
+<tr>
+<td>市場契機</td>
+<td>AI伺服器剛性需求強勁</td>
+<td>★★★★★</td>
+</tr>
+<tr>
+<td>技術面</td>
+<td>短期超買，存在回調風險</td>
+<td>★★☆☆☆</td>
+</tr>
+<tr>
+<td>估值相對性</td>
+<td>P/E 偏低（&lt; 13 倍 vs 同業）</td>
+<td>★★★★☆</td>
+</tr>
+</tbody>
+</table>
+<h3>看法要點</h3>
+<ol>
+<li>
+<p><strong>基本面強勁</strong>：營收與獲利雙位數高速成長，2026年 EPS 預估 28 元以上，遠超市場預期。</p>
+</li>
+<li>
+<p><strong>市場尾風</strong>：AI算力剛需已成為業界共識，技嘉伺服器業務占比 70%+ 將直接受惠，訂單能見度至年底無虞。</p>
+</li>
+<li>
+<p><strong>估值相對低廉</strong>：P/E 低於 13 倍，相比其他 AI 概念股超過 20 倍，存在補漲空間；PEG 指標極具吸引力。</p>
+</li>
+<li>
+<p><strong>法人同步買進</strong>：外資積極加碼（淨買進 1,214 張），投信緩步跟進，反映機構看好長期前景。</p>
+</li>
+<li>
+<p><strong>股利支撐</strong>：12 元現金股利發放穩定，除權息日 8/3，提供持股保護。</p>
+</li>
+<li>
+<p><strong>短期風險</strong>：技術面呈極度超買（RSI 85.21、BB %B &gt; 1.0），340 元為近期支撐位。預期短期可能出現技術性整理，但不改長期樂觀趨勢。</p>
+</li>
+</ol>
+<h3>零售與分析師是否矛盾？</h3>
+<p><strong>否。不存在明顯分歧。</strong><br />
+- 零售投資人樂觀力道中等（認可 AI 需求、但提醒技術超買）<br />
+- 分析師升級主導（Citi 升級、FactSet 目標價調升）<br />
+- 雙方均看好基本面，僅在短期技術面認知略有不同</p>
+<h2>最終判定</h2>
+<p><strong>淨情緒：BULLISH 樂觀</strong></p>
+<p>技嘉科技在 AI 伺服器市場的領先地位、強勁的財務成長、穩定的法人買進、及相對便宜的估值，共同構成中期向上動能。分析師升級與機構買進均指向樂觀預期。短期技術超買需關注，但不削減中長期看好評價。</p>
+<hr />
+<p><strong>情緒報告完成</strong></p>
+<p>資料來源：<br />
+- <a href="https://news.cnyes.com/news/id/6484687">FactSet 技嘉估價調查</a><br />
+- <a href="https://finance.technews.tw/2026/05/07/gigabyte-ai-server">花旗升目標價至 385 元</a><br />
+- <a href="https://tw.stock.yahoo.com/news/ai%E9%9C%80%E6%B1%82%E5%85%A8%E9%9D%A2%E7%88%86%E7%99%BC-%E6%8A%80%E5%98%89%E7%87%9F%E6%94%B6%E7%8D%B2%E5%88%A9%E9%9B%99%E5%89%B5%E9%AB%98-%E4%BC%BA%E6%9C%8D%E5%99%A1%E5%8D%A0%E6%AF%94%E9%80%BE7%E6%88%90-064729796.html">技嘉上半年營收 2,492 億元</a><br />
+- <a href="https://statementdog.com/analysis/2376">財報狗個股分析</a><br />
+- <a href="https://tw.stock.yahoo.com/quote/2376.TW/institutional-trading">Yahoo 股市法人籌碼</a></p></div>
+        </div>
+      </div>
+    </details>
+
+    <details class="mb-4 border border-slate-200 rounded">
+      <summary class="bg-slate-50 px-4 py-2 font-semibold">Phase 2 — Bull vs Bear 辯論</summary>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+        <div>
+          <h4 class="font-bold text-green-700 mb-2">🐂 多方 (Bull)</h4>
+          <div class="agent-prose text-sm bg-green-50 p-3 rounded border border-green-200"><em>n/a</em></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-red-700 mb-2">🐻 空方 (Bear)</h4>
+          <div class="agent-prose text-sm bg-red-50 p-3 rounded border border-red-200"><em>n/a</em></div>
+        </div>
+      </div>
+    </details>
+
+    <details class="mb-4 border border-slate-200 rounded">
+      <summary class="bg-slate-50 px-4 py-2 font-semibold">Phase 4 — 風險辯論 (Risk debate)</summary>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 p-4">
+        <div>
+          <h4 class="font-bold text-red-700 mb-2">⚡ 進攻 (Aggressive)</h4>
+          <div class="agent-prose text-sm bg-red-50 p-3 rounded border border-red-200"><em>n/a</em></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-blue-700 mb-2">🛡️ 保守 (Conservative)</h4>
+          <div class="agent-prose text-sm bg-blue-50 p-3 rounded border border-blue-200"><em>n/a</em></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-slate-700 mb-2">⚖️ 中立 (Neutral)</h4>
+          <div class="agent-prose text-sm bg-slate-100 p-3 rounded border border-slate-300"><em>n/a</em></div>
+        </div>
+      </div>
+    </details>
+
+  </div>
+
+  <script>
+    (function() {
+      var d = {};
+      if (!d.dates) return;
+      var traces = [
+        {x: d.dates, y: d.close, name: 'Close',  line: {color: '#1f2937', width: 2}},
+        {x: d.dates, y: d.ma20,  name: 'MA20',   line: {color: '#0ea5e9', width: 1, dash: 'dot'}},
+        {x: d.dates, y: d.ma50,  name: 'MA50',   line: {color: '#f59e0b', width: 1, dash: 'dot'}},
+        {x: d.dates, y: d.ma200, name: 'MA200',  line: {color: '#ef4444', width: 1, dash: 'dash'}}
+      ];
+      var layout = {
+        margin: {l: 50, r: 20, t: 10, b: 40},
+        legend: {orientation: 'h', y: -0.15},
+        xaxis: {showgrid: false},
+        yaxis: {title: '價格 ($)'}
+      };
+      Plotly.newPlot('chart-2376_TW', traces, layout, {displayModeBar: false, responsive: true});
+    })();
+  </script>
+
+</section>
+
+
+</main>
+
+<footer class="bg-slate-200 text-slate-600 text-xs p-4 text-center">
+  多 agent 交易研究 — 純研究 / 教學用途, 非投資建議。
+</footer>
+
+</body>
+</html>
