@@ -54,7 +54,7 @@ jobs:
         env:
           TRADING_SCANS_ROOT: ${{ github.workspace }}
         run: |
-          python3 pipeline/tools/pending.py detect --today "$(TZ=Asia/Taipei date +%F)" --add || true
+          python3 pipeline/tools/pending.py detect --today "$(TZ=Asia/Taipei date +%F)" --add --prune-fresh || true
           echo "pending after audit:"; python3 pipeline/tools/pending.py list || true
 
       - name: Rebuild dashboard (pick up serenity + alerts)
