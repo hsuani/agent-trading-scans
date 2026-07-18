@@ -120,6 +120,9 @@ def main():
     dt.add_argument("--today", required=True)
     dt.add_argument("--stale-days", type=int, default=7)
     dt.add_argument("--add", action="store_true", help="add detected stale sectors to pending")
+    dt.add_argument("--prune-fresh", action="store_true",
+                    help="also drop whole-sector entries already scanned within stale-days "
+                         "(keeps pending == the real gap set; SECTOR:TICKER entries untouched)")
     args = ap.parse_args()
 
     entries = read_entries()
@@ -159,17 +162,42 @@ def main():
     elif args.cmd == "detect":
         if not re.fullmatch(r"\d{4}-\d{2}-\d{2}", args.today):
             print("bad --today (YYYY-MM-DD)", file=sys.stderr); sys.exit(2)
+        from datetime import date as _date
         stale = detect_stale(args.stale_days, args.today)
-        if not stale:
+        stale_secs = {s for s, _ in stale}
+        if stale:
+            print(f"stale (>{args.stale_days}d) sectors:")
+            for sec, why in stale:
+                print(f"  {sec:14} last={why}")
+        else:
             print(f"no stale sectors (all ran within {args.stale_days}d)")
-            return
-        print(f"stale (>{args.stale_days}d) sectors:")
-        for sec, why in stale:
-            print(f"  {sec:14} last={why}")
+
+        new_entries = list(entries)
+        if args.prune_fresh:
+            t = _date.fromisoformat(args.today)
+            kept, dropped = [], []
+            for e in new_entries:
+                if ":" in e:                       # manual SECTOR:TICKER — leave alone
+                    kept.append(e); continue
+                if e in stale_secs:                # still stale — keep
+                    kept.append(e); continue
+                last = latest_complete(e)
+                if last is not None and (t - _date.fromisoformat(last)).days <= args.stale_days:
+                    dropped.append(e)              # recently scanned → drop
+                else:
+                    kept.append(e)
+            new_entries = kept
+            print(f"prune-fresh dropped {len(dropped)}: {' '.join(dropped) or '—'}")
         if args.add:
-            secs = [s for s, _ in stale]
-            write_entries(entries + secs)
-            print(f"added {len(secs)} to pending: {' '.join(secs)}")
+            new_entries = new_entries + [s for s, _ in stale]
+            print(f"added {len(stale_secs)} to pending: {' '.join(sorted(stale_secs)) or '—'}")
+        if args.prune_fresh or args.add:
+            write_entries(new_entries)
+            final = []
+            for e in new_entries:            # dedup preserving order (matches write_entries)
+                if e not in final:
+                    final.append(e)
+            print(f"pending now: {' '.join(final) or '—'}")
 
 
 if __name__ == "__main__":
