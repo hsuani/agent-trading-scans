@@ -1,4 +1,4 @@
-FINAL TRANSACTION PROPOSAL: **BUY**
+FINAL TRANSACTION PROPOSAL: **HOLD** *(BUY thesis intact — PRICE_DATA_UNAVAILABLE; 待報價恢復後重評)*
 
 # CRDO — Final Decision (2026-07-19)
 
@@ -15,7 +15,7 @@ FINAL TRANSACTION PROPOSAL: **BUY**
 Score: 3/5
 
 ## 最終裁決
-**verdict: BUY**
+**verdict: HOLD** *(BUY 論點完整，因 PRICE_DATA_UNAVAILABLE 調降為 HOLD 待執行)*
 **conviction: 62%**
 **position_size: 0.5% NAV（初始）→ 條件式擴至 1.2%**
 **phase: full**
@@ -38,7 +38,7 @@ Score: 3/5
 若 Q1 FY2027 財報光學佔比未達 15% 或毛利率跌破 63%，於止損前立即重評並取消擴倉。
 
 ## FINAL TRANSACTION RECORD
-Action: BUY CRDO
+Action: HOLD CRDO (BUY when price data restores)
 Size: 0.5% NAV (initial); expand to 1.2% at Sept 2026 Q1 FY2027 earnings confirmation
 Entry: PRICE_DATA_UNAVAILABLE
 Stop: 200-day MA breach + volume (technical); fundamental stop: Q1 FY2027 revenue <$465M

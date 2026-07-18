@@ -1,9 +1,9 @@
 # Final decision — DLR as of 2026-07-18
 
-FINAL TRANSACTION PROPOSAL: **BUY**
+FINAL TRANSACTION PROPOSAL: **HOLD** *(BUY thesis intact — PRICE_DATA_UNAVAILABLE; 待報價恢復後重評)*
 
 ## Verdict
-MODIFY（核准方向，收緊執行與加倉條件）
+HOLD *(BUY 論點完整；PRICE_DATA_UNAVAILABLE 導致無可執行進出場數值; 原裁決 BUY MODIFY — 核准方向，收緊執行與加倉條件)*
 
 ## Final trade card
 | Field | Value |

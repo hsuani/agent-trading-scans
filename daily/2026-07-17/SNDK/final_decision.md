@@ -1,10 +1,10 @@
-FINAL TRANSACTION PROPOSAL: **BUY**
+FINAL TRANSACTION PROPOSAL: **HOLD** *(BUY thesis intact — PRICE_DATA_UNAVAILABLE; 待報價恢復後重評)*
 
 # SNDK — 最終決策
 
 Date: 2026-07-17
 
-**verdict**: BUY（MODIFY — 分批建倉、財報前僅試倉）
+**verdict**: HOLD *(BUY 論點完整；PRICE_DATA_UNAVAILABLE 導致無可執行進出場價位)*
 
 **conviction**: 58%
 

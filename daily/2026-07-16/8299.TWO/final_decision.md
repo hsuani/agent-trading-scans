@@ -1,11 +1,11 @@
-FINAL TRANSACTION PROPOSAL: **BUY**
+FINAL TRANSACTION PROPOSAL: **HOLD** *(BUY thesis intact — PRICE_DATA_UNAVAILABLE; 待報價恢復後重評)*
 
 # Final decision — 8299.TWO (群聯電子) as of 2026-07-16
 
-## FINAL TRANSACTION PROPOSAL: **BUY**
+## FINAL TRANSACTION PROPOSAL: **HOLD** *(BUY 論點完整)*
 
 ## Verdict
-MODIFY（採 Neutral 分階段框架，方向不變、節奏收斂）
+HOLD *(BUY 論點完整；PRICE_DATA_UNAVAILABLE 導致無可執行進出場價位；原分析結論為 BUY MODIFY — Neutral 分階段框架)*
 
 > **重要聲明**：market.md 回傳 PRICE_DATA_UNAVAILABLE（403）。無即時報價、無技術指標、無 NT$ 進出場價位。所有部位規模一律以 % NAV 表達，不虛構任何價格。文中 NT$ 數字僅為各方情境逆推之估算基準，非成交價。
 
