@@ -1386,19 +1386,19 @@ def render_status_banner() -> str:
         except Exception:
             return ""
 
-    # recent commits (time + subject) → classify by schedule type
-    log = git("log", "-40", "--pretty=format:%cI|%s")
-    TYPES = [("scan", "🌙 nightly scan"), ("backfill", "🔁 backfill"),
-             ("L0 monitor", "📊 L0 monitor"), ("正2", "⚖️ 正2 盤中"),
-             ("Serenity", "🧘 Serenity")]
+    # For each schedule type, find its most-recent commit by --grep — robust
+    # regardless of how deep it is (a window-based scan gets flooded by the
+    # per-phase + per-sector dashboard-rebuild commits and misses the wrapper
+    # commits). Needs full history: CI checkouts must use fetch-depth: 0.
+    TYPES = [("🌙 nightly scan", r"^scan 2[0-9]"), ("🔁 backfill", r"^backfill 2[0-9]"),
+             ("📊 L0 monitor", r"L0 monitor"), ("⚖️ 正2 盤中", r"正2"),
+             ("🧘 Serenity", r"[Ss]erenity")]
     last_of = {}   # label -> (iso_time, subject)
-    for line in log.splitlines():
-        if "|" not in line:
-            continue
-        ts, subj = line.split("|", 1)
-        for key, label in TYPES:
-            if key in subj and label not in last_of:
-                last_of[label] = (ts, subj.strip())
+    for label, pat in TYPES:
+        out = git("log", "-1", "-i", "-E", "--grep=" + pat, "--pretty=format:%cI|%s")
+        if "|" in out:
+            ts, subj = out.split("|", 1)
+            last_of[label] = (ts.strip(), subj.strip())
 
     # today's scan — per-sector done/missing (weekday sectors)
     DAY = {1: ["semi", "tw_pkg", "serenity"], 2: ["power", "tw_power", "quantum"],
@@ -1474,7 +1474,7 @@ def render_status_banner() -> str:
         f"<tr><td class='pr-3 whitespace-nowrap font-medium'>{label}</td>"
         f"<td class='pr-3 text-slate-500 whitespace-nowrap'>{short(last_of[label][0])}</td>"
         f"<td class='text-slate-600'>{_esc(last_of[label][1])[:64]}</td></tr>"
-        for _key, label in TYPES if label in last_of)
+        for label, _pat in TYPES if label in last_of)
 
     return (
         '<section class="bg-white border border-slate-200 rounded-lg shadow-sm p-3">'
