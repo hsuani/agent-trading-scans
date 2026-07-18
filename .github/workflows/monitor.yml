@@ -23,6 +23,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0   # full history so the status-banner git log --grep sees scan/backfill commits
 
       - uses: actions/setup-python@v5
         with:
@@ -44,6 +46,17 @@ jobs:
           TRADING_SCANS_ROOT: ${{ github.workspace }}
         run: python3 pipeline/tools/serenity.py || echo "serenity fetch failed (non-fatal)"
 
+      - name: Audit gaps → pending (independent of scan session survival)
+        # The scan routines' own detect step never runs if the session dies at
+        # startup, so gaps accumulate silently. This daily, zero-LLM check runs
+        # regardless and queues any sector stale >7d (or never scanned) so the
+        # next backfill picks it up. Decouples the guard from the guarded.
+        env:
+          TRADING_SCANS_ROOT: ${{ github.workspace }}
+        run: |
+          python3 pipeline/tools/pending.py detect --today "$(TZ=Asia/Taipei date +%F)" --add || true
+          echo "pending after audit:"; python3 pipeline/tools/pending.py list || true
+
       - name: Rebuild dashboard (pick up serenity + alerts)
         env:
           TRADING_SCANS_ROOT: ${{ github.workspace }}
@@ -55,7 +68,7 @@ jobs:
         run: |
           git config user.name  "YHT"
           git config user.email "yhtseng91@gmail.com"
-          git add alerts.json alerts.html dashboard.html serenity/
+          git add alerts.json alerts.html dashboard.html serenity/ pending.txt
           if git diff --cached --quiet; then
             echo "no change"
           else
