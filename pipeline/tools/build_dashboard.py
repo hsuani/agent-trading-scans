@@ -20,7 +20,22 @@ Run after each sector scan or via launchd post-step.
 """
 import json
 import re
-from datetime import date, datetime
+from datetime import date, datetime, timezone, timedelta
+
+_TPE = timezone(timedelta(hours=8))   # Asia/Taipei — all task/run times display in TPE
+
+
+def _tpe(ts, fmt="%Y-%m-%d %H:%M"):
+    """ISO timestamp (with tz, or naive=assume UTC) → Asia/Taipei display string."""
+    if not ts:
+        return "—"
+    try:
+        dt = datetime.fromisoformat(ts.strip().replace("Z", "+00:00"))
+        if dt.tzinfo is None:
+            dt = dt.replace(tzinfo=timezone.utc)
+        return dt.astimezone(_TPE).strftime(fmt)
+    except Exception:
+        return ts.replace("T", " ")[:16]
 from pathlib import Path
 
 import os as _os
@@ -430,7 +445,7 @@ def collect_payload() -> dict:
     top20 = compute_top20(sectors_data)
 
     return {
-        "generated_at": datetime.now().isoformat(timespec="seconds"),
+        "generated_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
         "today":        date.today().isoformat(),
         "sectors":      sectors_data,
         "catalysts":    catalysts,
@@ -1438,7 +1453,7 @@ def render_status_banner() -> str:
     ser_stale = bool(ser_date) and ser_date < (today.isoformat())
 
     def short(ts):
-        return _esc(ts.replace("T", " ")[:16]) if ts else "—"
+        return _esc(_tpe(ts)) if ts else "—"
 
     def chip(text, kind):
         c = {"ok": "bg-emerald-100 text-emerald-800 border-emerald-200",
@@ -1601,7 +1616,7 @@ def render_alert_banner() -> str:
         '<section class="bg-slate-900 text-white rounded-lg shadow p-4">'
         '<div class="flex items-baseline justify-between mb-2 border-b border-slate-700 pb-2">'
         f'<h2 class="text-lg font-bold">🚨 L0 Monitor — {len(hot)} 個觸發</h2>'
-        f'<span class="text-xs text-slate-400">價格追蹤 (零 LLM) · {gen} UTC · '
+        f'<span class="text-xs text-slate-400">價格追蹤 (零 LLM) · {_tpe(gen)} (台北) · '
         '<a class="text-blue-400 hover:underline" href="./alerts.html" target="_blank">完整 →</a></span>'
         '</div><div class="flex flex-wrap gap-2">' + "".join(chips) + "</div></section>"
     )
@@ -1617,7 +1632,7 @@ def main():
     top20_html = render_top20_rows(payload.get("top20", []))
 
     html = (HTML_TEMPLATE
-            .replace("__GENERATED__", payload["generated_at"])
+            .replace("__GENERATED__", _tpe(payload["generated_at"]) + " (台北)")
             .replace("__NAV_LINKS__", "\n".join(nav_links))
             .replace("__STATUS__", render_status_banner())
             .replace("__ALERTS__", render_validation_banner() + render_alert_banner())
