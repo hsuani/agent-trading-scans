@@ -20,6 +20,16 @@ LOG="$ROOT/.refresh.log"
   echo "=== refresh $(date '+%F %T') ==="
   cd "$ROOT" || { echo "cd failed"; exit 1; }
   git fetch origin main --quiet
+  # This checkout is a pure CONSUMER of the cloud output — nothing here authors
+  # dashboard.html / _catalysts.json / daily_briefing.html / alerts.* /
+  # validation.json. A past run left dashboard.html stuck in an unmerged (UU)
+  # state, which made `pull --rebase --autostash` fail every day (silent stall).
+  # Self-heal first: abort any orphaned rebase/merge and hard-discard local edits
+  # to the generated files so a stuck conflict can never block the pull again.
+  git rebase --abort 2>/dev/null || true
+  git merge  --abort 2>/dev/null || true
+  git checkout -- dashboard.html _catalysts.json daily_briefing.html \
+                  alerts.json alerts.html validation.json 2>/dev/null || true
   BEFORE=$(git rev-parse HEAD)
   git pull --rebase --autostash origin main 2>&1
   AFTER=$(git rev-parse HEAD)
