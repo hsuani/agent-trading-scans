@@ -9,10 +9,10 @@ MODIFY（採 Neutral 骨架，微調第一批進場門檻）— conviction **MED
 | Field | Value |
 |---|---|
 | Direction | LONG |
-| Entry zone | 除息後 1–2 個交易日盤後確認賣壓消散再進第一批；參考區約 NT$7,600–7,800（新聞來源估算，非即時報價） |
+| Entry zone | $7,600–7,800（NT，新聞來源估算，非即時報價）；除息後 1–2 個交易日確認賣壓消散後分批建倉 |
 | Stop | NT$6,500 收盤跌破（約 −16.9%，給足 ATR 呼吸空間） |
-| Target 1 | 約 NT$8,956（分析師共識，+16%） |
-| Target 2 | 約 NT$10,000（中信目標，+30%） |
+| Target 1 | $8,956（NT，分析師共識，約+16%） |
+| Target 2 | $10,000（NT，中信目標，約+30%） |
 | Size | Medium，總上限 **1.5% NAV**（第一批 0.75% + 第二批 0.75%） |
 | Horizon | 1–3 個月 |
 | Conviction | M |

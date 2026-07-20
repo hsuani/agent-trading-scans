@@ -2,6 +2,8 @@
 
 FINAL TRANSACTION PROPOSAL: **BUY**
 
+> ⚠️ **PRICE_DATA_UNAVAILABLE — Phase-1-only execution constraints apply**: fc.yahoo.com 403 封鎖，無法取得即時股價，Entry zone 數字進出場價位暫停。Stop/Target 為 P/FFO 估算（非即時報價）。分析方向有效，但執行待價格資料恢復後確認。
+
 ## Verdict
 MODIFY（核准方向，收緊執行與加倉條件）
 

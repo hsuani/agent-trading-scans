@@ -2,7 +2,7 @@
 
 FINAL TRANSACTION PROPOSAL: **BUY**
 
-> Phase 2-4 complete。所有價位標註「新聞來源估算，非即時報價」（PRICE_DATA_UNAVAILABLE），不構成實際進出場指令。
+> ⚠️ **PRICE_DATA_UNAVAILABLE — Phase-1-only execution constraints apply**: fc.yahoo.com 403 封鎖，無法取得即時股價，Entry zone 數字進出場價位暫停。所有價位標註「新聞來源估算，非即時報價」，不構成實際進出場指令。分析方向有效，但執行待價格資料恢復後確認。
 
 ## FINAL VERDICT: **BUY** — conviction MEDIUM
 

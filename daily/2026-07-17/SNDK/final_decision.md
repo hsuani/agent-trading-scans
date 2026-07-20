@@ -1,5 +1,7 @@
 FINAL TRANSACTION PROPOSAL: **BUY**
 
+> ⚠️ **PRICE_DATA_UNAVAILABLE — Phase-1-only execution constraints apply**: fc.yahoo.com 403 封鎖，無法取得即時股價，所有數字進出場價位均暫停。分析方向有效，但執行待價格資料恢復後確認。
+
 # SNDK — 最終決策
 
 Date: 2026-07-17
