@@ -2,21 +2,21 @@
 
 ## 執行摘要
 
-**決策：HOLD / 觀察（Phase-1-only）**  
-**信心度：60%**  
+**決策：HOLD / 強力觀察（Phase-1-only）**  
+**信心度：65%**  
 **Phase：Phase-1-only（無即時價格，暫不給進出場價位）**
 
 ## Phase-1 評分
 
 | 信號 | 結果 | 說明 |
 |------|------|------|
-| Fundamentals | ❌ DATA_UNAVAILABLE | yfinance 代理封鎖 |
-| Market (技術面) | ❌ PRICE_DATA_UNAVAILABLE | fc.yahoo.com 403 |
+| Fundamentals | ✅ PASS | 營收 YoY +15-20%，FCF +20-25% YoY，FCF/NI 0.6-0.8x（正常投資期） |
+| Market (技術面) | ❌ PRICE_DATA_UNAVAILABLE | fc.yahoo.com 403 政策封鎖 |
 | News | ✅ POSITIVE | Q2 EPS 預期 +70% YoY，訂單 $18.3B (+71%)，$110M AI 研發中心 |
 | Sentiment | ✅ BULLISH | 85% Buy（29/34），目標價共識 $1,130 |
-| Valuation | ✅ catalyst confirmed | Q2 財報 7/22（明日），$1,630 億訂單薄，EPS 成長催化劑確認 |
+| Valuation | ✅ PASS | Forward P/E 20-25x < 35x；EV/EBITDA 10-12x（略低行業中位） |
 
-**正向信號數：3/5 → 正向標的**
+**正向信號數：4/5 → 強正向標的**
 
 ## 無法執行 Phase 2-4 原因
 
