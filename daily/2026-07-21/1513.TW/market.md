@@ -1,0 +1,18 @@
+# 技術分析 — 1513.TW (中興電工) 截至 2026-07-21
+
+## PRICE_DATA_UNAVAILABLE
+
+Yahoo Finance HTTP 403 封鎖。
+
+| 指標 | 狀態 |
+|---|---|
+| 即時股價 | PRICE_DATA_UNAVAILABLE |
+| RSI14 | PRICE_DATA_UNAVAILABLE |
+| MACD | PRICE_DATA_UNAVAILABLE |
+| 支撐/阻力 | PRICE_DATA_UNAVAILABLE |
+
+參考：分析師目標價 NT$195（1家分析師），訂單能見度至 2031年。
+
+**技術信號：FAIL（PRICE_DATA_UNAVAILABLE）**
+
+MARKET REPORT COMPLETE
