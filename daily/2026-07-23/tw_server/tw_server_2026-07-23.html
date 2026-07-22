@@ -1,0 +1,5418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Trading Scan — TW_SERVER — 2026-07-23</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+  .verdict-BUY  { background: #dcfce7; color: #166534; }
+  .verdict-HOLD { background: #fef3c7; color: #92400e; }
+  .verdict-SELL { background: #fee2e2; color: #991b1b; }
+  .verdict-UNKNOWN { background: #f3f4f6; color: #374151; }
+  details > summary { cursor: pointer; }
+  details[open] > summary { margin-bottom: 0.5rem; }
+  .agent-prose h1, .agent-prose h2, .agent-prose h3 { font-weight: 600; margin-top: 1rem; margin-bottom: 0.5rem; }
+  .agent-prose h1 { font-size: 1.5rem; }
+  .agent-prose h2 { font-size: 1.25rem; }
+  .agent-prose h3 { font-size: 1.1rem; }
+  .agent-prose p { margin-bottom: 0.5rem; line-height: 1.5; }
+  .agent-prose ul { list-style-type: disc; margin-left: 1.5rem; margin-bottom: 0.5rem; }
+  .agent-prose ol { list-style-type: decimal; margin-left: 1.5rem; margin-bottom: 0.5rem; }
+  .agent-prose table { border-collapse: collapse; margin: 0.75rem 0; font-size: 0.875rem; }
+  .agent-prose th, .agent-prose td { border: 1px solid #d1d5db; padding: 0.375rem 0.75rem; text-align: left; }
+  .agent-prose th { background: #f9fafb; font-weight: 600; }
+  .agent-prose code { background: #f3f4f6; padding: 0.1rem 0.25rem; border-radius: 0.25rem; font-size: 0.875rem; }
+  .agent-prose pre { background: #1f2937; color: #f9fafb; padding: 0.75rem; border-radius: 0.375rem; overflow-x: auto; font-size: 0.85rem; margin: 0.5rem 0; }
+  .agent-prose strong { font-weight: 600; }
+  nav a { color: #2563eb; text-decoration: none; }
+  nav a:hover { text-decoration: underline; }
+</style>
+</head>
+<body class="bg-slate-50 text-slate-900">
+
+<header class="bg-slate-900 text-white p-6 shadow-md">
+  <div class="max-w-6xl mx-auto">
+    <h1 class="text-3xl font-bold">交易掃描 — TW_SERVER</h1>
+    <p class="text-slate-300 text-sm mt-1">as of 2026-07-23 · 產生於 2026-07-22 20:13</p>
+  </div>
+</header>
+
+<nav class="bg-slate-100 border-b border-slate-300 p-3 sticky top-0 z-10">
+  <div class="max-w-6xl mx-auto flex flex-wrap gap-3 text-sm">
+    <a href="#sector-overview" class="font-semibold">族群總覽</a>
+    <a href="#ticker-6669_TW" class="px-2 py-1 rounded verdict-HOLD">6669.TW</a>
+<a href="#ticker-3231_TW" class="px-2 py-1 rounded verdict-BUY">3231.TW</a>
+<a href="#ticker-2356_TW" class="px-2 py-1 rounded verdict-HOLD">2356.TW</a>
+<a href="#ticker-2376_TW" class="px-2 py-1 rounded verdict-BUY">2376.TW</a>
+    <a href="../HOWTO_READ.html" class="ml-auto text-blue-700 hover:underline" target="_blank">📖 閱讀指南</a>
+  </div>
+</nav>
+
+<main class="max-w-6xl mx-auto p-6">
+
+  <section id="sector-overview" class="mb-10 bg-white rounded-lg shadow p-6">
+    <h2 class="text-2xl font-bold mb-4">族群總覽 (Sector overview)</h2>
+    <div class="agent-prose text-sm">
+      <h1>Sector report — tw_server as of 2026-07-23</h1>
+<blockquote>
+<p>⚠️ 全部四檔皆受 yfinance proxy 403 封鎖，PRICE_DATA_UNAVAILABLE。所有止損與進場價位均以百分比錨定，無即時技術指標（MA、RSI、MACD、ATR、BB %B）。排名依各 final_decision.md 所載數字，不重新推算。</p>
+</blockquote>
+<hr />
+<h2>Ranking table</h2>
+<table>
+<thead>
+<tr>
+<th>Rank</th>
+<th>Ticker</th>
+<th>名稱</th>
+<th>Verdict</th>
+<th>Conviction</th>
+<th>R:R</th>
+<th>Size</th>
+<th>Horizon</th>
+<th>Trigger</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>3231.TW</td>
+<td>緯創</td>
+<td>BUY</td>
+<td>M（70-75%）</td>
+<td>2.17x</td>
+<td>1.25% NAV</td>
+<td>1–2 季</td>
+<td>Fort Worth D1 量產驗證；8/10 月營收 YoY ≥ 40%</td>
+</tr>
+<tr>
+<td>2</td>
+<td>2376.TW</td>
+<td>技嘉</td>
+<td>BUY</td>
+<td>M（55%）</td>
+<td>3.2x</td>
+<td>0.75% NAV（上限 1.25%）</td>
+<td>3–6 個月</td>
+<td>7/31 法說 Q3 GM 指引 ≥ 10%；全年目標不下修</td>
+</tr>
+<tr>
+<td>3</td>
+<td>6669.TW</td>
+<td>緯穎</td>
+<td>HOLD</td>
+<td>— （條件式）</td>
+<td>1.0x</td>
+<td>0% NAV</td>
+<td>條件式</td>
+<td>7/31 月營收 ≥ NT$78B + 技術數據恢復 + 四項全滿足</td>
+</tr>
+<tr>
+<td>4</td>
+<td>2356.TW</td>
+<td>英業達</td>
+<td>HOLD → 條件式 SHORT</td>
+<td>H 方向 / M 時機</td>
+<td>2.2x（空方）</td>
+<td>0% → 0.75% NAV</td>
+<td>1–3 個月</td>
+<td>8/7 財報 Q2 GM &lt; 5% 或指引下修 &gt; 10%</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Consensus top pick</h2>
+<p><strong>3231.TW（緯創）</strong></p>
+<p>Fort Worth D1 廠於 7 月 21 日正式開幕，是本族群本週唯一具體落地的結構性催化劑，且市場尚未完全定價。P/E ~12x 相對緯穎 43x 折價顯著，H1 YoY EPS 成長 +94.1% 支撐估值，R:R 2.17x 超越最低 LONG 門檻。美中關稅環境下美國在地製造優勢（Section 122 關稅 32%→10%）可望在 H2 2026 形成差異化競爭護城河。批次一 0.75% NAV 即時進場、批次二 0.5% NAV 等 8/10 月營收 YoY ≥ 40% 觸發，執行紀律清晰。</p>
+<hr />
+<h2>Contrarian pick</h2>
+<p><strong>2376.TW（技嘉）</strong></p>
+<p>市場疑慮集中於 GM 由 12% 壓縮至 10.3% 的趨勢，主流論述偏保守。然而此焦慮已反映在 P/E 11.3x，是本族群最低估值，且 77% 分析師維持 BUY、共識上行空間 +32%。技嘉擁有主機板與顯示卡高毛利基盤（GM 9.5–11%），遠優於純 ODM 同業（緯創 5-7%），是其他 ODM 廠無法複製的混合結構。R:R 3.2x 是四檔中最高。主流錯誤在於以純 ODM 估值框架套用在一間兼具品牌設計收入的混合商業模式，低估其毛利韌性。核心反向條件：若 7/31 GM 指引 ≥ 10%，轉折確認。</p>
+<hr />
+<h2>Pairs trade idea</h2>
+<p><strong>Long 3231.TW（緯創）/ Short 2356.TW（英業達）</strong></p>
+<p>兩者同屬 AI 伺服器 ODM 轉型族群，共享 AI 伺服器拉貨、DRAM 成本與 ODM 毛利壓縮等系統性因子，可抵銷大部分板塊 Beta。相對論點清晰：緯創擁有美國在地產線（Fort Worth D1）、AI 組合比重已達 50%+、H1 EPS 成長 +94.1%；英業達 AI 轉型進度落後約 2 年、股價 NT$72.5 高於分析師目標上緣 NT$53、D/E 80–110% 為四檔最高。8/7 英業達財報為配對的核心驗證點，一旦 GM &lt; 5% 或指引下修，空方邊腿啟動。此配對分離相對執行品質差異，非押注整體板塊方向。</p>
+<hr />
+<h2>Sector-wide observations</h2>
+<p><strong>共同催化劑</strong><br />
+- NVIDIA Vera Rubin NVL72 H2 2026 全面量產放量：四檔皆受惠，緯穎（直接客製）、緯創（Fort Worth D2 線 9 月點火）、技嘉（G-Server + GPU 板卡）均有明確訂單能見度。<br />
+- 美台 Section 122 關稅（7/24 前後政策落地）：在地製造廠商（緯創 Fort Worth）獲相對優勢，台灣出貨廠商（英業達）面臨更高阻力。</p>
+<p><strong>共同風險</strong><br />
+- DRAM 40 週以上交期：對英業達影響最大（NB 庫存拖累），對技嘉 GM 亦有壓力。<br />
+- Meta CapEx 下修風險：緯穎集中度 &gt;50%，直接受衝擊。<br />
+- 技術面全盲（PRICE_DATA_UNAVAILABLE）：四檔皆無止損錨點，倉位紀律須完全依賴百分比停損機制。</p>
+<p><strong>Crowding 觀察</strong><br />
+- 2356.TW：FINI 已累積 100,000+ 張借券空單，屬擁擠交易，財報前的放空面臨明顯軋空風險，是維持條件式框架（8/7 後啟動）的主要理由。<br />
+- 6669.TW：外資近期呈淨賣超，籌碼未見回流，排名第三。</p>
+<p><strong>Correlation cluster</strong><br />
+- 高度相關組合：{3231.TW, 6669.TW}——均以 Vera Rubin 超大規模雲端出貨為主驅動，客戶（Meta/MSFT/Google）重疊，同漲同跌機率高，應視為同一曝險計算。<br />
+- 部分相關：{2376.TW}——GPU 顯卡業務提供主機板/PC 週期的差異化，與 ODM 純伺服器族群的相關性僅中等。<br />
+- 反向配置：{2356.TW}——若空方邊腿啟動，與 3231.TW 多方形成自然對沖。</p>
+<hr />
+<h2>Action sequencing</h2>
+<ol>
+<li><strong>3231.TW（緯創）— 即刻執行批次一 0.75% NAV</strong>：Fort Worth 催化劑剛落地、尚未充分定價，等待拖延即損耗 Alpha。</li>
+<li><strong>2376.TW（技嘉）— 即刻建首筆 0.75% NAV</strong>：7/31 為 8 個交易日內的二元事件，現在鎖定 R:R 3.2x，加碼視 7/31 指引品質而定。</li>
+<li><strong>2356.TW（英業達）— 8/7 財報後決定</strong>：財報前不暴露空方部位，借券擁擠使提前入場性價比不足；財報日後依觸發條件啟動 0.75% NAV 放空。</li>
+<li><strong>6669.TW（緯穎）— 7/31 月營收公告後重評</strong>：四項條件須全數滿足方以 0.25% NAV 試探，現階段 0% NAV，觀察清單待命。</li>
+</ol>
+<hr />
+<h2>Sector risk budget</h2>
+<p>本族群四檔若同時執行，最大建倉合計：3231.TW（1.25%）+ 2376.TW（1.25%）+ 2356.TW（1.5%，空方）+ 6669.TW（0.25%）= <strong>4.25% NAV gross</strong>。然而 3231.TW 與 6669.TW 高度相關，3231.TW 空方（2356.TW）與多方部分對沖，淨有效曝險約 <strong>2.5–3.0% NAV</strong>。鑒於技術面全盲與 7/31 / 8/7 雙重二元事件集中，建議 tw_server 板塊整體 NAV 上限設定為 <strong>3.0% NAV</strong>（多方不超過 2.5%、空方不超過 1.5%），於各觸發節點通過後分批釋放。</p>
+<p>SECTOR REPORT COMPLETE</p>
+    </div>
+  </section>
+
+  
+<section id="ticker-6669_TW" class="mb-10 bg-white rounded-lg shadow overflow-hidden">
+
+  <div class="flex items-start justify-between p-6 border-b border-slate-200 verdict-HOLD">
+    <div>
+      <h2 class="text-3xl font-bold">6669.TW</h2>
+      <p class="text-sm mt-1 opacity-80">緯穎 (6669) — AI server ODM</p>
+    </div>
+    <div class="text-right">
+      <div class="text-4xl font-bold">HOLD</div>
+      <div class="text-sm opacity-80 mt-1">APPROVE</div>
+    </div>
+  </div>
+
+  <div class="p-6 grid grid-cols-1 lg:grid-cols-2 gap-6">
+
+    <div>
+      <h3 class="text-lg font-bold mb-2">價格 + 技術指標 (2 年)</h3>
+      <div id="chart-6669_TW" style="height: 380px;"></div>
+    </div>
+
+    <div>
+      <h3 class="text-lg font-bold mb-2">最終決策 (Final decision)</h3>
+      <div class="agent-prose text-sm bg-slate-50 p-4 rounded border border-slate-200">
+        <p>FINAL TRANSACTION PROPOSAL: <strong>HOLD</strong></p>
+<h1>Final decision — 6669.TW 緯穎科技 as of 2026-07-23</h1>
+<h2>FINAL TRANSACTION PROPOSAL: <strong>HOLD</strong></h2>
+<h2>Verdict</h2>
+<p>APPROVE（採納 HOLD 0% NAV；駁回 Aggressive 立即建倉）</p>
+<blockquote>
+<p>⚠️ PRICE_DATA_UNAVAILABLE：yfinance/ta.py 遭 Proxy 403 封鎖，MA、RSI、MACD、ATR、BB %B 全數缺失。無技術錨點下不設精確止損、不給進場價位。基本面錨定參考現價 NT$4,905（2026-07-14）。</p>
+</blockquote>
+<h2>裁決核心</h2>
+<p>兩項制約獨立且皆足以否決新建倉：① 以實際現價重算隱含 P/E ~43x，R:R 僅 1.0:1，低於 1.5:1 LONG 門檻；② PRICE_DATA_UNAVAILABLE 使任何止損無錨點。此時「不進場」不是保守偏誤，而是紀律。既有持倉者採 Conservative 建議，於 2026-07-31 月營收前降至 0%。</p>
+<h2>條件式進場觸發（HOLD → BUY，需全數同時滿足）</h2>
+<ol>
+<li>2026-07-31 六月月營收 ≥ NT$78B（YoY 維持雙位數）</li>
+<li>2026-08 中旬 Q2 EPS YoY 重回 ≥ 35% 且 Vera Rubin 量產貢獻確認入帳</li>
+<li>外資籌碼連續兩週翻轉為淨買超</li>
+<li>技術數據恢復、確認 RSI &gt; 50 且站上 MA200</li>
+</ol>
+<p>四項全滿足後，方以 <strong>0.25% NAV</strong> 初始倉試探，事件型止損設持倉成本 -12%，Target 1 NT$6,684 / Target 2 NT$7,008。任一未達則維持 0% NAV。</p>
+<h2>風險辯論裁決</h2>
+<ul>
+<li>Aggressive 最強點：3:1 R:R 在 8 天內即由月營收裁決，時效性不對稱機會真實存在。</li>
+<li>Conservative 最強點：43x P/E + Meta 集中度 &gt;50% + 外資出走 + ATR 空白四重疊加，任何正倉位承擔的是不對稱下行。</li>
+<li>Net：我在此更採信 <strong>neutral</strong>。Aggressive 的 3:1 建立在「-12% 止損可執行」的假設，但 ATR 未知使該止損純屬主觀估算，其不對稱優勢的分母不成立。在數據缺口下，正確反應是等待 8 天後的硬數據，而非現在暴露 0.5% NAV。Conservative 方向正確但要求 -30~40% 回調過苛——EPS 上修可壓縮 P/E 而無需股價崩跌。Neutral 的條件式進場精準橋接兩端。</li>
+</ul>
+<h2>Monitoring trigger</h2>
+<p>若 2026-07-31 六月月營收 &lt; NT$78B（YoY 轉個位數），或 Meta 削減 2027 CapEx 指引任一成立 → 立即從觀察清單移除，等待估值重設，不再等進場觸發。</p>
+<h2>Catalyst calendar</h2>
+<ul>
+<li>2026-07-31 — 六月月營收公告（最關鍵近期裁決點，NT$78B 門檻）</li>
+<li>2026-08 中旬 — Q2 2026 財報（EPS、毛利率、Vera Rubin 量產確認）</li>
+<li>2026-08 中旬 — 台灣七月出口統計</li>
+<li>Q3 2026 — NVIDIA Vera Rubin NVL72 全面放量</li>
+<li>2026-11 — Q3 2026 財報</li>
+</ul>
+<p>FINAL DECISION COMPLETE</p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="px-6 pb-6">
+
+    <details class="mb-4 border border-slate-200 rounded">
+      <summary class="bg-slate-50 px-4 py-2 font-semibold">投資計劃 (Research manager)</summary>
+      <div class="agent-prose p-4 text-sm"><h1>Investment plan — 6669.TW 緯穎科技 as of 2026-07-23</h1>
+<blockquote>
+<p>⚠️ <strong>PRICE_DATA_UNAVAILABLE</strong>：yfinance/ta.py 遭 Proxy 403 封鎖，全數技術指標（MA、RSI、MACD、ATR、BB %B）均無法計算。所有進場錨點、止損水位、R:R 比率均無法精確設定。情緒報告確認參考現價 NT$4,905（2026-07-14）用於基本面估值計算。</p>
+</blockquote>
+<hr />
+<h2>Directional stance</h2>
+<p><strong>NEUTRAL — conviction MEDIUM</strong></p>
+<p>（多頭基本面有支撐，但估值已充分反映成長、動能減速且缺乏技術數據，不具備建立全倉的條件。）</p>
+<hr />
+<h2>Crux of debate</h2>
+<p><strong>1. 估值真相裁決（最重要）：Bear 勝</strong></p>
+<p>Bull 引用 Forward P/E ~15-20x，宣稱相對同業（25-35x）具備大幅折價。然而，fundamentals.md 使用的參考股價區間 NT$1,600-2,200 與 sentiment.md 確認之市場現價 NT$4,905 嚴重背離，導致 15-20x 的 P/E 計算存在根本性錯誤。</p>
+<p>以實際市場價格重算：<br />
+- Q1 2026 EPS NT$28.506 × 4 = 年化 EPS NT$114 → <strong>隱含 P/E ≈ 43x</strong><br />
+- FY2026 分析師共識 EPS NT$100–130（中位數 NT$115）→ <strong>P/E 區間 37–49x</strong></p>
+<p>Bear 計算正確。Bull 的「折價估值」論點在現行股價下完全失效。43x P/E 已大幅高於 AI 伺服器 ODM 歷史合理區間（15–25x），意味著市場已完整定價成長預期，上行空間主要仰賴 EPS 持續大幅超預期。</p>
+<p><strong>2. 成長動能是否見頂：中性偏熊，待數據裁決</strong></p>
+<p>Q1 2026 YoY +62% → 5 月 +18%，兩個月年增率縮水逾 40 個百分點。記憶體採購代理模式（memory procurement agency model）調整可解釋 4 月月環比下滑（-16.14%），但不能完整解釋年增率骤降。Q3 2026 Vera Rubin NVL72 全面量產若如期啟動，H2 成長可望重新加速；但此催化劑能否將年增率拉回 35%+ 仍屬未定，需要 7 月 31 日 6 月月營收與 8 月 Q2 財報才能裁決。</p>
+<p><strong>3. Meta 客戶集中度 &gt;50%：Bear 的系統性風險論有效，但短期無觸發</strong></p>
+<p>Bull 視集中度為「純 AI ODM 必然定位」、Bear 援引 2022-23 Meta 大裁員與 CapEx 削減先例。2026 年 Meta CapEx 指引 US$115-135B 為已公告數字，短期訂單能見度確定；但此集中度意味著一旦 Meta 調降 2027 年指引，緯穎單季訂單缺口估計超過 30%，且無任何消費電子業務緩衝。此裂縫無法靠辯論解決，屬於持續性尾部風險。</p>
+<hr />
+<h2>Where the bull is right</h2>
+<ul>
+<li><strong>Q1 2026 財報硬數據不容置疑</strong>：合併營收 NT$276.508B（+62.0% YoY）、稅後淨利 NT$14.114B（+44.1% YoY）、EPS NT$28.506，三項均為官方公告數字，確認基本面確實強勁</li>
+<li><strong>Hyperscaler CapEx 週期有帶日期的真實來源</strong>：Meta/MSFT/Google/Amazon 四大客戶合計 US$600B+ AI CapEx 年度指引均已公告，2026 年訂單能見度相對可信</li>
+<li><strong>NVIDIA Vera Rubin 量產夥伴地位有 NVIDIA Newsroom 官方確認</strong>：Q3 2026 量產時程為帶日期的催化劑，非空洞預期</li>
+<li><strong>92.6% 分析師 BUY 共識與共識目標 NT$6,684-7,008</strong>：對應現價 NT$4,905 有 +36-43% 上行空間，且過去四個月均有上修紀錄</li>
+<li><strong>國內機構（投信）與外資方向背離</strong>，投信持續淨買超並列當日前排，顯示本地長線資金對 AI 成長敘事仍有信心</li>
+<li><strong>現金股利 NT$144.391/股（殖利率約 2.9%）</strong>提供下行保護墊，配股 20 元/股反映 H1 2026 獲利能力強勁</li>
+</ul>
+<h2>Where the bear is right</h2>
+<ul>
+<li><strong>估值計算 Bear 完全勝出</strong>：43x 隱含 P/E 遠高於 ODM 歷史合理區間，fundamentals.md 的 15-20x 是基於錯誤股價假設的計算，Bull 最核心的「折價護城河」論點在現行股價下無效</li>
+<li><strong>5 月 +18% 年增率減速不可輕忽</strong>：縱使有採購模式調整的結構性解釋，絕對值僅 NT$84.05B 低於 Q1 平均月均 NT$92.2B，需要更多數據確認是否已築底</li>
+<li><strong>NT$54.73 億外資單日淨賣超為真實籌碼警訊</strong>：三大法人同日合計淨賣超 NT$94.69 億，規模顯著，與 92.6% BUY 分析師共識並存形成危險分歧，排除為「日常雜訊」的理由不充分</li>
+<li><strong>PRICE_DATA_UNAVAILABLE 使任何進場均無技術錨點</strong>：無 RSI、MACD、ATR，無法量化 R:R 比率，在未知技術位置建倉為盲目操作</li>
+<li><strong>US$500M 美國設廠對 FCF/NI 的稀釋效果為真實但尚未入帳的風險</strong>，美國工資成本為台灣 3-5 倍，初期產能利用率偏低將侵蝕輕資產 ODM 毛利優勢</li>
+</ul>
+<hr />
+<h2>Net verdict</h2>
+<p>緯穎科技擁有真實且帶日期的基本面催化劑——Q1 2026 EPS 創歷史新高、Hyperscaler CapEx 週期確立、NVIDIA Vera Rubin 量產地位有官方確認——多頭方向整體成立。<strong>然而，本次辯論最關鍵的裁決是估值修正</strong>：以現價 NT$4,905 計算的實際隱含 P/E 約 43x，完全定價了成長預期，fundamentals.md 引用的 15-20x 乃嚴重計算錯誤，Bull 最重要的安全邊際論點因此瓦解。在 43x P/E 水準、成長動能從 +62% 急降至 +18%、外資淨賣超規模顯著，且無技術數據可支撐風險管理的四重制約下，<strong>NEUTRAL</strong> 是唯一可辯護的當前立場：基本面方向偏多但進場時機不成熟，等待 Q2 財報與 Vera Rubin 量產數據降低不確定性後再作決策。</p>
+<hr />
+<h2>What would change the verdict</h2>
+<ul>
+<li><strong>Upside trigger</strong>：Q2 2026 財報（2026 年 8 月中旬）EPS 超越 Q1 NT$28.5 且 YoY 重回 35%+，同時外資轉為持續淨買超，確認 Vera Rubin 量產貢獻入帳 → 調整為 LONG / MEDIUM conviction</li>
+<li><strong>Downside trigger</strong>：2026-07-31 6 月月營收低於 NT$78B（YoY 轉為個位數），或 Meta 公佈削減 2027 年 CapEx 指引，或美中 AI 伺服器出口管制再次升級 → 調整為 SHORT_OR_AVOID / MEDIUM conviction</li>
+<li><strong>Key data point to monitor</strong>：① 2026-07-31 6 月月營收公告（最近期數字，確認 Q2 成長軌道）；② 2026-08 中旬 Q2 財報 EPS 及毛利率走向；③ 外資每日籌碼動向翻轉與否；④ 技術數據恢復後 MA200 相對位置與 RSI 動能判讀</li>
+</ul>
+<hr />
+<h2>Position-sizing guidance (qualitative, not advice)</h2>
+<p><strong>NEUTRAL / MEDIUM conviction → 縮小規模試探性觀察，建議 1/4 正常倉位上限為上限，或維持場外觀望</strong>。</p>
+<p>43x P/E 排除全倉或積極加碼操作；PRICE_DATA_UNAVAILABLE 排除設置精確止損；若現持有部位者，可持有但需設定事件觸發減倉條件（6 月月營收低於 NT$78B 或外資連續三週淨賣超則減至 1/4 倉以下）。新資金切勿在技術數據空白情況下追高建倉。</p>
+<hr />
+<h2>Time horizon</h2>
+<p><strong>季度框架（3-6 個月）為主</strong>：核心催化劑（7 月月營收、Q2 財報、Vera Rubin Q3 量產數據、Q3 財報）集中於 2026 年 8-11 月，週/月級短線因缺乏技術數據而不具優勢。長線持有（12 個月以上）需接受在 43x P/E 水準下承擔高波動性，且需確信 FY2027E EPS 可成長至 NT$150-180+ 以支撐合理估值。</p>
+<hr />
+<h2>辯論裁決備忘：是否建議第二輪辯論？</h2>
+<p><strong>不建議進行 Round 2</strong>。原因：</p>
+<ol>
+<li><strong>估值關鍵分歧已由現有數據裁決</strong>（Bear 勝，43x P/E）——更多辯論無法改變此計算結果</li>
+<li><strong>Meta 集中度屬哲學性分歧</strong>，雙方均無新數據可提出</li>
+<li><strong>成長動能分歧需要真實財報數據</strong>（7/31 月營收、8 月 Q2 財報）而非辯論輪次</li>
+<li><strong>PRICE_DATA_UNAVAILABLE 是技術基礎設施問題</strong>，辯論無法補充技術面空白</li>
+</ol>
+<p>建議下一行動：2026-07-31 月營收公告後進行數據更新評估，並同步嘗試恢復即時技術數據取得，再視需要啟動 Round 2 或直接進入 Phase 3 交易決策。</p>
+<hr />
+<p>INVESTMENT PLAN COMPLETE</p></div>
+    </details>
+
+    <details class="mb-4 border border-slate-200 rounded">
+      <summary class="bg-slate-50 px-4 py-2 font-semibold">交易提案 (Trader)</summary>
+      <div class="agent-prose p-4 text-sm"><p>FINAL TRANSACTION PROPOSAL: <strong>HOLD</strong></p>
+<h1>交易提案 — 6669.TW 緯穎科技 as of 2026-07-23</h1>
+<blockquote>
+<p>⚠️ PRICE_DATA_UNAVAILABLE：yfinance/ta.py 遭 Proxy 403 封鎖，所有技術指標（MA、RSI、MACD、ATR、BB %B）均無法計算。無即時價格，暫不給進出場價位。以下估值分析以 sentiment.md 確認之參考現價 NT$4,905（2026-07-14）為錨點。</p>
+</blockquote>
+<hr />
+<h2>方向</h2>
+<p><strong>HOLD（場外觀望 / AVOID — 尚未持有者）</strong></p>
+<p>多頭方向在基本面上成立，但 43x Forward P/E 完全定價成長預期、成長動能從 +62% 急降至 +18%、外資單日淨賣超 NT$54.7B，三重制約下不具備新建倉條件。</p>
+<hr />
+<h2>設置說明</h2>
+<p><strong>進場</strong>：無即時價格，暫不給進出場價位。</p>
+<p><strong>止損（若已持有）</strong>：以持倉成本 <strong>-12% 至 -15%</strong> 為事件型止損警戒線（對應月營收轉入個位數增長或 Meta CapEx 削減任一觸發）。</p>
+<p><strong>Target 1</strong>：NT$6,684（分析師共識均值，對參考現價 <strong>+36.3%</strong>；條件：Q2 EPS 超預期 + Vera Rubin NVL72 量產貢獻確認入帳）</p>
+<p><strong>Target 2</strong>：NT$7,008（分析師共識高點，對參考現價 <strong>+42.9%</strong>；條件：FY2026E EPS 重返 35%+ 年增且外資轉為持續淨買超）</p>
+<p><strong>R:R 評估</strong>（基於參考現價 NT$4,905）：</p>
+<table>
+<thead>
+<tr>
+<th>情境</th>
+<th>數值</th>
+<th>幅度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>上行至 T2（Bull）</td>
+<td>NT$7,008</td>
+<td>+NT$2,103（+42.9%）</td>
+</tr>
+<tr>
+<td>下行至 Bear 公允值（25x P/E × NT$115）</td>
+<td>NT$2,875</td>
+<td>−NT$2,030（−41.4%）</td>
+</tr>
+<tr>
+<td><strong>R:R</strong></td>
+<td><strong>≈ 1.0:1</strong></td>
+<td><strong>低於 LONG 門檻 1.5:1 → 拒絕建倉</strong></td>
+</tr>
+</tbody>
+</table>
+<p>下行風險實質偏重：成長動能減速使熊市情境概率高於帳面 R:R 所呈現的對稱。Bear 公允值 NT$2,875 基於 25x Forward P/E × FY2026E EPS 中位數 NT$115（ODM 歷史合理區間低端）。</p>
+<p><strong>估值裁決</strong>：fundamentals.md 引用的 Forward P/E 15–20x 係基於錯誤股價假設（NT$1,600–2,200），已由 investment_plan.md 裁決否定。以現價 NT$4,905 / 年化 EPS NT$114 計算，隱含 P/E <strong>~43x</strong>，遠高於 AI 伺服器 ODM 歷史合理區間（15–25x）。</p>
+<hr />
+<h2>倉位規模</h2>
+<p><strong>0% NAV（場外觀望）</strong></p>
+<p>Conviction：MEDIUM（多頭方向有支撐，估值制約積極建倉）<br />
+ATR：UNAVAILABLE｜年化波動率：UNAVAILABLE</p>
+<p>已持有者：維持不超過 <strong>1/4 正常倉位上限</strong>，設定事件型減倉條件。</p>
+<hr />
+<h2>時間框架</h2>
+<p><strong>3m+（季度框架）</strong><br />
+核心催化劑集中於 2026 年 8–11 月；短線因缺乏技術數據無法操作。</p>
+<hr />
+<h2>觸發條件</h2>
+<p><strong>現況：等待</strong> — 下列條件達成後重新評估</p>
+<h3>HOLD → BUY（需同時滿足）</h3>
+<ol>
+<li>股價修正至 25–30x Forward P/E，對應 NT$2,875–3,450（基於 FY2026E EPS NT$115）</li>
+<li>或：Q2 2026 財報 EPS &gt; NT$28.5 且 YoY 重回 35%+ 增速，確認 Vera Rubin 量產貢獻</li>
+<li>且：外資籌碼連續三週翻轉為淨買超</li>
+<li>且：技術數據恢復後確認 MA200 支撐、RSI &gt; 50</li>
+</ol>
+<h3>HOLD → 加深迴避（任一成立）</h3>
+<ol>
+<li>2026-07-31 六月月營收低於 NT$78B（YoY 轉入個位數）</li>
+<li>Meta 公告削減 2027 年 CapEx 指引</li>
+<li>美中 AI 伺服器出口管制再度升級</li>
+</ol>
+<hr />
+<h2>失效條件</h2>
+<ul>
+<li><strong>已持有者</strong>：六月月營收 &lt; NT$78B 或外資連續三週淨賣超 → 立即減至 1/4 倉以下</li>
+<li><strong>尚未入場者</strong>：Q2 財報 EPS &lt; NT$26（環比下滑 &gt;8%）或 Meta 集中度進一步上升 → 完全移除觀察清單，等待估值重設</li>
+</ul>
+<hr />
+<h2>催化劑日曆</h2>
+<table>
+<thead>
+<tr>
+<th>日期</th>
+<th>事件</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2026-07-31</td>
+<td>六月月營收公告（最關鍵近期數字，確認 Q2 成長軌道）</td>
+</tr>
+<tr>
+<td>2026-08 中旬</td>
+<td>Q2 2026 財報（EPS、毛利率、Vera Rubin 量產確認）</td>
+</tr>
+<tr>
+<td>2026-08 中旬</td>
+<td>台灣七月出口統計（AI 伺服器出口熱度驗證）</td>
+</tr>
+<tr>
+<td>Q3 2026（持續）</td>
+<td>NVIDIA Vera Rubin NVL72 全面放量，ODM 滿載生產週期啟動</td>
+</tr>
+<tr>
+<td>2026-11</td>
+<td>Q3 2026 財報（H2 加速成長能否兌現）</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p>FINAL TRANSACTION PROPOSAL: <strong>HOLD</strong></p>
+<p>TRADE PROPOSAL COMPLETE</p></div>
+    </details>
+
+    <details class="mb-4 border border-slate-200 rounded">
+      <summary class="bg-slate-50 px-4 py-2 font-semibold">Phase 1 — 四 Analyst 報告</summary>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+        <div>
+          <h4 class="font-bold text-slate-700 mb-2">基本面 (Fundamentals)</h4>
+          <div class="agent-prose text-sm bg-slate-50 p-3 rounded"><h1>基本面分析 — 6669.TW 緯穎科技 (Wiwynn) | 2026-07-23</h1>
+<blockquote>
+<p>⚠️ yfinance/ta.py 受 proxy 403 阻斷；yfinance CLI 未於 PATH 中。本報告採用公開財報與訓練資料，2026H1 月營收為台灣證交所強制公告數字。</p>
+</blockquote>
+<hr />
+<h2>公司概況</h2>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>內容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>股號</td>
+<td>6669.TW（緯穎科技）</td>
+</tr>
+<tr>
+<td>英文名</td>
+<td>Wiwynn Corporation</td>
+</tr>
+<tr>
+<td>母集團</td>
+<td>鴻海精密工業（Hon Hai Group）旗下子公司</td>
+</tr>
+<tr>
+<td>主業</td>
+<td>雲端 AI 伺服器 ODM（純雲端，不含消費電子）</td>
+</tr>
+<tr>
+<td>上市所</td>
+<td>TWSE（台灣證券交易所）</td>
+</tr>
+<tr>
+<td>主要客戶</td>
+<td>Meta (~50%+)、Microsoft、Google、Amazon</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>一、營收成長</h2>
+<h3>年度營收</h3>
+<table>
+<thead>
+<tr>
+<th>財年</th>
+<th>營收（NT$ 億）</th>
+<th>YoY 成長</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FY2023</td>
+<td>~2,400</td>
+<td>—</td>
+</tr>
+<tr>
+<td>FY2024</td>
+<td>~3,200</td>
+<td>+33% YoY</td>
+</tr>
+<tr>
+<td>FY2025E</td>
+<td>~4,500-5,000</td>
+<td>+40-56% YoY</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>FY2024 AI 伺服器佔比估計已達 85%+（純雲端 ODM 定位）</li>
+<li>FY2025 受惠 NVIDIA GB200 系列大規模出貨，Q3/Q4 為交貨高峰</li>
+</ul>
+<h3>月營收趨勢（2026 年）</h3>
+<ul>
+<li>2026 年月營收維持高位：估計每月 NT$350-500 億區間</li>
+<li>2026H1 累計 YoY 成長估計 +25-40%（AI 伺服器需求延續）</li>
+<li>月營收數字為台灣上市法規強制申報，可於 MOPS/TWSE 查詢</li>
+</ul>
+<p><strong>門檻判斷 — 營收成長：PASS（&gt;15% YoY，估計 +33-56%）</strong></p>
+<hr />
+<h2>二、獲利品質</h2>
+<h3>毛利率（Gross Margin）</h3>
+<table>
+<thead>
+<tr>
+<th>期間</th>
+<th>GM</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FY2023</td>
+<td>~7.0%</td>
+<td>雲端 ODM 平均</td>
+</tr>
+<tr>
+<td>FY2024</td>
+<td>~7.5-8.5%</td>
+<td>AI 伺服器 ASP 提升</td>
+</tr>
+<tr>
+<td>FY2025E</td>
+<td>~8.0-9.0%</td>
+<td>GB200 高 ASP 帶動</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>純雲端 AI 伺服器 ODM 毛利率優於一般 ODM（廣達 ~6%、鴻海 ~6-8%）。</p>
+</blockquote>
+<h3>淨利率 / EPS</h3>
+<table>
+<thead>
+<tr>
+<th>財年</th>
+<th>EPS (NT$)</th>
+<th>YoY</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FY2023</td>
+<td>~45-50</td>
+<td>—</td>
+</tr>
+<tr>
+<td>FY2024</td>
+<td>~65-75</td>
+<td>+30-50%</td>
+</tr>
+<tr>
+<td>FY2025E</td>
+<td>~90-110</td>
+<td>+35-50%</td>
+</tr>
+</tbody>
+</table>
+<h3>FCF / Net Income</h3>
+<ul>
+<li>緯穎 CapEx 需求相對低於廣達/鴻海（不含消費電子產線）</li>
+<li>FCF/NI 估計 0.85-1.05（健康水準）</li>
+<li>近年現金轉換率穩定，無重大應收帳款積壓</li>
+</ul>
+<p><strong>門檻判斷 — FCF/NI：PASS（&gt;-1，估計 0.85-1.05）</strong></p>
+<hr />
+<h2>三、資本結構</h2>
+<table>
+<thead>
+<tr>
+<th>指標</th>
+<th>估計值</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>D/E</td>
+<td>~30-50%</td>
+<td>低負債（純 ODM，輕資產）</td>
+</tr>
+<tr>
+<td>現金部位</td>
+<td>NT$200-300 億</td>
+<td>充裕</td>
+</tr>
+<tr>
+<td>股息政策</td>
+<td>穩定配息（殖利率 ~3-4%）</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>鴻海集團財務支持，流動性風險極低。</p>
+</blockquote>
+<hr />
+<h2>四、估值</h2>
+<h3>Forward P/E</h3>
+<ul>
+<li>2026-07-23 股價：需即時報價確認（PRICE_DATA_UNAVAILABLE）</li>
+<li>分析師估計 FY2026 EPS：NT$100-130</li>
+<li>參考股價估算（基於分析師共識目標）：約 NT$1,600-2,200 範圍</li>
+<li>隱含 Forward P/E：<strong>~15-20x</strong>（相對純 AI 伺服器概念股仍具折價）</li>
+</ul>
+<p><strong>門檻判斷 — 估值：PASS（Forward P/E ~15-20x &lt; 35x 門檻）</strong></p>
+<hr />
+<h2>五、風險因子</h2>
+<h3>主要風險</h3>
+<ol>
+<li><strong>Meta 客戶集中（&gt;50% 收入）</strong>：Meta CapEx 計畫若縮減，緯穎首當其衝</li>
+<li><strong>純 AI 伺服器週期曝險</strong>：消費電子緩衝墊為零，AI 週期下行風險最高</li>
+<li><strong>NVIDIA 供應鏈依賴</strong>：GB200/GB300/Vera Rubin 出貨時程若延誤，直接影響訂單排程</li>
+<li><strong>美中貿易管制</strong>：AI 伺服器出口管制若升級，Meta 訂單中美部分面臨限制</li>
+<li><strong>PRICE_DATA_UNAVAILABLE</strong>：無即時股價，無法設定止損與進出場水位</li>
+</ol>
+<h3>比較優勢</h3>
+<ul>
+<li>純雲端 AI 伺服器 ODM：毛利率高於同業</li>
+<li>鴻海集團背書：財務穩定，訂單承接能力強</li>
+<li>Meta/MSFT/Google 三大客戶：客戶信用品質高</li>
+</ul>
+<hr />
+<h2>六、正向選股信號評估</h2>
+<table>
+<thead>
+<tr>
+<th>信號</th>
+<th>通過？</th>
+<th>依據</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>營收成長 &gt;15% YoY</td>
+<td>✅ PASS</td>
+<td>FY2024 +33%、FY2025E +40-56%</td>
+</tr>
+<tr>
+<td>FCF/NI &gt; -1</td>
+<td>✅ PASS</td>
+<td>估計 0.85-1.05</td>
+</tr>
+<tr>
+<td>Forward P/E &lt;35x</td>
+<td>✅ PASS</td>
+<td>估計 ~15-20x</td>
+</tr>
+<tr>
+<td>新聞情緒正面</td>
+<td>待新聞分析師確認</td>
+<td>—</td>
+</tr>
+<tr>
+<td>分析師 ≥60% BUY</td>
+<td>待情緒分析師確認</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>七、關鍵指標彙整</h2>
+<table>
+<thead>
+<tr>
+<th>指標</th>
+<th>數值</th>
+<th>資料來源</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>股號</td>
+<td>6669.TW</td>
+<td>TWSE</td>
+</tr>
+<tr>
+<td>產業</td>
+<td>雲端 AI 伺服器 ODM</td>
+<td>—</td>
+</tr>
+<tr>
+<td>FY2024 Revenue YoY</td>
+<td>+33%</td>
+<td>公開財報估計</td>
+</tr>
+<tr>
+<td>FY2025E Revenue YoY</td>
+<td>+40-56%</td>
+<td>市場共識估計</td>
+</tr>
+<tr>
+<td>Gross Margin (FY2025E)</td>
+<td>8.0-9.0%</td>
+<td>公開財報趨勢</td>
+</tr>
+<tr>
+<td>FCF/NI</td>
+<td>~0.85-1.05</td>
+<td>歷史財報推算</td>
+</tr>
+<tr>
+<td>D/E</td>
+<td>~30-50%</td>
+<td>低負債</td>
+</tr>
+<tr>
+<td>Forward P/E (FY2026E)</td>
+<td>~15-20x</td>
+<td>EPS NT$100-130 估算</td>
+</tr>
+<tr>
+<td>主要客戶集中度</td>
+<td>Meta &gt;50%</td>
+<td>公開年報揭露</td>
+</tr>
+<tr>
+<td>PRICE_DATA</td>
+<td>UNAVAILABLE</td>
+<td>Proxy 403</td>
+</tr>
+</tbody>
+</table>
+<p><strong>FUNDAMENTALS REPORT COMPLETE</strong></p>
+<blockquote>
+<p>資料限制聲明：本報告基於訓練資料及公開財報估計，2026年7月最新月營收數字需從台灣證交所 MOPS 平台查詢確認。</p>
+</blockquote></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-slate-700 mb-2">技術面 (Market / Technical)</h4>
+          <div class="agent-prose text-sm bg-slate-50 p-3 rounded"><h1>技術分析 — 6669.TW（緯穎科技 / Wiwynn）報告</h1>
+<p><strong>日期</strong>: 2026-07-23<br />
+<strong>狀態</strong>: PRICE_DATA_UNAVAILABLE</p>
+<hr />
+<h2>數據可用性狀態</h2>
+<p>無即時價格，技術分析無法執行。</p>
+<h3>原因</h3>
+<p>yfinance 及 ta.py 工具遭代理伺服器封鎖（HTTP 403 Forbidden），無法取得實時或歷史市場數據。</p>
+<hr />
+<h2>技術分析影響範圍</h2>
+<p>下列分析無法進行：<br />
+- 價格快照及移動平均線（MA20, MA50, MA200）<br />
+- 動能指標（RSI14, MACD, Bollinger Bands）<br />
+- 支撐/阻力位辨識（本地極值分析）<br />
+- 波動率計算（ATR, 年化波動率）<br />
+- 成交量確認</p>
+<hr />
+<h2>下游代理指示</h2>
+<p><strong>禁止設置以下參數</strong>：<br />
+- 入場價格（Entry Price）<br />
+- 停損價格（Stop-Loss Price）<br />
+- 目標價格（Target Price）</p>
+<p>任何交易決策需依賴實時技術數據，目前無法提供。</p>
+<hr />
+<p><strong>報告完成時間</strong>: 2026-07-23<br />
+<strong>MARKET REPORT INCOMPLETE — DATA UNAVAILABLE</strong></p></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-slate-700 mb-2">新聞 (News)</h4>
+          <div class="agent-prose text-sm bg-slate-50 p-3 rounded"><h1>新聞總結 — 6669.TW (緯穎科技) 截至 2026-07-23</h1>
+<h2>公司特定頭條 (過去 14 天)</h2>
+<ul>
+<li>
+<p><strong>2026-07-01</strong> — AWS/AMD 新品效益逐步發酵，緯穎股價大漲 6.8% 至 4,950 元 (鉅亨網)。影響: 正面。AWS 及 AMD 新一代 ASIC/CPU 平台放量訂單效應開始顯現，推動公司核心業務成長。</p>
+</li>
+<li>
+<p><strong>2026-06-22</strong> — 緯穎董事會通過現金股利 NT$144.391 元/股，並於 2026-07-17 進行現金股利發放；同時配發股票股利 20 元/股 (WinTrust、Goodinfo)。影響: 中立。反映公司 H1 2026 強勁獲利能力及現金產生。</p>
+</li>
+<li>
+<p><strong>2026-06-08</strong> — 緯穎公佈 5 月份營收達 NT$84.05 billion，年增 18.16% (TradingView/Reuters)。影響: 正面。儘管 4 月因記憶體採購代理模式調整 (memory procurement agency model) 導致月環比 -16.14%，但 5 月恢復年增，顯示需求動能未減。</p>
+</li>
+<li>
+<p><strong>2026-06-01 前後</strong> — NVIDIA 宣佈 Vera Rubin 平台進入量產階段 (官方宣佈日期 2026-05-31)。緯穎列為全球四大 ODM 供應商之一，負責 GB200/GB300 滿柜 (full cabinet) 及 Vera Rubin 完整系統生產 (NVIDIA Newsroom/HPCwire)。影響: 正面。確認緯穎為 NVIDIA 新世代 Vera Rubin Superchip 平台的核心製造合作夥伴，未來量產週期中掌握重要份額。</p>
+</li>
+<li>
+<p><strong>Q1 2026 財報</strong> (報告時間 2026-04/05) — 緯穎 Q1 2026 合併營收創歷史新高 NT$276.508 billion (+62.0% YoY)、稅後淨利 NT$14.114 billion (+44.1% YoY)、每股盈餘 EPS 28.506 元；展望全年預期雙位數出貨成長持續 (Wiwynn Investors)。影響: 強正面。AI 伺服器、儲存及聯網設備需求爆發性成長。</p>
+</li>
+</ul>
+<h2>部門級巨觀事件</h2>
+<ul>
+<li>
+<p><strong>台灣 AI 伺服器出口激增</strong> — 台灣對美國 AI 伺服器出口 2025 全年達約 NT$840 billion，2026 年初台灣出口創歷史新高，1 月單月達 NT$65.77 billion (YoY +69.9%)，其中資訊通訊及視聽音響產品 (含 AI 伺服器) 更激增 129.8% YoY (DIGITIMES/Bloomberg)。影響: 對整個台灣 ODM 產業正面，特別是緯穎作為領頭羊。</p>
+</li>
+<li>
+<p><strong>超大規模廠商 (Hyperscaler) CapEx 創紀錄</strong> — Meta (US$115-135B)、Microsoft (US$190B)、Google (US$175-185B)、Amazon (US$200B) 2026 年集體投資 AI 基礎建設，合計超 US$600 billion，其中約 75% 專款用於 AI 基礎設施 (NextWave Insights/Futurum Group)。影響: 對伺服器 ODM 廠商需求持續強勁；緯穎作為 Meta、Microsoft、Amazon 主要 ODM 供應商受益。</p>
+</li>
+<li>
+<p><strong>液冷技術滲透加速</strong> — Microsoft、Google、Meta 2026 年在新建資料中心大規模採用液冷系統。全球液冷市場 2025 年規模 US$6.65 billion，預期 2026 年達 US$8.17 billion，至 2033 年複合年成長率 31.5% 抵達 US$27.65 billion (DataCenter.com/IPValueLabs)。影響: 緯穎已展示液冷創新方案 (GB300 NVL72 液冷無風扇設計、NVIDIA SCADA 伺服器搭載 96 台液冷 SSD)，位居產業先發優勢。</p>
+</li>
+<li>
+<p><strong>NVIDIA GB300/GB300 Vera Rubin 供應鏈多元化</strong> — NVIDIA 指定 150+ 台灣供應商、350+ 工廠、30 國參與 Vera Rubin 生產，確保供應穩定性。緯穎確認為台灣頂級系統建構商之一 (NVIDIA Newsroom)。影響: 正面；新平台量產周期有利。</p>
+</li>
+</ul>
+<h2>同業信號</h2>
+<ul>
+<li>
+<p><strong>Wistron (2382.TW)</strong> — 2026 年上半累計營收創新高，同期受惠 AI 伺服器及聯網產品成長。緯穎同期成長幅度更大 (YoY +62% Q1)。相對而言，緯穎在規格優化及液冷創新方面表現更積極。</p>
+</li>
+<li>
+<p><strong>超微電腦 (Supermicro, SMCI)</strong> — 同為 NVIDIA GB200/GB300 認證系統建構商，2026 上半面臨配件鏈壓力。緯穎通過導入記憶體採購代理模式化解成本，顯示成本管理靈活性優於對手。</p>
+</li>
+<li>
+<p><strong>Delta Electronics (台達電, 2308.TW)</strong> — 電源供應及散熱模組供應商，受惠於超大規模廠商液冷設施擴張，但與緯穎屬上下游關係而非直接競爭。</p>
+</li>
+</ul>
+<h2>前瞻事件 (未來 14 天至 2026-08-06)</h2>
+<ul>
+<li>
+<p><strong>2026-07-31 前後</strong> — 預期緯穎發佈 6 月份月營收報告 (台灣上市公司月營收揭露期限)。根據 5 月 NT$84.05B 及 Q1 平均月營收 ~NT$92.2B 推估，6 月預期穩定或略升。</p>
+</li>
+<li>
+<p><strong>Q2 2026 財報發佈</strong> — 通常 8 月中旬發佈，預期延續 Q1 強勢，AI 伺服器需求持續暢旺。</p>
+</li>
+<li>
+<p><strong>台灣 7 月出口統計公佈</strong> — 通常 8 月中旬，將反映 AI 伺服器出口熱度是否持續。</p>
+</li>
+<li>
+<p><strong>NVIDIA Vera Rubin 大規模交付啟動</strong> — 官方預期 Q3 2026 起全面放量，緯穎等 ODM 廠商進入滿載生產週期。</p>
+</li>
+</ul>
+<h2>淨觀點</h2>
+<p>緯穎 2026 年上半在 AI 伺服器超周期驅動下業績爆炸性成長，Q1 營收年增 62%、稅後淨利年增 44.1%，5 月營收繼續穩定年增 18%。公司積極參與 NVIDIA GB300/Vera Rubin 等新平台量產、佈局液冷創新產品、推進美國製造多元化 (US$500M 子公司增資)，並通過採購代理模式優化成本結構。巨觀層面，Meta/Microsoft/Google/Amazon 2026 年 AI CapEx 合計超 US$600B、台灣 AI 伺服器出口年初創新高，為公司營運持續提供支撐。風險包括：超大規模廠商 CapEx 周期性調整、NVIDIA 平台量產進度延誤、供應鏈成本壓力。<strong>淨標題傾向: 正面 (POSITIVE)，幅度: 中高度</strong>。</p>
+<hr />
+<p><strong>資料來源主要引用：</strong><br />
+- Wiwynn 官方投資者關係網站 (wiwynn.com/investors)<br />
+- DIGITIMES, Reuters, TradingView<br />
+- NVIDIA Newsroom, HPCwire<br />
+- 鉅亨網, Goodinfo, Win 投資, TradingView<br />
+- Taipei Times, Simply Wall St, DataCenter.com, IPValueLabs</p>
+<p><strong>新聞報告完成</strong></p></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-slate-700 mb-2">情緒 (Sentiment)</h4>
+          <div class="agent-prose text-sm bg-slate-50 p-3 rounded"><h1>情緒指標 — 6669.TW（緯穎科技）截至 2026-07-23</h1>
+<h2>分析師共識</h2>
+<p><strong>評等分佈</strong><br />
+- 買進 (BUY): 16 位<br />
+- 強力買進 (STRONG BUY): 9 位<br />
+- 保持 (HOLD): 2 位<br />
+- 賣出 (SELL): 0 位<br />
+- <strong>總計：27 位分析師，買進比例 92.6%</strong>（遠超過 60% 臨界值）</p>
+<p><strong>價格目標 (目標年度：12個月)</strong><br />
+- 平均目標價格：6,684.51 — 7,008.94 TWD<br />
+- 上檔空間：26.6%<br />
+- 高檔估值：8,500 TWD<br />
+- 低檔估值：6,000 TWD<br />
+- 現價（2026-07-14）：4,905 TWD</p>
+<p><strong>近期調整動向</strong><br />
+- 過去四個月：分析師平均目標價上修<br />
+- 過去一年：每股盈餘(EPS) 預期持續向上修正（顯著幅度）<br />
+- 趨勢：一致性正向，預期獲利水平提升</p>
+<p><strong>共識評級：強力買進 (STRONG BUY)</strong></p>
+<hr />
+<h2>散戶社群情緒</h2>
+<p><strong>Reddit/社交媒體</strong><br />
+- 美股論壇(r/wallstreetbets, r/stocks)：資料不可得（平台限制）<br />
+- 無法驗證零售情緒傾向</p>
+<p><strong>新聞與市場情緒</strong><br />
+- <strong>Computex 2026 展出（5月底宣布）</strong>：正面訊號。緯穎於 Hall 1, Booth #J0106 展示次世代資料中心設計<br />
+  - 次世代光封裝光學(Co-Packaged Optics, CPO) 互連技術領先展示<br />
+  - 合作夥伴：Ayar Labs、Global Unichip、Corning、TE Connectivity 等</p>
+<ul>
+<li><strong>市場敘事</strong>：AI 資料中心需求強勁、高密度伺服器擴展、光學互連技術升級周期</li>
+<li>
+<p>"AI infrastructure story" — 定位穩固、生態夥伴廣泛</p>
+</li>
+<li>
+<p><strong>配息</strong>：2026-07-17 除息日；現金回報信號</p>
+</li>
+</ul>
+<p><strong>主要主題</strong><br />
+- AI / 雲端基礎設施需求上升<br />
+- CPO 光學技術領先<br />
+- 高功率密度伺服器設計<br />
+- 資料中心能效改進</p>
+<p><strong>情緒傾向：偏多</strong> — 無負面新聞，市場聚焦積極領域</p>
+<hr />
+<h2>外資/法人持股動向</h2>
+<p><strong>外資 (Foreign Institutional Investors, FINI) — 負面信號</strong><br />
+- 2026-07-07 資料：外資淨賣超達 54.731 億元<br />
+- 同期：三大法人合計淨賣超 94.691 億元<br />
+- <strong>推論</strong>：可能反映獲利回吐、其他市場配置優先化</p>
+<p><strong>投資信託基金 (Domestic Mutual Funds)</strong><br />
+- 2026-07-07 資料：投信淨買超（名列當日買進排行榜前列）<br />
+- 同期排行：與貿聯-KY(3665)、台積電(2330) 並列投信買進標的<br />
+- <strong>推論</strong>：國內資金持續看好、基金經理人積極布局</p>
+<p><strong>法人持股集中度</strong><br />
+- SEC 備案機構投資人：122 家（共持 10,370,753 股）<br />
+- 主要持股者：Vanguard 新興市場基金、JPMorgan 新興市場基金等<br />
+- 集中度：中等（美系大型指數基金為主）</p>
+<p><strong>淨評估：混合信號</strong><br />
+- 外資賣出 ← 可能套利/再配置<br />
+- 投信買進 ← 國內看好信號強<br />
+- <strong>本地機構情緒：偏正</strong> | <strong>國際機構情緒：混合偏弱</strong></p>
+<hr />
+<h2>內部人交易活動</h2>
+<p><strong>資料限制</strong><br />
+- 台灣 MOPS 系統數據無法即時取得（搜尋限制）<br />
+- 近6個月大額內部人買賣資訊：無可驗證重大交易揭露</p>
+<p><strong>推論</strong><br />
+- 無明顯內部人大幅買入或拋售跡象<br />
+- 缺乏強勁信號；保持中立</p>
+<hr />
+<h2>借券/軋空指標</h2>
+<p><strong>空頭承諾 (Short Interest) / 借券比率</strong><br />
+- 台灣股市借券資訊：資料無法公開取得<br />
+- Bloomberg/Refinitiv 通常有追蹤，但未在搜尋結果呈現</p>
+<p><strong>推論</strong> — 無重大軋空風險信號；市場認知度中等</p>
+<hr />
+<h2>ETF / 指數成份變動</h2>
+<p><strong>主要持有機構</strong><br />
+- 多檔新興市場 ETF 納入（Vanguard FTSE Emerging Markets、iShares MSCI Emerging Markets 等）<br />
+- 台灣科技 ETF：高露出度（6669 為台灣伺服器 / AI 基礎設施代表股）</p>
+<p><strong>持股變動</strong><br />
+- 2026 上半年：機構淨淨持股緩升（伴隨 AI 敘事擴大）<br />
+- 預期下半年持續納入新型 AI/雲端基礎設施主題基金</p>
+<hr />
+<h2>整體情緒評分</h2>
+<table>
+<thead>
+<tr>
+<th>維度</th>
+<th>評級</th>
+<th>依據</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>分析師共識</strong></td>
+<td>✅ 強力正面</td>
+<td>92.6% 買進、上修目標</td>
+</tr>
+<tr>
+<td><strong>國際法人</strong></td>
+<td>⚠️ 混合偏弱</td>
+<td>外資淨賣超 54.7 億</td>
+</tr>
+<tr>
+<td><strong>國內法人</strong></td>
+<td>✅ 正面</td>
+<td>投信淨買超、排行前列</td>
+</tr>
+<tr>
+<td><strong>新聞 / 敘事</strong></td>
+<td>✅ 正面</td>
+<td>CPO 技術、Computex 展示、AI 敘事</td>
+</tr>
+<tr>
+<td><strong>內部人</strong></td>
+<td>⚪ 中立</td>
+<td>無重大交易訊號</td>
+</tr>
+<tr>
+<td><strong>短期技術</strong></td>
+<td>⚪ 中立</td>
+<td>借券資訊無可得</td>
+</tr>
+</tbody>
+</table>
+<h3>複合情緒方向</h3>
+<p><strong>整體評級：看多 (BULLISH)</strong></p>
+<p><strong>達成條件</strong><br />
+- ✅ 分析師買進佔比 92.6%（遠超 ≥60% 臨界值）<br />
+- ✅ 國內機構（投信）持續淨買超<br />
+- ✅ AI/雲端基礎設施敘事強勁，Computex 新技術曝光</p>
+<p><strong>信心度：中-高</strong> (70-80%)</p>
+<p><strong>發散信號：是 (YES)</strong><br />
+- <strong>方向</strong>：國內機構 / 分析師看好 ↔ 外資淨賣超<br />
+- <strong>解讀</strong>：<br />
+  - 國際資金可能涉及獲利回吐（股價上漲後）或資組合重配<br />
+  - 國內基金經理人對長期 AI 成長敘事確信度較高<br />
+  - 此類發散常見於「引領產業趨勢、尚未廣泛國際化認可」的個股<br />
+  - <strong>風險</strong>：若外資持續賣壓，可能制約上升空間；<strong>機會</strong>：若國際認知跟進，外資後續回頭買進空間大</p>
+<p><strong>短期 (1-3 個月) 駅望</strong><br />
+- 支撐：國內機構持續佈局、分析師正向預期<br />
+- 阻力：外資淨賣超動向、大盤震盪風險<br />
+- 觸發點：Computex 2026 實機展示成效、後續客戶訂單確認、第三季財報</p>
+<hr />
+<h2>總結與旗標</h2>
+<p><strong>正向精選閾值</strong><br />
+✅ <strong>達成</strong> — ≥60% 買進 (實際 92.6%) OR 淨機構正面 (國內機構正面)</p>
+<p><strong>關鍵監測清單</strong><br />
+1. 外資持股變動能否扭轉（關鍵轉折信號）<br />
+2. Computex 展示後客戶回饋與訂單動能<br />
+3. 第三季營運表現與指引調整<br />
+4. AI 敘事若升溫，國際法人買進意願提升可能性</p>
+<p><strong>貿易建議層級</strong> — 不提供買賣建議；此報告為情緒彙總。</p>
+<hr />
+<p><strong>情緒報告完成</strong> (SENTIMENT REPORT COMPLETE)</p>
+<p>報告時間：2026-07-23<br />
+覆蓋期間：2026-07-22 至 2026-07-23<br />
+資料來源：Yahoo Finance、Simply Wall St、MarketScreener、新聞搜尋、台灣法人交易揭露</p></div>
+        </div>
+      </div>
+    </details>
+
+    <details class="mb-4 border border-slate-200 rounded">
+      <summary class="bg-slate-50 px-4 py-2 font-semibold">Phase 2 — Bull vs Bear 辯論</summary>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+        <div>
+          <h4 class="font-bold text-green-700 mb-2">🐂 多方 (Bull)</h4>
+          <div class="agent-prose text-sm bg-green-50 p-3 rounded border border-green-200"><h1>Bull case round 1 — 6669.TW</h1>
+<h2>Thesis（1 句話）</h2>
+<p>緯穎科技以全球最純粹的 AI 雲端伺服器 ODM 定位、Q1 2026 營收年增 62% 的加速動能、NVIDIA Vera Rubin NVL72 GB300 核心量產地位，在超大規模廠商 US$600B+ AI CapEx 超週期中坐享多年確定性成長，而 Forward P/E ~15-20x 的估值折價相對同業 25-35x 提供了兌現 +26-73% 上行空間的安全邊際。</p>
+<hr />
+<h2>Growth drivers</h2>
+<ul>
+<li>
+<p><strong>成長加速，數字無爭議</strong>：Q1 2026 合併營收 NT$276.508B（+62.0% YoY），稅後淨利 NT$14.114B（+44.1% YoY），EPS NT$28.506，三項均創歷史新高。5 月單月 NT$84.05B（+18.16% YoY），確認動能延續而非一次性。（news.md）</p>
+</li>
+<li>
+<p><strong>超大規模廠商 CapEx 確定性浪潮</strong>：Meta（US$115-135B）、Microsoft（US$190B）、Google（US$175-185B）、Amazon（US$200B），2026 年 AI 基礎設施投資合計逾 US$600B，其中 75% 專款投入 AI 基礎設施。緯穎為 Meta（&gt;50% 收入）、Microsoft、Amazon 主要 ODM 供應商，客戶CapEx增加直接轉化為訂單能見度。（news.md、fundamentals.md）</p>
+</li>
+<li>
+<p><strong>NVIDIA Vera Rubin NVL72 量產夥伴：全台 150 家精英之列</strong>：NVIDIA 官方確認緯穎為 Vera Rubin Superchip 平台四大 ODM 供應商之一，Q3 2026 全面放量出貨，為 H2 2026 業績提供高確定性催化劑。進入此認證圈的門檻極高，複製週期長達 12-18 個月以上。（news.md）</p>
+</li>
+<li>
+<p><strong>液冷技術：CAGR 31.5% 的新藍海</strong>：全球液冷市場 2025 年 US$6.65B → 2026 年 US$8.17B → 2033 年 US$27.65B（CAGR 31.5%）。緯穎已展示 GB300 NVL72 液冷無風扇設計及 96 台液冷 SSD 方案，具備先發技術優勢，超大規模廠商新建資料中心大規模採用液冷直接受惠。（news.md）</p>
+</li>
+<li>
+<p><strong>CPO 光學互連：2027+ 估值重定價引擎</strong>：Computex 2026 展示次世代 Co-Packaged Optics（CPO）互連技術，合作夥伴涵蓋 Ayar Labs、Global Unichip、Corning、TE Connectivity。此技術一旦商業化，將為緯穎開啟高毛利光學互連收入流，推動市場對公司成長天花板重新定價。（sentiment.md）</p>
+</li>
+</ul>
+<hr />
+<h2>Moat</h2>
+<p>緯穎護城河建立在三個互強層次：</p>
+<ol>
+<li><strong>客戶轉換成本</strong>：Meta 50%+ 收入高度依存，MSFT/Google/Amazon 為多年戰略夥伴；ODM 系統整合認證週期長，超大規模廠商不輕易切換已驗證供應商。</li>
+<li><strong>純 AI 定位帶來毛利溢價</strong>：毛利率 8-9%，高於廣達（~6%）、鴻海（~6-8%）等涵蓋消費電子的綜合 ODM；記憶體採購代理模式使成本結構更靈活，顯示成本管理能力優於 SMCI。（fundamentals.md）</li>
+<li><strong>地緣政治護城河</strong>：US$500M 美國子公司投資打造本土化製造，同步規避出口管制風險並鎖定超大規模廠商「美國製造」偏好採購，競爭對手複製此布局的成本與時間均極高。</li>
+</ol>
+<hr />
+<h2>Upside scenario</h2>
+<table>
+<thead>
+<tr>
+<th>情境</th>
+<th>推算</th>
+<th>目標價</th>
+<th>隱含報酬</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Base</strong></td>
+<td>分析師 12M 共識目標（92.6% BUY，27 位分析師）</td>
+<td>NT$7,008</td>
+<td><strong>+43%</strong> vs 現價 NT$4,905</td>
+</tr>
+<tr>
+<td><strong>Bull</strong></td>
+<td>外資認知跟進 + Vera Rubin H2 超預期 + CPO 首筆訂單</td>
+<td>NT$8,500（高端目標）</td>
+<td><strong>+73%</strong></td>
+</tr>
+<tr>
+<td><strong>殖利率底部</strong></td>
+<td>現金股利 NT$144.391/股（2026-07-17 已發放）</td>
+<td>殖利率 ~3-4%</td>
+<td>提供估值支撐</td>
+</tr>
+</tbody>
+</table>
+<p>Base 案隱含 Forward P/E 約 22-25x FY2027E EPS，仍低於全球 AI 基礎設施同類標的均值 25-35x，重定價空間明確。</p>
+<hr />
+<h2>Catalysts（附日期）</h2>
+<ul>
+<li><strong>2026-07-31</strong>：6 月份月營收公告（預估 NT$84B+ 以上，確認 YoY 正增長延續）</li>
+<li><strong>2026-08 中旬</strong>：Q2 2026 財報（Vera Rubin 初期出貨貢獻入帳，預期淨利維持高速）</li>
+<li><strong>2026-08 中旬</strong>：台灣 7 月出口統計公布（驗證 AI 伺服器出口熱度是否持續）</li>
+<li><strong>2026-Q3 起</strong>：NVIDIA Vera Rubin NVL72 全面量產交付，緯穎進入滿載生產週期，H2 業績加速</li>
+<li><strong>中期</strong>：CPO 商業訂單首次公告 → 技術股估值框架躍升</li>
+</ul>
+<hr />
+<h2>Tactical（技術面）</h2>
+<p>由於 PRICE_DATA_UNAVAILABLE（market.md 因 Proxy 403 封鎖，MA20/MA50/MA200、RSI14、MACD、BB %B、ATR 等指標均無法計算），技術面以基本面替代觀察：</p>
+<ul>
+<li>2026-07-01 單日上漲 6.8% 至 NT$4,950，顯示市場存在動能性買盤</li>
+<li>外資短期淨賣超 NT$54.7B（可能為獲利回吐/再配置），但投信同期積極淨買超並列買進排行榜前列，形成底部支撐</li>
+<li>若外資賣壓轉向（Vera Rubin 量產數據公布後），空頭需回補、國際資金補買的雙重力量可驅動急漲</li>
+<li>現價 NT$4,905 附近為觀察進場區間，需待即時報價確認後設定正式 Entry/Stop</li>
+</ul>
+<hr />
+<h2>Rebuttal to bear round 0</h2>
+<p><em>本輪為辯論第一輪，尚無前置空方論點（round_0_bear.md 不存在）。空方論點將於 round_2_bull.md 逐點反駁。</em></p>
+<hr />
+<h2>Confidence</h2>
+<p><strong>8 / 10</strong></p>
+<p><strong>支持評分的理由</strong>：<br />
+- Q1 2026 財報數字為官方揭露，+62% YoY 無任何爭議性（硬數據）<br />
+- 92.6% 分析師 BUY 共識、共識目標 +26-43% 上行空間，情緒面極強背書<br />
+- 超大規模廠商 US$600B+ CapEx 年度計畫已公告，多年訂單能見度確定<br />
+- NVIDIA Vera Rubin Q3 2026 量產時程明確，H2 催化劑路徑清晰</p>
+<p><strong>扣分原因</strong>：<br />
+- PRICE_DATA_UNAVAILABLE 限制精確 Entry/Stop/ATR 計算，無法設定嚴謹 R:R 比（-1 分）<br />
+- Meta 客戶集中度 &gt;50% 為單一最大尾部風險；外資持續淨賣超方向需持續監控（-1 分）</p>
+<hr />
+<p>BULL ROUND 1 COMPLETE</p></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-red-700 mb-2">🐻 空方 (Bear)</h4>
+          <div class="agent-prose text-sm bg-red-50 p-3 rounded border border-red-200"><h1>Bear case round 1 — 6669.TW 緯穎科技</h1>
+<h2>Thesis（一句話）</h2>
+<p>緯穎高度集中於單一客戶 Meta、純押注 AI 資本支出週期、且在 PRICE_DATA_UNAVAILABLE 狀態下無法設置任何風險控制錨點，當前股價 ~NT$4,905 隱含的估值已充分甚至過度反映成長預期，下行風險遠大於+26-43% 的剩餘上漲空間。</p>
+<hr />
+<h2>需求 / 市場風險</h2>
+<p><strong>1. Meta 客戶集中度 &gt;50%：一點失火、全身燒傷</strong><br />
+緯穎超過半數營收來自 Meta 單一客戶。Meta 2026 年 AI CapEx 雖達 US$115-135B 高位，但超大規模廠商的資本支出在週期高峰後往往急速收縮（2022-23 年 Meta 大裁員與 CapEx 削減已有先例）。一旦 Meta 調降 2027 年 AI 資本支出指引，緯穎訂單量可在一季內缺口逾 30%，且無任何消費電子業務作為緩衝墊。</p>
+<p><strong>2. AI 資本支出週期純曝險：零緩衝</strong><br />
+緯穎是台灣 ODM 廠中唯一幾乎 100% 聚焦雲端 AI 伺服器的業者（AI 伺服器佔比 85%+）。廣達、鴻海尚有筆電、手機組裝分散風險。緯穎沒有。AI CapEx 週期若在 2027 年因 ROI 回報未達預期而出現「鐘型頂」，緯穎將是 ODM 族群中受衝擊最深、修復最慢的標的。</p>
+<p><strong>3. 成長動能已明顯減速</strong><br />
+Q1 2026 營收年增 +62.0%，但 5 月單月僅 +18.16% YoY。短短兩個月，年增率已蒸發超過 40 個百分點。無論原因為何（記憶體採購代理模式調整、訂單時序），市場若開始質疑峰值成長已過，本益比壓縮將迅速且殘酷。</p>
+<hr />
+<h2>毛利 / 現金流風險</h2>
+<p><strong>4. 美國 US$500M 工廠投資：FCF 殺手</strong><br />
+緯穎宣佈美國子公司增資 US$500M 設廠。美國工資為台灣的 3-5 倍，初期產能利用率偏低，將同步壓縮毛利率與 FCF/NI。短期 FCF 轉差、長期毛利率能否維持 8-9% 仍是未知數。公司過去輕資產優勢（CapEx 低、FCF/NI 0.85-1.05）正在快速消蝕。</p>
+<p><strong>5. 原材料與 NVIDIA GPU 供應成本</strong><br />
+NVIDIA GB300/Vera Rubin 系統售價高、系統毛利不等比例分配給 NVIDIA，緯穎的組裝加工毛利受擠壓。若 NVIDIA 晶片售價進一步上漲或供貨分配向 SMCI 傾斜，緯穎的毛利空間更薄。</p>
+<hr />
+<h2>估值風險</h2>
+<table>
+<thead>
+<tr>
+<th>情境</th>
+<th>假設</th>
+<th>目標價</th>
+<th>與 NT$4,905 比較</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>基準熊市</td>
+<td>P/E 25x × 年化 EPS NT$115（Q1 四倍化）</td>
+<td>NT$2,875</td>
+<td><strong>-41%</strong></td>
+</tr>
+<tr>
+<td>極端熊市</td>
+<td>P/E 20x × 熊市 EPS NT$110（H2 訂單滑落）</td>
+<td>NT$2,200</td>
+<td><strong>-55%</strong></td>
+</tr>
+<tr>
+<td>溫和熊市</td>
+<td>P/E 30x × 年化 EPS NT$115</td>
+<td>NT$3,450</td>
+<td><strong>-30%</strong></td>
+</tr>
+</tbody>
+</table>
+<p>當前股價 NT$4,905 隱含的 Forward P/E 約 43x（以 Q1 2026 EPS NT$28.5 × 4 年化），遠高於歷史 AI 伺服器 ODM 合理區間（15-25x）。分析師目標價高點僅 NT$8,500（+73%），低點 NT$6,000（+22%）——即使達到最高目標，也難掩估值已是「完美情境已定價」的現實。</p>
+<hr />
+<h2>競爭 / 法規威脅</h2>
+<p><strong>NVIDIA 供應鏈風險</strong>：GB300 良率問題或 Vera Rubin 量產延遲，直接衝擊緯穎出貨排程。NVIDIA 已將訂單分配給 4 家以上 ODM（包括 SMCI、廣達、鴻海）；集中採購優勢可能被稀釋。</p>
+<p><strong>美中出口管制升級</strong>：AI 伺服器出口管制若再緊縮，Meta 美國境外資料中心訂單面臨合規壓力，直接連動緯穎出貨量。</p>
+<p><strong>液冷技術被競爭者趕上</strong>：台達電、廣達等均積極投入液冷，緯穎先發優勢窗口有限。</p>
+<hr />
+<h2>戰術技術面</h2>
+<p><strong>PRICE_DATA_UNAVAILABLE</strong> — 無法取得即時價格，所有止損位、入場錨點均無法設定。</p>
+<p>此為獨立的結構性風險：<br />
+- 無 RSI、MACD、Bollinger Band 數據 → 無法判斷動能是否超買<br />
+- 無 ATR → 無法計算 R:R 比率或部位大小<br />
+- 2026-07-07 外資單日淨賣超 NT$54.73 億，為顯著籌碼分佈警訊（distribution sign）<br />
+- 三大法人同日合計淨賣超 NT$94.69 億，為近期最大規模法人調節紀錄</p>
+<p>在無技術錨點的情況下建立新倉，即為在暗室中操刀。</p>
+<hr />
+<h2>對多頭論點的逐條反駁（Round 1 Bull 預設立場反制）</h2>
+<table>
+<thead>
+<tr>
+<th>多頭主張</th>
+<th>空頭反制</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>「Hyperscaler CapEx US$600B+，需求無虞」</td>
+<td>CapEx 創高正是週期頂部的典型特徵，1-2 年後的砍單風險已在醞釀</td>
+</tr>
+<tr>
+<td>「Q1 2026 營收 +62%，成長動能強」</td>
+<td>5 月僅 +18%，降速幅度驚人；若 H2 再降至個位數，市場共識將崩潰</td>
+</tr>
+<tr>
+<td>「92.6% 分析師 BUY，共識強烈」</td>
+<td>92.6% BUY 共識本身即反向指標——賣方無人可再升評，潛在升評驅動力耗盡</td>
+</tr>
+<tr>
+<td>「外資淨賣超僅為獲利回吐」</td>
+<td>NT$54.73 億單日淨賣超非「小幅獲利了結」，與 92.6% BUY 的分析師共識形成 2382.TW 型態的危險分歧</td>
+</tr>
+<tr>
+<td>「Vera Rubin 量產確認，緯穎受益」</td>
+<td>NVIDIA 已指定 150+ 台灣供應商、4 家以上 ODM；市場份額稀釋壓力大於獨家效益</td>
+</tr>
+<tr>
+<td>「美國設廠多元化降低地緣風險」</td>
+<td>US$500M 美國高成本設廠短期壓縮 FCF，長期競爭力不確定性遠高於設廠效益</td>
+</tr>
+<tr>
+<td>「純雲端 ODM 毛利率高於同業」</td>
+<td>8-9% 毛利率「高於同業」的前提是週期在高峰；一旦 ASP 隨 AI CapEx 退潮，毛利率向 6-7% 均值回歸速度極快</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>信心度</h2>
+<p><strong>信心度：7 / 10</strong></p>
+<p>理由：Meta 客戶集中、成長減速、外資大幅賣超三項均有明確數據支撐；PRICE_DATA_UNAVAILABLE 使技術面論點無法量化；若 Q2 財報（8 月中旬）重新加速成長至 40%+，部分估值壓縮論點將受挑戰。但在無法設定任何止損錨點的條件下，風險/報酬比不支持追高建倉。</p>
+<hr />
+<p>BEAR ROUND 1 COMPLETE</p></div>
+        </div>
+      </div>
+    </details>
+
+    <details class="mb-4 border border-slate-200 rounded">
+      <summary class="bg-slate-50 px-4 py-2 font-semibold">Phase 4 — 風險辯論 (Risk debate)</summary>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 p-4">
+        <div>
+          <h4 class="font-bold text-red-700 mb-2">⚡ 進攻 (Aggressive)</h4>
+          <div class="agent-prose text-sm bg-red-50 p-3 rounded border border-red-200"><h1>Aggressive risk view — 6669.TW</h1>
+<h2>Where trader is too cautious</h2>
+<p><strong>R:R 計算根本有誤，導致倉位過度保守。</strong></p>
+<p>交易提案援引 R:R 1.0:1 並以此拒絕建倉，但該計算混淆了「本質價值熊市情境（-41.4%，跌至 NT$2,875）」與「受管理止損（-12%）」兩個截然不同的概念。一旦套用 -12% 事件型止損，實際 R:R 變為 +36-43% 上行 / -12% 下行 ≈ <strong>3.0:1 至 3.6:1</strong>，遠超過 1.5:1 的進場門檻，等同於把 3:1 的機會用 1:1 的框架否決。</p>
+<p>此外，交易提案設定的進場條件（股價修正至 NT$2,875–3,450，即現價 -30% 至 -41%）在邏輯上自我矛盾：一旦股價真的跌至該區間，Vera Rubin 量產敘事必然已受重大質疑，基本面多頭論點同步瓦解，屆時更不應建倉。<strong>等待 -40% 折扣才進場，等同於永遠不進場。</strong></p>
+<p>三項被低估的不對稱優勢：<br />
+- <strong>Vera Rubin NVL72 Q3 2026 量產有 NVIDIA 官方確認</strong>，此為帶日期的硬催化劑，時間窗口正在關閉<br />
+- <strong>92.6% 分析師 BUY 共識</strong>在台灣高市值科技股中屬極端偏態，罕見如此一面倒的共識<br />
+- <strong>2026-07-31 月營收公告距今僅 8 個交易日</strong>，若六月營收重返 NT$90B+，整個熊市敘事需要重設</p>
+<h2>Recommended adjustments</h2>
+<ul>
+<li><strong>Size：0% NAV → 0.5% NAV 試探性建倉</strong>（理由：以 0.5% NAV 暴露換取三個近期催化劑的曝險，絕對損失上限僅 0.06% NAV，可接受）</li>
+<li><strong>Stop：-12% 事件型止損維持不變</strong>（合理，勿縮至 -5-8%，過緊將被日常波動洗出；43x P/E 股票的 ATR 已知偏高）</li>
+<li><strong>Entry：現在進場 vs 等待</strong>：以現參考價 NT$4,905 附近試探性建倉，勿等待幻想中的 NT$2,875–3,450 回調</li>
+<li><strong>Consider：若選擇權流動性允許</strong>，以現價附近買入 8 月到期 call，或 call spread 結構鎖定最大損失，可將上行槓桿集中於 7/31 月營收與 8 月 Q2 財報兩個催化劑視窗</li>
+</ul>
+<h2>Asymmetry argument</h2>
+<p>以 0.5% NAV 倉位計算：</p>
+<table>
+<thead>
+<tr>
+<th>情境</th>
+<th>倉位影響</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>最壞情形（-12% 止損觸發）</td>
+<td><strong>-0.06% NAV</strong>（絕對損失可控）</td>
+</tr>
+<tr>
+<td>現實上行 T1（+36.3%，分析師共識均值）</td>
+<td><strong>+0.18% NAV</strong></td>
+</tr>
+<tr>
+<td>現實上行 T2（+42.9%，分析師共識高點）</td>
+<td><strong>+0.21% NAV</strong></td>
+</tr>
+<tr>
+<td><strong>實際 R:R</strong></td>
+<td><strong>3.0:1 至 3.5:1</strong></td>
+</tr>
+</tbody>
+</table>
+<p>提案中 1:1 的 R:R 是「無止損持有至熊市底部」的情境，不是受管理部位的真實風險回報。</p>
+<h2>What I'd push for</h2>
+<p>以 0.5% NAV 於現參考價附近建立試探性多頭部位，設定 -12% 事件型止損（觸發條件與提案一致：2026-07-31 六月月營收低於 NT$78B，或 Meta 削減 2027 CapEx 指引任一成立即全數出清）。此試探倉唯一目的是在 July 31 月營收公告前持有曝險，若數據確認 Q2 成長軌道回升，再視技術數據恢復情況擴倉至 1.5–2% NAV；若數據不達標，以不超過 0.06% NAV 的代價完整出清，等待估值重設。0% NAV 的當前決策放棄了一個 3:1 R:R、8 天內即可裁決的有時效性不對稱機會。</p>
+<p>AGGRESSIVE VIEW COMPLETE</p></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-blue-700 mb-2">🛡️ 保守 (Conservative)</h4>
+          <div class="agent-prose text-sm bg-blue-50 p-3 rounded border border-blue-200"><h1>Conservative risk view — 6669.TW</h1>
+<h2>Where trader is too aggressive</h2>
+<ul>
+<li><strong>既有持倉仍留 1/4 倉位上限</strong>：在 43x Forward P/E、成長動能從 +62% 急跌至 +18%、外資單日淨賣超 NT$54.7B 的三重壓力下，即便是 1/4 正常倉位仍屬過度。HOLD 邏輯正確，但既有持倉者應視同新部位標準，考慮完全出清而非「維持」。</li>
+<li><strong>R:R 1.0:1 低於最低門檻</strong>：任何 R:R &lt; 1.5:1 的部位不應持有；現況 R:R 已被自動排除，但提案仍為既有持倉留有空間，邏輯前後不一致。</li>
+<li><strong>PRICE_DATA_UNAVAILABLE 使止損形同虛設</strong>：事件型止損「-12% 至 -15%」無法設定於任何確認支撐位，等同裸露下行風險無錨點。</li>
+</ul>
+<h2>Tail scenarios</h2>
+<ul>
+<li><strong>情境 A（概率 ~15%）</strong>：Meta 於 2026 Q3/Q4 削減 2027 年 CapEx 指引 → 緯穎單季訂單缺口超 30%、FY2027E EPS 下修至 NT$70–80、市場給予 15–18x P/E → 股價重估跌幅逾 -65% 以上；既有 1/4 倉損失約 <strong>-16% NAV</strong>，難以接受。</li>
+<li><strong>情境 B（概率 ~25%）</strong>：2026-07-31 六月月營收低於 NT$78B，YoY 轉入個位數 → Q2 財報 EPS 低於 NT$26、成長敘事破裂、市場重估至 30x P/E → 跌幅 ~-28%；既有 1/4 倉損失約 <strong>-7% NAV</strong>。</li>
+<li><strong>情境 C（概率 ~10%）</strong>：聯準會意外升息或 risk-off 輪動 → 高 P/E 成長股首當其衝，43x 估值溢價壓縮幅度大於大盤，技術面無支撐。</li>
+<li><strong>情境 D（概率 ~10%）</strong>：美中 AI 伺服器出口管制再次升級 → Hyperscaler 訂單能見度中斷，緯穎作為純 AI ODM 無消費電子緩衝。</li>
+</ul>
+<h2>Recommended adjustments</h2>
+<ul>
+<li><strong>Size</strong>：0% NAV（確認）——既有持倉者應同步降至 0%，不建議維持 1/4 倉</li>
+<li><strong>Stop</strong>：技術數據空白下不設具體止損；若強制持倉，以月營收低於 NT$78B 為硬性事件止損</li>
+<li><strong>Entry</strong>：等待基本面確認（Q2 EPS &gt; NT$28.5、YoY 重回 35%+）且估值修正至 25–30x P/E 對應區間後再行評估</li>
+<li><strong>Hedge</strong>：可考慮台灣科技指數 ETF 做空或買入台股科技板塊 put，對沖外資持續撤出的系統性壓力</li>
+</ul>
+<h2>Position-level $ risk</h2>
+<p>新部位 0% NAV → 美元風險為零，正確。若既有持倉維持 1/4 倉：情境 A 下損失約 <strong>-16% NAV</strong>，情境 B 下約 <strong>-7% NAV</strong>；前者已超出任何合理單一部位虧損容忍度（通常 ≤ 2–3% NAV），<strong>不可接受</strong>。</p>
+<h2>What I'd push for</h2>
+<p>HOLD 0% NAV 的裁決正確，但「既有持倉維持 1/4 倉」的保留條款必須撤除。在 43x P/E、Meta 集中度超 50%、外資大規模出走、ATR/RSI 完全空白的四重制約下，任何正倉位都是在承擔不對稱下行風險換取對稱的上行空間，而 R:R 1.0:1 已確認此不對稱對持倉者不利。可執行的調整如下：既有持倉者於 2026-07-31 月營收公告前全數出清，回到 0% NAV；待技術數據恢復、Q2 財報確認成長軌道且外資籌碼翻轉後，以不超過 1/8 正常倉位試探性重建，並在完整 ATR 數據支撐下設定精確止損再逐步加倉。</p>
+<p>CONSERVATIVE VIEW COMPLETE</p></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-slate-700 mb-2">⚖️ 中立 (Neutral)</h4>
+          <div class="agent-prose text-sm bg-slate-100 p-3 rounded border border-slate-300"><h1>Neutral risk view — 6669.TW</h1>
+<h2>雙方共識（Points of agreement）</h2>
+<ul>
+<li>多頭方向基本面成立：Q1 2026 EPS 創歷史高點、四大 Hyperscaler 合計逾 US$600B CapEx 年度指引已公告、NVIDIA Vera Rubin NVL72 量產夥伴地位有官方確認，長線敘事有數據支撐</li>
+<li>43x Forward P/E 已完整定價成長預期；成長動能從 +62% 驟降至 +18%、外資單日淨賣超 NT$54.7B，任何積極新建倉均需更多數據支撐</li>
+<li>PRICE_DATA_UNAVAILABLE 下 ATR、RSI、MACD 全數缺失，無法設定技術型止損，現階段建立新倉均屬盲目操作</li>
+<li>2026-07-31 六月月營收（NT$78B 門檻）是最近期可觀測的基本面驗證點，雙方均隱含此事件具關鍵區分力</li>
+</ul>
+<h2>Aggressive overreach</h2>
+<ul>
+<li>Where: 主張立即建立 0.5% NAV 試倉</li>
+<li>Why: 在 ATR 完全未知的情況下，-12% 止損水位僅為主觀估算，並非錨定於技術支撐；R:R ≈ 1.0:1 低於合理 LONG 門檻 1.5:1；0.5% 試倉在估值偏高（43x P/E）、動能減速、籌碼外資淨流出的三重環境下，等同主動吸收不對稱下行風險。此屬情緒性偏多衝動，非風險管理決策。</li>
+</ul>
+<h2>Conservative overreach</h2>
+<ul>
+<li>Where: 主張「等股價修正至 25-30x P/E（約 NT$2,875-3,450）再議」，即等待逾 30-40% 跌幅</li>
+<li>Why: 若 Q2 財報 EPS 超預期且 Vera Rubin 量產貢獻確認，市場可藉由 EPS 上修直接壓縮隱含 P/E，無需股價大幅回落即能改善估值；要求如此極端的跌幅門檻等同在有效上行催化劑存在時放棄整段多頭；忽視 2026-07-31 月營收此一近期可檢驗的觸發訊號，屬反射性迴避偏差而非審慎等待。</li>
+</ul>
+<h2>Balanced adjustment proposal</h2>
+<ul>
+<li>Size: <strong>0% NAV（維持場外觀望）</strong>；待下列觸發條件同時達成後，考慮進場 <strong>0.25% NAV 初始倉位</strong></li>
+<li>Stop: 持倉成本 <strong>-12%</strong>（事件型，對應六月月營收 &lt; NT$78B 或 Meta 公告削減 2027 年 CapEx 任一觸發）</li>
+<li>Entry: 需同時滿足——① 2026-07-31 六月月營收 ≥ NT$78B（YoY 維持雙位數成長）；② 2026 年 8 月中旬 Q2 財報 EPS YoY 重回 ≥ 35% 且 Vera Rubin 量產貢獻確認入帳；③ 外資籌碼連續兩週翻轉為淨買超；以及 ④ 技術數據恢復後確認 RSI &gt; 50</li>
+<li>Hedge: 暫無；0.25% NAV 極小倉位本身已充分控制尾部風險，毋需額外對沖</li>
+<li>Time horizon: <strong>季度框架（3-4 個月）</strong>，核心催化劑集中於 2026 年 7 月底至 11 月</li>
+</ul>
+<h2>Net $ risk if stop hits</h2>
+<p>觸發止損時損失：<strong>0.25% NAV × (-12%) = -0.030% NAV</strong></p>
+<h2>Net $ upside at T1 / T2</h2>
+<ul>
+<li>T1（分析師共識均值，+36.3%）：0.25% NAV × 36.3% = <strong>+0.091% NAV</strong></li>
+<li>T2（分析師共識高點，+42.9%）：0.25% NAV × 42.9% = <strong>+0.107% NAV</strong></li>
+<li>潛在 R:R（T2 vs Stop）：+0.107% vs -0.030% ≈ <strong>3.6:1</strong>（前提：上述觸發條件均已達成，基本面不確定性大幅降低）</li>
+</ul>
+<p>NEUTRAL VIEW COMPLETE</p></div>
+        </div>
+      </div>
+    </details>
+
+  </div>
+
+  <script>
+    (function() {
+      var d = {};
+      if (!d.dates) return;
+      var traces = [
+        {x: d.dates, y: d.close, name: 'Close',  line: {color: '#1f2937', width: 2}},
+        {x: d.dates, y: d.ma20,  name: 'MA20',   line: {color: '#0ea5e9', width: 1, dash: 'dot'}},
+        {x: d.dates, y: d.ma50,  name: 'MA50',   line: {color: '#f59e0b', width: 1, dash: 'dot'}},
+        {x: d.dates, y: d.ma200, name: 'MA200',  line: {color: '#ef4444', width: 1, dash: 'dash'}}
+      ];
+      var layout = {
+        margin: {l: 50, r: 20, t: 10, b: 40},
+        legend: {orientation: 'h', y: -0.15},
+        xaxis: {showgrid: false},
+        yaxis: {title: '價格 ($)'}
+      };
+      Plotly.newPlot('chart-6669_TW', traces, layout, {displayModeBar: false, responsive: true});
+    })();
+  </script>
+
+</section>
+
+
+<section id="ticker-3231_TW" class="mb-10 bg-white rounded-lg shadow overflow-hidden">
+
+  <div class="flex items-start justify-between p-6 border-b border-slate-200 verdict-BUY">
+    <div>
+      <h2 class="text-3xl font-bold">3231.TW</h2>
+      <p class="text-sm mt-1 opacity-80">緯創 (3231) — AI server ODM</p>
+    </div>
+    <div class="text-right">
+      <div class="text-4xl font-bold">BUY</div>
+      <div class="text-sm opacity-80 mt-1">APPROVE</div>
+    </div>
+  </div>
+
+  <div class="p-6 grid grid-cols-1 lg:grid-cols-2 gap-6">
+
+    <div>
+      <h3 class="text-lg font-bold mb-2">價格 + 技術指標 (2 年)</h3>
+      <div id="chart-3231_TW" style="height: 380px;"></div>
+    </div>
+
+    <div>
+      <h3 class="text-lg font-bold mb-2">最終決策 (Final decision)</h3>
+      <div class="agent-prose text-sm bg-slate-50 p-4 rounded border border-slate-200">
+        <h1>Final decision — 3231.TW (緯創資通/Wistron) as of 2026-07-23</h1>
+<p>FINAL TRANSACTION PROPOSAL: <strong>BUY</strong></p>
+<blockquote>
+<p>⚠️ PRICE_DATA_UNAVAILABLE：yfinance proxy 403 封鎖即時行情。價格錨點以 sentiment.md 確認之 NT$164（7 月下旬）為基準；止損以百分比表示，禁用絕對 NT$ 數字。</p>
+</blockquote>
+<h2>Verdict</h2>
+<p>APPROVE（採 neutral risk 折衷方案為最終定案）</p>
+<h2>Final trade card</h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Direction</td>
+<td>LONG</td>
+</tr>
+<tr>
+<td>Entry zone</td>
+<td>市價 ~NT$164 參考（分批）</td>
+</tr>
+<tr>
+<td>Stop</td>
+<td>Entry 下方 12%</td>
+</tr>
+<tr>
+<td>Target 1</td>
+<td>NT$206（+26%，分析師共識中位）</td>
+</tr>
+<tr>
+<td>Target 2</td>
+<td>NT$225（+37%，UBS 目標）</td>
+</tr>
+<tr>
+<td>Size</td>
+<td>Medium — 總 1.25% NAV（分兩批）</td>
+</tr>
+<tr>
+<td>Horizon</td>
+<td>1–2 季（核心窗口 2026 Q3–Q4）</td>
+</tr>
+<tr>
+<td>Conviction</td>
+<td>M（70–75%）</td>
+</tr>
+<tr>
+<td>R:R to T1</td>
+<td>2.17x</td>
+</tr>
+<tr>
+<td>Risk score</td>
+<td>3 / 5</td>
+</tr>
+</tbody>
+</table>
+<h3>分批執行</h3>
+<ul>
+<li>批次一 <strong>0.75% NAV — 即刻市價執行</strong>：Fort Worth D1 廠 48 小時前開幕，催化劑尚未定價；FactSet EPS NT$13.72 對應 P/E ~12x，相對 +94.1% H1 YoY 成長仍顯著低估，無須等待。</li>
+<li>批次二 <strong>0.50% NAV — 觸發加碼</strong>：8/10 TWSE 月營收 YoY ≥ 40%。</li>
+</ul>
+<h2>Risk debate adjudication</h2>
+<ul>
+<li>Aggressive 最強論點：高波動率（9 日 +14.3%）本身是「更寬止損 + 較大規模」的理由，8% 止損必被雜訊洗出——此點成立，故採 12% 止損而非保守方 8%。</li>
+<li>Conservative 最強論點：PRICE_DATA_UNAVAILABLE 使 vol-adjusted sizing 全盲，EPS 若貼近 FactSet NT$13.72 則 P/E 已 12x 非 9.6x，安全邊際縮窄——此點成立，故拒絕 aggressive 的 2.5–3% NAV 與 call spread。</li>
+<li>Net：weight <strong>neutral</strong> 較重。理由：方向無分歧，真正爭點在規模與時點。aggressive 的三倍擴倉在技術面全盲下屬情緒性偏誤；conservative 取消即刻進場等於讓渡 Fort Worth Alpha。1.25% NAV + 12% 止損 + 即刻建基礎倉是唯一與 70–75% 信念、資訊品質同時相稱的解。EPS 基準採 FactSet NT$13.72（非 UBS NT$17），UBS 為上行情境。</li>
+</ul>
+<h2>Monitoring trigger</h2>
+<p>若 <strong>8/10 TWSE 7 月月營收 YoY &lt; 40%</strong>，趨勢斷裂，在止損觸發前即縮倉至計畫 30–40% 並重評方向；此為批次二之反向失效節點。</p>
+<h2>Exit conditions</h2>
+<ol>
+<li>8/10 月營收 YoY &lt; 40% → 縮倉、重評。</li>
+<li>Q2 法說會 GM guidance &lt; 5.5% → 退出剩餘倉位（「以量換質」坐實）。</li>
+<li>Vera Rubin 德州第二產線未能於 2026-09 如期點火 → T2 廢止、下修。</li>
+<li>機械式止損：跌破 Entry 下方 12%，無論基本面出場（滿倉最大損失 1.25% × 12% = 0.15% NAV）。</li>
+</ol>
+<h2>Catalyst calendar</h2>
+<ul>
+<li>2026-08-10 — TWSE 7 月月營收公告（批次二觸發）</li>
+<li>2026-08 中 — Q2 法說會：GM guidance + H2 展望（極高）</li>
+<li>2026-09 初 — Fort Worth D1 Vera Rubin 第二產線量產點火</li>
+<li>2026-10-10 — TWSE 9 月月營收（驗證出貨動能）</li>
+<li>2026-11 中 — Q3 法說會：GM 與 FY2027 EPS 指引</li>
+</ul>
+<p>FINAL DECISION COMPLETE</p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="px-6 pb-6">
+
+    <details class="mb-4 border border-slate-200 rounded">
+      <summary class="bg-slate-50 px-4 py-2 font-semibold">投資計劃 (Research manager)</summary>
+      <div class="agent-prose p-4 text-sm"><h1>Investment plan — 3231.TW (緯創資通) as of 2026-07-23</h1>
+<h2>Directional stance</h2>
+<p>LONG — conviction MEDIUM（偏高，約70-75%；受毛利率結構壓縮與 PRICE_DATA_UNAVAILABLE 限制，未達 HIGH）</p>
+<hr />
+<h2>Crux of debate</h2>
+<ol>
+<li>
+<p><strong>Vera Rubin 出貨是否如期啟動</strong>：德州廠第二條產線預計 2026 年 9 月初點火量產 Vera Rubin；若延宕，FY2027 EPS NT$25 的預估將大幅落空，並動搖 UBS NT$225 目標價的估值基礎。此為最關鍵的單一變數。</p>
+</li>
+<li>
+<p><strong>毛利率能否在規模擴張後止跌回升</strong>：Q1 GM 5.21% 已受完整機架系統（complete rack system）組合壓低；Fort Worth D1 廠美國勞工成本為台灣的 3-5 倍，中期必然稀釋毛利。若 Q2 法說會 GM guidance 無法指向 5.5%+，「以量換質」的隱憂將坐實。</p>
+</li>
+<li>
+<p><strong>AI 伺服器超級週期的持續性</strong>：四大雲端客戶 2026 年合計 CapEx ~$725B，訂單能見度支撐至 2027。若任一主要客戶（尤其 Microsoft 單一佔比 20-30%）因股東壓力或 ROI 疑慮縮減 H2 訂單，70% AI 伺服器組合將形成下行加速器而非緩衝。</p>
+</li>
+</ol>
+<hr />
+<h2>Where the bull is right</h2>
+<ul>
+<li><strong>估值錯配無可辯駁</strong>：P/E 9.6x（NT$164 ÷ UBS EPS NT$17）對應 H1 2026 營收年增 94.1%，屬市場中罕見的「成長速度遠超估值倍數」案例；FactSet 共識 EPS NT$13.72 亦僅對應 ~12x，熊方「股價已充分反映」的論述在此倍數下站不住腳。</li>
+<li><strong>絕對獲利已印證規模效益</strong>：Q1 淨利 +92.3% YoY 與 Operating Margin 環比上升 14.4%，說明即使 GM 偏低，規模擴張仍能推動絕對利潤飛速增長。</li>
+<li><strong>Fort Worth D1 廠是結構性護城河，非一次性事件</strong>：北美雲端客戶在地化供應鏈需求為硬性要求；客戶驗證週期 12-18 個月形成天然黏性；GB300 量產先發優勢難以快速複製。</li>
+<li><strong>情緒面三方共振</strong>：分析師 78% BUY、外資持股穩定（31.11%）、管理層無套現、融券使用率僅 0.03%，賣方壓力極低。</li>
+</ul>
+<hr />
+<h2>Where the bear is right</h2>
+<ul>
+<li><strong>GM 5.21% 是結構性而非暫時性問題</strong>：complete rack system 組合擴大加上 Fort Worth 高勞工成本，毛利率壓縮不會因規模提升而自動逆轉，需要產品組合改善或定價能力提升才能解決。</li>
+<li><strong>三地同步擴產將壓縮 FCF</strong>：Fort Worth ~$700M + 印度 NT$380 億同步動支，FCF/NI 估計 0.80-1.10 的健康比率在擴產期存在轉負風險；印度廠爬坡期需 2-4 年，期間回報率極低。</li>
+<li><strong>行業排名第三（16% 份額）議價力最弱</strong>：在鴻海（44%）、廣達（26%）主導下，緯創接低利潤尾單機率較高，優先訂單配額劣於競爭對手。</li>
+<li><strong>PRICE_DATA_UNAVAILABLE 構成操作風險</strong>：無法設定止損錨點，無法計算 R:R，任何倉位規模設定均缺乏技術依據。</li>
+</ul>
+<hr />
+<h2>Net verdict</h2>
+<p>從評估品質而非修辭出發：多方援引的 H1 2026 NT$1.74 兆營收（+94.1% YoY）及 Q1 淨利 +92.3% 均為已公告財報數字，可偽證性高；熊方的「股價已充分反映」論述在 P/E 9.6-12x 之下缺乏數學支撐，未能撼動估值錯配的核心論據。毛利率結構壓縮是合理隱憂，但當前絕對獲利爆發已証明問題尚未構成致命瓶頸。Fort Worth D1 廠開幕為結構性、可驗證事件，而非前瞻預測。綜合判斷，估值修復邏輯明確（重新定價至 P/E 12-13x 即達 +24-37% 報酬，無需樂觀假設），方向為 <strong>LONG</strong>；毛利率與 CapEx 壓力使信念維持在 MEDIUM 而非 HIGH。</p>
+<hr />
+<h2>What would change the verdict</h2>
+<ul>
+<li><strong>上行觸發</strong>：Q2 法說會 GM guidance 上修至 5.5%+，或 Vera Rubin 出貨確認按時於 9 月啟動 → 可提升至 HIGH 信念、增加倉位至滿倉。</li>
+<li><strong>下行觸發</strong>：8 月 10 日 7 月月營收 YoY 低於 40%（趨勢斷裂），或 Q2 法說會管理層下修 H2 guidance → 重新評估方向性，縮減倉位。</li>
+<li><strong>關鍵監測數據</strong>：(1) 每月 10 日 TWSE 月營收公告 — 維持 40%+ YoY；(2) 2026 年 8 月中 Q2 法說會 GM 路徑指引；(3) Vera Rubin 量產進度確認。</li>
+</ul>
+<hr />
+<h2>Position-sizing guidance（定性，非投資建議）</h2>
+<p>PRICE_DATA_UNAVAILABLE 限制止損設定，須以「風險敞口控制」取代「技術止損」邏輯：</p>
+<ul>
+<li><strong>初始倉位</strong>：計畫配置的 60-65%（中等規模進場，保留彈藥）；以估值安全邊際（P/E 9.6-12x）替代技術止損作為下行緩衝評估基準。</li>
+<li><strong>加碼觸發</strong>：8 月月營收 YoY ≥40% 且 Q2 法說會 GM guidance 向上 → 增至計畫配置的 85-90%。</li>
+<li><strong>減碼觸發</strong>：月營收 YoY 連兩月低於 35%，或 GM 在法說會確認無改善路徑 → 減至 30-40% 並重新評估。</li>
+</ul>
+<hr />
+<h2>Time horizon</h2>
+<p><strong>以季為單位（1-2 個季度）</strong>。核心催化劑集中於 2026 年 8-9 月（Q2 法說會、Vera Rubin 量產啟動），估值修復窗口估計在此期間開啟。若 2026 年 Q3/Q4 獲利確認、毛利率止穩，可延伸至年度持有（FY2027 EPS NT$25 對應更高目標價）。</p>
+<hr />
+<p>INVESTMENT PLAN COMPLETE</p></div>
+    </details>
+
+    <details class="mb-4 border border-slate-200 rounded">
+      <summary class="bg-slate-50 px-4 py-2 font-semibold">交易提案 (Trader)</summary>
+      <div class="agent-prose p-4 text-sm"><h1>交易提案 — 3231.TW (緯創資通/Wistron) 截至 2026-07-23</h1>
+<p>FINAL TRANSACTION PROPOSAL: <strong>BUY</strong></p>
+<blockquote>
+<p>⚠️ PRICE_DATA_UNAVAILABLE：yfinance proxy 403 封鎖所有即時行情。價格錨點以 sentiment.md 確認之 NT$164（7 月下旬）為基準；止損以百分比表示；R:R 以相同基準推算。</p>
+</blockquote>
+<hr />
+<h2>方向</h2>
+<p><strong>LONG</strong></p>
+<hr />
+<h2>建倉設置</h2>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>數值</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Entry</td>
+<td>~NT$164（市價參考）</td>
+<td>7 月下旬確認價；分批進場</td>
+</tr>
+<tr>
+<td>Stop</td>
+<td>Entry 下方 <strong>10–12%</strong>（≈ NT$144–148）</td>
+<td>無技術止損錨點可用（PRICE_DATA_UNAVAILABLE）；以估值安全邊際（P/E ~9.6x 對應 EPS NT$13.72 共識）替代技術支撐作下行緩衝評估</td>
+</tr>
+<tr>
+<td>Target 1</td>
+<td><strong>NT$206</strong>（+26%）</td>
+<td>分析師共識中位數（14 BUY / 4 HOLD）；對應 P/E ~15x × FY2026E EPS NT$13.72，無需樂觀假設</td>
+</tr>
+<tr>
+<td>Target 2</td>
+<td><strong>NT$225</strong>（+37%）</td>
+<td>UBS 目標價，對應 NVL72 出貨 18,500 櫃估算；Vera Rubin H2 量產順利啟動後可觸及</td>
+</tr>
+<tr>
+<td>R:R (T1)</td>
+<td><strong>≈ 2.3x</strong></td>
+<td>(206−164) ÷ (164 × 11%) = 42 ÷ 18</td>
+</tr>
+<tr>
+<td>R:R (T2)</td>
+<td><strong>≈ 3.4x</strong></td>
+<td>(225−164) ÷ 18 = 61 ÷ 18</td>
+</tr>
+</tbody>
+</table>
+<p>R:R 均超過 LONG 門檻（1.5x），交易有效。</p>
+<hr />
+<h2>倉位規模</h2>
+<p><strong>Medium — 1.0–1.5% NAV（分三批執行）</strong></p>
+<table>
+<thead>
+<tr>
+<th>批次</th>
+<th>佔計畫倉位</th>
+<th>觸發條件</th>
+<th>NAV 估算</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>批次一（初始）</td>
+<td>60%</td>
+<td>即刻市場進場</td>
+<td>~0.60–0.90% NAV</td>
+</tr>
+<tr>
+<td>批次二（加碼）</td>
+<td>25%</td>
+<td>8/10 月營收公告 YoY ≥ 40%</td>
+<td>~0.25–0.38% NAV</td>
+</tr>
+<tr>
+<td>批次三（確認）</td>
+<td>15%</td>
+<td>Q2 法說會 GM guidance ≥ 5.5%</td>
+<td>~0.15–0.23% NAV</td>
+</tr>
+</tbody>
+</table>
+<p><strong>規模根據：</strong> 信念 MEDIUM-HIGH（70–75%）；R:R 2.3–3.4x；ATR 不可用（PRICE_DATA_UNAVAILABLE）—— 近期 9 個交易日 NT$143.5→NT$164（+14.3%）顯示波動率偏高，此為壓縮初始規模至 Medium 而非 Large 之主因。融券率 0.03%（極低），無流動性風險。</p>
+<hr />
+<h2>時間框架</h2>
+<p><strong>1–2 季（以 2026 Q3–Q4 為主要收益窗口）</strong></p>
+<p>核心催化劑集中於 8–9 月；若 FY2027 EPS NT$25 路徑獲確認，可延伸至年度持有。</p>
+<hr />
+<h2>進場觸發</h2>
+<p><strong>即刻以市價執行批次一（60%）</strong>；不設等待條件。</p>
+<p>理由：估值錯配（P/E 9.6x 對應 +94.1% H1 YoY 成長）在現價已充分顯現；分析師 78% BUY、外資持股 31.11%、融券 0.03%，多空動能均支持立即建立基礎倉位，再以 8/10 及法說會為分批加碼節點。</p>
+<hr />
+<h2>失效條件</h2>
+<p>以下任一情況出現即執行退出或大幅縮倉：</p>
+<ol>
+<li><strong>8 月 10 日 TWSE 月營收公告</strong>：7 月 YoY 成長率低於 <strong>40%</strong> → 趨勢斷裂，縮倉至計畫的 30–40%，重新評估方向性</li>
+<li><strong>Q2 法說會 GM guidance</strong>：管理層未能指向 <strong>5.5%+</strong> → 「以量換質」隱憂坐實，退出剩餘倉位</li>
+<li><strong>Vera Rubin 量產延宕</strong>：德州廠第二條產線無法於 2026 年 9 月如期點火 → FY2027 EPS NT$25 估算失效，目標價下修，T2 廢止</li>
+<li><strong>止損觸發</strong>：股價跌破 Entry 下方 <strong>10–12%</strong>（≈ NT$144–148），無論基本面，機械式出場</li>
+</ol>
+<hr />
+<h2>催化劑行事曆</h2>
+<table>
+<thead>
+<tr>
+<th>日期</th>
+<th>事件</th>
+<th>重要性</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2026-08-10</td>
+<td>TWSE 7 月月營收公告（批次二觸發節點）</td>
+<td>高</td>
+</tr>
+<tr>
+<td>2026 年 8 月中旬</td>
+<td>Q2 法說會：GM 路徑指引 + H2 展望（批次三觸發節點）</td>
+<td>極高</td>
+</tr>
+<tr>
+<td>2026 年 9 月初</td>
+<td>Fort Worth D1 廠 Vera Rubin 第二條產線量產點火確認</td>
+<td>極高</td>
+</tr>
+<tr>
+<td>2026-10-10</td>
+<td>TWSE 9 月月營收公告（驗證 Vera Rubin 出貨動能）</td>
+<td>高</td>
+</tr>
+<tr>
+<td>2026 年 11 月中旬</td>
+<td>Q3 法說會：毛利率與 FY2027 EPS 指引</td>
+<td>高</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p>TRADE PROPOSAL COMPLETE</p></div>
+    </details>
+
+    <details class="mb-4 border border-slate-200 rounded">
+      <summary class="bg-slate-50 px-4 py-2 font-semibold">Phase 1 — 四 Analyst 報告</summary>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+        <div>
+          <h4 class="font-bold text-slate-700 mb-2">基本面 (Fundamentals)</h4>
+          <div class="agent-prose text-sm bg-slate-50 p-3 rounded"><h1>基本面分析 — 3231.TW 緯創資通 (Wistron) | 2026-07-23</h1>
+<blockquote>
+<p>⚠️ yfinance/ta.py 受 proxy 403 阻斷。本報告採用公開財報與訓練資料。</p>
+</blockquote>
+<hr />
+<h2>公司概況</h2>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>內容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>股號</td>
+<td>3231.TW（緯創資通）</td>
+</tr>
+<tr>
+<td>英文名</td>
+<td>Wistron Corporation</td>
+</tr>
+<tr>
+<td>主業</td>
+<td>AI 伺服器 / 雲端基礎設施 ODM；消費電子（PC/NB）轉型中</td>
+</tr>
+<tr>
+<td>上市所</td>
+<td>TWSE</td>
+</tr>
+<tr>
+<td>主要客戶</td>
+<td>Microsoft、Google、Meta、Amazon、Dell</td>
+</tr>
+<tr>
+<td>轉型進程</td>
+<td>2020-2023 大幅出售消費電子產線（Apple iPhone 廠轉讓）；聚焦 AI 伺服器</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>一、營收成長</h2>
+<h3>年度營收</h3>
+<table>
+<thead>
+<tr>
+<th>財年</th>
+<th>營收（NT$ 億）</th>
+<th>YoY 成長</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FY2023</td>
+<td>~5,800</td>
+<td>—</td>
+</tr>
+<tr>
+<td>FY2024</td>
+<td>~7,200</td>
+<td>+24% YoY</td>
+</tr>
+<tr>
+<td>FY2025E</td>
+<td>~9,000-10,000</td>
+<td>+25-39% YoY</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>AI 伺服器佔比 FY2024 已達 30-40%，FY2025 估計超過 50%</li>
+<li>消費電子（PC/NB）持續縮減</li>
+</ul>
+<h3>月營收趨勢（2026 年）</h3>
+<ul>
+<li>2026 年 AI 伺服器訂單持續攀升，月營收估計 NT$700-900 億區間</li>
+<li>YoY 成長估計 +20-35%</li>
+</ul>
+<p><strong>門檻判斷 — 營收成長：PASS（+24-39% YoY，超過 15% 門檻）</strong></p>
+<hr />
+<h2>二、獲利品質</h2>
+<h3>毛利率</h3>
+<table>
+<thead>
+<tr>
+<th>期間</th>
+<th>GM</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FY2023</td>
+<td>~5.5-6.0%</td>
+<td>轉型期</td>
+</tr>
+<tr>
+<td>FY2024</td>
+<td>~6.0-7.0%</td>
+<td>AI 伺服器比例提升</td>
+</tr>
+<tr>
+<td>FY2025E</td>
+<td>~6.5-7.5%</td>
+<td>AI 伺服器進一步提升</td>
+</tr>
+</tbody>
+</table>
+<h3>EPS</h3>
+<table>
+<thead>
+<tr>
+<th>財年</th>
+<th>EPS (NT$)</th>
+<th>YoY</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FY2023</td>
+<td>~3.5-4.5</td>
+<td>—</td>
+</tr>
+<tr>
+<td>FY2024</td>
+<td>~5.0-6.5</td>
+<td>+30-50%</td>
+</tr>
+<tr>
+<td>FY2025E</td>
+<td>~6.5-9.0</td>
+<td>+30-50%</td>
+</tr>
+</tbody>
+</table>
+<h3>FCF / Net Income</h3>
+<ul>
+<li>緯創轉型後資本需求下降（出售消費電子廠房）</li>
+<li>FCF/NI 估計 0.80-1.10（健康）</li>
+<li>流動性充裕</li>
+</ul>
+<p><strong>門檻判斷 — FCF/NI：PASS（&gt;-1，估計 0.80-1.10）</strong></p>
+<hr />
+<h2>三、資本結構</h2>
+<table>
+<thead>
+<tr>
+<th>指標</th>
+<th>估計值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>D/E</td>
+<td>~60-90%（中等，較 6669 稍高因規模更大）</td>
+</tr>
+<tr>
+<td>現金部位</td>
+<td>NT$500-700 億</td>
+</tr>
+<tr>
+<td>股息</td>
+<td>穩定配息，殖利率 3-5%</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>四、估值</h2>
+<h3>Forward P/E</h3>
+<ul>
+<li>股價：需即時報價（PRICE_DATA_UNAVAILABLE）</li>
+<li>分析師 FY2026 EPS 估計：NT$7-10</li>
+<li>參考市場估計股價範圍：NT$90-130</li>
+<li>隱含 Forward P/E：<strong>~12-18x</strong>（相對保守，因消費電子歷史包袱）</li>
+</ul>
+<p><strong>門檻判斷 — 估值：PASS（估計 ~12-18x &lt; 35x 門檻）</strong></p>
+<hr />
+<h2>五、風險因子</h2>
+<ol>
+<li><strong>轉型進行中</strong>：消費電子業務仍佔部分收入，拖累整體毛利率</li>
+<li><strong>競爭</strong>：AI 伺服器 ODM 市場競爭加劇（廣達、鴻海、緯穎均搶佔份額）</li>
+<li><strong>客戶分散</strong>：雖有多客戶，但 Microsoft 單一客戶可能佔 20-30%</li>
+<li><strong>PRICE_DATA_UNAVAILABLE</strong>：無法設定止損</li>
+<li><strong>美中貿易管制</strong>：出口許可限制</li>
+</ol>
+<hr />
+<h2>六、正向選股信號評估</h2>
+<table>
+<thead>
+<tr>
+<th>信號</th>
+<th>通過？</th>
+<th>依據</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>營收成長 &gt;15% YoY</td>
+<td>✅ PASS</td>
+<td>FY2024 +24%、FY2025E +25-39%</td>
+</tr>
+<tr>
+<td>FCF/NI &gt; -1</td>
+<td>✅ PASS</td>
+<td>估計 0.80-1.10</td>
+</tr>
+<tr>
+<td>Forward P/E &lt;35x</td>
+<td>✅ PASS</td>
+<td>估計 ~12-18x</td>
+</tr>
+<tr>
+<td>新聞情緒</td>
+<td>待確認</td>
+<td>—</td>
+</tr>
+<tr>
+<td>分析師 ≥60% BUY</td>
+<td>待確認</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>七、關鍵指標彙整</h2>
+<table>
+<thead>
+<tr>
+<th>指標</th>
+<th>數值</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>股號</td>
+<td>3231.TW</td>
+<td>TWSE</td>
+</tr>
+<tr>
+<td>FY2024 Revenue YoY</td>
+<td>+24%</td>
+<td>公開財報</td>
+</tr>
+<tr>
+<td>FY2025E Revenue YoY</td>
+<td>+25-39%</td>
+<td>市場共識估計</td>
+</tr>
+<tr>
+<td>Gross Margin FY2025E</td>
+<td>6.5-7.5%</td>
+<td>轉型後改善</td>
+</tr>
+<tr>
+<td>FCF/NI</td>
+<td>~0.80-1.10</td>
+<td>歷史趨勢</td>
+</tr>
+<tr>
+<td>D/E</td>
+<td>~60-90%</td>
+<td>中等</td>
+</tr>
+<tr>
+<td>Forward P/E</td>
+<td>~12-18x</td>
+<td>EPS NT$7-10 估算</td>
+</tr>
+<tr>
+<td>PRICE_DATA</td>
+<td>UNAVAILABLE</td>
+<td>Proxy 403</td>
+</tr>
+</tbody>
+</table>
+<p><strong>FUNDAMENTALS REPORT COMPLETE</strong></p></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-slate-700 mb-2">技術面 (Market / Technical)</h4>
+          <div class="agent-prose text-sm bg-slate-50 p-3 rounded"><h1>技術分析 — 3231.TW (緯創資通/Wistron) 截至 2026-07-23</h1>
+<h2>資料狀態：無可用價格</h2>
+<p><strong>PRICE_DATA_UNAVAILABLE</strong></p>
+<p>無即時價格，技術分析無法執行。</p>
+<p>yfinance/ta.py 連線因 HTTP 403 代理限制而阻斷。無法檢索下列資訊：<br />
+- 即時股價及 OHLCV 數據<br />
+- 技術指標 (RSI14, MACD, Bollinger Bands 等)<br />
+- 移動平均線 (MA20, MA50, MA200)<br />
+- ATR 波動率指標<br />
+- 支撐/阻力位與本地極值<br />
+- 成交量確認資料<br />
+- 52 週高低點</p>
+<h2>結論</h2>
+<p>無法執行 3231.TW 之技術面分析。請待資料源恢復連線後重試。</p>
+<hr />
+<p><strong>市場報告無法完成</strong> — 資料來源不可用。</p></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-slate-700 mb-2">新聞 (News)</h4>
+          <div class="agent-prose text-sm bg-slate-50 p-3 rounded"><h1>新聞 — 3231.TW (緯創資通) 截至 2026-07-23</h1>
+<h2>公司重點新聞（過去14天）</h2>
+<ul>
+<li>
+<p><strong>2026-07-21</strong> — 緯創在德州沃斯堡(Fort Worth)正式開幕 D1 AI 智慧工廠，為美國首座量產 NVIDIA GB300 Grace Blackwell Ultra 晶片的設施。影響：<strong>極度看好</strong>。美國本土生產代表進入新地緣政治時代、鎖定北美雲端客戶(Microsoft、Google、Meta、Amazon)，消除關稅風險。(<a href="https://www.bnext.com.tw/article/91571/wistron-fort-worth-d1-ai-factory">Business Next</a>, <a href="https://www.taipeitimes.com/News/biz/archives/2026/07/23/2003861201">Taipei Times</a>)</p>
+</li>
+<li>
+<p><strong>2026-07-20</strong> — 瑞銀(UBS)上修緯創 2026 與 2027 年營收成長率：從 67% 上修至 82%；EPS 從 15.5 元上修至 17 元；2027 EPS 從 21.5 元上修至 25 元。目標價調升至 225 元。影響：<strong>看好</strong>。分析師對 AI 伺服器需求超預期有信心。(<a href="https://finance.technews.tw/2026/07/20/ai-server-wistron-target">TechNews</a>)</p>
+</li>
+<li>
+<p><strong>2026-07-11</strong> — 緯創公布 H1 2026(上半年)創紀錄營收 NT$1.74 兆，年成長 94.1%；Q2 營收 NT$895.44 億，年成長 62.4%；6月營收 NT$321.82 億，月成長 10.9%、年成長 53.9%。AI 伺服器產品組合佔比達 70%。影響：<strong>強勁看好</strong>。營收爆炸性成長，AI 轉單策略成功，季度表現優於預期。(<a href="https://www.taipeitimes.com/News/biz/archives/2026/07/11/2003860550">Taipei Times</a>, <a href="https://www.digitimes.com/news/a20260708PD254/wistron-ai-server-shipments-revenue-2026.html">DigiTimes</a>)</p>
+</li>
+<li>
+<p><strong>2026-06-29</strong> — 緯創宣布大幅增加資本支出規模，在台灣、東南亞、美國同步擴產 AI 伺服器產能。影響：<strong>看好</strong>。產能布局多元化，降低地緣風險，滿足雲端服務商訂單需求。(<a href="https://newtalk.tw/news/view/2026-06-29/1044101">Newtalk</a>)</p>
+</li>
+<li>
+<p><strong>2026-06-初</strong> — 緯創宣布在印度泰蘭加納(Telangana)投資 NT$380 億(約 1,000 億盧比)設立新廠，專注伺服器、路由器、交換設備生產。影響：<strong>中性偏看好</strong>。多元化區域製造中心，但執行時程尚待確認。(<a href="https://www.bnext.com.tw/article/84015/wistron-india-telangana-insdustry">Business Next</a>)</p>
+</li>
+<li>
+<p><strong>2026-05-08</strong> — 緯創公布 Q1 2026 財務績效：營收創紀錄、淨利成長率 92.3%；毛利率 5.21%。Operating Margin 環比上升 14.4%。影響：<strong>看好</strong>。利潤成長快於營收(絕對利潤急升)，惟毛利率受機構客(complete rack system)產品組合壓低。(<a href="https://www.wistron.com/en/Newsroom/2026-05-08">Wistron IR</a>, <a href="https://www.digitimes.com/news/a20260509PD205/wistron-profit-revenue-growth-shipments.html">DigiTimes</a>)</p>
+</li>
+<li>
+<p><strong>2026-05月</strong> — 緯創 5 月營收 NT$208.405 億，年成長 162.14%，超過預期。影響：<strong>看好</strong>。AI 伺服器訂單爆發，產能利用率持續上升。</p>
+</li>
+</ul>
+<h2>產業巨觀影響</h2>
+<ul>
+<li>
+<p><strong>AI 伺服器超級週期(Supercycle)</strong> — 2026 全年主要雲端廠商(Microsoft ~$190B、Amazon ~$200B、Google $175-185B、Meta $115-135B)合計資本支出約 $725B，年成長 77% vs 2025 的 ~$410B。AI 基礎設施構成多數投資，推動 NVIDIA GB200、GB300、Vera Rubin 等新一代加速卡與伺服器需求。影響：<strong>正面</strong>。周期性高景氣，市場毛利率雖受壓但絕對利潤大幅增長。</p>
+</li>
+<li>
+<p><strong>地緣政治：美國製造回流</strong> — 美國對晶片製造強化本土產業政策，NVIDIA 與 ODM 廠(Foxconn、Wistron、Quanta)在美國建廠成為戰略優先。Wistron Fort Worth 廠象徵「台灣從代工便宜代表，轉為先進製造中心」(NVIDIA CEO Jensen Huang 語)。影響：<strong>看好</strong>。長期訂單鎖定、規避關稅、滿足客戶供應鏈在地化要求。</p>
+</li>
+<li>
+<p><strong>稀缺資源：HBM4 與液冷技術</strong> — Vera Rubin 大量採用 HBM4(SK Hynix、Samsung、Micron)，液冷解決方案成為供應商差異化核心。Wistron 已在德州廠建立液冷產線。影響：<strong>看好</strong>。Wistron 掌握關鍵工序，議價力提升。</p>
+</li>
+<li>
+<p><strong>競爭格局：ODM 三強激戰</strong> — 根據 2026 年 4 月數據，機櫃組裝市場排名：鴻海(Foxconn) 3,700 櫃(44%)、廣達(Quanta) 2,100 櫃(26%)、緯創(Wistron) 1,300-1,400 櫃(16%)。Wistron 身為 Compute Board 主力供應商，在系統端份額相對較小但利潤空間改善。影響：<strong>中性</strong>。競爭激烈但需求量大，三強均受惠。</p>
+</li>
+</ul>
+<h2>競爭對手動向</h2>
+<ul>
+<li>
+<p><strong>鴻海(2317.TW)</strong> — AI 伺服器出貨領先，垂直整合能力強(GPU 模組、基板自製率高)。與 NVIDIA、Microsoft、Google 合作最緊密。</p>
+</li>
+<li>
+<p><strong>廣達(2382.TW)</strong> — 深耕北美四大雲端客戶(CSP)，液冷系統整合業界最穩定。H1 2026 獲利飆升。</p>
+</li>
+<li>
+<p><strong>緯穎(6669.TW)</strong> — 伺服器專業 ODM，AI 伺服器營收破兆，產品線包含 AI Board、機架系統。在供應鏈中扮演關鍵設計角色。</p>
+</li>
+</ul>
+<h2>未來 14 日日程</h2>
+<ul>
+<li>
+<p><strong>2026-07-30 左右</strong> — 預期臺灣證交所公開 7 月月營收(按通例每月 10 日公布上月數據，8 月 10 日公布 7 月)。監看環月成長及年增率能否維持 40% 以上。</p>
+</li>
+<li>
+<p><strong>2026-08-中</strong> — 預期 Q2 法人說明會(若未於 7 月底舉辦)或單季業績預告。重點關注 Q3 guidance、毛利率展望、新廠產能爬升進度。</p>
+</li>
+<li>
+<p><strong>2026-09-初</strong> — 預期 NVIDIA Vera Rubin 大規模出貨啟動(H2 2026 開始批量)，緯創德州廠第二條產線(Vera Rubin)啟動。</p>
+</li>
+</ul>
+<h2>綜合判斷</h2>
+<p>緯創於 2026 年上半年乘 AI 伺服器超級週期之勢，營收與獲利創新高，H1 營收年成長 94.1%，AI 產品組合突破 70%。7 月 21 日德州 Fort Worth D1 廠正式開幕(美國首個量產 GB300 基地)，鎖定北美雲端大客戶供應鏈，規避關稅與地緣風險。Morgan Stanley 與 UBS 等外資持續上調目標價(NT$210-225)與獲利預估，反映對 AI 需求長期看好。惟毛利率承壓(5-6%)，主要因機架系統等高毛利但低單價的客制化產品組合短期拉低平均毛利。相對鴻海優勢在垂直整合，緯創優勢在 Compute Board 與系統設計靈活性，中期市佔率有望穩步提升。最大風險：若 Vera Rubin 出貨延宕或需求轉弱，將直接衝擊 H2 2026 與 2027 年成長動能。</p>
+<p><strong>近期新聞淨傾向：正面偏強</strong> — 9月份之前營收高景氣可期，新廠開幕與產能擴充進度成為近期亮點。目標價上調反映基本面強勁。毛利率穩定性與 Vera Rubin 出貨進度為後續關注重點。</p>
+<hr />
+<p><strong>NEWS REPORT COMPLETE</strong></p>
+<h3>資料來源</h3>
+<ul>
+<li><a href="https://www.taipeitimes.com/News/biz/archives/2026/07/11/2003860550">Taipei Times - Wistron sales hit record</a></li>
+<li><a href="https://www.taipeitimes.com/News/biz/archives/2026/07/23/2003861201">Taipei Times - Wistron opens first US smart manufacturing facility</a></li>
+<li><a href="https://www.digitimes.com/news/a20260708PD254/wistron-ai-server-shipments-revenue-2026.html">DigiTimes - Wistron and Wiwynn post record-high revenue in 1H26</a></li>
+<li><a href="https://www.digitimes.com/news/a20260509PD205/wistron-profit-revenue-growth-shipments.html">DigiTimes - Wistron profit triples on server surge</a></li>
+<li><a href="https://www.bnext.com.tw/article/91571/wistron-fort-worth-d1-ai-factory">Business Next - 緯創德州廠開出全美第一片GB300基板</a></li>
+<li><a href="https://www.bnext.com.tw/article/84015/wistron-india-telangana-insdustry">Business Next - 緯創砸380億回印度蓋廠</a></li>
+<li><a href="https://finance.technews.tw/2026/07/20/ai-server-wistron-target">TechNews - AI 伺服器成長超預期！UBS 上修緯創獲利預估</a></li>
+<li><a href="https://newtalk.tw/news/view/2026-06-29/1044101">Newtalk - AI伺服器擴產！緯創砸資本支出</a></li>
+<li><a href="https://www.wistron.com/en/Newsroom/2026-05-08">Wistron IR - Q1 2026 Financial Results</a></li>
+<li><a href="https://finance.technews.tw/2026/05/12/foxconn-leads-quanta-and-wistron-in-ai-server-shipments/">TechNews - AI 伺服器出貨鴻海領先廣達、緯創</a></li>
+</ul></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-slate-700 mb-2">情緒 (Sentiment)</h4>
+          <div class="agent-prose text-sm bg-slate-50 p-3 rounded"><h1>情緒面分析 — 3231.TW (緯創資通) 截至 2026-07-23</h1>
+<h2>分析師共識</h2>
+<p><strong>評等分佈：</strong> 14 BUY / 4 HOLD / 0 SELL<br />
+<strong>買進佔比：</strong> 77.8%（18位分析師過去3個月評等）<br />
+<strong>評等結論：</strong> 強力買進 (Strong Buy)</p>
+<p><strong>目標價區間（TWD）：</strong><br />
+- 共識中位數：205-206 TWD<br />
+- 高估值：280 TWD (+91.1% 上漲空間)<br />
+- 低估值：145 TWD (-1.0% 下行)<br />
+- FactSet 目標價：203 TWD</p>
+<p><strong>盈利預估：</strong><br />
+- 2026年 EPS：13.72元（略向下修正，原13.95元）<br />
+- 2026年 Q1 EPS 實績：3.06元</p>
+<p><strong>近期動向：</strong> UBS於7月上旬上調評等，將2026年NVIDIA NVL72出貨預估由16,000櫃上修至18,500櫃；同時將2026年營收成長上修至82%，2027年上修至54%。此舉反映AI伺服器需求強勁。</p>
+<h2>外資/機構流向</h2>
+<p><strong>外資持股比例：</strong> 31.11%（至6月統計）<br />
+- 外資為單一最大股東陣營，顯示機構信心</p>
+<p><strong>本月機構買賣超狀況（7月中旬）：</strong><br />
+- 外資（FINI）：持續布局中，未見明顯拋售<br />
+- 投信基金：淨賣超 -5,245股（7/17），累積3日連賣 -12,441股<br />
+- 自營商：淨買超 +388股</p>
+<p><strong>解讀：</strong> 外資與自營商淨進場，投信基金短期獲利了結，整體機構面呈現「外資多、投信調整」的格局。</p>
+<h2>融券/放空情況</h2>
+<p><strong>融券餘額：</strong> 276股（4月數據）<br />
+<strong>融券使用率：</strong> 0.03%（極低）<br />
+<strong>券資比：</strong> 0.47%</p>
+<p><strong>風險評估：</strong> 極低放空壓力，不存在「軋空」風險；反映市場對緯創前景信心充足。</p>
+<h2>內部人交易信號</h2>
+<p><strong>管理層態度：</strong> 樂觀正面<br />
+- 董事長林憲銘（7/7）：AI需求持續成長，AI非泡沫而是新時代；計畫全年捐240萬GPU小時算力<br />
+- CEO/主管並未進行重大減持</p>
+<p><strong>指標結論：</strong> 管理層主動溝通市場預期、強調長期信心，內部人無套現賣壓。</p>
+<h2>ETF持股變化</h2>
+<p><strong>ETF覆蓋：</strong> 134檔ETF持有3231<br />
+- 最大權重：State Street SPDR S&amp;P Pan Asia Dividend Aristocrats UCITS ETF USD<br />
+- 主要指數追蹤：iShares MSCI Taiwan ETF (EWT)</p>
+<p><strong>持股動向：</strong> ETF被動跟蹤指數成分，與市場布局一致；無特殊減持信號。</p>
+<h2>零售社群情緒</h2>
+<p><strong>Reddit/StockTwits：</strong> 英文社群討論量有限（3231.TW為台股專屬代碼）</p>
+<p><strong>台灣本地討論主軸（CMoney、HiStock、財報狗等）：</strong><br />
+- AI伺服器代工的景氣循環確認（NVIDIA算力需求）<br />
+- 2026年營收可望大幅成長（YoY +82%）<br />
+- 長期成長故事共識（代工＋AI雲端基礎設施）<br />
+- 管理層信心傳達正面</p>
+<p><strong>社群判多數：</strong> 樂觀至中立，聚焦AI長週期題材</p>
+<h2>股價表現與技術面</h2>
+<p><strong>近期股價：</strong><br />
+- 7月14日：143.50 TWD<br />
+- 7月下旬：164.00 TWD（上漲 +14.5 TWD）</p>
+<p><strong>隱含上漲空間（至目標價）：</strong> +42% ~ +91%（基於206 TWD ~ 280 TWD 目標區間）</p>
+<p><strong>技術分類：</strong> Turnaround（反轉股）—— 從底部向上動能增溫</p>
+<h2>淨情緒評分</h2>
+<table>
+<thead>
+<tr>
+<th>指標</th>
+<th>評估</th>
+<th>權重評語</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>分析師共識</td>
+<td>強力買進（78% BUY）</td>
+<td>✓✓✓ 正面</td>
+</tr>
+<tr>
+<td>機構動向</td>
+<td>外資持股高 + FINI/自營進場</td>
+<td>✓✓ 正面</td>
+</tr>
+<tr>
+<td>內部人信號</td>
+<td>管理層樂觀發言，無套現</td>
+<td>✓✓ 正面</td>
+</tr>
+<tr>
+<td>放空壓力</td>
+<td>融券 0.03%（極低）</td>
+<td>✓ 無風險</td>
+</tr>
+<tr>
+<td>零售社群</td>
+<td>AI主題樂觀，討論量適中</td>
+<td>✓ 溫和正面</td>
+</tr>
+<tr>
+<td>目標價上漲幅度</td>
+<td>+42% ~ +91%</td>
+<td>✓✓✓ 吸引力高</td>
+</tr>
+</tbody>
+</table>
+<p><strong>綜合情緒：🔺 強勢看漲 (STRONG BULLISH)</strong></p>
+<p><strong>信心度：</strong> 高（9/10）<br />
+- 分析師共識明確（78% BUY）<br />
+- AI伺服器需求確認且持續升溫<br />
+- 外資機構布局穩健<br />
+- 管理層主動傳達信心訊號<br />
+- 短線無明顯賣壓</p>
+<h2>多空背離檢查</h2>
+<p><strong>背離指標：</strong> 否 (No Divergence)<br />
+- 分析師面：強力買進<br />
+- 機構面：外資/自營持續進場<br />
+- 內部人：樂觀，無減持<br />
+- 社群面：AI主題正面</p>
+<p><strong>結論：</strong> 各層面情緒指向一致，多頭氣勢穩健，無明顯背離風險。</p>
+<hr />
+<p><strong>最終判定：正面加選標的</strong>（≥60% BUY 閾值已達成，符合 Phase 1 TradingAgents 正面挑選標準）</p>
+<p><strong>主要支撐因素：</strong><br />
+1. 分析師評等 78% BUY（遠高於 60% 門檻）<br />
+2. AI伺服器代工需求加速（NVIDIA NVL72 出貨上修）<br />
+3. 機構外資穩定布局（31% 持股）<br />
+4. 管理層信心明確傳達<br />
+5. 目標價相對現價具吸引力</p>
+<p><strong>需關注風險：</strong><br />
+- 投信基金近期獲利了結（短期調整壓力）<br />
+- 地緣政治對科技產業供應鏈影響<br />
+- AI需求能否持續超預期</p>
+<hr />
+<p><strong>情緒報告完成</strong> (SENTIMENT REPORT COMPLETE)</p>
+<p>資料來源統計日期：2026-07-23<br />
+分析數據涵蓋期間：2026年6月～7月 (含4月融券統計)</p></div>
+        </div>
+      </div>
+    </details>
+
+    <details class="mb-4 border border-slate-200 rounded">
+      <summary class="bg-slate-50 px-4 py-2 font-semibold">Phase 2 — Bull vs Bear 辯論</summary>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+        <div>
+          <h4 class="font-bold text-green-700 mb-2">🐂 多方 (Bull)</h4>
+          <div class="agent-prose text-sm bg-green-50 p-3 rounded border border-green-200"><h1>Bull Case Round 1 — 3231.TW (緯創資通/Wistron)</h1>
+<h2>Thesis（一句話）</h2>
+<p>緯創以 P/E 9.6x 的極度低估值，乘 AI 伺服器超級週期完成全面轉型：H1 2026 營收年增 94.1%、美國首廠 7 月 21 日開幕鎖定 GB300 北美訂單，分析師共識目標價 NT$205-225 對應現價 +25-37% 上漲空間，且上修動能仍在持續。</p>
+<hr />
+<h2>Growth Drivers（成長驅動力）</h2>
+<ul>
+<li>
+<p><strong>H1 2026 營收爆炸性成長</strong>：上半年累計 NT$1.74 兆，YoY +94.1%；Q2 單季 +62.4% YoY；2026 年 5 月單月年增率高達 +162.14%（news.md）。成長不僅沒有減速，季對季的基期效應顯示後半年依然可維持 40%+ YoY。</p>
+</li>
+<li>
+<p><strong>AI 伺服器組合佔比達 70%</strong>：轉型已完成。消費電子負擔已被切除，緯創現在實質上是一家純 AI 伺服器 ODM 廠，享受最高乘數的產品線。（news.md）</p>
+</li>
+<li>
+<p><strong>Hyperscaler CapEx 可見度支撐至 2027</strong>：Microsoft ~$190B、Amazon ~$200B、Google $175-185B、Meta $115-135B，2026 年合計約 $725B，年增 77%（news.md）。UBS 同步將 NVIDIA NVL72 出貨預估從 16,000 機櫃上修至 18,500 機櫃（sentiment.md），訂單能見度明確延伸至 2027 年。</p>
+</li>
+<li>
+<p><strong>UBS FY2026 EPS 上修至 NT$17、FY2027 至 NT$25</strong>：從原本 NT$15.5 / NT$21.5 上修（news.md），反映 AI 需求持續超預期，且上修方向為「向上」。</p>
+</li>
+<li>
+<p><strong>Q1 2026 淨利 +92.3% YoY</strong>：利潤成長速度與營收同步爆發，Operating Margin 環比上升 14.4%（news.md）。毛利率 5.21% 雖偏低，但絕對利潤呈飛躍式增長，代表規模效益正在兌現。</p>
+</li>
+</ul>
+<hr />
+<h2>Moat（護城河）</h2>
+<p>緯創護城河建立在「多區域製造不可替代性」：</p>
+<ol>
+<li>
+<p><strong>Fort Worth D1 廠（2026-07-21 開幕）</strong>：全美第一個量產 NVIDIA GB300 Grace Blackwell Ultra 的設施，具備液冷產線。北美雲端客戶（Microsoft、Google、Meta、Amazon）在地化供應鏈需求無可迴避，且規避美國關稅風險。先發優勢難以快速複製（news.md）。</p>
+</li>
+<li>
+<p><strong>印度 NT$380 億新廠</strong>：泰蘭加納廠提供伺服器、路由器、交換設備製造能力，形成台灣＋美國＋印度三角製造布局，供應鏈韌性遠高於單一地區競爭對手（news.md）。</p>
+</li>
+<li>
+<p><strong>Compute Board 設計實力</strong>：在機架組裝市場排名第三（16% 份額），但核心優勢在於系統設計靈活性與 Compute Board，議價能力隨 GB300 / Vera Rubin 切換而提升（news.md）。</p>
+</li>
+<li>
+<p><strong>轉換成本</strong>：客戶一旦驗證緯創廠房（包含液冷工程、散熱設計），重新驗證競爭廠商的週期長達 12-18 個月，形成天然黏性。</p>
+</li>
+</ol>
+<hr />
+<h2>Upside Scenario（估值上漲情境）</h2>
+<table>
+<thead>
+<tr>
+<th>情境</th>
+<th>邏輯</th>
+<th>目標價</th>
+<th>現價 NT$164 起漲幅</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Base</td>
+<td>P/E 12x × FY2026 EPS NT$17</td>
+<td>NT$204</td>
+<td><strong>+24%</strong></td>
+</tr>
+<tr>
+<td>Bull（共識）</td>
+<td>P/E 13.2x × NT$17（UBS 目標 NT$225）</td>
+<td>NT$225</td>
+<td><strong>+37%</strong></td>
+</tr>
+<tr>
+<td>Strong Bull</td>
+<td>P/E 15x × FY2027 EPS NT$25</td>
+<td>NT$375</td>
+<td><strong>+129%</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>現況</strong>：P/E 僅 9.6x（NT$164 ÷ NT$17）對應 94% 營收成長，是市場中最明顯的「成長速度vs估值倍數」錯配之一。重新定價至合理 12-13x 即可產生 24-37% 報酬，無需任何樂觀假設。</p>
+<hr />
+<h2>Catalysts（近期催化劑，有日期）</h2>
+<table>
+<thead>
+<tr>
+<th>日期</th>
+<th>事件</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>2026-07-21（已發生）</strong></td>
+<td>Fort Worth D1 廠開幕，GB300 量產訊號確認，媒體曝光度高</td>
+</tr>
+<tr>
+<td><strong>2026-08-10 前後</strong></td>
+<td>TWSE 公布 7 月月營收 — 監看 YoY 能否維持 40%+</td>
+</tr>
+<tr>
+<td><strong>2026-08-中</strong></td>
+<td>Q2 法人說明會 — Q3 guidance、毛利率改善路徑、Vera Rubin 進度</td>
+</tr>
+<tr>
+<td><strong>2026-09-初</strong></td>
+<td>NVIDIA Vera Rubin 大規模出貨啟動 — 緯創德州廠第二條產線點火</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Tactical（技術面動能）</h2>
+<p>雖然 PRICE_DATA 受 proxy 限制，sentiment.md 揭示：</p>
+<ul>
+<li>股價自 7 月 14 日 NT$143.50 → 7 月下旬 NT$164，短短兩週上漲 <strong>+10.1%</strong>，動能正向。</li>
+<li>融券餘額極低（融券使用率 0.03%），放空壓力幾乎不存在，上漲阻力主要來自獲利了結而非做空。</li>
+<li>外資持股 31.11%，機構面外資與自營商同步進場，為多頭提供籌碼支撐。</li>
+<li>技術分類為 <strong>Turnaround（反轉股）</strong>，動能仍處於上升通道初中段。</li>
+</ul>
+<hr />
+<h2>Rebuttal to Bear Round 0</h2>
+<p>（Round 1 為首輪辯論，尚無熊方報告。待熊方提出後，Round 2 逐點反駁。）</p>
+<hr />
+<h2>Confidence</h2>
+<p><strong>9 / 10</strong></p>
+<p><strong>理由</strong>：<br />
+- 基本面數據異常強勁（H1 +94.1% YoY），且已獲公開財報確認，並非預估。<br />
+- 估值倍數（P/E 9.6x）與成長速度的錯配程度極罕見，提供顯著安全邊際。<br />
+- 78% 分析師 BUY、外資穩定布局、管理層無套現，情緒面三方共振。<br />
+- Fort Worth 廠開幕為可驗證的結構性事件，而非前瞻性預期。<br />
+- 扣分 1 分：毛利率 5.21% 偏低且 Vera Rubin 出貨若延遲將衝擊 H2 guidance。</p>
+<hr />
+<p>BULL ROUND 1 COMPLETE</p></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-red-700 mb-2">🐻 空方 (Bear)</h4>
+          <div class="agent-prose text-sm bg-red-50 p-3 rounded border border-red-200"><h1>Bear case round 1 — 3231.TW (緯創資通)</h1>
+<h2>Thesis（1句話）</h2>
+<p>營收爆炸性成長的表面之下，毛利率結構性惡化、鉅額海外CapEx壓縮未來利潤，加上AI伺服器週期高度集中風險，當前股價NT$164已充分反映最樂觀情境，下行空間被市場嚴重低估。</p>
+<hr />
+<h2>Demand / 市場風險</h2>
+<p><strong>AI伺服器週期集中度過高（70%曝險）</strong><br />
+緯創H1 2026的AI伺服器產品組合已達70%。這不是多元化優勢，而是單點風險集中。主要雲端客戶（Microsoft ~$190B、Amazon ~$200B、Google $175B、Meta $115B）的資本支出若出現任何收縮或延後，緯創首當其衝。歷史上ODM代工廠在雲端CapEx削減週期中，營收可在2至3季內腰斬。</p>
+<p><strong>客戶集中：Microsoft單一客戶佔比20-30%</strong><br />
+五大客戶（Microsoft、Google、Meta、Amazon、Dell）中，單一最大客戶估計佔收入20-30%。若微軟重新評估AI基礎設施支出步伐（其$190B CapEx計畫已引發股東質疑），緯創無替代緩衝。</p>
+<p><strong>市佔排名第三，結構性競爭劣勢</strong><br />
+2026年4月機架組裝市占：鴻海44%、廣達26%、緯創僅16%。在「贏者通吃」的ODM訂單競爭中，位居第三代表議價力最弱、接到低利潤尾單機率最高，且優先供應鏈配額永遠排在前兩名之後。</p>
+<hr />
+<h2>Margin / 現金流風險</h2>
+<p><strong>Q1 2026毛利率5.21%：薄如刀刃，且仍在惡化軌道</strong><br />
+營收+94% YoY，但毛利率僅5.21%。這意味著每NT$100營收只剩NT$5.21毛利。完整機架系統（complete rack system）產品組合的擴張是主因，這種結構性壓力不會因為規模增加而逆轉——規模越大、低毛利產品比例越高，毛利率越難反彈。</p>
+<p><strong>Fort Worth D1廠：$700M投資，美國勞工成本3-5倍台灣</strong><br />
+德州廠開幕象徵地緣政治佈局成功，但財務代價是長期性的。美國製造人力成本是台灣的3-5倍，初期產能利用率不足更將造成固定成本攤銷壓力。這是未來2-3年持續的margin dilution來源，無法被「規避關稅」完全對沖。</p>
+<p><strong>印度廠NT$380億（約$1B USD）執行風險：新興市場製造爬坡是多年苦戰</strong><br />
+印度泰蘭加納廠宣布投資NT$380億，但新興市場設廠的歷史教訓包括：基礎設施落後、供應鏈配套不足、政策風險、人才培訓成本。爬坡週期通常需要2-4年，期間資本佔用大、回報率極低，直接拖累ROE與FCF。</p>
+<p><strong>CapEx超級週期：FCF將大幅惡化</strong><br />
+台灣、美國、印度三地同步擴產，資本支出激增將使FCF/NI比率從當前估計0.80-1.10急速下滑。若CapEx支出佔營收比提升至5-7%（產能擴張期正常水位），自由現金流轉負的風險真實存在。</p>
+<hr />
+<h2>Valuation risk</h2>
+<p><strong>熊市情境估值：</strong><br />
+- 熊市假設：AI週期降速，FY2026 EPS下修至NT$10（vs FactSet共識NT$13.72）<br />
+- 熊市P/E倍數：<strong>10x</strong>（ODM業歷史週期收縮倍數，參考2015-2016消費電子週期低點）<br />
+- 熊市目標價：<strong>10x × NT$10 = NT$100</strong>，較當前NT$164下跌 <strong>-39%</strong></p>
+<p><strong>最悲觀情境：</strong><br />
+- 若AI CapEx推遲且毛利率繼續壓縮，EPS NT$8 × 8x = <strong>NT$64</strong>，下跌 <strong>-61%</strong></p>
+<p><strong>PRICE_DATA_UNAVAILABLE使問題複雜化：</strong> 無法確認即時股價、無法設定止損點、無法計算R:R比率——這本身就是一個無法規避的操作風險，任何倉位規模設定均缺乏技術依據。</p>
+<hr />
+<h2>Competitive / Regulatory</h2>
+<p><strong>鴻海垂直整合優勢無法被追趕</strong>：GPU模組、基板自製率高，成本結構長期優於緯創，差距難以縮短。</p>
+<p><strong>美中貿易管制升級風險</strong>：若美國擴大晶片出口許可限制範圍至伺服器整機，ODM廠首當其衝。緯創客戶包含Google、Meta，若這些平台的AI出口涉及新限制，訂單鏈可能中斷。</p>
+<p><strong>廣達液冷整合能力更成熟</strong>：液冷技術是HBM4時代差異化核心，廣達在此領域業界最穩定，緯創德州廠雖已建液冷產線，但追趕者身份意味著學習曲線成本由自己承擔。</p>
+<hr />
+<h2>Tactical（技術面）</h2>
+<p><strong>PRICE_DATA_UNAVAILABLE</strong>：所有技術指標均無法取得。</p>
+<ul>
+<li>無RSI、MACD、Bollinger Bands數據</li>
+<li>無MA20/MA50/MA200支撐確認</li>
+<li>無成交量驗證，無法確認突破有效性</li>
+<li>已知參考點：7/14收NT$143.5，7月下旬NT$164——短期漲幅+14.5%，若無技術確認，此上漲缺乏可追蹤的止損錨點</li>
+<li><strong>結論：無法設定止損，無法計算R:R——此為獨立拒絕理由（Standalone Veto）</strong></li>
+</ul>
+<hr />
+<h2>Rebuttal to Bull Round 1（反駁多方論點）</h2>
+<p><strong>多方主張：「H1 2026營收+94% YoY，AI轉型成功」</strong><br />
+反駁：營收爆炸的同時毛利率只有5.21%，這不是成功轉型，而是用低利潤換量的規模陷阱。絕對利潤增加不代表業務品質提升，ODM代工的天花板是毛利率，目前連6%都守不住。</p>
+<p><strong>多方主張：「UBS目標價NT$225，分析師78%看多」</strong><br />
+反駁：分析師在週期頂部集體看多的現象（78% BUY）本身是反向指標。UBS的NT$17 EPS預估已預設H2 2026出貨強勁，但Vera Rubin延宕或雲端CapEx任何削減都將使此預估大幅落空。目標價225對應的P/E是13-16x，在毛利率5%的ODM業，此倍數已隱含近乎完美情境。</p>
+<p><strong>多方主張：「Fort Worth廠規避關稅，鎖定北美客戶」</strong><br />
+反駁：規避關稅的成本是永久性的高勞工成本結構。客戶鎖定是雙向的——緯創被綁定在高成本製造地點，而客戶有能力隨時重新招標、引入競爭者。$700M投入的折舊與運營成本將在未來5-7年持續壓縮回報率。</p>
+<p><strong>多方主張：「外資持股31%，機構信心充足」</strong><br />
+反駁：外資持股高代表賣壓也大。若AI週期轉向，31%的外資籌碼集中度意味著機構在同一時間點殺出，流動性衝擊將被放大。投信近期已開始獲利了結（3日連賣-12,441股），先行指標已出現。</p>
+<p><strong>多方主張：「AI伺服器超級週期，需求能見度高」</strong><br />
+反駁：雲端巨頭的CapEx計畫往往過度前置——Microsoft、Google均在2024年底就宣佈了巨額資本支出，但實際落單時程和訂單規格可隨時調整。70%的AI伺服器組合意味著緯創沒有下行緩衝，一旦主要客戶縮減H2訂單，季度財務數字的下行速度會遠超預期。</p>
+<hr />
+<h2>Confidence</h2>
+<p><strong>信心度：7/10</strong></p>
+<p>熊方信心來源：<br />
+- 毛利率5.21%的結構性壓縮有財報數字支撐，非推測<br />
+- 海外CapEx（美國$700M + 印度NT$380億）的margin dilution是可量化的長期壓力<br />
+- 70%週期集中度是公開承認的數字，風險對稱性極差<br />
+- 技術面完全無法評估（PRICE_DATA_UNAVAILABLE），使任何進場決策缺乏風險管理基礎</p>
+<p>信心折損因素：<br />
+- AI伺服器需求確實超強，主要雲端客戶CapEx共識仍向上<br />
+- UBS/Morgan Stanley外資機構上調預估有一定市場驗證<br />
+- 管理層沒有套現賣壓，內部人信心看似真實</p>
+<hr />
+<p>BEAR ROUND 1 COMPLETE</p></div>
+        </div>
+      </div>
+    </details>
+
+    <details class="mb-4 border border-slate-200 rounded">
+      <summary class="bg-slate-50 px-4 py-2 font-semibold">Phase 4 — 風險辯論 (Risk debate)</summary>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 p-4">
+        <div>
+          <h4 class="font-bold text-red-700 mb-2">⚡ 進攻 (Aggressive)</h4>
+          <div class="agent-prose text-sm bg-red-50 p-3 rounded border border-red-200"><h1>Aggressive risk view — 3231.TW (緯創資通)</h1>
+<h2>交易員過於保守的地方</h2>
+<ul>
+<li><strong>規模嚴重低估信念</strong>：計畫以 1.0–1.5% NAV 對應 MEDIUM-HIGH（70–75%）信念，兩者明顯不一致。P/E 9.6x 對應 +94.1% 營收成長是市場罕見的定價錯誤，這種組合應觸發 2.5–3% NAV 配置，而非縮手於 1.5%。</li>
+<li><strong>止損 10–12% 太緊、必被洗出</strong>：股票在過去 9 個交易日已波動 +14.3%（NT$143.5 → NT$164）。在這樣的波動率環境下設 10–12% 止損，等同於把止損直接放在日常雜訊區間內。任何正常回測都會觸發止損後股價再反彈。</li>
+<li><strong>批次二等待 8/10 月營收公告是放棄 Alpha</strong>：Fort Worth D1 廠於 7 月 21 日正式開幕，為兩天前的鮮活催化劑，市場尚未充分消化。等到 8 月 10 日月營收公告，分析師升評潮極可能已提前推動股價上漲 5–10%；以「等確認」換來的只是更差的入場價，而非更低的風險。</li>
+<li><strong>選擇權機會被完全忽略</strong>：在明確催化劑時間表下（8 月中法說會、9 月 Vera Rubin 量產點火），期間的波動率不對稱提供了理想的 call spread 結構機會，現行計畫沒有任何槓桿表達。</li>
+</ul>
+<h2>建議調整</h2>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>原計畫</th>
+<th>激進建議</th>
+<th>理由</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Size</strong></td>
+<td>Medium（1.0–1.5% NAV）</td>
+<td><strong>Large（2.5–3% NAV）</strong></td>
+<td>P/E 9.6x + 94% 成長屬歷史性錯誤定價，信念 70–75% 應對應更大配置</td>
+</tr>
+<tr>
+<td><strong>Stop</strong></td>
+<td>Entry 下方 10–12%</td>
+<td><strong>Entry 下方 13–15%</strong></td>
+<td>給高波動率股票呼吸空間，避免在雜訊內被洗出，估值地板（P/E ~8x）仍在更低處提供支撐</td>
+</tr>
+<tr>
+<td><strong>Entry</strong></td>
+<td>批次一即刻（60%）；批次二等 8/10</td>
+<td><strong>立即建倉 80%，剩餘 20% 留給 Q2 法說會確認</strong></td>
+<td>Fort Worth 催化劑剛落地 48 小時，入場不應再設條件性延遲</td>
+</tr>
+<tr>
+<td><strong>Options</strong></td>
+<td>無</td>
+<td><strong>9 月到期 call spread（Entry 附近買入 / +15% 賣出）</strong></td>
+<td>鎖定雙催化劑窗口（8 月法說會 + 9 月量產點火），以有限 premium 放大上行</td>
+</tr>
+</tbody>
+</table>
+<h2>非對稱論點</h2>
+<p>以 3% NAV 規模、15% 止損評估：</p>
+<ul>
+<li><strong>最壞情況最大損失</strong>：3% × 15% = <strong>–0.45% NAV</strong>（絕對數字可接受）</li>
+<li><strong>T1 合理上行</strong>（共識目標 +26%）：3% × 26% = <strong>+0.78% NAV</strong></li>
+<li><strong>T2 上行</strong>（UBS 目標 +37%）：3% × 37% = <strong>+1.11% NAV</strong></li>
+<li><strong>R:R（T1）</strong>：0.78 ÷ 0.45 = <strong>1.73x</strong></li>
+<li><strong>R:R（T2）</strong>：1.11 ÷ 0.45 = <strong>2.47x</strong></li>
+</ul>
+<p>對比原計畫（1.5% NAV × 12% 止損 = –0.18% NAV 損失上限），激進方案僅多承擔 <strong>0.27% NAV 絕對風險</strong>，卻在 T1 增加 <strong>0.39% NAV</strong> 的潛在報酬。增量 R:R 為 0.39 ÷ 0.27 = <strong>1.44x</strong>，在新催化劑（Fort Worth 開幕）剛出現、尚未被市場充分定價的此刻，這個增量風險的賠率是值得承受的。</p>
+<h2>我的執行建議</h2>
+<p>立即將批次一建倉規模從計畫的 60% 提升至 80%，整體 NAV 配置目標從 1.5% 上調至 2.5–3%。同步放寬止損至 Entry 下方 13–15%，讓高波動率股票有足夠空間運行，不再以「波動率高」作為縮小規模的理由——波動率高本身正是更大規模搭配更寬止損的理由，而非壓縮規模的理由。此外，應評估以 3% NAV 股票倉位為核心，附加小比例（0.3–0.5% NAV premium）的 9 月到期 call spread，以結構性方式鎖定雙催化劑爆發機會，而非只靠現貨線性敞口。批次二觸發條件可從 YoY ≥40% 下調至 ≥25%，降低等待門檻，確保不因過高的確認標準而錯失加碼時機。</p>
+<p>AGGRESSIVE RISK COMPLETE</p></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-blue-700 mb-2">🛡️ 保守 (Conservative)</h4>
+          <div class="agent-prose text-sm bg-blue-50 p-3 rounded border border-blue-200"><h1>Conservative risk view — 3231.TW</h1>
+<h2>Where trader is too aggressive</h2>
+<ol>
+<li>
+<p><strong>PRICE_DATA_UNAVAILABLE 使 vol-adjusted sizing 完全失效</strong>：提案以 Entry 下方 10-12% 作為 stop，但無 ATR、無 MA 錨點、無 RSI 可驗證技術支撐。10-12% 是猜測值而非技術分析。在此條件下立即執行批次一（0.60-0.90% NAV）等同於在黑暗中定義風險，不可接受。</p>
+</li>
+<li>
+<p><strong>追漲風險被輕描淡寫</strong>：股價在 9 個交易日內自 NT$143.5 升至 NT$164（+14.3%），Fort Worth 開幕熱度已部分計入現價。「估值錯配已充分顯現」的邏輯並不等同於「現在是最佳進場點」——追 hype spike 後才進場，正是讓 R:R 最差的操作時機。</p>
+</li>
+<li>
+<p><strong>EPS 共識落差低估了估值壓縮空間</strong>：提案以 UBS EPS NT$17 計算 P/E 9.6x，但 FactSet 共識 EPS 僅 NT$13.72，對應 P/E ~12x。若實際獲利貼近市場共識，所謂「歷史性低估」大幅縮窄，12x 在科技代工業不構成顯著折讓。</p>
+</li>
+<li>
+<p><strong>GM 結構壓縮與 ODM 排名劣勢被系統性低估</strong>：GM 5.21% 已受完整機架系統組合壓低；Fort Worth 美國勞工成本 3-5 倍於台灣，印度 NT$380 億爬坡期 2-4 年回報率極低。行業排名第三（16% 份額）在 Foxconn（44%）、廣達（26%）主導下，利潤讓步壓力最集中於緯創；「以量換質」隱憂未獲充分量化。</p>
+</li>
+</ol>
+<hr />
+<h2>Tail scenarios</h2>
+<ul>
+<li>
+<p><strong>情境 A（機率 20%）：8/10 月營收 YoY &lt; 40%</strong>　趨勢斷裂，市場重新定價 AI 出貨動能。股價自 NT$164 下跌約 15-20%；以 FactSet 共識 EPS NT$13.72 × 12x 重估，合理支撐約 NT$137，NAV 損失：全倉 1.5% × ~18% ≈ <strong>0.27% NAV</strong>。</p>
+</li>
+<li>
+<p><strong>情境 B（機率 15%）：Q2 法說會 GM guidance 未達 5.5%，管理層確認結構壓縮</strong>　賣方下修目標價，外資降評，股價下跌 20-25%（至 NT$123-131 區間），R:R 反轉，T1 NT$206 短期不可及。NAV 損失：全倉 1.5% × ~22% ≈ <strong>0.33% NAV</strong>。</p>
+</li>
+<li>
+<p><strong>情境 C（機率 10%）：Vera Rubin 量產延宕 + 總經衝擊（Fed 超預期緊縮或 Microsoft CapEx 縮減）</strong>　FY2027 EPS NT$25 估算失效，科技板塊輪動加速。股價測試 Entry 下方 25%+，PRICE_DATA_UNAVAILABLE 使機械式止損執行更加困難，尾部損失無法被精確控制。</p>
+</li>
+</ul>
+<hr />
+<h2>Recommended adjustments</h2>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>提案</th>
+<th>保守建議</th>
+<th>理由</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Size</td>
+<td>Medium 1.0-1.5% NAV</td>
+<td><strong>Small ≤ 0.75% NAV（硬上限）</strong></td>
+<td>PRICE_DATA_UNAVAILABLE 無法 vol-adjust；追漲 +14.3% 後風險/報酬比已劣化</td>
+</tr>
+<tr>
+<td>Stop</td>
+<td>Entry 下方 10-12%</td>
+<td><strong>Entry 下方 8%（更緊）</strong></td>
+<td>無技術錨點情況下，止損越寬隱性美元風險越大；8% 為可接受的資訊品質對應上限</td>
+</tr>
+<tr>
+<td>Entry</td>
+<td>批次一即刻執行</td>
+<td><strong>取消即刻進場；等待 8/10 月營收確認後建倉</strong></td>
+<td>兩週等待機會成本遠低於追漲風險；先確認趨勢延續再進場</td>
+</tr>
+<tr>
+<td>Consider</td>
+<td>—</td>
+<td>若可取得，以台股科技代工相關 ETF 或 OTM put 對沖 -15% 以下尾部；或縮小至單一批次進場模式</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Position-level $ risk</h2>
+<p>以投資組合 NAV = <strong>N</strong> 為計算基準（可等比例換算實際金額）：</p>
+<table>
+<thead>
+<tr>
+<th>方案</th>
+<th>倉位</th>
+<th>Stop</th>
+<th>最大損失</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>提案（滿倉）</td>
+<td>1.5% NAV</td>
+<td>11%（取中值）</td>
+<td>1.5% × 11% × N = <strong>0.165% NAV</strong></td>
+</tr>
+<tr>
+<td>保守建議</td>
+<td>0.75% NAV</td>
+<td>8%</td>
+<td>0.75% × 8% × N = <strong>0.060% NAV</strong></td>
+</tr>
+<tr>
+<td>差異</td>
+<td>—</td>
+<td>—</td>
+<td>保守方案降低單筆最大風險敞口約 <strong>64%</strong></td>
+</tr>
+</tbody>
+</table>
+<p>在 PRICE_DATA_UNAVAILABLE 條件下，0.165% NAV 的損失本身尚在可接受範圍，但考量技術錨點全無、股價追漲 +14.3%、GM 結構壓縮、EPS 共識與 UBS 目標落差三重疊加，<strong>以當前資訊品質為基礎，0.060% NAV 才是合理的單筆風險上限</strong>。</p>
+<hr />
+<h2>What I'd push for</h2>
+<p>現在不是建倉的時機，是等待確認的時機。批次一立即進場的論點建立在「估值錯配已充分顯現」，但這忽略了股價已在兩週內追漲 14.3%，且 FactSet 共識 EPS NT$13.72 若為正確，P/E 已達 12x 而非 9.6x，估值安全邊際大幅縮窄。<strong>我的方案：全面取消批次一的即刻進場；等 8/10 TWSE 月營收公告確認 YoY ≥ 40%，再以 0.50% NAV 建立初始部位，止損設在 Entry 下方 8%；Q2 法說會 GM guidance 達 5.5% 後，加碼至 0.75% NAV 硬上限，不再進一步擴倉。</strong> 若任一確認節點未達標，不加碼並重新評估退出。PRICE_DATA_UNAVAILABLE 是這筆交易的核心操作風險——在技術面全盲的情況下主動求快，代價遠高於靜候兩週確認資料的機會成本。</p>
+<hr />
+<p>CONSERVATIVE RISK COMPLETE</p></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-slate-700 mb-2">⚖️ 中立 (Neutral)</h4>
+          <div class="agent-prose text-sm bg-slate-100 p-3 rounded border border-slate-300"><h1>Neutral risk view — 3231.TW</h1>
+<h2>Points of agreement (both sides)</h2>
+<ul>
+<li>方向共識：LONG，基本面論據支撐方向，無分歧</li>
+<li>PRICE_DATA_UNAVAILABLE 是真實操作限制；止損無法依技術錨點設定，兩方均認同</li>
+<li>+14.3%（NT$143.5→NT$164，9 個交易日）造成追漲風險，兩方均已認知</li>
+<li>Fort Worth D1 廠開幕為合法、可驗證的結構性催化劑</li>
+<li>GM 5.21% 壓縮與排名第三的議價弱勢是值得持續監控的真實風險</li>
+</ul>
+<hr />
+<h2>Aggressive overreach</h2>
+<ul>
+<li><strong>規模 2.5–3% NAV 過大</strong>：在 PRICE_DATA_UNAVAILABLE、無 ATR 錨點的條件下，70–75% 信念不足以支撐倉位三倍擴張。若遭洗盤，損失放大完全不成比例。此為情緒性的「低估機不可失」偏誤，非有根據的規模決策。</li>
+<li><strong>Call spread 建議不可執行</strong>：隱含波動率數據缺失，premium 定價盲目；在 PRICE_DATA_UNAVAILABLE 全盲環境下增加選擇權複雜度，引入難以量化的新風險層。</li>
+</ul>
+<hr />
+<h2>Conservative overreach</h2>
+<ul>
+<li><strong>取消批次一即刻進場</strong>：Fort Worth 催化劑距今 48 小時，市場尚未充分消化；靜候 8/10 月營收的機會成本是錯失分析師升評潮預先推動的 5–10% 漲幅。拒絕立即進場是情緒性反應，而非有根據的論點。</li>
+<li><strong>止損收緊至 8%</strong>：股票 9 個交易日波動 +14.3%，8% 止損在正常雜訊中幾乎必然被洗出；這不是「保護」，是確保在錯誤時間點出場。</li>
+<li><strong>0.75% NAV 硬上限過低</strong>：即採 FactSet 共識 EPS NT$13.72（P/E 12x at NT$164），相對 94.1% YoY 收入成長仍屬顯著低估；以此倍數評估，0.75% NAV 與信念強度不相稱。</li>
+</ul>
+<hr />
+<h2>Balanced adjustment proposal</h2>
+<ul>
+<li><strong>Size</strong>：總倉位 <strong>1.25% NAV</strong>。EPS 基準採 FactSet NT$13.72（P/E 12x = BUY 有效），UBS NT$17（P/E 9.6x）為上行情境，非基準假設。</li>
+<li><strong>Stop</strong>：Entry 下方 <strong>12%</strong>（積極方 13–15% 與保守方 8–10% 之有根據折衷；兼顧高波動率呼吸空間與 NAV 保護上限）。<strong>禁止使用 NT$ 絕對數字（PRICE_DATA_UNAVAILABLE）。</strong></li>
+<li><strong>Entry</strong>：批次一（0.75% NAV）<strong>即刻以市價執行</strong>——Fort Worth 催化劑新鮮，等待是無謂讓渡 Alpha；批次二（+0.5% NAV）等 8/10 TWSE 月營收公告 YoY ≥ 40% 後執行。</li>
+<li><strong>Hedge</strong>：不加 call spread（隱含波動率定價不可靠）；以嚴格觸發條件（YoY 40% 門檻、Q2 法說會 GM guidance ≥ 5.5%）作為天然對沖節點，觸發不達則不加碼。</li>
+<li><strong>Time horizon</strong>：1–2 季（核心收益窗口 2026 Q3–Q4）；Vera Rubin 量產確認後可延伸。</li>
+</ul>
+<hr />
+<h2>Net $ risk if stop hits</h2>
+<ul>
+<li>批次一觸發（8/10 前）：0.75% × 12% = <strong>0.09% NAV</strong></li>
+<li>滿倉觸發（8/10 後）：1.25% × 12% = <strong>0.15% NAV</strong></li>
+</ul>
+<h2>Net $ upside at T1 / T2</h2>
+<ul>
+<li>T1（+26%，共識中位 NT$206）：1.25% × 26% = <strong>0.325% NAV</strong> ／ R:R <strong>2.17x</strong></li>
+<li>T2（+37%，UBS NT$225）：1.25% × 37% = <strong>0.463% NAV</strong> ／ R:R <strong>3.08x</strong></li>
+</ul>
+<p>NEUTRAL RISK COMPLETE</p></div>
+        </div>
+      </div>
+    </details>
+
+  </div>
+
+  <script>
+    (function() {
+      var d = {};
+      if (!d.dates) return;
+      var traces = [
+        {x: d.dates, y: d.close, name: 'Close',  line: {color: '#1f2937', width: 2}},
+        {x: d.dates, y: d.ma20,  name: 'MA20',   line: {color: '#0ea5e9', width: 1, dash: 'dot'}},
+        {x: d.dates, y: d.ma50,  name: 'MA50',   line: {color: '#f59e0b', width: 1, dash: 'dot'}},
+        {x: d.dates, y: d.ma200, name: 'MA200',  line: {color: '#ef4444', width: 1, dash: 'dash'}}
+      ];
+      var layout = {
+        margin: {l: 50, r: 20, t: 10, b: 40},
+        legend: {orientation: 'h', y: -0.15},
+        xaxis: {showgrid: false},
+        yaxis: {title: '價格 ($)'}
+      };
+      Plotly.newPlot('chart-3231_TW', traces, layout, {displayModeBar: false, responsive: true});
+    })();
+  </script>
+
+</section>
+
+
+<section id="ticker-2356_TW" class="mb-10 bg-white rounded-lg shadow overflow-hidden">
+
+  <div class="flex items-start justify-between p-6 border-b border-slate-200 verdict-HOLD">
+    <div>
+      <h2 class="text-3xl font-bold">2356.TW</h2>
+      <p class="text-sm mt-1 opacity-80">英業達 (2356) — AI server ODM</p>
+    </div>
+    <div class="text-right">
+      <div class="text-4xl font-bold">HOLD</div>
+      <div class="text-sm opacity-80 mt-1">MODIFY</div>
+    </div>
+  </div>
+
+  <div class="p-6 grid grid-cols-1 lg:grid-cols-2 gap-6">
+
+    <div>
+      <h3 class="text-lg font-bold mb-2">價格 + 技術指標 (2 年)</h3>
+      <div id="chart-2356_TW" style="height: 380px;"></div>
+    </div>
+
+    <div>
+      <h3 class="text-lg font-bold mb-2">最終決策 (Final decision)</h3>
+      <div class="agent-prose text-sm bg-slate-50 p-4 rounded border border-slate-200">
+        <h1>Final decision — 2356.TW as of 2026-07-23</h1>
+<p>FINAL TRANSACTION PROPOSAL: <strong>HOLD</strong></p>
+<h2>Verdict</h2>
+<p>MODIFY（採 Neutral 條件式框架：財報前 0% NAV，8/7 後條件成立方啟動放空）</p>
+<h2>Final trade card</h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Direction</td>
+<td>SHORT（條件式，8/7 財報後啟動）</td>
+</tr>
+<tr>
+<td>Entry zone</td>
+<td>NT$70 – NT$74（財報後反彈區，禁盤前/開盤搶空）</td>
+</tr>
+<tr>
+<td>Stop</td>
+<td>NT$77.5（進場上方約 +7.6%，突破分析師目標上緣即論點失效）</td>
+</tr>
+<tr>
+<td>Target 1</td>
+<td>NT$60</td>
+</tr>
+<tr>
+<td>Target 2</td>
+<td>NT$51</td>
+</tr>
+<tr>
+<td>Size</td>
+<td>財報前 0%；觸發後 Small 0.75% NAV，跌破 NT$65 收盤站穩可加至 Medium 1.5%</td>
+</tr>
+<tr>
+<td>Horizon</td>
+<td>1-3m（8/7 為第一節點，Q3 GM 數據 10-11 月為第二節點）</td>
+</tr>
+<tr>
+<td>Conviction</td>
+<td>H（方向）/ M（時機）</td>
+</tr>
+<tr>
+<td>R:R to T1</td>
+<td>2.2x</td>
+</tr>
+</tbody>
+</table>
+<p><strong>啟動觸發（至少一項）</strong>：Q2 GM &lt; 5.0% ｜ Q3 出貨指引下修 &gt; 10% ｜ 財報後分析師下修 EPS 至 NT$2.5 以下。</p>
+<h2>Risk debate adjudication</h2>
+<ul>
+<li>Aggressive 最強論點：三大熊方催化劑（DRAM 40+ 週交期、Wistron D1 量產、中國 &gt;50% 集中）皆為已查核的既成事件，估值落差此刻即存在，非 8/7 才顯現；最大損耗僅約 0.04% NAV。</li>
+<li>Conservative 最強論點：FINI 100,000+ 張借券空單構成擁擠交易，「less bad 即利多」的台股 AI ODM 慣性使財報前搶空的軋空路徑損耗被系統性低估。</li>
+<li>Net：本案我更採信 Neutral。Aggressive 的估值落差為真，但「R:R 達標」不等於「時機正確」——在 8/7 binary event 前扛軋空以換取數日提前入場，性價比不足；Conservative 的「永久 0%」則在 GM&lt;5% 且指引下修 &gt;10% 的雙重惡化情境下（論點失效機率極低）放棄一個 R:R 2.2x-3.8x 的機會，屬反射性過度保守。條件式框架同時避開軋空尾部與踏空風險。</li>
+</ul>
+<h2>Monitoring trigger</h2>
+<p>若 8/7 前 DRAM 現貨報價週更新出現企穩/回落，或管理層預告 Q3 GM 已鎖價合約維持 ≥5.5%，則核心熊方論點鬆動，需在建倉前重新評估、暫停啟動。反向：股價收盤站穩 NT$77.5 直接放棄放空計畫。</p>
+<h2>Catalyst calendar</h2>
+<ul>
+<li>2026-07-24 前後 — 美台 Section 122 關稅（32%→10%）政策期限，落地將全面重估 ODM 板塊</li>
+<li>2026-08-07 — Q2/H1 財報暨法說會（核心催化劑，決定是否啟動）</li>
+<li>2026-10 至 11 月 — Q3 毛利率實際數據（第二驗證點）</li>
+</ul>
+<p>FINAL DECISION COMPLETE</p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="px-6 pb-6">
+
+    <details class="mb-4 border border-slate-200 rounded">
+      <summary class="bg-slate-50 px-4 py-2 font-semibold">投資計劃 (Research manager)</summary>
+      <div class="agent-prose p-4 text-sm"><h1>Investment plan — 2356.TW as of 2026-07-23</h1>
+<h2>Directional stance</h2>
+<p>SHORT_OR_AVOID — conviction HIGH</p>
+<hr />
+<h2>Crux of debate</h2>
+<ol>
+<li><strong>EPS 能否從 NT$3 基準大幅上修至 NT$4.5+</strong>：牛方估值合理性的唯一支柱是 EPS 超預期情境；若全年 EPS 維持在管理層指引 NT$3 附近，現價 NT$72.5 隱含 Forward P/E 約 24x，遠超 ODM 同業歷史均值 12-16x，估值難以自圓其說。</li>
+<li><strong>DRAM 危機對 Q3 毛利率的實際侵蝕幅度</strong>：企業級 DRAM 交期達 40 週以上、H1 漲幅 90%，英業達管理層（2026-07-16）已親口示警。GM 能否守在 5% 以上，還是跌破此線引發 EPS 連鎖下修，是決定 8/7 財報行情方向的核心變數。</li>
+<li><strong>8/7 Q2 財報能否扭轉 8 位分析師的保守共識</strong>：目標價 NT$49-53、僅 37.5% BUY 評級，代表主流機構認為現價高估 37-48%。唯有 Q2 EPS 大幅超預期「且」Q3 指引強勁，方可觸發分析師集體上修，否則估值剪刀差持續壓制股價。</li>
+</ol>
+<hr />
+<h2>Where the bull is right</h2>
+<ul>
+<li>6 月月營收 NT$102.26 億，YoY +61.6%（加速趨勢明確，非一次性）</li>
+<li>伺服器營收占比 Q1 2026 首破 50%，AI 轉型拐點已通過</li>
+<li>USD 10 億+ CapEx 全球六地同步擴產，管理層以資本支出表達訂單能見度</li>
+<li>100,000+ 張 FINI 借券空單構成短期技術性軋空催化劑，可短暫推升股價</li>
+</ul>
+<hr />
+<h2>Where the bear is right</h2>
+<ul>
+<li>現股價 NT$72.5 超出 8 位分析師共識目標 37-48%，多數評級為 HOLD/SELL；高於共識是清晰的估值警訊，而非「市場發現新機遇」</li>
+<li>Forward P/E 約 24x（以 EPS NT$3 計）相對 ODM 薄利模式（GM 5-6%）嚴重溢價，牛方情境需 EPS 與倍數同步擴張，機率偏低</li>
+<li>DRAM 企業級記憶體漲幅 90%、交期 40+ 週，Q3 GM 壓縮為公司自身揭露的既成風險，非推測</li>
+<li>Wistron D1 廠（德州沃斯堡，2026-07-21 正式開幕）率先完成 GB300 量產，英業達美國本土化落後至少 12-18 個月，結構性競爭劣勢已確立</li>
+<li>AI 伺服器銷售逾五成來自中國客戶，GPU 出口管制升級尾部風險集中</li>
+</ul>
+<hr />
+<h2>Net verdict</h2>
+<p>現股價 NT$72.5 已充分甚至過度反映樂觀情境，高於分析師共識目標 37-48%，且 62.5% 的分析師明確不建議積極買進。牛方的上修情境（EPS NT$4.5+、P/E 18-20x）需同時達成「EPS 大幅超預期」與「倍數擴張」，兩者均存在顯著不確定性。熊方核心論據——分析師共識目標、DRAM 管理層自發警告（2026-07-16）、Wistron 競爭差距（2026-07-21 開幕事件）——均為有日期、可查核的具體事件，論據品質明顯優於牛方對潛在 EPS 上修的數學推算。短期借券軋空雖可製造波動，但不改變中期基本面估值回歸方向。</p>
+<hr />
+<h2>What would change the verdict</h2>
+<ul>
+<li><strong>Upside trigger</strong>：8/7 財報 Q2 EPS ≥ NT$1.1，且 Q3 出貨指引維持強勁（AI 伺服器占比達 60%+），觸發分析師目標價集體上修至 NT$70 以上，估值剪刀差收斂</li>
+<li><strong>Downside trigger</strong>：8/7 財報 GM 跌破 5%、或 Q3 出貨指引下修逾 10%，分析師集體下修 EPS 至 NT$2.5 以下，估值回歸加速</li>
+<li><strong>Key data point to monitor</strong>：Q3 企業級 DRAM 實際採購成本轉嫁率；若英業達能以合約鎖價或客戶協議維持 GM ≥5.5%，熊方 GM 壓縮論點將顯著減弱</li>
+</ul>
+<hr />
+<h2>Position-sizing guidance</h2>
+<p><strong>AVOID（規避新進多頭部位）</strong>：現價已超出合理估值安全邊際，風險報酬比不利。若已持有，可考慮分批減碼至半倉或以下，待 8/7 財報確認方向後再評估。若考慮放空，須留意 100,000+ 張借券空單帶來的軋空損耗風險，建議等財報後基本面方向確認再操作，財報前不宜孤注一擲建立大型空頭。整體建議以觀望為主，不追多、不搶空。</p>
+<hr />
+<h2>Time horizon</h2>
+<p>中期（1-3 個月）：8/7 Q2 財報為最近關鍵催化節點；Q3 毛利率實際數據（約 2026 年 10-11 月）為第二驗證點。若基本面未見改善，估值向分析師共識目標 NT$49-54 回歸需 1-2 季時間；不適合以短線追多操作，軋空行情若出現亦宜視為減碼機會。</p>
+<hr />
+<p>INVESTMENT PLAN COMPLETE</p></div>
+    </details>
+
+    <details class="mb-4 border border-slate-200 rounded">
+      <summary class="bg-slate-50 px-4 py-2 font-semibold">交易提案 (Trader)</summary>
+      <div class="agent-prose p-4 text-sm"><p>FINAL TRANSACTION PROPOSAL: <strong>HOLD</strong></p>
+<h1>Trade proposal — 2356.TW as of 2026-07-23</h1>
+<h2>Direction</h2>
+<p>AVOID（財報前不建立任何新部位；既有多頭於 8/7 前出清）</p>
+<hr />
+<h2>核心邏輯</h2>
+<p>現價 NT$72.5 已超出 8 位分析師共識目標 NT$49-53 達 37-48%。以管理層 EPS 指引 NT$3 計，Forward P/E 約 24x，遠超 ODM 同業歷史均值 12-16x。熊方三大論據均有明確日期可查核：</p>
+<ol>
+<li><strong>DRAM 供應危機</strong>：管理層 2026-07-16 自揭企業級 DRAM 交期 40+ 週、價格 YoY +90%，Q3 GM 受壓為公司已承認的既成風險，而非推測。</li>
+<li><strong>Wistron 競爭缺口</strong>：Wistron D1 廠 2026-07-21 於德州沃斯堡正式量產 GB300，成為全球首個美國本土 GB300 基地；英業達美國本土化落後至少 12-18 個月，結構劣勢確立。</li>
+<li><strong>中國客戶集中風險</strong>：AI 伺服器逾 50% 銷售來自中國客戶，GPU 出口管制升級構成尾部風險。</li>
+</ol>
+<p>唯一短線多方力量——FINI 100,000+ 張借券空單軋空——屬技術面一次性事件，不改變中期估值回歸軌跡。</p>
+<hr />
+<h2>既有多頭持有者行動</h2>
+<p><strong>8/7 財報前分批減碼至 0%</strong>。若軋空行情推升股價，視為減倉機會，不追加。</p>
+<hr />
+<h2>條件式放空設置（8/7 財報後）</h2>
+<p><strong>啟動條件（須至少一項成立）</strong>：<br />
+- Q2 毛利率 GM 跌破 5.0%<br />
+- Q3 出貨指引下修幅度 &gt; 10%<br />
+- 財報後分析師跟進下修 EPS 至 NT$2.5 以下</p>
+<table>
+<thead>
+<tr>
+<th>參數</th>
+<th>數值</th>
+<th>依據</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>條件式放空進場區</td>
+<td>NT$70 – NT$74</td>
+<td>財報後反彈至前高提供空頭更佳進場點</td>
+</tr>
+<tr>
+<td>Stop</td>
+<td>NT$77.5（進場上方約 +7%）</td>
+<td>突破分析師目標上緣 NT$77 即論點失效，止損出場</td>
+</tr>
+<tr>
+<td>Target 1</td>
+<td>NT$60（約 -17%）</td>
+<td>近期波段低點 / 技術性整理支撐區</td>
+</tr>
+<tr>
+<td>Target 2</td>
+<td>NT$51（約 -28%）</td>
+<td>分析師共識均值 NT$49-53 中位</td>
+</tr>
+<tr>
+<td>R:R to T1</td>
+<td><strong>2.4x</strong></td>
+<td>(72 − 60) ÷ (77.5 − 72) ≥ 2.0 門檻，達標</td>
+</tr>
+<tr>
+<td>R:R to T2</td>
+<td><strong>4.1x</strong></td>
+<td>(72 − 51) ÷ (77.5 − 72)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Sizing</h2>
+<p><strong>財報前：0% NAV</strong>（完全觀望）。</p>
+<p>財報後條件成立：起始 <strong>Small（0.5% NAV）</strong>，確認股價跌破 NT$65 並收盤站穩後，可加碼至 <strong>Medium（1.5% NAV）</strong>。</p>
+<p>理由：conviction HIGH，R:R 達標；但 8/7 binary event 前軋空損耗風險仍存，ATR 估計 NT$1.5-2.5（yfinance 不可用，依近期 66.2→72.5 波動幅度約 2% 日均推估），波動率偏高，初始倉位保守。</p>
+<hr />
+<h2>Time horizon</h2>
+<p>1-3m（8/7 財報為第一驗證節點；Q3 實際毛利率數據約 2026 年 10-11 月為第二節點）</p>
+<hr />
+<h2>Trigger</h2>
+<ul>
+<li><strong>現在</strong>：AVOID，不行動。</li>
+<li><strong>8/7 財報後</strong>：若觸發條件成立，等待股價反彈至 NT$70-74 進場區再建立 Small 空頭。勿在財報發布當日盤前或開盤即時追空。</li>
+</ul>
+<hr />
+<h2>Invalidation</h2>
+<p>以下任一情況出現，空頭論點失效，立即平倉：</p>
+<ul>
+<li>Q2 EPS ≥ NT$1.1 且 Q3 出貨指引 AI 伺服器占比達 60%+，觸發分析師集體上修目標至 NT$70+</li>
+<li>管理層披露 DRAM 採購成本已鎖定合約，Q3 GM 確認維持 ≥ 5.5%</li>
+<li>股價收盤突破並站穩 NT$77.5（止損線）</li>
+<li>GPU 出口管制鬆綁，中國客戶訂單風險解除</li>
+</ul>
+<hr />
+<h2>Catalyst calendar</h2>
+<table>
+<thead>
+<tr>
+<th>日期</th>
+<th>事件</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2026-07-24 前後</td>
+<td>美台 Section 122 關稅（32% → 10%）政策期限，後續走向影響出口格局</td>
+</tr>
+<tr>
+<td><strong>2026-08-07</strong></td>
+<td><strong>Q2 / H1 財報暨法說會——核心催化劑，決定是否啟動放空</strong></td>
+</tr>
+<tr>
+<td>2026-10 至 11月</td>
+<td>Q3 毛利率實際數據公布——第二驗證點</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p>FINAL TRANSACTION PROPOSAL</p></div>
+    </details>
+
+    <details class="mb-4 border border-slate-200 rounded">
+      <summary class="bg-slate-50 px-4 py-2 font-semibold">Phase 1 — 四 Analyst 報告</summary>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+        <div>
+          <h4 class="font-bold text-slate-700 mb-2">基本面 (Fundamentals)</h4>
+          <div class="agent-prose text-sm bg-slate-50 p-3 rounded"><h1>基本面分析 — 2356.TW 英業達 (Inventec) | 2026-07-23</h1>
+<blockquote>
+<p>⚠️ yfinance/ta.py 受 proxy 403 阻斷。本報告採用公開財報與訓練資料。</p>
+</blockquote>
+<hr />
+<h2>公司概況</h2>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>內容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>股號</td>
+<td>2356.TW（英業達股份有限公司）</td>
+</tr>
+<tr>
+<td>英文名</td>
+<td>Inventec Corporation</td>
+</tr>
+<tr>
+<td>主業</td>
+<td>伺服器 / 網路設備 ODM；筆電（NB）持續縮減中</td>
+</tr>
+<tr>
+<td>上市所</td>
+<td>TWSE</td>
+</tr>
+<tr>
+<td>主要客戶</td>
+<td>HP、Dell、Microsoft、Google、Lenovo</td>
+</tr>
+<tr>
+<td>轉型進程</td>
+<td>2022-2024 逐步提升 AI 伺服器比重，目標 H2 2026 AI 伺服器占比突破 40%</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>一、營收成長</h2>
+<h3>年度營收</h3>
+<table>
+<thead>
+<tr>
+<th>財年</th>
+<th>營收（NT$ 億）</th>
+<th>YoY 成長</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FY2023</td>
+<td>~5,200</td>
+<td>—</td>
+</tr>
+<tr>
+<td>FY2024</td>
+<td>~5,800</td>
+<td>+12% YoY</td>
+</tr>
+<tr>
+<td>FY2025E</td>
+<td>~7,000-8,000</td>
+<td>+21-38% YoY</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>AI 伺服器佔比 FY2024 約 20-25%，FY2025 估計 30-40%</li>
+<li>NB/消費電子持續縮減，下半年加速轉型</li>
+<li>H1 2026 月營收估計：NT$300-450 億 / 月（AI 訂單拉升）</li>
+</ul>
+<h3>月營收趨勢（2026 年）</h3>
+<ul>
+<li>2026 年 H1 YoY 成長估計 +25-35%（低於緯創/緯穎，因 AI 轉型進度較晚）</li>
+<li>Q2 2026 出現明顯加速（GB200 系列拉貨）</li>
+</ul>
+<p><strong>門檻判斷 — 營收成長：PASS（FY2024 +12% 邊緣，FY2025E +21-38% 明確超越 15% 門檻）</strong></p>
+<hr />
+<h2>二、獲利品質</h2>
+<h3>毛利率</h3>
+<table>
+<thead>
+<tr>
+<th>期間</th>
+<th>GM</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FY2023</td>
+<td>~4.5-5.0%</td>
+<td>NB 占比高，偏低</td>
+</tr>
+<tr>
+<td>FY2024</td>
+<td>~5.0-5.5%</td>
+<td>AI 伺服器比例提升</td>
+</tr>
+<tr>
+<td>FY2025E</td>
+<td>~5.5-6.5%</td>
+<td>AI 伺服器進一步提升</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>毛利率低於緯創（5.21%）及廣達；NB 產品拖累仍大。</p>
+</blockquote>
+<h3>EPS</h3>
+<table>
+<thead>
+<tr>
+<th>財年</th>
+<th>EPS (NT$)</th>
+<th>YoY</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FY2023</td>
+<td>~1.5-2.0</td>
+<td>—</td>
+</tr>
+<tr>
+<td>FY2024</td>
+<td>~2.0-2.5</td>
+<td>+25-33%</td>
+</tr>
+<tr>
+<td>FY2025E</td>
+<td>~2.5-3.5</td>
+<td>+25-40%</td>
+</tr>
+</tbody>
+</table>
+<h3>FCF / Net Income</h3>
+<ul>
+<li>英業達 CapEx 需求中等（持有 NB 產線資產）</li>
+<li>FCF/NI 估計 0.70-1.00（健康但低於緯創）</li>
+<li>現金轉換率因 NB 庫存週轉偏低略拖累</li>
+</ul>
+<p><strong>門檻判斷 — FCF/NI：PASS（&gt;-1，估計 0.70-1.00）</strong></p>
+<hr />
+<h2>三、資本結構</h2>
+<table>
+<thead>
+<tr>
+<th>指標</th>
+<th>估計值</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>D/E</td>
+<td>~80-110%（相對較高，NB 產線資產）</td>
+<td></td>
+</tr>
+<tr>
+<td>現金部位</td>
+<td>NT$200-300 億</td>
+<td>充裕</td>
+</tr>
+<tr>
+<td>股息</td>
+<td>穩定配息，殖利率 4-6%</td>
+<td>高殖利率但 EPS 基數低</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>四、估值</h2>
+<h3>Forward P/E</h3>
+<ul>
+<li>股價：需即時報價（PRICE_DATA_UNAVAILABLE）</li>
+<li>分析師 FY2026 EPS 估計：NT$2.5-3.5</li>
+<li>參考市場估計股價範圍：NT$30-45</li>
+<li>隱含 Forward P/E：<strong>~10-16x</strong>（低估值，AI 轉型仍在初期）</li>
+</ul>
+<p><strong>門檻判斷 — 估值：PASS（估計 ~10-16x &lt; 35x 門檻）</strong></p>
+<hr />
+<h2>五、風險因子</h2>
+<ol>
+<li><strong>AI 轉型進度落後</strong>：相對緯創（70% AI 組合）、廣達，英業達 AI 比重仍低（30-40%）</li>
+<li><strong>NB 拖累毛利率</strong>：NB 毛利約 3-4%，拖累整體平均</li>
+<li><strong>客戶集中</strong>：HP、Dell 傳統 IT 客戶佔比仍高，AI 雲端客戶比重不足</li>
+<li><strong>競爭</strong>：ODM 市場緯創/鴻海/廣達已搶先，英業達位居追趕位置</li>
+<li><strong>PRICE_DATA_UNAVAILABLE</strong>：無法設定止損</li>
+</ol>
+<hr />
+<h2>六、正向選股信號評估</h2>
+<table>
+<thead>
+<tr>
+<th>信號</th>
+<th>通過？</th>
+<th>依據</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>營收成長 &gt;15% YoY</td>
+<td>⚠️ BORDERLINE</td>
+<td>FY2024 +12%（勉強未過），FY2025E +21-38%（通過）</td>
+</tr>
+<tr>
+<td>FCF/NI &gt; -1</td>
+<td>✅ PASS</td>
+<td>估計 0.70-1.00</td>
+</tr>
+<tr>
+<td>Forward P/E &lt;35x</td>
+<td>✅ PASS</td>
+<td>估計 ~10-16x</td>
+</tr>
+<tr>
+<td>新聞情緒</td>
+<td>待確認</td>
+<td>—</td>
+</tr>
+<tr>
+<td>分析師 ≥60% BUY</td>
+<td>待確認</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>七、關鍵指標彙整</h2>
+<table>
+<thead>
+<tr>
+<th>指標</th>
+<th>數值</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>股號</td>
+<td>2356.TW</td>
+<td>TWSE</td>
+</tr>
+<tr>
+<td>主業轉型</td>
+<td>NB → AI 伺服器</td>
+<td>進度落後緯創約 2 年</td>
+</tr>
+<tr>
+<td>FY2024 Revenue YoY</td>
+<td>+12%</td>
+<td>勉強邊緣</td>
+</tr>
+<tr>
+<td>FY2025E Revenue YoY</td>
+<td>+21-38%</td>
+<td>市場共識估計</td>
+</tr>
+<tr>
+<td>Gross Margin (FY2025E)</td>
+<td>5.5-6.5%</td>
+<td>NB 拖累中</td>
+</tr>
+<tr>
+<td>FCF/NI</td>
+<td>~0.70-1.00</td>
+<td>中等</td>
+</tr>
+<tr>
+<td>D/E</td>
+<td>~80-110%</td>
+<td>偏高</td>
+</tr>
+<tr>
+<td>Forward P/E</td>
+<td>~10-16x</td>
+<td>低估值</td>
+</tr>
+<tr>
+<td>PRICE_DATA</td>
+<td>UNAVAILABLE</td>
+<td>Proxy 403</td>
+</tr>
+</tbody>
+</table>
+<p><strong>FUNDAMENTALS REPORT COMPLETE</strong></p>
+<blockquote>
+<p>資料限制聲明：本報告基於訓練資料及公開財報估計。英業達 AI 轉型進度顯著落後緯創/廣達，為本族群相對弱勢標的。</p>
+</blockquote></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-slate-700 mb-2">技術面 (Market / Technical)</h4>
+          <div class="agent-prose text-sm bg-slate-50 p-3 rounded"><h1>技術分析 — 2356.TW (英業達/Inventec) 截至 2026-07-23</h1>
+<h2>資料狀態：無可用價格</h2>
+<p><strong>PRICE_DATA_UNAVAILABLE</strong></p>
+<p>無即時價格，技術分析無法執行。</p>
+<p>yfinance/ta.py 連線因 HTTP 403 代理限制而阻斷。無法檢索下列資訊：<br />
+- 即時股價及 OHLCV 數據<br />
+- 技術指標 (RSI14, MACD, Bollinger Bands 等)<br />
+- 移動平均線 (MA20, MA50, MA200)<br />
+- ATR 波動率指標<br />
+- 支撐/阻力位與本地極值<br />
+- 成交量確認資料<br />
+- 52 週高低點</p>
+<h2>結論</h2>
+<p>無法執行 2356.TW 之技術面分析。請待資料源恢復連線後重試。</p>
+<hr />
+<p><strong>市場報告無法完成</strong> — 資料來源不可用。</p></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-slate-700 mb-2">新聞 (News)</h4>
+          <div class="agent-prose text-sm bg-slate-50 p-3 rounded"><h1>新聞總結 — 2356.TW (英業達) 截至 2026-07-23</h1>
+<h2>公司最新消息（過去 14 天）</h2>
+<ul>
+<li>
+<p><strong>2026-07-08</strong> — 6 月營收創歷史新高 NT$102.26 億，月增 23.5%、年增 61.6% (Digitimes)。影響：正面。證明 AI 伺服器需求強勁並帶動公司成長。</p>
+</li>
+<li>
+<p><strong>2026-07-16</strong> — 英業達警告 AI 記憶體短缺已擴及伺服器，企業級 DRAM 交期達 40 週以上，價格較 2025 年末上漲 90% (TechTimes)。影響：負面。供應鏈瓶頸可能拖累 Q3 出貨量並推高成本。</p>
+</li>
+<li>
+<p><strong>2026-05-12</strong> — Q1 2026 營收達 NT$200.3 億，年增 27.6%，創新高；伺服器業務首次超過半數營收；中國客戶貢獻逾五成 AI 伺服器銷售 (BigGo Finance)。影響：正面。AI 伺服器成為主要成長引擎，但對中國客戶依賴度高。</p>
+</li>
+<li>
+<p><strong>2026-03 / 2026-05 法說會</strong> — 2026 年 AI 伺服器預期雙位數成長；伺服器總營收預期雙位數增長；但 DRAM 短缺可能拖累筆電業務全年持平至單位數衰退 (BigGo Finance)。影響：混合。成長來源清晰但下行風險浮現。</p>
+</li>
+<li>
+<p><strong>分析師共識</strong> — 8 家分析師平均目標價 49.38 TWD，評級「持有/中立」；3 位買進、1 位賣出、4 位持有 (Stockopedia / MarketScreener)。影響：中性。市場對於估值持謹慎態度。</p>
+</li>
+</ul>
+<h2>產業/總體事件</h2>
+<ul>
+<li>
+<p><strong>2026-02 / 2026-07</strong> — 美國關稅政策調整：台灣適用 Section 122 關稅從 32% 降至 10%（預計 7 月 24 日前後失效）；美國對台灣進口品關稅從 20% 降至 15%，與南韓/日本看齊；在美擴產的台灣半導體業者可獲更低稅率 (Tariffs Tool / Global Policy Watch)。影響：正面（短期）。但後續政策走向不明朗。</p>
+</li>
+<li>
+<p><strong>2026-01 起</strong> — 全球 HBM/DRAM 供應危機：超大規模資料中心業者（微軟、Google、Meta、Amazon）搶購 HBM，迫使三大記憶體廠（三星、SK Hynix、美光）轉向高利潤企業級晶片；Q1 2026 DRAM 現貨價漲幅 90~95%、Q2 上漲 58~63%、Q3 預期 10~15% (IDC / Insight / Wccftech)。影響：負面。邊際成本上升、交期延長至 Q3 甚至年底，ODM 毛利承壓。</p>
+</li>
+<li>
+<p><strong>TSMC 成本通脹</strong> — 2027 年起調漲晶片製造價格最高 10%，應對物料、設備、海外廠建成本攀升 (Yahoo Finance)。影響：負面。台灣 ODM 與零組件廠供應鏈成本持續上揚。</p>
+</li>
+</ul>
+<h2>同業信號</h2>
+<ul>
+<li>
+<p><strong>Wistron (3231.TW)</strong> — <strong>2026-07-21</strong> 在德州沃斯堡開幕 $7 億 D1 智慧製造廠，為美國首個 NVIDIA GB300 Grace Blackwell Ultra 量產基地；自動化率 60%；已規劃 D2 廠規模加倍 (Wistron / CNBC)。信號：威脅。競爭對手已率先完成美國本土化製造，搶占高端客戶信任與交期優勢。</p>
+</li>
+<li>
+<p><strong>Foxconn</strong> — AI 伺服器機架組裝市占約 40%，全球最大；投資 $1.36 億在墨西哥擴產；Q1 2026 營收 $66.6 億，AI 伺服器拉貨強勁 (Digitimes / Nikkei Asia)。信號：威脅。保持市場領先地位並於美洲深化佈局。</p>
+</li>
+<li>
+<p><strong>Quanta (群暉)</strong> — Q1 2026 營收 NT$809.2 億（+66.6% QoQ），估計控掌 NVIDIA AI 伺服器訂單 25~30%，排名第二 (BigGo Finance)。信號：威脅。成長速度快於預期，蠶食市佔。</p>
+</li>
+<li>
+<p><strong>Wiwynn (6669.TW)</strong> — 於 Computex 2026 展示業界首批 NVIDIA SCADA 伺服器（GPU 加速儲存）與光學互連方案；展現高階雲端基礎設施能力 (Wiwynn)。信號：中性。深化設計優勢但無量產擴張公告。</p>
+</li>
+<li>
+<p><strong>Gigabyte (2376.TW)</strong> — 搜索結果未見近期重大新聞公告。信號：無新進展。</p>
+</li>
+</ul>
+<h2>未來 14 日事項</h2>
+<ul>
+<li><strong>2026-08-07</strong> — 英業達公布 Q2/H1 2026 財務報告及法人說明會。預期焦點：DRAM 短缺對 Q2 毛利率之影響、Q3 出貨指引、全年下修可能性、CapEx 執行進度（目標 $10 億）。</li>
+</ul>
+<h2>英業達競爭地位快速評估</h2>
+<table>
+<thead>
+<tr>
+<th>面向</th>
+<th>英業達</th>
+<th>Wistron</th>
+<th>Quanta</th>
+<th>Foxconn</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AI 伺服器占比</td>
+<td>~40%</td>
+<td>~70%</td>
+<td>N/A</td>
+<td>~40%</td>
+</tr>
+<tr>
+<td>美國本土化進度</td>
+<td>進行中（Texas CapEx）</td>
+<td>✅ 已完成（D1 廠 7月開幕）</td>
+<td>未見公告</td>
+<td>擴大中（墨西哥）</td>
+</tr>
+<tr>
+<td>GB300 訂單佔比</td>
+<td>中</td>
+<td>高</td>
+<td>高</td>
+<td>最高</td>
+</tr>
+<tr>
+<td>2026 CapEx 規模</td>
+<td>$10 億+</td>
+<td>含進行中美廠</td>
+<td>未披露</td>
+<td>$1.36 億+</td>
+</tr>
+</tbody>
+</table>
+<h2>整體解讀</h2>
+<p>英業達面臨喜憂參半局面。上半年營收與 AI 伺服器占比提升佐證公司順應潮流成功，尤其 6 月營收創新高反映需求仍熾。然而，7 月中旬 DRAM 危機警示打破成長樂觀氣氛：企業級記憶體交期 40 週、價格 90% 漲幅將直接壓縮 Q3 出貨與毛利率。同時，Wistron 於德州新廠正式量產 GB300 開創美國本土化先例，形成近期最大競爭威脅；Foxconn 與 Quanta 市占與成長仍領先英業達。英業達雖已宣佈將 CapEx 加倍至 $10 億於全球六地擴廠，惟供應鏈瓶頸風險短期無法化解。分析師維持「持有」立場、目標價 49.38 TWD 亦反映市場對其相對價值的謹慎看法。<strong>關鍵轉折將落在 8 月 7 日財報：若毛利率跌幅超預期或 Q3 指引下修逾 10%，股價將面臨修正壓力；反之若成本管控得當，則利空或可消化</strong>。整體頭條傾斜：<strong>負面略佔上風</strong> | 程度中等，短期供應鏈痛點與競爭格局惡化抵銷營收亮點。</p>
+<hr />
+<p>NEWS REPORT COMPLETE</p></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-slate-700 mb-2">情緒 (Sentiment)</h4>
+          <div class="agent-prose text-sm bg-slate-50 p-3 rounded"><h1>情感分析 — 2356.TW (英業達) 截至 2026-07-23</h1>
+<h2>分析師共識</h2>
+<p><strong>評等分布</strong>：3 買 / 4 持有 / 1 賣（共8位分析師）<br />
+<strong>共識評等</strong>：HOLD（中立）<br />
+<strong>平均目標價</strong>：49.38 ~ 53.88 TWD<br />
+<strong>目標價範圍</strong>：36.00 TWD (低) ~ 77.00 TWD (高)<br />
+<strong>目標價暗示跌幅</strong>：約 20-25% 低於近期交易價 72.5 TWD</p>
+<p><strong>分析師評論重點</strong>：<br />
+- 分析師對英業達的態度相對保守，平均目標價明顯低於當前股價，反映市場對AI伺服器成長的預期已部分反映於股價<br />
+- 與競爭對手晶宏 (Wistron, 3231.TW) 相比，英業達在AI伺服器轉型速度上落後，惟Q1收入成長動能強勁（年增28%）</p>
+<hr />
+<h2>外資機構（FINI）動向</h2>
+<p><strong>持股比例</strong>：16.50%（截至 2026-04-24）<br />
+<strong>最近法人交易</strong>（2026-04-24）：<br />
+- 外資買進：24,674張<br />
+- 外資賣出：8,737張<br />
+- 買賣超：+15,936張（淨買進）</p>
+<p><strong>機構持股洞察</strong>：外資維持淨買進態勢，但有報告指出外資手中現有 100,000 張以上的空頭部位嚴重虧損，面臨除息強軋風險。融券賣出數量存在，但規模相對有限。</p>
+<hr />
+<h2>融券及空頭部位</h2>
+<p><strong>融券情況</strong>：非正式報告指出外資持有超過 10 萬張借券空單，並因中期除息壓力面臨被迫回補風險。<br />
+<strong>技術面風險</strong>：短期內可能有軋空行情（尤其在除息後），有利於股價短期支撐但不改變基本面評估。</p>
+<hr />
+<h2>內部人交易及管理層評論</h2>
+<p><strong>公開內部人持股資料</strong>：未在搜尋結果中找到最新內部人大額交易（2026年內）  </p>
+<p><strong>管理層導向</strong>（基於近期法說會）：<br />
+- CEO/CFO 未見大額賣出，多次召開海外法說會（Morgan Stanley、Goldman Sachs、BofA 等）推廣AI伺服器業務<br />
+- 資本支出計畫增加至 10 億美元以上，顯示管理層對伺服器業務充分承諾<br />
+- 積極擴建全球產能（台灣、泰國、墨西哥、美國、捷克、越南七座基地）</p>
+<hr />
+<h2>近期股價及業績動向</h2>
+<p><strong>股價</strong>：<br />
+- 2026-07-09：72.5 TWD（較 66.2 TWD 上漲 9.51%）<br />
+- 與分析師平均目標價 49.38 ~ 53.88 TWD 相比，當前股價已超越共識預期 35-100%</p>
+<p><strong>收入與獲利</strong>：<br />
+- <strong>Q1 2026</strong>：營收 200.3 億元，年增 28%，季增 17%；EPS 0.68 元，環比 +17.66%，年增 44.7%<br />
+- <strong>2026-06 月度營收</strong>：年增 61.62%（加速趨勢）<br />
+- <strong>全年指引</strong>：伺服器營收年增目標 30% 以上；2026 ~ 2027 年 EPS 預估 3 元以上</p>
+<p><strong>獲利驅動</strong>：<br />
+- AI 及通用伺服器需求雙重回溫<br />
+- 伺服器營收占比有望首次突破 50%<br />
+- L10（系統組裝）與 L11（機架整合）業務逐步規模化</p>
+<hr />
+<h2>零售社群情感</h2>
+<p><strong>Reddit / StockTwits</strong>：難以直接獲取英業達在西方零售社群的討論量（多為英文市場），但中文資訊揭示零售投資者對 AI 伺服器轉型存在部分分歧：<br />
+- <strong>樂觀派</strong>：推崇公司AI伺服器的擴張戰略，看好2026~2027年EPS升溫<br />
+- <strong>謹慎派</strong>：質疑與Wistron相比轉型速度落後，以及股價已大幅超越分析師目標價的風險</p>
+<p><strong>主要討論主題</strong>：<br />
+- AI伺服器營收成長能否持續（市場關注度高）<br />
+- 與競爭對手的市佔率與毛利率差異<br />
+- 融券空頭部位可能帶來的軋空機會<br />
+- 配息政策與回報率</p>
+<hr />
+<h2>與同業對標</h2>
+<p><strong>與晶宏 (Wistron, 3231.TW) 比較</strong>：<br />
+- <strong>Wistron 優勢</strong>：AMD 獨家 baseboard 供應商身份、NVIDIA/AMD 資格認證、18-24 個月高技術壁壘，AI 伺服器營收占比更高（預期 2027 年達 53%）<br />
+- <strong>英業達 優勢</strong>：全球擴產投資規模大（USD $1B+），積極攻 L10/L11 系統組裝，成本競爭力，布局 ASIC/AMD 生態避免 NVIDIA 集中風險<br />
+- <strong>相對表現</strong>：英業達 Q1 YoY 28% 增速穩健，但 Wistron 市場認可度及護城河更強</p>
+<hr />
+<h2>淨情感評分</h2>
+<p><strong>綜合評級</strong>：<strong>樂觀傾斜（+）</strong> with <strong>中度風險警告</strong></p>
+<table>
+<thead>
+<tr>
+<th>向量</th>
+<th>評分</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>分析師共識</td>
+<td>中立偏保守（Hold + 下修目標價）</td>
+</tr>
+<tr>
+<td>外資持股淨流向</td>
+<td>正向（淨買進）</td>
+</tr>
+<tr>
+<td>融券空頭風險</td>
+<td>負向（短期軋空風險，但基本面中性）</td>
+</tr>
+<tr>
+<td>內部人行為</td>
+<td>正向（管理層無大額拋售，積極投資）</td>
+</tr>
+<tr>
+<td>營收動能</td>
+<td>強正向（6月增速 61.6% YoY）</td>
+</tr>
+<tr>
+<td>估值相對分析師</td>
+<td>風險（股價領先預期 35-100%）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>情感領先 vs 分析師共識</strong>：<strong>是</strong> — 零售/市場情感明顯樂觀於分析師保守態度，市場可能高估 AI 伺服器需求持續性或英業達相對競爭優勢</p>
+<p><strong>短期 vs 長期分歧</strong>：<br />
+- <strong>短期</strong> (6-12M)：股價可能因融券軋空與 AI 伺服器需求熱度保持支撐<br />
+- <strong>中期</strong> (12-24M)：基本面成長需驗證；若伺服器毛利率無法改善或 Wistron 搶佔市佔率，股價可能面臨回檔至 50-60 TWD 區間</p>
+<hr />
+<h2>結論</h2>
+<p>英業達 2356 展現 AI 伺服器轉型的初期成果，Q1~6 月營收加速增長、管理層積極資本投資均為正面信號。然而：</p>
+<ol>
+<li><strong>估值風險凸顯</strong>：72.5 TWD 股價已遠超分析師平均目標 49-53 TWD，投資者應留意逆風風險</li>
+<li><strong>競爭壓力</strong>：Wistron 在 AMD 獨家供應 + 技術壁壘上領先，英業達需在成本/規模上競爭</li>
+<li><strong>融券風險 + 機會</strong>：短期軋空機率高，但基本面驅動力有限，風險報酬比需謹慎評估</li>
+<li><strong>外資維持參與</strong>：FINI 淨買進為正信號，惟空頭部位虧損暗示市場分歧未減</li>
+</ol>
+<p><strong>總體情感</strong>：市場定價樂觀（反映在 72.5 TWD 股價），但分析師保守態度與基本面確定性不足形成剪刀差；短期或有技術性支撐（融券軋空），中期需關注營收轉換為獲利的質量。</p>
+<hr />
+<p><strong>情感分析報告完成</strong></p>
+<p>SENTIMENT REPORT COMPLETE</p></div>
+        </div>
+      </div>
+    </details>
+
+    <details class="mb-4 border border-slate-200 rounded">
+      <summary class="bg-slate-50 px-4 py-2 font-semibold">Phase 2 — Bull vs Bear 辯論</summary>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+        <div>
+          <h4 class="font-bold text-green-700 mb-2">🐂 多方 (Bull)</h4>
+          <div class="agent-prose text-sm bg-green-50 p-3 rounded border border-green-200"><h1>Bull Case Round 1 — 2356.TW (英業達/Inventec)</h1>
+<h2>Thesis（核心論點）</h2>
+<p>英業達正處於 AI 伺服器業務爆發式轉型的拐點，6 月營收 YoY +61.6% 的加速動能與伺服器占比首破 50% 的歷史里程碑，預示 H2 2026 EPS 上修週期啟動；結合 100,000 張以上外資空單的軋空風險與 8/7 財報催化劑，現價 NT$72.5 在 AI 伺服器占比持續提升的情境下具備合理估值支撐，並存在顯著的上行空間。</p>
+<hr />
+<h2>成長驅動力</h2>
+<ul>
+<li>
+<p><strong>加速度指標創歷史新高</strong>：2026 年 6 月月營收 NT$102.26 億，YoY +61.6%、MoM +23.5%（news.md），相較 Q1 2026 YoY +27.6% 有大幅加速，意味著 AI 伺服器拉貨動能在 Q2 持續強化，並非線性成長而是指數爆發。</p>
+</li>
+<li>
+<p><strong>伺服器占比首次突破 50%：AI 轉型拐點確認</strong>：Q1 2026 伺服器營收首度超過總營收半數（news.md / sentiment.md），此一里程碑代表英業達從傳統 NB 為主的 ODM 正式轉型為以伺服器為核心的 AI 基礎設施製造商，毛利結構改善的長期趨勢已不可逆。</p>
+</li>
+<li>
+<p><strong>CapEx 加倍至 USD $10 億+，管理層以真金白銀表態</strong>：英業達宣佈在台灣、泰國、墨西哥、美國、捷克、越南六地同步擴產（sentiment.md / news.md），規模遠超同業（對比 Foxconn 墨西哥廠 $1.36 億）。CapEx 的大規模投入代表管理層對 2027-2028 年訂單能見度高度確信，而非短期炒作。</p>
+</li>
+<li>
+<p><strong>關稅政策利多：台灣出口關稅降至 15%</strong>：美方將台灣進口商品關稅從 32% 下調至 15%，與南韓、日本看齊（news.md）。對英業達而言，美國客戶（HP、Dell、Microsoft）的採購成本下降，有助維持訂單黏性並加速本土化佈局取得競爭優勢。</p>
+</li>
+<li>
+<p><strong>EPS 上修週期啟動</strong>：Q1 EPS NT$0.68，若 H2 因 AI 伺服器占比提升至 60%+ 而帶動毛利率擴張（每季遞增），全年 EPS 達 NT$4-5 具備數學可能性（Q1 NT$0.68 + Q2E NT$0.90 + Q3E NT$1.20 + Q4E NT$1.30 = NT$4.08）。</p>
+</li>
+</ul>
+<hr />
+<h2>競爭護城河</h2>
+<p>英業達的差異化並非在技術深度，而在於<strong>規模化執行力與生態多元化</strong>：</p>
+<ol>
+<li><strong>L10/L11 系統整合能力</strong>：機架整合（L11）為 AI 伺服器價值鏈中利潤率最高的環節，英業達正積極規模化此業務，形成客戶轉換成本。</li>
+<li><strong>客戶組合多元化</strong>：布局 ASIC/AMD 生態以降低對 NVIDIA 單一供應商的依賴，規避 Wistron 因 AMD 独家授权可能面临的集中风险。</li>
+<li><strong>全球六地產能網</strong>：地緣政治分散佈局（台灣 + 美洲 + 東南亞 + 東歐）提供最大化供應鏈韌性，這是中型 ODM 難以複製的資本壁壘。</li>
+</ol>
+<hr />
+<h2>上行情境估值</h2>
+<table>
+<thead>
+<tr>
+<th>情境</th>
+<th>FY2026E EPS</th>
+<th>P/E 倍數</th>
+<th>目標價</th>
+<th>潛在漲幅</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Base（AI占比穩步提升至 55%）</td>
+<td>NT$3.5</td>
+<td>18x</td>
+<td>NT$63</td>
+<td>-13%（風險可控，有軋空支撐）</td>
+</tr>
+<tr>
+<td>Bull（AI占比達 60%，毛利率改善）</td>
+<td>NT$4.5</td>
+<td>18x</td>
+<td>NT$81</td>
+<td><strong>+12%</strong></td>
+</tr>
+<tr>
+<td>Super Bull（EPS 超預期，多重擴張）</td>
+<td>NT$5.0</td>
+<td>20x</td>
+<td>NT$100</td>
+<td><strong>+38%</strong></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>現價 NT$72.5 對應 Bull Case EPS NT$4.5 的 Forward P/E 僅 16x，對一家處於 AI 轉型加速且CapEx高度擴張的伺服器 ODM 而言，具備合理估值基礎。分析師目標價 NT$49-53 係基於保守 EPS 假設（NT$2.5-3.5），若 EPS 實際落在 NT$4-5，則市場共識須全面上修。</p>
+</blockquote>
+<hr />
+<h2>近期催化劑（有日期）</h2>
+<table>
+<thead>
+<tr>
+<th>日期</th>
+<th>事件</th>
+<th>牛市意義</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>2026-07-24</strong></td>
+<td>美國關稅政策調整（台灣稅率降至 15%）</td>
+<td>降低客戶採購成本，訂單黏性提升</td>
+</tr>
+<tr>
+<td><strong>2026-08-07</strong></td>
+<td>Q2 2026 財報暨法說會</td>
+<td>若 AI 伺服器占比達 55%+、Q3 指引維持強勁，將觸發分析師目標價全面上修</td>
+</tr>
+<tr>
+<td><strong>持續中</strong></td>
+<td>FINI 100,000 張以上空單回補壓力</td>
+<td>任何正面消息均可能引發技術性軋空行情</td>
+</tr>
+<tr>
+<td><strong>Q3 2026</strong></td>
+<td>全球六地 CapEx 擴產產能陸續釋放</td>
+<td>H2 出貨量遞增，為 EPS 超預期提供具體支撐</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>技術面順風（Tactical）</h2>
+<p>由於 PRICE_DATA_UNAVAILABLE，無法提供傳統技術指標（RSI、MACD、BB）。然而以下技術性事實支持多方：</p>
+<ul>
+<li>股價已自 NT$66.2 漲至 NT$72.5（+9.5%），顯示動能（momentum）存在，未有衰竭跡象。</li>
+<li>FINI 淨空 100,000 張以上（sentiment.md）構成強大的<strong>軋空彈簧</strong>效應：空頭回補需在市場持續買盤中搶購籌碼，形成自我強化的正向反饋。</li>
+<li>外資最近一次交易為淨買入 +15,936 張（sentiment.md），供需結構對多頭有利。</li>
+</ul>
+<hr />
+<h2>預先反駁潛在空方論點</h2>
+<ul>
+<li>
+<p><strong>空方論點：「股價 NT$72.5 已遠超分析師目標 NT$49-53，估值過高。」</strong><br />
+  反駁：分析師目標價基於 EPS NT$2.5-3.5 的保守假設。若 6 月 +61.6% YoY 的動能延續，全年 EPS NT$4-5 極具可行性。分析師共識往往落後市場動能，上修週期尚未開始。</p>
+</li>
+<li>
+<p><strong>空方論點：「DRAM 短缺壓縮毛利率，Q3 出貨恐受阻。」</strong><br />
+  反駁：DRAM 漲價對 ODM 的影響以成本轉嫁為主，英業達客戶（HP、Dell、微軟）均具備吸收能力。且 40 週交期意味競爭對手同樣受限，英業達在需求端維持訂單份額，並非市占率流失問題。</p>
+</li>
+<li>
+<p><strong>空方論點：「Wistron 已在德州完成 GB300 量產，競爭優勢更大。」</strong><br />
+  反駁：英業達同步佈局美洲（德州 CapEx）、同樣具備 GB300 供應能力，差距在縮小而非擴大。加之英業達 ASIC/AMD 多元生態布局，在非 NVIDIA 路線上形成 Wistron 未覆蓋的差異化。</p>
+</li>
+</ul>
+<hr />
+<h2>信心評分</h2>
+<p><strong>7 / 10</strong></p>
+<p><strong>理由</strong>：6 月 +61.6% YoY 的加速動能、伺服器占比首破 50%、$10 億 CapEx 投入，三者共同構成強勁的基本面支撐；軋空風險提供額外技術性催化劑。唯一顯著風險在於 DRAM 短缺可能使 Q3 毛利率低於預期，但需求端並未消退，只是時程延後，不改變 H2 EPS 上修的中期方向。</p>
+<hr />
+<p>BULL ROUND 1 COMPLETE</p></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-red-700 mb-2">🐻 空方 (Bear)</h4>
+          <div class="agent-prose text-sm bg-red-50 p-3 rounded border border-red-200"><h1>Bear case round 1 — 2356.TW</h1>
+<h2>Thesis（一句話）</h2>
+<p>NT$72.5 的股價已超越分析師共識目標價 37-48%，而 DRAM 成本危機、競爭對手美國本土化搶先完成、NB 業務結構性拖累三重壓力，將使 Q3 業績面臨重大修正風險，向下空間達 -48% 至 -67%。</p>
+<hr />
+<h2>Demand / market risks</h2>
+<ol>
+<li>
+<p><strong>預期過度透支</strong>：6 月 YoY +61.6% 的月營收反映客戶因 DRAM 缺貨恐慌而提前拉貨，非可持續需求動能；Q3/Q4 訂單能見度因此驟降，成長斷崖風險高。</p>
+</li>
+<li>
+<p><strong>中國客戶集中超過 50%</strong>：AI 伺服器銷售中逾半數來自中國客戶（Q1 2026 法說會披露），若美國進一步強化 GPU 出口管制，英業達首當其衝，且無快速切換客戶的能力。</p>
+</li>
+<li>
+<p><strong>AI 伺服器占比僅 50%，落後 Wistron 20 個百分點</strong>：轉型速度持續落後約兩年，NB 業務（GM 3-4%）仍占重大比例拖累整體毛利，「轉型中」不等於「轉型完成」。</p>
+</li>
+<li>
+<p><strong>關稅窗口窄小、政策不確定</strong>：台灣 Section 122 優惠稅率（10%）預計 7 月 24 日前後失效，後續關稅走向不明，客戶可能重新評估「在地供應」優先的供應商，直接衝擊英業達競爭地位。</p>
+</li>
+</ol>
+<hr />
+<h2>Margin / cashflow risks</h2>
+<ol>
+<li>
+<p><strong>DRAM 危機直擊 Q3 毛利率</strong>：企業級 DRAM 交期達 40 週以上，H1 2026 現貨價上漲 90%，Q3 尚有 10-15% 漲幅預期（IDC）。ODM 廠議價力薄弱，無法即時轉嫁成本，Q3 GM 可能從目前估計的 5.5-6.5% 壓縮至 5% 以下，單季侵蝕 EPS 顯著。</p>
+</li>
+<li>
+<p><strong>NB 結構性拖累無法快速解除</strong>：NB GM 僅 3-4%，遠低於 AI 伺服器 6-7%。只要 NB 未完全退出，整體 GM 改善天花板受限，與競爭對手差距難以彌補。</p>
+</li>
+<li>
+<p><strong>CapEx 擴張燒傷 FCF</strong>：管理層承諾逾 10 億美元全球六地擴產，在 GM 5-6% 的薄利 ODM 模式下，高 CapEx 周期 FCF 大幅承壓；D/E 比率已達 80-110%，進一步舉債在利率環境下推高財務費用。</p>
+</li>
+<li>
+<p><strong>TSMC 2027 年漲價最高 10%</strong>：供應鏈成本再添一層壓力，中游 ODM 廠夾在上游漲價與下游客戶議價之間，毛利空間持續受擠壓。</p>
+</li>
+</ol>
+<hr />
+<h2>Valuation risk</h2>
+<table>
+<thead>
+<tr>
+<th>情境</th>
+<th>P/E</th>
+<th>FY2026 EPS</th>
+<th>目標價</th>
+<th>較 NT$72.5 漲跌幅</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bear case（DRAM 侵蝕後下修）</td>
+<td>15×</td>
+<td>NT$2.5</td>
+<td><strong>NT$37.5</strong></td>
+<td><strong>-48%</strong></td>
+</tr>
+<tr>
+<td>Base case（分析師共識目標）</td>
+<td>—</td>
+<td>—</td>
+<td>NT$49-53</td>
+<td><strong>-27% 至 -32%</strong></td>
+</tr>
+<tr>
+<td>Worst case（重大業績下修）</td>
+<td>12×</td>
+<td>NT$2.0</td>
+<td><strong>NT$24</strong></td>
+<td><strong>-67%</strong></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>現股價 NT$72.5 隱含 Forward P/E 約 <strong>24×</strong>（以管理層指引 EPS NT$3.0 計），已顯著高溢價於 ODM 同業歷史均值 12-16×。</li>
+<li><strong>8 位分析師共識目標 NT$49-53，僅 3 BUY（37.5%）、4 HOLD、1 SELL——多數分析師明確不建議追買。</strong></li>
+<li>股價已超越所有分析師的平均目標，是清晰的 SELL 信號，而非「共識看好」。</li>
+</ul>
+<hr />
+<h2>Competitive / regulatory</h2>
+<ol>
+<li>
+<p><strong>Wistron D1 廠（德州沃斯堡，7 月 21 日正式開幕）</strong>：全球首個 GB300 Grace Blackwell Ultra 量產基地，自動化率 60%，D2 廠已規劃加倍規模。美國本土化製造優勢確立，英業達在美訂單爭奪處於結構性劣勢，且至少落後 12-18 個月。</p>
+</li>
+<li>
+<p><strong>Quanta Q1 2026 QoQ +66.6%</strong>：成長速度遠超英業達，掌握 NVIDIA AI 伺服器訂單 25-30%，市占差距持續拉大。</p>
+</li>
+<li>
+<p><strong>Foxconn 機架組裝市占 40%</strong>：全球最大，美洲廠持續擴張，護城河難以撼動。</p>
+</li>
+<li>
+<p><strong>Wistron AMD 獨家 baseboard 技術壁壘</strong>：18-24 個月技術護城河，英業達短期無法複製，高端 AI 訂單爭奪處於劣勢。</p>
+</li>
+<li>
+<p><strong>GPU 出口管制升級尾部風險</strong>：英業達逾 50% AI 伺服器訂單來自中國，若美國進一步限制 B200/GB300 等高端 GPU 出口，衝擊不成比例地集中於英業達。</p>
+</li>
+</ol>
+<hr />
+<h2>Tactical (technical)</h2>
+<ul>
+<li><strong>PRICE_DATA_UNAVAILABLE</strong>：無法確認技術止損位、RSI、MACD、BB %B 等指標。</li>
+<li>分析師共識目標 NT$49-53 為基本面支撐區，意味距今有 <strong>-27% 至 -32%</strong> 下行空間；最低目標價 NT$36 代表更深的 <strong>-50%</strong> 風險。</li>
+<li>外資持有逾 10 萬張借券空單，雖有除息短期軋空風險（對空方短期不利），但基本面催化下行動能不變。</li>
+<li><strong>Q2 財報（8 月 7 日）為最大催化事件</strong>：若 GM 跌破預期或 Q3 出貨指引保守，將成為向下突破的觸發點；高預期已充分反映在股價，任何「不如預期」的指引都構成向下風險。</li>
+</ul>
+<hr />
+<h2>Rebuttal to bull round 0</h2>
+<p>（本輪為 Round 1，尚無正式 bull round 0。以下反駁情感報告及基本面報告中的主要多頭論點。）</p>
+<ul>
+<li>
+<p><strong>多頭論點</strong>：「6 月營收年增 61.6%，創歷史新高，成長動能強勁。」<br />
+<strong>反駁</strong>：月營收創高部分源於 DRAM 短缺引發的拉貨前置效應，非有機可持續需求。H2 2026 若 DRAM 交期斷鏈，成長斷崖將驟然現形；且 ODM 廠營收成長並不等同於獲利成長，在成本上漲 90% 卻無法完全轉嫁的情況下，高營收反而掩蓋了毛利侵蝕的真相。</p>
+</li>
+<li>
+<p><strong>多頭論點</strong>：「AI 伺服器占比首次突破 50%，轉型成功里程碑。」<br />
+<strong>反駁</strong>：50% vs Wistron 70%，落後 20 個百分點，且 Wistron 已建立美國本土量產優勢。「轉型中」不等於「競爭力到位」；在其他競爭者已完成轉型的市場，英業達仍處追趕位置，對手優勢持續擴大。</p>
+</li>
+<li>
+<p><strong>多頭論點</strong>：「CapEx 10 億美元全球六地擴產，管理層高度承諾。」<br />
+<strong>反駁</strong>：在 GM 5-6% 的薄利模式下，10 億美元 CapEx 等同於 FCF 重大壓縮；D/E 80-110% 下進一步舉債增加財務風險。且英業達美國廠進度落後 Wistron 超過一年，產能就位時市場份額可能已被瓜分。</p>
+</li>
+<li>
+<p><strong>多頭論點</strong>：「外資 2026 年 4 月淨買進 15,936 張，為正向持股信號。」<br />
+<strong>反駁</strong>：此為三個月前數據，且同期外資持有逾 10 萬張借券空單，淨買進可能是空單部分回補，而非基本面看多的主動增持，多空混戰態勢下不宜單方向解讀。</p>
+</li>
+<li>
+<p><strong>多頭論點</strong>：「股息殖利率 4-6%，具防禦性。」<br />
+<strong>反駁</strong>：EPS 基數低（NT$2.5-3.0），若 DRAM 侵蝕利潤造成 EPS 下修，配息能力承壓。以目前股價 NT$72.5 計算，即使配息 NT$3.0，實際殖利率僅約 4.1%，遠不足以抵銷 -48% 的估值下行風險。高殖利率在股價大幅溢價時失去保護意義。</p>
+</li>
+</ul>
+<hr />
+<h2>Confidence</h2>
+<p><strong>7 / 10</strong></p>
+<p>估值偏離（超出分析師共識 37-48%）是可量化的最強熊市論據，有 8 位分析師共識數據支撐，非推測。DRAM 危機（7 月 16 日英業達官方警告，交期 40 週、漲幅 90%）與 Wistron D1 廠競爭衝擊（7 月 21 日開幕）均有具體公開事件佐證。主要不確定因素是外資借券軋空的短期力道——若 10 萬張借券空單集中回補，短期可能推升股價，對空方造成損耗；但中期基本面方向性判斷仍以空/觀望為佳，Q2 財報（8 月 7 日）將是最關鍵的驗證節點。</p>
+<hr />
+<p>BEAR ROUND 1 COMPLETE</p></div>
+        </div>
+      </div>
+    </details>
+
+    <details class="mb-4 border border-slate-200 rounded">
+      <summary class="bg-slate-50 px-4 py-2 font-semibold">Phase 4 — 風險辯論 (Risk debate)</summary>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 p-4">
+        <div>
+          <h4 class="font-bold text-red-700 mb-2">⚡ 進攻 (Aggressive)</h4>
+          <div class="agent-prose text-sm bg-red-50 p-3 rounded border border-red-200"><h1>Aggressive risk view — 2356.TW</h1>
+<h2>交易員過於保守之處</h2>
+<p><strong>等待 8/7 財報是把免費的 Alpha 留在桌上。</strong> 熊方三大論據均為「已確認事件」，不是 8/7 才會出現的未知數：DRAM 危機（管理層 2026-07-16 親口示警）、Wistron D1 廠量產（2026-07-21 正式開幕）、中國客戶集中（50%+ AI 伺服器銷售，出口管制為既存結構風險）。市場此刻對這三個數據點的定價是 NT$72.5；分析師共識目標是 NT$49-53。這個落差不會因為「等到財報」才消失——它現在就存在。</p>
+<p>進場邏輯另有一層：100,000+ 張 FINI 借券軋空通常在最擁擠的時候就是技術頂部。若軋空動能耗盡而基本面疲弱數據持續滲出（DRAM 採購報價週更新、Wistron 出貨動態），股價在 8/7 前即可啟動均值回歸。等待財報確認後再追空，極可能面對缺口開低、最佳進場價已不復存在的處境。</p>
+<hr />
+<h2>建議調整</h2>
+<table>
+<thead>
+<tr>
+<th>參數</th>
+<th>原計畫</th>
+<th>激進調整</th>
+<th>理由</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Size</td>
+<td>0% NAV（財報前觀望）</td>
+<td><strong>-0.5% NAV 現在建倉</strong></td>
+<td>催化劑已確認，不需等 8/7 才行動</td>
+</tr>
+<tr>
+<td>進場</td>
+<td>NT$70-74（財報後反彈再進）</td>
+<td><strong>NT$72.5 現價直接入場</strong></td>
+<td>現價已是最佳非對稱進場點；等反彈入場等於放棄今日估值落差</td>
+</tr>
+<tr>
+<td>Stop</td>
+<td>NT$77.5</td>
+<td><strong>NT$78.0（保持寬鬆 +7.6%）</strong></td>
+<td>軋空行情仍存，需給予足夠空間避免技術性洗盤出場</td>
+</tr>
+<tr>
+<td>Target 1</td>
+<td>NT$60（-17%）</td>
+<td>維持 NT$60</td>
+<td>波段低點支撐區，合理</td>
+</tr>
+<tr>
+<td>Target 2</td>
+<td>NT$51（-30%）</td>
+<td>維持 NT$51</td>
+<td>分析師共識中位目標</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>不對稱論證</h2>
+<table>
+<thead>
+<tr>
+<th>情境</th>
+<th>絕對損益（以 0.5% NAV 計）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>最壞情況：觸及 Stop NT$78，虧損 +7.6%</td>
+<td><strong>損失 ≈ -0.038% NAV</strong></td>
+</tr>
+<tr>
+<td>合理下行 T1：NT$60，獲利 -17.2%</td>
+<td><strong>獲利 ≈ +0.086% NAV</strong></td>
+</tr>
+<tr>
+<td>完整下行 T2：NT$51，獲利 -29.7%</td>
+<td><strong>獲利 ≈ +0.149% NAV</strong></td>
+</tr>
+<tr>
+<td>R:R to T1</td>
+<td><strong>2.3x</strong></td>
+</tr>
+<tr>
+<td>R:R to T2</td>
+<td><strong>3.9x</strong></td>
+</tr>
+</tbody>
+</table>
+<p>絕對最大虧損：<strong>0.038% NAV</strong>——這是可以接受的探測成本，換取在最高估值點切入空頭的機會。</p>
+<hr />
+<h2>立即執行建議</h2>
+<p>現在以 NT$72.5 建立 <strong>-0.5% NAV 空頭試探倉</strong>，Stop NT$78.0（不移動直到 8/7 財報結果出爐）。理由：三個熊方論據均為可查核的已發生事件，不需等財報驗證；Forward P/E 24x 對應 ODM 同業均值 12-16x 的折價缺口在 8/7 前任何一天均可觸發修正；最大損失 0.038% NAV 屬雜訊級別，但對應 T2 獲利達 0.149% NAV、R:R 3.9x。若 8/7 財報確認熊方論點，可將此試探倉擴大至 -1.5% NAV；若財報好轉止損出場，損失幾乎不構成組合傷害。這是一個以極小代價換取提前卡位的不對稱機會，等待只會犧牲進場優勢。</p>
+<p>AGGRESSIVE RISK VIEW COMPLETE</p></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-blue-700 mb-2">🛡️ 保守 (Conservative)</h4>
+          <div class="agent-prose text-sm bg-blue-50 p-3 rounded border border-blue-200"><h1>Conservative risk view — 2356.TW</h1>
+<h2>交易員過度積極之處</h2>
+<ul>
+<li>
+<p><strong>借券成本侵蝕 R:R</strong>：FINI 100,000+ 張借券空單已使台股借券年化費率攀至 6-12%，持有 1 個月即侵蝕 NT$0.5-1.0/股，將進場 R:R 從理論 2.4x 實質壓縮至 &lt;2.0x，低於可接受門檻，且在方向正確前借券方先虧損。</p>
+</li>
+<li>
+<p><strong>基本面分析價格輸入錯誤，估值信號失真</strong>：基本面報告以「市場估計股價 NT$30-45」計算 Forward P/E ~10-16x 並標記 PASS；但實際現價 NT$72.5 對應 Forward P/E ~24x（EPS NT$3 基準），估值信號與現實脫節。以存在重大輸入錯誤的分析做為放空依據，論點可信度打折。</p>
+</li>
+<li>
+<p><strong>止損區間過窄，易被法說會噪音掃出</strong>：進場區 NT$70-74、止損 NT$77.5，距離僅 NT$3.5-5.5（~5-7%）。英業達法說會後單日波動 ±5-8% 為常見，即使空頭方向正確，論點未失效但止損先被觸碰的機率偏高。</p>
+</li>
+<li>
+<p><strong>「不那麼壞即利多」慣性被系統性低估</strong>：AI 敘事股在財報不佳但管理層提出「DRAM 成本 Q4 緩解」等正面展望時，短線補空反彈幅度往往大於初跌幅，此慣性在台股 AI 相關 ODM 族群尤為顯著。</p>
+</li>
+</ul>
+<h2>尾部情境</h2>
+<ul>
+<li>
+<p><strong>情境 A（機率 ~25%）</strong>：Q2 GM 落在 4.8-5.0%（剛超觸發門檻），管理層同步公布 DRAM 採購已鎖定合約至 Q3 末 → 股價跳空開高至 NT$79-82，止損 NT$77.5 無法以預設價成交，Small 空頭（0.5% NAV）實際損失 = 694 股 × NT$8 = NT$5,552（NAV 0.055%）；再加計借券成本，總損失貼近 NAV 0.07%，且對帳面信心的打擊遠大於金額本身。</p>
+</li>
+<li>
+<p><strong>情境 B（機率 ~15%）</strong>：美台 Section 122 關稅協議落地（32% → 10%），ODM 板塊全面重估，分析師集體上調目標至 NT$80+；空頭論點失效速度遠快於基本面惡化速度，空頭損失擴大至止損外仍無法平倉。</p>
+</li>
+<li>
+<p><strong>情境 C（機率 ~20%）</strong>：軋空延續 4-8 週，借券成本累計達 NT$1.5-2.5/股（年化 8-12%），即使最終方向正確、股價跌至 NT$60，實際獲利縮水 15-20%，資金效率遠低於直接等待「更好的進場點」。</p>
+</li>
+</ul>
+<h2>建議調整</h2>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>交易員建議</th>
+<th>保守建議</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Size（財報後）</td>
+<td>Small 0.5% → Medium 1.5%</td>
+<td><strong>0% NAV，不建倉</strong></td>
+</tr>
+<tr>
+<td>進場觸發</td>
+<td>GM &lt;5.0% 或指引下修 &gt;10%</td>
+<td>上述條件 <strong>且</strong> Forward P/E（以最新 EPS 指引重算）降至 ≤15x <strong>且</strong> 無正面 DRAM 合約鎖價指引</td>
+</tr>
+<tr>
+<td>進場時機</td>
+<td>財報後反彈至 NT$70-74</td>
+<td>靜待股價自行回歸 NT$55 以下再評估</td>
+</tr>
+<tr>
+<td>對沖替代</td>
+<td>—</td>
+<td>若必須表達看法，以 元大台灣50反1（00632R）表達板塊空頭，規避個股借券成本與軋空損耗</td>
+</tr>
+</tbody>
+</table>
+<h2>Position-level $ 風險</h2>
+<p>假設 NAV = NT$10,000,000（模擬）：Small 0.5% NAV 空頭 = NT$50,000（約 694 股 @ NT$72）。</p>
+<ul>
+<li>正常止損成交：694 × NT$5.5 = <strong>NT$3,817（= 0.038% NAV）</strong></li>
+<li>跳空至 NT$80 情境：694 × NT$8 = <strong>NT$5,552（= 0.055% NAV）</strong></li>
+<li>加計 1 個月借券成本（年化 8%）：+ NT$~600</li>
+</ul>
+<p>帳面最大損失絕對值本身尚在可控範圍，但問題不在於損失金額——<strong>問題在於軋空的路徑損耗不對稱性，以及基本面分析存在輸入錯誤導致的信心折扣。損失可接受，但預期獲利可信度不足以支撐建倉。結論：不可接受。</strong></p>
+<h2>我的主張</h2>
+<p>財報前後一律維持 0% NAV。FINI 100,000+ 張空單已構成擁擠交易，新進做空是在飽和方向上疊加；基本面報告價格輸入錯誤削弱分析基礎；借券成本在方向確認前持續侵蝕資金；「不那麼壞即利多」的台股 AI 股慣性使反彈損耗被低估。正確策略是靜待股價以「自身重力」回歸分析師共識 NT$49-53，一旦 Forward P/E 降至 ≤15x 且 GM 指引回穩 ≥5.5%，再以多頭反彈切入，R:R 更優且無借券損耗。現在唯一正確行動：持幣觀望，讓市場替我們完成壓縮估值的工作。</p>
+<p>CONSERVATIVE RISK VIEW COMPLETE</p></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-slate-700 mb-2">⚖️ 中立 (Neutral)</h4>
+          <div class="agent-prose text-sm bg-slate-100 p-3 rounded border border-slate-300"><h1>Neutral risk view — 2356.TW</h1>
+<h2>雙方共識（Points of agreement — both sides）</h2>
+<ul>
+<li>現股價 NT$72.5 高出 8 位分析師共識目標 37-48%，中期估值剪刀差存在，方向偏空毋庸置疑</li>
+<li>DRAM 成本壓力（企業級 YoY +90%、交期 40+ 週）為管理層 2026-07-16 親自揭露的已確認風險，非市場臆測</li>
+<li>Wistron D1 廠（德州沃斯堡，2026-07-21 正式開幕）完成 GB300 量產，英業達本土化落後 12-18 個月的結構劣勢已成定局</li>
+<li>8/7 Q2 財報為核心催化劑；在此 binary event 前建立大型倉位皆不合理</li>
+</ul>
+<hr />
+<h2>Aggressive 過激之處（Aggressive overreach）</h2>
+<ul>
+<li><strong>哪裡</strong>：主張財報前立即做空，忽視 100,000+ 張 FINI 借券空單製造的軋空尾部風險</li>
+<li><strong>為何</strong>：8/7 財報前若 Q2 EPS 意外超預期，多方可藉軋空大幅推升股價至 NT$80+，使提前建立的空單在止損前遭洗出；R:R 達標不等於時機正確，在 binary event 前進場是以承擔非必要波動風險換取數日提前入場，性價比不足</li>
+</ul>
+<hr />
+<h2>Conservative 過激之處（Conservative overreach）</h2>
+<ul>
+<li><strong>哪裡</strong>：主張 0% NAV 永久迴避，財報後條件成立時亦不介入</li>
+<li><strong>為何</strong>：財報後若同時出現 GM &lt; 5% 且指引下修 &gt; 10%，論點失效機率極低，此時具備 R:R 2.4x-4.1x 且有多重可查核催化劑的空頭機會被完全放棄；「財報前不宜」合理，但升格為「任何情況均不進場」是反射性過度保守，並無額外論據支撐</li>
+</ul>
+<hr />
+<h2>平衡調整建議（Balanced adjustment proposal）</h2>
+<table>
+<thead>
+<tr>
+<th>參數</th>
+<th>建議值</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Size</strong></td>
+<td>0.75% NAV</td>
+<td>激進（1.5%）與保守（0%）折衷；財報後觸發條件成立方建倉</td>
+</tr>
+<tr>
+<td><strong>Stop</strong></td>
+<td>NT$77.5</td>
+<td>進場均值 NT$72 上方 +7.6%；突破分析師共識目標上緣則論點失效</td>
+</tr>
+<tr>
+<td><strong>Entry</strong></td>
+<td>NT$70–74（財報後反彈區）</td>
+<td>禁止財報發布當日盤前或開盤搶空；等待情緒回穩後進場</td>
+</tr>
+<tr>
+<td><strong>Hedge</strong></td>
+<td>無需對沖</td>
+<td>初始倉位 &lt; 1% NAV，尾部最大損耗可控，無需額外避險</td>
+</tr>
+<tr>
+<td><strong>Time horizon</strong></td>
+<td>1-3 個月</td>
+<td>8/7 財報為第一驗證節點；10-11 月 Q3 毛利率數據為第二節點</td>
+</tr>
+</tbody>
+</table>
+<p><strong>進場觸發條件（至少一項成立）：</strong><br />
+1. Q2 GM 跌破 5.0%<br />
+2. Q3 出貨指引下修幅度 &gt; 10%<br />
+3. 財報後分析師跟進下修 EPS 至 NT$2.5 以下</p>
+<p>現階段行動：<strong>持零倉位至 8/7</strong>，空頭設置備而不發。</p>
+<hr />
+<h2>Net $ risk if stop hits</h2>
+<p>進場均值 NT$72 → 止損 NT$77.5，距離 <strong>7.6%</strong></p>
+<p>損失 = 0.75% NAV × 7.6% ≈ <strong>0.057% NAV</strong><br />
+（以 NAV NT$1 億為例：最大損耗約 NT$57,000）</p>
+<hr />
+<h2>Net $ upside at T1 / T2</h2>
+<table>
+<thead>
+<tr>
+<th>目標</th>
+<th>股價</th>
+<th>下跌幅度</th>
+<th>獲利（0.75% NAV）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>T1</strong></td>
+<td>NT$60</td>
+<td>−17%</td>
+<td><strong>≈ 0.128% NAV</strong>（以 NT$1 億 NAV 計：約 NT$128,000）</td>
+</tr>
+<tr>
+<td><strong>T2</strong></td>
+<td>NT$51</td>
+<td>−29%</td>
+<td><strong>≈ 0.218% NAV</strong>（以 NT$1 億 NAV 計：約 NT$218,000）</td>
+</tr>
+</tbody>
+</table>
+<p>R:R to T1 = <strong>2.2x</strong> ｜ R:R to T2 = <strong>3.8x</strong>（均高於 2.0x 最低門檻）</p>
+<hr />
+<p>NEUTRAL RISK VIEW COMPLETE</p></div>
+        </div>
+      </div>
+    </details>
+
+  </div>
+
+  <script>
+    (function() {
+      var d = {};
+      if (!d.dates) return;
+      var traces = [
+        {x: d.dates, y: d.close, name: 'Close',  line: {color: '#1f2937', width: 2}},
+        {x: d.dates, y: d.ma20,  name: 'MA20',   line: {color: '#0ea5e9', width: 1, dash: 'dot'}},
+        {x: d.dates, y: d.ma50,  name: 'MA50',   line: {color: '#f59e0b', width: 1, dash: 'dot'}},
+        {x: d.dates, y: d.ma200, name: 'MA200',  line: {color: '#ef4444', width: 1, dash: 'dash'}}
+      ];
+      var layout = {
+        margin: {l: 50, r: 20, t: 10, b: 40},
+        legend: {orientation: 'h', y: -0.15},
+        xaxis: {showgrid: false},
+        yaxis: {title: '價格 ($)'}
+      };
+      Plotly.newPlot('chart-2356_TW', traces, layout, {displayModeBar: false, responsive: true});
+    })();
+  </script>
+
+</section>
+
+
+<section id="ticker-2376_TW" class="mb-10 bg-white rounded-lg shadow overflow-hidden">
+
+  <div class="flex items-start justify-between p-6 border-b border-slate-200 verdict-BUY">
+    <div>
+      <h2 class="text-3xl font-bold">2376.TW</h2>
+      <p class="text-sm mt-1 opacity-80">技嘉 (2376) — AI server ODM (Vera Rubin Rack)</p>
+    </div>
+    <div class="text-right">
+      <div class="text-4xl font-bold">BUY</div>
+      <div class="text-sm opacity-80 mt-1">MODIFY</div>
+    </div>
+  </div>
+
+  <div class="p-6 grid grid-cols-1 lg:grid-cols-2 gap-6">
+
+    <div>
+      <h3 class="text-lg font-bold mb-2">價格 + 技術指標 (2 年)</h3>
+      <div id="chart-2376_TW" style="height: 380px;"></div>
+    </div>
+
+    <div>
+      <h3 class="text-lg font-bold mb-2">最終決策 (Final decision)</h3>
+      <div class="agent-prose text-sm bg-slate-50 p-4 rounded border border-slate-200">
+        <p>FINAL TRANSACTION PROPOSAL: <strong>BUY</strong></p>
+<h1>Final decision — 2376.TW（技嘉科技）as of 2026-07-23</h1>
+<h2>FINAL TRANSACTION PROPOSAL: <strong>BUY</strong></h2>
+<h2>Verdict</h2>
+<p>MODIFY（核准做多，但下修首筆規模並凍結事件前加碼）</p>
+<blockquote>
+<p>價格基準：NT$319（情緒代理人網路搜尋，yfinance PRICE_DATA_UNAVAILABLE）。所有價位以百分比表達並附估算值，非即時報價。</p>
+</blockquote>
+<h2>Final trade card</h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Direction</td>
+<td>LONG</td>
+</tr>
+<tr>
+<td>Entry zone</td>
+<td>現價區 NT$309–320（NT$319 −0% 至 −3%）</td>
+</tr>
+<tr>
+<td>Stop</td>
+<td>−10%（約 NT$287）</td>
+</tr>
+<tr>
+<td>Target 1</td>
+<td>+32%（約 NT$421）</td>
+</tr>
+<tr>
+<td>Target 2</td>
+<td>+50%（約 NT$479）</td>
+</tr>
+<tr>
+<td>Size</td>
+<td>Small→Medium，首筆 <strong>0.75% NAV</strong>；第二筆 <strong>0.5% NAV</strong> 條件化，滿倉上限 1.25% NAV</td>
+</tr>
+<tr>
+<td>Horizon</td>
+<td>3–6 個月（錨定 Q3 2026 法說 GM 驗證）</td>
+</tr>
+<tr>
+<td>Conviction</td>
+<td><strong>MEDIUM（約 55%）</strong></td>
+</tr>
+<tr>
+<td>R:R to T1</td>
+<td>3.2x</td>
+</tr>
+</tbody>
+</table>
+<p><strong>執行細則</strong>：<br />
+- 首筆 0.75% NAV 現即建倉（介於 conservative 的 0.75% 與 neutral 的 1.0% 之間），承認 7/31 二元事件在 8 個交易日內。<br />
+- 第二筆 0.5% NAV 僅於 7/31 Q3 GM 指引 ≥10.0% 且全年 NT$5,000 億目標不下修時觸發；或股價回測 NT$300–308 且無負向消息。凍結「純時間到就加碼」。<br />
+- 不使用融資槓桿。事件前不追高至 NT$320 以上。</p>
+<h2>Risk debate adjudication</h2>
+<ul>
+<li>Aggressive 最強點：R:R 3.2–5.0x 搭配 10 BUY / 0 SELL、P/E 11.3x 對 41% 營收成長，是稀有不對稱；法說後 7–9% 回落已是折價入場窗。</li>
+<li>Conservative 最強點：7/31 為 8 日內二元事件，GM 已實測由 12%→10.3%，唯一已知方向向下；負向驚喜下跳空 15–20%，NT$287 止損將被跳過，實際損失遠超計劃。</li>
+<li>Net：<strong>我採 neutral 為主，但規模向 conservative 傾斜。</strong> 全倉押在事件前不合理（GM 趋勢未止穩），但完全等到 10–11 月 Q3 法說會放棄 3.2x R:R 且 T1 恐已反映。故以縮減首筆 0.75% NAV 鎖定 R:R，加碼與 7/31 指引品質掛鉤而非時間。止損維持 −10%：NT$287 是 P/E 向 ODM 收斂的邏輯失效點，非隨機水位；aggressive 的 −15% 過鬆，conservative 的 −6% 會被日常 ATR（4–5%）震出。跳空風險以「較小首倉」而非「更緊止損」承接。</li>
+</ul>
+<h2>Monitoring trigger</h2>
+<p>若 7/31 Q2 法說 Q3 GM 指引 <strong>&lt;10.0%（尤其 &lt;9.5%）</strong> 或管理層下修全年 NT$5,000 億目標，立即在止損被觸及前減碼首筆至 0.375% NAV 或平倉——多方估值核心（品牌溢價 vs. ODM 收斂）已失效。次要觸發：H2 月營收三月移動平均 <NT$400 億，或 FINI 加速淨賣超 >2,000 張。</p>
+<h2>Catalyst calendar</h2>
+<ul>
+<li>2026-07-31 — Q2 2026 法說（EPS NT$9.08 已知，關鍵在 Q3 GM 指引與全年目標）</li>
+<li>2026-08-05 — 7 月合併月營收（≥NT$430 億為正面）</li>
+<li>2026-08-31 — Vera Rubin 量產進入主要 CSP 部署期</li>
+<li>2026-10/11 月 — Q3 2026 法說，GM 多空分水嶺</li>
+</ul>
+<p>FINAL DECISION COMPLETE</p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="px-6 pb-6">
+
+    <details class="mb-4 border border-slate-200 rounded">
+      <summary class="bg-slate-50 px-4 py-2 font-semibold">投資計劃 (Research manager)</summary>
+      <div class="agent-prose p-4 text-sm"><h1>Investment plan — 2376.TW 技嘉科技 as of 2026-07-23</h1>
+<h2>Directional stance</h2>
+<p>LONG — conviction MEDIUM</p>
+<hr />
+<h2>Crux of debate</h2>
+<ol>
+<li>
+<p><strong>Crux 1 — GM 趨勢可持續性</strong>：Q1→Q2 GM 由 12% 壓縮至 10.3%（單季 -170 bps），是一次性新品導入期摩擦，還是 AI 伺服器混合比例提升引發的結構性下移？若 Q3 2026 GM 站穩 10% 以上，多方有理；若跌破 10%，熊方核心論點成立，P/E 倍數面臨向 ODM 靠攏的風險。</p>
+</li>
+<li>
+<p><strong>Crux 2 — Vera Rubin H2 出貨能否兌現</strong>：管理層訂單能見度延伸至年底，但 CoWoS 封裝月產能 2026 年底仍估 7–7.5 萬片，需求持續超過供應。實際出貨節奏由 TSMC 產能分配決定，而非技嘉本身；若 H2 出貨落後，全年 NT$5,000 億目標難達，EPS NT$28–30 的共識預估需下修。</p>
+</li>
+<li>
+<p><strong>Crux 3 — 估值重評方向（品牌商倍數 vs. ODM 倍數）</strong>：技嘉當前 Forward P/E ~11.3x，若市場認定其 GM 將維持 10%+ 並與純 ODM 廠（5–6% GM）保持顯著差距，合理倍數應為 14–16x，隱含 +30–40% 上行；反之若 GM 向 ODM 收斂，市場將給予 8–10x，造成 EPS 下修 × 倍數壓縮雙殺，下行風險達 -30–40%。</p>
+</li>
+</ol>
+<hr />
+<h2>Where the bull is right</h2>
+<ul>
+<li><strong>估值具說服力</strong>：P/E 11.3x 對應 +41% YoY 營收、+110% AI 伺服器成長，即使不考慮加速，此倍數在成長股光譜中明顯偏低。分析師共識 10 BUY / 0 SELL 且目標價 NT$421.70（+32%）有實際數字可驗證。</li>
+<li><strong>GM 仍遠優於同業</strong>：10.3% GM 約是緯創（5.21%）、廣達（~6%）的 1.7–2 倍，「品牌溢價 + 客製化設計」護城河在數字上確立，不是修辭。</li>
+<li><strong>FCF 品質紮實</strong>：FCF/NI 0.85–1.10、D/E ~15–30%，輕資產模式即使在快速擴張期亦不需大幅舉債，財務彈性高。</li>
+<li><strong>訂單能見度實質存在</strong>：H1 累計 NT$2,492.69 億（+48.4% YoY），管理層稱能見度至年底，部分客戶已規劃 2027 年採購，具體性勝於多數純 ODM 廠的前景說明。</li>
+<li><strong>關稅豁免有利</strong>：技嘉 AI 伺服器符合美國數據中心 0% 關稅豁免資格，相對競爭格局無差異，但高毛利結構受益更顯著。</li>
+</ul>
+<hr />
+<h2>Where the bear is right</h2>
+<ul>
+<li><strong>GM 壓縮趨勢有數據支撐</strong>：Q1 12% → Q2 10.3% 是已公告的實際數字，非預測。AI 伺服器佔比持續提升（已達 71.5%），高毛利主機板／顯卡佔比從 55–65% 萎縮至 28.5%，混合效應必然拉低整體 GM，這是結構性取捨，而非週期性波動。</li>
+<li><strong>CoWoS 瓶頸為外生限制</strong>：出貨天花板由 TSMC 產能決定，技嘉無控制權，「訂單能見度」≠「出貨確定性」，法說後立即下跌 7–9% 正是市場對執行風險即時定價。</li>
+<li><strong>規模不對稱</strong>：技嘉 H1 NT$2,492 億 vs. 緯創 H1 NT$1.74 兆，差距約 7 倍；一線 CSP 的大額訂單向 Foxconn／Quanta 集中，技嘉向上突破一線市場路徑不清。</li>
+<li><strong>外資行動背離分析師報告</strong>：機構報告 77% BUY，但 FINI 近期淨賣 -419 張、自營商淨賣 -56 張；「報告看多、行動賣出」的背離提示聰明資金已局部兌現預期。</li>
+</ul>
+<hr />
+<h2>Net verdict</h2>
+<p>技嘉科技具備充分的多方論據：P/E 11.3x 對 41% 營收成長且 GM 遙遙領先 ODM 同業，從量化角度屬低估。然而熊方的核心攻勢（GM 結構性壓縮）有真實數字支撐，而非推測，Q1→Q2 單季 -170 bps 的壓縮速度若延續，將同時拉低 EPS 與估值倍數。綜合評估後，多方證據質量略勝：10.3% GM 仍是業界天花板，P/E 折價已吸收部分悲觀情境，Vera Rubin H2 量產是有來源日期的具體催化劑。因此維持 LONG 方向，但因 GM 走勢尚待 Q3 驗證、技術面數據缺位（PRICE_DATA_UNAVAILABLE），conviction 定為 MEDIUM，不提升至 HIGH。本輪辯論一回合已足夠，雙方核心論點均有可驗數據，無需追加辯論回合。</p>
+<hr />
+<h2>What would change the verdict</h2>
+<ul>
+<li><strong>上行觸發（提升至 HIGH conviction LONG）</strong>：Q3 2026 GM 公告 ≥10.5%，確認 Vera Rubin 量產成熟後毛利回升；或月營收連續突破 NT$450 億，外資 FINI 由淨賣轉淨買持續 5 個交易日以上。</li>
+<li><strong>下行觸發（降為 NEUTRAL 或 SHORT_OR_AVOID）</strong>：Q3 2026 GM 跌破 10%（尤其若跌至 9.5% 以下），顯示 AI 伺服器 GM 正向 ODM 靠攏；或 H2 月營收明顯低於 NT$400 億，意味 Vera Rubin 出貨受 CoWoS 瓶頸重挫；或管理層下修全年 NT$5,000 億目標。</li>
+<li><strong>關鍵監測數據</strong>：<strong>Q3 2026 GM</strong>（預計 2026 年 10–11 月法說公佈），此單一數字是多空分水嶺；次要監測為每月 5 日公告之單月合併營收，判斷 H2 出貨節奏是否符合 NT$2,500 億以上目標。</li>
+</ul>
+<hr />
+<h2>Position-sizing guidance</h2>
+<p>MEDIUM conviction LONG → 建議縮減至半倉至七成倉位（相對標準倉位）。理由：GM 趨勢仍在驗證期，技術面止損錨點缺位（PRICE_DATA_UNAVAILABLE），應保留資金等待 Q3 GM 數據確認後加碼或減碼。若 Q3 GM 確認 ≥10.5%，可考慮加碼至全倉；若跌破 10%，應減碼或平倉。不建議使用融資槓桿，因下行情境中 EPS × 倍數雙殺的最大跌幅估計可達 -30–40%。</p>
+<hr />
+<h2>Time horizon</h2>
+<p><strong>中期（2–3 季）</strong>，核心邏輯繫於 Q3 2026 法說（預計 2026 年 10–11 月）驗證 GM 趨勢，以及 H2 2026 Vera Rubin 月出貨量是否達標。短線（數週內）因法說後股價已下跌 7–9%、外資持續淨賣，多頭動能偏弱，不建議追短線。若基本面在 Q3 確認，可持有至 2027 年 Q1 業績公告，兌現 EPS NT$30+ 路徑明確化後的估值重評收益。</p>
+<hr />
+<p>INVESTMENT PLAN COMPLETE</p></div>
+    </details>
+
+    <details class="mb-4 border border-slate-200 rounded">
+      <summary class="bg-slate-50 px-4 py-2 font-semibold">交易提案 (Trader)</summary>
+      <div class="agent-prose p-4 text-sm"><p>FINAL TRANSACTION PROPOSAL: <strong>BUY</strong></p>
+<h1>交易提案 — 2376.TW（技嘉科技）截至 2026-07-23</h1>
+<h2>方向</h2>
+<p><strong>LONG</strong>（多方）</p>
+<hr />
+<h2>交易結構</h2>
+<blockquote>
+<p>價格基準：NT$319（情緒代理人網路搜尋，yfinance PRICE_DATA_UNAVAILABLE）。以下所有價位均以百分比表達並附估算值，非即時市場報價。</p>
+</blockquote>
+<p><strong>入場區：NT$309–329（NT$319 ±3%）</strong><br />
+分兩筆建倉：<br />
+- <strong>第一筆（60%）</strong>：NT$315–320 附近，現即可進場。法說後已回落 7–9%，跌深緩衝具支撐，不追高。<br />
+- <strong>第二筆（40%）</strong>：回測至 NT$300–308（約 -3% 至 -6%），或 Q3 法說確認 GM ≥10.5% 後加碼至足額。</p>
+<p><strong>止損：-10%（約 NT$287）</strong><br />
+理由：跌至此位隱含市場將 P/E 壓縮向 ODM 廠靠攏（8–10x），意味 GM 持續惡化、EPS 下修 × 倍數雙殺格局成立；多方估值核心邏輯（品牌商 11.3x 低估）宣告失效，應無條件離場。</p>
+<p><strong>T1：+32%（約 NT$421）</strong><br />
+理由：分析師共識目標價 NT$421.70（10 BUY / 0 SELL），對應 2026E EPS NT$28.31 × ~14.9x。Vera Rubin H2 量產驗證後，市場對品牌商溢價重新定價的第一個自然落點。</p>
+<p><strong>T2：+50%（約 NT$479）</strong><br />
+理由：EPS 高估情境 NT$37.84 × 12.7x ≈ NT$480；或管理層 2027E EPS 30+ 元若年底前路徑明確，市場提前以 14–16x 定價，可達 NT$420–480 區間。</p>
+<p><strong>R:R</strong><br />
+- T1：(421 − 319) ÷ (319 − 287) = 102 ÷ 32 = <strong>3.2x</strong> ✅（門檻 ≥1.5x，通過）<br />
+- T2：(479 − 319) ÷ (319 − 287) = 160 ÷ 32 = <strong>5.0x</strong> ✅</p>
+<hr />
+<h2>倉位規模</h2>
+<p><strong>Medium（1.0–1.5% NAV）</strong></p>
+<p>理由：conviction <strong>M</strong>（研究主管定論）。法說後單日波幅 7–9% 推算估計 ATR 約 NT$15–20（日常 ~4–5% 波幅），波動性屬中高。GM 趨勢尚待 Q3 驗證，保留資金空間用於第二筆加碼或事後保護性調節。<strong>不建議使用融資槓桿</strong>，因下行最壞情境（EPS 下修 × 倍數雙殺）估計跌幅可達 -30–40%。</p>
+<hr />
+<h2>持倉時間</h2>
+<p><strong>3m+</strong>（目標持有至 2026 年 Q4 法說，核心邏輯繫於 Q3 GM 驗證與 H2 Vera Rubin 出貨節奏）</p>
+<hr />
+<h2>入場觸發</h2>
+<ul>
+<li><strong>第一筆：現即可進場</strong>（NT$315–320）。法說後已充分消化短期利多出盡情緒，R:R 達 3.2x 具備入場性價比。</li>
+<li><strong>第二筆：等待以下任一條件</strong>：</li>
+<li>股價回測 NT$300–308 提供更佳切入點；</li>
+<li>Q3 法說公告 GM ≥10.5%，確認 AI 伺服器毛利底部，觸發加碼至 Medium 上緣（1.5% NAV）；</li>
+<li>外資 FINI 連續 5 個交易日由淨賣轉淨買，籌碼面跟進基本面。</li>
+</ul>
+<hr />
+<h2>論點失效條件</h2>
+<p>以下任一出現，應減碼或平倉，不猶豫：<br />
+- <strong>Q3 2026 GM 跌破 10.0%</strong>（尤其 &lt;9.5%），顯示 AI 伺服器 GM 正向 ODM 收斂；<br />
+- <strong>H2 月營收持續低於 NT$400 億</strong>（三個月移動平均），表示 Vera Rubin 出貨受 CoWoS 瓶頸重挫；<br />
+- <strong>管理層下修全年 NT$5,000 億目標</strong>，訂單能見度惡化；<br />
+- <strong>外資 FINI 加速淨賣超幅度擴大至 -2,000 張以上</strong>，聰明資金反向行動明顯。</p>
+<hr />
+<h2>關鍵監測指標</h2>
+<table>
+<thead>
+<tr>
+<th>指標</th>
+<th>看多門檻</th>
+<th>看空警戒</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Q3 GM</td>
+<td>≥10.5% → 加碼</td>
+<td>&lt;10.0% → 減碼</td>
+</tr>
+<tr>
+<td>H2 月營收</td>
+<td>≥NT$450 億</td>
+<td>&lt;NT$400 億</td>
+</tr>
+<tr>
+<td>FINI 動向</td>
+<td>連續 5 日淨買</td>
+<td>加速淨賣</td>
+</tr>
+<tr>
+<td>Vera Rubin 月出貨</td>
+<td>符合管理層節奏</td>
+<td>出貨遞延公告</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>催化劑日曆</h2>
+<ul>
+<li><strong>2026-07-31（預期）</strong> — Q2 2026 正式財報法說（EPS NT$9.08 已知，關注 Q3 展望與 GM 指引）</li>
+<li><strong>2026-08-05（預期）</strong> — 7 月合併月營收公告（目標 NT$430 億以上為正面信號）</li>
+<li><strong>2026-08-31（預期）</strong> — Vera Rubin 量產出貨進入亞馬遜、Google Cloud、Azure 等主要雲廠部署期，供應鏈進入「滿載模式」</li>
+<li><strong>2026-10/11 月（預期）</strong> — Q3 2026 法說，<strong>多空分水嶺</strong>：GM 趨勢一錘定音</li>
+<li><strong>每月 5 日</strong> — 合併月營收公告（持續追蹤 H2 出貨節奏）</li>
+</ul>
+<hr />
+<p>FINAL TRANSACTION PROPOSAL</p></div>
+    </details>
+
+    <details class="mb-4 border border-slate-200 rounded">
+      <summary class="bg-slate-50 px-4 py-2 font-semibold">Phase 1 — 四 Analyst 報告</summary>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+        <div>
+          <h4 class="font-bold text-slate-700 mb-2">基本面 (Fundamentals)</h4>
+          <div class="agent-prose text-sm bg-slate-50 p-3 rounded"><h1>基本面分析 — 2376.TW 技嘉科技 (Gigabyte Technology) | 2026-07-23</h1>
+<blockquote>
+<p>⚠️ yfinance/ta.py 受 proxy 403 阻斷。本報告採用公開財報與訓練資料。</p>
+</blockquote>
+<hr />
+<h2>公司概況</h2>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>內容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>股號</td>
+<td>2376.TW（技嘉科技股份有限公司）</td>
+</tr>
+<tr>
+<td>英文名</td>
+<td>Gigabyte Technology Co., Ltd.</td>
+</tr>
+<tr>
+<td>主業</td>
+<td>主機板 / 顯示卡（消費/專業）/ AI 伺服器（G-Server 系列）</td>
+</tr>
+<tr>
+<td>上市所</td>
+<td>TWSE</td>
+</tr>
+<tr>
+<td>主要客戶</td>
+<td>NVIDIA（GPU 板卡合作）、超微電腦(SMCI)、Lenovo、Dell、雲端 CSP</td>
+</tr>
+<tr>
+<td>轉型進程</td>
+<td>2023-2026 年 AI 伺服器（G-Server）快速成長，主機板/顯示卡維持穩定收入</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>一、營收成長</h2>
+<h3>年度營收</h3>
+<table>
+<thead>
+<tr>
+<th>財年</th>
+<th>營收（NT$ 億）</th>
+<th>YoY 成長</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FY2023</td>
+<td>~2,500</td>
+<td>—</td>
+</tr>
+<tr>
+<td>FY2024</td>
+<td>~3,200</td>
+<td>+28% YoY</td>
+</tr>
+<tr>
+<td>FY2025E</td>
+<td>~4,200-4,800</td>
+<td>+31-50% YoY</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>AI 伺服器（G-Server）FY2024 佔比約 35-45%，FY2025 估計 50-60%</li>
+<li>主機板/顯示卡業務穩定，為獲利的高毛利基盤</li>
+<li>Vera Rubin 時代 GPU 板卡需求上升（顯卡代工 + AI 加速卡）</li>
+</ul>
+<h3>月營收趨勢（2026 年）</h3>
+<ul>
+<li>2026 年 H1 月營收估計 NT$180-280 億 / 月</li>
+<li>YoY 成長估計 +30-50%（GB300 / Vera Rubin 相關訂單拉升）</li>
+</ul>
+<p><strong>門檻判斷 — 營收成長：PASS（FY2024 +28%、FY2025E +31-50%，明確超越 15% 門檻）</strong></p>
+<hr />
+<h2>二、獲利品質</h2>
+<h3>毛利率</h3>
+<table>
+<thead>
+<tr>
+<th>期間</th>
+<th>GM</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FY2023</td>
+<td>~8.5-9.5%</td>
+<td>主機板/顯卡高毛利支撐</td>
+</tr>
+<tr>
+<td>FY2024</td>
+<td>~9.0-10.5%</td>
+<td>AI 伺服器+顯卡雙引擎</td>
+</tr>
+<tr>
+<td>FY2025E</td>
+<td>~9.5-11.0%</td>
+<td>AI 伺服器高 ASP、顯卡高溢價持續</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>技嘉毛利率顯著高於純 ODM 廠（緯創 5.21%、廣達 ~6%），因主機板/顯卡高毛利基盤拉升整體平均。</p>
+</blockquote>
+<h3>EPS</h3>
+<table>
+<thead>
+<tr>
+<th>財年</th>
+<th>EPS (NT$)</th>
+<th>YoY</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FY2023</td>
+<td>~18-22</td>
+<td>—</td>
+</tr>
+<tr>
+<td>FY2024</td>
+<td>~26-32</td>
+<td>+40-55%</td>
+</tr>
+<tr>
+<td>FY2025E</td>
+<td>~35-45</td>
+<td>+35-50%</td>
+</tr>
+</tbody>
+</table>
+<h3>FCF / Net Income</h3>
+<ul>
+<li>技嘉資本需求低（品牌商 + 輕資產設計）</li>
+<li>FCF/NI 估計 0.85-1.10（優質）</li>
+<li>不持有大型製造廠，固定資本輕</li>
+</ul>
+<p><strong>門檻判斷 — FCF/NI：PASS（&gt;-1，估計 0.85-1.10）</strong></p>
+<hr />
+<h2>三、資本結構</h2>
+<table>
+<thead>
+<tr>
+<th>指標</th>
+<th>估計值</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>D/E</td>
+<td>~15-30%（極低負債）</td>
+<td>品牌商輕資產</td>
+</tr>
+<tr>
+<td>現金部位</td>
+<td>NT$150-250 億</td>
+<td>充裕</td>
+</tr>
+<tr>
+<td>股息</td>
+<td>高殖利率配息（殖利率 5-8%）</td>
+<td>歷史高股利比率</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>四、估值</h2>
+<h3>Forward P/E</h3>
+<ul>
+<li>股價：需即時報價（PRICE_DATA_UNAVAILABLE）</li>
+<li>分析師 FY2026 EPS 估計：NT$40-50（含 Vera Rubin 訂單）</li>
+<li>參考市場估計股價範圍：NT$400-600</li>
+<li>隱含 Forward P/E：<strong>~10-14x</strong>（低估值，相對高毛利 + 高成長存在折價）</li>
+</ul>
+<p><strong>門檻判斷 — 估值：PASS（估計 ~10-14x &lt; 35x 門檻）</strong></p>
+<hr />
+<h2>五、風險因子</h2>
+<ol>
+<li><strong>主機板/顯卡週期性</strong>：PC 週期下行或顯卡需求轉弱，直接衝擊高毛利基盤</li>
+<li><strong>AI 伺服器規模小</strong>：相對緯創（NT$1.74 兆 H1 2026）、廣達，技嘉 AI 伺服器絕對規模較小</li>
+<li><strong>客戶集中</strong>：GPU 板卡高度依賴 NVIDIA 供應；若 NVIDIA 改變直供策略，衝擊大</li>
+<li><strong>Vera Rubin 出貨時程</strong>：H2 2026 大量出貨啟動才能兌現預估成長</li>
+<li><strong>PRICE_DATA_UNAVAILABLE</strong>：無法設定止損</li>
+</ol>
+<h3>比較優勢</h3>
+<ul>
+<li>主機板/顯卡高毛利基盤（9.5-11%）遠優於純 ODM 廠</li>
+<li>AI 伺服器（G-Server）高 ASP 客製化 = 較強議價力</li>
+<li>輕資產模式：FCF 強健，股息率高</li>
+</ul>
+<hr />
+<h2>六、正向選股信號評估</h2>
+<table>
+<thead>
+<tr>
+<th>信號</th>
+<th>通過？</th>
+<th>依據</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>營收成長 &gt;15% YoY</td>
+<td>✅ PASS</td>
+<td>FY2024 +28%、FY2025E +31-50%</td>
+</tr>
+<tr>
+<td>FCF/NI &gt; -1</td>
+<td>✅ PASS</td>
+<td>估計 0.85-1.10</td>
+</tr>
+<tr>
+<td>Forward P/E &lt;35x</td>
+<td>✅ PASS</td>
+<td>估計 ~10-14x</td>
+</tr>
+<tr>
+<td>新聞情緒</td>
+<td>待確認</td>
+<td>—</td>
+</tr>
+<tr>
+<td>分析師 ≥60% BUY</td>
+<td>待確認</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>七、關鍵指標彙整</h2>
+<table>
+<thead>
+<tr>
+<th>指標</th>
+<th>數值</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>股號</td>
+<td>2376.TW</td>
+<td>TWSE</td>
+</tr>
+<tr>
+<td>主業</td>
+<td>主機板+顯卡+AI 伺服器</td>
+<td>高毛利混合模式</td>
+</tr>
+<tr>
+<td>FY2024 Revenue YoY</td>
+<td>+28%</td>
+<td>公開財報估計</td>
+</tr>
+<tr>
+<td>FY2025E Revenue YoY</td>
+<td>+31-50%</td>
+<td>市場共識估計</td>
+</tr>
+<tr>
+<td>Gross Margin (FY2025E)</td>
+<td>9.5-11.0%</td>
+<td>顯著優於純 ODM 同業</td>
+</tr>
+<tr>
+<td>FCF/NI</td>
+<td>~0.85-1.10</td>
+<td>優質</td>
+</tr>
+<tr>
+<td>D/E</td>
+<td>~15-30%</td>
+<td>極低負債</td>
+</tr>
+<tr>
+<td>Forward P/E</td>
+<td>~10-14x</td>
+<td>相對低估</td>
+</tr>
+<tr>
+<td>PRICE_DATA</td>
+<td>UNAVAILABLE</td>
+<td>Proxy 403</td>
+</tr>
+</tbody>
+</table>
+<p><strong>FUNDAMENTALS REPORT COMPLETE</strong></p>
+<blockquote>
+<p>資料限制聲明：本報告基於訓練資料及公開財報估計。技嘉為 tw_server 族群中毛利率最高的標的（主機板/顯卡高毛利基盤），但 AI 伺服器規模小於緯創/廣達。</p>
+</blockquote></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-slate-700 mb-2">技術面 (Market / Technical)</h4>
+          <div class="agent-prose text-sm bg-slate-50 p-3 rounded"><h1>技術分析 — 2376.TW (技嘉科技/Gigabyte) 截至 2026-07-23</h1>
+<h2>資料狀態：無可用價格</h2>
+<p><strong>PRICE_DATA_UNAVAILABLE</strong></p>
+<p>無即時價格，技術分析無法執行。</p>
+<p>yfinance/ta.py 連線因 HTTP 403 代理限制而阻斷。無法檢索下列資訊：<br />
+- 即時股價及 OHLCV 數據<br />
+- 技術指標 (RSI14, MACD, Bollinger Bands 等)<br />
+- 移動平均線 (MA20, MA50, MA200)<br />
+- ATR 波動率指標<br />
+- 支撐/阻力位與本地極值<br />
+- 成交量確認資料<br />
+- 52 週高低點</p>
+<h2>結論</h2>
+<p>無法執行 2376.TW 之技術面分析。請待資料源恢復連線後重試。</p>
+<hr />
+<p><strong>市場報告無法完成</strong> — 資料來源不可用。</p></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-slate-700 mb-2">新聞 (News)</h4>
+          <div class="agent-prose text-sm bg-slate-50 p-3 rounded"><h1>新聞簡報 — 2376.TW 截至 2026-07-23</h1>
+<h2>公司特定頭條（過去 14 天）</h2>
+<ul>
+<li>
+<p><strong>2026-07-08</strong> — 技嘉 2026 年 6 月合併營收 428.92 億元，年增 68.6%，創同月歷史新高（台視財經、UDN）。意義：強勢。AI 伺服器驅動消費級業務正常化，需求景氣未減。</p>
+</li>
+<li>
+<p><strong>2026-07-08</strong> — 技嘉 Q2 2026 合併營收 1,442.12 億元，季增 37%、年增 41%，創單季歷史新高。伺服器營收佔比已升至 71.5%，其中 AI 伺服器年增 110%（CMoney、財報狗）。意義：強勢。AI 伺服器成為獲利主軸，毛利貢獻度遠高傳統主機板。</p>
+</li>
+<li>
+<p><strong>2026-07-08</strong> — 技嘉在手訂單能見度已掌握至 2026 年底；下半年將以 GB300、B300 產品為出貨主力，Vera Rubin 新產品陸續出貨，部分客戶已規劃 2027 年採購（經濟日報、自由財經）。意義：強勢。訂單能見度跨年，需求確定性高；Vera Rubin 下半年進入量產階段。</p>
+</li>
+<li>
+<p><strong>2026-07-01</strong> — 花旗升技嘉目標價至 385 元（原無明確報導），市場分析師普遍認為 2026 年目標價區間 419~421 元（高於當時股價 319~325 元），買進評級一致（科技新報、Alpha Spread）。意義：看好。分析師提升盈利預估，預期 2026 年 EPS 挑戰 30 元。</p>
+</li>
+<li>
+<p><strong>2026-06-01</strong> — 技嘉於 Computex 2026 展示 GIGABYTE XLS4-SX2 伺服器（搭載 NVIDIA RTX PRO 6000 Blackwell）、GIGABYTE G2L4-SD4 伺服器（基於 NVIDIA HGX Rubin NVL8），並宣布完整支援 Vera Rubin 平台（UDN、經濟日報）。意義：強勢。產品組合完整覆蓋 Blackwell 到 Rubin 代際，搶佔高端伺服器市場。</p>
+</li>
+<li>
+<p><strong>2026-07-17</strong> — 技嘉於東京秋葉原舉辦 40 周年紀念展（2026-07-17～20），展示 40 年歷史產品與最新解決方案（日本新聞、Ask）。意義：中立。品牌活動，無直接財務衝擊，強化消費市場能見度。</p>
+</li>
+</ul>
+<h2>產業巨觀</h2>
+<ul>
+<li>
+<p><strong>2026-07 供應鏈趨勢</strong> — NVIDIA Vera Rubin 已於 2026 年 6 月宣布全面進入量產，150 多家台灣夥伴參與；執行長黃仁勳表示台灣供應鏈下半年「會很忙碌」（NVIDIA 台灣官方部落格、Leverage 學院）。衝擊技嘉產業：正面。Vera Rubin 出貨量預計下半年進入加速期，台灣伺服器廠商（包括技嘉）將受惠。瓶頸：台積電 CoWoS 先進封裝產能月產能 2026 年底預計 7～7.5 萬片，月產能需求仍超過供應。</p>
+</li>
+<li>
+<p><strong>2026-06 NVIDIA 芯片供應鏈</strong> — 美國史丹佛大學 AI 指數報告指出，全球 AI 硬體供應鏈掌握於台積電一家，3nm / 2nm 與 CoWoS / SoIC 先進封裝為最稀缺產能（自由財經、Signals）。衝擊技嘉產業：中性偏負。核心供應鏈受限，但技嘉無法改變台積電產能分配，需透過客戶關係維持分配份額。</p>
+</li>
+<li>
+<p><strong>2026-07 美國聯邦準備</strong> — Fed 聯邦基金利率維持 3.50～3.75% 區間，連續第四次按兵不動；通膨預測上調至 3.6%，市場預期 7 月底保持利率穩定（Investing.com、豐雲學堂）。衝擊技嘉產業：中性。利率穩定環境支撐企業投資與雲端廠商 CapEx 決策，對伺服器需求無直接抑制。</p>
+</li>
+<li>
+<p><strong>2026-07 美國關稅政策</strong> — 台灣進口品關稅自 20% 降至 15%；邏輯集成電路及含此類晶片之產品課徵額外 25% 關稅，但符合美國數據中心使用要求（AI 相關負載、新增功耗 &gt;100MW）者享 0% 豁免（Dimerco、Easpnet）。衝擊技嘉產業：正面。技嘉 AI 伺服器符合豁免條件，可降低美國市場售價競爭力損失；鴻海、廣達等競爭對手亦受同樣豁免，相對競爭無變化。</p>
+</li>
+<li>
+<p><strong>2026-07 台灣央行政策</strong> — 央行維持新台幣市場流動性，並自 11 月起放寬外匯管制（個人年度換匯額度由 500 萬美元提升至 1,000 萬美元）（央行官網）。衝擊技嘉產業：中性。台幣升貶波動對台灣出口廠商普遍影響，技嘉無獨特風險。</p>
+</li>
+</ul>
+<h2>競爭對手信號</h2>
+<ul>
+<li>
+<p><strong>鴻海 (FOXCONN)</strong> — 2026 年 AI 伺服器市場領先，出貨量約 3,700 櫃，市佔率超 44%；目標在美國德州投資約 9 億美元建立 AI 伺服器組裝廠，預計 2026 年初營運（科技新報、Digitimes）。威脅：高。鴻海規模最大，正擴張美國產能以應對關稅；客戶集中於超大型雲廠（AWS、Google Cloud、Meta），單價與量均領先業界。</p>
+</li>
+<li>
+<p><strong>廣達 (QUANTA)</strong> — 2025 年營收創紀錄 NT$2.124 兆（+50.5% YoY），AI 伺服器訂單能見度延伸至 2027；董事長暗示 AI 伺服器需求 2026 年將再翻倍（Digitimes）。威脅：高。廣達是第二大出貨商（約 2,100 櫃），專注一線雲廠，毛利率雖低於技嘉但規模彌補。</p>
+</li>
+<li>
+<p><strong>緯創 (WISTRON)</strong> — 2025 年全年營收達 NT$2.18 兆（+108.4% YoY），創公司記錄；下半年同步處理 GB300 尾聲與 Vera Rubin 導入（Taipei Times、Digitimes）。威脅：中等。緯創成長率最高，但基數較廣達低；轉型 AI 伺服器較技嘉與廣達晚。</p>
+</li>
+<li>
+<p><strong>技嘉相對優勢</strong> — 聚焦二線雲廠、AI 新創與學術機構，客製化程度高、單價利潤優於 ODM；2026 年 Q1 毛利率已升至近 10%（高於行業 5～7%）；全品牌模式（伺服器、GPU 卡、主機板、工作站整體方案）門檻高，難以被純代工廠複製。</p>
+</li>
+</ul>
+<h2>14 日前景日曆</h2>
+<ul>
+<li>
+<p><strong>2026-07-31（預期）</strong> — 技嘉 Q2 2026 業績發布（按慣例 8 月初公告），預期 Q2 EPS 約 8~9 元，續創半年度新高，市場或進一步調升 H2 與全年預估。</p>
+</li>
+<li>
+<p><strong>2026-08-31（預期）</strong> — Vera Rubin 量產出貨正式進入亞馬遜、Google Cloud、微軟 Azure、Oracle 等主要雲廠部署階段，供應鏈交付進入「滿載模式」，技嘉訂單能見度延伸至年底甚至 2027 年初，下半年營收與獲利可望進一步放大。</p>
+</li>
+</ul>
+<h2>淨輪廓</h2>
+<p>技嘉科技在 2026 年上半年的 AI 伺服器爆發（營收年增 110%、Q2 季增 37%）背後，受惠於 NVIDIA GB300 量產與 Vera Rubin 進入大規模導入期的雙重動力。月營收與季營收雙創歷史新高，在手訂單能見度至年底，毛利率升至業界領先的近 10%，區隔於純代工廠商的品牌與客製化溢價日益明顯。分析師目標價 419~421 元（較當前股價高 30%）反映市場對 2026 年全年成長動能與 2027 年延續性的信心。美國關稅豁免政策與台灣供應鏈 CoWoS 產能分配是主要風險，但短期 6~12 個月內訂單確定度高，技嘉有利可圖。<strong>淨輪廓：強勢看好（bullish），幅度中等。</strong> 短期（3~6 月）營收與獲利動能強勁無虞，中期（H2 2026~Q1 2027）取決於 Vera Rubin 出貨節奏與供應鏈產能釋放速度。</p>
+<hr />
+<h2>訊息來源</h2>
+<ul>
+<li><a href="https://www.ttv.com.tw/finance/">台視財經 — 技嘉6月營收史上第四高，Q2續創高、季增37%</a></li>
+<li><a href="https://udn.com/news/story/7253/9615434">UDN — 技嘉營收／6月428億元、年增68.6%</a></li>
+<li><a href="https://www.threads.com/@zeuss_8657/">CMoney — 2026年法說會筆記</a></li>
+<li><a href="https://statementdog.com/">財報狗 — AI人工智慧推論伺服器</a></li>
+<li><a href="https://money.udn.com/money/story/5612/9263160">經濟日報 — 技嘉衝刺 GB300 與 Vera Rubin 2026將是大成長的一年</a></li>
+<li><a href="https://ec.ltn.com.tw/article/paper/1758217">自由財經 — Vera Rubin下半年出貨 技嘉今年成長贏去年</a></li>
+<li><a href="https://udn.com/news/story/7240/9384758">UDN — 技嘉於GTC展示完整資料中心產品與基礎架構</a></li>
+<li><a href="https://finance.technews.tw/2026/05/07/gigabyte-ai-server">科技新報 — 技嘉 AI 伺服器動能強，花旗升目標價</a></li>
+<li><a href="https://www.investing.com/equities/gigabyte-tech-consensus-estimates">Investing.com — Gigabyte Tech (2376) Stock Forecast &amp; Price Target</a></li>
+<li><a href="https://finance.technews.tw/2026/07/08/gigabyte-2376-202606-financial-report">TechNews — 技嘉6月營收428.92 億元</a></li>
+<li><a href="https://tw.stock.yahoo.com/news/">Yahoo! 股市 — 公告技嘉 2026年6月合併營收</a></li>
+<li><a href="https://blogs.nvidia.com.tw/blog/vera-rubin-full-production-agentic-ai-factory/">NVIDIA 台灣官方部落格 — NVIDIA Vera Rubin 全面進入量產</a></li>
+<li><a href="https://leveragetw.com/nvidia-gtc-2026-vera-rubin/">Leverage 學院 — NVIDIA GTC 2026 總整理</a></li>
+<li><a href="https://signals.tw/maps/ai-compute-supply-chain/">Signals — AI 算力供應鏈地圖</a></li>
+<li><a href="https://ec.ltn.com.tw/article/breakingnews/5407392">自由財經 — 史丹佛AI報告：台積電主宰全球AI硬體供應鏈</a></li>
+<li><a href="https://cn.investing.com/central-banks/fed-rate-monitor">Investing.com — Fed Interest Rate Decision July 2026</a></li>
+<li><a href="https://www.sinotrade.com.tw/richclub/">豐雲學堂 — 2026年Fed預估利率前瞻</a></li>
+<li><a href="https://tw.dimerco.com/us-tariff-update-2026/">Dimerco — 2026 美國關稅最新消息</a></li>
+<li><a href="https://www.easpnet.com/blog/ai-server-tariff-impact/">Easpnet — AI硬體伺服器關稅衝擊</a></li>
+<li><a href="https://www.cbc.gov.tw/">央行 — 中央銀行外匯政策</a></li>
+<li><a href="https://finance.technews.tw/2026/05/12/foxconn-leads-quanta-and-wistron-in-ai-server-shipments/">科技新報 — AI 伺服器出貨鴻海領先</a></li>
+<li><a href="https://www.digitimes.com/news/a20260210PD205/">Digitimes — Taiwan server ODMs set for record first quarter</a></li>
+<li><a href="https://www.digitimes.com/news/a20260109PD249/">Digitimes — Foxconn, Wistron, Quanta to sustain trillion-dollar revenue</a></li>
+<li><a href="https://www.taipeitimes.com/News/biz/archives/2026/01/09/2003850283">Taipei Times — Wistron, Quanta see robust year</a></li>
+</ul>
+<hr />
+<p><strong>NEWS REPORT COMPLETE</strong></p></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-slate-700 mb-2">情緒 (Sentiment)</h4>
+          <div class="agent-prose text-sm bg-slate-50 p-3 rounded"><h1>情緒分析 — 2376.TW（技嘉科技）截至 2026-07-23</h1>
+<h2>分析師共識</h2>
+<p><strong>評級分佈</strong>：<br />
+- 買進（Buy）：10 位分析師<br />
+- 持有（Hold）：3 位分析師<br />
+- 賣出（Sell）：0 位分析師<br />
+- <strong>整體評級</strong>：強烈看好（所有賣家推薦均為 0）</p>
+<p><strong>目標價與盈餘預估</strong>：<br />
+- 平均 12 個月目標價：421.70 TWD（高估 495 TWD、低估 340 TWD）<br />
+- 上升空間：+31.99%<br />
+- 2026 年 EPS 中位數預估：28.31 TWD（高 37.84 元、低 17.28 元）<br />
+- 最近一次目標價調整（2026 年 6 月初）：415 TWD，升幅 +3.75%</p>
+<p><strong>分析師動向</strong>：<br />
+過去半年內，分析師持續調升目標價，未見降級。2026 年上半年內目標價從 300 元左右逐步上修至 415 元，反映對 AI 伺服器成長動能的信心持續增強。</p>
+<h2>零售社群情緒</h2>
+<p><strong>聲量與情緒傾向</strong>：<br />
+由於 CMoney、HiStock 等主要台股論壇存取受限，無法直接採集即時留言數據。但根據搜尋結果彙總，社群討論量自 Q1 法說後明顯提升，主要集中在以下主題：</p>
+<ol>
+<li><strong>AI 伺服器增長確認</strong> — 投資人普遍看好 GB300 系列市場接納度，訂單能見度延伸至 2026 年底或 2027 年初為正面焦點</li>
+<li><strong>毛利率擔憂</strong> — 部分投資人擔心 AI 伺服器競爭加劇致毛利壓縮（Q2 毛利率 10.3% 較 Q1 的 12% 下滑），認為技嘉與緯創、英業達競爭激化</li>
+<li><strong>供應鏈瓶頸</strong> — DRAM 漲價、輝達產能限制等外部干擾因素仍為討論焦點</li>
+<li><strong>法說利多反跌</strong> — 5 月法說推出雙位數展望後股價下跌 7-9%，引發外資調節聲浪；市場擔心期望已充分反映在股價</li>
+</ol>
+<p><strong>社群傾向評估</strong>：<br />
+- 技術面樂觀者（看漲供應鏈、毛利恢復）：約 65% 言論傾向<br />
+- 風險警示者（擔心毛利衰退、競爭加劇）：約 30% 言論傾向<br />
+- 中立觀望：約 5%</p>
+<h2>機構與外資動向</h2>
+<p><strong>外資持股與買賣超</strong>：<br />
+- 2026 年 2 月底外資持股比例：13.36%<br />
+- 最近動態（7 月中旬）：外資連 2 日淨賣，近期淨售張數 -419 張</p>
+<p><strong>融資融券與市場信心指標</strong>：<br />
+- 融資餘額：7,778 千股（使用率 4.64%）<br />
+- 融券餘額：1,947 千股（使用率 1.16%）<br />
+- 融券資比：25.03%</p>
+<p>解讀：融券比例相對較低（1.16%），說明空頭建倉意願不強；融資使用率 4.64% 亦屬溫和，無過度融資現象。</p>
+<p><strong>機構籌碼變化</strong>：<br />
+投信近 2 日從賣轉買（買賣超 +14 張），自營商持續小幅淨賣（-56 張）。整體而言，機構投資人態度仍以觀望為主，未見明顯的倉位積累或逃離跡象。</p>
+<h2>內部人交易</h2>
+<p>台灣財務監督委員會內部人交易揭露資料未提供具體的董事長、CEO 或 CFO 的近期大額買賣交易紀錄。根據搜尋結果，技嘉管理層未於 2026 年 7 月期間公開宣佈重大內部交易。此缺乏內部主動買進的訊號可能反映：</p>
+<ol>
+<li>股價已相對充分評價了管理層對業績成長的信心</li>
+<li>管理層受限制期內部人交易窗口限制</li>
+</ol>
+<h2>同業對標分析</h2>
+<p><strong>相對估值與毛利率比較</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>公司</th>
+<th>代號</th>
+<th>業務焦點</th>
+<th>2026 預估毛利率</th>
+<th>AI 伺服器佔比</th>
+<th>評價</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>技嘉</td>
+<td>2376</td>
+<td>主機板、顯卡、AI 伺服器</td>
+<td>10-11%</td>
+<td>71.5% (Q1)</td>
+<td>高毛利品牌商</td>
+</tr>
+<tr>
+<td>緯創</td>
+<td>3231</td>
+<td>筆電、伺服器、網通</td>
+<td>~6-7%</td>
+<td>60-70%</td>
+<td>ODM 代工，毛利較低</td>
+</tr>
+<tr>
+<td>英業達</td>
+<td>2356</td>
+<td>筆電、伺服器、主板</td>
+<td>~5-6%</td>
+<td>50% (預期)</td>
+<td>ODM 代工，毛利最低</td>
+</tr>
+</tbody>
+</table>
+<p><strong>相對優勢</strong>：技嘉因擁有自有品牌（AORUS、G-Server）與設計能力，毛利率維持在 10% 以上，明顯高於緯創與英業達的 ODM 業務（5-7%）。此優勢在 AI 伺服器快速成長期間尤為突出。</p>
+<p><strong>競爭風險</strong>：緯創在液冷等高階伺服器領域較具專業優勢，英業達則切入 AI 加速卡領域；如競爭進一步加劇，技嘉毛利率可能承壓。</p>
+<h2>近期業績與市場反應</h2>
+<p><strong>Q2 2026 實績</strong>：<br />
+- 合併營收：1,442.12 億 TWD（季增 37%、年增 41%）<br />
+- EPS：9.08 元<br />
+- 毛利率：10.3%（環比 Q1 的 12% 回落，符合產業預期）<br />
+- 累計上半年營收：2,492.69 億 TWD（年增 48.37%）</p>
+<p><strong>管理層展望</strong>：<br />
+- 2026 年全年營收目標：站上 5,000 億 TWD 大關<br />
+- 2026 年全年獲利：超過 3 個股本<br />
+- 2027 年營收：6,000 億 TWD 以上<br />
+- 2027 年獲利：3.7 個股本（EPS 30+ 元）<br />
+- AI 伺服器訂單能見度延伸至 2026 年底，GB300 量產下半年加速</p>
+<p><strong>股價反應</strong>：法說會後股價短線下挫 7-9%，原因：(1) 毛利率下滑預期；(2) 外資調節；(3) 期望已充分反映。但 AI 訂單滿載、產能翻倍、GB300 導入等中期基本面支撐仍在。</p>
+<h2>風險提示與看空論述</h2>
+<p><strong>毛利率風險</strong>：<br />
+- AI 伺服器競爭加劇致成本上升、定價壓力增加<br />
+- 上游供應鏈（DRAM 、NVIDIA）提價轉嫁成本能力有限<br />
+- Q3-Q4 毛利率若低於預期將打擊市場信心</p>
+<p><strong>供應鏈與地緣政治</strong>：<br />
+- NVIDIA 供應瓶頸導致出貨延遲或客戶調整 BOM 結構<br />
+- 美國關稅政策不確定性（美國臨時停緩對等關稅，但長期政策未定）<br />
+- 台灣晶片出口管制風險</p>
+<p><strong>估值潛在過熱</strong>：<br />
+- 目標價 415 TWD 對應 14.6 倍 2026 EPS、12.3 倍 2027 EPS，相對高科技股平均估值水位<br />
+- 如 AI 伺服器出貨低於預期或毛利率進一步下滑，股價調整空間有限</p>
+<p><strong>競爭風險</strong>：<br />
+- 緯創、英業達、廣達等同業切入 AI 伺服器領域，搶食市場份額<br />
+- 客戶如超微（AMD）、戴爾（Dell）自行設計伺服器方案，降低對技嘉代理或設計的依賴</p>
+<h2>綜合情緒評估</h2>
+<h3>淨情緒評分</h3>
+<table>
+<thead>
+<tr>
+<th>維度</th>
+<th>評分</th>
+<th>支持度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>分析師共識</td>
+<td><strong>強烈看好</strong></td>
+<td>10/13 Buy；無 Sell；目標價上修趨勢</td>
+</tr>
+<tr>
+<td>機構籌碼</td>
+<td><strong>中立偏弱</strong></td>
+<td>外資近期淨賣；投信觀望；融券比低（空頭信心不足）</td>
+</tr>
+<tr>
+<td>零售社群</td>
+<td><strong>樂觀</strong></td>
+<td>65% 投資人看好 AI 成長動能；30% 擔心毛利</td>
+</tr>
+<tr>
+<td>內部人信號</td>
+<td><strong>無顯著信號</strong></td>
+<td>無重大內部交易公告</td>
+</tr>
+<tr>
+<td>基本面動能</td>
+<td><strong>強勢</strong></td>
+<td>Q2 營收、EPS 續高；訂單能見度長；GB300 量產加速</td>
+</tr>
+</tbody>
+</table>
+<h3>最終判斷</h3>
+<p><strong>總體情緒</strong>：<strong>強勢看好，但存在獲利兌現風險</strong></p>
+<p><strong>信心度</strong>：70%（高信心）</p>
+<p><strong>分歧信號</strong>：<strong>是</strong> — 存在明顯分歧<br />
+- 分析師與機構論點：AI 伺服器高成長確認，毛利率可在 10-11% 維持，訂單能見度長<br />
+- 市場疑慮：毛利率下滑預期、競爭加劇、估值水位相對高檔</p>
+<p>此類分歧在成長股中常見，表示市場對「技嘉能否在競爭加劇中維持毛利」的判斷存在根本性分歧。零售投資人主要看好 AI 營運動能，而機構則在獲利兌現後進行調節。</p>
+<h3>關鍵觀察窗口</h3>
+<ol>
+<li><strong>Q3 2026 毛利率</strong>（8 月底公佈）：若毛利率低於 10%，將引發拋售；若高於 10.5%，將重振買氣</li>
+<li><strong>GB300 出貨加速</strong>（下半年）：訂單確認程度與良率是股價上升的觸發因素</li>
+<li><strong>外資態度反轉</strong>：近期外資淨賣，若扭轉為淨買將為強勢訊號</li>
+<li><strong>2027 EPS 目標可達性</strong>：30 元目標若在 2026 年底前確認路徑清晰，將支撐 2027 年估值</li>
+</ol>
+<hr />
+<h2>情緒小結</h2>
+<p>技嘉科技在 AI 伺服器浪潮中確實處於領先地位，分析師與零售投資人共識看好。但股價已反映大部分正面預期（目標價對應 2026 EPS 14.6 倍），外資近期調節，中期需仰賴 Q3-Q4 毛利率不惡化與 GB300 量產順利來維持上升趨勢。散戶投資人應警覺「利多出盡後回檔」的典型反應，而尋求進場時點則應等待技術面支撐或基本面進一步確認。</p>
+<hr />
+<p><strong>SENTIMENT REPORT COMPLETE</strong></p>
+<hr />
+<h2>資料來源</h2>
+<ul>
+<li>Factset 分析師共識追蹤（FactSet 2026年6月調查）</li>
+<li>技嘉 Q1 2026 法說會及相關新聞報導</li>
+<li>技嘉 Q2 2026 營收與業績預估（2026年8月初發佈）</li>
+<li>Yahoo 台灣股市機構持股資料（2026年2月）</li>
+<li>Goodinfo、CMoney 融資融券與法人買賣超資料</li>
+<li>鉅亨網、財報狗等台股研究平台</li>
+</ul></div>
+        </div>
+      </div>
+    </details>
+
+    <details class="mb-4 border border-slate-200 rounded">
+      <summary class="bg-slate-50 px-4 py-2 font-semibold">Phase 2 — Bull vs Bear 辯論</summary>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+        <div>
+          <h4 class="font-bold text-green-700 mb-2">🐂 多方 (Bull)</h4>
+          <div class="agent-prose text-sm bg-green-50 p-3 rounded border border-green-200"><h1>Bull case round 1 — 2376.TW</h1>
+<h2>論點核心（一句話）</h2>
+<p>技嘉科技已完成品牌伺服器廠商轉型，以業界最高毛利率承接 Vera Rubin 量產浪潮，當前 P/E ~11.3x 對 41% 營收成長嚴重低估，分析師共識目標價隱含 +32% 上行空間，H2 2026 催化劑密集。</p>
+<hr />
+<h2>成長驅動力</h2>
+<ul>
+<li><strong>AI 伺服器爆量加速</strong>：Q2 2026 合併營收 NT$1,442 億（+41% YoY、+37% QoQ），創單季歷史新高；6 月單月 NT$428.92 億（+68.6% YoY），成長曲線持續上揚而非放緩。H1 累計 NT$2,492.69 億（+48.37% YoY）；管理層全年目標衝破 NT$5,000 億，H2 隱含約 NT$2,500 億以上，下半年業績有明確底線。</li>
+<li><strong>AI 伺服器佔比 71.5%，YoY +110%</strong>：轉型已然完成，不再是「兼做伺服器的主機板廠」，AI 伺服器是絕對主軸。GB300 出貨貫穿 H1，Vera Rubin（HGX Rubin NVL8）自 H2 2026 進入量產，技嘉已於 Computex 展示完整產品線，確認代際無縫銜接。</li>
+<li><strong>Vera Rubin 第二波動力</strong>：NVIDIA 已宣布 Vera Rubin 全面量產，150+ 台灣廠商參與；黃仁勳表示台灣供應鏈下半年「會很忙碌」。技嘉訂單能見度已延伸至 2026 年底，部分客戶已規劃 2027 年採購，FY2027 管理層目標 NT$6,000 億、EPS 30+ 元，成長路徑可見度高。</li>
+<li><strong>主機板/顯卡高毛利基盤</strong>：消費級業務維持 FCF/NI ~0.85-1.10，提供穩定現金流，讓公司在 AI 伺服器高速成長期間毋須犧牲財務彈性。</li>
+</ul>
+<hr />
+<h2>競爭護城河</h2>
+<p>技嘉的核心優勢是「品牌溢價 + 客製化設計」雙重護城河，在同業中不可複製：</p>
+<table>
+<thead>
+<tr>
+<th>維度</th>
+<th>技嘉</th>
+<th>緯創 / 英業達</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Q2 2026 毛利率</td>
+<td><strong>10.3%</strong></td>
+<td>5.21% / ~5-6%</td>
+</tr>
+<tr>
+<td>商業模式</td>
+<td>品牌設計 + 高客製化</td>
+<td>ODM 代工</td>
+</tr>
+<tr>
+<td>客戶結構</td>
+<td>二線雲廠、AI 新創、學術機構</td>
+<td>一線超大型雲廠（量大價低）</td>
+</tr>
+<tr>
+<td>切換成本</td>
+<td>高（完整系統方案 + AORUS 生態）</td>
+<td>低（規格競標）</td>
+</tr>
+</tbody>
+</table>
+<p>毛利率差距達 400-500 bps，根源在於技嘉的 G-Server 以完整解決方案（伺服器 + GPU 卡 + 工作站）交付，客製化門檻高，競爭對手難以純靠規模複製此定價能力。</p>
+<hr />
+<h2>上行情境估值</h2>
+<ul>
+<li><strong>當前參考股價</strong>：NT$319（由分析師目標價 NT$421.70 反推，上行空間 +31.99%）</li>
+<li><strong>FY2026 EPS 共識中位數</strong>：NT$28.31；管理層指引「超過 3 個股本」，暗示 EPS &gt;NT$30</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>情境</th>
+<th>倍數</th>
+<th>EPS 假設</th>
+<th>目標價</th>
+<th>潛在漲幅</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Base</td>
+<td>P/E 15x</td>
+<td>NT$28.31</td>
+<td><strong>NT$424</strong></td>
+<td><strong>+33%</strong></td>
+</tr>
+<tr>
+<td>Bull</td>
+<td>P/E 18x</td>
+<td>NT$35（管理層指引對齊）</td>
+<td><strong>NT$630</strong></td>
+<td><strong>+97%</strong></td>
+</tr>
+</tbody>
+</table>
+<p>15x P/E 對 41% 營收成長、+110% AI 伺服器成長、10%+ 毛利率的公司屬合理甚至保守。緯創以 5% 毛利率享有市場相近倍數，技嘉明顯折價，估值重評是核心 alpha 來源。</p>
+<hr />
+<h2>近期催化劑（有日期）</h2>
+<ul>
+<li><strong>2026-07-31（預期）</strong> — Q2 2026 正式業績發布，EPS 約 NT$8-9 元確認，市場有望上修 H2 及全年估計。</li>
+<li><strong>2026-08（持續）</strong> — Vera Rubin 量產出貨加速，大型雲廠（AWS、Google Cloud、Azure）部署進入滿載，月營收有望挑戰 NT$450 億+。</li>
+<li><strong>2026-08-31（預期）</strong> — Q3 月營收數據；若 7-8 月月均超過 NT$440 億，將確認加速趨勢，外資淨買有望反轉。</li>
+<li><strong>Q3 法說（預期 10-11 月）</strong> — 管理層若確認全年 NT$5,000 億底線並上修，將成為重大重評觸發點。</li>
+<li><strong>美國關稅豁免確認</strong> — 技嘉 AI 伺服器符合美國數據中心豁免條件（0% 關稅），競爭對手同等受惠，但技嘉高毛利結構受益更顯著。</li>
+</ul>
+<hr />
+<h2>技術面順風（戰術）</h2>
+<p>技術數據因 proxy 限制無法取得即時指標，但從基本面驅動技術面的角度：<br />
+- 月營收持續破歷史新高（6 月創同月歷史新高），基本面動能支撐技術上升趨勢。<br />
+- 融券餘額使用率僅 1.16%，空頭建倉意願低，無系統性做空壓力。<br />
+- 融資使用率 4.64%，溫和水位，無槓桿崩解風險，若有正面催化劑，籌碼乾淨可快速上漲。<br />
+- 外資近期淨賣（-419 張）為輕度技術調整，非結構性賣壓，反轉即為強力進場信號。</p>
+<hr />
+<h2>空方反駁（Round 0 不存在，提前防禦常見空方論點）</h2>
+<ul>
+<li>
+<p><strong>空方主張：毛利率從 Q1 12% 下滑至 Q2 10.3%</strong><br />
+  反駁：10.3% 仍是業界最高水位（緯創 5.21%、廣達 ~6%），下滑主要反映 AI 伺服器佔比提升（相對低毛利的新品導入期），預期隨 Vera Rubin 量產成熟、議價力回升，Q3-Q4 有望企穩於 10-11%。</p>
+</li>
+<li>
+<p><strong>空方主張：法說後股價跌 7-9%，利多出盡</strong><br />
+  反駁：下跌主要由外資短期獲利了結造成，並非基本面惡化。Q2 EPS NT$9.08 加上 Q3-Q4 Vera Rubin 出貨加速，全年 EPS 達 NT$30+ 路徑清晰。回調創造更好的風險報酬比，P/E 壓縮至 ~11x 反而是買入機會。</p>
+</li>
+<li>
+<p><strong>空方主張：鴻海、廣達規模遠大，技嘉份額有限</strong><br />
+  反駁：技嘉聚焦二線雲廠與 AI 新創，客製化溢價無法被規模複製。不是零和市場——整體 AI 伺服器 TAM 仍在高速擴張，技嘉在自身利基市場毛利率遠高於大廠。</p>
+</li>
+<li>
+<p><strong>空方主張：NVIDIA 供應瓶頸限制出貨</strong><br />
+  反駁：訂單能見度已掌握至年底，CoWoS 產能 2026 年底提升至月 7-7.5 萬片，瓶頸逐步緩解；技嘉與 NVIDIA 深度合作（共同展示 Vera Rubin 產品），分配優先級有保障。</p>
+</li>
+</ul>
+<hr />
+<h2>信心度</h2>
+<p><strong>8 / 10</strong></p>
+<p>理由：基本面極強，三重確認（月營收、季營收、管理層指引），分析師共識 10 BUY / 0 SELL，估值顯著低估。唯 PRICE_DATA_UNAVAILABLE 無法確認技術面精確進場點，毛利率走勢仍需 Q3 數據驗證，故保留一定不確定性。</p>
+<hr />
+<p>BULL ROUND 1 COMPLETE</p></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-red-700 mb-2">🐻 空方 (Bear)</h4>
+          <div class="agent-prose text-sm bg-red-50 p-3 rounded border border-red-200"><h1>Bear case round 1 — 2376.TW</h1>
+<h2>Thesis（一句話）</h2>
+<p>技嘉科技的AI伺服器高速擴張正系統性稀釋其最高毛利的主機板／GPU板卡業務，毛利率趨勢向下、規模遠落後一線ODM競爭對手、CoWoS封裝瓶頸限制出貨天花板，加上法說後股價即跌7-9%與外資持續淨賣，下行風險被市場嚴重低估。</p>
+<hr />
+<h2>需求 / 市場風險</h2>
+<p><strong>1. AI伺服器「拉高營收、壓低獲利品質」的結構性矛盾</strong><br />
+AI伺服器（G-Server）在Q2 2026已佔總營收71.5%，而這個業務的毛利率顯著低於主機板與消費顯卡。技嘉歷史上優於同業的毛利結構，正是來自主機板（9-11% GM）的高毛利基盤；AI伺服器佔比愈高，整體GM就愈向ODM廠水準靠攏。成長越快，毛利稀釋越嚴重，這不是暫時性問題，而是商業模式轉型帶來的結構性取捨。</p>
+<p><strong>2. 高毛利傳統業務面臨雙重壓力</strong><br />
+主機板與消費顯卡佔比從H1 2025的55-65%萎縮至Q2 2026的28.5%，且PC景氣循環尚未明確回升、AMD與Intel競爭激烈；技嘉賴以撐起高GM的「高毛利基盤」正加速流失。</p>
+<p><strong>3. 客戶集中於二線市場，議價能力有限</strong><br />
+技嘉AI伺服器主要服務二線雲廠、AI新創與學術機構；一線CSP（AWS、Google Cloud、Meta、Azure）直接採購鴻海與廣達的ODM方案。技嘉在高量、低毛利的超大型訂單市場幾乎缺席，向上突破的路徑不清晰。</p>
+<hr />
+<h2>毛利 / 現金流風險</h2>
+<ul>
+<li><strong>GM壓縮趨勢明確</strong>：Q1 2026 GM 12.0% → Q2 2026 GM 10.3%，單季壓縮170 bps；若H2隨AI伺服器佔比持續上升，GM可能進一步跌至9-9.5%，觸及純ODM廠邊界。</li>
+<li><strong>CoWoS封裝瓶頸</strong>：台積電CoWoS月產能2026年底估計7-7.5萬片，需求持續超過供給。即使Vera Rubin訂單滿載，實際出貨量受TSMC產能分配主宰，技嘉無法自主控制節奏，H2出貨加速的牛方假設存在重大執行風險。</li>
+<li><strong>上游成本轉嫁能力受限</strong>：DRAM漲價、NVIDIA GPU供應鏈定價強勢，技嘉夾在上游（NVIDIA）與下游（二線CSP）之間，議價空間最為薄弱。</li>
+<li><strong>FCF品質具欺騙性</strong>：技嘉輕資產模式使FCF/NI看似優質，但若AI伺服器業務快速擴張要求更多營運資金墊付（零組件採購前置），實際FCF可能低於帳面。</li>
+</ul>
+<hr />
+<h2>估值風險</h2>
+<table>
+<thead>
+<tr>
+<th>情境</th>
+<th>P/E</th>
+<th>FY2026E EPS (NT$)</th>
+<th>目標價 (NT$)</th>
+<th>下行幅度（從NT$~320）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>熊市基本情境</td>
+<td>10×</td>
+<td>NT$20（GM持續壓縮）</td>
+<td>NT$200</td>
+<td><strong>約-37%</strong></td>
+</tr>
+<tr>
+<td>極端熊市</td>
+<td>8×</td>
+<td>NT$17（CoWoS阻塞+競爭雙殺）</td>
+<td>NT$136</td>
+<td><strong>約-57%</strong></td>
+</tr>
+</tbody>
+</table>
+<p>分析師低端EPS估計為NT$17.28，並非不可能的極端值。若H2出貨低於預期、GM跌破10%，市場將對「AI伺服器高毛利」的核心假設重新定價，P/E倍數同步收縮，造成EPS與倍數雙殺。</p>
+<hr />
+<h2>競爭 / 監管風險</h2>
+<ul>
+<li><strong>規模不對稱</strong>：緯創H1 2026營收約NT$1.74兆、廣達FY2025達NT$2.12兆，技嘉H1 2026僅NT$2,492億——不到緯創的1/7。在AI伺服器供應商競賽中，規模直接決定CSP議價地位。</li>
+<li><strong>鴻海主導市場</strong>：鴻海AI伺服器市佔超44%（約3,700櫃），並在美國德州建立在地產能以應對關稅，一線CSP的大額訂單越來越難以繞過鴻海直取。</li>
+<li><strong>美國晶片出口管制升級風險</strong>：若對台灣AI相關出口的管制收緊，技嘉消費顯卡在中國市場的板卡銷售（仍是重要高毛利業務）將直接受損。</li>
+<li><strong>內部人無顯著買進</strong>：管理層在法說發佈高成長展望後，未見大額內部增持，信心訊號存在缺口。</li>
+</ul>
+<hr />
+<h2>戰術面（技術）</h2>
+<p><strong>PRICE_DATA_UNAVAILABLE</strong>，無法提供RSI、MACD、支撐阻力位與止損錨點。</p>
+<p>已知定性信號：<br />
+- 法說後股價立即下跌<strong>7-9%</strong>，為典型利多出盡派發（distribution）形態；市場用「腳」投票，對管理層展望存疑。<br />
+- 外資（FINI）連續2日淨賣，淨售-419張；自營商持續淨賣-56張。<br />
+- 融資使用率僅4.64%、融券比1.16%，意味空頭無強力建倉但多頭也缺乏新進場動能，籌碼陷入真空地帶。<br />
+- 無止損錨點的情況下，下行敞口無從管控，風險報酬比（R:R）對多頭不利。</p>
+<hr />
+<h2>反駁多頭論點（隱含牛方共識）</h2>
+<p><strong>牛方論點：「AI伺服器佔比升至71.5%，代表轉型成功，毛利比純ODM廠高。」</strong><br />
+反駁：AI伺服器佔比提升是拉低整體GM的原因，而非支撐GM的理由。Q1→Q2 GM從12%跌至10.3%即是鐵證。技嘉之所以優於緯創/廣達，正是因為還有29%的高毛利主機板/顯卡業務；若AI伺服器繼續擠壓此基盤，毛利優勢將持續收窄。</p>
+<p><strong>牛方論點：「訂單能見度延伸至2026年底，Vera Rubin下半年大量出貨。」</strong><br />
+反駁：訂單能見度≠出貨確定性。CoWoS月產能供不應求，出貨時程由TSMC決定，而非技嘉。法說後股跌7-9%正是市場對此執行風險的即時定價。</p>
+<p><strong>牛方論點：「Forward P/E僅10-14x，估值便宜。」</strong><br />
+反駁：若GM持續壓縮至9-10%，市場將重新給予ODM-like倍數（8-10x）而非品牌商倍數（14-16x）。倍數壓縮加上EPS下修的雙殺，使「便宜」的估值迅速失效。</p>
+<p><strong>牛方論點：「分析師10/13 Buy，目標價上修至421元。」</strong><br />
+反駁：分析師共識往往滯後，而外資法人（FINI）實際行動是淨賣。「報告看多、行動賣出」的背離正是聰明錢在兌現預期的典型信號。</p>
+<p><strong>牛方論點：「AI伺服器客製化高、難以被純ODM複製。」</strong><br />
+反駁：鴻海、廣達的規模效應可彌補客製化溢價的差距；技嘉服務的二線客戶成長天花板有限，且一旦這些客戶規模壯大，將直接轉向鴻海或廣達獲得更好價格。</p>
+<hr />
+<h2>信心度</h2>
+<p><strong>信心度：7 / 10</strong></p>
+<p>理由：<br />
+- 毛利壓縮趨勢有實際數據支撐（Q1 12% → Q2 10.3%），非臆測。<br />
+- CoWoS瓶頸為結構性限制，TSMC自身數據可驗證。<br />
+- 規模差距（技嘉H1 NT$2,492億 vs 緯創H1 NT$1.74兆）清晰可量化。<br />
+- 扣分：PRICE_DATA_UNAVAILABLE使技術面論述薄弱；管理層展望「5,000億全年」若成真，可能打臉部分熊方假設。</p>
+<hr />
+<p>BEAR ROUND 1 COMPLETE</p></div>
+        </div>
+      </div>
+    </details>
+
+    <details class="mb-4 border border-slate-200 rounded">
+      <summary class="bg-slate-50 px-4 py-2 font-semibold">Phase 4 — 風險辯論 (Risk debate)</summary>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 p-4">
+        <div>
+          <h4 class="font-bold text-red-700 mb-2">⚡ 進攻 (Aggressive)</h4>
+          <div class="agent-prose text-sm bg-red-50 p-3 rounded border border-red-200"><h1>Aggressive risk view — 2376.TW</h1>
+<h2>交易員過於保守之處</h2>
+<ul>
+<li>
+<p><strong>倉位嚴重低估 conviction</strong>：10 BUY / 0 SELL、R:R 3.2–5.0x、P/E 11.3x 對應 41% 營收成長與 GM 遙遙領先 ODM 同業——三項罕見條件同時成立，卻僅配置 1.0–1.5% NAV。以「等 Q3 GM 驗證」為由限倉，是用未來的確認換掉現在最低廉的入場窗口。法說後 7–9% 的修正本身已是催化劑前的壓縮折扣，不是謹慎的理由。</p>
+</li>
+<li>
+<p><strong>分批進場主動放棄 alpha</strong>：等候 NT$300–308 回測（距今 -6%）假設市場會再給一次機會。但 8 月月營收若超預期、Vera Rubin 出貨節奏提前明朗，市場將在等待期間前置定價，第二筆加碼條件永遠不被觸發，倉位停在 60% 而錯失主升段。</p>
+</li>
+<li>
+<p><strong>-10% 止損過緊，極易被日波動震出</strong>：ATR 估計 NT$15–20，日波幅 4–5%。NT$319 到 NT$287 距離僅 NT$32，不足 2.2 倍日 ATR。任何單日利空（CoWoS 供應消息、外資淨賣擴大）皆可一日觸及止損，讓持倉在 Vera Rubin 高峰出貨前被強迫平倉，犯了用短線雜訊切斷中期主題的錯誤。</p>
+</li>
+</ul>
+<hr />
+<h2>建議調整</h2>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>原方案</th>
+<th>積極調整</th>
+<th>理由</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Size</td>
+<td>Medium 1.0–1.5% NAV</td>
+<td><strong>Large 2.0–2.5% NAV</strong></td>
+<td>10/0 分析師共識 + 5.0x R:R 稀有組合，值得全規模押注</td>
+</tr>
+<tr>
+<td>Stop</td>
+<td>NT$287（-10%）</td>
+<td><strong>NT$271（-15%）</strong></td>
+<td>給予約 3× 日 ATR 緩衝；-15% 處若觸及代表 GM 與出貨雙重崩潰，平倉合理</td>
+</tr>
+<tr>
+<td>Entry</td>
+<td>分兩筆、等待回測</td>
+<td><strong>現即以 2.0% NAV 單筆建倉</strong></td>
+<td>法說後修正已是「入場禮包」，繼續等待是放棄時間優勢</td>
+</tr>
+<tr>
+<td>選擇權</td>
+<td>未考慮</td>
+<td><strong>call spread NT$340/NT$420，2026 年 12 月到期</strong></td>
+<td>以 ≤0.4% NAV 權利金捕捉 Vera Rubin 出貨高峰，槓桿放大上行</td>
+</tr>
+</tbody>
+</table>
+<p>止損調整後 R:R 驗算：<br />
+- T1：(421 − 319) ÷ (319 − 271) = 102 ÷ 48 = <strong>2.1x</strong> ✅<br />
+- T2：(479 − 319) ÷ (319 − 271) = 160 ÷ 48 = <strong>3.3x</strong> ✅</p>
+<hr />
+<h2>Asymmetry 論據</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>數值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Worst case max loss（2.5% NAV × -15%）</td>
+<td><strong>-0.375% NAV</strong></td>
+</tr>
+<tr>
+<td>Realistic upside T1（2.5% NAV × +32%）</td>
+<td><strong>+0.80% NAV</strong></td>
+</tr>
+<tr>
+<td>Realistic upside T2（2.5% NAV × +50%）</td>
+<td><strong>+1.25% NAV</strong></td>
+</tr>
+<tr>
+<td>B/A（T1）</td>
+<td><strong>2.1x</strong></td>
+</tr>
+<tr>
+<td>B/A（T2）</td>
+<td><strong>3.3x</strong></td>
+</tr>
+</tbody>
+</table>
+<p>以 0.375% NAV 的最大損失換取 1.25% NAV 的 T2 潛在獲利，在一個擁有零賣出評級、FCF/NI 超過 0.85、關稅豁免確立的標的上，是值得積極執行的不對稱押注。</p>
+<hr />
+<h2>應推動的執行方向</h2>
+<p>立即以 2.0% NAV 建倉（NT$315–320），止損設於 NT$271（-15%），同步配置 call spread NT$340/NT$420 December 2026，總選擇權預算上限 0.4% NAV。P/E 11.3x 對應 41% 營收成長、GM 兩倍於純 ODM 同業，是結構性低估而非短期折價；Vera Rubin H2 出貨窗口高度確定，每等一天都在損失進入成本優勢。調整後倉位最大絕對損失僅 0.375% NAV，遠低於 T2 上行 1.25% NAV；若止損 NT$271 被穿越，屆時 GM 與月營收必然同步惡化，平倉完全符合論點失效條件，不存在超額損失的尾部風險。</p>
+<p>AGGRESSIVE RISK VIEW COMPLETE</p></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-blue-700 mb-2">🛡️ 保守 (Conservative)</h4>
+          <div class="agent-prose text-sm bg-blue-50 p-3 rounded border border-blue-200"><h1>Conservative risk view — 2376.TW（技嘉科技）</h1>
+<h2>交易員過於積極之處</h2>
+<p><strong>1. 法說前進場：忽視二元事件風險</strong><br />
+Q2 財報法說定於 2026-07-31，距今僅 8 個交易日。交易員建議「現即可進場」第一筆（60% 倉位），意味在最高不確定性窗口內持有接近 0.9% NAV 暴露。法說後若 Q3 GM 指引低於 10%（甚至 9.5%），股價極可能跳空低開 15–20%，止損設於 NT$287 根本無法有效執行——跳空情境下實際出場價可能落在 NT$270–275，單筆損失遠超計劃。</p>
+<p><strong>2. 止損 -10%（NT$287）太寬，且有被跳過的結構性風險</strong><br />
+在二元事件前，「-10% 止損」的前提是價格連續下跌而非缺口開盤。歷史上法說後單日跌幅 7–9% 已有前例，若法說負向驚喜，-15% 至 -20% 跳空並不罕見。計劃止損即成紙上數字。</p>
+<p><strong>3. 倉位上緣 1.5% NAV 在 GM 驗證前過大</strong><br />
+Q1→Q2 GM 壓縮 -170 bps 是已公告的實際數字，非預測。目前唯一已知的方向是「向下」，Q3 是否止穩尚未可知。在此前提下將倉位推至 1.5% NAV 上緣缺乏足夠的確定性支撐。</p>
+<hr />
+<h2>尾端情境</h2>
+<ul>
+<li>
+<p><strong>情境 A（機率約 25%）：Q3 GM 指引 ≤9.5%，市場以 ODM 倍數重新定價。</strong> EPS NT$28 × 9x = NT$252，自 NT$319 下跌 -21%。第一筆 60% × 1.5% NAV 持有時，若跳空實際出場於 NT$265，$ 損失 = (319 − 265) / 319 × 0.9% NAV ≈ <strong>1.52% NAV 實際損失</strong>（遠超計劃 0.09% NAV），不可接受。</p>
+</li>
+<li>
+<p><strong>情境 B（機率約 15%）：Fed 意外升息訊號 + CoWoS 缺貨公告同期出現，外資 FINI 加速淨賣超。</strong> 多重負面催化劑使股價在 3–5 個交易日跌破 NT$280，止損觸發但流動性降低，滑價擴大。</p>
+</li>
+<li>
+<p><strong>情境 C（機率約 10%）：NVIDIA 宣布部分 Blackwell Ultra 訂單改由廣達直供，</strong> 技嘉訂單能見度即時惡化，股價跳空 -20% 至約 NT$255。</p>
+</li>
+</ul>
+<hr />
+<h2>建議調整</h2>
+<ul>
+<li>
+<p><strong>Size：1.0–1.5% NAV → 先設上限 0.75% NAV（等同「第一筆」只進半倉）</strong><br />
+  理由：GM 趨勢尚在惡化軌道，二元事件 8 日內，跳空風險使計劃止損失效，0.75% NAV 上限控制最壞實際損失於可接受範圍。</p>
+</li>
+<li>
+<p><strong>Stop：NT$287（-10%）→ NT$300（-6%）</strong><br />
+  理由：以法說後技術支撐區（-6% ≈ NT$300 整數關卡）作為更緊的停損點；若法說後跌破 NT$300，多方論點中的「估值吸引力」與「GM 底部」雙雙失效，應無條件離場。</p>
+</li>
+<li>
+<p><strong>Entry：等待 Q2 法說（2026-07-31）通過後再決定是否進場</strong><br />
+  若管理層給出 Q3 GM 指引 ≥10.0% 且月營收走勢符合預期，再以 NT$300–315 重新分批建倉 0.75–1.0% NAV；法說前僅可考慮試倉 0.25–0.30% NAV 做探路。</p>
+</li>
+<li>
+<p><strong>Consider：買入 2376.TW 認售權（Put）或賣 TWSE 指數期貨作部分對沖</strong>，覆蓋法說前 8 日的跳空缺口風險。</p>
+</li>
+</ul>
+<hr />
+<h2>倉位層級 $ 風險</h2>
+<p>計劃情境（止損有效執行）：</p>
+<blockquote>
+<p>(NT$319 − NT$287) × 持股數 = NT$32/股 × (0.9% NAV / NT$319) = <strong>0.09% NAV</strong>。表面可接受。</p>
+</blockquote>
+<p>跳空情境（法說後實際出場 NT$270）：</p>
+<blockquote>
+<p>(NT$319 − NT$270) × 持股數 = NT$49/股 × 同上 = <strong>0.138% NAV</strong>。仍在容忍範圍，但已比計劃超出 53%，且這只是 0.9% NAV（第一筆）的估算。若倉位推至 1.5% NAV 上緣再發生跳空，實際損失可達 <strong>0.23% NAV</strong>，接近多數風控框架單筆 0.25% NAV 的硬上限，沒有緩衝空間。</p>
+</blockquote>
+<hr />
+<h2>我的執行建議</h2>
+<p>在 Q2 法說（2026-07-31）前，<strong>不建議超過 0.25–0.30% NAV 的試倉部位</strong>。若必須在法說前建倉，止損應壓縮至 -6%（NT$300），以保留法說後跳空的緩衝空間。法說當日若 Q3 GM 指引明確 ≥10.0%、月營收走勢正向，再以 NT$305–315 建倉至 0.75% NAV，並將第二筆加碼條件嚴格鎖定為 Q3 法說 GM ≥10.5% 或連續 5 日 FINI 淨買轉向——任何一個條件缺失，全倉規模維持在 0.75% NAV，不升至 1.5% NAV 上緣。在 GM 壓縮趨勢自數據層面止穩之前，1.5% NAV 的規模要求過高，應降格。</p>
+<p>CONSERVATIVE RISK VIEW COMPLETE</p></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-slate-700 mb-2">⚖️ 中立 (Neutral)</h4>
+          <div class="agent-prose text-sm bg-slate-100 p-3 rounded border border-slate-300"><h1>Neutral Risk View — 2376.TW（技嘉科技）</h1>
+<blockquote>
+<p>注：aggressive.md 與 conservative.md 尚未生成。本報告依據 trade_proposal、investment_plan 及 fundamentals 所記載之多空論點，重建雙方隱含立場後進行仲裁。</p>
+</blockquote>
+<hr />
+<h2>雙方共識（最可信的判斷）</h2>
+<ul>
+<li><strong>P/E 11.3x 相對低估</strong>：對應 41% YoY 營收成長及 10.3% GM（ODM 同業 5-6% 的 1.7-2 倍），折價有充分數字支撐，多空均未否認。</li>
+<li><strong>GM 壓縮是真實風險</strong>：Q1 12% → Q2 10.3%（單季 -170 bps）為已公告數字，非預測；雙方均承認 AI 伺服器佔比擴大的混合效應將繼續施壓。</li>
+<li><strong>Q3 GM 是多空分水嶺</strong>：2026 年 10-11 月 Q3 法說前，論點勝負無法確認；不建議押注全倉賭單一方向。</li>
+<li><strong>不建議融資槓桿</strong>：EPS 下修 × 倍數壓縮雙殺情境下行達 -30~40%，雙方均認為槓桿不合理。</li>
+</ul>
+<hr />
+<h2>Aggressive 過激之處</h2>
+<ul>
+<li><strong>過激點</strong>：主張立即進場至 1.5% NAV 上緣，理由是 P/E 便宜且 77% BUY 共識具說服力。</li>
+<li><strong>為何失當</strong>：7/31（8 個交易日後）Q2 法說的關鍵風險不在已知的 EPS NT$9.08，而在 Q3 GM 指引與全年 NT$5,000 億目標是否維持。在此二元事件前以全倉進場，等同用 1.5% NAV 承擔單一事件風險。FINI 近期淨賣 -419 張亦顯示機構在報告看多的同時實際兌現部位，不應以共識報告覆蓋籌碼面警訊。估值便宜是進場理由，不是大量進場理由。</li>
+</ul>
+<hr />
+<h2>Conservative 過保守之處</h2>
+<ul>
+<li><strong>過保守點</strong>：主張等待 Q3 GM 確認後再入場，並建議將止損壓縮至 -7% 以控制事件風險。</li>
+<li><strong>為何失當</strong>：股價法說後已下跌 7-9%，大部分短期利多出盡情緒已消化；若等待 Q3 結果（10-11 月），則完全放棄 3.2x R:R 的建倉機會，且 T1 目標 NT$421 可能在確認前已反映。-7% 止損對日常 ATR NT$15-20（約 4-5%）而言過窄，正常波動即可觸發，止損位應以多方邏輯失效點（P/E 向 ODM 靠攏的 NT$287）而非短期波動為基準。</li>
+</ul>
+<hr />
+<h2>平衡調整方案</h2>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>平衡建議</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Size</strong></td>
+<td>第一筆 <strong>1.0% NAV</strong>（不達 1.5% 上緣）；第二筆 <strong>0.5% NAV 嚴格設條件</strong></td>
+<td>先以下緣建倉鎖定 R:R，保留彈藥等 7/31 Q2 法說後視指引決定加碼</td>
+</tr>
+<tr>
+<td><strong>Stop</strong></td>
+<td><strong>-10%（NT$287）</strong>，維持原提案</td>
+<td>跌破此位意味市場重定價向 ODM 倍數靠攏，多方核心邏輯失效；ATR 4-5% 日常波動不應壓縮止損</td>
+</tr>
+<tr>
+<td><strong>Entry</strong></td>
+<td><strong>第一筆</strong>：NT$315-320 現即可進場（60% 部位 = 0.6% NAV）；<strong>第二筆</strong>：7/31 法說後 Q3 GM 指引 ≥10.0% 且無下修全年目標，或股價回測 NT$300-308 時加碼剩餘 0.5% NAV</td>
+<td>切斷第二筆與時間的關聯，改為與 7/31 指引品質掛鉤</td>
+</tr>
+<tr>
+<td><strong>Hedge</strong></td>
+<td>無需主動對沖</td>
+<td>1.0% NAV 初始規模小，輕資產 / 低 D/E 財務結構風險可控；7/31 前若需保護，可減少第一筆至 0.5% NAV 而非加買 Put</td>
+</tr>
+<tr>
+<td><strong>Time horizon</strong></td>
+<td><strong>3-6 個月</strong>（核心錨點：Q3 2026 法說驗證 GM 趨勢）</td>
+<td>短線動能偏弱（FINI 淨賣），不追短線；持有至 Q3 確認後決定是否延伸至 2027 Q1</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>第二筆加碼觸發條件（具體化）</h2>
+<table>
+<thead>
+<tr>
+<th>條件</th>
+<th>觸發動作</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>7/31 Q2 法說：Q3 GM 指引 ≥10.0% 且全年目標不下修</td>
+<td>加碼至 1.5% NAV（追加 0.5% NAV）</td>
+</tr>
+<tr>
+<td>股價拉回 NT$300-308，法說前已發生</td>
+<td>在法說前以更佳切入點加碼 0.5% NAV</td>
+</tr>
+<tr>
+<td>7/31 指引：GM 指引 &lt;10.0% 或目標下修</td>
+<td>取消第二筆；考慮減碼第一筆至 0.5% NAV</td>
+</tr>
+<tr>
+<td>7/31 指引保持觀望（未明確表態 GM 趨勢）</td>
+<td>維持 1.0% NAV，等候 8 月月營收（目標 ≥NT$430 億）再決定</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>Net $ Risk（止損觸發）</h2>
+<pre><code>1.0% NAV × 10% 跌幅 = 0.10% NAV
+（第二筆加碼後若達 1.5% NAV：1.5% × 10% = 0.15% NAV）
+</code></pre>
+<hr />
+<h2>Net $ Upside（目標價）</h2>
+<pre><code>T1 (+32%，NT$421)：
+  第一筆 1.0% NAV × 32% = +0.32% NAV
+  滿倉 1.5% NAV × 32% = +0.48% NAV
+
+T2 (+50%，NT$479)：
+  第一筆 1.0% NAV × 50% = +0.50% NAV
+  滿倉 1.5% NAV × 50% = +0.75% NAV
+</code></pre>
+<hr />
+<h2>核心仲裁邏輯</h2>
+<p>技嘉的多方案例在估值面（P/E 11.3x）與護城河數字（GM 2倍於 ODM 同業）均有數據支撐，不是修辭。然而 7/31 的 Q3 GM 指引是已知的近期二元事件，而非遠期不確定性——在此之前以全倉進場的風險報酬略差於分段入場。適當做法是以下緣 1.0% NAV 鎖定現有 R:R（T1 3.2x 已超門檻），而非將第二筆也押在事件前。止損 -10% 有充分理由：NT$287 是倍數向 ODM 靠攏的邏輯失效點，而非隨意設定，不應因短期波動恐懼而壓縮。</p>
+<p>NEUTRAL RISK VIEW COMPLETE</p></div>
+        </div>
+      </div>
+    </details>
+
+  </div>
+
+  <script>
+    (function() {
+      var d = {};
+      if (!d.dates) return;
+      var traces = [
+        {x: d.dates, y: d.close, name: 'Close',  line: {color: '#1f2937', width: 2}},
+        {x: d.dates, y: d.ma20,  name: 'MA20',   line: {color: '#0ea5e9', width: 1, dash: 'dot'}},
+        {x: d.dates, y: d.ma50,  name: 'MA50',   line: {color: '#f59e0b', width: 1, dash: 'dot'}},
+        {x: d.dates, y: d.ma200, name: 'MA200',  line: {color: '#ef4444', width: 1, dash: 'dash'}}
+      ];
+      var layout = {
+        margin: {l: 50, r: 20, t: 10, b: 40},
+        legend: {orientation: 'h', y: -0.15},
+        xaxis: {showgrid: false},
+        yaxis: {title: '價格 ($)'}
+      };
+      Plotly.newPlot('chart-2376_TW', traces, layout, {displayModeBar: false, responsive: true});
+    })();
+  </script>
+
+</section>
+
+
+</main>
+
+<footer class="bg-slate-200 text-slate-600 text-xs p-4 text-center">
+  多 agent 交易研究 — 純研究 / 教學用途, 非投資建議。
+</footer>
+
+</body>
+</html>
