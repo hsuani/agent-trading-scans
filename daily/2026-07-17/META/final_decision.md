@@ -31,12 +31,15 @@ Date: 2026-07-17
 - Direction：LONG
 - Size：**0.75% NAV**（財報前探索性半倉）；財報前硬上限 1.0% NAV。
 - 加碼條件（7/29 盤後，三者須同時成立）：(1) Q2 operating margin 符合或優於共識；(2) 管理層首次揭露 Meta Compute 具體企業客戶 / RPO / SLA；(3) Q3 收入指引優於共識 → 加碼至 1.25%–1.5% NAV。
-- Entry：**無即時價格，暫不給進出場價位**。若財報前建倉採分批進場，避開情緒峰值一次性重倉。
+- Entry：620–660（分析師隱含參考區；PRICE_DATA_UNAVAILABLE 非即時報價）。若財報前建倉採分批進場，避開情緒峰值一次性重倉。
+- Stop：544（約 -15% from 640 中位；廣告 YoY 增速跌破 20% 或 CapEx 再調升且零客戶披露，基本面優先出場）
+- Target 1：851（約 +33%；Q2 operating margin 符合共識 + Meta Compute 客戶初步披露確認）
+- Target 2：1,036（約 +62%；Iris 量產 + Meta Compute RPO 超過 $5B 確認；R:R to T2 ~4.1x）
 - Invalidation：CapEx 再上調且零客戶披露 / margin miss / Iris 量產延遲或良率不達標 / 內部人士轉為非計畫性大額賣出——任一觸發即減倉或清倉，不設「給它時間」緩衝。
 - Horizon：2–3 個季度。
 - Hedge（選用）：持有 0.75% 期間可搭配小額 short-dated put 或 QQQ put spread，將二元事件損失封頂於權利金。
 
-Stop / Target：**無即時價格，暫不給進出場價位**。
+R:R to T2: 4.1x
 
 ---
 

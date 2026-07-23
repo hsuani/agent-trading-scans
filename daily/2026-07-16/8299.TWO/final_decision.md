@@ -13,10 +13,10 @@ MODIFY（採 Neutral 分階段框架，方向不變、節奏收斂）
 | Field | Value |
 |---|---|
 | Direction | LONG |
-| Entry zone | PRICE_DATA_UNAVAILABLE — 無價位。分階段條件觸發進場（見 Phase） |
-| Stop（質性） | Q2 GM <57%；或任一大型 CSP 公告削減 H2 AI 資本支出；或 TrendForce 月報顯示 SLC NAND 合約價環比下跌 |
-| Target 1（質性） | P/E 由 6.5x 修復至 ~10x（情境約 +53%） |
-| Target 2（質性） | AI 平台非週期性重估至 ~14x（情境約 +115%） |
+| Entry zone | 480–520（分析師隱含 P/E 6.5x 估算基準；PRICE_DATA_UNAVAILABLE 非即時報價） |
+| Stop | 430（約 -15% from 500 中位；Q2 GM <57% 或 CSP 砍 capex 為首要停損觸發） |
+| Target 1 | 765（約 +53% from 500；P/E ~10x 修復情境） |
+| Target 2 | 1,075（約 +115% from 500；P/E ~14x 非週期重估情境） |
 | Size | Small→Medium：起始 0.5% NAV → 1.0% NAV → 上限 1.25% NAV（硬頂 1.5%） |
 | Horizon | 2–3 季（2026 Q4–2027 Q1） |
 | Conviction | MEDIUM（信心百分比約 60%） |
