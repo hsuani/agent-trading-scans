@@ -1,8 +1,8 @@
 # GOOGL 最終決策 — 2026-07-27
 
-FINAL TRANSACTION PROPOSAL: **BUY**
+FINAL TRANSACTION PROPOSAL: **HOLD**
 
-verdict: BUY
+verdict: HOLD
 conviction: 60%
 R:R_T2: 5.4
 phase: 4
@@ -11,7 +11,7 @@ phase: 4
 
 ## 裁決：MODIFY（採納中立方，微幅偏保守）
 
-核准建倉，但下修規模、強制硬性 Stop、刪除選擇權槓桿層。
+**價格數據不可用（PRICE_DATA_UNAVAILABLE）：** 代理伺服器封鎖 yfinance，無即時報價與 ATR，進出場價位暫無法設定。本決策記錄為 HOLD（條件性看多意向），俟價格數據恢復後重新評估並升級為 BUY 執行。核准建倉，但下修規模、強制硬性 Stop、刪除選擇權槓桿層。
 
 ## 最終交易卡
 
