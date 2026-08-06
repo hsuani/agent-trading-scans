@@ -1,0 +1,29 @@
+# 2376.TW 技術面分析 — 2026-08-06
+
+## 資料狀態
+**PRICE_DATA_UNAVAILABLE** — Yahoo Finance 代理封鎖 (HTTP 403)
+
+## 技術指標
+- RSI14：PRICE_DATA_UNAVAILABLE
+- MACD histogram：PRICE_DATA_UNAVAILABLE
+- MA50：PRICE_DATA_UNAVAILABLE
+- MA200：PRICE_DATA_UNAVAILABLE
+- ATR14：PRICE_DATA_UNAVAILABLE
+- 年化波動率：PRICE_DATA_UNAVAILABLE
+
+## 趨勢
+無法評估。缺乏價格、移動平均線及動量指標。
+
+## 關鍵水位
+- 支撐位：PRICE_DATA_UNAVAILABLE
+- 阻力位：PRICE_DATA_UNAVAILABLE
+- 52週高低點：PRICE_DATA_UNAVAILABLE
+
+## 結論
+**判決：中立 — 信度 5%**
+
+無法進行技術分析。建議俟網路連線恢復後，重新啟動掃描。
+
+---
+
+MARKET REPORT COMPLETE
