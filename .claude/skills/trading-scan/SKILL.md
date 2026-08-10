@@ -164,7 +164,7 @@ Args:
 - `date=YYYY-MM-DD` — analysis as-of date (default: today)
 - `rounds=N` — debate rounds (default 1, max 3)
 - `mode=<full|plan_all|plan_c5|plan_c3>` — default `plan_all`.
-  - `plan_all`  Phase 1 all + **all positive picks** full pipeline (quota-adaptive)
+  - `plan_all`  Phase 1 all + **top 10 positive picks** full pipeline (hard cap 10, quota-adaptive below that)
   - `plan_c5`   Phase 1 all + top 5 full pipeline (legacy)
   - `plan_c3`   Phase 1 all + top 3 only (emergency / near-cap)
   - `full`      every ticker through Phase 2-4 (expensive)
@@ -186,10 +186,14 @@ Standard for any sector scan:
    - If a prompt or args include `HELD TICKERS: AAA,BBB,...` (from `held_tickers.txt` via `daily_scan.sh`), those tickers **always** receive full Phase 2-4 pipeline regardless of USAGE_PCT or cap.
    - Held tickers are active positions requiring fresh analysis every cycle. Never stub them.
    - Add held tickers to the Phase 2-4 run list first, then apply quota cap to remaining positive picks.
-5. Determine cap based on adjusted USAGE_PCT (applies to non-held positive picks):
-   - `USAGE_PCT < 60%`  → run Phase 2-4 for **all positive picks** (no cap)
+5. Determine cap based on adjusted USAGE_PCT (applies to non-held positive picks).
+   **HARD CAP: at most 10 non-held picks get Phase 2-4, EVER — never "all".** Each full
+   pipeline costs ~7 Sonnet + 1 Opus, so an uncapped day (e.g. 18 picks) is the usage
+   spike we are cutting. Rank by the tiebreak score and take the top N:
+   - `USAGE_PCT < 60%`  → cap at **top 10** positive picks (hard cap)
    - `60% ≤ USAGE_PCT < 90%` → cap at **top 5** positive picks
    - `USAGE_PCT ≥ 90%`  → cap at **top 3** only (conserve budget before 23rd reset)
+   Picks beyond the cap get a Phase-1-only stub (haiku only, no Sonnet/Opus).
 6. Phase 2-4 (Sonnet) on capped pick list. Remaining positive picks get a Phase-1+ stub
    final_decision noting "near-quota skip". Non-positive picks get standard Phase-1-only stub.
 7. Phase 5 sector-comparator across all picks with full decisions.
