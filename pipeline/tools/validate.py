@@ -32,6 +32,23 @@ TOOLS = Path(__file__).resolve().parent
 SANITY_PCT = float(os.environ.get("SANITY_PCT", "40"))
 
 
+# "無即時" stem covers 無即時報價 / 無即時價格 / 無即時行情 (all = no real-time price).
+_PP_PHRASES = ("PRICE_DATA_UNAVAILABLE", "無即時", "暫不給進出場", "無法計算", "不設固定價位")
+
+
+def _price_pending(scan_date, ticker):
+    """True if the ticker's final_decision.md declined to give levels for lack of a
+    real-time price (guarded behaviour), rather than genuinely missing levels."""
+    if not scan_date:
+        return False
+    fd = ROOT / "daily" / scan_date / ticker / "final_decision.md"
+    try:
+        txt = fd.read_text(encoding="utf-8")
+    except Exception:
+        return False
+    return any(s in txt for s in _PP_PHRASES)
+
+
 def live_price(ticker):
     """Live price via the yf.py CLI (cnyes-primary). None on failure."""
     try:
@@ -71,10 +88,24 @@ def main():
         actionable = (not p1) and v in ("BUY", "SELL")
         missing = [n for n, x in (("entry", emid), ("stop", snum),
                                   ("T1", ct1), ("T2", ct2)) if x is None]
+        # PRICE_PENDING: the analyst correctly DECLINED to invent levels because no
+        # real-time price was available at scan time (transient source outage). This
+        # is the intended guarded behaviour, NOT a defect — flag WARN (價格待補) not
+        # ERROR, and queue the sector for a re-scan once the price source is back up.
+        # The parsed entry/stop fields come back empty in this case, so read the
+        # source final_decision.md directly for the guard phrases (authoritative).
+        price_pending = _price_pending(t.get("scan_date"), tk)
         if missing:
-            lvl = "ERROR" if actionable else "INFO"
-            issues.append({"level": lvl, "ticker": tk, "sector": sec,
-                           "msg": f"缺 {'/'.join(missing)} (rr={t.get('rr_t2')})"})
+            if price_pending:
+                issues.append({"level": "WARN", "ticker": tk, "sector": sec,
+                               "price_pending": True,
+                               "msg": f"價格待補（掃描時無報價，待重掃補值）rr={t.get('rr_t2')}"})
+            elif actionable:
+                issues.append({"level": "ERROR", "ticker": tk, "sector": sec,
+                               "msg": f"缺 {'/'.join(missing)} (rr={t.get('rr_t2')})"})
+            else:
+                issues.append({"level": "INFO", "ticker": tk, "sector": sec,
+                               "msg": f"缺 {'/'.join(missing)} (rr={t.get('rr_t2')})"})
 
         # 2. price sanity
         if emid is not None:
@@ -101,9 +132,12 @@ def main():
     errors = [i for i in issues if i["level"] == "ERROR"]
     warns = [i for i in issues if i["level"] == "WARN"]
 
-    # Add the SECTORS of ERROR tickers (missing levels / hallucinated price) to
-    # pending so they get re-scanned with fresh real prices.
-    bad_secs = sorted({i["sector"] for i in errors if i.get("sector")})
+    # Queue for re-scan the SECTORS of (a) ERROR tickers (real defect: missing levels
+    # while price WAS available / hallucinated price) AND (b) price_pending tickers
+    # (no price at scan time — re-scan once the source is back up fills real levels).
+    # Both self-heal via the next backfill; price_pending is WARN, not an alarm.
+    pending_issues = errors + [i for i in warns if i.get("price_pending")]
+    bad_secs = sorted({i["sector"] for i in pending_issues if i.get("sector")})
     if bad_secs:
         try:
             subprocess.run([sys.executable, str(TOOLS / "pending.py"), "add", *bad_secs],
@@ -113,7 +147,9 @@ def main():
     report = {
         "generated_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
         "date_filter": args.date, "checked": checked,
-        "errors": len(errors), "warnings": len(warns), "issues": issues,
+        "errors": len(errors), "warnings": len(warns),
+        "price_pending": len([i for i in warns if i.get("price_pending")]),
+        "issues": issues,
     }
     (ROOT / "validation.json").write_text(
         json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8")

@@ -1434,10 +1434,13 @@ def render_status_banner() -> str:
         pend = [l.split("#", 1)[0].strip() for l in pf.read_text(encoding="utf-8").splitlines()
                 if l.split("#", 1)[0].strip()]
     verr = 0
+    vpp = 0   # price_pending: 掃描時無報價、待重掃補值 (not a defect)
     vf = SCANS / "validation.json"
     if vf.exists():
         try:
-            verr = json.loads(vf.read_text(encoding="utf-8")).get("errors", 0)
+            _vj = json.loads(vf.read_text(encoding="utf-8"))
+            verr = _vj.get("errors", 0)
+            vpp = _vj.get("price_pending", 0)
         except Exception:
             pass
     l0 = ""
@@ -1481,6 +1484,7 @@ def render_status_banner() -> str:
     pend_chip = (chip(f"⚠️ pending {len(pend)}: {_esc(' '.join(pend[:8]))}", "err")
                  if pend else chip("pending 0", "ok"))
     val_chip = chip(f"❌ 驗證 {verr} 錯", "err") if verr else chip("✅ 驗證通過", "ok")
+    pp_chip = chip(f"💲 待補 {vpp}（掃描時無報價，待重掃）", "warn") if vpp else ""
     l0_chip = chip(f"📊 L0 {short(l0)}", "info")
     ser_chip = (chip(f"🧘 摘要 {ser_date} (過期!)", "warn") if ser_stale
                 else chip(f"🧘 摘要 {ser_date}", "info") if ser_date else "")
@@ -1495,7 +1499,7 @@ def render_status_banner() -> str:
         '<section class="bg-white border border-slate-200 rounded-lg shadow-sm p-3">'
         '<div class="flex flex-wrap items-center gap-2 text-xs">'
         '<span class="font-bold text-slate-700">🛠 排程狀態</span>'
-        f'{scan_chip}{time_chip}{pend_chip}{val_chip}{l0_chip}{ser_chip}'
+        f'{scan_chip}{time_chip}{pend_chip}{val_chip}{pp_chip}{l0_chip}{ser_chip}'
         '<details class="ml-auto"><summary class="cursor-pointer text-slate-500">最近各排程 ▾</summary>'
         f'<table class="text-[11px] mt-2 text-slate-600">{hist}</table></details>'
         '</div></section>'
