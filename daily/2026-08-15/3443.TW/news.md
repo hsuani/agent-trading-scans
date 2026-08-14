@@ -1,54 +1,82 @@
-# 新聞——3443.TW 創意電子 截至2026年8月15日
+# 新聞簡報 — 3443.TW (創意電子) 截至 2026-08-15
 
-## 公司特定新聞頭條（最近14天）
+## 公司重點新聞 (過去14天)
 
-- **2026年8月14日** —— Alchip Technologies公布Q2 2026財務結果，營收$241.7M，環比成長82.6%，N3 AI加速器處於量產階段，已向北美超大規模雲端服務商客戶出貨（推測為AWS Trainium3設計合作）。**影響：負面**。直接競爭對手營收成長率大幅領先，凸顯ASIC設計市場競爭加劇，GUC儘管訂單穩定但需持續提升產能與毛利率。
+- **2026-07-31** — Q2營收新台幣61.04億元，QoQ下滑13%，主要因加密貨幣客戶受出口管制影響導致Turnkey出貨延遲 (BigGo Finance)。影響：中立偏負。加密客戶短期面臨管制壓力，但公司期望Q3恢復雙位數成長。
 
-- **2026年8月5日** —— TechTimes報導GUC披露7月創下歷史新高月營收，年增158.4%，代表ASIC設計時代結束，周轉型設計服務轉變為量產型設計服務，超過80%營收來自代工台製造（turnkey manufacturing）。**影響：正面**。標誌GUC業務模式成功轉型，從高毛利但低量的設計工作轉向規模化量產營收，現金流更佳。
+- **2026-07-31** — Q2毛利率33.3%，環比上升5.2個百分點，受NRE營收占比下降及N21客戶設計變更一次性收入帶動 (BigGo Finance)。影響：正面。毛利率改善反映Turnkey高毛利業務占比提升，顯示業務組合優化。
 
-- **2026年8月12日** —— 創意（3443）股價盤中急升3.32%至5130.0元報價，成交360張，受到ASIC大單出貨加速消息帶動。**影響：正面**。市場對超大規模AI晶片客戶（Google Axion CPU、Google TPU v7p）的量產節奏樂觀。
+- **2026-07-31** — Q2 EPS新台幣5.84元，環比下滑19%；H1累計營收新台幣131.28億元，年增6%，EPS新台幣43.01元，年增11% (BigGo Finance)。影響：正面。儘管Q2單季環比下滑，但H1整體EPS仍年增11%，反映上半年業績穩定。
 
-- **2026年7月31日** —— GUC公布Q2 2026財務結果及管理層展望。Q2營收NT$6.1B（約$188.4M），環比下滑13%，主要因美國商務部(BIS)出口管制迫使加密貨幣客戶的封裝測試業務從中國遷移至台灣，引發短期出貨延遲。但管理層表示地緣政治調整已大致完成。美國地區營收占比從約33%躍升至逾60%，中國降至20%以下。GUC新任董事長上台（首次公開）。超大規模雲端服務商(CSP)客戶計畫進展順利，預期2027年達到出貨高峰。**影響：中立偏正面**。短期毛利率與毛利額受壓，但地緣政治適應已完成，下半年有望恢復成長。
+- **2026-05-26** — GUC於TSMC歐洲技術論壇展示VSORA Jotunn8 AI推論處理器，採用TSMC CoWoS-S 3倍Reticle尺寸先進封裝、17.2 Gbps GLink-2.5D晶粒互聯、HBM3E整合 (GlobeNewswire)。影響：正面。展示CoWoS晶粒整合能力，強化AI加速器設計服務競爭力。
 
-- **2026年7月15日** —— AWS在台北舉辦2026 AWS Summit Taipei，展示Trainium、Inferentia、Graviton三大晶片族群。重點強調台灣供應鏈在先進邏輯與高階封裝產能中佔全球逾90%的角色，對ASIC設計公司與晶圓廠形成實質需求。**影響：正面**。超大規模客戶在台灣的設計與製造活動加速，利好GUC等在地設計服務商。
+- **2026-02-26** — GUC成功流片UCIe 64G IP，單通道頻寬達64 Gbps，頻寬密度達每1mm晶粒邊緣21 Tbps，採用TSMC N3P製程及CoWoS先進封裝 (GUC官網)。影響：正面。UCIe高頻寬互聯IP達成業界先進水準，強化新一代AI/HPC設計服務基礎設施。
 
-## 產業巨觀事件
+- **近期** — GUC獲得Google及Meta下一代CPU專案設計，汽車ADAS應用已進入量產 (DigiTimes)。影響：正面。雲端大廠及ADAS市場雙頭並進，驗證GUC跨領域設計能力。
 
-- **2026年8月14日** —— Broadcom與MediaTek雙寡頭局面在ASIC設計服務市場確立。Broadcom掌控70%以上市場份額（較年初60-80%進一步鞏固），Marvell次之佔20-25%（AWS Trainium與Microsoft Maia設計合作）。二者合計掌控80%以上超大規模AI晶片設計服務，台灣本地設計公司（GUC、Alchip）面臨設計市場集中度高、量產毛利率下降的雙重壓力。**影響：負面**。設計服務市場集中，台灣設計公司議價空間受限。
+## 產業宏觀環境
 
-- **2026年8月中旬** —— Google TPU v8時代雙晶片架構正式量產。TPU 8t（訓練導向）由Broadcom設計，TPU 8i（推論導向）由MediaTek設計，首度達成真正的功能分化。TPU 8t搭載Google Axion ARM處理器，可擴展至9,600晶片、2PB共享HBM、2.8倍相比上代(Ironwood)的訓練效能。TPU 8i將片上SRAM翻倍至384MB、晶間互連頻寬倍增至19.2Tb/s、導入Boardfly拓樸減少56%網路直徑以支援MoE推論工作。GUC負責Google Axion CPU設計（TSMC 3nm製程），為該生態的核心設計夥伴，但TPU v8晶片本身設計已由Broadcom與MediaTek承包，代表Google分散設計風險策略。**影響：中立**。GUC在Google生態獲得Axion CPU量產利潤，但喪失TPU晶片核心設計合約，反映大型客戶採購分散化。
+- **2026-08上旬** — 超大規模雲端服務商(CSP)加速自研ASIC，挑戰NVIDIA主導地位。AWS Trainium3已於2026年第二季進入量產，3nm製程、較Trainium2計算力翻倍 (TechPowerUp)。影響：正面。AI晶片自研浪潮持續深化，對ASIC設計服務(Alchip/GUC)需求增加。
 
-- **2026年8月上旬** —— TSMC N2製程量產加速。根據TSMC 2026年日本技術論壇(7月3日於橫濱)披露，N2第二年晶片流帶出(tape-out)數量達到N3同期的4倍，超過20顆客戶晶片已流帶，超過70顆處於設計管道中。N2目前月產能約20,000晶片，TSMC目標於2026年底衝至100,000晶片/月。N3月產能已達180,000晶片，超過內部目標。意義：N2快速採納率將加速AI ASIC設計服務需求，但亦表示設計公司需在24-30個月內完成從N3到N2的設計遷移，技術學習曲線陡峭。**影響：正面**。N2加速採納為設計公司帶來新一輪訂單機會，但同時要求更高技術投資。
+- **2026-08上旬** — Google TPU v8 Sunfish由Broadcom協助設計，TSMC 3nm代工 (Tom's Hardware)。影響：正面。超大廠深化供應鏈多元化，TSMC N3產能持續滿載，GUC作為TSMC生態合作夥伴受惠。
 
-- **2026年8月中旬** —— TSMC CoWoS先進封裝成為AI晶片系統的關鍵瓶頸與機遇。全球2026年CoWoS晶片需求預估達約100萬片晶片。TSMC主力推進CoWoS-L (Local Silicon Interconnect Bridge)技術，以晶矽橋接(LSI)技術整合多個chiplet，允許大於前代數倍的封裝尺寸以容納更多運算核心與高頻寬記憶體堆疊。AP6廠(竹南)已於2024年底完全運營，AP8廠(台南)與新興AP7廠(嘉義)承載主要產能擴張。TSMC先進封裝營收2025年約佔集團營收8%，2026年目標逾10%。意義：CoWoS成熟度與產能直接限制超大規模AI晶片(如Trainium3、TPU 8)的晶片出貨規模，GUC作為設計服務商需協調CoWoS設計最佳化，形成新的利潤來源點(如chiplet-specific IP)。**影響：正面**。先進封裝設計複雜度升高為GUC創造附加設計服務利潤機遇。
+- **2026年中** — TSMC N3製程主要需求來自AI相關應用(加速器、CPU主機、網路)，占N3產能近60% (TrendForce)。影響：正面。N3需求旺盛確保GUC客戶代工產能充足。
 
-- **2026年8月中旬** —— AWS Trainium3晶片(TSMC 3nm)已於2025年12月AWS re:Invent大會發表，2026年進入規模化量產。單晶片362 MXFP8 PFLOPS算力，Trainium3超級節點可擴展至144晶片，配備20.7TB HBM3e高頻寬記憶體、706TB/s記憶體總頻寬，採液冷散熱。Amazon已累積超$225B Trainium營收承諾，Anthropic與OpenAI分別簽署5GW與2GW容量預訂，Uber等新客戶亦加入。Trainium3 2026年幾乎全額預訂。**影響：正面**。AWS Trainium3量產規模超乎預期，對台灣晶圓代工、封裝與設計服務商形成實質需求，GUC雖非Trainium3主設計商(該角色由Marvell/IP合作商填補)，但作為Google、Meta等其他超大規模客戶的設計夥伴，受惠於整體ASIC出貨景氣。
+- **2026年初** — TSMC N2在2025年Q4進入量產，已收到25+客戶流片案，規劃中案件逾70件。N2流片案件數已超越N3同期水準 (TrendForce)。影響：正面。N2次世代製程設計案源充足，GUC有望獲取下一波設計服務訂單。
 
-## 競爭對手動態
+- **2026年底預期** — OpenAI自研"Titan" AI晶片計劃於2026年底前於TSMC N3導入量產，第二代規劃A16製程 (TrendForce)。影響：正面。新興AI晶片廠商投入加速，擴大設計服務市場規模。
 
-- **Alchip Technologies** —— Q2 2026(8月14日公布)營收$241.7M，環比暴漲82.6%，定位為"AI的矽心臟"。N3 AI加速器晶片已進入量產，首批向北美超大規模雲端客戶出貨(隱含為AWS Trainium3設計對應)。公司已完成2nm生態系統支援，包括3nm I/O chiplet設計、高速光學互連技術、次世代測試晶片開發。業務轉向從高毛利工程(engineering)向量產型營收轉變。相較GUC的溫和增長(8月NT$2.77B月營收年增42.3%)，Alchip顯示更激進的成長軌跡與明確的客戶曝光，形成直接競爭威脅。
+## 競爭對手動向
 
-- **MediaTek** —— 獲選為Google TPU 8i(推論晶片)主設計商，標誌自ASIC設計服務商轉型至晶片自主設計的里程碑。GUC與MediaTek於2026年6月傳聞就AI ASIC雲端服務進行策略磋商(DIGITIMES報導)，但官方合作進展未明確披露，暗示台灣設計公司間的整合或互補趨勢。
+- **Alchip Technologies (3661.TW)** — 贏得AWS Trainium3設計專案，3nm晶片預計2026年Q2進入量產，Q3起營收預期大幅成長；同步推進多項N2等級AI/HPC設計案，部分N2專案年底前流片 (TrendForce)。後端設計為主，與GUC前端設計導向不同。
 
-- **Broadcom** —— 掌控ASIC設計市場超70%份額，包括Google TPU 8t(訓練晶片)、Meta MTIA設計合作等。形成高度市場寡占，擠壓中型設計公司(如GUC、Alchip)的設計招標機會，促使後者轉向代工與量產型高利潤模式。
+- **MediaTek** — 預期2026年數據中心晶片營收達20億美元 (TechStarts)。數據中心晶片市場擴大，但MediaTek為整合型設計廠，非純粹設計服務商。
 
-## 未來14天日程與預期影響
+- **Faraday Technology** — 2026年初起步較緩 (DigiTimes)。GUC動能明顯領先同業。
 
-- **2026年8月20-25日左右** —— 預期TSMC或台積電董事會召開董事會會議，討論N2產能擴張計畫與CoWoS投資評估。若TSMC上調N2月產能目標或加速CoWoS-L新廠啟動時程，將直接利多GUC等設計夥伴的下半年訂單填充率。
+## TSMC生態優勢
 
-- **2026年8月底** —— 預期GUC公布8月月營收正式數據。若月營收維持NT$2.7-2.8B水準或上升，將確認7月高峰非一次性，反映超大規模客戶的持續訂單動能，利好股價。若下滑至NT$2.2B以下，可能暗示export control後的客戶庫存調整未完全吸收，成為利空信號。
+- **股權及供應鏈** — TSMC持有GUC約35%股權為最大單一股東，同時為唯一代工廠商 (TechTimes)。影響：正面。深度綁定保證製程優先權及工藝支援，護城河穩固。
 
-- **2026年9月初** —— 預期Broadcom或Marvell公布Q3 2026指引，若提及ASIC設計服務需求減緩，將成為整個設計服務生態的預警信號，並可能打壓GUC或Alchip股價。
+- **商業模式定位** — GUC定位為"Spec-in SoC整合"設計服務商，介於客戶需求與TSMC代工間，比提供全棧設計之公司更難被迂迴 (TechTimes)。影響：正面。後端設計與製造緊密整合，降低客戶遷移風險。
 
-- **2026年9月中旬** —— 预期超大规模云服务商(Google/Meta/AWS)财报季前瞻，或科技媒体渠道披露AI ASIC采购加速信息。若披露2027年N2/N3晶片设计流帮数量超预期(超100颗)，将强化设计服务商前景。
+- **先進技術應用** — GUC已掌握CoWoS、InFO、SoIC及系統級晶圓整合技術，配合TSMC N3/N2節點推進。影響：正面。完整的先進封裝與製程組合，強化客戶吸引力。
 
-## 淨讀整理
+- **IP生態** — GUC開發12Gbps HBM4 PHY/Controller控制器解決方案(2026年4月)，支援下一代AI加速器與HPC處理器 (GUC官網)。影響：正面。自有IP資產強化設計方案完整性。
 
-創意電子(GUC)正面臨ASIC設計服務市場的微妙轉折期。短期利多方面：(1)7月創歷史新高月營收158.4%年增，標誌代工型業務模式成功起飛，現金流改善；(2)美國客戶比例躍升至逾60%，地緣政治調整已完完成，下半年解禁；(3)Google Axion CPU與TPU v7p等訂單進度順利，2027年量產峰值可期；(4)TSMC N2加速採納與CoWoS-L演進為設計服務帶來新的設計複雜度與附加利潤機遇。短期利空：(1)Broadcom與Marvell寡占設計市場逾80%，GUC的設計招標機會有限；(2)Alchip競爭對手Q2環比成長82.6%，遠超GUC的42.3%年增，暗示市場佔有率可能被分流；(3)GUC Q2財務環比下滑13%，儘管管理層言辭樂觀，但毛利率受壓趨勢尚未逆轉。中期風險：超大規模客戶設計需求從Broadcom/Marvell等設計巨頭向代工型服務轉變，GUC雖已完成模式轉型，但是否能維持毛利率與市佔率仍需觀察。
+## 轉折營運數據
 
-**淨頭條傾向：正面偏多，幅度中等**。7月高峰與8月穩定表現確認了訂單韌性與模式轉型成功，但需警惕Alchip快速成長帶來的市場份額侵蝕風險。下半年關鍵指標為：(a)9月份月營收是否維持NT$2.6-2.8B水準，(b)毛利率是否開始止跌反彈，(c)超大規模客戶2027年N2晶片流帮是否如TSMC預期的4倍加速。
+- **Turnkey業務占比突破80%** — GUC Turnkey(全包式服務)營收占比已超過80%，相較過往NRE(非經常性工程)導向的商業模式實現質變。影響：正面。Turnkey毛利率更佳、營收穩定性更強，業務結構優化明顯。
+
+- **H1表現超預期** — H1 EPS年增11%儘管Q2單季環比下滑，反映上半年整體動能仍強。管理層預期Q3營收雙位數成長、Turnkey雙位數成長，全年營收年增雙位數。影響：正面。下半年加速成長預期已明確建立。
+
+## 前瞻14日內展望
+
+- **2026年Q3** — GUC預期環比營收雙位數成長，Turnkey業務雙位數增長，NRE將下降雙位數；毛利率預期下降數個百分點 (管理層指引)。成長加速預期已確立，毛利率短期承壓為代工產業常態。
+
+- **2026年全年** — 營收年增雙位數、Turnkey雙位數成長、NRE單位數下降、營業毛利及營業淨利均將下降 (管理層指引)。雙位數營收成長與毛利率下降並存，反映業務量增但競爭與產能因素壓低單位利潤。
+
+- **N2設計案源釋放** — TSMC N2流片設計案已70+件在規劃中，預期年底前陸續流片，GUC作為TSMC重要設計服務夥伴應能受惠後續案源。
+
+- **AI晶片自研加速** — AWS Trainium3量產、OpenAI Titan規劃、Google TPU演進，新一代CSP自研ASIC持續推進，設計服務需求旺盛。
+
+## 核心評論
+
+創意電子作為TSMC 35%控股之ASIC設計服務商，在2026年H1強勁表現(H1 EPS年增11%)及Turnkey業務占比突破80%的轉折，反映超大規模雲端廠商AI晶片自研浪潮入深。Google/Meta CPU設計贏單、Jotunn8 CoWoS先進封裝展示、UCIe 64G IP流片成功，驗證GUC在前端設計、晶粒整合、先進封裝的競爭優勢。Q3預期營收雙位數成長、Turnkey業務持續雙位數擴張，以及TSMC N3/N2產能滿載確保下游客戶代工無虞。短期加密客戶管制約束已於Q2充分反映，預期下半年恢復軌道。競爭對手Alchip雖贏得AWS Trainium3，但GUC在Google/Meta等頭部客戶及ADAS量產收入之多元客戶基礎領先。TSMC 35%股權與唯一代工廠地位形成深度護城河，Turnkey服務模式相比全棧廠商難以被迂迴。整體而言，**新聞面偏正面，成長動能明確，毛利率壓力可控**。
 
 ---
 
-**新聞報告完成**
+## 資料來源
 
+- [GlobeNewswire - GUC showcase VSORA's Jotunn8 AI inference processor at TSMC Europe Technology Symposium](https://www.globenewswire.com/news-release/2026/05/26/3300764/0/en/GUC-showcase-VSORA-s-Jotunn8-AI-inference-processor-at-the-TSMC-Europe-Technology-Symposium.html)
+- [GUC Official - Tape-out of UCIe 64G IP on TSMC N3P](https://www.guc-asic.com/en/news/PressRelease/PR_20260226)
+- [BigGo Finance - GUC Q2 2026 Earnings Call](https://finance.biggo.com/quote/3443.TW/earnings-call/TW_3443.TW_2026-07-31)
+- [BigGo Finance - GUC Q2 EPS and Earnings Highlights](https://finance.biggo.com/news/52408e29-d0a9-421a-94dc-aaeb68a4993f)
+- [TechTimes - AI Chip Design Era Ends: TSMC Affiliate GUC Posts Record Revenue](https://www.techtimes.com/articles/323112/20260805/ai-chip-design-era-ends-tsmc-affiliate-guc-posts-record-revenue-as-turnkey-surpasses-80.htm)
+- [TrendForce - CSPs Accelerate ASIC Push in 2H26](https://www.trendforce.com/news/2026/03/20/news-csps-accelerate-asic-push-in-2h26-challenging-nvidia-as-mediatek-guc-alchip-benefit/)
+- [TrendForce - OpenAI Custom AI Chip on TSMC N3](https://www.trendforce.com/news/2026/01/15/news-openai-reportedly-to-deploy-custom-ai-chip-on-tsmc-n3-by-end-2026-second-gen-planned-for-a16/)
+- [DigiTimes - Taiwan ASIC design revenue tracker](https://www.digitimes.com/news/a20260512VL219/taiwan-monthly-tracker-alchip-faraday-guc-asic-design-revenue-2026.html)
+- [Tom's Hardware - Custom AI ASIC state of play (May 2026)](https://www.tomshardware.com/tech-industry/semiconductors/custom-ai-asics-examined-from-broadcom-to-mtia)
+- [TechPowerUp - AWS Releases Trainium3 ASIC](https://www.techpowerup.com/343581/aws-releases-trainium3-asic-to-ease-reliance-on-nvidia-hardware)
+
+NEWS REPORT COMPLETE
