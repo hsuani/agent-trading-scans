@@ -1,0 +1,28 @@
+# CBRS 技術分析 — 2026-08-17
+
+## ⚠️ PRICE_DATA_UNAVAILABLE
+
+> yfinance / Yahoo Finance 代理封鎖（proxy 403），無法取得任何即時或歷史價格數據。
+
+## 技術指標
+
+| 指標 | 數值 |
+|------|------|
+| 即時價格 | N/A |
+| RSI (14) | N/A |
+| MACD | N/A |
+| MA20 | N/A |
+| MA50 | N/A |
+| MA200 | N/A |
+| ATR (14) | N/A |
+| 成交量 | N/A |
+| 支撐位 | N/A |
+| 阻力位 | N/A |
+
+## 技術面信號評分
+
+**技術面信號：N/A（PRICE_DATA_UNAVAILABLE）**
+
+## 說明
+
+本環境數據代理持續封鎖。CBRS 技術面分析留待數據源恢復後方可執行。
