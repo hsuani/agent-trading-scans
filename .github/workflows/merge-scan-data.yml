@@ -1,0 +1,87 @@
+name: merge scan-data to main
+
+# WHY: the CCR cloud routines (nightly / backfill) no longer push to main — the
+# platform now isolates each run on its own throwaway branch
+# (claude/wizardly-bell-*  = nightly, claude/sharp-brahmagupta-*  = backfill), so
+# the scan output never reaches main and the dashboard goes stale. This Action
+# runs on GitHub's runner (which DOES have contents:write on main) and merges the
+# DATA paths from those routine branches into main, then rebuilds the dashboard.
+#
+# SAFETY: only DATA paths are merged (daily/ serenity/ pending.txt validation.json
+# _catalysts.json) — never source (.claude/ pipeline/ .github/), so a stale routine
+# checkout can never revert source. Scoped to the two routine branch stems only;
+# other claude/* branches (interactive sessions) are ignored.
+
+on:
+  push:
+    branches:
+      - "claude/wizardly-bell-**"
+      - "claude/sharp-brahmagupta-**"
+  workflow_dispatch:
+    inputs:
+      backlog:
+        description: "merge ALL routine branches (oldest→newest) to recover a backlog"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: merge-scan-data
+  cancel-in-progress: false
+
+jobs:
+  merge:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0          # need all branches + full history
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install deps
+        run: pip install --quiet yfinance pandas markdown
+
+      - name: Merge routine scan data into main
+        env:
+          DATA_PATHS: "daily serenity pending.txt validation.json _catalysts.json"
+          TRADING_SCANS_ROOT: ${{ github.workspace }}
+        run: |
+          git config user.name  "YHT"
+          git config user.email "yhtseng91@gmail.com"
+
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ] && [ "${{ inputs.backlog }}" = "true" ]; then
+            # recover the whole backlog: every routine branch, oldest first so the
+            # newest run's version wins on any same-file overlap.
+            BRANCHES=$(git for-each-ref --sort=committerdate --format='%(refname:short)' \
+              'refs/remotes/origin/claude/wizardly-bell-*' \
+              'refs/remotes/origin/claude/sharp-brahmagupta-*')
+          else
+            BRANCHES="origin/${GITHUB_REF#refs/heads/}"
+          fi
+
+          echo "merging data from:"; echo "$BRANCHES"
+          for b in $BRANCHES; do
+            # checkout brings the branch's version of the DATA paths only; it does
+            # NOT delete files absent from the branch, so different dates/sectors
+            # from different branches accumulate (union), source stays untouched.
+            git checkout "$b" -- $DATA_PATHS 2>/dev/null || echo "  (skip $b)"
+          done
+
+          # rebuild aggregates + validate over the merged data
+          python3 pipeline/tools/extract_catalysts.py || true
+          python3 pipeline/tools/build_dashboard.py   || true
+          python3 pipeline/tools/validate.py          || true
+
+          git add -A -- $DATA_PATHS dashboard.html
+          if git diff --cached --quiet; then
+            echo "no new scan data to merge"
+          else
+            git commit -m "merge routine scan data to main $(date -u +%F\ %H:%MZ)"
+            git pull --rebase -X theirs origin main 2>/dev/null || git rebase --abort 2>/dev/null || true
+            git push origin main
+          fi
