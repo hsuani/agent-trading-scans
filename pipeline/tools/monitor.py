@@ -144,7 +144,7 @@ def status(card, px):
     t1 = first_num(card.get("t1", ""))
     t2 = first_num(card.get("t2", ""))
     flags, urg = [], 9
-    if stop is not None:
+    if stop is not None and stop > 0:
         dpct = (px - stop) / stop * 100
         if px <= stop:
             flags.append("🔴 STOP BREACHED"); urg = min(urg, 0)
