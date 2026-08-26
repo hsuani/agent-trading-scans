@@ -1,157 +1,107 @@
-# 情緒分析 — PWR（Quanta Services） 截至 2026 年 8 月 25 日
+# 情緒分析 — PWR（2026年8月25日）
 
 ## 分析師共識
 
-**評級分布：22 買入 / 7 持有 / 1 賣出**
+28位分析師提供評級：
+- **買進** 23家
+- **持有** 6家  
+- **賣出** 0家
+- **強力買進** 0家
+- **強力賣出** 1家
 
-- 買入共識率：81%（極度看好）
-- 平均目標價：$783.17 USD（隱含漲幅 13.92%）
-- 目標價區間：$420.00 至 $901.00
+目標價格中位數：$800.00，平均值：$770.04（$410–$976區間）。
 
-**近期升級活動：**
+**最近升等動作：**
+- Guggenheim（7/31）從中立升至買進，目標價$800
+- KeyBanc（8/6）升至超配（Overweight）
+- Oppenheimer（5/28）維持$800目標價
+- Mizuho（8/3）升至$741
 
-| 日期 | 機構 | 變化 | 目標價 |
-|------|------|------|--------|
-| 2026-08-07 | KeyBanc | 升級至 Overweight（從 Sector Weight） | — |
-| 2026-08-03 | TD Cowen | 升級目標價 | $775 → $785 |
-| 2026-08-03 | J.P. Morgan | 維持 Hold | — |
-| 2026-07-31 | Guggenheim | 升級至 Buy | 基於實質上提高的預估 |
-| 2026-08-01 | Mizuho | 升級目標價 | $659 → $741 |
+**降等：**
+- JP Morgan（7/21）降至持有，目標價$714
 
-**共識判斷：** 華爾街分析師對 PWR 維持強勢看好立場，升級多於下調。最近的財報結果（盈利 +70%、營收 +41%、合約積壓 +59%）進一步強化了多頭信心。
-
----
-
-## 零售社交情緒
-
-### 社交媒體概況
-
-**Reddit / r/stocks 及 r/wallstreetbets：** 無法直接存取（網域被限制）
-
-**StockTwits：** 無法存取（代理伺服器阻止），但平台上存在討論
-
-**網路搜尋情感：** 牛市傾向佔優
-
-### 主要議題與主題
-
-1. **財報亮眼驅動：** 市場關注 Q2 2026 盈利爆炸性增長（+70%），營收強勁（+41%），合約積壓大幅增加（+59%）
-
-2. **長期成長故事：** 
-   - 數據中心和電網市場空間龐大，2030 年市場規模預期達 $2.4 兆美元
-   - PWR 在能源轉型和基礎設施升級中處於受惠位置
-
-3. **短期技術壓力：** 
-   - 8 月 20 日股價下跌 2.21%，連跌 3 日
-   - 7 月 31 日 Guggenheim 升級後出現回檔
-   - 技術面臨賣壓（StockInvest.us 技術評分 -1.37，預期短期 3 個月內下跌 8.46%）
-
-4. **買入訊號存在：** 
-   - 3 月線 MACD 發出買入信號
-   - 分析師普遍建議「逢低買入」
-
-**零售傾向：** 混合。基本面與分析師態度極度看好，但短期技術面存在拋壓信號，可能反映部分零售投資人獲利了結。
+**一個月前對比：** 22買、7持有、1賣出，近期略微改善（買方共識從78.6%升至79.3%）。
 
 ---
 
-## 內部人士活動
+## 零售社群情緒
 
-### 近期交易（2026 年）
+**Reddit / StockTwits：** 無法獲取（403限制）。軟失敗；改用新聞和分析師評論作為市場情緒代理。
 
-| 日期 | 人物 | 職位 | 交易 | 數量 | 金額 | 方向 |
-|------|------|------|------|------|------|------|
-| 2026-05-07 | Earl Austin | 總裁兼 CEO | 賣出 | 155,992 股 | $120,216,530 | **看空信號** |
-| 2026-05-04 | Paul Nobel | 財務副總裁兼 CAO | 賣出 | 4,000 股 | — | **看空信號** |
+**新聞與市場討論焦點：**
 
-**6 個月淨額分析：**
-- 近期內部人士活動以賣出為主，無重大買入
-- CEO 大幅拋售（可能為多元化或稅務策略，但仍屬賣壓信號）
-- 買入不足賣出（過去 3 個月資料不足以判斷，但整體傾向偏空）
+主要牛市主題：
+- Q2業績爆表：營收年增41%、EPS年增70%、訂單積壓年增59%
+- 電氣化與EV基礎設施需求強勁（電網現代化、資料中心擴張）
+- 可定址市場（TAM）預計2030年達$2.4兆
 
-**持股情況：**
-- CEO Earl C. Austin, Jr. 持股 707,757 股
-- 全體董事及高管合計持股 949,397 股（佔比 0.6%）
-- 內部人持股比例極低，主要由機構投資人控制
+熊市/風險因素：
+- 估值偏高，引發獲利了結壓力
+- 技術面轉弱（8/20時StockInvest.us給予賣出評級，技術分數-1.37）
+- 基礎設施項目執行風險上升
+- 8月中旬股價回檔3.63%
 
----
-
-## 所有權結構變化
-
-### 機構投資人
-
-**主要持有者（2026 年 8 月）：**
-
-| 機構 | 持股數量 | 佔比 |
-|------|--------|------|
-| Vanguard | 18.14M | 12.23% |
-| BlackRock Funding /DE | 12.13M | 8.18% |
-| BlackRock | 11.23M | 7.70% |
-| JPMorgan Chase | 6.82M | — |
-| State Street Corp | 6.01M | — |
-
-**整體所有權分布：**
-- 機構投資人：90.06% ~ 90.49%（2026 年上升趨勢）
-- 零售投資人：9.08%
-- 內部人士：0.87%
-
-**所有權集中度評估：** 極度集中於大型機構（前 3 大持有者佔 28.1%），機構持股比例在 2026 年持續上升，表明機構投資人對 PWR 的長期價值持樂觀看法。
+**零售輿情傾向：** 混合偏多。多數零售投資人聚焦業績強勁與長期結構機會（能源轉型），但對短期估值和技術面憂慮加深。
 
 ---
 
-## 淨情緒評分
+## 內部人活動
 
-### 複合評分
+**6個月內部交易統計：**
+- 總交易筆數：48筆
+- 具明確價值記錄者：前10筆共$161.6M
 
-**總體傾向：牛市（強度：中高）**
+**重點交易：**
+- **Austin Earl Charles Jr（執行長）**：$120.2M（155,992股）
+- **Wayne Donald Charles（首席法律顧問）**：$6.2M（14,000股）
+- **Ducey Gerald A Jr（主管）**：$3.4M（7,653股）
+- **Paul M Nobel（主管）**：$3.0M（4,000股）
 
-**信心度：75% — 高度可信**
-
-### 構成要素
-
-| 因素 | 訊號 | 權重 |
-|------|------|------|
-| 分析師共識（81% 買入） | 強牛市 | +++ |
-| 最近財報（盈利爆炸） | 強牛市 | +++ |
-| 升級 vs 下調 | 升級佔優 | +++ |
-| 內部人士買賣 | 看空（賣出 > 買入） | -- |
-| 短期技術面 | 混合（MACD 買入 vs 股價回檔） | ± |
-| 機構所有權上升 | 牛市 | ++ |
-
-### 乖離旗標
-
-**有 — 存在重要乖離：** 
-
-分析師與機構投資人（90% 持有）態度強勢看好，短期技術面與零售交易卻呈現拋壓跡象。內部人士（CEO）5 月大幅賣出 $120M 股票，與分析師升級時間點不同步，可能暗示：
-
-1. **內部人知情可能性低：** CEO 賣出發生在 5 月（升級在 7-8 月），時間錯開
-2. **多頭力度減弱跡象：** 短期股價回檔（8 月 20-22 日連跌）儘管分析師持續升級
-3. **機構 vs 零售分歧：** 機構增持（90%+），零售可能獲利了結
-
-此乖離提示投資人：基本面與分析師共識強勢，但短期股價運作存在技術性壓力，可能反映估值調整區間。
+內部人持股比率：0.67%（低濃度）。CEO/CFO級別高階管理人員有中等規模持股活動，多為持有維持而非明確買入信號。淨內部情緒：**中立偏弱**（持股活動非買進驅動）。
 
 ---
 
-## 重點風險與機會
+## 機構所有權
 
-**牛市支撐：**
-- $2.4 兆美元的能源轉型與數據中心 TAM（2030）
-- 營運動能強（合約積壓 +59%）
-- 華爾街升級密度高
+- **機構持股比率**：94.17%（浮動股占94.80%）
+- **機構持有人數**：2,550家
+- **內部人持股**：0.67%
 
-**風險警訊：**
-- CEO 及 CAO 5 月中期賣出（籌碼面疑慮）
-- 8 月中旬股價技術回檔
-- 短期 RSI 過熱可能性（需確認當前位置）
+高度機構集中（94%），標誌著主要驅動力來自大型資金與指數基金。零售持股極低，降低零售操縱風險，但增加機構出現同向平倉的系統性風險。
 
 ---
 
-情感報告完成。
+## 綜合情緒評分
 
-**來源（Web Search 與公開數據）：**
-- [Benzinga - PWR Analyst Ratings](https://www.benzinga.com/quote/PWR/analyst-ratings)
-- [Yahoo Finance - PWR Analysis](https://finance.yahoo.com/quote/PWR/analysis/)
-- [MarketScreener - PWR Consensus](https://www.marketscreener.com/quote/stock/QUANTA-SERVICES-INC-14157/consensus/)
-- [Zacks - Bull of the Day PWR August 7](https://www.zacks.com/commentary/2970630/bull-of-the-day-quanta-services-pwr)
-- [Yahoo Finance - PWR Insider Transactions](https://finance.yahoo.com/quote/PWR/insider-transactions/)
-- [Fintel - PWR Institutional Ownership](https://fintel.io/so/us/pwr)
-- [Nasdaq - PWR Institutional Holdings](https://www.nasdaq.com/market-activity/stocks/pwr/institutional-holdings/)
-- [Simply Wall St - PWR Ownership](https://simplywall.st/stocks/us/capital-goods/nyse-pwr/quanta-services/ownership)
+**整體評級：牛市（信心度：中等-高）**
+
+- ✅ 分析師高度一致（79%買進，目標價隱含上漲13–14%）
+- ✅ 業績超預期（營收+41%、EPS+70%、訂單積壓+59%）
+- ✅ 結構性需求強（能源轉型、EV、資料中心、電網現代化）
+- ⚠️ 估值已充分定價（目標價與現價差距縮小）
+- ⚠️ 技術面8月下旬轉弱，獲利了結壓力
+- ⚠️ 內部人無主動買入信號
+
+**分析師 vs 零售傾向發散標誌：YES**
+
+分析師高度看多（81%買進、Strong Buy）但零售社群情緒轉趨謹慎（基於8月下旬技術面疲軟、估值憂慮升高）。此發散通常反映機構投資人與零售投資人對中短期回檔的風險預期差異——分析師專注基本面與長期TAM擴張，零售則對進場時機與技術風險更敏感。
+
+---
+
+## 情緒報告完成
+
+**當前價格**（8月25日）：$615.97  
+**中位數目標價**：$800.00  
+**隱含上漲**：+29.9%
+
+---
+
+## 資料來源
+
+- [CNN — PWR Stock Quote Price and Forecast](https://www.cnn.com/markets/stocks/PWR)
+- [Benzinga — Quanta Services Analyst Ratings](https://www.benzinga.com/quote/PWR/analyst-ratings)
+- [Yahoo Finance — PWR Analysis](https://finance.yahoo.com/quote/PWR/analysis/)
+- [Yahoo Finance — Quanta Services Analyst Calls](https://finance.yahoo.com/markets/stocks/articles/roblox-downgraded-quanta-services-upgraded-134617288.html)
+- [StockInvest.us — PWR Stock Price Forecast](https://stockinvest.us/stock/PWR)
+- [TradingKey — Market Movers Report](https://www.tradingkey.com/news/market-movers/262116038-market-movers-pwr-20260818)
+- [WallStreetZen — How to Buy Quanta Services Stock](https://www.wallstreetzen.com/how-to-buy-quanta-services-stock)
