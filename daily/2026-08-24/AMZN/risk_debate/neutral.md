@@ -1,29 +1,33 @@
 # Neutral risk view — AMZN
 
 ## Points of agreement (both sides)
-- Stop $249 位階合理（1.5–2x ATR14），雙方都不主張收緊或放寬。
-- 進場區間 $258–262 本身不反對，差異只在「要不要等確認」。
-- 財報後跳空滑價才是本倉位真正的尾部風險來源，而非停損距離設計問題。
+- AWS 結構性加速（+36.7% YoY、39.4% 利潤率）為可查核的硬數字，多頭方向正確
+- 基本面止損條件一致：AWS Q3 YoY < 28% 或 CapEx 再次上調即觸發縮倉
+- PRICE_DATA_UNAVAILABLE 使技術止損無法量化，必須依賴基本面條件取代
+- Q3 2026 財報（10 月下旬）為共同確認的核心決策節點
 
 ## Aggressive overreach
-- Where：主張現在直接建 Medium（1.5% NAV），不等 10/29 財報。
-- Why：把「AWS 37% 已是硬數據」當成足以解除核心疑慮的理由，但 investment_plan 的 crux 從頭到尾是 **CapEx 資本效率／FCF 轉換**（FCF/NI 僅 0.099、P/FCF 367x），不是 AWS 成長速度——AWS 數據再硬也沒有回答這個問題。研究經理明確寫「宜等待財報確認後再考慮加碼」，aggressive 直接跳過這個結論等於忽視研究經理已權衡過的資訊。
+- **Where：** 主張 Anthropic $4.94 EPS 貢獻「非一次性」，並以此支撐 2.5–3% NAV
+- **Why：** 公允價值重估在 GAAP 上確為本季度一次性損益事件；未來季度不會自動重複。稱之為「持續複利資產」模糊了 P&L 貢獻與資產負債表價值的區別。此外，在 PRICE_DATA_UNAVAILABLE 環境下無 ATR 基準，擴倉至 2.5–3% NAV 是在無 vol-adjusted 框架下追加風險，本身違反倉位管理原則。Q2 後 +18% 急拉亦使立即全倉建立的買入成本偏高。
 
 ## Conservative overreach
-- Where：主張進場前要等「量能回升、MACD 直方圖收斂」才分批進場。
-- Why：trade_proposal 本來就已採小倉位（0.5% NAV）分批建倉，本身已經是對「箱體未經驗證」的定量回應；再疊加技術面確認條件，等於用同一個風險（箱體不確定）扣兩次分數，且技術轉折訊號常常落後、可能錯過整個進場區間。Scenario A/B/C 機率（25%/20%/15%）也缺乏明確依據，屬情緒化加權。
+- **Where：** 以 PRICE_DATA_UNAVAILABLE 為由將倉位壓縮至 0.75% NAV，並要求等待至 Q3 財報才投入首批
+- **Why：** 技術數據缺失影響的是「精確進場帶」，而非多頭論據的有效性。AWS $496B 積壓、廣告 $19.8B、FCF 負值屬已知且已被市場部分折現的訊息，不構成新的做空催化劑。將 95% BUY 共識單獨作為半倉理由過度，此指標需結合估值與動能方向綜合判斷；等至 10 月才建倉代價是放棄兩個月 Q3 確認前的潛在回報。
 
 ## Balanced adjustment proposal
-- Size：維持 Small（0.5% NAV）不變，拒絕 aggressive 立即加碼 Medium 的主張——crux 未解前擴大曝險缺乏依據。
-- Stop：$249 不動；但採納 conservative 建議，財報前（10/29）若已有未實現獲利，移動停損至 $255 鎖利，成本為零、僅減少上檔波動容忍度。
-- Entry：維持 trade_proposal 原設計（$258–262 小量分批），不額外加技術確認條件，也不追高於 $266。
-- Hedge：採納 conservative 的板塊級對沖建議——若組合同時持有 MSFT/GOOGL/META/NVDA 等 AI CapEx 相關部位，應用 QQQ 或 SOXX put 做板塊層級對沖；若 AMZN 為組合中唯一 AI CapEx 曝險，暫不需額外對沖。可考慮 aggressive 提出的小額（0.2–0.3% NAV 權利金）Nov 20 $270/$300 call spread 作為捕捉財報二元催化劑的定義風險工具，但視為選擇加分項而非取代股票倉位規模決策。
-- Time horizon：不變，1–3m，跨越 10/29 Q3 財報。
+- **Size：** 1.25% NAV（原提案 1.5% 微降）；分兩批：即刻建立 0.75%，待 PRICE_DATA_UNAVAILABLE 解除確認技術支撐或 Q3 AWS 有機成長 ≥ 32% 後補入剩餘 0.5%
+- **Stop：** 基本面止損——AWS Q3 YoY < 28%，或 CapEx 指引突破 $220B，觸發縮至 1/4 倉
+- **Entry：** 不追高；首批 0.75% 分 2 筆分批建立，不等待大幅回落但避免一次性全倉
+- **Hedge：** 保留 PRICE_DATA_UNAVAILABLE 解除後評估 AMZN OTM call spread（Aggressive 建議合理），以定義損失上限換取 Q3 催化劑的槓桿化正向 delta；暫不配置 put 對沖（Conservative 建議此情境下成本效益偏差）
+- **Time horizon：** 1–3 個月；Q3 財報為階段性決策點，正面確認後可延伸至 2027 年初 Trainium4 量產時程
 
 ## Net $ risk if stop hits
-以 NAV $1,000,000、0.5% 配置（$5,000，進場均價 $260、約 19.2 股）估算：觸及 $249 停損 → 損失約 $211（約 0.021% NAV）。
+1.25% NAV × 25% 估計跌幅（Scenario A） = **0.31% NAV**
 
 ## Net $ upside at T1 / T2
-Target 1 ($278)：獲利約 $346；Target 2 ($296)：獲利約 $692（以同倉位規模計算）。
+T1（分析師中位目標，+27.5% 估算）= **0.34% NAV**
+T2（分析師高端目標，+35% 估算）= **0.44% NAV**
+
+> 注：PRICE_DATA_UNAVAILABLE，所有損益均以 NAV 百分比表達，無法換算絕對美元金額。
 
 NEUTRAL VIEW COMPLETE

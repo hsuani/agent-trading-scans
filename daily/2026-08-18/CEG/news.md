@@ -1,65 +1,75 @@
-# 新聞 — CEG 截至 2026-08-18
+# 新聞分析 — CEG（康斯坦提烏茲能源）截至 2026 年 8 月 18 日
 
-## 公司特定頭條新聞（過去14天）
+## 公司特定頭條（過去 14 天）
 
-- **2026-08-06** — Q2 2026 財報超預期，EPS 達 $2.55 vs. 預估 $2.33（+9.5%），但營收 $7.50B 低於預估 $7.70B。公司調升全年指引至 $11.50-$12.50（原 $11.00-$12.00），並預計基礎 EPS 從現在至 2029 年增長 20% 以上（[BusinessWire](https://www.businesswire.com/news/home/20260805185047/en/Constellation-Reports-Second-Quarter-2026-Results)）。影響：**看漲**。Calpine 併購驅動的同店銷售成長、PJM 容量價格上升及商業最佳化為下線增長主要驅動因素，反映核能及天然氣資產整合威力。
+- **2026年8月6日** — Q2 2026 業績公佈：調整後營運 EPS 達 $2.55（超過共識 $2.41），GAAP EPS 為 $1.42。調整後營運 EPS 較去年同期 $1.91 成長 33.5%。營收 $7.5B 略低於預期（來源：[Constellation Energy Reports Second Quarter 2026 Results](https://investors.constellationenergy.com/news-releases/news-release-details/constellation-reports-second-quarter-2026-results)）。衝擊：**看漲**。Calpine 併購整合推動核電和天然氣混合資產帶來的協同效應，強化數據中心功率需求的獲利能力。
 
-- **2026-08-04** — CEO Joe Dominguez 於 8 月 4 日起正式就任董事長，強化核能及再生能源戰略領導地位（[BigGo Finance](https://finance.biggo.com/news/US_CEG_2026-08-06)）。影響：**中立**。高層穩定、經驗豐富的核能營運主管掌舵。
+- **2026年8月6日** — 提升全年指引至 $11.50–$12.50 EPS（原指引 $11.00–$12.00）（來源：[The Globe and Mail](https://www.theglobeandmail.com/investing/markets/stocks/CEG/pressreleases/3716101/constellation-energy-raises-2026-earnings-guidance-after-strong-quarter/)）。衝擊：**看漲**。年中提升 50 美分的指引幅度反映數據中心電力購電協議（PPA）簽署加速和 PJM 容量市場定價強勁。
 
-- **2026-08-05** — 董事會任命 MassMutual 董事長兼 CEO Roger Crandall 為獨立董事（[BusinessWire](https://www.businesswire.com/news/home/20260805185047/en/Constellation-Reports-Second-Quarter-2026-Results)）。影響：**中立**。大型機構資本背景的董事加入，強化公司治理。
+- **2026年8月6日** — 簽署 920 MW 新長期清潔能源 PPA，平均合約期限 18.5 年，客戶為投資級企業，核心包括沃爾瑪（Walmart）176 MW 協議用於伊利諾州 Dresden 核電廠 30 MW 產能擴張（來源：[Constellation Signed 920 Megawatts of New Power Deals](https://www.fool.com/investing/2026/08/07/constellation-signed-920-megawatts-of-new-power-deals-including-a-walmart-ppa-heres-what-it-means-for-ceg-stock/)）。衝擊：**看漲**。新簽署協議提供 2029–2032 年間長期現金流可見性，合約期限 15–20 年提供防守下行空間。
 
-- **2026-08-06（含 Q2 呼叫摘要）** — 公司簽署約 920 MW 長期核能購電協議（PPA），包括 Walmart 首份核能 PPA、Meta 1,121 MW 20 年協議及 Microsoft Crane 廠重啟支撐協議。平均期限 18.5 年，將清潔基載的受契約保護比例提升至約 30%（[Globe and Mail](https://www.theglobeandmail.com/investing/markets/stocks/CEG/pressreleases/3721409/ceg-q2-earnings-call-focuses-on-higher-guidance-and-nuclear-deals/)）。影響：**看漲**。大型科技公司的長期核能採購承諾鎖定高邊際利潤、高槓桿現金流，反映 AI 資料中心電力需求結構性轉變。
+- **2026年8月6日** — PJM 容量拍賣結果：CEG 在 2028/2029 送出年度清空 18,875 MW（其中 15,700 MW 為核電，3,175 MW 化石），拍賣價格為 $325/MW/天（來源：[Constellation Energy Corporation (CEG) Q2 2026 Earnings](https://www.tipranks.com/stocks/mx:ceg/earnings/q2-2026-report)）。衝擊：**看漲**。核電產能在 PJM 市場中佔比 21%（2026/2027 拍賣年度基準）；$325/MW/天反映數據中心尖峰需求成長拉動下容量市場的結構性緊張。
 
-- **2026-08 期間** — Brazos Valley Energy Center 完成出售予 LS Power，交易金額 $860M，滿足美國司法部併購 Calpine 時要求的最終資產剝離條件（[Yahoo Finance](https://finance.yahoo.com/news/constellation-energy-deepens-data-center-141122860.html)）。影響：**中立**。監管遵循，資產簡化流程順進。
+- **2026年8月4日** — CEO Joe Dominguez 升任董事會主席（自 2026 年 8 月 4 日生效）（來源：[CEO Joe Dominguez sat down with Bloomberg](https://x.com/ConstellationEG/status/1899245500169150869)）。衝擊：**中立**。象徵管理層對 Calpine 整合和數據中心戰略方向的連續性確認。Dominguez 自 2022 年加入以來，領導公司完成業界最大核電併購之一。
 
-- **2026-08 期間** — NRC 核准 Crane Clean Energy Center 核燃料執照修訂（amendment），2027 年重啟營運進程加速（[24/7 Wall St.](https://247wallst.com/investing/2026/08/07/3-nuclear-energy-stocks-powering-the-ai-boom-in-august/)）。影響：**看漲**。核能重啟里程碑逐步達成，貢獻未來營運收益。
+- **2026年8月5日** — 董事會聘任 MassMutual CEO Roger Crandall 為獨立董事（自 2026 年 8 月 5 日生效）；Charles L. Harrington 升任獨立董事主席（Lead Independent Director）（來源：[Constellation Energy Corporation Announces Board Changes](https://www.marketscreener.com/news/constellation-energy-corporation-announces-board-changes-ce7f50dcdb8cf427)）。衝擊：**中立**。強化董事會獨立性和企業治理；Crandall 專長於保險和長期資本配置。
 
-- **2026-08-18** — CEG 現金股利 $0.426 除息日。影響：**中立**。定期股東回報。
+- **2026年8月** — 資本配置進展：$2.2B 回購已部署，授權剩餘 $2.8B。管理層預計 2026 年調整後 EPS 增長率達 20% 年複合增長率（至 2029 年），基礎為 $11.50–$12.50 指引（來源：[Constellation Energy earnings up next: Can data center deals deliver?](https://www.investing.com/news/earnings/constellation-energy-earnings-up-next-can-data-center-deals-deliver-93CH-4673061)）。衝擊：**看漲**。回購針對已實現的盈利提升，提高每股盈利收益率；管理層保持積極態度，指示額外回購上行風險達 $0.75 EPS。
 
-## 產業宏觀
+## 核能部門總體形勢
 
-- **2026-07-29** — 美國聯邦準備委員會 7 月會議決定維持聯邦基金利率區間於 3.50%-3.75%，雖有 3 名地方聯邦銀行行長傾向升息 0.25%（[Advisor Perspectives](https://www.advisorperspectives.com/dshort/updates/2026/07/29/feds-interest-rate-decision-july-29-2026)）。對**公用事業股**影響：**略微看漲**。穩定利率環境支撐資本密集型電力公司的融資成本及股債價值。
+- **數據中心核電需求加速** — 截至 2026 年 7 月，已承諾 9.8 GW 核電用於 AI 數據中心，其中 80.4% 尚未達成商業運營（來源：[Nuclear Energy for Data Centers 2026: 9.8 GW Committed, SMRs by 2029](https://axis-intelligence.com/nuclear-energy-for-data-centers/)）。衝擊對 **CEG 正面**：核電作為全天候基載電源的唯一可行清潔選項，CEG 32.4 GW 核電資產組合在滿足數據中心長期功率需求方面居業界領先地位。
 
-- **2026-08 期間** — Palisades 核電廠（Holtec International 營運，密西根）已於 2025 年 8 月 25 日從停役階段轉為營運狀態。2026 年重啟計畫進行中（[NRC/Circle of Blue](https://www.circleofblue.org/2026/water-energy/a-nuclear-shift-buoyed-by-billions-and-the-waters-of-the-great-lakes/)）。對**核能電力供應**影響：**看漲**。美國首次先前關閉核反應爐重啟，強化核能復興態勢，對 CEG 等核能運營商提升市場信心。
+- **超大規模企業簽署持續推進** — Meta 已簽署 20 年 PPA，承諾 2.6 GW 電力來自俄亥俄州和賓州現有核電廠的壽期延伸和功率提升；Google 與 Elementl Power 達成最高 1.8 GW 協議（來源：[Brookfield Nuclear 2026, $80B Cameco Westinghouse Deal](https://enkiai.com/data-center/sustainability-initiatives/data-center/brookfield-nuclear-ai-data-centers/)）。衝擊對 **CEG 正面**：全球超大規模企業（Google、Meta、Microsoft）已與 CEG 簽署多個數十億美元的長期協議，驗證其核電投資組合的市場價值。
 
-- **2026 年資料中心電力需求** — Gartner 預測 2026 年全球資料中心電力消耗成長 26%（年初預測）；Presenc AI 進一步指出 2026 年全球資料中心電力需求將達 132 GW，較 2025 年 104 GW 增長 27%。AI 優化伺服器預計佔資料中心電力消耗 31%（[Gartner](https://www.gartner.com/en/newsroom/press-releases/2026-06-10-gartner-says-data-center-electricity-demand-to-grow-26-percent-in-2026)，[Presenc AI](https://presenc.ai/research/ai-data-center-energy-consumption-2026)）。對**核能及天然氣發電公司**影響：**強烈看漲**。結構性需求成長提升 CEG 長期核能 PPA 簽署熱度及定價能力。
+- **PJM 容量市場創紀錄** — 2026/2027 容量拍賣達 134,311 MW，清空價格為 $329.17/MW/天（達頂蓋），較前年拍賣年度上升 22%；尖峰負荷年同比增長逾 5,400 MW，主要源自數據中心擴張、電氣化和經濟成長（來源：[PJM Auction Procures 134,311 MW of Generation Resources](https://insidelines.pjm.com/pjm-auction-procures-134311-mw-of-generation-resources-supply-responds-to-price-signal/)）。衝擊對 **CEG 正面**：容量市場定價上升反映供應不足，CEG 的核電和燃氣混合組合在容量拍賣中表現佳績，有助於提升中期現金流。
 
-- **資料中心電力長期前景** — IEA 2025《能源與 AI》報告估全球資料中心電力消耗將從 2024 年 415 TWh 升至 2030 年約 945 TWh，AI 加速器工作負載佔最大成長比重。Goldman Sachs 稱 2030 年前資料中心電力需求恐升 160%。Big Tech（Amazon、Google、Microsoft、Meta）四大超大規模廠商已執行 133+ GW 能源供應協議（Q1 2026）、規劃 2026 年投資逾 $400B 資料中心（[IEA](https://www.iea.org/reports/energy-and-ai/energy-supply-for-ai)，[Goldman Sachs](https://www.goldmansachs.com/insights/articles/is-nuclear-energy-the-answer-to-ai-data-centers-power-consumption)，[BigGo Finance](https://finance.biggo.com/news/US_CEG_2026-08-06)）。對**CEG 核能 PPA 前景**影響：**強烈看漲**。Meta 1,121 MW、Microsoft Crane 等大型合約反映需求實現，未來 3-5 年 AI 需求潛力巨大。
+- **NRC 高級反應堆監管框架定稿** — 美國核管會（NRC）公佈 10 CFR Part 53 最終規則「高級反應堆的風險知情、技術包容性監管框架」，簡化和加速小型模組化反應堆（SMR）授權流程（來源：[NRC unveils Part 53 final rule](https://www.ans.org/news/article-7881/nrc-unveils-part-53-final-rule/)）。衝擊對 **CEG 正面**：長期邊際利潤，CEG 可透過 TerraPower 等戰略夥伴參與 SMR 部署。
 
-- **核能電力供應鏈** — Data4（法國）與 EDF（法國國有公用事業）簽署 12 年核生產分配合約，提供 40 MW 直接核電；Amazon 收購賓州資料中心園區（$650M），直接由 Susquehanna 核廠供電（[IAEA](https://www.iaea.org/bulletin/data-centres-artificial-intelligence-and-cryptocurrencies-eye-advanced-nuclear-to-meet-growing-power-needs)）。對**北美核能運營商**影響：**看漲**。全球核能與 AI 資料中心整合趨勢確立，為 CEG 等營運商貢獻長期合約簽署及溢價定價環境。
+- **Westinghouse 供應鏈交易** — Cameco 和 Brookfield Renewable Partners 合作完成 $80B Westinghouse 併購，鞏固核燃料和先進反應堆技術供應鏈（來源：[Brookfield Nuclear 2026, $80B Cameco Westinghouse Deal](https://enkiai.com/data-center/sustainability-initiatives/data-center/brookfield-nuclear-ai-data-centers/)）。衝擊對 **CEG 中立至正面**：長期基礎設施投資有利於核電全產業鏈，但短期內對 CEG 現有電廠營運影響有限。
 
-## 同業信號
+- **Crane 核電站重啟核准** — 聯邦能源監管委員會（FERC）核准豁免案，轉移現有電網連接權至 Crane 核電機組，完成與 Microsoft 20 年 PPA 互聯準備（來源：[NRC and FERC boosts for Crane Clean Energy Center project](https://www.world-nuclear-news.org/articles/ferc-waiver-clears-way-for-crane-clean-nuclear-interconnection)）。衝擊對 **CEG 看漲**：Crane 復興項目預計於 2027 年完成，支撐 2027–2029 年指引實現。
 
-- **Duke Energy（DUK）Q2 2026** — EPS $1.43 vs. 預估 $1.29（+10.9%），營收 $7.59B vs. 預估 $7.72B（-1.6%）。管理層披露資料中心需求驅動額外 $5B-$10B 資本投資機會，北卡羅來納州費率案結算達 9.8% ROE 及 10.3% 利潤分享上限（[Investing.com](https://www.investing.com/news/company-news/duke-energy-q2-2026-slides-eps-beats-amid-data-center-boom-93CH-4835216)）。對 **CEG** 影響：**看漲**。同業也在收集資料中心需求紅利，驗證行業獲利擴張環境。DUK 已將資料中心機會量化($5B-$10B)，提升市場對核能及天然氣公用事業成長的預期。
+## 競爭者信號
 
-- **American Electric Power（AEP）Q2 2026** — 營收 $5.45B vs. 預估 $5.26B（+3.48% 驚喜），EPS $1.36 vs. 預估 $1.49（-8.73% 誤差）。AEP 於 7 月底報告後調升全年指引 $0.10（[Morningstar](https://www.morningstar.com/news/pr-newswire/20260730cl15587/aep-reports-second-quarter-2026-earnings-raises-full-year-guidance)）。對 **CEG** 影響：**中立至看漲**。同業營收超預期，但盈利誤差揭示營運成本及利率壓力。CEG 的 EPS 大幅超預期（+9.5%）領先 DUK（+10.9%）與 AEP（-8.73%），凸顯 Calpine 併購及核能合約的槓桿效應。
+- **Duke Energy（DUK）** — 在北卡羅來納州 Belews Creek 獲得先進核反應堆建造許可申請核准，現址為燃煤/天然氣電廠，透過利用現有基礎設施成本優勢（來源：[Duke Energy's Nuclear Bet Signals the AI Power Shift](https://finance.yahoo.com/news/duke-energy-nuclear-bet-signals-154100095.html)）。衝擊：**中立至認可**。DUK 進入核電領域印證了 CEG 投資核電的戰略正確性，但 DUK 新構項目啟動時間較晚（規劃建造中），對 2027–2028 年容量市場出清無直接影響。
 
-- **Holtec International（Palisades 重啟）** — Palisades 核電廠（密西根）於 2026 年重啟計畫進行中，競爭性威脅最小化（Holtec 與 CEG 合作現有核資產，但 Palisades 為獨立項目）。對 **CEG 市場地位**影響：**中立**。業界核能重啟增加整體核電供應，可能壓低邊際定價，但長期 PPA 已鎖定 CEG 的上層業績。
+- **NextEra Energy（NEE）** — 為業界最大名義電力公用事業，市值 $179.4B，並為唯一同時提供實質股息收益率且具備 AI 電力需求故事之上市企業（來源：[3 Nuclear Energy Stocks Riding the AI Power Surge in August](https://247wallst.com/investing/2026/08/16/3-nuclear-energy-stocks-riding-the-ai-power-surge-in-august/)）。衝擊：**中立**。NEE 主要優勢在風電和太陽能投資組合，而核電基載能力不及 CEG；CEG 32.4 GW 核電佔全球比重遠高於 NEE。
 
-## 向前展望日程（未來14天）
+- **Exelon（EXC）** — 近期無重大新聞；但 CEG 本質上已從 EXC 分離（2022 年分拆），現為獨立上市公司並完成 Calpine 併購（2026 年 1 月），戰略優勢已超越 EXC。衝擊：**中立**。EXC 仍為區域性核電運營者，但不具備 CEG 相同的超大規模數據中心契約能見度。
 
-- **2026-08-18（今日）** — CEG 現金股利除息日（$0.426）。預期影響：日常股東回報。
-- **無其他已公告的CEG公司事件** — Q3 2026 財報預期 11 月初公告；下一次聯邦準備委員會議 9 月 16-17 日召開。
+## 前瞻日曆（後續 14 天）
 
-## 淨評論
+- **2026年8月24–27日** — 第二屆核能會議及展覽會（NECX 2026）於德州達拉斯舉行（來源：[On the horizon: NECX 2026](https://www.ans.org/news/article-8248/on-the-horizon-necx-2026/)）。預期衝擊：**中立至關注**。業界年度盛事，CEG 高管預期出席，或宣布新 PPA 簽署進展或 Calpine 整合里程碑。
 
-CEG 於 2026 年 8 月表現強勁，Q2 財報 EPS 超預期 9.5%、調升全年指引，且簽署 920 MW 長期核能 PPA（含 Walmart、Meta、Microsoft），進一步鎖定高邊際利潤、長期現金流。CEO 升任董事長與董事會補強反映高層穩定及機構背景強化。宏觀方面，AI 資料中心電力需求 2026 年預計成長 27% 至 132 GW，2030 年累計電力需求恐達 945 TWh，驅動全球 Big Tech（Amazon、Google、Microsoft、Meta）投資 $400B+，核能運營商成為關鍵受惠者；同業 Duke Energy 已量化資料中心投資機會 $5B-$10B，驗證獲利擴張環境。聯準會 7 月維持利率穩定（3.50%-3.75%），降低融資成本風險。Palisades 核廠（Holtec）2026 年重啟進行中，業界核能復興強化市場信心。綜合評估：**頭條傾向看漲**（**中度幅度**），支撐因素包括結構性電力需求成長、高邊際 PPA 簽署、Calpine 整合槓桿效應及監管順風；風險因素為營收小幅低於預估（Q2 $7.50B vs $7.70B）及利率路徑不確定性。
+- **2026年8月至9月** — Calpine 整合進展公告（協置數據中心項目預期全年陸續公佈，來源：[Is Constellation Energy's (CEG) Nuclear Tech Partnerships Quietly Redefining Its Post-Calpine Investment Narrative?](https://simplywall.st/stocks/us/utilities/nasdaq-ceg/constellation-energy/news/is-constellation-energys-ceg-nuclear-tech-partnerships-quiet)）。預期衝擊：**看漲**。管理層已明確表示全年將陸續發佈「共址」（co-location）協議，數據中心直接建設於 CEG 電廠毗鄰地區，成本優勢顯著。
+
+- **2026年11月** — Q3 2026 業績電話會議（預計）。預期衝擊：**取決於結果**。市場將關注第三季 PPA 簽署進展、Calpine 邊際利潤整合狀況，以及是否維持或進一步提升 2026 年度指引。
+
+## 整體評估
+
+**新聞綜合評估：看漲，幅度中等**
+
+康斯坦提烏茲能源在過去兩週內釋放多項看漲信號：Q2 調整後 EPS 超預期、全年指引提升至 $11.50–$12.50（反映 20% 年複合增長率至 2029 年）、簽署 920 MW 新長期 PPA 包括沃爾瑪大型協議、CEO 升任主席象徵戰略連續性、以及 PJM 容量市場創紀錄定價 ($325/MW/天、22% 環比增長)。核能部門宏觀環境亦充分有利：超大規模企業（Meta、Google、Microsoft）已簽署逾 10 GW 數據中心核電協議，PJM 尖峰負荷增長 5,400 MW 年同比主要源自數據中心擴張，容量市場供應缺口結構性存在。競爭方面，Duke Energy 公佈先進核反應堆計劃驗證 CEG 核電投資主題正確，但 DUK 專案啟動時間滯後，對 2027–2028 年出清無直接競爭。風險因素包括：(1) 監管延誤（如 Crane 專案進度跳票）、(2) 超大規模企業簽署放緩（如科技公司資本支出調整）、(3) ERCOT 市場疲軟（Q2 已影響部分邊際利潤）、(4) 利率上升衝擊長期 PPA 折現值。短期內看漲動能由 PPA 簽署加速、容量市場定價強勁、CEO 升任主席強化信心驅動；中期看漲來自 Calpine 協同效應逐步兌現和 Crane 專案 2027 年上線貢獻。
 
 ---
 
-NEWS REPORT COMPLETE
+**新聞分析報告完成**
 
----
-
-**資料來源：**
-- [Constellation Reports Second Quarter 2026 Results - BusinessWire](https://www.businesswire.com/news/home/20260805185047/en/Constellation-Reports-Second-Quarter-2026-Results)
-- [CEG Q2 2026 Earnings Call Focus - Globe and Mail](https://www.theglobeandmail.com/investing/markets/stocks/CEG/pressreleases/3721409/ceg-q2-earnings-call-focuses-on-higher-guidance-and-nuclear-deals/)
-- [Constellation Energy deepens Data Center ties - Yahoo Finance](https://finance.yahoo.com/news/constellation-energy-deepens-data-center-141122860.html)
-- [3 Nuclear Energy Stocks Powering AI Boom - 24/7 Wall St.](https://247wallst.com/investing/2026/08/07/3-nuclear-energy-stocks-powering-the-ai-boom-in-august/)
-- [Nuclear Power Emerging as a Clean AI Data Center Energy Source - IO Fund](https://io-fund.com/artificial-intelligence/nuclear-energy-ai-data-centers)
-- [Gartner Data Center Electricity Demand Growth 2026](https://www.gartner.com/en/newsroom/press-releases/2026-06-10-gartner-says-data-center-electricity-demand-to-grow-26-percent-in-2026)
-- [Fed's Interest Rate Decision July 2026 - Advisor Perspectives](https://www.advisorperspectives.com/dshort/updates/2026/07/29/feds-interest-rate-decision-july-29-2026)
-- [Duke Energy Q2 2026 - Investing.com](https://www.investing.com/news/company-news/duke-energy-q2-2026-slides-eps-beats-amid-data-center-boom-93CH-4835216)
-- [AEP Reports Second-Quarter 2026 Earnings - Morningstar](https://www.morningstar.com/news/pr-newswire/20260730cl15587/aep-reports-second-quarter-2026-earnings-raises-full-year-guidance)
-- [Energy and AI - IEA](https://www.iaea.org/bulletin/data-centres-artificial-intelligence-and-cryptocurrencies-eye-advanced-nuclear-to-meet-growing-power-needs)
-- [Is nuclear energy the answer to AI data centers? - Goldman Sachs](https://www.goldmansachs.com/insights/articles/is-nuclear-energy-the-answer-to-ai-data-centers-power-consumption)
+Sources:
+- [Constellation Energy Reports Second Quarter 2026 Results](https://investors.constellationenergy.com/news-releases/news-release-details/constellation-reports-second-quarter-2026-results)
+- [The Globe and Mail - Constellation Energy Raises 2026 Earnings Guidance](https://www.theglobeandmail.com/investing/markets/stocks/CEG/pressreleases/3716101/constellation-energy-raises-2026-earnings-guidance-after-strong-quarter/)
+- [Constellation Signed 920 Megawatts of New Power Deals](https://www.fool.com/investing/2026/08/07/constellation-signed-920-megawatts-of-new-power-deals-including-a-walmart-ppa-heres-what-it-means-for-ceg-stock/)
+- [Constellation Energy Corporation (CEG) Q2 2026 Earnings - TipRanks](https://www.tipranks.com/stocks/mx:ceg/earnings/q2-2026-report)
+- [CEO Joe Dominguez - Constellation Twitter/X](https://x.com/ConstellationEG/status/1899245500169150869)
+- [Constellation Energy Corporation Announces Board Changes](https://www.marketscreener.com/news/constellation-energy-corporation-announces-board-changes-ce7f50dcdb8cf427)
+- [Constellation Energy earnings up next: Can data center deals deliver?](https://www.investing.com/news/earnings/constellation-energy-earnings-up-next-can-data-center-deals-deliver-93CH-4673061)
+- [Nuclear Energy for Data Centers 2026: 9.8 GW Committed, SMRs by 2029](https://axis-intelligence.com/nuclear-energy-for-data-centers/)
+- [Brookfield Nuclear 2026, $80B Cameco Westinghouse Deal](https://enkiai.com/data-center/sustainability-initiatives/data-center/brookfield-nuclear-ai-data-centers/)
+- [PJM Auction Procures 134,311 MW of Generation Resources](https://insidelines.pjm.com/pjm-auction-procures-134311-mw-of-generation-resources-supply-responds-to-price-signal/)
+- [NRC unveils Part 53 final rule](https://www.ans.org/news/article-7881/nrc-unveils-part-53-final-rule/)
+- [NRC and FERC boosts for Crane Clean Energy Center project](https://www.world-nuclear-news.org/articles/ferc-waiver-clears-way-for-crane-clean-nuclear-interconnection)
+- [Duke Energy's Nuclear Bet Signals the AI Power Shift](https://finance.yahoo.com/news/duke-energy-nuclear-bet-signals-154100095.html)
+- [3 Nuclear Energy Stocks Riding the AI Power Surge in August](https://247wallst.com/investing/2026/08/16/3-nuclear-energy-stocks-riding-the-ai-power-surge-in-august/)
+- [Is Constellation Energy's (CEG) Nuclear Tech Partnerships Quietly Redefining Its Post-Calpine Investment Narrative?](https://simplywall.st/stocks/us/utilities/nasdaq-ceg/constellation-energy/news/is-constellation-energys-ceg-nuclear-tech-partnerships-quiet)
+- [On the horizon: NECX 2026](https://www.ans.org/news/article-8248/on-the-horizon-necx-2026/)

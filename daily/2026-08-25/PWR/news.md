@@ -1,72 +1,70 @@
-# 新聞——PWR 至 2026-08-25
+# News — PWR (2026-08-25)
 
-## 公司特定頭條（過去 14 天）
+## 公司特定新聞（過去14天）
 
-- **2026-08-25** — PWR 納入「爆炸性上升潛力的 3 檔成長股」(StockStory)。影響：中性。分析師持續推薦，標題列入綜合篇章。
+- **2026-08-18** — PWR 股價上漲 9.3% 後，積壓訂單因 AI 驅動電力項目大幅增長。衝擊：強烈看漲。公司 Q2 營收達 $9.56B（年增 41%），積壓訂單激增 50% 至歷史高位 $53.4B，反映出 AI 基礎設施與電網現代化需求強勁。（來源：Sahm Capital）
 
-- **2026-08-24** — Quanta Services (PWR) 獲評「不可思議的成長股」，Zacks 指出公司財務成長超越平均值，被列為優質位置 (Zacks)。影響：看多。反映分析師信心，支持基本面動能。
+- **2026-08-上旬** — Quanta Services 公布 Q2 2026 強勁業績，超越預期。衝擊：看漲。GAAP 稀釋 EPS 為 $2.96、調整後稀釋 EPS $4.24（預期 $3.29），營收 $9.56B（預期 $8.53B），超出一致預期。（來源：GuruFocus、Investing.com）
 
-- **2026-08-24** — 華爾街分析師予 PWR 26.52% 上升空間，多名分析師同步上調獲利預期 (Zacks)。影響：看多。協力確認獲利修正趨勢。
+- **2026-08-上旬** — Quanta Services 調升全年 2026 年指引。衝擊：看漲。營收預期上調 40%+ 至 $39.3B-$39.7B，調整後 EBITDA $4.09B-$4.21B，調整後 EPS 上調 20% 至 $16.45-$16.95（原預期 $13.55-$14.25）。（來源：Seeking Alpha、Yahoo Finance）
 
-- **2026-08-24** — PWR 與 FIX 稱為「2 檔高飛 AI 構建巨人」，指出 Q2 強勁業績、積壓訂單創新高、2026 年指引上調 (Zacks)。影響：看多。重點突顯在 AI 資料中心周期中的景氣動能。
+- **2026-08-上旬** — 電基礎設施解決方案 (Electric Infrastructure Solutions) 營收年增 44%，地下公用事業與基礎設施解決方案年增 31%。衝擊：看漲。業務組合中速增長最快的部分正推動動量。（來源：公司公告）
 
-- **2026-08-24** — PWR 股價表現超越同業對手 Tutor Perini (TPC)，在營建/工程產業大幅領先 (Zacks)。影響：看多。同業對比強度。
+- **2026-08-上旬** — Q2 及 7 月期間完成 4 項收購，新增員工約 7,400 人。衝擊：中性略偏看漲。加強人力資本與實施能力。（來源：公司公告）
 
-- **2026-08-22** — Simply Wall St 評估 PWR 股價可能高估 29%，基於折現現金流模型；指出公司 5 年累計報酬 5.2 倍，估值領先內在價值 (Simply Wall St)。影響：看空/中性。提醒風險警訊，但被強勢積壓訂單和現金生成抵消。
+- **2026-08-03** — Quanta Services 以 4.850% 利率完成 $500M 債券發行。衝擊：中性。融資用於積壓訂單執行與資本配置。（來源：SEC 8-K 公告）
 
-- **2026-08-21** — MasTec (MTZ) 對比分析指 PWR 積壓訂單創紀錄、現金生成強勁、獲利預期動能勝於 MTZ 較便宜估值 (Zacks)。影響：看多。相對優勢確認。
+- **2026-08-初** — 多位分析師上調目標價。衝擊：看漲。Guggenheim 升評為 Buy（目標 $800），KeyBanc 升評為 Overweight（目標 $807），Mizuho 上調至 $741（維持 Neutral），TD Cowen 維持 Buy、目標 $785。一致預期目標價 $769.25。（來源：Simply Wall St、Investing.com）
 
-- **2026-08-21** — 「Quanta 資本策略是否創造超越獲利成長的價值」——文章重點談收購策略、創紀錄積壓訂單與強勁現金生成構築長期基礎設施平台 (Zacks)。影響：看多。策略敘述強化成長故事。
+- **2026-年初** — Quanta Services 獲 2026 年度美國最佳太陽能解決方案提供商獎。衝擊：中性。品牌認可與再生能源專業度提升。（來源：Solar Power World）
 
-- **2026-08-21** — 華爾街分析師對 PWR 持高度看多態度，股票過去一年大幅超越大盤 (Barchart)。影響：看多。延續分析師共識強度。
+- **2026-07-17（財報電話會議）** — 管理層在 2026 投資者日聚焦 AI 基礎設施、電網現代化與工業回流機會，提及 $2.4 兆可尋址市場至 2030 年。衝擊：看漲。長期增長前景確認。（來源：Yahoo Finance）
 
-### Q2 2026 詳細業績（重點來源）
-- **營收** $9.56B (+41% 年增率)；Q2 2025 為 $6.77B
-- **調整後 EPS** $4.24 (+71% 年增率)；Q2 2025 為 $2.48
-- **淨利** $451.4M ($2.96 稀釋 EPS)；Q2 2025 $229.3M ($1.52 EPS)
-- **調整後 EBITDA** $1.1B；Electric 區隔邊際達 11.5% (vs. Q2 2025 之 10.1%)
-- **積壓訂單歷史新高** $53.4B；剩餘履約義務 $33.6B
-- **收購** Q2 自主進行 Phalcon、Enerfab、Percheron、PSD Global (~$1.24B)；近期追加 Cupertino Electric、Evergreen North America、RP Construction Services
+## 行業巨集觀
 
-### 2026 全年指引上調
-- 營收：$39.3-39.7B
-- 調整後 EPS：$16.45-16.95
-- 調整後 EBITDA：$4.09-4.21B
-- 自由現金流：$2.0-2.5B
+- **2026-08-中旬** — 美國電力公用事業為 2026-2030 期間激進提升基礎設施投資，應對 AI 數據中心與再生能源整合需求。衝擊：看漲。國際能源署報告 2026 年全球電力供應與基礎設施投資將達 $1.6 兆，其中電網投資單獨約 $550B（年增 20%）。（來源：Utility Dive、S&P Global）
 
----
+- **2026-08-中旬** — AI 超大規模廠商 2026 年對計算、數據中心與支援系統的資本承諾約 $700B，較 2025 年 $400B 大幅加速。衝擊：看漲。驅動電力基礎設施與服務公司（包括 PWR）的訂單激增。（來源：Market Scale）
 
-## 產業巨觀
+- **2026-07-底** — 聯邦公開市場委員會（FOMC）維持聯邦基金利率目標範圍在 3.50%-3.75%，但委員會對通膨頂部達成仍有分歧。衝擊：中性。利率環境對大型基礎設施項目融資成本造成持續壓力，但公用事業監管框架通常允許成本轉嫁。（來源：美國聯邦儲備委員會、Federal Reserve Minutes）
 
-- **2026-08 期間** — AI 資料中心電力瓶頸浮現為核心驅動因素。超大規模廠商（Amazon、Microsoft、Google、Meta、Oracle）2026 年基礎設施支出超 $600B，其中約 75% (~$450B) 聚焦 AI；美國公用事業公司發布 $1.4T 資本支出計畫至 2030 年，較去年計畫大幅增長 27% (來源：數據中心知識、Morgan Stanley、Tech Insider)。影響：PWR 與 FIX 等工程建設商直接受惠於電力基礎設施投資浪潮。
+- **2026-08-初** — 美國電網現代化加速，PG&E 調整策略從 $62B 泛用網格現代化轉向 $73B 針對性投資框架，以應對 10 GW 數據中心需求管道。衝擊：看漲。電網升級周期延長（如北維州新負荷連接等待時間達 14 年），強化了專業施工商如 PWR 的長期訂單可見性。（來源：RockFlow AI、Enkiai）
 
-- **2026-08 期間** — 全球資料中心電力需求預計 2026 年增長 27% 至 132 GW；美國細分：2025 年 31 GW → 2026 年 41 GW；Morgan Stanley 預測美國資料中心需求至 2028 年將達 74 GW，但可用電力接入缺口約 49 GW (來源：Morgan Stanley、Enkiai)。影響：電力基礎設施建設與改造機會巨大，利多工程承包商長期積壓訂單。
+- **2026-08-中旬** — 美國電力部門融合併購活動超過 $109B（統計至 2025 年 9 月），由戰略性重新定位與機構投資者對監管公用事業的投資驅動。衝擊：中性略偏看漲。提升 M&A 活躍度與投資者信心。（來源：Deloitte 2026 Outlook）
 
-- **Q2 2026 超大規模廠商戰略轉變** — Microsoft、Alphabet、Meta 在 Q2 獲利電話會議重點轉向「到達能源的時間」(time-to-energy) 而非單純資本支出總額；Meta 擴張 Hyperion 校園至東北路易斯州 5 GW AI 超級叢集，可能影響區域電力系統 (來源：S&P Global、數據中心知識)。影響：高層級認可能源制約，推動電力基礎設施投資加速。
-
----
+- **通用趨勢** — 美國電力行業營收至 2026 年以 3.4% 複合年增長率成長至 $1.2 兆，2026 年單年增長 1.0%。再生能源佔美國發電量超 20%，核能復興（Vogtle Unit 3 已上線）強化能源多元化。衝擊：中性。長期行業成長基本面穩健，但短期受利率與通膨影響。（來源：IBISWorld、Utility Dive）
 
 ## 同業信號
 
-- **FIX (Comfort Systems USA)** — Q1 2026 營收成長 56.5% 年增率至 $2.87B；積壓訂單達創紀錄 $12.45B (vs. 去年 $6.89B)；進階科技專案佔季度營收 56%，成為最大管道驅動力。UBS 於 6 月 8 日上調目標價至 $2,125 (from $1,992)，維持 Buy；分析師預期全年 2026 銷售成長中高 20% (來源：Simply Wall St、Seeking Alpha、Insider Monkey)。 訊號：直接同業在 AI 資料中心市場的動能相當強勁，確認需求廣闊。
+- **MasTec (MTZ)** — Q2 2026 營收年增 23.4% 至 $4.37B，Zacks Rank #1（強力買進），過去 1 年漲幅 130.7%，2026 年預估 EPS 上調至 $8.90。衝擊：看漲。同業同樣受惠 AI 基礎設施與公共支出，驗證行業景氣週期。
 
-- **MTZ (MasTec)** — 與 PWR 相比，後者在積壓訂單、現金生成與獲利預期動能方面優勢明顯；MTZ 估值相對便宜但增長潛力有限 (Zacks)。訊號：PWR 在同業中處於領先位置。
+- **Tutor Perini (TPC)** — 獲得 $651.8M 美國海軍基地瓜姆（Naval Base Guam）電力基礎設施現代化任務單，$69.5M 死亡谷國家公園水利與污水處理項目。Zacks Rank #2（買進），過去 1 年漲幅 67.5%，2026 年 EPS 預估 $5.18。衝擊：看漲。政府基礎設施支出與軍事相關項目增長確認，提升競爭同業訂單能見度。
 
----
+- **行業整體** — Zacks 建築產品-重型建設行業前景看漲，AI 基礎設施與公共支出為 2026 年主要增長驅動，涵蓋雲計算、AI 工作負荷、光纖連接與公用事業升級。衝擊：看漲。驗證 PWR 所處細分市場的整體成長動力。
 
-## 未來 14 天行事曆
+## 前景日程（未來14天）
 
-- **2026-09 年中** — Q3 2026 獲利公告預期（未確認具體日期）。預期影響：PWR 需延續 Q2 動能；若積壓訂單持續加厚且邊際改善，將進一步強化看多論題。
+- **無具體已宣布事件** — Quanta Services 已提升全年指引，下一個重要事件預計為 Q3 2026 財報（通常於 10 月中旬發布）。市場將密切關注積壓訂單執行進度與邊際毛利率管理。
 
-- **2026-09 年中** — 聯準會或其他央行政策公告（通常 FOMC 議息會議）。預期影響：利率環境對大型基礎設施計畫融資成本有間接影響，但 AI 資料中心投資需求強勁度可能抵消利率上升壓力。
+## 總體評估
 
----
-
-## 淨讀
-
-PWR 在強勁 AI 基礎設施周期中表現出色。Q2 創紀錄 $9.56B 營收 (+41% 年增)、$4.24 調整後 EPS (+71% 年增)、歷史新高 $53.4B 積壓訂單，2026 全年指引全面上調至 $39.3-39.7B 營收與 $16.45-16.95 調整後 EPS。積極收購策略 (Q2 $1.24B、近期 3 筆)拓展執行能力。產業巨觀引擎強勁：超大規模廠商 2026 年 AI 基礎設施支出 ~$450B、美國公用事業 $1.4T 長期資本計畫、全球資料中心電力需求增長 27%。同業 FIX 亦展示 56% 營收成長與 $12.45B 積壓訂單，驗證周期廣度。唯一風險為估值警訊 (Simply Wall St 指 29% 高估)，但強勁積壓訂單、現金生成與分析師上調預期 (+26.5% 目標價共識) 抵消此疑慮。**淨讀傾向看多，幅度中等**：基本面動能與產業週期動力聯手推升，但估值已充分反映預期，上升空間需以積壓訂單轉換與邊際率改善來證明。
+Quanta Services (PWR) 在 Q2 2026 展現強勁動能，營收大幅超預期 41% 年增、積壓訂單激增 50% 至 $53.4B 歷史高位，驅動公司調升全年指引 20%，反映 AI 數據中心與電網現代化的長期構造性需求確認。行業巨集觀面利好：超大規模廠商 AI 投資加速（$700B 2026 年資本支出）、美國電力公用事業 2026-2030 年資本支出計畫上調至 $1.3T+、聯邦電網現代化政策持續支撐。同業（MTZ、TPC）亦同步錄得增長確認，驗證整體行業景氣週期。惟需監控：(1) 利率環境（FOMC 維持 3.5%-3.75% 可能對長期項目融資成本造成壓力），(2) 積壓訂單執行風險與邊際毛利率可持續性，(3) 市場預期已部分反映網格故事。整體頭條傾向：**強烈看漲**，幅度中等至高。
 
 ---
 
-**新聞報告完成**
+**NEWS REPORT COMPLETE**
 
+來源：
+- [Sahm Capital 分析](https://www.sahmcapital.com/news/content/quanta-services-pwr-is-up-9-3-after-backlog-jumps-on-ai-driven-power-projects-has-the-bull-case-changed-2026-08-18)
+- [GuruFocus Q2 財報亮點](https://ca.investing.com/news/company-news/quanta-services-inc-pwr-q2-2026-earnings-call-highlights-record-backlog-and-raised--4769491)
+- [Seeking Alpha 指引提升](https://seekingalpha.com/news/4621968-quanta-projects-2026-revenue-of-39_3b-39_7b-as-record-53b-backlog-supports-raised-outlook)
+- [Simply Wall St 分析師升評](https://simplywall.st/stocks/us/capital-goods/nyse-pwr/quanta-services/news/bullish-analysts-just-made-a-neat-upgrade-to-their-quanta-se)
+- [Investing.com 分析師升評](https://www.investing.com/news/analyst-ratings/jefferies-raises-quanta-services-stock-price-target-on-growth-outlook-93CH-4858421)
+- [美國聯邦儲備委員會 FOMC Minutes](https://www.federalreserve.gov/monetarypolicy/fomcminutes20260729.htm)
+- [Utility Dive 行業趨勢](https://www.utilitydive.com/news/utility-power-sector-trends-2026/808782/)
+- [S&P Global 電力資本支出預測](https://www.spglobal.com/market-intelligence/en/news-insights/research/2026/04/surging-energy-demand-puts-us-utility-capex-forecast-near-1-3t-in-2026-30)
+- [Market Scale 電網與 AI 2026](https://www.marketscale.com/industries/energy/grid-energy-in-2026-connection-backlogs-ai-load-growth-and-the-infrastructure-race-reshaping-enterprise-power)
+- [RockFlow AI 網格現代化與 AI](https://rockflow.ai/blog/us-power-grid-stocks-2026-ai-driven-modernization-trends-2026)
+- [Enkiai PG&E 網格擴展](https://enkiai.com/data-center/pge-grid-expansion-2026-powering-ais-73b-future/)
+- [Deloitte 2026 公用事業行業展望](https://www.deloitte.com/us/en/insights/industry/power-and-utilities/power-and-utilities-industry-outlook.html)
+- [IBISWorld 美國公用事業行業分析](https://www.ibisworld.com/united-states/industry/utilities/147/)
