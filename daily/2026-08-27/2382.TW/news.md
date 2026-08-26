@@ -1,70 +1,82 @@
-# 新聞 — 2382.TW 廣達電腦 截至 2026-08-27
+# 新聞概覽 — 2382.TW 截至 2026-08-27
 
-## 公司重大新聞（最近14天）
+## 公司特定頭條（最近 14 日）
 
-- **2026-08-13** — 廣達發布 2026年Q2財報與法人說明會。合併營收達新台幣 1.04 兆元，季增 28.1%，年增 105.6%；稅後淨利 287 億元，季增 35.2%，年增 69.9%；單季 EPS 創歷史新高達 7.43 元。營業毛利率 5.02%，營業利益率 3.30%。（來源：[富果直送](https://blog.fugle.tw/post/earnings-call-2382-2026-08-13)、[BigGo Finance](https://finance.biggo.com/quote/2382.TW/earnings-call/TW_2382.TW_2026-08-13)）。影響：**正面**。連續第二季營收、毛利、淨利、EPS 均創單季歷史新高，成長動能強勁。
+- **2026-08-13** — 第二季度創紀錄財報：合併營收達 NT$1.0366 兆，年成長 105.6%；稅後淨利 NT$286.5 億；每股盈餘 NT$7.43（季度新高）。伺服器業務占總收入 80%，其中 AI 伺服器占伺服器營收 75-80%。（來源：BigGo Finance 廣達 FY2026 Q2 財報）
+  - 影響：看漲。記錄營收與獲利證實 AI 伺服器需求強勁，CSP 大客戶保持採購動能。
 
-- **2026-08-13** — 廣達宣布上修 2026 年全年資本支出至新台幣 400 億元（原預估 300 億元），並加速收購友達光電華亞廠，投資額為新台幣 197 億元。（來源：[BigGo Finance](https://finance.biggo.com/news/TW_2382.TW_2026-08-13)）。影響：**正面**。資本支出提升反映對 AI 伺服器訂單能見度強（可見至 2028 年），表明公司對長期成長充滿信心。
+- **2026-08-13** — 資本支出大幅調升：2026 年度 CapEx 從 NT$300 億上調至 NT$400 億，主要用於加州與泰國產能擴張，及收購友達光電華亞廠（NT$197 億）。目標年底前將 AI 產能較 2025 年底翻倍。（來源：BigGo Finance 廣達 Q2 財報電話會議）
+  - 影響：看漲。超額投資信號顯示對 2026-2027 年 AI 伺服器長期需求高度有信心。
 
-- **2026-08-13** — 廣達公布 2026 年上半年業績：合併營收新台幣 1.71 兆元，年增 83.2%；稅後淨利 498 億元，年增 30%；上半年 EPS 達 12.93 元。（來源：[Yahoo股市](https://tw.stock.yahoo.com/news/%E6%96%B0%E9%AB%98%EF%BC%81%E5%BB%A3%E9%81%94%E4%B8%8A%E5%8D%8A%E5%B9%B4%E5%A4%A7%E8%B3%BA498%E5%84%84%E5%85%83%E5%B9%B4%E5%A2%9E3%E6%88%90-%E6%AF%8F%E8%82%A1%E7%9B%88%E9%A4%981293%E5%85%83-080948623.html)）。影響：**正面**。上半年淨利年增 30% 雖較營收成長保守，但反映原物料成本壓力與匯率影響，仍顯示公司盈利能力穩健。
+- **2026-08-13** — Q3 前瞻指引：AI 伺服器營收預期持續成長但低於 Q2（高基數效應）；筆記型電腦出貨量預期 QoQ 下滑超 20%；全年毛利率預期維持 H1 水準。（來源：BigGo Finance 廣達 Q2 電話會議）
+  - 影響：中性偏謹慎。毛利率穩定說明成本控制得宜，但筆電下滑反映需求波動。
 
-- **2026-08-13** — 廣達法人說明會指出，Q3 筆記型電腦出貨預計季減超過 20%，全年筆電出貨下滑雙位數百分比，主要受記憶體和 CPU 短缺、客戶提前備貨、價格上漲等因素影響。（來源：[BigGo Finance](https://finance.biggo.com/news/TW_2382.TW_2026-08-13)）。影響：**中立偏弱**。筆電業務短期承壓，但伺服器業務占比超 80%，AI 伺服器貢獻率維持 75-80%，整體仍獲益於伺服器強勢。
+- **2026-07-31** — 7 月合併營收 NT$366.27 億，年成長 131%，環比增長（月度為第二高紀錄）；累計 1-7 月營收 NT$2.21 兆，創同期新高。（來源：BigGo Finance 廣達 7 月營收發布）
+  - 影響：看漲。連續月度強勁表現確認 AI 伺服器訂單持續沛不絕。
 
-- **2026-08-11** — 廣達股價在法說前夕收於新台幣 315.50 元。（來源：[統一通訊](https://tw.stock.yahoo.com/quote/2382.TW)）。影響：**中立**。股價相對於 52 週高點 438 元下跌逾 28%，反映市場對毛利率壓力與筆電景氣的謹慎態度。
+## 產業巨觀事件
 
-## 產業總體事件
+- **2026-02-13** — 美國台灣貿易協議達成：台灣關稅自初始 32% 降至 15%，作為 $250 億美元在美國半導體、能源與 AI 產業投資承諾的交換。至 2026-08-27 仍為框架基礎。（來源：CNBC/USTR；商務部事實說明書）
+  - 對半導體產業影響：看漲。降稅降低台灣製造商對美出口成本，增加 CSP 在美訂單轉單動機。
 
-- **2026-08-31 至 09-04** — SEMICON Taiwan 2026 展覽將於台北南港展覽館舉辦（8 月 31 日開幕論壇，9 月 2-4 日主展），聚焦 AI 晶片、HBM、矽光子等先進技術。（來源：[工商時報](https://www.chinatimes.com/newspapers/20260812000452-260210)）。影響：**正面**。廣達作為伺服器代工龍頭，將藉此展示 AI 伺服器解決方案，加強客戶與投資者信心。
+- **2026-02 期間** — 美國新增全球 25% 半導體關稅（不含台灣優惠案例）作為國家安全措施。（來源：美國商務部）
+  - 對供應鏈影響：中性偏看漲。雖增加全球半導體成本，但台灣廠商優惠稅率競爭優勢擴大，替代國家產能吸引力下降。
 
-- **2026-07-15** — 台灣與美國完成貿易協議，確立台灣對美關稅由 20% 降至 15%（與日韓同等待遇）。半導體及衍生品等 232 關稅項取得最優惠待遇。台灣承諾投資美國至少 5,000 億美元。（來源：[豐雲學堂](https://www.sinotrade.com.tw/richclub/hotstock/%E5%8F%B0%E7%BE%8E%E8%B2%BF%E6%98%93%E5%8D%94%E8%AD%B0%E6%8B%8D%E6%9D%BF-%E9%97%9C%E7%A8%85%E9%99%8D%E8%87%B315)）。影響：**正面**。關稅降幅有利於廣達出口至美國的伺服器成本，增強全球競爭力，惟 AI 伺服器非主要受惠品類（半導體與晶片優先），邊際改善幅度有限。
+- **2026-08（估計）** — 台灣經濟部上調 2026 年全年經濟成長預測至 7.7%，主要驅動為 AI 需求。資訊通訊科技（ICT）出口勁增 37.4% 至 USD 17.51 billion（同比）。（來源：TCGN/Bloomberg；大摩分析報告）
+  - 對廣達影響：看漲。出口景氣上升直接支撐伺服器代工訂單。
 
-- **2026-08-21 至 22** — HITCON 2026 台灣駭客年會於中研院舉辦，主題圍繞「AI Agents 時代的資安防禦」。（來源：[說資安](https://cybersecurenews.com.tw/news-edit-228/)）。影響：**中立**。安全相關活動不直接影響廣達硬體銷售，但反映台灣 AI 產業生態活躍度高。
+- **2026-08（預計）** — 大摩上調 2026 年 GB200/GB300 機架伺服器出貨預期至 7-8 百萬台（年成長超 1.56 倍）。台灣 ODM 廠商中廣達占約 19% 市占。（來源：Morgan Stanley 供應鏈預測）
+  - 對廣達影響：看漲。出貨量預測提升直接反映訂單能見度增強。
 
-- **2026-08** — TrendForce 預估 2026 年全球伺服器出貨年增 13%，全球 AI 伺服器出貨年增超 28%，ASIC 基伺服器預計占市場 27.8%。（來源：[經濟日報](https://money.udn.com/money/story/5612/9443477)）。影響：**正面**。AI 伺服器成長遠超整體伺服器成長（28% vs 13%），為廣達等代工廠商提供強勁的量價擴張機會。
+## 競爭對手訊號
 
-## 競爭對手動態
+- **Pegatron（光磊科技 4938.TW）** — 已於 H2 2026 開始出貨 NVIDIA GB200 與 GB300 系統，主要客戶群為中型企業與新興資料中心營運商，正與頂級 CSP 進行洽談。墨西哥廠提供 L1-L11 全流程產能，德州新廠自 Q1 2026 起支援 L6-L11 後段組裝。（來源：Digitimes ODM 調查；ProQuest）
+  - 競爭態勢：廣達領先。Pegatron 客戶層級與產能規模小於廣達，GB300 出貨時程與廣達接近但規模相對有限。
 
-- **華碩（Asustek, 2357.TW）** — 2026 年 8 月 13 日公布上半年業績與展望。第二季 AI 伺服器銷售年增 200%，公司將 2026 全年 AI 伺服器營收成長目標從 100% 上調至 150% 以上，預計全年伺服器營收達新台幣 180-200 億元。（來源：[DIGITIMES](https://www.digitimes.com/news/a20260813PD206/asus-growth-revenue-pc-ai-server.html)、[Taiwan News](https://www.taiwannews.com.tw/news/6420610)）。**信號**：華碩作為整機製造商，AI 伺服器成長率高於廣達（150% vs ~105% 營收年增），惟廣達代工規模與訂單能見度更久，華碩增長主要依賴採購廣達等代工商的代工伺服器。
+- **Foxconn（鴻海 2317.TW）** — 規劃德州 AI 伺服器製造擴張，與 Wistron（緯創 3231.TW）、Inventec（英業達 2356.TW）、Pegatron 共同建設美國本土產能。2025 年度 GB300 型伺服器預期占其伺服器營收超 50%。（來源：Digitimes 供應鏈分析；NikkeiAsia）
+  - 競爭態勢：平衡。Foxconn 體量龐大但需分散多業務，廣達在伺服器純度與專注度上具優勢。
 
-- **鴻海（Foxconn, 2317.TW）** — 2026 年 7 月營收新台幣 9,465.12 億元，月增 15.18%，年增 54.19%，創單月與歷年同期新高。前三季 AI 伺服器營收提前突破兆元大關。公司預期全年資本支出年增 30% 以上。（來源：[豐雲學堂](https://www.sinotrade.com.tw/richclub/hotstock/%E9%B4%BB%E6%B5%B7%E6%B3%95%E8%AA%AA-%E7%87%9F%E6%94%B6%E7%A0%B48%E5%85%86-EPS-13-61%E5%85%83%E9%9B%99%E5%89%B5%E6%96%B0%E9%AB%98)）。**信號**：鴻海年增 54% 略低於廣達年增 105%，顯示廣達 AI 伺服器業務占比更高、成長更聚焦。惟鴻海客戶群更分散（3C、伺服器並行），風險相對較低。
+## 向前展望（未來 30 日）
 
-- **緯創（Wistron, 3231.TW）** — 2026 年 8 月公布業績，網通產品預計 2027 年實現十倍成長。公司與外資一致看好 AI 伺服器業務前景。（來源：[豐雲學堂](https://www.sinotrade.com.tw/richclub/hotstock/old-ai-server-stocks-recover-today-wait-for-catch-up)）。**信號**：緯創網通業務成長預期超預期，但整體營模式較廣達分散，AI 伺服器曝險相對較低。
+- **2026-08-26 / 2026-08-27** — NVIDIA Q2 FY2027 財報（本日或次日公佈）：市場預期營收 USD 91.85 billion（Q2 共識），Q3 指引 USD 104 billion。GB300 已占 Blackwell 營收約 2/3，CoWoS 產能仍為瓶頸（NVIDIA 占 TSMC 60%，交期 52-78 週）。（來源：TechTimes；Futurum Research；NVIDIA Q3 財報 PDF）
+  - 預期影響廣達：看漲。NVIDIA Q3 預期提升將提升市場對 CSP 後續 capex 的預期。
 
-## 供應鏈與上游動態
+- **2026-09-15 前後（估）** — GB300 大規模量產出貨啟動：技術改良與供應鏈穩定使得本輪出貨比前代更順暢，預期 Quanta 等主要代工廠月度出貨量進一步加速。（來源：TomHardware；TweakTown；WCCF-Tech）
+  - 預期影響廣達：看漲。GB300 轉為營收主力將驅動下半年成長動能。
 
-- **美光（Micron, MU.US）** — 2026 年 Q3 業績於 6 月下旬發布：調整後 EPS 25.11 美元，遠優於預估 20.49 美元；營收 414.6 億美元，年增 346%，創歷史新高。資料中心業務營收年增逾 600%，毛利率躍升至 84.9%。公司預期記憶體供應短缺將持續至 2027 年後。（來源：[財報狗](https://statementdog.com/news/16882)、[Yahoo財經](https://tw.stock.yahoo.com/news/%E8%B2%A1%E5%A0%B1-%E7%BE%8E%E5%85%89q3%E7%87%9F%E6%94%B6%E6%9A%B4%E5%A2%9E%E8%B6%854%E5%80%8D-%E8%B2%A1%E6%B8%AC%E5%84%AA%E9%A0%90%E6%9C%9F-%E7%9B%A4%E5%BE%8C%E5%A4%A7%E6%BC%B213-220405167.html)）。**影響**：**正面**。DRAM 及 HBM 短缺支撐 AI 伺服器成本高位，有利廣達等代工商維持毛利空間，惟亦反映上游供應鏈偏緊。
+- **2026-09-中旬** — Q3 月度營收陸續發布：業界預期廣達 8-9 月營收仍維持三位數年成長，雖基數提升但 GB300 出貨補升應維持正成長。（來源：廣達 Q2 電話會議指引；Digitimes）
+  - 預期影響廣達：中性偏看漲。如月度營收持平 Q2 月均將強化投資人信心。
 
-- **NVIDIA（NVDA.US）** — Q3 財報將於 2026 年 8 月 26 日（週三）盤後公布，華爾街預期每股盈餘年增 99%、營收年增 97%，資料中心營收再創歷史新高。（來源：[CMoney](https://www.cmoney.tw/notes/note-detail.aspx?nid=1255383)）。**影響**：**正面**。NVIDIA Q3 強勢表現將進一步刺激客戶對 AI 伺服器的採購需求，有利廣達訂單能見度。
+- **2026-09 月末** — ASIC 客製伺服器訂單小批量出貨持續加速：廣達已獲多家頂級 CSP 之 ASIC 訂單排程 2026 年交付，預期 Q3-Q4 進一步加速。（來源：BigGo Finance；廣達 Q2 電話會議）
+  - 預期影響廣達：看漲。ASIC 訂單具高毛利，為未來利潤成長引擎。
 
-## 未來行事曆（接下來14天）
+## 總體評述
 
-- **2026-08-26（週二）** — NVIDIA Q3 2026 財報發布（盤後，美東時間）。預期每股盈餘年增 ~99%，營收年增 ~97%。（來源：[CMoney](https://www.cmoney.tw/notes/note-detail.aspx?nid=1255383)）。預期影響：NVIDIA 強勁業績將持續支撐 AI 伺服器需求預期，對廣達短期股價正面。
+廣達電腦於 2026-08-27 時狀態呈現**強烈看漲**。Q2 創紀錄的 NT$1.04 兆季度營收與每股盈餘 NT$7.43 證實 AI 伺服器需求前所未有的強勁；CapEx 自 NT$300 億提升至 NT$400 億，及併購華亞廠，明確展現管理層對 2026-2028 年長期需求的高度信心。美台貿易協議降稅至 15% 解除關稅不確定性，大摩上調 2026 年 GB200/GB300 出貨至 7-8M 台同時指出廣達市占 19%，皆支撐頸線。NVIDIA Q3 指引預期達 USD 104B 與 GB300 出貨加速進行中，將進一步推高 CSP 採購動能。競爭對手 Pegatron 與 Foxconn 儘管亦在加速，但規模與客戶層級低於廣達。唯一風險係 Q3 筆電業務預期下滑超 20%，但伺服器營收占比 75-80% 足以抵銷。目前對廣達後續三個月業績與股價具高度正面預期。
 
-- **2026-08-27（週三）** — Marvell Technology Q3 2026 財報發布（盤後）。預期每股盈餘年增 38.8%、營收年增 34.9%。預期影響：Marvell 資料中心晶片業績將反映 AI 產業景氣狀況，為廣達伺服器出貨提供指標。
-
-- **2026-08-28（週四）** — 廣達公布 2026 年 8 月月營收（預定時間，通常月中發布）。預期影響：月營收成長率將為 Q3 業績提供領先指標。
-
-- **2026-08-31 至 09-04** — SEMICON Taiwan 2026 展覽。廣達為伺服器代工領導廠商，預期參展展示 AI 伺服器完整解決方案。預期影響：展覽將強化廣達品牌與客戶關係，可能帶動股價正面情緒。
-
-- **2026-09-10 前後** — 預計廣達將進行 Q3 (7-9 月) 季度業績發布與法人說明會（通常於季末後 2-3 週舉辦）。預期影響：Q3 法說將驗證 Q3 筆電出貨衰退幅度與伺服器業務強度，關鍵看筆電跌幅是否如預期超過 20%。
-
-## 淨評估
-
-**整體而言**，廣達 2026 年 Q2 業績亮麗，營收與獲利均創單季歷史新高，AI 伺服器訂單旺盛、能見度至 2028 年，資本支出上修反映長期成長信心。然而，毛利率 5.02% 雖環比上升但低於去年同期 7.05%，反映伺服器市場競爭加劇與原物料成本高企；筆電業務 Q3 預計季減 20% 以上亦為風險。上游 NVIDIA、美光等廠商Q3 業績強勁，支撐 AI 伺服器生態，台美貿易協議降關稅至 15% 亦帶來邊際利好。競爭對手華碩 AI 伺服器成長率更高（150%），但廣達代工規模與訂單能見度為業界最優。**淨讀法：混合偏正面**。短期正面動力來自 NVIDIA 等上游業績確認、SEMICON Taiwan 展覽催化；中期風險為毛利率壓力、筆電需求疲軟、競爭加劇。建議留意 Q3 筆電出貨衰退幅度與毛利率走向。
+**淨新聞傾向：看漲（強度：高）**
 
 ---
 
-NEWS REPORT COMPLETE
+## 資料來源
 
-**資料來源與參考**：
-- [富果直送 - 廣達法說會摘要 2026-08-13](https://blog.fugle.tw/post/earnings-call-2382-2026-08-13)
-- [BigGo Finance - 廣達 2026-08-13 財報電話會議](https://finance.biggo.com/quote/2382.TW/earnings-call/TW_2382.TW_2026-08-13)
-- [Yahoo 股市 - 廣達上半年業績](https://tw.stock.yahoo.com/news/%E6%96%B0%E9%AB%98%EF%BC%81%E5%BB%A3%E9%81%94%E4%B8%8A%E5%8D%8A%E5%B9%B4%E5%A4%A7%E8%B3%BA498%E5%84%84%E5%85%83%E5%B9%B4%E5%A2%9E3%E6%88%90-%E6%AF%8F%E8%82%A1%E7%9B%88%E9%A4%981293%E5%85%83-080948623.html)
-- [工商時報 - SEMICON Taiwan 2026](https://www.chinatimes.com/newspapers/20260812000452-260210)
-- [豐雲學堂 - 台美貿易協議](https://www.sinotrade.com.tw/richclub/hotstock/%E5%8F%B0%E7%BE%8E%E8%B2%BF%E6%98%93%E5%8D%94%E8%AD%B0%E6%8B%8D%E6%9D%BF-%E9%97%9C%E7%A8%85%E9%99%8D%E8%87%B315)
-- [DIGITIMES - ASUS AI 伺服器成長](https://www.digitimes.com/news/a20260813PD206/asus-growth-revenue-pc-ai-server.html)
-- [Taiwan News - ASUS AI 伺服器目標上調](https://www.taiwannews.com.tw/news/6420610)
-- [財報狗 - 美光 Q3 2026 業績](https://statementdog.com/news/16882)
-- [經濟日報 - TrendForce 伺服器預測](https://money.udn.com/money/story/5612/9443477)
-- [CMoney - NVIDIA Q3 財報預期](https://www.cmoney.tw/notes/note-detail.aspx?nid=1255383)
-- [說資安 - HITCON 2026](https://cybersecurenews.com.tw/news-edit-228/)
+- [BigGo Finance — 廣達 FY2026 Q2 財報與電話會議](https://finance.biggo.com/quote/2382.TW/earnings-call/TW_2382.TW_2026-08-13)
+- [Digitimes — 廣達創記錄營收與 AI 伺服器需求](https://www.digitimes.com/news/a20260813PD258/quanta-revenue-ai-server-demand-profit.html)
+- [Digitimes — 廣達 2026 伺服器需求前景與一般用途訂單](https://www.digitimes.com/news/a20260430PD208/2026-quanta-demand-qct-google.html)
+- [CNBC — 美台貿易協議降稅至 15%](https://www.cnbc.com/2026/02/13/us-signs-trade-deal-with-taiwan-lowering-trump-tariffs.html)
+- [美國貿易代表辦公室（USTR）— 美台互惠貿易協議事實說明書](https://ustr.gov/about/policy-offices/press-office/fact-sheets/2026/february/fact-sheet-us-taiwan-agreement-reciprocal-trade)
+- [美國商務部 — 美台貿易與投資協議事實說明書](https://www.commerce.gov/news/fact-sheets/2026/01/fact-sheet-restoring-american-semiconductor-manufacturing-leadership)
+- [Morgan Stanley — 2026 年 GB 系列機架出貨量上調與台灣廠商市占](https://money.udn.com/money/story/5607/9192745)
+- [Digitimes — 廣達 GB300 與 ASIC 訂單展望](https://money.udn.com/money/story/5612/8935361)
+- [TweakTown — GB300 出貨規模與廣達評論](https://www.tweaktown.com/news/107718/nvidia-gb300-ai-server-orders-are-so-big-theyre-unimaginable-says-quanta-computer-ai-boss/index.html)
+- [S&P Global — AI 伺服器成長與廣達營收轉向](https://www.spglobal.com/market-intelligence/en/news-insights/research/2026/06/ai-server-boom-hyperscaler-demand-to-drive-sharp-revenue-inflection-for-quanta)
+- [Futurum — NVIDIA Q3 FY2026 財報紀錄與指引](https://futurumgroup.com/insights/nvidia-q3-fy-2026-record-data-center-revenue-higher-q4-guide/)
+- [TechTimes — NVIDIA Q3 指引 USD 104B 對指數基金影響](https://www.techtimes.com/articles/325333/20260824/nvidia-earnings-wednesday-q3-guidance-104b-moves-every-index-fund.htm)
+- [TomHardware — GB300 伺服器 9 月大規模出貨與 GB200 需求穩健](https://www.tomshardware.com/tech-industry/artificial-intelligence/large-scale-shipments-of-nvidia-gb300-servers-tipped-to-start-in-september-gb200-demand-remains-robust-despite-widespread-coolant-leak-reports)
+- [Digitimes — Pegatron 與台灣 ODM 廠商 2026 分化](https://www.digitimes.com/news/a20260211PD216/taiwan-odm-compal-pegatron-2026.html)
+- [Digitimes — 台灣 ODM 廠商 2026 AI 伺服器營收成長預期](https://www.digitimes.com/news/a20260109PD249/revenue-ai-server-foxconn-wistron-quanta.html)
+- [NikkeiAsia — 台灣主要 AI 伺服器廠商產能擴張應對美國需求](https://asia.nikkei.com/business/technology/taiwans-top-ai-server-makers-boost-output-to-meet-us-demand)
+
+---
+
+**新聞報告完成**
