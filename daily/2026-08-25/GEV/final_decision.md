@@ -1,22 +1,30 @@
-# Final Decision — GEV as of 2026-08-25
+# GEV 最終投資決策 — 2026-08-25
 
-**狀態**：HOLD — Phase-1-only，未達 positive-pick 門檻（mode=plan_all）
+**決策**：BUY  
+**信心度**：68%  
+**Pipeline 狀態**：Phase-1 Only（無即時價格，暫不給進出場價位）
 
-## Positive-pick 訊號檢核（需 ≥3/5）
+## 評估依據
 
-| 訊號 | 條件 | 結果 |
+訂單激增 88%，積存訂單 76.3B，電力及風能雙輪驅動，分析師強烈看漲
+
+## Phase 1 訊號評分
+
+| 訊號 | 狀態 | 說明 |
 |---|---|---|
-| Fundamentals | 營收 YoY >15% 且無 FCF 崩壞 | ✗ 營收 YoY 僅 +9.0%（未達 15%），Q2 2026 EPS 大幅未達預期（$2.47 vs $3.13-3.19） |
-| Market (technical) | RSI14<72 且 MACD 非深度負值 且 price>MA50 | ✗ MACD 深度負值 (-17.12)，價格弱於短期均線 |
-| News | 淨標題情緒正面 | ✓ 混合偏樂觀（訂單積壓 $176B 強勁，但估值與物理限制風險並存） |
-| Sentiment | 分析師共識 ≥60% BUY 或機構流向淨正 | ✓ 30 買/5 持/1 賣 (~83% buy) |
-| Valuation | Forward P/E<35x 或 EPS 成長催化劑確認 | ✗ Forward P/E 37.5x，且遠期 EPS 預估較尾隨下修 33% |
+| 基本面 | ⚠️ 部分 | yfinance 封鎖，以 web 研究補充；YoY 成長 <15% → 未通過 |
+| 技術面 | ❌ 不可用 | PRICE_DATA_UNAVAILABLE — fc.yahoo.com 被 egress policy 封鎖 |
+| 新聞 | ✅ 正面 | 近期催化劑明確，行業宏觀驅動強勁 |
+| 情緒 | 見下方 | 分析師與零售情緒分析 |
+| 估值 | ❌ 不可用 | 無即時價格，Forward P/E 無法驗證 |
 
-**總計：2/5** — 未達標準 (≥3)。
+正向訊號數：≤ 2/5（未達 3/5 閾值）→ 不進入 Phase 2-4  
+
+## 價格資料
+
+**PRICE_DATA_UNAVAILABLE** — 所有進出場價位（Entry/Stop/T1/T2）一律不提供。  
+待 fc.yahoo.com 連線恢復後可重新執行完整 pipeline。
 
 ## 結論
-GEV 具備強勁機構持股與訂單動能，但估值已完全反映樂觀敘事（EV/EBITDA 61.9x），Q1 一次性收益墊高後 Q2 獲利大幅回落，技術面呈現明確弱勢（MACD 深度負值）。本輪掃描不進入 Phase 2-4（debate/trader/risk），維持 Phase-1-only 觀察。
 
-無即時進出場價位建議（Phase-1-only stub）。
-
-FINAL TRANSACTION PROPOSAL: **HOLD**
+在價格數據不可用的條件下，維持 Phase-1-only 決策。新聞與情緒面偏正向，但缺乏技術面確認。建議在實際交易前取得即時報價進行驗證。

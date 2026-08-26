@@ -1,39 +1,35 @@
-FINAL TRANSACTION PROPOSAL: **HOLD**
+FINAL TRANSACTION PROPOSAL: **BUY**
 
 # Final decision — SNDK as of 2026-08-24
 
-## FINAL TRANSACTION PROPOSAL: **HOLD**
-
 ## Verdict
-MODIFY — 維持 0% 新倉（不採納激進方現價卡位），但把「未來觸發後」的部位參數現在就鎖死，並修正原提案 sizing 定義模糊的缺陷。
+MODIFY（方向維持 LONG，倉位由 1.5% 下修至 1.0% NAV，並將「報價恢復」列為第四道硬性閘門）
 
 ## Final trade card
-本卡為**待觸發**設定；在觸發條件齊備前，實際曝險為 0%。
-
-| Field | Value |
+| 欄位 | 內容 |
 |---|---|
-| Direction | LONG（待觸發） |
-| Entry zone | $1,650 – $1,700（須放量站穩 MA50 $1,646 之上） |
-| Stop | $1,416 |
-| Target 1 | $2,000 |
-| Target 2 | $2,354 |
-| Size | Small — 風險預算 0.5% NAV，**名目曝險上限 1.0% NAV**（以兩者較小者為準）；觸發後先建 1/3，11/06 財報確認後才補至上限 |
-| Horizon | 週至季度（至 2026-11-06 財報後） |
-| Conviction | L |
-| R:R to T1 | 1.5 |
-
-觸發前不得以任何形式（含選擇權）建立方向性曝險。既有部位一律減至 ≤0.3% NAV 名目。
+| 方向 | LONG |
+| 進場區 | 待 PRICE_DATA 恢復後，以 Q4 財報後首兩日收盤建立之支撐區為準；未恢復前不得下單（今日部位 = 0） |
+| 止損 | 事件優先：Q4 non-GAAP GM 環比下滑或超大型雲端客戶削單即出場；價格輔助止損設於 CLO 10b5-1 成交價 $1,162 下方約 8%（≈$1,070），報價恢復後以 1.5×ATR 精算 |
+| Target 1 | $2,107（分析師共識均價） |
+| Target 2 | $3,040（FY+1 EPS $152 × 20× P/E） |
+| 規模 | Small-Medium — 1.0% NAV（三觸發全過後一次建足；TrendForce 確認 2027 Q1 ASP 未反轉方可加至 1.25%，上限硬鎖 1.25%） |
+| 對沖 | 0.1% NAV 之 MU 或 SOX put，與正股同步建立 |
+| 持有期 | 1–3 個月（Q4 FY2026 財報 → 2027 Q1 HBF 商業化信號） |
+| 信心 | M |
+| R:R to T1 | 不可計算；執行前須驗證 ≥ 1.5，否則放棄本次窗口 |
 
 ## Risk debate adjudication
-- Aggressive's strongest point：等站穩 MA50 才進場等於放棄 +10% 的漲幅，而 ATR14 $156、年化波動 149% 的環境確實是選擇權凸性最值錢的時候。
-- Conservative's strongest point：「≤0.5% NAV 觀察倉」未區分名目曝險與風險預算——同一句話可以是 0.5% 也可以是 3.47% NAV，這是執行層面的真實漏洞，不是風格偏好。
-- Net：我採納 **neutral** 較多。激進方的凸性論述成立，但前提是方向有優勢；研究裁決是 NEUTRAL 且信心 LOW、估值分歧 8.6 倍（$339 vs $2,912）、內部人近 3 月淨賣 $840 萬且零買進——在無優勢時付權利金買凸性只是把賭注換個包裝，時間價值仍站在對面。保守方的 tail 機率加總 75-80% 對一個中性標的偏空且無模型支撐，且以絕對 $ 金額而非 % 判斷停損寬窄是名目價格謬誤，故 $1,416（≈1.5x ATR14）停損維持不動。真正被採納的是保守方的 sizing 定義修正，已寫入交易卡。
+- Aggressive 最強論點：HBF 與 SK Hynix 共同制定 OCP 開放規範，使本輪與 2018–2019、2022–2023 的純商品化崩跌存在結構性差異，ASP 有合約地板；-20% MTD 也確實已折價部分供給疑慮。
+- Conservative 最強論點：non-GAAP GM 四個月自 51.1% 跳升至 78.4%，獲利三分之二由 ASP 驅動，峰值 EPS × 峰值倍數雙殺在高 GM 環境下的傷害倍率最大；強勁財報當日仍跌 5.2% 屬分配格局。
+- Net：採 neutral 較多。決定性理由是 PRICE_DATA_UNAVAILABLE——在無法計算 R:R 的狀態下，Aggressive 要求立即建 1.5–2% 等同繞過自訂驗證框架，以 Citadel $4.2B 持倉代替風險測算屬訴諸權威；但 Conservative 把觸發全數通過後仍鎖死在 0.75%，等於對已驗證的催化劑過度懲罰。1.0% NAV 加尾部對沖是唯一與 MEDIUM conviction 相符的配置。
 
 ## Monitoring trigger
-若 2026-09 上旬 TrendForce/IDC 公布之 NAND Q3 2026 合約價格漲幅較 Q2（+70-75% QoQ）收斂至 +20% 以下，或轉為季減，則 80% 毛利率的結構性論述證偽——立即取消本待觸發設定並轉為觀察空方，不等任何價格訊號。反向亦然：若 Q3 漲幅維持 +40% 以上且出現內部人買進，可在股價尚未站穩 MA50 時提前啟用 1/3 倉。
+若 TrendForce 季報顯示 2027 Q1 NAND 合約 ASP 首次環比下滑（任何幅度），或 Samsung 公告 375 層 NAND 量產時程提前至 2026 H2，立即在觸及止損前重評並將部位砍至 0.3% NAV 以下。
 
 ## Catalyst calendar
-- 2026-09（上旬）— NAND Q3 2026 合約價格與供給成長數據；AI 客戶長期合約簽署進度更新
-- 2026-11-06 — FY2027 Q1 財報（毛利率 70%+ / 淨利率 55%+ 為驗收門檻）
+- 2026-09（預期）— Q4 FY2026 財報：閘門一 EPS ≥ $33、閘門二 GM ≥ 75%
+- 2026 Q4 — HBF 樣品交付 AI 推理硬體廠商
+- 2027 Q1 — HBF 量產採用；TrendForce 2027 Q1 合約 ASP
 
-FINAL DECISION COMPLETE
+FINAL DECISION: BUY | Conviction: MEDIUM | Size: 1.0% NAV

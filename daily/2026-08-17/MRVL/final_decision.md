@@ -1,40 +1,34 @@
-FINAL TRANSACTION PROPOSAL: **HOLD**
+# MRVL 最終決策 — 2026-08-17
 
-# Final decision — MRVL as of 2026-08-17
+## Phase-1-only（未進入 Phase 2-4）
 
-## FINAL TRANSACTION PROPOSAL: **HOLD**
+**原因**：Phase 1 評分 1/4 正面信號，不符合正面選股標準（≥3/5）。
 
-## Verdict
-MODIFY
+### Phase 1 信號摘要
 
-交易員的 HOLD 方向正確，但「維持既有部位、不主動減碼」在雙財報周（8/26 NVDA + 8/27 MRVL）前屬於被動承擔不對稱事件風險。核准 HOLD，但強制執行溫和減碼與明確出場觸發規則。
+| 信號 | 結果 | 說明 |
+|------|------|------|
+| 基本面 | ❌ FAIL | 整體營收 YoY +6%，低於 15% 門檻；資料中心 +56%，但光通訊 -32% 拖累整體 |
+| 市場技術面 | ❌ N/A | PRICE_DATA_UNAVAILABLE（yfinance 代理封鎖） |
+| 新聞情緒 | ✅ PASS | 矽光子 / PAM4 DSP / Co-Packaged Optics 正面催化，整體新聞正面 |
+| 情緒 / 分析師 | ❌ FAIL | Piper Sandler 近期下調；整合 Infinera 後資本配置疑慮 |
+| 估值 | ❌ FAIL | Forward P/E ~45-50x，超過 35x 門檻；無 EPS 催化可立即抵消 |
 
-## Final trade card
-| Field | Value |
-|---|---|
-| Direction | LONG（既有持倉，減碼續抱） |
-| Entry zone | 不新增現股；無新進場區 |
-| Stop | 基本面 invalidation 為主觸發；$180 收盤為二次確認警戒 |
-| Target 1 | $243 |
-| Target 2 | $256 |
-| Size | Medium — 減至原部位 80–85%（以現價 ~$208.6 為基準執行） |
-| Horizon | 週度至季度，8/27 財報為裁決點 |
-| Conviction | M |
-| R:R to T1 | 1.2 |
+**正面信號計數：1/4（市場面除外）**
 
-> 價格數據限制：market.md 連續兩週 PRICE_DATA_UNAVAILABLE，$208.6 / $180 / $243–256 皆為 sentiment.md 與分析師共識之敘述性參考，非本輪獨立驗證之技術 S/R。因此不設硬性技術停損，出場以基本面清單為準。技術數據源恢復後須立即補完整 Setup。
+### 結論
 
-## Risk debate adjudication
-- Aggressive's strongest point：把 DCF 長期收斂區 $50–65 當作單季財報 miss 的下行情境是量級誤用；單次 miss 的歷史反應是 -15%~-25%，而毛利率 60–62%、FCF/淨利 ~1.0–1.1x、淨債務中性等 invalidation 條件一項未破，因資訊真空預先砍倉是懲罰尚未變壞的部位。
-- Conservative's strongest point：no-trade 不等於 no-risk。sentiment.md 獨立判決 FAIL、內部人 >$10M 淨賣超無逆轉是已發生的可驗證事實，不是待確認的雜訊；且 $180 在缺乏流動性驗證下若真跌破，跳空會讓停損形同虛設。
-- Net：我採納 **neutral** 為主。減至 80–85% 對應 investment_plan.md 原文「小幅減碼」的比例，既回應 conservative 的不對稱偏態，又不接受其 50–60% 砍倉（缺乏比例依據、把跨年度估值情境誤植為單周事件）。不核准 aggressive 的財報前 call spread：在技術數據缺失、IV 無法驗證是否合理定價的狀態下加建槓桿部位，是拿無法量化的波動率風險換取已知的方向性 beta，不批。
+**HOLD / PASS — 不進場**
 
-## Monitoring trigger
-若 8/27 財報電話會議顯示**資料中心營收占比低於 76%，或毛利率跌破 60%**（任一成立），視為持倉論述被否證，在停損位觸及前於次一交易日主動減至原部位 40% 以下，不等 $180。
+MRVL 矽光子 / CPO 長線論題具備吸引力，但短線整體收入增速不足（+6% YoY）、估值偏高（P/E ~47x）、分析師情緒偏謹慎，Phase 1 評分不符正面選股門檻。
 
-## Catalyst calendar
-- 2026-08-26 — NVIDIA Q2 FY2027 財報（AI 半導體板塊 beta 連動）
-- 2026-08-27 — MRVL Q2 FY2027 財報（關鍵裁決點；共識營收 $2.598B、EPS $0.93）
-- 財報後 — 內部人 Form 4：是否出現買入或減持停止
+保留於觀察清單，等待：
+1. Q4 FY2026 財報確認資料中心 / 矽光子收入加速
+2. 整體公司 YoY >15%（而非僅資料中心分項）
+3. 估值回撤至 <40x Forward P/E
 
-FINAL DECISION COMPLETE
+**FINAL TRANSACTION PROPOSAL：無操作（Phase-1-only stub）**
+
+---
+*Pipeline: Phase 1 only（正面信號 1/4，低於 ≥3 門檻）*
+*Date: 2026-08-17*
