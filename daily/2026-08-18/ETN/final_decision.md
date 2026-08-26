@@ -1,49 +1,39 @@
+FINAL TRANSACTION PROPOSAL: **HOLD**
+
 # Final decision — ETN as of 2026-08-18
 
-FINAL TRANSACTION PROPOSAL: **BUY**
+## FINAL TRANSACTION PROPOSAL: **HOLD**
 
 ## Verdict
-**MODIFY** — 方向維持 LONG，但總倉位由 1.5% 下調至 1.25% NAV，且執行權限以「即時報價恢復並驗算 R:R ≥1.5」為前置條件。
+MODIFY
+
+核准交易員「現價不進場」的核心結論，但修正兩處：(1) 觀察性進場的止損自 $374.12 收緊至 $396；(2) 明確拒絕保守方的「逢高減碼」與激進方的「現價建倉／call spread」兩個延伸建議。
 
 ## Final trade card
-| 欄位 | 內容 |
+| Field | Value |
 |---|---|
-| Direction | LONG |
-| Entry zone | 無即時價格，暫不給進出場價位 |
-| Stop | 無即時價格，暫不給進出場價位（報價恢復後以 ATR×2 設價格式硬停損，錨點為 Boyd 公告前技術前低） |
-| Target 1 | 無即時價格，暫不給進出場價位（邏輯：Q3 有機成長 ≥11%、Electrical Americas 毛利率 ≥27%，對應 +10–15%） |
-| Target 2 | 無即時價格，暫不給進出場價位（邏輯：Q4 Boyd 協同效益首次完整季度量化，對應 +15–20%） |
-| Size | Small-Medium — 1.25% NAV（第一批 0.5%，第二批 0.75%） |
-| Horizon | 3–12 個月，跨 2026-09 Q3 與 2026-12 Q4 兩個財報週期 |
+| Direction | LONG（條件單，今日不執行） |
+| Entry zone | $405.00 – $418.00（MA50 $413.19 附近） |
+| Stop | $396.00 |
+| Target 1 | $478.00 |
+| Target 2 | $512.00 |
+| Size | Small（觸發後 1.5% NAV；現時新倉 0%，既有部位維持不動） |
+| Horizon | 數週至 2026-11-03 Q3 財報 |
 | Conviction | M |
-| R:R to T1 | 無即時價格，無法計算 |
-
-執行紀律：報價恢復後若 R:R 對 T1 <1.5，本案自動轉為 AVOID，不得以基本面論述覆蓋。第一批另需 Williams %R 脫離極端超買區。第二批加倉須同時滿足有機成長 ≥11%、Electrical Americas 毛利率 ≥27%、且管理層在法說會對 Boyd 協同效益提供至少方向性金額量化。
+| R:R to T1 | 3.8 |
 
 ## Risk debate adjudication
-- **Aggressive 最強論點**：Q2 2026 為有日期、有數字的可驗證事實（收入 $8.5B、+21% YoY、EPS $3.15 創紀錄、指引上調 11–13%），且短空僅 1.61% float 並持續回補，完全不建倉的機會成本真實存在。此點使我拒絕 Conservative 的「全面暫停」。
-- **Conservative 最強論點**：~33x 遠期 P/E 對多元工業集團而言安全邊際近乎為零，分析師平均目標價僅高現價 4.11%，而 Boyd + Fibrebond 逾 $10.9B 支出推升槓桿；在 ATR 與報價雙雙 UNAVAILABLE 下，任何倉位皆無法通過 vol-adjusted 檢核。
-- **Net**：我採 **neutral 偏 conservative** 的權衡。基本面站在多方，但估值已把執行容錯耗盡，而缺乏價格資料使風險無法量化——結論是保留方向、壓縮尺寸、把執行權綁在可驗證的 R:R 門檻上。Aggressive 的 2.5% NAV 與 bull call spread 一併駁回：IV 在 ATR UNAVAILABLE 下無從定價，該建議風險不透明。
+- 激進方最強論點：三季 beat-and-raise 與 FY2026 有機成長上修至 11–13% 是已實現的損益表事實，且有 GE Vernova、Vertiv 同步驗證，非 ETN 孤立敘事；等待 -9.5% 回檔確有踏空風險。
+- 保守方最強論點：Net Debt/EBITDA 由 1.5x 跳升至 5.1x、有形資本淨值 -129.4 億美元、毛利率 38.2%→37.6%，同樣是已實現事實，且在 P/E 46.6x、PEG 3.25x 之下毫無估值緩衝，尚無任何一季數據證明去槓桿路徑。
+- Net：我採納 neutral 較多。激進方自引 ATR14 = $16.05（日均 3.5%），卻設計 -4.6% 的股票停損，不足 1.5 倍 ATR，必被雜訊洗出，其執行方案自相矛盾；call spread 雖鎖定虧損，但在 NEUTRAL 定調下付權利金買方向性賭注不划算。保守方的「逢高減碼」則是在無新負面催化劑下的主動方向性押注，與其自身「不可搶跑」標準衝突，同樣不採。結論：零新倉、既有不動、把 $396 條件單掛好等價格來找我們。
 
 ## Monitoring trigger
-若 **AWS、Azure、Google、Meta 任一家在季度財報或投資人日中公佈 2027 年資本支出計畫性削減**，立即重評並優先出清，不等停損觸及。
+若 ETN 以日收盤跌破 MA200 $376.40（即條件單觸發區與止損雙雙失守，中期結構破壞），或任一 hyperscaler 於財報中公開下修 2026/2027 資本支出，立即撤銷條件單並重評整個資料中心電力主題曝險，不等止損被動成交。
+
+集中度限制：ETN 與 GEV、VRT 視為同一主題曝險，三者合計上限 5% NAV。
 
 ## Catalyst calendar
-- 2026-09（中旬） — ETN Q3 2026 財報：有機成長率、Electrical Americas 毛利率、Boyd 訂單積壓
-- 2026-12（預計） — ETN Q4 2026 財報：Boyd 協同效益首次完整季度量化
-- 持續 — 超大規模業者季度 CapEx 指引；銅、鋁價格走勢
-
----
-
-FINAL TRANSACTION PROPOSAL
-- TICKER: ETN
-- ACTION: BUY（分兩批，條件式）
-- SIZE: 1.25% NAV
-- ENTRY: 無即時價格，暫不給進出場價位
-- STOP: 無即時價格，暫不給進出場價位
-- TARGET: 無即時價格，暫不給進出場價位
-- CONVICTION: M
-- R:R: 無即時價格，無法計算
-- PHASE: Phase 4 — Portfolio Manager Final
+- 2026-09-18 — FOMC（利率路徑影響高槓桿、高倍數標的再融資成本與估值）
+- 2026-11-03 — Q3 財報（去槓桿進度、毛利率是否止跌、整合協同效應時程）
 
 FINAL DECISION COMPLETE

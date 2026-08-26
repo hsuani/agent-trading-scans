@@ -1,66 +1,55 @@
-# 新聞 — 8996.TW 截至 2026-08-19
+# 新聞報告 — 8996.TW 截至 2026-08-19
 
-## 公司特定頭條（過去14天）
+## 公司端重點新聞（過去 14 日）
 
-- **2026-08-09** — 7月營收9.23億元，年增57.63%；累計1-7月營收66.51億元，年增115.43%（證交所公告）。**影響：看好**。AI液冷散熱及燃料電池需求持續放量，營收成長動能強勁，超過市場預期。
+- **2026-08-11 ~ 12** — 高力參與 OCP APAC Summit（台北南港展覽館）。衝擊：中立偏正面。OCP 標準化液冷架構確立，助力 CDU/散熱模組長期訂單可見性。
 
-- **2026-08-18** — 投信00981A持續加碼高力，單日加碼300張（約3.6億元）；自7月30日低點迄今，投信連續11個交易日買超，累計買進5,438張，持股比率升至17.37%（玩股網、Win投資）。**影響：看好**。機構投資人持續加碼反映對後市信心，支撑股價。
+- **2026-07-01** — 高力 2026 年 7 月合併營收 9.23 億元，年增 57.63%（月增未揭露）。衝擊：**明顯看漲**。營收成長幅度超越同業 AVC 5 月的 +61% YoY，指向液冷 CDU 需求加速；單月營收已接近前年全月平均，反映 AI 伺服器採購週期提前。
 
-- **2026-06-17** — 里昂證券大幅調升目標價至2,300元（原為1,680元），維持強力買進評等；股價無視大盤修正強勢攻上漲停至1,515元（鉅亨網、經濟日報）。**影響：看好**。外資看好AI液冷及燃料電池雙重成長動能，CDU/板式熱交換器(BPHE)業務在2026-2028年營收貢獻可望由4%提升至18%。
+- **2026-06-01** — 高力 2026 年 6 月合併營收 7.24 億元，年增 37.56%。衝擊：正面。環比回升態勢明確；預示 Q3 動能持續。
 
-## 部門宏觀背景
+- **時間未明確（2026 年中）** — 外資調升高力目標價，雙題材催化：AI 液冷散熱需求爆發 + 燃料電池訂單發酵。衝擊：看漲。股價盤中觸及漲停，反映市場對燃料電池/ CDU 雙軌成長的認可。
 
-- **液冷市場滲透率上升** — AI伺服器液冷滲透率預計2026年升至53%（2025年為33%），全球市場缺口明顯，2026-2027年CDU持續缺貨（集邦、MoneyDJ）。**對散熱產業影響：極度正面**。高力為少數合格CDU/BPHE供應商，將直接受惠市場擴張。
+## 產業巨觀事件
 
-- **國際液冷標準確立** — ASHRAE 127 Addendum b於2026年2月27日發布，首次為液對液CDU增加統一測試與報告方法，指標包括CDU淨製冷量、關鍵輸入功率、熱效率及熱損失（CSDN/ASPER）。**對散熱供應鏈影響：中性偏正面**。標準化有利於合規大廠（如高力）進一步建立市場進入門檻。
+- **2026-03-18** — NVIDIA 發布 Vera Rubin 架構液冷標準化；點名四家冷板供應商，明確 45°C 單相直接液冷（DLC）規格。衝擊於 **AI 伺服器製冷**：Vera Rubin NVL72 **100% 液冷設計**確立，冷板/ CDU / 熱交換器需求從可選轉為標配。Goldman Sachs 預測液冷伺服器滲透率將達 76%（2026 年）；NVIDIA 架構鎖定供應鏈，高力作為台灣 CDU/熱交換器業者，直接受惠。
 
-- **NVIDIA新平台對液冷的強制要求** — NVIDIA Vera Rubin（下一代推理平台）對液冷功能的要求高於前代，次代GB200液冷需求爆發，海外交付周期已拉長至6-12個月（NVIDIA Blog、DIGITIMES）。**對台灣散熱廠影響：極度正面**。高力與Supermicro關係密切，為GB200液冷系統主要供應商之一。
+- **2026-07-31** — nVent Electric 宣佈擴張液冷製造產能：租賃美國明尼蘇達州布洱恩新廠 16 萬平方英尺，三年內累計擴張超 40 萬平方英尺，新廠預計 2027 年上半投產、創造 200+ 就業。衝擊：供應鏈擴產訊號明確，反映全球需求無虞；台灣供應商（含高力）國際競爭加劇，但市場總量足夠容納。
 
-## 同業信號
+- **2026-08-15（推斷）** — Asia Vital Components（AVC）預期全球 AI 伺服器需求於下半年加強，液冷採用率持續上升。衝擊：認可市場趨勢向上；同業信心強，高力短期內無需擔憂需求見頂。
 
-- **Quanta Computer (2382.TW)** — Q1 2026營收809.2億元新台幣，年增66.6%；AI伺服器ODM領先廠商。
-- **Wistron (3231.TW)** — Q1 2026營收846.3億元新台幣，年增144.3%；成長率領先業界。
-- **Foxconn (2317.TW)** — Q1 2026營收達台幣1兆元規模；主席劉揚偉表示AI伺服器機架出貨有望在2026年翻倍。
+- **2026-01 ~ 04 期間** — Bloom Energy SOFC 簽訂 $7.65 億美元合約（含 Oracle 2.8 GW、AEP 1 GW $2.65B），容量目標 2 GW 年產（2026 年底達成）。衝擊於 **氫能/ 燃料電池**：SOFC 從試驗轉入商用大規模部署；高力子業務線（燃料電池熱交換器/ MEA 熱處理）直接受惠；$7.65B 訂單體量示範電池市場成熟度，高力作為台灣燃料電池元件供應商，長期訂單可見性延伸至 2028+。
 
-**協同指標：** 三大ODM廠商均維持高成長，代表全球AI伺服器需求依舊蓬勃，高力作為散熱與熱管理核心供應商，終端需求強度不減。
+## 同業訊號
 
-## 前瞻日程（未來14天）
+- **AVC（Asia Vital Components）** — 5 月營收 NT$15.9B (+61% YoY)；2026 上半累計 NT$80.5B (+90%)；主席 Spencer Shen 指出下半年成長加速，Vera Rubin 及 ASIC 伺服器出貨驅動，可見性延伸至 2029。衝擊：高力月增幅度 +57.6% 略低 AVC +61%，但兩家市場地位互補（AVC 聚焦冷板/泵浦，高力聚焦 CDU/大型熱交換器），競爭非直接對標。
 
-- **2026-08-下旬～2026-09上旬** — 預期高力公布8月營收（月均9億元上下基準，年增可望持續50%以上）；市場將逐步消化Q2低基數下Q3成長預期。
+- **Auras Technology** — 將 2026 年收入成長目標從 +50% 上修至 +70%；AI 伺服器液冷需求預期強勁，並持續至 2028。衝擊：同業同步調升，驗證市場向上；高力若跟進上調指引（尚未披露），將增強股價催化。
 
-- **2026-Q3** — 液冷散熱產品重回成長軌道；燃料電池（Bloom Energy）出貨維持高檔；預期Q3營運動能復甦。
+- **Kaori（高力英文品牌通稱）** — Q1 2026 營收約 NT$2.85B；液冷佔比目標 ~50%；整體成長指引 +80%，毛利率趨高，產能擴張 30~50%。衝擊：Kaori 為高力之英文交易名稱，該公司積極轉型液冷+氫能；與上述財報數據互相驗證，市場認可高力雙軌戰略。
 
-- **2026年下半年** — 新平台（GB200升級、Vera Rubin導入）刺激新訂單轉化為出貨，高力產能利用率進一步爬升。
+## 前瞰日程（未來 14 日）
 
-- **2027年底** — 中壢新廠（投資238億元購地及建廠、55億元購置設備）完工投產，AI液冷與燃料電池產能翻倍。
+- **2026-08-20 ~ 31** — Vera Rubin 官方上市預計（H2 2026 區間，精確日期未公開）；若正式發佈，將觸發下游 CDU/冷板訂單確認波。預期衝擊：中強度利多。
 
-## 淨評讀
+- **2026-09-01 前後** — 高力 8 月月營收公告（通常於次月初 5-10 日發佈）。預期同比成長 +40~60%；若環比 7 月（9.23 億）穩定或上升，將確認 Q3 動能無慮。
 
-高力在2026年上半年受惠AI液冷散熱爆發及Bloom Energy燃料電池需求升溫，營收及獲利創同期新高（上半年EPS 8.69元年增逾2倍）。7月營收續創同期高點（9.23億元年增57.6%）。里昂證券於6月調升目標價至2,300元，肯定其在NVIDIA GB200供應鏈地位及CDU/BPHE市場進入門檻高的競爭優勢；投信於8月連續加碼至持股比逾17%，機構看好後續成長。產業面：AI液冷滲透率升至53%、ASHRAE國際標準確立、Vera Rubin 100%液冷強制配置、ODM廠商持續高成長，均為正面供給端及需求端催化。風險在於：Q2短期動能整理（季減66.97%）、股價漲幅已深（較年初漲超50%）、擴廠投資分攤短期EPS。綜合評估：**淨情緒明確偏正面**，核心驅動來自AI伺服器液冷市場確立、高力市場地位鞏固、產能擴張近在咫尺。
+- **2026-Q3 財報（預定 10 月中旬）** — 半年度業績、毛利率、新訂單、產能利用率、燃料電池訂單佔比。預期衝擊：高度關鍵；市場將聚焦液冷營收佔比與氫能訂單能見度。
 
-## Phase 1 評分
+## 整體評讀
 
-| 標準 | 結果 |
-|------|------|
-| 淨情緒為正面 | ✅ **PASS** — 公司營收年增57.6%，外資調升目標價67%、投信連續加碼、產業標準確立、ODM客戶高成長 |
-| **新聞總評** | ✅ **PASS** — 市場移動性頭條充分：大幅調升目標價、機構持續加碼、營收創新高；催化劑明確（Vera Rubin、擴廠投產）；淨情緒強烈正面 |
+高力受益於兩股顯著東風：（1）AI 伺服器液冷從可選變必選的典範轉移——Vera Rubin 100% DLC 架構確立，2026 年液冷滲透率趨向 70~80%，CDU/熱交換器從邊緣元件升至核心；（2）氫能/ SOFC 基礎設施爆發——Bloom Energy 2026 上半簽署 $7.65B 合約，驗證燃料電池電源進入商用大規模部署週期，高力子業務線（燃料電池熱交換器、MEA 熱處理）從培育期進入爆發預期。財務層：7 月營收 +57.6% YoY 超同業 AVC 5 月的 +61%，主要驅動為液冷 CDU 需求前置；同業 Auras 上調年度成長至 +70%，形成市場一致預期向上。風險：數據中心資本支出若季度內出現修正，可能導致庫存調整；台灣製造業產能瓶頸（能源、勞力）若加劇，邊際成本上升。**整體新聞傾向：看漲（中強度）** ，可見期延伸至 H2 2026 Vera Rubin 批量上市 + 燃料電池訂單確認階段。
 
 ---
 
-## 資料來源
+NEWS REPORT COMPLETE
 
-- [高力(8996)2026年7月合併營收9.23億元 年增57.63% - Yahoo股市](https://tw.stock.yahoo.com/news/%E5%85%AC%E5%91%8A-%E9%AB%98%E5%8A%9B-2026%E5%B9%B47%E6%9C%88%E5%90%88%E4%BD%B5%E7%87%9F%E6%94%B69-23%E5%84%84%E5%85%83-%E5%B9%B4%E5%A2%9E57-090231534.html)
-- [高力(8996)2026年6月營收為724,767千元，年增37.56% - 財報狗股票](https://statementdog.com/analysis/8996/monthly-revenue-growth-rate)
-- [高力(8996)受外資大幅調升目標價激勵 盤中亮燈漲停 - 鉅亨網](https://news.cnyes.com/news/id/6502710)
-- [高力受惠於 AI 散熱及儲能需求 17日強勢漲停 外資目標價上看2,300元 - 經濟日報](https://money.udn.com/money/story/11162/9571875)
-- [外資賣、投信接！瑤姊看上誰？00981A大買高力 AI液冷吸引力曝光 - Newtalk](https://newtalk.tw/news/view/2026-08-18/1054104)
-- [NVIDIA、AMD、Google高階晶片帶動液冷散熱需求 集邦估今年滲透率53% - 聯合新聞網](https://udn.com/news/story/7240/9696533)
-- [2026专业液冷CDU企业清单：5项必查资质标准 - CSDN](https://www.csdn.net/article/2026-07-28/163264145)
-- [AI熱到破表，2026迎液冷時代 - MoneyDJ理財網](https://store.moneydj.com/focus/Article/AI%E7%86%B1%E5%88%B0%E7%A0%B4%E8%A1%A8%EF%BC%8C2026%E8%BF%8E%E6%B6%B2%E5%86%B6%E6%99%82%E4%BB%A3-639020979090163274)
-- [Kaori Heat Treatment to invest NT$3 billion in Taiwan and Thailand expansion - DIGITIMES](https://www.digitimes.com.tw/news/a20260812PD241/kaori-taiwan-demand-fuel-capacity-expansion.html)
-- [Taiwan thermal firms ride AI server boom, AVC and Auras lead 2026 surge - DIGITIMES](https://www.digitimes.com/news/a20260512VL206/taiwan-monthly-tracker-ai-server-cooling-avc-auras-jentech-precision-kaori-sunvon-revenue-2026.html)
-- [焦點股：高力7月營收創同期新高及獲ETF青睞 - Yahoo股市](https://tw.stock.yahoo.com/news/%E7%84%A6%E9%BB%9E%E8%82%A1-%E9%AB%98%E5%8A%9B7%E6%9C%88%E7%87%9F%E6%94%B6%E5%89%B5%E5%90%8C%E6%9C%9F%E6%96%B0%E9%AB%98%E5%8F%8A%E7%8D%B2etf%E9%9D%92%E7%9D%9E-%E7%9B%A4%E4%B8%AD%E8%82%A5%E5%83%B9%E4%BA%AE%E7%87%88%E7%AA%81%E7%A0%B4%E5%8D%8A%E5%B9%B4%E7%B7%9A%E5%A3%93%E5%8A%9B-033604865.html)
-- [Foxconn, Wistron, Quanta to sustain trillion-dollar revenue on AI server in 2026 - DIGITIMES](https://www.digitimes.com/news/a20260109PD249/revenue-ai-server-foxconn-wistron-quanta.html)
-
----
-**NEWS REPORT COMPLETE**
+### 參考資料
+- [高力 2026 年 7 月合併營收公告（Yahoo 股市）](https://tw.stock.yahoo.com/news/%E5%85%AC%E5%91%8A-%E9%AB%98%E5%8A%9B-2026%E5%B9%B47%E6%9C%88%E5%90%88%E4%BD%B5%E7%87%9F%E6%94%B69-23%E5%84%84%E5%85%83-%E5%B9%B4%E5%A2%9E57-090231534.html)
+- [Asia Vital Components 預期 AI 伺服器需求加強（DIGITIMES, 8月13日）](https://www.digitimes.com/news/a20260813PD220/avc-ai-server-liquid-cooling-demand-adoption.html)
+- [NVIDIA Vera Rubin 液冷標準化（DIGITIMES, 3月18日）](https://www.digitimes.com/news/a20260318PD231/nvidia-rubin-liquid-cooling-ai-server-launch.html)
+- [nVent 擴張液冷製造產能（Globe Newswire, 7月31日）](https://www.globenewswire.com/news-release/2026/07/31/3336671/0/en/nvent-expands-data-center-liquid-cooling-capacity.html)
+- [Bloom Energy SOFC 燃料電池 2026 年合約進展](https://enkiai.com/data-center/bloom-energy-fuel-cell-2026-7-65b-data-center-deals/)
+- [台灣液冷廠商 AVC/Auras/Kaori 2026 年成長追蹤（DIGITIMES, 5月12日）](https://www.digitimes.com/news/a20260512VL206/taiwan-monthly-tracker-ai-server-cooling-avc-auras-jentech-precision-kaori-sunon-revenue-2026.html)
+- [Auras Technology 上調 2026 年成長指引（DIGITIMES, 5月21日）](https://www.digitimes.com/news/a20260521PD231/2026-auras-avc-demand-liquid-cooling-revenue.html)
+- [OCP APAC Summit 2026（8月11-12日台北）](https://www.opencompute.org/summit/2026-ocp-apac-summit/registration)
