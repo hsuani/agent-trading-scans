@@ -1,45 +1,40 @@
-FINAL TRANSACTION PROPOSAL: **BUY**
+FINAL TRANSACTION PROPOSAL: **HOLD**
 
 # Final decision — AXTI as of 2026-08-24
 
-## FINAL TRANSACTION PROPOSAL: **BUY**（限價條件單，未觸發前等同 HOLD／不持倉）
+## FINAL TRANSACTION PROPOSAL: **HOLD**
 
 ## Verdict
 MODIFY
 
-採納中立方架構，但把倉位上限進一步鎖死，並加入「PRICE_DATA_UNAVAILABLE 解除」為執行前置條件。
+維持「不新建多頭部位」的核心結論，但修正兩點：既有多頭的降倉幅度與停損節奏過鬆，須改為 1/3 倉 + 分批停損；同時否決 aggressive 提出的財報前 put spread 獨立方向性下注。
 
 ## Final trade card
 | Field | Value |
 |---|---|
-| Direction | LONG |
-| Entry zone | $72.00 – $78.00（分兩批：$78 一半、$74 一半） |
-| Stop | $67.50（建倉均價下方約 10%） |
-| Target 1 | $90.00 |
-| Target 2 | $117.00 |
-| Size | Small（0.25% NAV 試探倉；Q3 財報驗證後可擴至 0.5%） |
-| Horizon | 3m+（12–18 個月，以季度為驗證單位） |
-| Conviction | M |
-| R:R to T1 | 2.0 |
+| Direction | LONG（僅既有部位，禁止加碼、禁止新建） |
+| Entry zone | 不進場（無新建進場區間） |
+| Stop | $58.90 減碼一半；跌破 $52.32（MA200）全數出清 |
+| Target 1 | $67.66（MA50） |
+| Target 2 | $71.49（前波阻力） |
+| Size | Small — 既有倉位降至 1/3（約 1.5% NAV 曝險） |
+| Horizon | 至 2026-10-29 Q3 財報，約 9 週 |
+| Conviction | L |
+| R:R to T1 | 0.2 |
 
-**執行前置條件（缺一不可）**：即時報價恢復可用；掛單為限價非市價；現價 ~$94 不追高，不做 Options 補充（無 IV／流動性可驗證）。
+R:R 僅 0.2 本身就是判決書：上行 $2.26、下行至 MA200 $13.08。這種賠率不支持任何新增曝險，只支持縮量與紀律出場。停損單一律用停損限價加緩衝，8/18 單日 -12% 已證實跳空風險真實存在。
 
 ## Risk debate adjudication
-- Aggressive's strongest point：InP 晶圓 18–24 個月客戶認證週期構成真實進入壁壘，機構持股單季 +19.47pp 顯示大型資金以市價買進，「等回調」確有機會成本，且 Needham $90 目標價在 Q3 $66M 達標後很可能上修。
-- Conservative's strongest point：純數學——即使回調至 $75，P/S 仍約 33.7x，是行業均值 7.2x 的 4.7 倍。「跌了 20% 仍極度昂貴」無法用結構性溢價辯解；Lumentum $87M 的法律性質（預付款 vs. 可撤銷信用額度）尚未釐清，客戶集中度風險由買方獨自承擔。
-- Net：我採納 **neutral** 為主。決定性理由是激進方自己算出的 Base 情境 R:R 僅 0.48×，卻用「機率高」去掩蓋不良的靜態 R:R——這是循環論證，不能作為在超過最樂觀分析師目標價的位置進場的依據。同時我駁回保守方的 8% 止損與 SOXX Put：AXTI 波動大、流動性薄，8% 止損必被 whipsawed，而為 0.25% NAV 倉位加宏觀對沖屬過度工程化，摩擦成本會吃掉全部預期報酬。倉位本身即是風控。
-
-另需明確：Fundamentals 報告實為 INCONCLUSIVE（資料源被阻），本案基本面完全依賴新聞層面的 Q2 數字，Market 判定為 FAIL。四項掃描中兩項無法獨立驗證——這是把倉位壓在 0.25% 而非 0.5% 的核心理由。
+- Aggressive's strongest point：內部人 6 個月淨賣 $73M、零買入、毛利率四年腰斬至 12.7%、營運現金流連 3 年為負 — 這些是已驗證硬數據，而多頭的 InP 缺貨轉毛利修復論至今沒有任何一季財報支持。證據強度確實不對等，「等 $39.70 破位才行動」是投降不是停損，此點成立並已納入分批停損設計。
+- Conservative's strongest point：跳空風險使任何以收盤價定義的單一停損點失效，且 AXTI 與既有 AI 供應鏈多頭同屬一個 AI capex beta 風險桶，不具分散效果，總曝險須合併管理。
+- Net：我採 neutral 較多。Aggressive 對「已發生的事實」與「未來股價方向」之間的推論跳得太快 — 中期趨勢仍在 MA200 之上 +25%，財報前 IV 已墊高，權利金會把宣稱的 3:1 賠率吃掉一大塊，那是為了避免無聊而付費。Conservative 的 1/4 倉則隱含比研究經理 NEUTRAL／中等信心更高的空頭確信度，倉位與信心不對稱。1/3 倉 + 分批停損同時反映「中期趨勢未破、短期動能轉弱」。put spread 若要做，僅能作為既有部位的凸性避險且成本上限 ≤0.5% NAV，不批准為獨立空頭部位。
 
 ## Monitoring trigger
-若 Q3 2026 財報（2026 年 9 月初）收入低於 $63M **或**毛利率跌破 40%，論文核心（結構性拐點而非低基期效應）即被證偽，無條件全數平倉，不等技術止損。次要觸發：Lumentum 同期財報若將 $87M 重新定義為可撤銷信用額度，或董事／CEO 再度出售逾 $1.2M 且無 10b5-1 保護，立即重評。
+若 10/29 財報前出現任一新的 Form 4 內部人賣出成交價低於 $60，或公司下修 Q3 營收／EPS 指引，立即全數出清，不等 $58.90 或 MA200 觸發。
 
 ## Catalyst calendar
-- 2026-09 初 — AXTI Q3 2026 財報（$66M / EPS $0.30–0.32；InP 分部絕對值最關鍵）
-- 2026-09 初 — Lumentum、Coherent Q3 財報，驗證 InP 採購執行
-- 2026-09 中（待定） — 美國對華出口管制新公告，若擴及 InP 基板為重大負面
-- 2026-08 至 2029-08 — 中國浙江 InP 產能建設期，2029 年後定價壓力
+- 2026-10-29 — Q3 2026 財報：毛利率是否回升至 20% 以上、營收 $66M 與 Non-GAAP EPS $0.30–0.32 指引兌現與否、InP 產能達成進度
+- 財報前後持續 — SEC Form 4 內部人交易揭露
+- 不定期 — AI capex 情緒事件（8/18 Anthropic 型態重演風險）
 
 FINAL DECISION COMPLETE
-
-FINAL DECISION: BUY | Conviction: MEDIUM | Size: 0.25% NAV
