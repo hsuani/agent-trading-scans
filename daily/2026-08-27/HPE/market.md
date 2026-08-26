@@ -1,24 +1,32 @@
-# 技術面 — HPE 截至 2026-08-27
+# 技術分析 — HPE 截至 2026-08-27
 
-## 資料可用性狀態
+## 狀態：PRICE_DATA_UNAVAILABLE
 
-**PRICE_DATA_UNAVAILABLE**
+### 資料擷取失敗
 
-### 問題描述
-無法獲取 HPE 的實時價格數據。資料來源（Yahoo Finance，fc.yahoo.com）被組織出站代理政策封鎖，回應代碼 403。根據資料完整性要求，無法合成或推測技術指標。
+無法取得 HPE 的即時價格數據。所有資料管道（ta.py snapshot、yf.py fast_info、ta.py series、ta.py levels）均遭遇以下問題：
 
-### 技術分析無法進行的原因
-- 無法檢索 OHLCV 歷史數據（過去 2 年）
-- 無法計算技術指標：MA20、MA50、MA200、RSI14、MACD、ATR14、Bollinger Bands
-- 無法識別支撐/阻力位
-- 無法評估動量、波動性或趨勢強度
+**錯誤詳情：**
+- 連線障礙：curl (7) CONNECT tunnel failed, response 403
+- 來源：代理伺服器阻止連接至 fc.yahoo.com:443
+- 原因：政策拒絕或上游故障（gateway answered 403 to CONNECT）
 
-### 後續步驟
-待代理政策更新允許訪問 Yahoo Finance，或使用替代數據源後，重新執行技術分析。
+### 影響
+
+無法進行下列技術分析：
+- MACD、RSI14、布林帶 (Bollinger Bands) 指標
+- 移動平均線 (MA20、MA50、MA200)
+- 動能 (Momentum) 評估
+- 支撐/阻力位階 (Support/Resistance levels)
+- 成交量 (Volume) 確認
+- ATR 波動率分析
+
+### 後續行動
+
+需要恢復與價格資料來源的連線，或配置替代資料管道，方可完成 HPE 的技術分析報告。
 
 ---
 
-報告生成時間：2026-08-27  
-資料狀態：未可用  
+**MARKET REPORT STATUS: PRICE_DATA_UNAVAILABLE**
 
-**MARKET REPORT COMPLETE**
+報告生成時間：2026-08-26 (分析日期：2026-08-27)
