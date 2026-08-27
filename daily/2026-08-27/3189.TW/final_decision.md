@@ -1,51 +1,40 @@
-# Final decision — 3189.TW（景碩科技 / Kinsus Interconnect）as of 2026-08-27
+FINAL TRANSACTION PROPOSAL: **HOLD**
 
-FINAL TRANSACTION PROPOSAL: **BUY**
+# Final decision — 3189.TW as of 2026-08-27
 
-## FINAL TRANSACTION PROPOSAL
+## FINAL TRANSACTION PROPOSAL: **HOLD**
 
-**VERDICT: BUY（條件式限價，非市價追高）**
-**Verdict on proposal: MODIFY**
-**Conviction: 55%**
+## Verdict
+MODIFY
 
-> 資料警示：fundamentals.md 與 market.md 皆為 DATA_UNAVAILABLE，無 RSI / MACD / ATR / BB %B 可用。新聞流內部亦不一致（8/17 報 923、8/25 報 835、8/26 收 881）。以最新一筆 **TWD 881（N，8/26 收盤）** 為現價基準，其餘價位一律標註 (V)。實際下單前必須先確認即時成交價，若現價偏離本卡假設逾 5%，整張卡作廢重算。
+原案方向（不建立新方向性倉位）成立，但既有部位的管理過於被動：等到 937–960 新高才減碼、且把全額部位扛到 BB 下軌，兩者皆不可接受。以下為唯一定案。
 
 ## Final trade card
-
-| 欄位 | 內容 |
+| Field | Value |
 |---|---|
-| 方向 | LONG |
-| Entry zone | TWD 850 – 865（V），限價分兩批 |
-| Stop | TWD 800（V），日線收盤破位即出，不等盤中 |
-| Target 1 | TWD 939（V）——13 位分析師均價 |
-| Target 2 | TWD 1,150（V）——FY2027E EPS 13 元 × P/E 88× |
-| Size | Small — **0.5% NAV**（未成交上限 0.2% NAV 催化劑倉） |
-| Horizon | 3–12 個月（2–4 個季度） |
-| Conviction | M（55/100） |
-| R:R to T1 | 1.5x（以 855 計） |
-| R:R to T2 | 5.4x |
+| Direction | LONG（僅既有部位，不新增） |
+| Entry zone | 不新增進場；既有部位於 NT$900–960 分批減至目標規模 |
+| Stop | NT$828（MA20，強制減碼線）；NT$696.87 為縮小後核心部位最終防線 |
+| Target 1 | NT$937.40 |
+| Target 2 | NT$960.00 |
+| Size | Medium（既有現股降至 20% NAV；新倉 0%） |
+| Horizon | 數週至一季，驗證點 2026-10-29 Q3 財報 |
+| Conviction | M |
+| R:R to T1 | 0.2（正因此不新增多單） |
 
-## 風險辯論裁決
+不採納 aggressive 的衍生品戰術倉位。3189 權證／選擇權流動性與隱含波動率溢價未經驗證，在論點尚未證偽前，用未查證的工具對未驗證的論點下注，是雙重投機。若之後確認有價差合理、到期涵蓋 10/29 的標的，另案處理，不在本次授權內。
 
-- **Aggressive 最強論點**：7 月營收 YoY +35.85%、五連月創高是實數而非預測；09-10 月營收若引爆，等待者將在更高位追入。
-- **Conservative 最強論點**：T1（939）幾乎等於近期高點，且分析師在 Q2 EPS miss(-19.45%) 後未下修，T1 錨點已過時；景碩市占僅 8–10%，與欣興 Q2 毛利率 24.8% 的落差是議價力結構問題，不會被 H2 漲價自動修補。
-- **Net：採 Neutral 為主軸。** Aggressive 用「絕對虧損金額小」掩蓋單筆交易品質差，是邏輯轉移；Conservative 要求「回調＋基本面」雙條件同時成立，在動能股上等同永久踏空。折衷：接受多頭賽道，但只用限價在 850–865 收租式建倉，拒絕在無技術數據下承接超買部位。
+## Risk debate adjudication
+- Aggressive's strongest point：ABF 供給缺口（H2 2026 約 10%、2027 擴至 20%）是三寡頭產業級真實供需，財報只決定兌現時點而非方向是否存在；等確認才進場確實會讓出重估初段。
+- Conservative's strongest point：前瞻 P/E 34.6x 已等於現價、安全邊際為零，卻把減碼區設在必須再創新高才啟動，等於用「更貴」當作賣出的前提；ATR14 61.84、年化波動 74.3% 下，-23.9% 單一防線對全額部位過寬。
+- Net：我採 neutral 較多。Conservative 的尾部機率加總 75–90% 偏空無基期依據，同業反向對沖在共享催化劑下是無效對沖；Aggressive 的 3–5 倍權利金報酬未扣流動性折價。真正可執行的共識只有一項：以縮小規模本身作為風控，而非押注方向。
 
-## Monitoring trigger（唯一硬性再評估條件）
-
-**若 2026-09-10 前後公布之 8 月合併營收 YoY 低於 35%（動能斷層），即在 800 止損被觸及前無條件全數出場。** 次要觸發：9 月法說會 Q3 毛利率指引低於 22%，倉位立即減半至 0.25% NAV。
-
-## 加碼條件
-
-月營收 YoY ≥38% 且日線收盤守穩 835（N）→ 加至 1.0% NAV。加碼後若總 ABF 敞口超過 1.0% NAV，增量部分改配欣興（3037）以提升賽道品質。
+## Monitoring trigger
+若 2026-09～10 月 Vera Rubin 供應鏈法說會明確揭露 GPU 出貨下修，或味之素 ABF 膜料漲價確認轉嫁失敗，即在停損前提早把部位降至核心水位，不等 NT$828。
 
 ## Catalyst calendar
+- 2026-10-29 — Q3 2026 財報（EPS 共識 3.18 元；毛利率為決定性數字）
+- 2026-09～10 月 — Vera Rubin 供應鏈法說會，觀察實際出貨訊號
+- 持續監控 — 家族（39.6% 持股）是否出現近 6 個月來首次內部人買進
 
-- 2026-09-10 前後 — 8 月合併月營收（最關鍵驗證點）
-- 2026-09 中旬 — 法說會：H2 ASP 漲幅與 Q3 毛利率指引
-- 2026-10 下旬 — Q3 財報：EPS 是否 ≥2.5 元（T2 路徑確認）
-- 2027-Q1 — FY2026 全年結算
-
-**Phase: full pipeline completed**（fundamentals / market / news / sentiment / research / trade proposal / risk debate / PM 裁決）
-
-PORTFOLIO MANAGER COMPLETE
+FINAL DECISION COMPLETE

@@ -1,45 +1,42 @@
 FINAL TRANSACTION PROPOSAL: **BUY**
 
-# Final decision — 4958.TW（臻鼎-KY）as of 2026-08-27
+# Final decision — 4958.TW as of 2026-08-27
 
 ## FINAL TRANSACTION PROPOSAL: **BUY**
 
 ## Verdict
-**MODIFY** — 方向維持 LONG，但初始倉位與加碼路徑收緊，並鎖定 1.0% NAV 為硬上限（原提案 1.5%）。
+MODIFY
 
 ## Final trade card
-| 欄位 | 內容 |
+| Field | Value |
 |---|---|
-| 方向 | LONG |
-| Conviction | 62%（M） |
-| Entry zone | TWD 440 – 470（N，以新聞現價 457 為錨） |
-| Stop | TWD 388（V，唯一賣出分析師目標價） |
-| Target 1 | TWD 665（V，12位分析師目標價中位數） |
-| Target 2 | TWD 925（V，美系外資 8/12 上修目標） |
-| Size | Small，初始 0.5% NAV；單一確認點達成後加至 1.0% NAV（硬上限） |
-| Horizon | 3–4 個月（Q3 法說會至 Q4 深圳廠二期量產確認） |
-| R:R to T1 | 3.0 |
-| R:R to T2 | 6.8 |
-| 最大 NAV 損失 | −0.075%（初始）/ −0.15%（加碼後） |
+| Direction | LONG |
+| Entry zone | $463.28 – $474.00 |
+| Stop | $446.94 |
+| Target 1 | $519.51 |
+| Target 2 | $564.14 |
+| Size | Small（0.5% NAV，硬上限，本次不預先承諾加碼） |
+| Horizon | 1–3 個月（決策關卡 2026-11-10） |
+| Conviction | L |
+| R:R to T1 | 2.3 |
+
+## 對原提案的三項修改
+1. **刪除「可視 11/10 財報結果加碼至 Medium」條款。** 加碼不是現在能寫死的決定，財報公布後重跑一次完整流程再議。0.5% NAV 是本次授權的絕對上限。
+2. **停損維持 $446.94，但執行認知改為跳空風險。** 台股 ±10% 限制下此價位可能無法成交，部位規模須以「跳空至 $415」為實際風險上限來衡量（約 0.057% NAV），而非以紙上 $21.70 計算。此為維持 Small 的核心理由。
+3. **納入動能條款。** 若股價未回測 $463-467 即放量站穩 $511，允許在 0.5% NAV 上限內補足剩餘倉位，不因等待拉回而完全落空；但不因突破而突破上限。
 
 ## Risk debate adjudication
-- **Aggressive 最強論點**：H1 EPS TWD 3.55（+173% YoY）與 AI 業務 +113% 均為已公布財報硬數字而非指引，可信度最高；以 0.5% NAV 承載 3.0x–6.8x 不對稱結構確實偏保守。
-- **Conservative 最強論點**：fundamentals.md 與 market.md 雙雙 DATA_UNAVAILABLE，ATR 無法計算、估值無法獨立驗證；再疊加 capex NT$50B vs NT$80B 的 NT$30B 資訊落差，FCF 正負仍是黑箱。臻鼎 H1 頂線 +13.89% 落後欣興 +32%、南電 +21% 達 18ppt，係 ABF 四雄中最弱一環。
-- **Net：我採納 neutral 觀點。** 理由有二。其一，Aggressive 主張「跳過所有確認點直接加碼」，在無任何價格與財務原始數據可查證的當下，等同以新聞轉述數字定倉，屬程序性風險而非可承擔的市場風險；Bull Call Spread 一併否決（無報價、無隱含波動率，無法定價）。其二，Conservative 要求 Stop 上移至 TWD 415 在 ATR 未知環境下反而危險——過緊止損提高假性出場率，我維持 TWD 388。加碼採單一條件（非雙重），以免完全錯過 Vera Rubin Q3–Q4 出貨窗口。
-
-**加碼條件（擇一）**：①9月月營收確認 H2 加速；②capex 官方澄清為 NT$50B。Q3 毛利率突破 24% 不再單獨作為加碼觸發，僅作為持有信心之驗證。
+- Aggressive 最強一點：停損 $21.70 小於 ATR14 $31.49 是結構性缺陷，且「動能股不回頭」的風險真實存在，原提案的拉回加碼路徑確有落空可能。此點我以動能條款吸收。
+- Conservative 最強一點：台股跌停鎖死使止損不可執行，真實下檔是跳空至 $415 而非 $446.94。這直接否決了 aggressive「放寬停損 + 放大倉位」的組合——當止損本身在關鍵事件下失效時，唯一有效的風險控制就是倉位大小。
+- Net：我採 **neutral** 的權重配置。Aggressive 的錯誤在於同時放大兩個方向的風險（倉位 $338→$743 且停損放寬），卻用靜態 R:R 數字來正當化；而 R:R 分子建立在尚未驗證的獲利兌現上（過去 3 季 2 次財測失誤 -24.6%／-36.7%、FCF 連續為負、P/E 53x vs 同業 10-12x）。Conservative 的機率數字缺乏根據，但方向正確。低信心 + 高估值 + 事件未驗證 = 小倉位試探，不因 R:R 好看而放大。
+- Call Spread 建議不採納：台股個股選擇權流動性與價差未經檢驗，屬未驗證工具，不在本次授權內。
 
 ## Monitoring trigger
-**若 2026-09-10（估）公告之 8 月營收 YoY 低於 H1 的 13.89%**，代表 CEO「H2 強於 H1」指引落空，立即在 TWD 388 止損觸及前主動減碼至零。次要觸發：鴻海再減碼逾 1% 流通股。
+**若 9 月中 NVIDIA Vera Rubin 開始出貨後，2026 年 10 月營收月報年增率未達雙位數（或環比轉負），即在股價觸及 $446.94 之前主動減碼至半倉。** 此為「Capex 轉換為營收」多頭核心論點的最早可證偽數據點，早於 11/10 財報的跳空風險窗口。
 
 ## Catalyst calendar
-- 2026-09-10（估）— 8月月營收公告
-- 2026-10 中旬（估）— Q3 2026 法說會（毛利率 >24%？capex 官方數字）
-- 2026 Q3–Q4 — Vera Rubin 供應鏈批量出貨
-- 2026 Q4 — 深圳廠二期 ABF 大規模量產
-- 2027 Q1（估）— FY2026 全年 EPS 兌現
+- 2026-09 月中 — NVIDIA Vera Rubin H2 開始出貨
+- 2026-10 上旬 — 9 月／Q3 月營收公布（首個可驗證數據）
+- 2026-11-10 — Q3 2026 財報（EPS 預估 4.57 vs Q2 2.19），決定續抱、加碼或出場
 
-## Phase
-Full pipeline completed（fundamentals / market 為 DATA_UNAVAILABLE，決策建立於 news + sentiment 之上，故倉位受限）。
-
-PORTFOLIO MANAGER COMPLETE
+FINAL DECISION COMPLETE

@@ -1,76 +1,58 @@
-# 新聞分析 — 3189.TW (景碩科技/Kinsus Interconnect) 截至 2026-08-27
+# 新聞 — 3189.TW (景碩) 截至 2026-08-27
 
-## 公司特定頭條新聞（過去14天）
+## 公司特定頭條 (過去14天)
 
-- **2026-08-26** — 景碩股價收在881元，單日漲幅5.51%，近日連續創高。影響：看漲。受ABF載板供給緊繃與AI需求強勢支撐，股價反映市場對公司長期成長預期。
+- **2026-08-03** — Q2 2026 財報發布：營收 NT$11.11B，超越市場預期 NT$10.99B；淨利 NT$549.23M。YoY 成長動能相較 Q1 的 43% 淨利成長有所緩和，但仍反映 ABF 高端供應吃緊下的穩定獲利環境。(MarketScreener/Investing.com)。**影響：看漲**。Q2 表現未達 Q1 動能但仍超預期，反映產能瓶頸下的定價權提升。
 
-- **2026-08-25** — 景碩股價收在835元，月度上漲8.7%。影響：看漲。景碩作為台灣ABF三雄之一，受惠於整體產業景氣回升。
+- **2026-08-03 前後** — H2 2026 前景指引：公司預期營收高雙位數成長，毛利率持續擴張，顯示對後半年供應緊俏與定價向上的信心。(Investing.com)。**影響：看漲**。ABF 供應缺口與 Vera Rubin 鏡面需求共振，支撐量價齊升預期。
 
-- **2026-08-17** — 景碩開盤大漲7.08%至923元，創近期高點，成交量達3,699張。影響：看漲。市場積極追捧ABF載板廠商，反映AI伺服器訂單前景看好。
+## 產業巨觀事件
 
-- **2026-08-14** — 景碩董事會公告完成股份購回與註銷案，已註銷員工受限股份。影響：中性。此為例行公司治理行動，體現公司資本配置紀律。
+- **2026-05-31** — NVIDIA Vera Rubin 進入全面量產，全球供應鏈 150 家台灣廠商開始鏡面。但晶片供應受限：2026 年 Vera Rubin GPU 產量預估僅 20 萬-35 萬顆（TSMC N3 良率 + HBM4 短缺制約）。(NVIDIA IR / TechTimes)。**產業影響**：Vera Rubin 相比 Grace-Blackwell 基板面積增加 50%+，推升高層數 ABF 基板需求峰值比原計畫提前。
 
-- **2026-08-03** — 景碩公布2026年第2季合併財務報告。每股盈餘1.17元（預估1.45元，低於預期-19.45%），營收110.11億元（高於預估109.9億元，+0.2%）。影響：混合。盈利意外下滑但營收強勁，暗示毛利率或營運費用承壓。
+- **2026-05-13 前後** — 味之素 (Ajinomoto) 通知 IC 基板廠：ABF 膜料 (ABF film) 漲價 30%，Q3 2026 起生效。同步全球 ABF 現貨價格上漲 30%+，合約價上升 5-10% (H2 2026)。(DigiTimes / AtlasPCB)。**產業影響**：材料成本上升推升毛利率承壓風險，但定價權護城河強化；3189 等台灣三強 (3037 Unimicron、8046 Nan Ya PCB) 已預鎖長約抵禦風險。
 
-- **2026-07底** — 景碩7月合併營收45.49億元，環比+3.38%、年增+35.85%，連續五個月創月度新高。影響：看漲。營收成長加速超越預期，反映AI資料中心需求強勁，景碩產能利用率接近滿載。
+- **2026-Q2 期間** — ABF 基板供給缺口拓寬：第二季末估計缺口 ~10% (H2 2026)，2027 年擴大至 20%，新產能 2027 年中才貢獻。高端多層 ABF 基板（12+ 層）尤其吃緊，受低 CTE 玻布、SAP 製程產能受限影響。(Counterpoint / DigiTimes)。**產業影響**：供不應求拉貨週期延長至 2027，定價與產能溢價持續擴大。
 
-## 產業總體因素
+- **2026-08-中旬** — TSMC CoWoS 產能困境：Vera Rubin 與 GB300 同步量產，後者尾聲重疊，造成「台灣供應鏈下半年異常忙碌」。HBM4 售罄至 2027 年中，NAND 價格亦聯動上漲 (TLC 512Gb 現貨漲至 $21)。(TechTimes / WCCFTech)。**產業影響**：上游 CoWoS、HBM、NAND 全線緊俏，下游基板廠交期拉長，議價空間受限，但定價向上動量強勁。
 
-- **2026-08-06** — 日本味之素集團 (Ajinomoto) 上調全年ABF材料出貨預測，稱AI伺服器與高效能運算需求持續驅動ABF覆晶膜出貨成長。影響：看漲。作為ABF上游重要原料供應商的樂觀態度，確保景碩等載板廠能穩定取得原料。
+## 競爭對手信號
 
-- **2026年8月** — ABF載板全球供應缺口動態更新：2026年年底缺口收斂至1-2%；2027年轉向短缺，缺口擴大至21-27%；2028年缺口進一步擴至29-35%。台灣ABF產能佔全球35%以上，景碩佔全球8-10%。影響：看漲。台灣與景碩將成為全球ABF瓶頸緩解的關鍵，價格動力向上。
+- **3037.TW Unimicron** — 2026 年目標營收創新高，AI 系統板與高端基板並行推進。Morgan Stanley 預估 2025-2028 淨利年複合成長率 105%。(DigiTimes / 投資網)。**意義**：同業領先訊號強化，驗證 ABF 超級週期已成型；Kinsus 毛利率與營收成長應可追隨。
 
-- **2026年H2預估** — ABF載板報價預計逐季調漲5-10%，下半年AI在主要客戶營收占比目標衝至70%。影響：看漲。ASP提升與客戶結構改善將同時推升景碩毛利率與淨利。
+- **8046.TW Nan Ya PCB** — 同步升級，Morgan Stanley 預期淨利 CAGR 113% (2025-2028)，略優於 Unimicron。(投資網)。**意義**：Nan Ya 在 PCB 多層製程優勢，但高端 ABF 基板缺乏 Kinsus/Unimicron 尺度，因此長期容量天花板較低，Kinsus 與 Unimicron 可望高度受惠。
 
-- **2026年中至8月** — 產業共識轉變：ABF不再被視為景氣循環品，而是長期結構性緊缺品。驅動因素從AI GPU/ASIC晶片換機週期擴展至CPU與伺服器核心出貨需求，景氣循環預估延伸至2027-2028年。影響：看漲。投資評價體系重估，本益比從PE 10-15倍向25-30倍調升。
+- **全體台灣三強** — 3189、3037、8046 皆滿載至年底，並無新進者進軍高端 ABF 市場。(DigiTimes)。**意義**：三寡頭壟斷格局穩固，定價權與利潤率進一步鞏固。
 
-## 同業信號
+## 前景日曆 (未來14天)
 
-- **欣興 (3037)** — 2026年Q2每股盈餘8.45元，創歷史新高；ABF營收環比+22%、年增+51%。公司上調資本支出預算至537億元，Q2毛利率升至24.8%。7月底法說會上指引H2 2026年AI占比目標達70%，外資目標價上看1,575元。影響：看漲。同業強勁表現驗證了整體ABF需求高景氣，對景碩預期亦向上牽引。
+- **2026-09 下旬~10 月初** — Q3 2026 財報發布預期（台灣公司通常季度結束後 ~45 天，即 10 月中旬前）。預期營收環比增長 5-10%，毛利率因 ABF 膜料漲價壓力有所承壓，但定價向上應可部分抵銷。
 
-- **南電/Unimicron (8046)** — 股價突破1,145元歷史天價，近期P/E高達153.35，反映投資者對長期成長期望極高。高盛提升南電目標價至2,500元，認為毛利率有望成為三雄最高。影響：看漲。南電强勢表現顯示全球客戶看好台灣ABF廠競爭力，景碩亦受惠於此系統性上升。
+- **2026-09~10 月** — Vera Rubin 量產加速，CoWoS 與 HBM 進一步吃緊訊號預期於供應鏈公司法說會現身，推升後續基板需求預期。
 
-- **全球ABF供應商** — Ajinomoto提高ABF膜價格30%、IBIDEN宣布產能擴張計畫。影響：看漲。上游材料廠價格調升預告了下游載板廠漲價的正當性，景碩可望用漲價抵銷原料成本上升壓力。
+- **2026-09~11 月** — 台灣政府無指標性重大政策風險（NCC 頻譜競標、台積電政策、關稅等），但全球貿易政策（美中科技戰升溫）可能左右台灣半導體設備與基板廠的全年投資韌性。
 
-## 前景日曆（未來14天）
+## 淨讀
 
-- **2026-09-10前後** — 預期8月合併營收公告（若按慣例月初發布）；景碩應延續7月的50%+年增成長軌跡。
-
-- **2026年9月中旬** — 法人預期第3季業績展望說明會；市場關注AI客戶需求預估、毛利率指引、資本支出計畫。
-
-- **2026年9月底-10月** — 第3季合併營收與每股盈餘陸續發布；預期營運毛利率有機會較Q2走高（因ASP上揚+產能滿載）。
-
-## 淨讀評
-
-景碩面臨歷史最佳景氣週期。AI伺服器從GPU逐步擴展至CPU的需求升級，推升ABF載板從短期換機驅動轉為長期結構性短缺，2027-2028年缺口預估達22-35%。公司7月營收月增3.4%、年增35.8%創五連月新高，Q2盈利雖因營運槓桿及稅收結構略遜預期，但下半年報價漲幅5-10%的發動、產能近滿載、客戶AI占比衝70%的組合，應足以驅動H2與明年EPS季環比扭正。同業欣興已驗證此趨勢（Q2 EPS 8.45元創新高），南電股價突破1,145元亦證實全球客戶信心。唯需關注原料成本（CCL、玻纖、ABF膜）輸入型通膨是否完全可轉嫁客戶。**淨讀傾向看漲，強度中等**（短期技術調整風險仍存，但3-6個月基本面向上動能明確）。
-
-### 關鍵跟蹤指標
-
-- 8月合併營收（預估月增2-4%、年增30-35%）
-- 9月-10月毛利率恢復至22-24%
-- 客戶Q4訂單預告與AI 出貨佔比更新
-- 競爭對手欣興、南電季度指引變化
+**看漲傾向，動能中等。** Kinsus (3189) 處於 ABF 供應緊缺週期的直接受惠位置：Vera Rubin 鏡面需求推升高層數基板面積 +50%，TSMC CoWoS 供給吃緊延長拉貨週期，全球 ABF 缺口 2027 年逐季擴大至 20%。Q2 超預期財報 + H2 高雙位數成長預期指引確認公司掌握定價主導權；味之素 ABF 膜料漲價 30% 雖增材料成本壓力，但長約合約價已鎖定上行，毛利率應呈緩升。競爭對手 Unimicron/Nan Ya PCB 同步升級訊號強化淨讀可信度，三寡頭壟斷格局下 Kinsus 長期容量天花板被抬升。短期風險在於 Vera Rubin 供應瓶頸可能阻滯實際鏡面量成長，Q3 財報毛利率若因膜料成本反而走低則前景承壓。
 
 ---
 
-**NEWS ANALYSIS COMPLETE**
+**新聞報告完成**
 
----
+## 資料來源
 
-### 資料來源
-
-1. [台股盤中速報 - 景碩股價漲停](https://m.cnyes.com/news/id/6578632)
-2. [Goodinfo景碩股價資訊](https://goodinfo.tw/tw/StockDetail.asp?STOCK_ID=3189)
-3. [鉅亨網景碩財報](https://www.cnyes.com/twstock/3189)
-4. [Yahoo Finance - Kinsus Interconnect](https://finance.yahoo.com/quote/3189.TW/)
-5. [Investing.com Kinsus財務數據](https://www.investing.com/equities/kinsus-financial-summary)
-6. [台灣新聞 - 印刷電路板廠創紀錄月營收](https://www.taiwannews.com.tw/news/6418300)
-7. [DIGITIMES - Kinsus擴產動向](https://www.digitimes.com/news/a20260804PD212/kinsus-ic-substrate-demand-profit-capacity.html)
-8. [Ajinomoto提升ABF需求預測](https://www.digitimes.com/news/a20260807VL222/demand-packaging-forecast-business-sales.html)
-9. [DIGITIMES - AI晶片波及ABF供應鏈](https://www.digitimes.com/news/a20260520VL215/supply-chain-abf-substrate-ai-chip-2026-chips.html)
-10. [BigGo Finance - ABF缺口與台灣廠商目標價調升](https://finance.biggo.com/news/4978b0ef-fc31-4d7d-9de1-c14abbafc97b)
-11. [豐雲學堂 - 2026年PCB缺貨漲價分析](https://www.sinotrade.com.tw/richclub/hotstock/2026-PCB-%E5%85%A8%E9%9D%A2%E7%BC%BA%E8%B2%A8%E6%BC%B2%E5%83%B9%E5%AE%8C%E6%95%B4%E8%A7%A3%E6%9E%90-%E5%9B%9B%E5%A4%A7%E6%88%B0%E7%95%A5%E7%89%A9%E8%B3%87%E7%9F%AD%E7%BC%BA-ABF-%E8%BC%89%E6%9D%BF%E8%B6%85%E7%B4%9A%E5%BE%AA%E7%92%B0%E8%88%87%E5%8F%B0%E7%81%A3%E4%BE%9B%E6%87%89%E9%8F%88%E6%8A%95%E8%B3%87%E5%9C%B0%E5%9C%96-%E8%82%A1%E5%B8%82%E8%A9%B1%E9%A1%8C-6a226b1f6c6d82bf0a7d4803)
-12. [豐雲學堂 - 載板三雄分析與外資目標價](https://www.sinotrade.com.tw/richclub/hotstock/%E8%BC%89%E6%9D%BF%E4%B8%89%E9%9B%84-%E6%99%AF%E7%A2%A9-%E5%8D%97%E9%9B%BB-%E6%AC%A3%E8%88%88%E9%BD%8A%E5%89%B5%E5%A4%A9%E5%83%B9-%E5%A4%96%E8%B3%87%E7%9B%AE%E6%A8%99%E5%83%B9%E6%9C%80%E9%AB%98%E4%B8%8A%E7%9C%8B1-575%E5%85%83-Agentic-AI%E9%9C%80%E6%B1%82%E8%94%93%E5%BB%B6%E8%87%B3CPU-ABF%E4%BE%9B%E9%9C%80%E7%BC%BA%E5%8F%A32028%E5%B9%B4%E6%81%90%E9%81%9435--%E8%82%A1%E5%B8%82%E8%A9%B1%E9%A1%8C-6a3de5712ab9a0d1347e1d09)
-13. [財報狗 - 景碩月度營收成長](https://statementdog.com/analysis/3189/monthly-revenue-growth-rate)
-14. [Yahoo股市 - 景碩7月營收公告](https://tw.stock.yahoo.com/news/%E5%85%AC%E5%91%8A-%E6%99%AF%E7%A2%A9-2026%E5%B9%B4%E7%B6%AD%E6%94%B9%E5%BE%8C%E7%BE%8E%E5%9B%A35%E6%9C%88%E8%AA%8A%E5%95%8F%E8%A8%98%E9%8C%84-093651852.html)
-15. [豐雲學堂 - Agentic AI與ABF載板三雄分析](https://www.sinotrade.com.tw/richclub/hotstock/Agentic-AI-%E9%BB%9E%E7%87%9F-CPU-%E9%9C%80%E6%B1%82-ABF-%E8%BC%89%E6%9D%BF%E4%BE%9B%E7%B5%A6%E8%BD%89%E7%B6%8A-%E8%BC%89%E6%9D%BF%E4%B8%89%E9%9B%84%E6%99%AF%E7%A2%A9-%E5%8D%97%E9%9B%BB-%E6%AC%A3%E8%88%88%E6%80%8E%E9%BA%BC%E9%81%B8-%E8%82%A1%E5%B8%82%E8%A9%B1%E9%A1%8C-6a437daac99818e56349acea)
+- [Kinsus Interconnect Technology Q2 2026 Earnings](https://www.marketscreener.com/news/kinsus-interconnect-technology-corp-reports-earnings-results-for-the-second-quarter-and-six-months-ce7f50dddf8df127)
+- [Kinsus approves US$744M ABF expansion](https://www.digitimes.com/news/a20260202PD236/kinsus-abf-substrate-expansion-demand.html)
+- [AI chip rivalry escalates: ABF substrate sells out](https://www.digitimes.com/news/a20260420PD216/revenue-pcb-abf-substrate-unimicron-ai-chip.html)
+- [Kinsus Interconnect Technology Stock Information](https://www.investing.com/equities/kinsus)
+- [NVIDIA Vera Rubin Ramps Into Full Production](https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Vera-Rubin-Ramps-Into-Full-Production-to-Power-Agentic-AI-Factories-Worldwide/default.aspx)
+- [Nvidia Vera Rubin supply chain eyes 3Q26 ramp](https://www.digitimes.com/news/a20260515PD223/rubin-nvidia-cooling-hbm4-design.html)
+- [Ajinomoto Raises ABF Substrate Film Prices 30%](https://www.atlaspcb.com/news/news-ajinomoto-abf-substrate-price-increase-2026/)
+- [AI chip demand tightens ABF substrate supply](https://www.digitimes.com/news/a20260408PD220/demand-substrate-capacity-2026-ic-substrate.html)
+- [Unimicron targets record 2026 revenue](https://www.digitimes.com/news/a20260529PD239/unimicron-revenue-2026-demand-substrate.html)
+- [ABF Supply-Demand Gap surge to 29% by 2028](https://finance.biggo.com/news/4978b0ef-fc31-4d7d-9de1-c14abbafc97b)
+- [Taiwan substrate industry sees pricing upside](https://www.taiwannews.com.tw/news/6359120)
+- [Nvidia Vera Rubin production ramp-up squeezes TLC NAND supply](https://wccftech.com/nvidias-vera-rubin-production-ramp-up-is-now-squeezing-tlc-nand-supply-driving-512gb-spot-prices-to-21-after-the-june-slump/)
+- [Investing.com Kinsus Financial Summary](https://www.investing.com/equities/kinsus-financial-summary)
+- [Morgan Stanley upgrades Unimicron, Nan Ya PCB on ABF substrate upcycle](https://www.investing.com/news/stock-market-news/morgan-stanley-upgrades-unimicron-nypcb-on-ailed-abf-substrate-upcycle-4519224)

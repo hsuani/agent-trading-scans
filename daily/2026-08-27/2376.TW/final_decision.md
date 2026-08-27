@@ -1,50 +1,35 @@
-# Final decision — 2376.TW (技嘉科技) as of 2026-08-27
-
 FINAL TRANSACTION PROPOSAL: **BUY**
 
-> PRICE_DATA_UNAVAILABLE。全部價位標註 (V)（情緒報告驗證數據或其算術推導）或 (N)（未驗證情境估算）。無即時報價，勿視為成交價。
+# Final decision — 2376.TW as of 2026-08-27
+
+## FINAL TRANSACTION PROPOSAL: **BUY**
 
 ## Verdict
-**MODIFY** — 方向照准，進場區收緊、加入除息後觀察窗與對沖上限。
+MODIFY（方向維持 LONG，但下修部位、放寬並改用收盤確認停損、縮小首批建倉比重）
 
 ## Final trade card
-
-| 欄位 | 數值 |
+| Field | Value |
 |---|---|
-| verdict | **BUY** |
 | Direction | LONG |
-| conviction | **62/100**（MEDIUM） |
-| position_size | **1.5% NAV**（首批全額，非分批加碼上限） |
-| entry_zone | **NT$328–332 (V-derived)**，除息後 1–2 交易日確認止跌 |
-| stop | **NT$316 (V-derived)**，日盤開盤委託限制跳空滑點 |
-| target_1 | **NT$404 (V-derived)** — 減倉 50% |
-| target_2 | **NT$483 (V-derived)** |
-| r_r | **4.5x / 9.4x**（T1/T2，以上沿 NT$332 保守成交計） |
-| Horizon | 1–3 個月 |
-| phase | Phase 2-4 |
-| key_catalyst | Q3 2026 財報（10–11 月）毛利率是否自 9.62% (V) 回升至 11%+ |
-| Hedge | SOXX Put 或 2377 空頭，成本上限 0.3% NAV |
+| Entry zone | NT$334.00 – NT$348.50（首批 20% 於現價附近，80% 待回檔或技術確認） |
+| Stop | NT$322.00（**收盤價**跌破確認，非盤中觸價） |
+| Target 1 | NT$387.66 |
+| Target 2 | NT$402.00 |
+| Size | Medium 偏低（1.2% NAV，滿倉上限 2.0% 保留給 9 月催化劑確認後加碼） |
+| Horizon | 1–3 個月（對齊 2026-09 產能報告與 2026-11-12 財報） |
+| Conviction | M |
+| R:R to T1 | 2.5（至 T2 為 3.2） |
 
 ## Risk debate adjudication
-
-- **Aggressive 最強論點**：絕對損失封頂極低（止損觸發僅約 0.072% NAV），以已驗證的 H1 EPS +92.6% (V) 換取 4.5x R:R，數學上不該壓在半倉以下。此論點成功駁倒保守方的 0.75%。
-- **Conservative 最強論點**：真正風險不是止損被觸發，而是止損跳空失效——毛利率 9.62% (V) 距個位數僅 63bp，MSI 差距 638bp (V) 持續擴大，一旦 Q3 破 9%，重新定價區間 NT$285–310 (N) 遠低於停損。
-- **Net：採 neutral。** 兩方對「量增利縮同時為真」並無實質分歧，爭的只是倉位。Aggressive 要求除息日開盤即建倉且以未驗證的 NT$312 (N) 取代已錨定的 NT$316 (V)，在無即時價格資料下不可接受；Conservative 把「分析師最低目標 NT$328 (V)」誤讀為技術支撐，據此砍半倉位屬論證瑕疵。1.5% NAV + 進場收緊至下沿 + 除息後 1–2 日觀察，是唯一同時吸收兩方有效論點的方案。
+- Aggressive 最強論點：bull 的核心證據（Q2 EPS 9.86 元、淨利年增 116.6%、Forward P/E 9.35x 折價、10 買 0 賣）屬已兌現事實，而 bear 的毛利率結構性壓縮論仍是外推假設；用未證實假設壓縮已驗證事實的部位，是不對稱的風控錯誤。原案 stop NT$328 僅距進場中樞一個 ATR14，確實是雜訊出場位。
+- Conservative 最強論點：D/E 由 0.74x 跳升至 1.37x、淨負債單季暴增、FCF/NI 僅 0.30，這是 Q1 財報**已實現**的數字而非預測；同時 MACD 死叉（直方圖 −2.07）與量能萎縮形成技術面交叉確認，且距 11/12 驗證點尚有兩個多月空窗，跳空滑價風險真實存在。
+- Net：我採 **neutral** 的權衡框架。Aggressive 誤把「絕對虧損占 NAV 比重低」當成加碼理由，忽略 conviction 分級本身就是曝險上限；conservative 則自相矛盾——一面主張 stop 落在 ATR 雜訊帶，一面把 stop 收得更近至 NT$332，且要求「完全確認後才進場」等於放棄已存在的 R:R。折衷後：size 1.2% NAV、stop NT$322（在 MA50 之下、NT$300–307 結構轉空區之上）、首批僅 20%，把時機風險交給分批而非部位大小承擔。不強制加 put 對沖——曝險已足夠小，避免多付一層成本。
 
 ## Monitoring trigger
-
-**若 Q3 2026 財報（或任何月度營收推算）顯示毛利率跌破 9%，無條件全數出清，不等 NT$316 停損。** 次要觸發：全年共識 EPS 下修至 NT$26 以下 (N)，或微星取得大型 CSP 新設計贏單 → 降至 0.5% NAV。
+若 **2026 年 9 月下旬竹科新廠產能報告顯示進度遞延，或管理層將 Q3 毛利率指引下調至 10% 以下**，即在停損觸發前主動減碼至半數並取消所有加碼計畫——此為「量增利薄」由暫時性轉結構性的最早可觀測證據。次要觸發：股價於 MACD 直方圖未回正前跌破 MA200（NT$275.50）路徑上的 NT$307，視同 invalidation 提前成立。
 
 ## Catalyst calendar
+- 2026-09 下旬 — 竹科新廠產能報告（毛利率回升至 11% 以上為加碼至 2.0% NAV 的條件）
+- 2026-11-12 — Q3 財報（毛利率是否守住 10%、淨負債/EBITDA 是否改善）
 
-- 2026-08-28 — 除息日 NT$12/股 (V)，**當日不進場**
-- 2026-09-01 至 02 — 籌碼觀察窗，確認止跌後建倉
-- 2026-09 中下旬 — Vera Rubin 首批 CSP 出貨（不構成加倉依據）
-- 2026-09-15 — 中國入出境管制生效
-- 2026-10 至 11 月 — Q3 財報，決定升至 3% NAV 或出清
-
----
-
-FINAL TRANSACTION PROPOSAL: **BUY**
-
-PORTFOLIO MANAGER COMPLETE
+FINAL DECISION COMPLETE

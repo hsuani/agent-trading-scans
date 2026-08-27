@@ -1,44 +1,42 @@
-FINAL TRANSACTION PROPOSAL: **BUY**
+FINAL TRANSACTION PROPOSAL: **HOLD**
 
-# Final decision — 2344.TW (華邦電子) as of 2026-08-27
+# Final decision — 2344.TW as of 2026-08-27
+
+## FINAL TRANSACTION PROPOSAL: **HOLD**
 
 ## Verdict
-**MODIFY**（方向與 stop 維持，收窄 entry、第二批改為條件式、加掛系統性對沖）
+MODIFY
 
-Phase tag: **Phase-2345 (full pipeline)**
-Conviction: **62%**（MEDIUM）
+維持交易員「不建新倉」的核心結論，但改寫風控參數：原案唯一停損 $110（距現價 -40.5%）不可接受，改採貼近波動率的分層出場；同時否決 aggressive 的選擇權卡位提案。
 
 ## Final trade card
-
-| 欄位 | 內容 |
+| Field | Value |
 |---|---|
-| 方向 | LONG |
-| Entry zone | 163 – 167 TWD (N)（首批）|
-| Stop | 148 TWD (V)（FY2026E EPS NT$16.13 × 9.2x P/E）|
-| Target 1 | 220 TWD (N) — R:R 2.8x |
-| Target 2 | 247 TWD (N) — R:R 4.2x |
-| Size | 合計 1.5% NAV，分兩批各 0.75%（首批立即，第二批條件式）|
-| 對沖 | 0.2% NAV EWT Put，1–2 個月到期 |
-| Horizon | 1–3 個月（核心持有至 2026-10 中旬 Q3 財報）|
-| Conviction | M (62%) |
+| Direction | LONG（僅限既有部位；新倉 0%） |
+| Entry zone | 不設進場區間 — 本日不建倉、不加碼 |
+| Stop | $150（最終出清位；$171.73 先減 1/3、$160 再減 1/3） |
+| Target 1 | $193.00 |
+| Target 2 | $233.50 |
+| Size | Small — 既有部位上限 0.5% NAV |
+| Horizon | 數週至一季（至 10 月 Q3 財報） |
+| Conviction | L |
+| R:R to T1 | 0.2 |
 
-第二批啟動硬性條件：9 月 TrendForce DRAM 月報合約價 QoQ 漲幅 **≥40%**。未達標則維持 0.75% NAV 至 Q3 財報。若跌破 163 (N) 未觸 stop，改於 155–160 (N) 布建首批。
+R:R 0.2 本身就是不建倉的量化證據：現價已貼近 T1，下檔風險卻是上檔的四倍以上。
 
-## 風險辯論裁決
+## Risk debate adjudication
+- Aggressive's strongest point：技術結構（站上所有均線、MACD 正值）確實未破，把高波動等同於趨勢反轉是誤判，故不支持清倉至 0%。
+- Conservative's strongest point：以 -40.5% 當停損不叫風控叫放任；在 EBITDA 分母量級未核實期間，任何倉位都是對未驗證數字下注。
+- Net：我採 neutral 較多。Aggressive 的致命傷是把「EPS 反推淨利 9.5 億元」這個未經官方確認的假說當成結論，再據此主張單一觸發即進場——用未證實數字支撐的先手優勢不是 alpha，是槓桿化的確認偏誤；其 Call Spread「2-4 倍」報酬亦無定價依據，且 2344.TW 個股選擇權流動性不足以承載 1.5-2% NAV，故整項否決。Conservative 的 $174.98（-5.4%）第一觸發則與其自身 76.7% 年化波動率論述矛盾，必被雜訊洗出。折衷取 20MA $171.73 起減、$160（約 2.5×ATR）續減、$150 出清。
 
-- **Aggressive 最強論點**：停損 148 (V) 距進場中點僅 11.4%，以估計年化波動率 ~50% 換算不到 1 倍月標準差，確實存在在 Q3 驗證前被噪音掃出的實質風險。此點成立，但解方不是放寬 stop 到 138 (V)（那會讓單筆尾部損失擴大至 0.48% NAV 卻無對應 conviction 支撐），而是**縮小首批部位**——用倉位而非停損距離承擔波動。
-- **Conservative 最強論點**：14:1:0 的 Buy/Hold/Sell 共識在週期頂峰語境下本身即是脆弱性訊號，且 DRAM 合約價 QoQ 由 90-95% 降至 58-63% 是可量化的動能衰退。fundamentals 資料全數來自二手新聞、ATR 不可用，執行面確有盲區。
-- **Net**：我採納 **neutral** 觀點。Aggressive 以「共識強 + 財報已兌現」推倉位至 2.5% NAV，忽略這兩者早已定價於 171 (N)；Conservative 把 stop 提到 155 落在自述的噪音帶內，屬自我矛盾，且以資料來源形式弱點推導倉位減半邏輯過跳。1.5% NAV 分兩批、stop 錨定估值失效點（而非統計距離）、加掛小額系統性對沖，是對 MEDIUM conviction 最誠實的表達。Forward P/E 10.6x 不是泡沫，但也不足以支撐 Large。
+## Monitoring trigger
+若 2026-09 月中 DDR5 現貨報價月度更新未達 QoQ +50%（含持平或轉跌），或任一大廠（SK Hynix／三星／Micron）宣布提前釋出中低階 DDR4/NOR 產能，即在股價觸及 $171.73 之前主動減碼至 0.25% NAV，不等停損。
 
-## Monitoring trigger（觸發即在 stop 前重評）
-
-**若 9 月與 10 月 TrendForce DRAM 合約價月報連續兩個月 QoQ 漲幅低於 20%**，無論股價位置，立即降評並主動減至零——這代表定價週期已進入終端線性放緩，148 (V) 的估值錨本身失效。次要觸發：南亞科提前公告 2027 年 Fab 5A 有效產能超預期。
+反向解鎖條件：財報單位落差獲官方數據核實且修正後估值落於合理區間，加上 9 月報價或 10 月財報至少一項兌現，方可重啟方向性建倉評估——屆時需於突破 $193 回測站穩後進場，不追高。
 
 ## Catalyst calendar
-
-- 2026-09 中旬 — TrendForce 9 月 DRAM 合約價月報（第二批建倉決策點）
-- 2026-09 底至 10 初 — Module A 月產能 15K→24K 執行進度
-- 2026-10 中旬 — **Q3 2026 財報**（核心驗證：OPM 是否突破 50%）
-- 2027-01 — Module B 高雄廠擴建啟動
+- 2026-09 月中 — DDR5 現貨報價月度更新（驗證 QoQ +50%）
+- 2026-10 — 2344.TW Q3 財報，驗證 EPS 5-7 元指引與毛利率 60%+
+- 即刻執行 — 核實 fundamentals.md 原始財報單位，重算 EV/EBITDA
 
 FINAL DECISION COMPLETE
