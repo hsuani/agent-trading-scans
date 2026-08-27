@@ -1,36 +1,72 @@
-FINAL TRANSACTION PROPOSAL: **HOLD**
+# 最終決策 — SIVE (Sivers Semiconductors AB) — 2026-08-24
 
-# Final decision — SIVE as of 2026-08-24
+## 決策摘要
 
-## Verdict
-MODIFY — 將交易員的 AVOID 立場正式化為「報告前硬性封鎖 0% NAV，報告後條件式 SHORT」的兩段式指令。
+**裁決**：HOLD / UNKNOWN  
+**信心**：20%  
+**Pipeline 級別**：Phase 1 Only（不符合正面選股標準）
 
-## Final trade card
-| 欄位 | 內容 |
-|---|---|
-| 方向 | 現階段無方向（0% 曝險）；條件觸發後為 SHORT |
-| 進場區間 | 不設價位（PRICE_DATA_UNAVAILABLE）。進場條件＝2026-08-27 Q2 報告消化完畢（發布後 24–48 小時）且下行觸發成立 |
-| 停損 | 事件式停損：現金水位 >6 個月燒錢量＋Adj. EBITDA 環比改善 >30%＋Going Concern 正式撤銷，三者同時成立即平倉。無數字停損 |
-| Target 1 | 同業 P/S 中值隱含合理值（參考錨點 ~SEK 20） |
-| Target 2 | 分析師共識目標 SEK 6.73 |
-| 規模 | **現在 0% NAV**；條件觸發後上限 SHORT 1.5% NAV，且僅限具 Nasdaq Stockholm 借券管道之機構帳戶執行，禁止於 OTC（SIVEF）建倉 |
-| 期限 | 事件驅動（0–3 天觀察）→ 觸發後 1–3 個月 |
-| 信念度 | 方向 HIGH；可執行性 LOW |
-| R:R to T1 | 無法計算（缺乏可信價格輸入） |
+---
 
-明令禁止：不建立任何 LONG lottery 倉位，含 0.5% 以下投機倉。
+## Phase 1 訊號評分
 
-## Risk debate adjudication
-- 激進派最強論點：Going Concern＋EBITDA YoY -130%＋內部人淨賣出逾 200 萬股，是本輪掃描中不對稱性最高的空方標的，AVOID 確實放棄了實質 alpha。
-- 保守派最強論點：二元存續風險下，止損機制在 gap-down 與微型股流動性螺旋中失效；名義「固定虧損上限」不成立。
-- 淨裁定：**採納中立派**。方向判斷上空方全面獲勝，但激進派的 R:R 1.3:1 與 EV +42% 全部建立在推測價格 SEK 65 與前高 SEK 110 之上——在 PRICE_DATA_UNAVAILABLE 條件下，這不是估算而是虛構，任何以此定規模的行為都違反風控紀律。保守派方向正確但將「零售流動性陷阱」錯誤外推為機構亦不可執行。故：報告前歸零、報告後條件式小規模做空。另 news.md 誤載 Sight Sciences 資料，已全數排除，此資料完整性缺陷本身即構成降低規模的獨立理由。
+| 訊號 | 條件 | 結果 | 說明 |
+|---|---|---|---|
+| 基本面 | 收入 YoY >15% AND FCF/NI >-1 | ❌ FAIL | Q1 2026 YoY -22%；EBITDA 虧損加深 |
+| 市場（技術面） | RSI14 <72 AND MACD AND price >MA50 | ❌ N/A | PRICE_DATA_UNAVAILABLE（Nordic 上市，Yahoo 403） |
+| 新聞 | 淨標題傾向正面 | ⚠️ BORDERLINE | MIXED-TO-BULLISH；Q1 疲軟抵消合作夥伴利多 |
+| 情緒 | 分析師共識 ≥60% BUY | ✅ PASS | 4 Buy + 2 Strong Buy + 1 Hold = 86% BUY |
+| 估值 | Forward P/E <35x 或成長催化劑確認 | ❌ FAIL | 股價 SEK ~110 vs 分析師目標 SEK 6.87–11.49；估值嚴重偏高 |
 
-## Monitoring trigger
-若 2026-08-27 Q2 報告揭示（任一）：現金及現金等價物低於 6 個月燒錢量、宣布稀釋比例 >20% 的緊急增發、或營收 YoY 衰退超過 -22%——結構性崩壞確認，啟動 SHORT 1.5% NAV 上限授權。反之若三項正向條件同時成立，SIVE 轉入觀察名單，維持 0%。
+**正面訊號數：1/5 → 不符合 ≥3 門檻，Phase 1 Only**
 
-## Catalyst calendar
-- 2026-08-27 — Q2 2026 財報（盤前），生死存亡節點
-- 2026 Q4 — 美國國防預算敲定；LiDAR 量產預定啟動
-- 2027 H1 — AI CPO 初期訂單驗證
+---
 
-FINAL DECISION: AVOID | Conviction: HIGH | Size: 0% NAV
+## 不進入完整 Pipeline 之原因
+
+1. **估值嚴重超買**：股價約 SEK 110，為分析師平均目標 SEK 8.5 的 ~13 倍，12 個月回報空間為負
+2. **近期財務衰退**：Q1 2026 營收 -22% YoY（FX 調整後 -11%），為啟動完整分析之依據不足
+3. **技術數據不可用**：SIVE 為 Nasdaq Stockholm 上市股，非美股，yfinance 無數據；無法判斷 RSI/MA 位置
+4. **流動性考量**：Nordic 小型股，非 Serenity 典型標的（可能為 serenity.py 誤抓）
+
+---
+
+## 投資結論
+
+**不建議進場。** 
+
+SIVE 具有真實的長期催化劑（AI CPO、LiDAR 量產、SATCOM），但目前估值已完全脫離基本面支撐。股價在 2026 上半年飆漲 1,373% YoY，而 Q1 業績卻顯示收入下滑 22%，顯示市場定價了遠超任何合理預期的成長情景。
+
+分析師目標中位數 ~SEK 8.5，現股價 ~SEK 110，即使 2027 轉型年如期兌現，也難以支撐現有估值。
+
+**監控觀察點**：
+- 2026-08-27 Q2 季報：若 Q2 收入 YoY 轉正 +30% 以上，可重新評估
+- Q4 2026 LiDAR 客戶量產確認：若達 $28-53M 生命週期收入軌跡，考慮小部位試探
+- 若股價回落至 SEK 15-25 區間（分析師目標附近），估值風險降低後再評估
+
+**目前操作**：無倉位，無進場意向。
+
+---
+
+## 最終交易記錄
+
+```
+TICKER:     SIVE (Sivers Semiconductors AB, OMXSTO)
+DATE:       2026-08-24
+VERDICT:    HOLD / UNKNOWN
+CONVICTION: 20%
+DIRECTION:  N/A — 無進場
+ENTRY:      N/A
+STOP:       N/A
+TARGET_1:   N/A
+TARGET_2:   N/A
+SIZE:       0% NAV
+HEDGE:      N/A
+PHASE:      Phase-1-Only (1/5 positive signals — 未達門檻)
+REASON:     估值嚴重超買 (SEK 110 vs 目標 SEK 8.5)；Q1 營收 -22% YoY；技術數據不可用
+NOTE:       無即時價格可靠資料 (Nordic 上市)，暫不給進出場價位
+```
+
+---
+
+FINAL DECISION COMPLETE — PHASE 1 ONLY STUB

@@ -2,36 +2,58 @@ FINAL TRANSACTION PROPOSAL: **BUY**
 
 # Final decision — AMZN as of 2026-08-24
 
-## FINAL TRANSACTION PROPOSAL: **BUY**
+## FINAL TRANSACTION PROPOSAL: **BUY**（條件式建倉，觸發前不持倉）
 
 ## Verdict
-MODIFY
+**MODIFY** — 方向維持 LONG，但下修 size、下移 stop、加掛尾部對沖，並保留 2026-08-30 觸發條件。
 
 ## Final trade card
 | Field | Value |
 |---|---|
 | Direction | LONG |
-| Entry zone | $258.00 – $262.00（分兩批，不追高於 $266） |
-| Stop | $249.00（財報前若有未實現獲利，上移至 $255） |
-| Target 1 | $278.00 |
-| Target 2 | $296.00 |
-| Size | Small（0.5% NAV） |
-| Horizon | 1–3m，跨越 2026-10-29 Q3 財報 |
-| Conviction | M |
-| R:R to T1 | 1.6 |
+| Entry zone | $228 – $240（估算值，見 NOTE） |
+| Stop | $208 |
+| Target 1 | $280 |
+| Target 2 | $326 |
+| Size | Small-Medium（1.25% NAV） |
+| Horizon | 3–6 個月；Q3 2026 財報為首要評估節點 |
+| Conviction | M（60%） |
+| R:R to T1 | 1.77 |
 
-修改內容（相對 trade_proposal）：新增「財報前有帳面獲利即上移停損至 $255」的鎖利規則；新增板塊曝險上限條款（若組合已持 MSFT／GOOGL／META／NVDA 等 AI CapEx 部位，AI CapEx 單一因子合計不得超過 4% NAV，超過則以 QQQ put 做板塊層級對沖，不逐股對沖）。駁回 aggressive 的立即加碼至 Medium；駁回其 Nov 20 $270/$300 call spread——本案核心疑慮是資本效率而非時點，用選擇權押注二元事件是把「未解的 crux」包裝成「已定義的風險」，不批准。
+補充執行條款：
+- **建倉觸發**：2026-08-30 前期業績預告，AWS 指引 ≥35% YoY 且 CapEx 未上調至 $240B+ → 建 1.25% NAV；指引 30–35% → 減至 0.75% NAV；低於 30% 或 CapEx 再上調 → 取消建倉，轉 AVOID。觸發前禁止任何倉位。
+- **對沖**：同步買進 PUT 行使價 $200、到期 2027-03，權利金上限 0.10% NAV，覆蓋 FTC 2027-02-09 庭審視窗。
+- **Bull call spread 不予批准**：在 PRICE_DATA_UNAVAILABLE 下無法確認真實權利金與價外程度，結構性槓桿缺乏定價依據。
 
 ## Risk debate adjudication
-- Aggressive's strongest point：AWS 37% YoY 與連四季 EPS 正驚喜是已實現數據，非預測；尾隨 P/E 20.8x 未過度延展，等待「錦上添花」訊號確有機會成本，且加碼多承擔的絕對美元風險確實很小。
-- Conservative's strongest point：真正的尾部風險是財報後跳空滑價，停損價位在跳空面前不成立；內部人 6 個月淨賣出 $365M 零買入，配上分析師 0 賣出評等與散戶情緒 83/100，是共識過度擁擠的典型組合。
-- Net：我採 neutral 的權重。理由是 aggressive 拿 AWS 增速去回答一個它根本沒回答的問題——投資論點的 crux 是 FCF 轉換（FCF/NI 0.099、P/FCF 367x），AWS 再快也不解除 367x 的無安全邊際。但 conservative 要求「量能回升＋MACD 收斂」才進場，是拿同一個箱體不確定性扣兩次分數，且其 Scenario 機率（25%/20%/15%）無明確依據。0.5% 分批已是對該不確定性的定量回應，不再疊加技術確認。
+- **Aggressive 最強論點**：Conservative 的 stop $220 距入場中點僅 -6%，遠低於 AMZN 年化 25–30% 波動所對應的合理季度緩衝，等同讓噪音替基本面做出場決定。此點成立，故止損採 $208 而非 $220。
+- **Conservative 最強論點**：所有價位皆為分析師目標反推，無 ATR、無技術支撐確認；疊加內部人 7–8 月集中賣出 $346.97M、12 個月零買入，且 92% 分析師 BUY 屬擁擠交易。在此執行基礎上放大至 2.5% NAV 不具正當性。
+- **Net**：我採 **neutral** 權重最高。基本面錨點（AWS +36.7%、合約負債 $496B）確實硬，但這是論文層優勢，不能補償執行層的價格盲區。Aggressive 主張「等 11 天損失 Alpha」預設預告必為正面，屬結果偏誤；Conservative 則將執行層缺陷誤植為論文層否定。1.25% NAV + stop $208 + PUT 對沖，是唯一同時尊重兩者有效批評的組合。
 
 ## Monitoring trigger
-若 MSFT、GOOGL 或 META 任一家在 AMZN 財報前公布 CapEx 指引「上修」且股價當日跌逾 5%，視為 AI CapEx 敘事板塊級重定價，須在 $249 停損被觸及前主動減碼一半並重評多方論點——此情境屬「錯殺但停損照樣觸發」，不應被動等待。
+**若 2026-08-30 預告揭示 CapEx 全年指引上調至 $240B+，或 AWS 指引低於 30% YoY，立即取消／平倉，不等 $208 止損被觸及。** 此二者直接推翻投資計畫的兩大 crux（FCF 轉換效率、AWS 成長持續力）。
 
 ## Catalyst calendar
-- 2026-10-29 — AMZN Q3 財報：AWS 同比增速與 CapEx 指引方向，驗證「CapEx 軟著陸」vs「資本效率危機」
-- 2026-10 月中下旬 — MSFT／GOOGL／META Q3 財報，AI CapEx 板塊敘事先行指標
+- 2026-08-30 — 第三季前期業績預告：AWS 指引 + CapEx 執行進度（建倉觸發點）
+- 2026-09-XX — Anthropic 融資更新 / AWS AI 基礎設施公告
+- 2026-10-XX — Q3 2026 正式財報（首要評估節點；驗證後方可加至 1.5% NAV）
+- 2027-02-09 — FTC 反壟斷庭審開庭（中期尾部風險邊界）
+
+```
+TICKER:     AMZN
+DATE:       2026-08-24
+VERDICT:    BUY
+CONVICTION: 60%
+DIRECTION:  LONG
+ENTRY:      $228 – $240（估算區間，非驗證市場報價）
+STOP:       $208
+TARGET_1:   $280
+TARGET_2:   $326
+SIZE:       1.25% NAV
+HEDGE:      PUT $200 Mar 2027，權利金上限 0.10% NAV
+PHASE:      Phase-1-through-4
+REASON:     AWS +36.7%（18 季新高）與 $496B 合約負債構成可驗證的硬數據錨點，支撐 LONG 方向；惟 CapEx $220B 的 FCF 短壓、內部人淨賣出與 FTC 尾部風險，要求以縮減 size 及尾部對沖取代滿倉押注。
+NOTE:       PRICE_DATA_UNAVAILABLE — Yahoo Finance 代理 403，所有價位均由分析師共識目標 $326.07 與隱含現價 ~$234 反推而得，無 ATR、無技術支撐確認。執行前交易員必須以實際成交價重校 entry/stop；若真實現價偏離 $234 逾 5%，止損須按相同 -11% 比例重設而非沿用絕對值。
+```
 
 FINAL DECISION COMPLETE

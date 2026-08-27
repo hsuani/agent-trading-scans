@@ -1,62 +1,46 @@
-# MSFT（Microsoft Corporation）— 最終決策
+FINAL TRANSACTION PROPOSAL: **BUY**
 
-**日期**: 2026-08-24
-**分析階段**: Phase 1 Only（正向訊號不足，不進入 Phase 2-4）
+# Final decision — MSFT as of 2026-08-24
 
----
+> **價格完整性聲明：Yahoo Finance 遭代理封鎖（HTTP 403），PRICE_DATA_UNAVAILABLE。以下所有價位均為「PT 隱含估計，非即時市場價格」，不得視為實際成交或報價。執行前須以券商即時報價重新校驗；若實際市價已高於 $470，本卡片不得執行。**
 
-## Phase 1 評分摘要
+## Verdict
+**MODIFY** — 方向維持 LONG，但收緊入場上限、上移止損、強制分批。
 
-| 訊號 | 判斷 | 通過？ |
-|------|------|--------|
-| 基本面 | yfinance 代理 403 封鎖；無法確認 YoY 營收成長或 FCF/NI | ❌ |
-| 技術面 | PRICE_DATA_UNAVAILABLE（代理 403） | ❌ |
-| 新聞 | Azure +43% YoY 強勁，但 CapEx $190B（超預期 $43B）壓縮毛利率至 67.6%；8/17 下跌 3.17%（晶片部署缺口警告）；Morgan Stanley 警告 AI 支出超收入成長 | ❌ 混合偏空 |
-| 情緒/分析師 | 分析師共識 95% BUY（33 BUY/1 HOLD/0 SELL），目標價 $564.49 (+18.6% 上行空間）；機構大持倉（BlackRock $226.6B、Vanguard $181B）正向 | ✅ |
-| 估值 | 無即時 P/E（代理封鎖）；CapEx $190B 侵蝕自由現金流；Azure 雖強但前瞻 P/E 估計 >35x；EPS 無超預期催化劑確認 | ❌ |
+## Final trade card
+| Field | Value（PT 隱含估計，非即時市場價格） |
+|---|---|
+| Direction | LONG |
+| Entry zone | $460 – $470 |
+| Stop | $430（財報後跳空缺口中點 ~$427 上方） |
+| Target 1 | $569（56 位分析師共識平均） |
+| Target 2 | $618（共識上緣） |
+| Size | Small→Medium：Tranche 1 = 0.75% NAV（即時），Tranche 2 = 0.75% NAV（10 月確認後），總上限 1.5% NAV |
+| Horizon | 3–6 個月，首個驗證節點 2026 年 10 月 |
+| Conviction | M — **62%** |
+| R:R to T1 | **2.97x**（中點 $465） |
 
-**通過訊號數：1 / 5**（需 ≥3 進入 Phase 2-4）
+**R:R 數學驗證（強制）**：中點 $465，風險 $465−$430 = $35；T1 報酬 $104 → **2.97x** ✓；T2 報酬 $153 → **4.37x** ✓。上緣 $470：風險 $40、報酬 $99 → **2.48x** ✓。$480 入場僅 1.78x 且緩衝過薄，**明令拒絕**。全數高於 1.5x 門檻，不觸發 REJECT 條款。
 
----
+## Risk debate adjudication
+- **Aggressive 最強點**：Azure $100B、RPO $678B（YoY +84%）、AI 經營利潤 +123% 是財報已驗證硬數據，純觀望缺乏依據。
+- **Conservative 最強點**：FCF/NI 0.65–0.75 遠低於 0.90、CapEx 剛性承諾至 2032 年、內部人士 70:1 淨賣出 $239M，三者共同顯示「好消息已充分計價」。
+- **Net：採納 neutral 框架。** 進取方的 $400 止損（6.7 倍 ATR）與 2.5% NAV 在無即時市價下屬信念超支；保守方 $460 硬上限在無報價環境可能完全錯過窗口。以 $460–$470 入場、$430 止損、分批 1.5% NAV 同時滿足 R:R 門檻與尾部保護。
 
-## 排除理由
+## Monitoring trigger
+**若 2026 年 10 月 FY2027 Q1 財報 Azure 增速低於 40%，或 FCF/NI 跌破 0.65 且 CapEx 指引再上修，即在止損觸及前主動清倉，並取消 Tranche 2。**
 
-- **新聞混合偏空**：CapEx $190B（遠超預期 $147B）壓縮毛利率與 FCF；競爭加劇（Google Cloud +82% YoY、Meta 進入雲端市場）；FTC 反壟斷調查擴大；EU AI Act 合規成本上升
-- **基本面數據缺失**：yfinance proxy 403 — 無法取得財務報表驗證
-- **技術面缺失**：PRICE_DATA_UNAVAILABLE
-- **估值壓力**：$190B CapEx 年份前瞻 P/E 難以支撐；FCF 受壓
-- **內部人賣超**：CEO Nadella 累計賣出 $430M（歷史）；CFO Althoff 8 月初賣出 10,000 股
+## Exit / 廢止條件
+1. 收盤跌破 $430 → 全數出場，不攤平。
+2. FTC 作出強制剝離 Azure/Office 初步裁定 → 立即出場（跳空風險，不等止損）。
+3. Tranche 2 唯一放行條件：Azure ≥ 45% **且** FCF/NI ≥ 0.80。
+4. 觸及 T1 $569 減碼一半，餘倉止損上移至成本價。
+5. 不採納 Bull Call Spread（無即時市價，options 定價基礎不穩）。
 
----
+## Catalyst calendar
+- 2026-08-31 — CEO Nadella 計畫賣出 80% 績效股，觀察情緒衝擊
+- 2026-09 — Maia 300 AI 加速器發佈
+- 2026-10 — **FY2027 Q1 財報（最關鍵驗證節點）**
+- 持續 — FTC / CMA 反壟斷調查進展
 
-## 正向因素（監察備忘）
-
-- Azure Q2 +43% YoY，年化突破 $100B 里程碑，18 季以來最強成長
-- Copilot 付費座位 3,000 萬，$250B OpenAI 長期合約鞏固 AI 生態
-- Q2 財報公布後股價單日 +15.5%（2020 年來最大漲幅）
-- 機構持股穩定（445 家機構，BlackRock 7.2%、Vanguard 5.9%）
-- 6 月 FCF $19.6 億超預期（短暫正面）
-
----
-
-## 決策
-
-**VERDICT: HOLD（觀察，暫不操作）**
-**方向**: N/A
-**信心**: 低（僅 1/5 正向訊號）
-**建議部位**: 0%
-
-**理由**：MSFT 基本面長期強勁（Azure 霸主地位、Copilot 商業化），但 $190B CapEx 年份的 FCF 壓力、競爭格局惡化（Google Cloud +82%）及新聞情緒混合偏空，導致不符合本系統進入 Phase 2-4 的最低門檻（≥3 訊號）。待 CapEx ROI 量化（Copilot/Azure AI 訂單確認）及 FCF 恢復後重評。
-
----
-
-## 注意事項
-
-- 無即時價格，不給進出場價位
-- Q1 FY2027 財報（預期 10 月底）為關鍵重評節點
-- 若 Azure 成長率維持 >40% 且毛利率回升 >68%，應重評
-- CapEx 若展示明確 AI ROI（企業 Copilot 席位翻倍）則可能觸發正向信號
-
----
-
-*Phase 1 only — 不進行 Phase 2-4 完整辯論流程*
+FINAL DECISION COMPLETE

@@ -1,134 +1,87 @@
-# 情緒分析 — AMZN (截至2026-08-24)
+# 情感分析 — AMZN（亞馬遜公司）截至 2026 年 8 月 19 日
 
 ## 分析師共識
 
-**買入/持有/賣出分佈**：57位分析師建議買入、3位建議持有、0位建議賣出（共60位分析師）
+**買入/持有/賣出比例：** 截至 2026 年 8 月 18 日，36 位分析師給予 AMZN「買入」評級共識。約 92% 的 72 位分析師追蹤評級為買入。
 
-**買入比例**：95%（遠超60% PASS門檻）
+**價格目標：**
+- 平均 1 年期價格目標：$326.07
+- 價格目標範圍：$230（下檔 -11.98%）至 $400（上檔 +53.07%）
+- 中位升幅潛力：39.17%（基於 52 項建議）
 
-**目標價範圍**：
-- 平均目標價：$326.84
-- 中位目標價（匯集36位分析師）：$312.19
-- 區間：$230至$405
-- 隱含上漲空間：24.5%-25.89%
+**近期動向：**
+- Q2 2026 業績超預期：AWS 成長加速至 37% YoY（分析師預期 31%）
+- AWS 季度營收達 $42.2B（年化 $169B），AI 及晶片業務各超過 $25B 年化率
+- Evercore ISI 將亞馬遜列為 2026 年大型科技股首選
+- 儘管短期資本支出擔憂與關稅不確定性，分析師仍維持強勢看法
 
-**近期升級趨勢**：Roth Capital和Morgan Stanley在近期上調目標價，聚焦AWS利潤改善與AI投資回報加速。最近3個月零降級動作。
+## 零售社群情感
 
-**關鍵驅動因素**：
-- AWS連續5季加速，Q2雲端收入$42.23B年增36.7%（18季最高增速）
-- 雲端營業利率39.4%，反映規模與槓桿提升
-- AI驅動的工作負載擴展與企業AI支出增長
+**StockTwits 情感：** 83/100 —— 明顯看漲
+- 日均提及數：4,255（相比三個月前增加 73%）
+- 情感主調：制度化積累主導，AI 敘述支撐多頭
 
----
+**關鍵主題：**
+1. **AWS AI 雲端優勢：** AWS 競爭護城河與 AI 雲端戰場為核心驅動力
+2. **資本配置流向：** 大型機構提高持股，散戶情感被淡化，資本流與 AI 預期支撐多頭敘述
+3. **資本支出擔憂：** 2026 年 CapEx 指導 $220B 引發自由現金流短期憂慮；12 個月滾動 CapEx 同比增 64%
 
-## 零售社群氣氛
+**社群情緒评分：** Reddit 社群情緒中立 57%，活動度低
 
-**Reddit / r/wallstreetbets 與 r/stocks**：無法連接（代理限制）
+## 機構持股
 
-**StockTwits / X 輿論**（API區塊，但從新聞聚合摘取）：
-- **主流傾向**：強勢看多（bullish）
-- **頻繁主題**：
-  - AWS AI 領先地位與雲端盈利轉折點
-  - 機構大量積極進場（institutional accumulation）
-  - 股價衝破$3兆市值里程碑
-- **樣本言論**："Institutional accumulation and AI narrative dominate sentiment. AWS moat and AI cloud battle are key catalysts."
-- **修正噪音**：零售買家短期回檔被視為低吸機會
+**機構持股濃度：**
+- 機構投資者：63.97%
+- 亞馬遜內部人士：8.27%
+- 散戶：27.76%
 
-**綜合零售基調**：強勢樂觀，AI敘述勓蓋淨拋壓
+**主要機構持股人：**
+1. Vanguard Group：631.18M 股，$170.8B，佔比 5.87%
+2. BlackRock：453.92M 股，$122.8B，佔比 4.22%
+3. State Street：390.45M 股，$105.7B，佔比 3.63%
+4. Fidelity：328.43M 股，$88.9B，佔比 3.05%
 
----
+**動態：** Vanguard、BlackRock、State Street 的被動式管理者合計 18% 持股超越 Bezos 個人的 8.8%，形成分散治理格局。
 
-## 內部人交易活動
+## 內部人交易
 
-**6個月淨流向**（最近可得）：淨賣出 $39.7M（最近3個月無買入）
+**12 個月淨情感：** **明顯看跌信號**
+- 過去 12 個月內部人淨賣出：$458.7M
+- 內部人買進：0（零購買）
+- 最近 100 筆交易：買入 106 萬股，賣出 148 萬股（淨賣出）
 
-**近期重要交易**（2026年7月-8月）：
-- **Douglas J. Herrington (CEO, Amazon Stores)** — 連續賣出
-  - 2026-08-03：賣出1,000股 @ $278.39/股
-  - 2026-07-01：賣出1,000股 @ $239.77/股
-- **總計**：3筆賣出共$346.97M，1筆禮品轉移22,000股
+**近期活動（2026 年 7-8 月）：**
+- 3 筆股票賣出，總額 $346.97M
+- 1 筆股票贈與（22,000 股）
+- 過去三個月淨賣出：約 $51.6M，零對應買進
 
-**活動特徵**：
-- 聚焦董事會與高管定期套現（Rule 10b5-1計畫）
-- 無CEO/CFO級大額買入
-- 反映標準財富多元化，非公司基本面投資信號
+**解讀：** 高層執行團隊一致賣出信號通常反映短期估值過高的擔憂，儘管營業基本面堅實，但內部人賣出行為對情感構成下行壓力。
 
-**情緒評分**：中立（內部人拋售常見於高估值階段，但規模相對小，未觸發警示）
+## 淨情感評分
 
----
+### 綜合評估：**看漲（BULLISH）**—— 信心中高
 
-## 機構持股與流動
+**看漲驅動因素：**
+- 分析師共識強勢買入（92%；平均目標 $326）
+- Q2 2026 業績大幅超預期（AWS 37% 成長、營收 $200.6B +20% YoY）
+- AI 雲端敘述與 AWS 護城河支撐長期增長故事
+- 機構積累（大型被動式管理者持續增持）
+- 零售情感強烈看漲（83/100 StockTwits，提及數 +73%）
 
-**當前持股濃度**：
-- 機構持股率：65.69%（截至2026-05-27）
-- 頂級機構持有人：Vanguard (7.2%)、BlackRock (5.9%)、State Street (~3.6%)
+**看跌警示：**
+- 內部人交易訊號明顯看跌：$458.7M 年度淨賣出，零購買
+- 資本支出疑慮：$220B 2026 CapEx 指導引發 FCF 短期壓力
+- 股票估值風險：GF Value 指數顯示 5.2% 高估
+- 近期股價表現平緩（8 月中旬交易陷入困境）
 
-**Q2 2026 流動動向**（13F 追蹤）：
-- 樣本72檔基金：20檔增持、21檔減持、4檔新開倉位
-- **警告訊號**：追蹤基金的聚合股份數驟降97.5%（$6.85B→$173.7M），但主因為Vanguard/BlackRock尚未提交該季13F報告
-- **評估**：機構大戶持股穩定，中位基金行為混雜（典型盤整期特徵）
+### 分析師 vs. 零售背離標誌：**否** —— 一致性看漲
+- 分析師與零售均呈看漲，俱受 AWS AI 敘述驅動
+- 內部人賣出是主要背離信號，但未改變市場共識
 
-**流動結論**：淨流向評估為**中性至溫和正面**——大型被動持有人未見減持信號，主動基金行為分化
-
----
-
-## 華爾街情緒總結
-
-**共識基調**：極度樂觀（unanimous bullish）
-
-**量化指標**：
-- 分析師賣出比例：0%（62位分析師中零賣出）
-- 目標價隱含上漲：+32%（基於$353.44目標價 vs. $267.28當前價）
-
-**敘述重心**：
-1. **AWS AI 戰役領先**——雲端營業利率擴張與AI負荷加速
-2. **財報強勁**——Q2營收$200.61B YoY +19.6%，超預期
-3. **資本流入加速**——機構積極建倉與散戶FOMO 結合
-
-**負面因素**（被淹沒）：無；分析師報告中對價估風險提及甚少
+### 整體信心級別：**中高** —— 估值與短期 CapEx 為關鍵風險
 
 ---
 
-## 情緒淨分數與信號判定
+**資料來源日期：** 2026 年 8 月 18–19 日
 
-| 指標 | 數值 | 權重 |
-|------|------|------|
-| 分析師 BUY % | 95% | ⭐⭐⭐⭐⭐ |
-| 機構流向 | 中性正面 | ⭐⭐⭐ |
-| 零售基調 | 強勢看多 | ⭐⭐⭐⭐ |
-| 內部人信號 | 中立（套現） | ⭐⭐ |
-
-**綜合評估**：**強勢樂觀（Strongly Bullish）**
-- 分析師共識極端一致（95% BUY），零賣出背書
-- 機構持股穩定，大戶未減速
-- AWS AI 敘述主宰市場焦點，預期週期上升期
-
-**信號結果**：✅ **PASS**
-- 分析師 BUY 比例 95% >> 60% 門檻  
-- 機構流向淨正面
-
-**風險標記**：⚠️ 散戶/分析師傾斜度一致性過高；無對沖空頭研究；內部人持續拋售雖小規模但值得追蹤
-
-**進一步觀察**：無顯著乖離信號（divergence）。零售與華爾街同向，均指向AI/雲端週期向上
-
----
-
-**情緒報告完成** 
-
-最後更新：2026-08-24 | 數據截止：2026-08-23
-
----
-
-## 資料來源
-
-- [Amazon Stock Forecast 2026–2030 | Q1 2026 Earnings | Capital.com](https://capital.com/en-int/market-updates/amazon-stock-forecast-28-05-2026)
-- [Amazon.com Analyst Ratings and Price Targets | NASDAQ:AMZN | Benzinga](https://www.benzinga.com/quote/AMZN/analyst-ratings)
-- [Amazon.com (AMZN) Stock Forecast & Analyst Price Targets](https://stockanalysis.com/stocks/amzn/forecast/)
-- [AMZN Insider Trading - Amazon.com Inc - Alpha Spread](https://www.alphaspread.com/security/nasdaq/amzn/ownership/block/insider-trading)
-- [Amazon Insider Transactions - Yahoo Finance](https://finance.yahoo.com/quote/AMZN/insider-transactions/)
-- [AMZN Institutional Ownership: 65.69%](https://www.gurufocus.com/term/InstitutionalOwnership/AMZN)
-- [Amazon 13F Update: Q2 2026](https://stockpil.com/amazon-13f-update-q2-2026)
-- [Amazon.com (Nasdaq:AMZN) - Stock Analysis - Simply Wall St](https://simplywall.st/stocks/us/retail/nasdaq-amzn-amazoncom)
-- [AMZN Stock Soars As AWS AI Boom Ignites Massive Rally - StocksToTrade](https://stockstotrade.com/news/amazoncom-inc-amzn-news-2026_08_03/)
-- [Amazon Crossed $3 Trillion. Here's What Comes Next. - 24/7 Wall St.](https://247wallst.com/investing/2026/08/17/amazon-crossed-3-trillion-heres-what-comes-next/)
-- [Amazon's Price Target Says +32% and Not a Single Analyst Says Sell - 24/7 Wall St.](https://247wallst.com/investing/2026/08/13/amazons-price-target-says-32-and-not-a-single-analyst-says-sell/)
+SENTIMENT ANALYSIS COMPLETE
