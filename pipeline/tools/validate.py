@@ -107,8 +107,13 @@ def main():
                 issues.append({"level": "INFO", "ticker": tk, "sector": sec,
                                "msg": f"缺 {'/'.join(missing)} (rr={t.get('rr_t2')})"})
 
-        # 2. price sanity
-        if emid is not None:
+        # 2. price sanity — skipped when the card declared no real-time price.
+        # A PRICE_DATA_UNAVAILABLE card states its entry as a condition rather than
+        # a level ("2026 年 9 月上旬 8 月月營收公布…"). Any number derived from that
+        # is not a price the analyst claimed, so comparing it to the live quote and
+        # calling it a hallucination blames the analyst for the parser's guess.
+        # _first_nums no longer yields a number for those, this is defence in depth.
+        if emid is not None and not price_pending:
             lp = live_price(tk)
             if lp:
                 off = abs(emid / lp - 1) * 100

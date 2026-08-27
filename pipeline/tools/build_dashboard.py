@@ -1206,13 +1206,69 @@ def _esc(s) -> str:
     return (str(s) if s is not None else "").replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
 
 
+# Tokens that are digits but never a price. Dates are the dangerous ones: when a
+# scan hits PRICE_DATA_UNAVAILABLE the analyst correctly declines to quote levels
+# and writes a conditional entry instead ("2026 年 9 月上旬 8 月月營收公布…"), and
+# without this the first two numbers are the YEAR and the MONTH — 3017.TW and
+# 6805.TW both derived an "entry price" of (2026+9)/2 = 1017.5 that way, then got
+# reported as hallucinated prices. The analyst had done the right thing; the
+# parser invented the number.
+_NON_PRICE_PATTERNS = (
+    r"\d+(?:\.\d+)?\s*[xX]\b",        # R:R ratios "3.9x"
+    r"\d+(?:\.\d+)?\s*%",              # percentages
+    r"20\d{2}\s*[-/]\s*\d{1,2}(?:\s*[-/]\s*\d{1,2})?",   # 2026-09 / 2026/09/15
+    r"\d{4}\s*年",                      # 2026 年
+    r"\d{1,2}\s*月",                    # 9 月
+    r"\d{1,2}\s*日",                    # 15 日
+    r"\d{4}\s*Q[1-4]",                  # 2026Q3
+    r"Q[1-4]\s*\d{2,4}",                # Q3 2026
+    r"\b[QH][1-4]\b",                   # bare Q2 / H2 — the digit is a period, not a price
+    r"\d+(?:\.\d+)?\s*[億萬兆]",        # NT$16.4 億 revenue magnitudes, not share prices
+    r"\d+(?:\.\d+)?\s*(?:pp|bps|BPS)", # margin deltas
+    # horizons: "1–3 個交易日", "4-6 週", "24–48 小時", "2-3 日"
+    r"\d+(?:\.\d+)?(?:\s*[–—~-]\s*\d+(?:\.\d+)?)?\s*個?\s*"
+    r"(?:交易日|營業日|工作天|小時|天|週|周|日|月|季)",
+)
+
+
+# A card that says any of these is explicitly refusing to quote a level, so any
+# number in the same field belongs to a condition, not to a price. Kept in sync
+# with validate.py's _PP_PHRASES.
+_DECLINED_PHRASES = ("PRICE_DATA_UNAVAILABLE", "無即時", "暫不給", "無法計算",
+                     "不設固定價位", "不設價位", "不填列", "不給具體")
+
+# Numbers written as money. When a field has any of these, they are the only
+# numbers worth reading — everything else in the sentence is EPS, revenue,
+# a horizon in days, or an R:R target.
+# Also captures the far side of a range, because entry is usually written
+# "NT$390–401" with the marker only on the low end — taking just 390 shifts the
+# midpoint that every derived stop and target hangs off.
+_MONEY_RE = re.compile(
+    r"(?:NT\$|US\$|TWD|USD|\$)\s*(\d+(?:,\d{3})*(?:\.\d+)?)"
+    r"(?:\s*[–—~-]\s*(?:NT\$|US\$|TWD|USD|\$)?\s*(\d+(?:,\d{3})*(?:\.\d+)?))?")
+
+
 def _first_nums(s, n=2):
-    """First n numeric values in a string (ignores R:R 'x' ratios & %)."""
+    """First n numeric values in a string, skipping anything that is not a price.
+
+    Returns [] when nothing price-like is left, which is the correct answer for a
+    conditional/prose entry — callers treat a missing level as 價格待補, not as a
+    bad price. Getting this wrong is not cosmetic: the old version averaged the
+    year and month out of "2026 年 9 月上旬…" into an entry price of 1017.5, which
+    then showed on the dashboard and got reported as a hallucinated price.
+    """
     if not s:
         return []
-    # strip R:R-style "3.9x" / "1.5 x" and percentages so they don't leak in
-    cleaned = re.sub(r"\d+(?:\.\d+)?\s*[xX]", " ", s)
-    cleaned = re.sub(r"\d+(?:\.\d+)?\s*%", " ", cleaned)
+    if any(ph in s for ph in _DECLINED_PHRASES):
+        return []
+    # Strip non-price units BEFORE looking for money, or "NT$16.4 億" reads as a
+    # share price of 16.4 instead of a revenue figure.
+    cleaned = s
+    for pat in _NON_PRICE_PATTERNS:
+        cleaned = re.sub(pat, " ", cleaned)
+    money = [g for pair in _MONEY_RE.findall(cleaned) for g in pair if g]
+    if money:
+        return [float(x.replace(",", "")) for x in money][:n]
     return [float(x) for x in re.findall(r"\d+(?:\.\d+)?", cleaned.replace(",", ""))][:n]
 
 
