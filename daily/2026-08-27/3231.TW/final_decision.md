@@ -1,47 +1,37 @@
-FINAL TRANSACTION PROPOSAL: **BUY**
+FINAL TRANSACTION PROPOSAL: **HOLD**
 
-# Final decision — 3231.TW (緯創資通) as of 2026-08-27
+# Final decision — 3231.TW as of 2026-08-27
 
-> **價格資料限制**：PRICE_DATA_UNAVAILABLE。所有價位標記 (N)（情緒/新聞文件所載）或 (V)（分析師估值錨），非即時市場報價。無 ATR、無技術支撐位，停損以事件驅動為主、價格底線為輔。
+## FINAL TRANSACTION PROPOSAL: **HOLD**
 
 ## Verdict
-**MODIFY** — 方向維持 LONG，但推翻 trade proposal 的「Medium 1.5% NAV 立即建倉」，改採 neutral 的分批架構。
+MODIFY（方向維持不新建倉，但既有部位的 stop 與倉位必須改）
+
+交易員的方向判斷正確：現金流品質未驗證前不押注。但其風控設計有缺陷——同一個 127.33 元 stop 對應 139–166 元的浮動 entry，且對現價 183 元的既有部位而言等同 -30.4% 回撤，這是「論點失效訊號」而非風險控管工具。此點由 conservative 指出、neutral 修正，我採納。
 
 ## Final trade card
-| 欄位 | 內容 |
+| Field | Value |
 |---|---|
-| Direction | LONG |
-| Entry zone | TWD 190.00 – 196.00 (N)（參考價 193.50 (N)） |
-| Stop | TWD 172.00 (N)（約 -11%）+ 事件驅動觸發（任一即出場） |
-| Target 1 | TWD 202.50 (N) — 52 週高點，確認訊號非主要目標 |
-| Target 2 | TWD 262.36 (V) — 17 家機構共識目標價 |
-| position_size | **0.75% NAV**（初始）；單次月營收確認後加至 1.25% NAV；GDR 定價公告前硬上限 1.5% |
-| Horizon | 1–2 季，Q3 財報（2026-11）為重評節點 |
-| Conviction | **62/100**（MEDIUM） |
-| r_r | 0.4x (T1) / **3.2x** (T2) |
-| Phase | Phase 2-4 |
-| Hedge | 小量近月 SOXX Put，權利金成本上限 0.3% NAV |
-| key_catalyst | 2026-09-10 前後 8 月月營收公告，驗證管理層「H2 超越 H1」指引 |
-
-**T1 標記說明**：TWD 202.50 為 (N) 來源之 52 週高點，並無 (V) 來源之中繼目標，不予虛構。
+| Direction | LONG（僅限既有部位，不新增） |
+| Entry zone | 不新增部位；新倉須等 Q3 財報或回落至 146–166 元 |
+| Stop | 166.00 元（MA50，約 2×ATR14） |
+| Target 1 | 193.89 元 |
+| Target 2 | 206.00 元 |
+| Size | Small — 既有部位減至 1/2（約 0.25% NAV），新倉 0% |
+| Horizon | 1–3 個月，鎖定 2026-11 底 Q3 財報 |
+| Conviction | M（方向 L，風控紀律 H） |
+| R:R to T1 | 0.6（+5.9% / -9.3%）——正因 R:R 劣於 1，才不加碼、只保留觀察倉 |
 
 ## Risk debate adjudication
-- **Aggressive 最強論點**：HBM4 用於 Rubin，Blackwell 用 HBM3e，緯創 H2 2026 出貨主體不受該瓶頸直接衝擊。此技術時序區分正確，conservative 將 HBM4 列為壓縮倉位的主因確有高估。
-- **Conservative 最強論點**：GDR 最多 2.5 億新股（約 4.3% EPS 稀釋）為已核准事實，且時程與定價完全未知；在此不確定性窗口以最大倉押注，等於替管理層的融資決策承擔尾部風險。
-- **Net**：我採 **neutral** 權重最高。Aggressive 的 2% 全倉在 17/17 Strong Buy 擁擠共識下，跳空可輕易穿越停損，其 R:R 2.37x 建立在「停損能執行」的假設上，不成立；Conservative 的 -8% 底線對年振幅 +85.8% 個股過緊，正常波動即誤觸。0.75% 起始 + 單次確認加碼 + -11% 底線，是唯一同時尊重「基本面能見度為書面事實」與「三項風險亦為既成事實」的結構。
+- **Aggressive 最強論點**：等驗證才進場，等於放棄財報前的法人搶跑重估窗口；強勢股回檔至 139–166 元可能永遠等不到，前向 P/E 7.78x 與 15 位分析師上修是真實的折價訊號。
+- **Conservative 最強論點**：stop 設計本身不一致，且 127.33 元對現價部位是 -30.4%，遠超單筆波段虧損上限；速動比 0.72、利息覆蓋率 5.82x 的公司在 GDR 定價窗口前有跳空風險，寬 stop 無防禦力。
+- **Net**：我採 **neutral** 較重。Aggressive 的機會成本論證未反駁流動性風險，且台股個股 call spread 流動性存疑，屬紙上策略；conservative 的 175–178 元 stop 不到 1×ATR，在年化波動率 55.45% 環境下必被雜訊洗出，與「長期結構未破」自相矛盾。166 元同時具技術意義與波動空間，是唯一內部一致的解。倉位減半而非砍到 1/4，因 139 元支撐尚未測試、獲利動能仍在，過度減碼是用確定的機會成本換不確定的尾部風險。
 
 ## Monitoring trigger
-**若 2026-09-10 前後公告之 8 月月營收 YoY 增速低於 7 月水準（動能轉折，非絕對值遜於預期），於停損觸及前立即重評並暫停一切加碼。**
+**若 2026-09 中旬 GDR 定價折價超過 10% 或稀釋規模上修至 2.5 億股上限**，立即重新評估，不等 166 元 stop——此為可量化的稀釋事件，將直接下修每股價值並可能引發跳空，stop 無法防禦。
 
 ## Catalyst calendar
-- 2026-09-10 前後 — 8 月月營收公告（最關鍵）
-- 2026-09 月中 — Rubin 伺服器大規模採購啟動確認
-- 2026-09 月底 — GDR 發行時程與定價公告
-- 2026-11 月 — Q3 財報，持倉再評估
-- 持續 — SK Hynix HBM4 量產時間線
+- 2026-09 中旬 — GDR 發行定價與最終稀釋規模
+- 2026-11 底 — Q3 2026 財報：OCF 是否轉正、應收/庫存週轉天數是否收斂、利息覆蓋率是否守住 5 倍
 
----
-
-FINAL TRANSACTION PROPOSAL: **BUY**
-
-PORTFOLIO MANAGER COMPLETE
+FINAL DECISION COMPLETE

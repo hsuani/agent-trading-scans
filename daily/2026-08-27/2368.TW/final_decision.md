@@ -1,47 +1,42 @@
-# Final decision — 2368.TW (金像電子) as of 2026-08-27
-
 FINAL TRANSACTION PROPOSAL: **BUY**
 
-## FINAL TRANSACTION PROPOSAL
+# Final decision — 2368.TW as of 2026-08-27
 
-**VERDICT: BUY**（分批建倉）
-**Conviction: 60%**
-**Phase: full pipeline completed**（fundamentals / market / news / sentiment / plan / proposal / risk debate 全數納入）
+## FINAL TRANSACTION PROPOSAL: **BUY**
 
 ## Verdict
-**MODIFY** — 方向與價位架構接受，倉位節奏改採 neutral 方案，並加掛一條執行前置條件。
+MODIFY
 
 ## Final trade card
-| 欄位 | 數值 |
+| Field | Value |
 |---|---|
-| 方向 | LONG |
-| Entry zone | TWD 950 – 970 (N) |
-| Stop | TWD 880 (V) |
-| Target 1 | TWD 1,376 (V) — P/E 35x × 共識 EPS 39.32 |
-| Target 2 | TWD 1,576 (V) — FactSet 12 個月共識目標 |
-| 首批 Size | 0.65% NAV |
-| 最大 Size | 1.5% NAV（Medium，需分階段驗證） |
-| Horizon | 1–3 個月（核心窗口 2026-09 至 2026-10） |
-| Conviction | M（60%） |
-| R:R to T1 | 5.2（T2 為 7.7） |
+| Direction | LONG |
+| Entry zone | $990 – $1010（須見量能回升；不在 $1030 追價） |
+| Stop | $880（硬停損；$925 為第一道減碼警戒線） |
+| Target 1 | $1176 |
+| Target 2 | $1554 |
+| Size | Medium（1.5% NAV，首批 0.5% NAV，其餘分兩批） |
+| Horizon | 1–3 個月（可延至 Q3 財報後 2–3 季） |
+| Conviction | M |
+| R:R to T1 | 1.3（T2 為 4.2） |
 
-**執行前置條件（不可豁免）**：market.md 為 PRICE_DATA_UNAVAILABLE。下單前須以獨立來源確認即時報價落於 950–970(N) 區間、且為縮量收斂而非放量下殺。若實際價格已回到 1,000 元以上，本卡失效，不得追價。
+對原提案的三項修改：
+1. 停損由 $925 下移至 $880。$925 距 ATR14（71.24）僅 1.2 倍，且台股跳空與漲跌停機制下極可能滑價至 $850–880，原設計的 $85 風險其實是帳面數字而非可執行邊界。
+2. 取消「現價 $1030 即建首批」。現價貼近 MA50（1035.97）壓力、量能 5.1M 僅為 10 日均量 8.5M 的六成、3 月動能仍 -21.4%，屬盤整區上緣搶進。改為兩條件擇一觸發：回檔至 $990–1010 且量能回升，或放量（>8.5M）站穩並收於 $1050 以上。
+3. 維持 Medium 1.5% NAV，不上調至 Large，不使用融資或權證。
 
-**加碼階梯**：8 月月營收 > TWD 90 億元 → 加至 1.0% NAV；Q3 法說會 EPS > 7 元且毛利率 > 33%、指引不下修 → 補足 1.5% NAV。營收低於 80 億元則凍結加碼。
-
-## 風險辯論裁決
-- **Aggressive 最強論點**：不對稱性明確——最壞情境僅 −0.125% NAV，對應近 +1% NAV 上行；催化劑時間確定，等待確實會抬高第二批成本。
-- **Conservative 最強論點**：22% 寬幅 EPS 指引是管理層自承能見度不足的證據；P/E 45x 下的估值壓縮是非線性的，R:R 5.2:1 建立在「止損不跳空」的假設上，而該假設在財報事件風險前不成立。
-- **Net：我採 neutral 立場。** Aggressive 的 EV 計算把 62% 勝率當作硬參數，但該勝率本身來自無價格數據的定性判斷，屬信心外推；Call Spread 在無技術面錨定時純屬加碼賭注，否決。Conservative 的 Stop 900 在 ATR 25–30 環境僅約 2 ATR，會製造假性出場，且 620 元尾端情境需要「EPS 落指引低端」與「殺至景氣底 P/E」同時發生，機率被高估。折衷：首批 0.65% NAV、Stop 維持 880、拒絕衍生品、以客觀數據門檻控制倉位擴張。
+## Risk debate adjudication
+- Aggressive 最強論點：H1 EPS 16.14 元、Q2 單季 9.28 元是已驗證實績，證據品質優於 MACD 未黃金交叉這類落後訊號；方向判斷確實偏多。
+- Conservative 最強論點：FCF 轉負、應收 +101%、存貨 +23%、總債務倍增四項同向轉弱，是資產負債表品質的系統性訊號，不能只用技術停損承接，且 TTM P/E 36.7 倍已把樂觀 EPS 定價進去。
+- Net：我採 neutral 較多。Aggressive 的核心矛盾在於同時要求「放寬停損到 $880」與「倉位加倍到 3%」——兩者疊加後 NAV 風險升至約 0.39%，其「風險極小」的前提自己就不成立。Conservative 的 $538–673 尾部情境則把財報跳空這個獨立事件與趨勢性下跌混為一談，且放空同業對沖缺乏持倉證據支撐。方向對、時機未成熟，正確答案是保持中等倉位、把停損放到真正可執行的位置、並要求進場確認訊號。
 
 ## Monitoring trigger
-**若 2026-09-10 前後公告之 8 月月營收低於 TWD 80 億元（即楊梅新廠首月貢獻無法量化、且 7 月遞延出貨未如期認列），立即在止損觸發前主動減至半倉或全數退出**——該數據是本論述「產能擴張兌現」前提的第一個可證偽檢驗點。
+若 Q3 2026 財報前（11 月中）月營收顯示 ABF 新報價未能轉嫁、或公司公布之應收帳款週轉天數再度拉長，則在停損觸發前先行減碼至半倉，不等 $925 或 $880。反向觸發：若股價放量站穩 $1050 但 30 日內未能挑戰 $1176，視為突破失敗，同樣減碼。
 
 ## Catalyst calendar
-- **2026-09-10（前後）** — 8 月月營收；楊梅廠首月貢獻
-- **2026-10 月** — Q3 法說會：EPS 實現度、毛利率、全年指引是否上修至 38 元
-- **持續** — NVIDIA Rubin Ultra 採購訊號；CCL 利用率（現 92–95%）；Hyperscaler 2H26 Capex 表態
+- 2026-09-01 — Ajinomoto ABF 膜新報價生效，觀察成本轉嫁與毛利率韌性
+- 2026-09/10 月 — 月營收公布，驗證高頻 PCB 基板訂單能見度
+- 2026 H2 — Vera Rubin 平台交付進度
+- 2026-11 中 — Q3 2026 財報（EPS、FCF、應收週轉天數為決定性 gate）
 
----
-
-PORTFOLIO MANAGER COMPLETE
+FINAL DECISION COMPLETE
