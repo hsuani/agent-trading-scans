@@ -1,0 +1,18 @@
+# 技術分析 — 2301.TW (光寶科技) 截至 2026-07-21
+
+## PRICE_DATA_UNAVAILABLE
+
+Yahoo Finance HTTP 403 封鎖。
+
+| 指標 | 狀態 |
+|---|---|
+| 即時股價 | PRICE_DATA_UNAVAILABLE |
+| RSI14 | PRICE_DATA_UNAVAILABLE |
+| MACD | PRICE_DATA_UNAVAILABLE |
+| 支撐/阻力 | PRICE_DATA_UNAVAILABLE |
+
+參考：6月營收 NT$187億（YoY +37%，創 2018年以來新高）。Q2 財報預期 7月下旬。
+
+**技術信號：FAIL（PRICE_DATA_UNAVAILABLE）**
+
+MARKET REPORT COMPLETE
