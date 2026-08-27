@@ -93,7 +93,16 @@ def parse_verdict(final_decision_md: str) -> dict:
         out["color"] = {"BUY": "green", "HOLD": "amber", "SELL": "red"}[v]
 
     # Try to pull APPROVE/MODIFY/REJECT
-    m = re.search(r"Verdict:?\s*\**(APPROVE|MODIFY|REJECT|HOLD)", final_decision_md, re.I)
+    # Held positions use Chinese verdicts (加碼/續抱/減碼/出場); .upper() is a
+    # no-op on those, and both 減碼 and 出場 share a SELL first line, so this is
+    # the only place the trim-vs-exit distinction survives.
+    m = re.search(r"Verdict[:：]?\s*\n?\s*(?:新倉|持倉)?\s*[:：]?\s*\**"
+                  r"(APPROVE|MODIFY|REJECT|HOLD|加碼|續抱|減碼|出場)",
+                  final_decision_md, re.I)
+    if not m:
+        # Older cards state it in prose with no Verdict heading — English only,
+        # since the Chinese verdicts also occur in the invalidation section.
+        m = re.search(r"(APPROVE|MODIFY|REJECT)", final_decision_md)
     if m:
         out["modify"] = m.group(1).upper()
 
