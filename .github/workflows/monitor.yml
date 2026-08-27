@@ -31,7 +31,7 @@ jobs:
           python-version: "3.12"
 
       - name: Install deps
-        run: pip install --quiet yfinance pandas markdown   # markdown: render the serenity digest md → HTML (else falls back to raw <pre>)
+        run: pip install --quiet -r pipeline/tools/requirements.txt   # pinned set incl. lxml — see requirements.txt
 
       - name: Run L0 monitor
         env:

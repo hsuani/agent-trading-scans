@@ -1,6 +1,14 @@
 # Python deps for the trading-scan helper tools (render_html / build_dashboard /
-# extract_catalysts / ta / yf). Cloud agent: `pip install -r requirements.txt`.
-yfinance==1.3.0
-pandas==3.0.3
+# extract_catalysts / ta / yf). Cloud agent + CI: `pip install -r requirements.txt`.
+#
+# lxml is NOT optional: yfinance parses Yahoo's HTML tables with it, and without
+# it get_earnings_dates() raises "ImportError: `Import lxml` failed". That is the
+# error in daily/2026-08-17/{6438,8021}.TW/errors.log, and it is why the
+# fundamentals analyst fell back to guessing earnings dates ("Used public Taiwan
+# stock calendar assumptions") — guesses that extract_catalysts.py then scraped
+# into _catalysts.json and monitor.py used to pick what to watch.
+yfinance==1.7.0
+lxml==6.1.2
+pandas==3.0.5
 stockstats==0.6.8
 markdown==3.10.2
