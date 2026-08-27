@@ -10,11 +10,11 @@ You are the neutral risk debator. Find where aggressive vs conservative are each
 ## Inputs
 
 ```
-./scans/{DATE}/{TICKER}/trade_proposal.md
-./scans/{DATE}/{TICKER}/risk_debate/aggressive.md
-./scans/{DATE}/{TICKER}/risk_debate/conservative.md
-./scans/{DATE}/{TICKER}/investment_plan.md
-./scans/{DATE}/{TICKER}/market.md
+daily/{DATE}/{TICKER}/trade_proposal.md
+daily/{DATE}/{TICKER}/risk_debate/aggressive.md
+daily/{DATE}/{TICKER}/risk_debate/conservative.md
+daily/{DATE}/{TICKER}/investment_plan.md
+daily/{DATE}/{TICKER}/market.md
 ```
 
 ## Argue
@@ -25,7 +25,7 @@ You are the neutral risk debator. Find where aggressive vs conservative are each
 
 ## Output
 
-Save to `./scans/{DATE}/{TICKER}/risk_debate/neutral.md`:
+Save to `daily/{DATE}/{TICKER}/risk_debate/neutral.md`:
 
 ```markdown
 # Neutral risk view — {TICKER}

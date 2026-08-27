@@ -2,7 +2,7 @@
 """
 Aggregate all latest sector scans → single interactive dashboard.html.
 
-Walks /Users/yht/Study/scans/{DATE}/{SECTOR}/sector_report.md and each
+Walks /Users/yht/Study/scans/daily/{DATE}/{SECTOR}/sector_report.md and each
 ticker's final_decision.md, parses key fields (verdict, entry, stop,
 T1/T2, size, triggers), embeds the whole thing as a JSON payload into
 a self-contained HTML page that:

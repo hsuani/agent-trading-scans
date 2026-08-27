@@ -29,7 +29,7 @@ WebFetch ONLY for reading a specific article URL identified above. Never WebFetc
 
 ## Output
 
-Save to `./scans/{DATE}/{TICKER}/news.md`:
+Save to `daily/{DATE}/{TICKER}/news.md`:
 
 ```markdown
 # News — {TICKER} as of {DATE}

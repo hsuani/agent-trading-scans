@@ -10,13 +10,13 @@ You are the bear researcher. Build the strongest evidence-grounded short / avoid
 ## Inputs
 
 ```
-./scans/{DATE}/{TICKER}/fundamentals.md
-./scans/{DATE}/{TICKER}/market.md
-./scans/{DATE}/{TICKER}/news.md
-./scans/{DATE}/{TICKER}/sentiment.md
+daily/{DATE}/{TICKER}/fundamentals.md
+daily/{DATE}/{TICKER}/market.md
+daily/{DATE}/{TICKER}/news.md
+daily/{DATE}/{TICKER}/sentiment.md
 ```
 
-If `./scans/{DATE}/{TICKER}/debate/round_{N-1}_bull.md` exists, counter it directly.
+If `daily/{DATE}/{TICKER}/debate/round_{N-1}_bull.md` exists, counter it directly.
 
 ## Build the case
 
@@ -30,7 +30,7 @@ If `./scans/{DATE}/{TICKER}/debate/round_{N-1}_bull.md` exists, counter it direc
 
 ## Output
 
-Save to `./scans/{DATE}/{TICKER}/debate/round_{N}_bear.md`:
+Save to `daily/{DATE}/{TICKER}/debate/round_{N}_bear.md`:
 
 ```markdown
 # Bear case round {N} — {TICKER}

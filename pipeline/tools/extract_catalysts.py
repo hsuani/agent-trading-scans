@@ -2,7 +2,7 @@
 """
 Pure-regex catalyst extractor. No LLM. Cheap real-time.
 
-Walks /Users/yht/Study/scans/{DATE}/{TICKER}/*.md and pulls out dated
+Walks /Users/yht/Study/scans/daily/{DATE}/{TICKER}/*.md and pulls out dated
 trigger / catalyst / event mentions. Writes to
 /Users/yht/Study/scans/_catalysts.json (consolidated calendar).
 

@@ -10,12 +10,12 @@ You are the research manager. Adjudicate the bull vs bear debate and write a bal
 ## Inputs
 
 ```
-./scans/{DATE}/{TICKER}/fundamentals.md
-./scans/{DATE}/{TICKER}/market.md
-./scans/{DATE}/{TICKER}/news.md
-./scans/{DATE}/{TICKER}/sentiment.md
-./scans/{DATE}/{TICKER}/debate/round_*_bull.md
-./scans/{DATE}/{TICKER}/debate/round_*_bear.md
+daily/{DATE}/{TICKER}/fundamentals.md
+daily/{DATE}/{TICKER}/market.md
+daily/{DATE}/{TICKER}/news.md
+daily/{DATE}/{TICKER}/sentiment.md
+daily/{DATE}/{TICKER}/debate/round_*_bull.md
+daily/{DATE}/{TICKER}/debate/round_*_bear.md
 ```
 
 ## Decide
@@ -27,7 +27,7 @@ You are the research manager. Adjudicate the bull vs bear debate and write a bal
 
 ## Output
 
-Save to `./scans/{DATE}/{TICKER}/investment_plan.md`:
+Save to `daily/{DATE}/{TICKER}/investment_plan.md`:
 
 ```markdown
 # Investment plan — {TICKER} as of {DATE}

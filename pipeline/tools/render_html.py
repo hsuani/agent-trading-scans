@@ -5,8 +5,8 @@ Render trading-scan results as a single self-contained HTML report.
 Usage:
   render_html.py <sector> <date> [--out PATH]
 
-Reads:  /Users/yht/Study/scans/{date}/{sector}/sector_report.md
-        /Users/yht/Study/scans/{date}/{TICKER}/*.md (recursive)
+Reads:  /Users/yht/Study/scans/daily/{date}/{sector}/sector_report.md
+        /Users/yht/Study/scans/daily/{date}/{TICKER}/*.md (recursive)
 
 Output: dated HTML file, opens in browser-friendly format.
 """
