@@ -140,7 +140,18 @@ def parse_final_decision(text: str) -> dict:
             break
 
     # MODIFY/APPROVE/REJECT
-    m = re.search(r"(APPROVE|MODIFY|REJECT)", text)
+    # New-position verdicts are English; held-position verdicts are Chinese
+    # (加碼/續抱/減碼/出場) — both 減碼 and 出場 map to a SELL first line, so keep
+    # the Chinese word here or the dashboard cannot tell a trim from a full exit.
+    # Anchored first: held-position verdicts (加碼/續抱/減碼/出場) also appear in
+    # the invalidation section as "→ 減碼 / 出場", so a whole-doc search would
+    # mis-read a 續抱 card as a trim. Only accept them next to the Verdict heading.
+    m = re.search(r"Verdict[:：]?\s*\n?\s*(?:新倉|持倉)?\s*[:：]?\s*\**"
+                  r"(APPROVE|MODIFY|REJECT|加碼|續抱|減碼|出場)", text, re.I)
+    if not m:
+        # Pre-2026-08 cards state it in prose ("採用 **MODIFY**（…）") with no
+        # Verdict heading. Fall back to a loose search, English tokens ONLY.
+        m = re.search(r"(APPROVE|MODIFY|REJECT)", text)
     if m:
         out["modify"] = m.group(1)
 
