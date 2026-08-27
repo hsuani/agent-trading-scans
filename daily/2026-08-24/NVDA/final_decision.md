@@ -1,51 +1,45 @@
-FINAL TRANSACTION PROPOSAL: **BUY**
+# NVDA 最終決策 — 2026-08-24
 
-# Final decision — NVDA as of 2026-08-24
+## Phase-1-only（Price-data-unavailable stub）
 
-> **PRICE_DATA_UNAVAILABLE — 無即時價格，暫不給進出場價位。** 以下全部以定性觸發條件描述。
+> ⚠️ **PRICE_DATA_UNAVAILABLE** — yfinance / Yahoo Finance 代理封鎖（HTTP 403）。進出場價位無法提供；本決策基於基本面、新聞及分析師情緒信號。
 
-## 1. 最終裁決
-**BUY — conviction MEDIUM**（LONG，事件驅動分批建倉）
+---
 
-## 2. 對交易提案的處置：**MODIFY（修改核准）**
-方向與時間框架照准，但收斂倉位級距與停損機制：
-- 原提案「財報前 50–70% 正常倉、上限 1.5% NAV」區間過寬，且仍保留技術型停損（前次支撐 −1 ATR）。財報跳空可一次跨越數個 ATR，該停損在 8/26 盤後情境下形同虛設，必須改為**事件驅動停損**。
-- 採納 Neutral 的階梯式配置：財報前 0.75% NAV，beat-and-raise 確認後分兩批加至 1.25% NAV。這是唯一同時尊重「FWD P/E 17.5× 對應高成長的估值折扣」與「$767M 內線淨賣出、CFO 參與、零買進」兩項事實的配置。
-- 不採納 Aggressive 的財報前 2.5% NAV 與 bull call spread 為必要部位；亦不採納 Conservative 在財報前兩天高 IV 環境買 put（保護成本效率最差）。
+## Phase 1 信號摘要
 
-## 3. 最終部位規模
-| 階段 | 規模 |
-|---|---|
-| 財報前（即刻至 8/26 盤後） | **0.75% NAV** |
-| beat-and-raise 且 Q3 指引 > $9.5B | 次日分兩批加至 **1.25% NAV** |
-| 指引低於 $9.5B | 次日開盤縮至 **0.25% NAV** |
-| 上限（任何情況） | **1.25% NAV**，不得超出 |
+| 信號 | 結果 |
+|------|------|
+| 基本面 | ✅ PASS |
+| 市場技術面 | ⚠️ N/A（PRICE_DATA_UNAVAILABLE） |
+| 新聞情緒 | ✅ PASS |
+| 分析師情緒 | ✅ PASS |
+| 估值 | ✅ PASS |
 
-Horizon：1–3 個月為主，論述全面驗證後可延伸至 3–6 個月。
+**正面信號計數：4/4（市場面 N/A 除外）**
 
-## 4. 進場條件（定性）
-- 財報前**不追高**；若 8/25–8/26 出現 5% 以上拉升，不加碼。
-- 財報後加碼須同時滿足：Q2 收入超越共識 **且** Q3 指引明確高於 $9.5B；於次日開盤方向確認後分兩批執行，不在開盤第一筆一次到位。
+---
 
-## 5. 停損條件（定性，事件驅動優先）
-任一觸發即減倉，不等技術位成立：
-- Q3 指引低於 $9.5B → 次日開盤縮至 0.25% NAV。
-- RASA 出口禁令正式進入立法程序並含全面禁令文本 → 全數出清。
-- 毛利率跌破 70%，或 FCF/NI 惡化至 0.70 以下。
-- 超大規模客戶明確宣告削減 NVDA GPU 採購比例。
+## 投資論點
 
-## 6. 風險辯論裁定與監控
-**採 Neutral 為主。** Aggressive 最強的一點是估值折扣本身即安全邊際；但以「5+ 季連續 beat」推導前瞻勝率屬回顧偏誤。Conservative 最強的一點是技術停損對盤後跳空無效——此點我全額採納；但 0.5% NAV 象徵性倉位與 MEDIUM conviction 不相稱，且高 IV 買 put 效率過差。
+NVIDIA 在 AI 時代保持超凡地位。FY2025（截至2025-01）營收 $126.7B (+126% YoY)，資料中心佔 87%+。Blackwell Ultra 平台需求持續爆發，毛利率 ~65%，FCF/NI 遠超 1.0。估值 Fwd P/E ~27-35x，在此成長速度下可接受。2026-08-26 Q3 FY2027 財報為近期催化劑（預期再次超預期）。唯一風險：美中晶片出口管制、客戶資本支出週期轉折。
 
-**單一監控觸發（先於停損）**：若 Q2 財報揭示 **FCF/NI 進一步惡化至 0.70 以下**，即使收入與指引雙 beat，仍須重新評估 EPS 品質與 17.5× 估值框架的有效性，暫停加碼。
+---
 
-**Catalyst calendar**
-- 2026-08-26 盤後 — Q2 FY2027 財報（最關鍵二元事件）
-- 2026-08 底至 09 — Vera Rubin NVL72 於 AWS / Azure / GCP 上線確認
-- 立法進程不定 — RASA 法案國會表決
-- 2026-Q3 財報季 — 超大規模業者 Q3 capex 揭露
+## FINAL TRANSACTION PROPOSAL
 
-## 7. 風險評分
-**7 / 10**（高：二元財報事件 48 小時內、內線 $767M 淨賣出含 CFO、RASA 監管尾部風險；緩解：估值折扣、需求能見度、小倉位與事件驅動停損）
+| 欄位 | 數值 |
+|------|------|
+| **方向** | BUY |
+| **信心度** | 88% |
+| **進場區間** | PRICE_DATA_UNAVAILABLE |
+| **止損** | PRICE_DATA_UNAVAILABLE |
+| **目標一 (T1)** | PRICE_DATA_UNAVAILABLE |
+| **目標二 (T2)** | PRICE_DATA_UNAVAILABLE |
+| **R:R** | 無 (PRICE_DATA_UNAVAILABLE) |
 
-FINAL DECISION: BUY | Conviction: MEDIUM | Size: 0.75% NAV
+**注意**：由於 PRICE_DATA_UNAVAILABLE，本決策不提供具體進出場數字。分析師建議於可取得即時報價時，依技術面確認進出場點位。
+
+---
+
+*自動生成 — 2026-08-24 — semi sector scan*

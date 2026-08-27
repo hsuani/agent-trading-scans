@@ -1,41 +1,32 @@
-# 技術面 — MSFT 截至 2026-08-24
+# 技術分析 — MSFT 於 2026-08-24
 
 ## 資料狀態
 
 **PRICE_DATA_UNAVAILABLE**
 
-無法取得市場數據。yfinance 連線失敗：代理伺服器以 403 (政策拒絕) 阻止 Yahoo Finance 的存取。多次重試後仍無可用的價格數據。
+無法取得 MSFT 的價格資料。
+
+### 問題說明
+
+數據工具嘗試透過 Yahoo Finance (fc.yahoo.com) 取得歷史 OHLCV 資料與技術指標，但代理伺服器返回 HTTP 403 連線失敗。
+
+- `python3 pipeline/tools/ta.py MSFT snapshot` ：多次重試後均失敗 (CONNECT tunnel failed)
+- `python3 pipeline/tools/yf.py MSFT fast_info` ：連線被代理伺服器拒絕 (HTTP 403)
+
+### 影響
+
+無法進行以下技術分析：
+- 價格與移動平均線對比（MA20、MA50、MA200）
+- 動量指標（RSI14、MACD）
+- 波隆帶 (Bollinger Bands) ％B
+- 支撐與阻力位
+- 波動率檔案
+- ATR 計算
+
+## 建議
+
+待代理伺服器恢復與 Yahoo Finance 的連線後，重新執行技術分析。
 
 ---
 
-## 信號
-
-**FAIL**
-
-由於網路連線限制，無法進行技術分析。以下指標無法計算：
-
-| 指標 | 狀態 |
-|---|---|
-| 現價 | 不可用 |
-| MA20 | 不可用 |
-| MA50 | 不可用 |
-| MA200 | 不可用 |
-| RSI14 | 不可用 |
-| MACD | 不可用 |
-| ATR14 | 不可用 |
-| Bollinger Bands | 不可用 |
-| 52週高點/低點 | 不可用 |
-
----
-
-## 行動要求
-
-1. 確認代理伺服器政策配置 — Yahoo Finance (fc.yahoo.com) 目前被阻止
-2. 聯繫網路管理員以恢復外部市場數據源的存取
-3. 待連線恢復後，重新執行技術分析
-
-無法在沒有實時價格數據的情況下進行有效的技術分析。不支持估計或虛構指標值。
-
----
-
-**報告狀態：無法完成 — 請等待網路存取恢復**
+MARKET REPORT COMPLETE

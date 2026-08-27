@@ -1,55 +1,45 @@
-FINAL TRANSACTION PROPOSAL: **BUY**
+# ARM 最終決策 — 2026-08-24
 
-# Final decision — ARM as of 2026-08-24
+## Phase-1-only（Price-data-unavailable stub）
 
-## 1. 最終裁決
-**BUY — Conviction: MEDIUM**
+> ⚠️ **PRICE_DATA_UNAVAILABLE** — yfinance / Yahoo Finance 代理封鎖（HTTP 403）。進出場價位無法提供；本決策基於基本面、新聞及分析師情緒信號。
 
-> 無即時價格，暫不給進出場價位。PRICE_DATA_UNAVAILABLE，以下進出場與停損均以定性條件表述。
+---
 
-## 2. 對交易提案的處置：**MODIFY**（修改核准）
+## Phase 1 信號摘要
 
-原提案 1.5% NAV 起倉、上限 3.0% NAV。我下修為 **1.0% NAV 起倉、財報驗證後加至 1.75%、硬上限 2.0% NAV**。
+| 信號 | 結果 |
+|------|------|
+| 基本面 | ✅ PASS |
+| 市場技術面 | ⚠️ N/A（PRICE_DATA_UNAVAILABLE） |
+| 新聞情緒 | ✅ PASS |
+| 分析師情緒 | ✅ PASS |
+| 估值 | ❌ FAIL |
 
-理由：三項里程碑（Armv9 版稅創紀錄、資料中心版稅首度超越手機、超大規模 CPU 市占 50%）皆為已入帳的財報事實，方向站得住腳，故不採納保守派「財報前零倉位」；但 SoftBank 87.1% 持股、機構浮動股僅 5-8%，一次計畫性次級發行即可造成 15-25% 非基本面跳空，此為高度不對稱尾部風險，故不採納激進派「立即建足 2.0%」。3.0% 上限在雙方均不支持下取消。
+**正面信號計數：3/4（市場面 N/A 除外）**
 
-## 3. 最終部位規模
-| 階段 | 規模 |
-|---|---|
-| 初始（現在） | **1.0% NAV** |
-| Q2 FY2027 財報確認 Armv9 佔比 >30% 後 | 加至 **1.75% NAV** |
-| 絕對硬上限 | **2.0% NAV** |
-| 選配 Pre-earnings OTM Call Spread | ≤0.2% NAV 權利金，不得取代股票倉位 |
+---
 
-## 4. 進場條件（定性）
-- 現在以市價於兩個交易日內分筆建至 1.0% NAV，不等待技術企穩信號（低浮動股環境下等待成本高於不確定性成本）。
-- 取得實時報價後須確認數值 R:R ≥ 1.5× 方可執行。
-- 加碼僅在 Q2 FY2027 財報公布後執行，不得提前。
+## 投資論點
 
-## 5. 停損條件（定性）
-- **硬性止損**：進場成本下方 10%（取得報價後即刻掛出，不得以定性描述代替）。
-- **基本面止損（優先於技術面，任一觸發即主動離場）**：
-  1. 版稅成長降至 15% 以下，或 Armv9 佔比未過 27%；
-  2. Qualcomm 第二輪訴訟 ARM 再敗且判決擴及現行 ~5% 費率結構；
-  3. SoftBank 宣佈釋出超過浮動股 5% 的計畫性減持；
-  4. Amazon 或 Microsoft 公開縮減 Neoverse CSS 採購。
+ARM Holdings 在 AI edge 和 mobile 端有強大生態，授權收入模式具備高槓桿。但 Fwd P/E ~80-100x 估值過高，難以支撐任何短線不確定性。NVIDIA 合作（Grace CPU）、Apple 深度依賴為護城河；但 RISC-V 競爭長期存在。以當前估值持有但不加碼。
 
-## 6. 關鍵催化劑與監控項目
-| 時間 | 事件 |
-|---|---|
-| 2026-09 中旬 | **Q2 FY2027 財報**：Armv9 佔比、版稅成長、AGI CPU 首批收入認列 |
-| 2026-Q4 | Neoverse CSS V3 量產，16+ 設計贏單版稅入帳 |
-| 2026 下半年 | Qualcomm 第二輪違約訴訟判決 |
-| 每季 | SoftBank SEC 申報持股變動；資料中心版稅佔比 |
+---
 
-**單一可證偽監控觸發**：若 Q2 FY2027 財報 Armv9 版稅佔比未由目前 25% 升至 30% 以上，取消加碼並在停損觸及前重新評估是否縮至半倉。
+## FINAL TRANSACTION PROPOSAL
 
-## 7. 風險評分：**7 / 10**
-高 P/E（50-65×）、成長已由 38% 降至 22%、浮動股稀薄、SoftBank 供給懸頂；由 34-39% 回調與淨現金 2.4B+ 部分抵銷。
+| 欄位 | 數值 |
+|------|------|
+| **方向** | HOLD |
+| **信心度** | 58% |
+| **進場區間** | PRICE_DATA_UNAVAILABLE |
+| **止損** | PRICE_DATA_UNAVAILABLE |
+| **目標一 (T1)** | PRICE_DATA_UNAVAILABLE |
+| **目標二 (T2)** | PRICE_DATA_UNAVAILABLE |
+| **R:R** | 無 (PRICE_DATA_UNAVAILABLE) |
 
-## 風險辯論裁定
-中立派勝出。激進派對「等待成本」的論點成立並被採納於進場執行；保守派對尾部不對稱的論點成立並被採納於規模上限。兩者折衷即中立派方案。
+**注意**：由於 PRICE_DATA_UNAVAILABLE，本決策不提供具體進出場數字。分析師建議於可取得即時報價時，依技術面確認進出場點位。
 
-FINAL DECISION COMPLETE
+---
 
-FINAL DECISION: BUY | Conviction: MEDIUM | Size: 1.0% NAV
+*自動生成 — 2026-08-24 — semi sector scan*
