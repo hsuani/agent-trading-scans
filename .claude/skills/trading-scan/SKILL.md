@@ -32,7 +32,7 @@ SECTORS = {
   # tw_photonics absorbs the old tw_optics members (上詮/華星光/眾達 = CPO 中游)
   "tw_photonics": ["3081.TWO", "2455.TW", "5455.TWO", "3163.TWO", "3008.TW", "4908.TWO", "3363.TWO", "4979.TWO", "4977.TW", "3711.TW", "6830.TW", "3587.TWO", "3289.TWO"],
   "tw_probe":   ["6510.TWO", "6223.TWO", "6515.TW", "6257.TW", "2449.TW", "3443.TW", "6217.TWO"],   # 探針卡/IC測試/ASIC設計服務
-  "tw_memory":  ["2408.TW", "2344.TW", "8299.TWO", "3260.TW"],   # 南亞科/華邦/群聯/威剛 (TW DRAM/NAND)
+  "tw_memory":  ["2408.TW", "2344.TW", "8299.TWO", "3260.TWO"],   # 南亞科/華邦/群聯/威剛 (TW DRAM/NAND)
 }
 ```
 
