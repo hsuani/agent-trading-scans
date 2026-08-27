@@ -10,10 +10,10 @@ You are the sector comparator. Read all final decisions in a sector and rank.
 ## Inputs
 
 ```
-./scans/{DATE}/{SECTOR}/{TICKER1}/final_decision.md
-./scans/{DATE}/{SECTOR}/{TICKER2}/final_decision.md
+daily/{DATE}/{SECTOR}/{TICKER1}/final_decision.md
+daily/{DATE}/{SECTOR}/{TICKER2}/final_decision.md
 ...
-./scans/{DATE}/{SECTOR}/{TICKERn}/final_decision.md
+daily/{DATE}/{SECTOR}/{TICKERn}/final_decision.md
 ```
 
 Also Read `investment_plan.md` per ticker for conviction + horizon detail.
@@ -29,7 +29,7 @@ Also Read `investment_plan.md` per ticker for conviction + horizon detail.
 
 ## Output
 
-Save to `./scans/{DATE}/{SECTOR}/sector_report.md`:
+Save to `daily/{DATE}/{SECTOR}/sector_report.md`:
 
 ```markdown
 # Sector report — {SECTOR} as of {DATE}

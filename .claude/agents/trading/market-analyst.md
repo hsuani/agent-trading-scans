@@ -30,7 +30,7 @@ Default `--period 2y` for snapshot so 12-month momentum is computable.
 
 ## Output structure
 
-Save to `./scans/{DATE}/{TICKER}/market.md` and print:
+Save to `daily/{DATE}/{TICKER}/market.md` and print:
 
 ```markdown
 # Technical — {TICKER} as of {DATE}

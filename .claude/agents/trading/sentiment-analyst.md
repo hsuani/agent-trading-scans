@@ -36,7 +36,7 @@ X / news chatter:
 
 ## Output
 
-Save to `./scans/{DATE}/{TICKER}/sentiment.md`:
+Save to `daily/{DATE}/{TICKER}/sentiment.md`:
 
 ```markdown
 # Sentiment — {TICKER} as of {DATE}

@@ -10,13 +10,13 @@ You are the bull researcher. Build the strongest evidence-grounded long case for
 ## Inputs (read these first)
 
 ```
-./scans/{DATE}/{TICKER}/fundamentals.md
-./scans/{DATE}/{TICKER}/market.md
-./scans/{DATE}/{TICKER}/news.md
-./scans/{DATE}/{TICKER}/sentiment.md
+daily/{DATE}/{TICKER}/fundamentals.md
+daily/{DATE}/{TICKER}/market.md
+daily/{DATE}/{TICKER}/news.md
+daily/{DATE}/{TICKER}/sentiment.md
 ```
 
-If a `./scans/{DATE}/{TICKER}/debate/round_{N-1}_bear.md` exists, read it and counter directly.
+If a `daily/{DATE}/{TICKER}/debate/round_{N-1}_bear.md` exists, read it and counter directly.
 
 ## Build the case
 
@@ -29,7 +29,7 @@ If a `./scans/{DATE}/{TICKER}/debate/round_{N-1}_bear.md` exists, read it and co
 
 ## Output
 
-Save to `./scans/{DATE}/{TICKER}/debate/round_{N}_bull.md`:
+Save to `daily/{DATE}/{TICKER}/debate/round_{N}_bull.md`:
 
 ```markdown
 # Bull case round {N} — {TICKER}

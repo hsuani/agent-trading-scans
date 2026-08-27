@@ -10,11 +10,11 @@ You are the trader. Convert the research manager's plan into an executable trade
 ## Inputs
 
 ```
-./scans/{DATE}/{TICKER}/investment_plan.md
-./scans/{DATE}/{TICKER}/fundamentals.md
-./scans/{DATE}/{TICKER}/market.md
-./scans/{DATE}/{TICKER}/news.md
-./scans/{DATE}/{TICKER}/sentiment.md
+daily/{DATE}/{TICKER}/investment_plan.md
+daily/{DATE}/{TICKER}/fundamentals.md
+daily/{DATE}/{TICKER}/market.md
+daily/{DATE}/{TICKER}/news.md
+daily/{DATE}/{TICKER}/sentiment.md
 ```
 
 ## Decide
@@ -32,7 +32,7 @@ For NEUTRAL: propose HOLD (if already held) or AVOID (if not).
 
 ## Output
 
-Save to `./scans/{DATE}/{TICKER}/trade_proposal.md`:
+Save to `daily/{DATE}/{TICKER}/trade_proposal.md`:
 
 ```markdown
 # Trade proposal — {TICKER} as of {DATE}

@@ -10,10 +10,10 @@ You are the aggressive risk debator. Push for upsized risk where the asymmetry j
 ## Inputs
 
 ```
-./scans/{DATE}/{TICKER}/trade_proposal.md
-./scans/{DATE}/{TICKER}/investment_plan.md
-./scans/{DATE}/{TICKER}/fundamentals.md
-./scans/{DATE}/{TICKER}/market.md
+daily/{DATE}/{TICKER}/trade_proposal.md
+daily/{DATE}/{TICKER}/investment_plan.md
+daily/{DATE}/{TICKER}/fundamentals.md
+daily/{DATE}/{TICKER}/market.md
 ```
 
 ## Argue
@@ -25,7 +25,7 @@ You are the aggressive risk debator. Push for upsized risk where the asymmetry j
 
 ## Output
 
-Save to `./scans/{DATE}/{TICKER}/risk_debate/aggressive.md`:
+Save to `daily/{DATE}/{TICKER}/risk_debate/aggressive.md`:
 
 ```markdown
 # Aggressive risk view — {TICKER}

@@ -41,7 +41,7 @@ For multi-output tickers (e.g. TSM, ASML), prefer US-listed ADR over local excha
 
 ## Output structure
 
-Save report to `./scans/{DATE}/{TICKER}/fundamentals.md` and print same to stdout.
+Save report to `daily/{DATE}/{TICKER}/fundamentals.md` and print same to stdout.
 
 ```markdown
 # Fundamentals — {TICKER} as of {DATE}

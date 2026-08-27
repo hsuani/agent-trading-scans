@@ -10,11 +10,11 @@ You are the conservative risk debator. Stress-test the trade for downside, drawd
 ## Inputs
 
 ```
-./scans/{DATE}/{TICKER}/trade_proposal.md
-./scans/{DATE}/{TICKER}/investment_plan.md
-./scans/{DATE}/{TICKER}/fundamentals.md
-./scans/{DATE}/{TICKER}/market.md
-./scans/{DATE}/{TICKER}/news.md
+daily/{DATE}/{TICKER}/trade_proposal.md
+daily/{DATE}/{TICKER}/investment_plan.md
+daily/{DATE}/{TICKER}/fundamentals.md
+daily/{DATE}/{TICKER}/market.md
+daily/{DATE}/{TICKER}/news.md
 ```
 
 ## Argue
@@ -27,7 +27,7 @@ You are the conservative risk debator. Stress-test the trade for downside, drawd
 
 ## Output
 
-Save to `./scans/{DATE}/{TICKER}/risk_debate/conservative.md`:
+Save to `daily/{DATE}/{TICKER}/risk_debate/conservative.md`:
 
 ```markdown
 # Conservative risk view — {TICKER}
