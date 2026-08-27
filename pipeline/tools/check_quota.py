@@ -2,14 +2,27 @@
 """
 Quota pre-flight check for daily trading-scan routine.
 
-Anthropic does not expose Max-plan remaining quota via API, so this script
-estimates weekly usage by walking ~/.claude/projects/**/*.jsonl session
-transcripts from the past 7 days and counting:
+Anthropic does not expose Max-plan remaining quota via API, so this estimates it.
 
-  - assistant message events (proxy for output tokens)
-  - tool_use blocks of type Agent (= subagent invocations, the biggest spend)
+PRIMARY metric = MODEL-WEIGHTED units derived from the repo's own scan output
+(daily/<date>/<ticker>/). Two reasons it is not the session transcripts:
 
-Compares to a configurable weekly budget. Exits:
+  1. The scans run on CCR cloud containers whose ~/.claude/projects transcripts
+     never reach this disk. Measured 2026-08-27: this repo's local sessions hold
+     1 Agent call while ~/.claude/projects holds 1349 — i.e. the transcript count
+     was reporting OTHER projects' usage, so gating on it would have throttled
+     the trading scan based on unrelated work.
+  2. A transcript count treats every subagent call the same. A Haiku Phase-1
+     analyst and an Opus portfolio-manager are not the same spend.
+
+Weights (haiku=1, sonnet=3.5, opus=18) match .claude/agents/trading/*.md model
+frontmatter. Per ticker: 4 haiku Phase-1, and if it went through Phase 2-4,
+7 sonnet + 1 opus. Per sector: 1 sonnet comparator.
+
+Reading the repo also makes the number identical locally and in the cloud, since
+both have the same git checkout.
+
+Exits:
   0  → under threshold, OK to run
   1  → over threshold, alert + abort
   2  → cannot determine (treat as caution → abort)
@@ -25,6 +38,62 @@ from pathlib import Path
 from datetime import datetime, timedelta
 
 PROJECTS = Path.home() / ".claude" / "projects"
+SCANS_ROOT = Path(os.environ.get("TRADING_SCANS_ROOT", Path(__file__).resolve().parents[2]))
+
+# Weighted cost per subagent call, by the model in .claude/agents/trading/*.md.
+W_HAIKU, W_SONNET, W_OPUS = 1.0, 3.5, 18.0
+# Per ticker: Phase 1 = 4 haiku. Full Phase 2-4 = 2 debate + 1 research-manager
+# + 1 trader + 3 risk = 7 sonnet, then 1 opus portfolio-manager.
+FULL_PIPELINE_UNITS = 7 * W_SONNET + W_OPUS      # 42.5
+
+
+def count_repo_usage(lookback_days: int) -> dict:
+    """Weighted units actually produced by scans in the last N days.
+
+    Counts what landed on disk, so a sector that died before Phase 2 costs what
+    it really cost. A ticker that reached trade_proposal.md went through the full
+    Sonnet+Opus path; one with only Phase-1 reports did not.
+    """
+    import datetime
+    daily = SCANS_ROOT / "daily"
+    if not daily.is_dir():
+        return {"error": f"no daily/ under {SCANS_ROOT}"}
+
+    today = datetime.date.today()
+    window = {(today - datetime.timedelta(days=i)).isoformat()
+              for i in range(lookback_days)}
+
+    units = 0.0
+    tickers_full = tickers_p1 = sectors = 0
+    for d in window:
+        ddir = daily / d
+        if not ddir.is_dir():
+            continue
+        for t in ddir.iterdir():
+            if not t.is_dir():
+                continue
+            if (t / "sector_report.md").exists():
+                units += W_SONNET
+                sectors += 1
+                continue
+            p1 = sum((t / f"{n}.md").exists()
+                     for n in ("fundamentals", "market", "news", "sentiment"))
+            if not p1:
+                continue
+            units += p1 * W_HAIKU
+            if (t / "trade_proposal.md").exists():
+                units += FULL_PIPELINE_UNITS
+                tickers_full += 1
+            else:
+                tickers_p1 += 1
+
+    return {
+        "lookback_days": lookback_days,
+        "weighted_units": round(units, 1),
+        "tickers_full_pipeline": tickers_full,
+        "tickers_phase1_only": tickers_p1,
+        "sector_reports": sectors,
+    }
 
 # Defaults tuned for Max $100 plan ("Max 5x"):
 # - Per past 7 days, full weekly budget ≈ 600 subagent (Task) calls.
@@ -32,7 +101,11 @@ PROJECTS = Path.home() / ".claude" / "projects"
 # - 1 power-sector scan ≈ 100 subagent calls, so we want headroom for ad-hoc
 #   manual usage on top of routine scans.
 # Override via env or CLI.
-DEFAULT_WEEKLY_BUDGET = 600           # full weekly subagent-call budget
+# Calibrated 2026-08-27 from 78 scan dates of real output: the 7-day rolling
+# weighted total ran median 3324, max 5465. 9000 keeps a median week in the
+# top-10 tier (37%) and only throttles genuine spikes (5465 -> 61% -> top 5),
+# so wiring the gate on does not silently halve normal throughput.
+DEFAULT_WEEKLY_BUDGET = 9000          # weekly MODEL-WEIGHTED unit budget
 DEFAULT_ALERT_PCT = 50                # alert + halt when used >= this % of budget
 DEFAULT_LOOKBACK_DAYS = 7
 
@@ -92,7 +165,8 @@ def main():
     p.add_argument("--budget", type=int,
                    default=int(os.getenv("TRADING_SCAN_BUDGET",
                                          DEFAULT_WEEKLY_BUDGET)),
-                   help="Full weekly subagent-call budget (default 600)")
+                   help=f"Weekly model-weighted unit budget "
+                        f"(default {DEFAULT_WEEKLY_BUDGET})")
     p.add_argument("--alert-pct", type=int,
                    default=int(os.getenv("TRADING_SCAN_ALERT_PCT",
                                          DEFAULT_ALERT_PCT)),
@@ -106,7 +180,7 @@ def main():
                    help="print only the raw integer pct_of_budget and exit 0 (no alert)")
     args = p.parse_args()
 
-    usage = count_recent_usage(args.lookback)
+    usage = count_repo_usage(args.lookback)
     if "error" in usage:
         if args.pct:
             print("0")
@@ -114,8 +188,14 @@ def main():
         print(json.dumps(usage, indent=2))
         sys.exit(2)
 
-    calls = usage["subagent_calls"]
-    threshold_calls = args.budget * args.alert_pct // 100
+    # Transcript count kept as a secondary, local-only signal. It sees ad-hoc
+    # interactive usage that never writes to daily/, but misses everything the
+    # cloud routine does — never gate on it.
+    usage["local_transcript_subagent_calls"] = (
+        count_recent_usage(args.lookback).get("subagent_calls"))
+
+    calls = usage["weighted_units"]
+    threshold_calls = args.budget * args.alert_pct / 100
     pct_of_budget = round(100 * calls / args.budget, 1) if args.budget else 0
 
     # --pct: just print the number, always exit 0 (caller decides what to do)

@@ -123,7 +123,24 @@ read -r -a SECTOR_LIST <<< "$SECTOR"
 LOG_DIR="$LOG_ROOT/$DATE"
 mkdir -p "$LOG_DIR"
 
+# Quota-adaptive mode. check_quota.py --pct returns weighted-unit usage over the
+# last 7 days as a % of the weekly budget (see its docstring for why it reads the
+# repo's own output rather than session transcripts). Tiers match SKILL.md:
+#   <60%  -> plan_all (top 10 non-held picks)
+#   60-90% -> plan_c5  (top 5)
+#   >=90%  -> plan_c3  (top 3)
+# Held tickers always get the full pipeline regardless — enforced in the prompt.
+# Set TRADING_SCAN_IGNORE_QUOTA=1 to pin plan_all (the pre-2026-08-27 behaviour).
 SCAN_MODE="plan_all"
+if [[ "${TRADING_SCAN_IGNORE_QUOTA:-0}" != "1" ]]; then
+  QUOTA_PCT="$(TRADING_SCANS_ROOT="$SCAN_ROOT" "$PY" "$TOOL_DIR/check_quota.py" --pct 2>/dev/null || echo 0)"
+  [[ "$QUOTA_PCT" =~ ^[0-9]+$ ]] || QUOTA_PCT=0
+  if   (( QUOTA_PCT >= 90 )); then SCAN_MODE="plan_c3"
+  elif (( QUOTA_PCT >= 60 )); then SCAN_MODE="plan_c5"
+  fi
+else
+  QUOTA_PCT="ignored"
+fi
 OVERALL_RC=0
 HTML_LIST=()
 
@@ -184,10 +201,10 @@ for SECTOR in "${SECTOR_LIST[@]}"; do
     echo "start: $(date)"
   } >> "$RUN_LOG"
 
-  # Quota check (informational only)
-  echo "quota state (informational)..." >> "$RUN_LOG"
-  "$PY" "$TOOL_DIR/check_quota.py" --quiet >> "$RUN_LOG" 2>&1 || true
-  echo "SCAN_MODE=$SCAN_MODE (ignore-quota default)" >> "$RUN_LOG"
+  # Quota state — this now DRIVES SCAN_MODE (set above), it is not just a log line.
+  echo "quota state..." >> "$RUN_LOG"
+  TRADING_SCANS_ROOT="$SCAN_ROOT" "$PY" "$TOOL_DIR/check_quota.py" --quiet >> "$RUN_LOG" 2>&1 || true
+  echo "SCAN_MODE=$SCAN_MODE (quota ${QUOTA_PCT}% of weekly weighted budget)" >> "$RUN_LOG"
 
   # Dry-run short-circuit
   if [[ "$DRY_RUN" == "1" ]]; then
@@ -209,7 +226,7 @@ Operating mode: HEADLESS / SILENT.
 Required behaviour:
 1. Invoke the trading-scan skill immediately.
 2. Use the full sector universe from the skill (no truncation, no asking).
-3. **Mode: ${SCAN_MODE}** (current default, ignores quota)
+3. **Mode: ${SCAN_MODE}** (selected from quota usage ${QUOTA_PCT}% of weekly budget)
    - mode=plan_c5: Phase 1 (4 Haiku analysts) for ALL tickers, then
      identify TOP 3-5 picks based on Phase 1 signals. Run Phase 2-4
      (Sonnet/Opus) ONLY for those picks. Other tickers stop after Phase 1.
