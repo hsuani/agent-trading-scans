@@ -1,0 +1,14 @@
+# 3081.TWO (聯亞 (Allied International)) — 技術分析 2026-08-30
+
+**狀態：PRICE_DATA_UNAVAILABLE**
+
+Yahoo Finance 代理封鎖（403）。台股技術數據無法取得。
+
+| 指標 | 數值 |
+|------|------|
+| 現價 | PRICE_DATA_UNAVAILABLE |
+| RSI14 | PRICE_DATA_UNAVAILABLE |
+| MACD | PRICE_DATA_UNAVAILABLE |
+| MA50/MA200 | PRICE_DATA_UNAVAILABLE |
+
+**MARKET REPORT COMPLETE (stub)**
