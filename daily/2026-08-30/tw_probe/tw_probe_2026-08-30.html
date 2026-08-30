@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TW Probe Sector Dashboard — 2026-08-30</title>
+<style>
+  :root {
+    --bg: #0d1117; --bg2: #161b22; --bg3: #21262d;
+    --border: #30363d; --text: #c9d1d9; --muted: #8b949e;
+    --green: #3fb950; --red: #f85149; --yellow: #d29922;
+    --blue: #58a6ff; --purple: #bc8cff; --orange: #f0883e;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', system-ui, sans-serif; font-size: 14px; padding: 20px; }
+  h1 { font-size: 22px; color: var(--blue); margin-bottom: 4px; }
+  h2 { font-size: 16px; color: var(--text); margin: 20px 0 10px; border-bottom: 1px solid var(--border); padding-bottom: 6px; }
+  .meta { color: var(--muted); font-size: 12px; margin-bottom: 20px; }
+  table { width: 100%; border-collapse: collapse; background: var(--bg2); border-radius: 8px; overflow: hidden; margin-bottom: 16px; }
+  th { background: var(--bg3); color: var(--muted); font-size: 11px; text-transform: uppercase; padding: 8px 12px; text-align: left; }
+  td { padding: 8px 12px; border-bottom: 1px solid var(--border); font-size: 13px; }
+  tr:last-child td { border-bottom: none; }
+  .badge-obs { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; background: rgba(88,166,255,0.2); color: var(--blue); }
+  .note { background: var(--bg3); border-left: 3px solid var(--yellow); padding: 10px 14px; border-radius: 0 6px 6px 0; margin: 12px 0; font-size: 13px; }
+  .info { background: var(--bg3); border-left: 3px solid var(--blue); padding: 10px 14px; border-radius: 0 6px 6px 0; margin: 12px 0; font-size: 13px; color: var(--muted); }
+  .grid3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; margin-bottom: 20px; }
+  .card { background: var(--bg2); border: 1px solid var(--border); border-radius: 8px; padding: 14px; }
+</style>
+</head>
+<body>
+
+<h1>TW Probe Sector Dashboard</h1>
+<div class="meta">Date: 2026-08-30 &nbsp;|&nbsp; Tickers: 6510.TWO, 6223.TWO, 6515.TW, 6257.TW, 2449.TW, 3443.TW, 6217.TWO</div>
+
+<div class="note">
+  <strong>DATA_UNAVAILABLE for all tickers.</strong><br>
+  yfinance HTTP 403 + knowledge cutoff (Aug 2025) prevent scoring all 7 tickers.
+  All scored 0/5. Total sector allocation: 0% NAV (OBSERVE all — confirm company identities first).
+</div>
+
+<h2>Ticker Status</h2>
+<table>
+  <thead>
+    <tr><th>Ticker</th><th>Exchange</th><th>Sector Role</th><th>Score</th><th>Decision</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>6510.TWO</td><td>TWO</td><td>探針卡/測試介面</td><td>0/5</td><td><span class="badge-obs">OBSERVE</span></td></tr>
+    <tr><td>6223.TWO</td><td>TWO</td><td>探針卡/測試介面</td><td>0/5</td><td><span class="badge-obs">OBSERVE</span></td></tr>
+    <tr><td>6515.TW</td><td>TWSE</td><td>半導體測試相關</td><td>0/5</td><td><span class="badge-obs">OBSERVE</span></td></tr>
+    <tr><td>6257.TW</td><td>TWSE</td><td>半導體測試相關</td><td>0/5</td><td><span class="badge-obs">OBSERVE</span></td></tr>
+    <tr><td>2449.TW</td><td>TWSE</td><td>半導體測試服務</td><td>0/5</td><td><span class="badge-obs">OBSERVE</span></td></tr>
+    <tr><td>3443.TW</td><td>TWSE</td><td>半導體設計/測試</td><td>0/5</td><td><span class="badge-obs">OBSERVE</span></td></tr>
+    <tr><td>6217.TWO</td><td>TWO</td><td>探針板/精密設備</td><td>0/5</td><td><span class="badge-obs">OBSERVE</span></td></tr>
+  </tbody>
+</table>
+
+<h2>行業背景 — TW探針板/半導體測試生態</h2>
+<div class="grid3">
+  <div class="card">
+    <div style="font-size:13px; font-weight:bold; color:var(--green); margin-bottom:8px;">上行催化劑</div>
+    <div style="font-size:12px; color:var(--muted); line-height:1.8;">
+      ✅ AI GPU（H100/B200）測試需求激增<br>
+      ✅ 台積電N2/N3製程擴產<br>
+      ✅ CoWoS封裝 → KGD測試需求新增<br>
+      ✅ 探針卡毛利率高（典型>50%）<br>
+      ✅ 測試設備（Teradyne/Advantest）訂單上升
+    </div>
+  </div>
+  <div class="card">
+    <div style="font-size:13px; font-weight:bold; color:var(--red); margin-bottom:8px;">下行風險</div>
+    <div style="font-size:12px; color:var(--muted); line-height:1.8;">
+      ❌ 非AI晶片（PC/手機）需求疲軟<br>
+      ❌ SLT系統級測試部分替代探針板<br>
+      ❌ FormFactor（美）競爭<br>
+      ❌ 客戶集中（台積電/聯電依賴）<br>
+      ❌ 人民幣貶值影響中國訂單換算
+    </div>
+  </div>
+  <div class="card">
+    <div style="font-size:13px; font-weight:bold; color:var(--blue); margin-bottom:8px;">進場前確認清單</div>
+    <div style="font-size:12px; color:var(--muted); line-height:1.8;">
+      ☐ 確認各代碼公司名稱（TSE/OTC）<br>
+      ☐ 取得2025年全年/2026Q1財報<br>
+      ☐ 確認AI晶片訂單佔比<br>
+      ☐ 毛利率趨勢（升/降）<br>
+      ☐ 月營收成長率 ≥15% YoY
+    </div>
+  </div>
+</div>
+
+<div class="info">
+  <strong>評分限制:</strong> PRICE_DATA_UNAVAILABLE (yfinance HTTP 403) + 知識截止日2025-08 + web search配額耗盡。
+  所有tw_probe代碼的評分均DATA_UNAVAILABLE，無法完成標準5信號評分。
+  需透過台灣證交所 / 興櫃平台取得即時財報後重新評估。
+</div>
+
+<h2>行業比較框架（待個股數據確認後使用）</h2>
+<table>
+  <thead>
+    <tr><th>評估維度</th><th>理想目標</th><th>行業典型值</th><th>當前狀態</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>月營收YoY成長率</td><td>≥30% (AI超週期)</td><td>10-20%</td><td>DATA_UNAVAILABLE</td></tr>
+    <tr><td>毛利率</td><td>≥55%</td><td>45-65%</td><td>DATA_UNAVAILABLE</td></tr>
+    <tr><td>AI晶片訂單佔比</td><td>≥40%</td><td>20-50%（估）</td><td>DATA_UNAVAILABLE</td></tr>
+    <tr><td>P/E倍數</td><td>&lt;35x</td><td>20-50x</td><td>DATA_UNAVAILABLE</td></tr>
+    <tr><td>法人持股動向</td><td>連3日買超</td><td>不定</td><td>DATA_UNAVAILABLE</td></tr>
+  </tbody>
+</table>
+
+<div style="margin-top:24px; font-size:11px; color:var(--muted); text-align:center;">
+  Generated: 2026-08-30 | TradingAgents Pipeline Phase 1+5 | hsuani/agent-trading-scans<br>
+  總建議倉位: 0% NAV（全部OBSERVE — 等待財報確認後重新評估）
+</div>
+</body>
+</html>

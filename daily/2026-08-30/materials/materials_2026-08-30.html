@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Materials Sector Dashboard — 2026-08-30</title>
+<style>
+  :root {
+    --bg: #0d1117; --bg2: #161b22; --bg3: #21262d;
+    --border: #30363d; --text: #c9d1d9; --muted: #8b949e;
+    --green: #3fb950; --red: #f85149; --yellow: #d29922;
+    --blue: #58a6ff; --purple: #bc8cff; --orange: #f0883e;
+    --copper: #b87333;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', system-ui, sans-serif; font-size: 14px; padding: 20px; }
+  h1 { font-size: 22px; color: var(--orange); margin-bottom: 4px; }
+  h2 { font-size: 16px; color: var(--text); margin: 20px 0 10px; border-bottom: 1px solid var(--border); padding-bottom: 6px; }
+  .meta { color: var(--muted); font-size: 12px; margin-bottom: 20px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin-bottom: 20px; }
+  .card { background: var(--bg2); border: 1px solid var(--border); border-radius: 8px; padding: 14px; }
+  .card-title { font-size: 12px; color: var(--muted); margin-bottom: 4px; }
+  .card-ticker { font-size: 20px; font-weight: bold; margin-bottom: 4px; }
+  table { width: 100%; border-collapse: collapse; background: var(--bg2); border-radius: 8px; overflow: hidden; margin-bottom: 16px; }
+  th { background: var(--bg3); color: var(--muted); font-size: 11px; text-transform: uppercase; padding: 8px 12px; text-align: left; }
+  td { padding: 8px 12px; border-bottom: 1px solid var(--border); font-size: 13px; }
+  tr:last-child td { border-bottom: none; }
+  .badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; }
+  .badge-hold { background: rgba(210,153,34,0.2); color: var(--yellow); }
+  .badge-avoid { background: rgba(248,81,73,0.2); color: var(--red); }
+  .plus { color: var(--green); }
+  .minus { color: var(--red); }
+  .neutral { color: var(--muted); }
+  .note { background: var(--bg3); border-left: 3px solid var(--orange); padding: 10px 14px; border-radius: 0 6px 6px 0; margin: 12px 0; font-size: 13px; color: var(--muted); }
+  .rank-1 { border-left: 3px solid var(--green); }
+  .rank-2 { border-left: 3px solid var(--blue); }
+  .rank-3 { border-left: 3px solid var(--yellow); }
+  .rank-4 { border-left: 3px solid var(--muted); }
+  .rank-5 { border-left: 3px solid var(--red); }
+</style>
+</head>
+<body>
+
+<h1>Materials Sector Dashboard</h1>
+<div class="meta">Date: 2026-08-30 &nbsp;|&nbsp; Tickers: FCX, MP, LIN, APD, ALB &nbsp;|&nbsp; Pipeline: Phase 1 + Sector Comparator</div>
+
+<div class="note">
+  PRICE_DATA_UNAVAILABLE: yfinance HTTP 403 blocks all price data.
+  All tickers scored 0-1/5 (threshold ≥3/5 for full pipeline). Assessments based on structural analysis only.
+</div>
+
+<h2>Sector Rankings</h2>
+<table>
+  <thead>
+    <tr><th>Rank</th><th>Ticker</th><th>Company</th><th>Theme</th><th>Score</th><th>Verdict</th><th>Max NAV%</th></tr>
+  </thead>
+  <tbody>
+    <tr class="rank-1">
+      <td><strong>#1</strong></td><td><strong>FCX</strong></td><td>Freeport-McMoRan</td>
+      <td>Copper supercycle</td><td>1/5</td>
+      <td><span class="badge badge-hold">HOLD 2%</span></td><td>2%</td>
+    </tr>
+    <tr class="rank-2">
+      <td><strong>#2</strong></td><td><strong>LIN</strong></td><td>Linde plc</td>
+      <td>Industrial gas quality</td><td>1/5</td>
+      <td><span class="badge badge-hold">HOLD 2%</span></td><td>2%</td>
+    </tr>
+    <tr class="rank-3">
+      <td><strong>#3</strong></td><td><strong>APD</strong></td><td>Air Products</td>
+      <td>Hydrogen infrastructure</td><td>1/5</td>
+      <td><span class="badge badge-hold">HOLD 1%</span></td><td>1%</td>
+    </tr>
+    <tr class="rank-4">
+      <td><strong>#4</strong></td><td><strong>MP</strong></td><td>MP Materials</td>
+      <td>Rare earth (oversupply)</td><td>0/5</td>
+      <td><span class="badge badge-avoid">AVOID</span></td><td>0%</td>
+    </tr>
+    <tr class="rank-5">
+      <td><strong>#5</strong></td><td><strong>ALB</strong></td><td>Albemarle</td>
+      <td>Lithium cycle trough</td><td>0/5</td>
+      <td><span class="badge badge-avoid">AVOID</span></td><td>0%</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Ticker Profiles</h2>
+<div class="grid">
+  <div class="card rank-1" style="border-radius:8px;">
+    <div class="card-title">#1 Copper Mining</div>
+    <div class="card-ticker" style="color:var(--copper);">FCX</div>
+    <div style="font-size:12px; margin:6px 0; color:var(--green);">HOLD 2% NAV</div>
+    <div style="font-size:11px; color:var(--muted);">P/E ~12-15x | Rev ~$22-24B<br>AI datacenter copper demand<br>EV + grid electrification<br>Grasberg (world's largest)</div>
+  </div>
+  <div class="card rank-2" style="border-radius:8px;">
+    <div class="card-title">#2 Industrial Gases</div>
+    <div class="card-ticker" style="color:var(--blue);">LIN</div>
+    <div style="font-size:12px; margin:6px 0; color:var(--yellow);">HOLD 2% NAV</div>
+    <div style="font-size:11px; color:var(--muted);">P/E ~30-35x | Rev ~$33B<br>Semiconductor fab tailwind<br>15-18% ROIC<br>Pricing power (Take-or-Pay)</div>
+  </div>
+  <div class="card rank-3" style="border-radius:8px;">
+    <div class="card-title">#3 Hydrogen Infrastructure</div>
+    <div class="card-ticker" style="color:var(--yellow);">APD</div>
+    <div style="font-size:12px; margin:6px 0; color:var(--yellow);">HOLD 1% NAV</div>
+    <div style="font-size:11px; color:var(--muted);">P/E ~18-22x | Rev ~$12B<br>NEOM green hydrogen ($8.5B)<br>IRA 45V credits<br>High capex risk period</div>
+  </div>
+  <div class="card rank-4" style="border-radius:8px;">
+    <div class="card-title">#4 Rare Earth</div>
+    <div class="card-ticker" style="color:var(--muted);">MP</div>
+    <div style="font-size:12px; margin:6px 0; color:var(--red);">AVOID 0% NAV</div>
+    <div style="font-size:11px; color:var(--muted);">EPS loss | NdPr $50/kg<br>DoD contract (partial offset)<br>Need NdPr >$80/kg<br>China oversupply headwind</div>
+  </div>
+  <div class="card rank-5" style="border-radius:8px;">
+    <div class="card-title">#5 Lithium</div>
+    <div class="card-ticker" style="color:var(--red);">ALB</div>
+    <div style="font-size:12px; margin:6px 0; color:var(--red);">AVOID 0% NAV</div>
+    <div style="font-size:11px; color:var(--muted);">EPS $1-4 | Li $15k/t<br>80% price decline from peak<br>Greenbushes lowest cost<br>Need Li >$25k/t</div>
+  </div>
+</div>
+
+<h2>Macro Factor Matrix</h2>
+<table>
+  <thead>
+    <tr><th>Macro Factor</th><th>FCX</th><th>LIN</th><th>APD</th><th>MP</th><th>ALB</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>AI / Data Centers</td><td class="plus">++ Bullish</td><td class="plus">+ Moderate</td><td class="neutral">→ Neutral</td><td class="neutral">→ Neutral</td><td class="neutral">→ Neutral</td></tr>
+    <tr><td>EV Adoption</td><td class="plus">++ Bullish</td><td class="neutral">→ Neutral</td><td class="plus">+ Moderate</td><td class="plus">+ Moderate</td><td class="plus">++ Bullish</td></tr>
+    <tr><td>Fed Rate Cuts</td><td class="plus">+ Moderate</td><td class="neutral">→ Neutral</td><td class="plus">+ Moderate</td><td class="neutral">→ Neutral</td><td class="neutral">→ Neutral</td></tr>
+    <tr><td>US-China Tensions</td><td class="minus">- Bearish</td><td class="neutral">→ Neutral</td><td class="neutral">→ Neutral</td><td class="plus">++ Bullish</td><td class="minus">- Bearish</td></tr>
+    <tr><td>Recession Risk</td><td class="minus">-- Very Bearish</td><td class="neutral">→ Neutral</td><td class="minus">- Bearish</td><td class="minus">- Bearish</td><td class="minus">-- Very Bearish</td></tr>
+    <tr><td>China Stimulus</td><td class="plus">++ Bullish</td><td class="neutral">→ Neutral</td><td class="neutral">→ Neutral</td><td class="minus">- Bearish</td><td class="plus">+ Moderate</td></tr>
+  </tbody>
+</table>
+
+<h2>Pair Trades</h2>
+<table>
+  <thead>
+    <tr><th>Trade</th><th>Long</th><th>Short</th><th>Rationale</th><th>Conviction</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Copper vs Lithium</td>
+      <td><strong>FCX</strong></td>
+      <td><strong>ALB</strong></td>
+      <td>Copper in secular demand; lithium in cyclical oversupply</td>
+      <td>Medium</td>
+    </tr>
+    <tr>
+      <td>Gas Quality vs Risk</td>
+      <td><strong>LIN</strong></td>
+      <td><strong>APD</strong></td>
+      <td>LIN proven model; APD unproven hydrogen at scale</td>
+      <td>Low-Medium</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Total Materials Allocation</h2>
+<table>
+  <thead>
+    <tr><th>Ticker</th><th>Target %</th><th>Role</th><th>Trigger to Change</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>FCX</td><td>2%</td><td>Core copper exposure</td><td>Copper >$5/lb → add; <$3.50 → reduce</td></tr>
+    <tr><td>LIN</td><td>2%</td><td>Quality anchor</td><td>P/E <25x → add</td></tr>
+    <tr><td>APD</td><td>1%</td><td>Hydrogen option</td><td>NEOM production start → add</td></tr>
+    <tr><td>MP</td><td>0%</td><td>Watch list</td><td>NdPr >$80/kg → reconsider</td></tr>
+    <tr><td>ALB</td><td>0%</td><td>Watch list</td><td>Li >$25k/t sustained → reconsider</td></tr>
+    <tr style="background:var(--bg3);"><td><strong>Total</strong></td><td><strong>5%</strong></td><td colspan="2">Materials sector allocation</td></tr>
+  </tbody>
+</table>
+
+<div style="margin-top:24px; font-size:11px; color:var(--muted); text-align:center;">
+  Generated: 2026-08-30 | TradingAgents Pipeline Phase 1+5 | hsuani/agent-trading-scans
+</div>
+
+</body>
+</html>

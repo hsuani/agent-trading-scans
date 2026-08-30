@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hedge Sector Dashboard — 2026-08-30</title>
+<style>
+  :root {
+    --bg: #0d1117; --bg2: #161b22; --bg3: #21262d;
+    --border: #30363d; --text: #c9d1d9; --muted: #8b949e;
+    --green: #3fb950; --red: #f85149; --yellow: #d29922;
+    --blue: #58a6ff; --purple: #bc8cff; --orange: #f0883e;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', system-ui, sans-serif; font-size: 14px; padding: 20px; }
+  h1 { font-size: 22px; color: var(--blue); margin-bottom: 4px; }
+  h2 { font-size: 16px; color: var(--text); margin: 20px 0 10px; border-bottom: 1px solid var(--border); padding-bottom: 6px; }
+  .meta { color: var(--muted); font-size: 12px; margin-bottom: 20px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; margin-bottom: 20px; }
+  .card { background: var(--bg2); border: 1px solid var(--border); border-radius: 8px; padding: 14px; }
+  .card-title { font-size: 13px; color: var(--muted); margin-bottom: 6px; }
+  .card-value { font-size: 20px; font-weight: bold; }
+  .hold { color: var(--yellow); }
+  .avoid { color: var(--red); }
+  .observe { color: var(--blue); }
+  table { width: 100%; border-collapse: collapse; background: var(--bg2); border-radius: 8px; overflow: hidden; }
+  th { background: var(--bg3); color: var(--muted); font-size: 11px; text-transform: uppercase; padding: 8px 12px; text-align: left; }
+  td { padding: 8px 12px; border-bottom: 1px solid var(--border); }
+  tr:last-child td { border-bottom: none; }
+  .badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; }
+  .badge-hold { background: rgba(210,153,34,0.2); color: var(--yellow); }
+  .badge-avoid { background: rgba(248,81,73,0.2); color: var(--red); }
+  .badge-observe { background: rgba(88,166,255,0.2); color: var(--blue); }
+  .badge-favorable { background: rgba(63,185,80,0.2); color: var(--green); }
+  .badge-neutral { background: rgba(139,148,158,0.2); color: var(--muted); }
+  .badge-unfavorable { background: rgba(248,81,73,0.2); color: var(--red); }
+  .alloc-bar { background: var(--bg3); border-radius: 4px; height: 6px; margin-top: 4px; }
+  .alloc-fill { background: var(--blue); height: 6px; border-radius: 4px; }
+  .note { background: var(--bg3); border-left: 3px solid var(--blue); padding: 10px 14px; border-radius: 0 6px 6px 0; margin: 12px 0; font-size: 13px; color: var(--muted); }
+  .warn { background: var(--bg3); border-left: 3px solid var(--yellow); padding: 10px 14px; border-radius: 0 6px 6px 0; margin: 12px 0; font-size: 13px; }
+</style>
+</head>
+<body>
+
+<h1>Hedge Sector Dashboard</h1>
+<div class="meta">Date: 2026-08-30 &nbsp;|&nbsp; Instruments: GLD, TLT, UUP, SH &nbsp;|&nbsp; Pipeline: Phase 1 + Sector Comparator</div>
+
+<div class="note">
+  <strong>Macro Regime:</strong> Late-cycle / soft-landing — Fed cutting, growth moderate, inflation sticky, equity bull market intact.
+  All instruments are ETFs; traditional equity scoring (P/E, EPS, revenue) does not apply.
+  PRICE_DATA_UNAVAILABLE: yfinance HTTP 403 blocks all NAV data.
+</div>
+
+<h2>Instrument Rankings</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Rank</th><th>Ticker</th><th>Name</th><th>Role</th><th>Macro Fit</th><th>Verdict</th><th>Max NAV %</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>#1</strong></td>
+      <td><strong>GLD</strong></td>
+      <td>SPDR Gold Shares</td>
+      <td>Inflation / Geopolitical hedge</td>
+      <td><span class="badge badge-favorable">FAVORABLE</span></td>
+      <td><span class="badge badge-hold">HOLD 2–5%</span></td>
+      <td>5%</td>
+    </tr>
+    <tr>
+      <td><strong>#2</strong></td>
+      <td><strong>UUP</strong></td>
+      <td>Invesco DB USD Bullish</td>
+      <td>FX hedge</td>
+      <td><span class="badge badge-neutral">NEUTRAL</span></td>
+      <td><span class="badge badge-observe">OBSERVE 0–1%</span></td>
+      <td>1%</td>
+    </tr>
+    <tr>
+      <td><strong>#3</strong></td>
+      <td><strong>TLT</strong></td>
+      <td>iShares 20+ Year Treasury</td>
+      <td>Duration / Recession hedge</td>
+      <td><span class="badge badge-neutral">SLIGHT BEARISH</span></td>
+      <td><span class="badge badge-observe">OBSERVE 0–1%</span></td>
+      <td>1%</td>
+    </tr>
+    <tr>
+      <td><strong>#4</strong></td>
+      <td><strong>SH</strong></td>
+      <td>ProShares Short S&P500</td>
+      <td>Tactical short hedge</td>
+      <td><span class="badge badge-unfavorable">UNFAVORABLE</span></td>
+      <td><span class="badge badge-avoid">AVOID 0%</span></td>
+      <td>0%</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Phase 1 Signal Summary</h2>
+<div class="grid">
+  <div class="card">
+    <div class="card-title">GLD — Gold ETF</div>
+    <div class="card-value hold">HOLD</div>
+    <div style="margin-top:8px; font-size:12px; color:var(--muted);">Central bank 1000T+/yr buying<br>Fed cut cycle tailwind<br>Geopolitical safe-haven<br>De-dollarization narrative</div>
+    <div style="margin-top:10px; font-size:11px;">Allocation target</div>
+    <div class="alloc-bar"><div class="alloc-fill" style="width:50%"></div></div>
+    <div style="font-size:11px; color:var(--muted);">2–5% NAV</div>
+  </div>
+  <div class="card">
+    <div class="card-title">TLT — Long Treasury ETF</div>
+    <div class="card-value observe">OBSERVE</div>
+    <div style="margin-top:8px; font-size:12px; color:var(--muted);">Fed cuts bullish long-term<br>Fiscal deficit supply pressure<br>Curve steepening risk<br>~17yr duration sensitivity</div>
+    <div style="margin-top:10px; font-size:11px;">Allocation target</div>
+    <div class="alloc-bar"><div class="alloc-fill" style="width:10%"></div></div>
+    <div style="font-size:11px; color:var(--muted);">0–1% NAV</div>
+  </div>
+  <div class="card">
+    <div class="card-title">UUP — US Dollar ETF</div>
+    <div class="card-value observe">OBSERVE</div>
+    <div style="margin-top:8px; font-size:12px; color:var(--muted);">Rate differential supportive<br>US economic resilience<br>De-dollarization headwind<br>Futures roll decay (0.75% ER)</div>
+    <div style="margin-top:10px; font-size:11px;">Allocation target</div>
+    <div class="alloc-bar"><div class="alloc-fill" style="width:10%"></div></div>
+    <div style="font-size:11px; color:var(--muted);">0–1% NAV (FX hedge only)</div>
+  </div>
+  <div class="card">
+    <div class="card-title">SH — Inverse S&P500 ETF</div>
+    <div class="card-value avoid">AVOID</div>
+    <div style="margin-top:8px; font-size:12px; color:var(--muted);">Daily reset = vol drag<br>Bull market destroys value<br>AI capex cycle intact<br>Fed cutting = equity tailwind</div>
+    <div style="margin-top:10px; font-size:11px;">Allocation target</div>
+    <div class="alloc-bar"><div class="alloc-fill" style="width:0%"></div></div>
+    <div style="font-size:11px; color:var(--muted);">0% NAV</div>
+  </div>
+</div>
+
+<h2>Macro Drivers Matrix</h2>
+<table>
+  <thead>
+    <tr><th>Macro Factor</th><th>GLD</th><th>TLT</th><th>UUP</th><th>SH</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Fed Rate Cuts</td><td style="color:var(--green)">↑ Bullish</td><td style="color:var(--green)">↑ Bullish (short-end)</td><td style="color:var(--red)">↓ Bearish</td><td style="color:var(--red)">↓ Bearish</td></tr>
+    <tr><td>USD Strength</td><td style="color:var(--red)">↓ Bearish</td><td style="color:var(--muted)">→ Neutral</td><td style="color:var(--green)">↑ Bullish</td><td style="color:var(--muted)">→ Neutral</td></tr>
+    <tr><td>Geopolitical Risk</td><td style="color:var(--green)">↑ Bullish</td><td style="color:var(--green)">↑ Bullish</td><td style="color:var(--green)">↑ Bullish</td><td style="color:var(--muted)">→ Variable</td></tr>
+    <tr><td>Equity Bull Market</td><td style="color:var(--muted)">→ Neutral</td><td style="color:var(--red)">↓ Bearish</td><td style="color:var(--muted)">→ Neutral</td><td style="color:var(--red)">↓ Very Bearish</td></tr>
+    <tr><td>Inflation Sticky</td><td style="color:var(--green)">↑ Bullish</td><td style="color:var(--red)">↓ Bearish</td><td style="color:var(--muted)">→ Neutral</td><td style="color:var(--muted)">→ Neutral</td></tr>
+    <tr><td>Fiscal Deficit</td><td style="color:var(--green)">↑ Bullish</td><td style="color:var(--red)">↓ Bearish (supply)</td><td style="color:var(--red)">↓ Bearish LT</td><td style="color:var(--muted)">→ Neutral</td></tr>
+  </tbody>
+</table>
+
+<h2>Portfolio Construction</h2>
+<div class="warn">
+  <strong>Total Hedge Sector Budget: 3–7% NAV</strong><br>
+  GLD 2–5% core | UUP 0–1% if FX hedge needed | TLT 0–1% wait for entry | SH 0% avoid
+</div>
+
+<table>
+  <thead>
+    <tr><th>Scenario</th><th>Action</th><th>Target</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Base case (soft landing)</td><td>Hold GLD core, no SH, minimal TLT/UUP</td><td>GLD 3% / others 0%</td></tr>
+    <tr><td>Fed pauses / hawkish surprise</td><td>Reduce GLD; consider UUP add</td><td>GLD 2% / UUP 1%</td></tr>
+    <tr><td>Equity correction >15%</td><td>Add TLT to 3–5%; keep GLD</td><td>GLD 5% / TLT 3%</td></tr>
+    <tr><td>Recession confirmed</td><td>Max TLT; increase GLD; add SH tactically</td><td>GLD 5% / TLT 5% / SH 2% (4-wk only)</td></tr>
+    <tr><td>Geopolitical escalation</td><td>Add GLD to max; add TLT</td><td>GLD 7% / TLT 2%</td></tr>
+  </tbody>
+</table>
+
+<div class="note" style="margin-top:16px;">
+  <strong>Data Limitations:</strong> PRICE_DATA_UNAVAILABLE (HTTP 403) for all ETF NAVs.
+  All 2026-specific macro data (Fed decisions, actual DXY/gold prices, treasury yields) beyond knowledge cutoff (Aug 2025).
+  Assessments based on 2024–2025 known context and structural trend extrapolation only.
+</div>
+
+<div style="margin-top:24px; font-size:11px; color:var(--muted); text-align:center;">
+  Generated: 2026-08-30 | TradingAgents Pipeline Phase 1+5 | hsuani/agent-trading-scans
+</div>
+
+</body>
+</html>
