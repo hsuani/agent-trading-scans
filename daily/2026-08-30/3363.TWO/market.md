@@ -1,0 +1,22 @@
+# 技術分析 — 3363.TWO (上詮電子) 截至 2026-08-30
+
+**族群**: tw_photonics
+
+## 狀態：PRICE_DATA_UNAVAILABLE
+
+yfinance 因組織 egress 政策 HTTP 403 失敗，無法取得台股歷史 OHLCV 資料。
+
+| 指標 | 值 |
+|------|-----|
+| 當前股價 | PRICE_DATA_UNAVAILABLE |
+| RSI14 | PRICE_DATA_UNAVAILABLE |
+| MACD | PRICE_DATA_UNAVAILABLE |
+| MA20/50/200 | PRICE_DATA_UNAVAILABLE |
+| ATR14 | PRICE_DATA_UNAVAILABLE |
+| Bollinger %B | PRICE_DATA_UNAVAILABLE |
+| 成交量 | PRICE_DATA_UNAVAILABLE |
+| 52W 高/低 | PRICE_DATA_UNAVAILABLE |
+
+**建議**: 請透過 TWSE/TPEx 官網或台灣券商平台取得即時價格與技術指標。
+
+**MARKET REPORT COMPLETE (PRICE_DATA_UNAVAILABLE)**
