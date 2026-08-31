@@ -1,0 +1,20 @@
+# 基本面分析 — ARQQ | 2026-09-01
+
+## DATA_UNAVAILABLE
+
+Yahoo Finance 遭代理封鎖（HTTP 403），無法取得財務數據。
+
+| 指標 | 數值 |
+|---|---|
+| 年營收 | DATA_UNAVAILABLE |
+| 營收 YoY | DATA_UNAVAILABLE |
+| 毛利率 | DATA_UNAVAILABLE |
+| 淨利率 | DATA_UNAVAILABLE |
+| FCF | DATA_UNAVAILABLE |
+| P/E | DATA_UNAVAILABLE |
+| EV/EBITDA | DATA_UNAVAILABLE |
+| 內部人交易 | DATA_UNAVAILABLE |
+
+所有基本面欄位因無法連接 Yahoo Finance 而標記為 DATA_UNAVAILABLE。
+
+FUNDAMENTALS ANALYSIS COMPLETE
