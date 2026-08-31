@@ -1,5 +1,7 @@
 FINAL TRANSACTION PROPOSAL: **SELL**
 
+> **PRICE_DATA_UNAVAILABLE** — Yahoo Finance proxy-blocked session-wide (HTTP 403). All price levels ($20.00 entry reference, $28.00 stop, $12.00 T1, $4.80 T2) derived from analyst consensus and sentiment estimates. Recalibrate against live quotes before execution.
+
 # Final decision — ARQQ as of 2026-09-01
 
 ## FINAL TRANSACTION PROPOSAL: **SELL**
