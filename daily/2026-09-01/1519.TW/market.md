@@ -1,0 +1,20 @@
+# Market analysis — 1519.TW (華城電機) as of 2026-09-01
+
+## PRICE_DATA_UNAVAILABLE
+
+Yahoo Finance 遭代理封鎖（HTTP 403），無法取得即時報價及技術指標。
+
+| 指標 | 數值 |
+|---|---|
+| Price | PRICE_DATA_UNAVAILABLE |
+| RSI14 | PRICE_DATA_UNAVAILABLE |
+| MACD | PRICE_DATA_UNAVAILABLE |
+| MA50 | PRICE_DATA_UNAVAILABLE |
+| MA200 | PRICE_DATA_UNAVAILABLE |
+| ATR | PRICE_DATA_UNAVAILABLE |
+| Bollinger | PRICE_DATA_UNAVAILABLE |
+| Volume | PRICE_DATA_UNAVAILABLE |
+
+所有技術分析欄位因無即時報價而無法計算，不得填入臆測數字。
+
+MARKET ANALYSIS COMPLETE
