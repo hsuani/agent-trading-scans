@@ -36,15 +36,8 @@ MIN_MENTIONS = int(os.environ.get("SERENITY_MIN_MENTIONS", "2"))
 # serenity scan, bypassing the Phase-1 threshold — frequency = his conviction.
 CONVICTION_MIN = int(os.environ.get("SERENITY_CONVICTION_MIN", "4"))
 
-# Our scan universe (US tickers) — used to flag which of his mentions are
-# already covered vs genuinely new. Keep loosely in sync with SKILL.md.
-OUR_UNIVERSE = set((
-    "NVDA AMD AVGO MRVL TSM ASML MU ARM CBRS VST CEG TLN GEV ETN PWR NEE SO "
-    "VRT MOD ANET COHR LITE FN AAOI IPGP GLW EQIX DLR IRM AMT SMCI DELL HPE "
-    "CRWD PANW ZS S OKTA TSLA ISRG ABBNY FANUY SYM SPAI FCX MP LIN APD ALB "
-    "IONQ RGTI QBTS QUBT ARQQ LAES HON IBM POET CRDO ALAB GFS INTC "
-    "GLD TLT UUP SH"
-).split())
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import universe as _u  # noqa: E402  — the ONE universe resolver (fixes SNDK slipping through)
 
 # Cashtags that are indices / macro / non-US-equity noise — exclude from picks.
 NOISE = {"DRAM", "KOSPI", "KORU", "EWY", "SHA", "SOXL", "LPK", "SIVEF", "SPCX"}
@@ -122,7 +115,7 @@ def main():
         ranked.append({
             "ticker": tk, "mentions": n,
             "last_seen": last_seen.get(tk, ""),
-            "in_universe": tk in OUR_UNIVERSE,
+            "in_universe": _u.in_static_universe(tk),
             "sentiment": {"latest": latest, "pos": pos, "neg": neg, "neu": neu,
                           "timeline": [x["pol"] for x in tl]},
         })

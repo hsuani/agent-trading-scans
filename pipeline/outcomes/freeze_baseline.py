@@ -84,7 +84,7 @@ def main(force=False):
                    "full_price_cards_note": "entry+stop+T1 derivable via build_dashboard.derive_targets (long-shaped: stop < entry)"},
         "verdicts": {k: verdict_stats(v) for k, v in groups.items()},
         "exploratory_cur_held_x_era_sell_rate": did,
-        "sectors": dict(Counter(c["sector"] for c in cards).most_common()),
+        "sectors": dict(Counter(c["sector_v1"] for c in cards).most_common()),
         "modify": dict(Counter(c["modify"] or "-" for c in cards).most_common()),
     }
     out.parent.mkdir(exist_ok=True)

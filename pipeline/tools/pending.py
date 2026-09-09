@@ -33,12 +33,9 @@ PENDING = ROOT / "pending.txt"
 # cycle). Used by `detect` to find sectors whose most recent complete run is
 # stale — catching whole days that died (e.g. session limit) without ever
 # updating pending.txt. Keep in sync with SKILL.md SECTORS / daily_scan.sh.
-ALL_SECTORS = [
-    "semi", "power", "cooling", "reit", "oem", "security", "robotics",
-    "materials", "quantum", "photonics", "hedge",
-    "abf", "tw_cooling", "tw_server", "tw_power", "tw_pkg",
-    "tw_photonics", "tw_probe", "tw_memory", "memory", "serenity",
-]
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import universe as _u  # noqa: E402
+ALL_SECTORS = list(_u.all_groups())
 
 DATE_RE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
 
@@ -56,9 +53,15 @@ def read_entries():
     out, seen = [], set()
     for line in PENDING.read_text(encoding="utf-8").splitlines():
         s = line.split("#", 1)[0].strip()
-        if s and s not in seen:
-            seen.add(s)
-            out.append(s)
+        if not s:
+            continue
+        # entries written under a retired v1 key expand to their v2 successors
+        sec, _, rest = s.partition(":")
+        for new in _u.RETIRED_KEYS.get(sec, [sec]):
+            e = new + (":" + rest if rest else "")
+            if e not in seen:
+                seen.add(e)
+                out.append(e)
     return out
 
 
@@ -84,10 +87,12 @@ def latest_complete(sector):
     for d in DAILY.iterdir():
         if not (d.is_dir() and DATE_RE.match(d.name)):
             continue
-        rpt = d / sector / "sector_report.md"
-        if rpt.exists() and rpt.stat().st_size > 0:
-            if best is None or d.name > best:
-                best = d.name
+        for key in [sector] + _u.LEGACY_DIRS.get(sector, []):   # v1 dirs count until v2 has its own
+            rpt = d / key / "sector_report.md"
+            if rpt.exists() and rpt.stat().st_size > 0:
+                if best is None or d.name > best:
+                    best = d.name
+                break
     return best
 
 

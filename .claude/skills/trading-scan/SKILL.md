@@ -9,6 +9,15 @@ Orchestrate the TradingAgents-style multi-agent pipeline using Claude Code subag
 
 ## Universe
 
+**Canonical source = `pipeline/tools/universe.py`** (`python3 pipeline/tools/universe.py <key>` →
+comma-separated tickers). The dict below is a verbatim copy for in-context resolution;
+`pipeline/outcomes/test_universe.py` fails if the two ever differ.
+
+Three separate ideas — do not mix them:
+- **PEER GROUP** (`SECTORS` keys): who the comparables are → Phase 5 = `sector-comparator`.
+- **DYNAMIC SOURCE** (`serenity`): why a name surfaced today → Phase 5 = `watchlist-digest`, never a ranking.
+- **THEME TAG**: exposure only. `tw_unassigned` tickers carry tags but no peer group → Phase 5 = `watchlist-digest`.
+
 ```
 SECTORS = {
   "semi":       ["NVDA", "AMD", "AVGO", "MRVL", "TSM", "ASML", "MU", "ARM", "CBRS"],
@@ -22,31 +31,41 @@ SECTORS = {
   "quantum":    ["IONQ", "RGTI", "QBTS", "QUBT", "ARQQ", "LAES", "HON", "IBM"],
   "photonics":  ["POET", "CRDO", "ALAB", "GFS", "INTC"],
   "memory":     ["000660.KS", "005930.KS", "SNDK", "WDC"],   # HBM/DRAM/NAND (MU 已在 semi)
-  "hedge":      ["GLD", "TLT", "UUP", "SH"],   # trimmed from 8 — macro ETFs don't need full pipeline
-  # Taiwan-focused supply chain sectors (no duplicates with above)
-  "abf":        ["3037.TW", "8046.TW", "3189.TW", "4958.TW", "2368.TW"],   # +臻鼎/金像電 (Vera Rubin 載板PCB)
-  "tw_cooling": ["3324.TWO", "8996.TW", "3017.TW", "3653.TW", "6805.TW"],  # +健策/富世達 (Vera Rubin 散熱)
-  "tw_server":  ["6669.TW", "3231.TW", "2356.TW", "2376.TW"],              # +技嘉 (Vera Rubin ODM)
-  "tw_power":   ["2308.TW", "1513.TW", "1519.TW", "2301.TW"],              # +光寶科 (Vera Rubin 電源)
-  "tw_pkg":     ["3661.TW", "8021.TW", "6438.TW"],
-  # tw_photonics absorbs the old tw_optics members (上詮/華星光/眾達 = CPO 中游)
-  "tw_photonics": ["3081.TWO", "2455.TW", "5455.TWO", "3163.TWO", "3008.TW", "4908.TWO", "3363.TWO", "4979.TWO", "4977.TW", "3711.TW", "6830.TW", "3587.TWO", "3289.TWO"],
-  "tw_probe":   ["6510.TWO", "6223.TWO", "6515.TW", "6257.TW", "2449.TW", "3443.TW", "6217.TWO"],   # 探針卡/IC測試/ASIC設計服務
-  "tw_memory":  ["2408.TW", "2344.TW", "8299.TWO", "3260.TWO"],   # 南亞科/華邦/群聯/威剛 (TW DRAM/NAND)
+  "hedge":      ["GLD", "TLT", "UUP", "SH"],
+  # Taiwan supply chain — ONE primary peer group per ticker, no overlaps
+  "tw_ic_substrate":  ["3037.TW", "8046.TW", "3189.TW"],                 # ABF 載板三雄
+  "tw_ai_pcb":        ["2368.TW", "4958.TW"],                            # AI PCB 金像電 / 臻鼎
+  "tw_cooling":       ["3324.TWO", "8996.TW", "3017.TW", "3653.TW", "6805.TW"],
+  "tw_server":        ["6669.TW", "3231.TW", "2356.TW", "2376.TW"],
+  "tw_power":         ["2308.TW", "1513.TW", "1519.TW", "2301.TW"],
+  "tw_asic":          ["3661.TW", "3443.TW"],                            # ASIC 設計服務 世芯 / 創意
+  "tw_photonics":     ["3081.TWO", "2455.TW", "5455.TWO", "3163.TWO", "3008.TW", "4908.TWO", "3363.TWO", "4979.TWO", "4977.TW", "3711.TW", "6830.TW", "3587.TWO", "3289.TWO"],
+  "tw_probe":         ["6510.TWO", "6223.TWO", "6515.TW", "6217.TWO"],  # 探針卡 only
+  "tw_test_services": ["6257.TW", "2449.TW"],                            # IC 測試服務 矽格 / 京元電
+  "tw_memory":        ["2408.TW", "2344.TW", "8299.TWO", "3260.TW"],
+  # no primary peer group — theme tags only (8021 pcb_consumables, 6438 automation_equipment)
+  "tw_unassigned":    ["8021.TW", "6438.TW"],
 }
 ```
+
+Retired keys (history under `daily/<date>/<key>/` is kept, never rewritten):
+`abf` → `tw_ic_substrate` + `tw_ai_pcb`; `tw_pkg` → `tw_asic` + `tw_unassigned`;
+`tw_probe` (7) → `tw_probe` (4) + `tw_test_services`.
 
 ## Taiwan sector composition
 
 | Sector | Theme | Tickers |
 |---|---|---|
-| `abf` | ABF 載板三雄 (AI CPU/GPU substrate) | 欣興 3037 / 南電 8046 / 景碩 3189 |
+| `tw_ic_substrate` | ABF 載板三雄 (AI CPU/GPU substrate) | 欣興 3037 / 南電 8046 / 景碩 3189 |
+| `tw_ai_pcb` | AI PCB (Vera Rubin 高層數板) | 金像電 2368 / 臻鼎 4958 |
 | `tw_cooling` | 散熱模組 (TW VRT/MOD analogue) | 雙鴻 3324 / 高力 8996 / 奇鋐 3017 |
 | `tw_server` | AI server ODM (補 oem 2317/2382) | 緯穎 6669 / 緯創 3231 / 英業達 2356 |
 | `tw_power` | 電源 / 電網 (TW power) | 台達電 2308 / 中興電 1513 / 華城 1519 |
-| `tw_pkg` | 先進封裝 (CoWoS supply chain) | 世芯-KY 3661 / 尖點 8021 / 迅得 6438 |
+| `tw_asic` | ASIC 設計服務 | 世芯-KY 3661 / 創意電子 3443 |
+| `tw_unassigned` | 無同業可比 — theme tags only,Phase 5 用 digest | 尖點 8021 (pcb_consumables) / 迅得 6438 (automation_equipment) |
 | `tw_photonics` | 矽光子供應鏈上中下游+檢測 (TW) | 上游磊晶: 聯亞 3081 / 全新 2455 / 英特磊 5455 · 中游光模組/FAU: 波若威 3163 (NVDA Spectrum-X 夥伴) / 大立光 3008 / 前鼎 4908 / 上詮 3363 / 華星光 4979 / 眾達 4977 · 下游封測: 日月光 3711 · 檢測三雄: 汎銓 6830 / 閎康 3587 / 宜特 3289 |
-| `tw_probe` | 探針測試 / IC 測試 / ASIC 服務 (TW) | 探針卡: 中華精測 6510 / 旺矽 6223 / 穎崴 6515 / 中探針 6217 · IC 測試: 矽格 6257 / 京元電 2449 · ASIC 服務: 創意電子 3443 |
+| `tw_probe` | 探針卡 (TW) | 中華精測 6510 / 旺矽 6223 / 穎崴 6515 / 中探針 6217 |
+| `tw_test_services` | IC 測試服務 (TW) | 矽格 6257 / 京元電 2449 |
 | `tw_memory` | 記憶體 DRAM/NAND (TW) | 南亞科 2408 / 華邦電 2344 / 群聯 8299 / 威剛 3260 |
 
 `memory` (US/韓 HBM/DRAM/NAND): SK海力士 000660.KS (HBM 龍頭, NVDA 主供) / 三星 005930.KS / SanDisk SNDK / Western Digital WDC — MU (美光) 已在 semi。韓股用 `.KS` 後綴 (yfinance)。
@@ -83,24 +102,24 @@ SECTORS = {
 | 2301 | 光寶科 | .TW | | 3653 | 健策 | .TW |
 | 6805 | 富世達 | .TW | | | | |
 
-Vera Rubin 台灣供應鏈新增 (2026-07): 載板 臻鼎4958/金像電2368 → `abf`; ODM 技嘉2376 → `tw_server`; 電源 光寶科2301 → `tw_power`; 散熱 健策3653/富世達6805 → `tw_cooling`. (旺矽/穎崴/日月光/欣興/南電/景碩/鴻海/廣達/緯穎/緯創/台達電/奇鋐/雙鴻 已在既有 sector)
+Vera Rubin 台灣供應鏈新增 (2026-07): 載板 臻鼎4958/金像電2368 → `tw_ai_pcb`; ODM 技嘉2376 → `tw_server`; 電源 光寶科2301 → `tw_power`; 散熱 健策3653/富世達6805 → `tw_cooling`. (旺矽/穎崴/日月光/欣興/南電/景碩/鴻海/廣達/緯穎/緯創/台達電/奇鋐/雙鴻 已在既有 sector)
 
 新族群皆 TW listed, 與 SMCI/DELL/HPE 等 US oem 互補.
 
-`serenity` is a DYNAMIC sector: its universe = Serenity's (@aleabitoreddit) current picks in `serenity/universe.txt` (auto-refreshed by `pipeline/tools/serenity.py` from trackserenity.com). Scan it with `tickers=<contents of universe.txt>` not a fixed list. His already-covered mentions (NVDA/MRVL/etc) are skipped; only his NEW picks scan here.
+`serenity` is a DYNAMIC SOURCE, not a peer group: its universe = Serenity's (@aleabitoreddit) current picks in `serenity/universe.txt` (auto-refreshed by `pipeline/tools/serenity.py` from trackserenity.com, dedup against `universe.py` static universe). Scan it with `tickers=<contents of universe.txt>` not a fixed list. Mentions already in the static universe (NVDA/MRVL/SNDK/…) are skipped — only his NEW picks scan here. **Phase 5 for serenity / tw_unassigned = `watchlist-digest` (no ranking), never `sector-comparator`.**
 
-## Daily scan schedule (20 sectors / 7 days)
+## Daily scan schedule (24 keys / 7 days — same tickers per day as before 1A)
 
 `daily_scan.sh` runs multiple sectors per day grouped by theme (US + TW supply chain pairs):
 
 | Day | DOW | Sectors | Tickers | Theme |
 |---|---|---|---|---|
-| Mon | 1 | `semi tw_pkg serenity` | 9 + 3 + ~8 = ~20 | AI compute + 先進封裝 + Serenity picks |
+| Mon | 1 | `semi tw_asic tw_unassigned serenity` | 9 + 2 + 2 + ~8 = ~21 | AI compute + ASIC 設計服務 + 未分組 + Serenity picks |
 | Tue | 2 | `power tw_power quantum` | 8 + 3 + 8 = 19 | 電力 + TW 電源 + 量子運算 |
 | Wed | 3 | `cooling tw_cooling memory` | 9 + 5 + 4 = 18 | 散熱 + 記憶體 HBM |
-| Thu | 4 | `oem tw_server abf tw_memory` | 5 + 4 + 5 + 4 = 18 | AI server + ABF + TW 記憶體 |
+| Thu | 4 | `oem tw_server tw_ic_substrate tw_ai_pcb tw_memory` | 5 + 4 + 3 + 2 + 4 = 18 | AI server + ABF 載板 + AI PCB + TW 記憶體 |
 | Fri | 5 | `security materials robotics` | 5 + 5 + 7 = 17 | 安全 + 原料 + 機器人 |
-| Sat | 6 | `hedge reit tw_probe` | 4 + 4 + 7 = 15 | 避險 + REIT + 探針測試 |
+| Sat | 6 | `hedge reit tw_probe tw_test_services` | 4 + 4 + 4 + 2 = 14 | 避險 + REIT + 探針卡 + IC 測試服務 |
 | Sun | 7 | `photonics tw_photonics` | 5 + 13 = 18 | 矽光子專日 (US 純玩家 + TW 上中下游+檢測, 含舊 tw_optics) |
 
 Total: 約 104 tickers fully covered weekly. 重日 (Tue 19 / Sun 18 / Fri 17) 靠 pending+detect 自癒, 不致命.
@@ -196,7 +215,8 @@ Standard for any sector scan:
    Picks beyond the cap get a Phase-1-only stub (haiku only, no Sonnet/Opus).
 6. Phase 2-4 (Sonnet) on capped pick list. Remaining positive picks get a Phase-1+ stub
    final_decision noting "near-quota skip". Non-positive picks get standard Phase-1-only stub.
-7. Phase 5 sector-comparator across all picks with full decisions.
+7. Phase 5 across all picks with full decisions: `sector-comparator` for a peer group,
+   `watchlist-digest` for `serenity` / `tw_unassigned` (no ranking — they are not peers).
 
 ### Positive-pick criteria (Phase 1 scoring)
 
@@ -258,8 +278,11 @@ Across tickers in a sector: run pipelines sequentially per-ticker to avoid yfina
 
 After all tickers done:
 ```
-Phase 5:
-  Task(sector-comparator, SECTOR, DATE)
+Phase 5 (peer group → comparator; dynamic source / tw_unassigned → digest, NO ranking):
+  if SECTOR in ("serenity", "tw_unassigned"):
+    Task(watchlist-digest, SECTOR, DATE)
+  else:
+    Task(sector-comparator, SECTOR, DATE)
   → daily/{DATE}/{SECTOR}/sector_report.md
 
 Phase 6 (mandatory, always run after Phase 5):
@@ -306,7 +329,7 @@ daily/{DATE}/
 1. Parse args. Resolve ticker list from `sector` or explicit `tickers`.
 2. Print plan (which tickers, which date, how many phases).
 3. For each ticker, run pipeline. On any phase failure, log to `daily/{DATE}/{TICKER}/errors.log` and continue.
-4. After all tickers in a sector, run `sector-comparator`.
+4. After all tickers in a sector, run `sector-comparator` (peer group) or `watchlist-digest` (serenity / tw_unassigned).
 5. Final summary: print sector ranking table to user (top 3 BUY, any SELL, top contrarian).
 
 ## Cost / time estimate

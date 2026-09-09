@@ -57,78 +57,23 @@ def _date_dirs():
 
 OUT = SCANS / "dashboard.html"
 
-SECTOR_LABELS = {
-    "semi":       "A. 半導體核心",
-    "power":      "B. 電力 / 電網",
-    "cooling":    "C. 散熱 / 網通 / 光通訊",
-    "reit":       "D. 資料中心 REIT",
-    "oem":        "E. AI 伺服器 OEM (US+TW)",
-    "security":   "F. AI 安全",
-    "robotics":   "G. 機器人 / 自駕",
-    "materials":  "H. 原料 / 稀土",
-    "hedge":      "I. 避險",
-    "abf":        "J. ABF 載板 (TW)",
-    "tw_cooling": "K. 散熱模組 (TW)",
-    "tw_server":  "L. AI server ODM (TW)",
-    "tw_power":   "N. 電源 / 電網 (TW)",
-    "tw_pkg":     "O. 先進封裝 (TW)",
-    "quantum":    "P. 量子運算 (incl. Quantinuum=HON)",
-    "photonics":  "Q. 矽光子 (US pure-play)",
-    "memory":     "Q2. 記憶體 HBM/DRAM/NAND",
-    "tw_photonics": "R. 矽光子供應鏈 上中下游+檢測 (TW)",
-    "tw_probe":   "S. 探針測試 / IC 測試 / ASIC 服務 (TW)",
-    "tw_memory":  "T2. 記憶體 DRAM/NAND (TW)",
-    "serenity":   "T. Serenity 追蹤標的 (@aleabitoreddit picks)",
-}
-
-SECTORS_ORDER = list(SECTOR_LABELS.keys())
-
-
-SECTOR_TICKERS = OrderedDict([
-    ("semi",       ["NVDA", "AMD", "AVGO", "MRVL", "TSM", "ASML", "MU", "ARM", "CBRS"]),
-    ("power",      ["VST", "CEG", "TLN", "GEV", "ETN", "PWR", "NEE", "SO"]),
-    ("cooling",    ["VRT", "MOD", "ANET", "COHR", "LITE", "FN", "AAOI", "IPGP", "GLW"]),
-    ("reit",       ["EQIX", "DLR", "IRM", "AMT"]),
-    ("oem",        ["SMCI", "DELL", "HPE", "2317.TW", "2382.TW"]),
-    ("security",   ["CRWD", "PANW", "ZS", "S", "OKTA"]),
-    ("robotics",   ["TSLA", "ISRG", "ABBNY", "FANUY", "SYM", "SPAI"]),
-    ("materials",  ["FCX", "MP", "LIN", "APD", "ALB"]),
-    ("quantum",    ["IONQ", "RGTI", "QBTS", "QUBT", "ARQQ", "LAES", "HON", "IBM"]),
-    ("photonics",  ["POET", "CRDO", "ALAB", "GFS", "INTC"]),
-    ("memory",     ["000660.KS", "005930.KS", "SNDK", "WDC"]),
-    ("hedge",      ["GLD", "TLT", "UUP", "SH"]),
-    ("abf",        ["3037.TW", "8046.TW", "3189.TW", "4958.TW", "2368.TW"]),
-    ("tw_cooling", ["3324.TWO", "8996.TW", "3017.TW", "3653.TW", "6805.TW"]),
-    ("tw_server",  ["6669.TW", "3231.TW", "2356.TW", "2376.TW"]),
-    ("tw_power",   ["2308.TW", "1513.TW", "1519.TW", "2301.TW"]),
-    ("tw_pkg",     ["3661.TW", "8021.TW", "6438.TW"]),
-    ("tw_photonics", ["3081.TWO", "2455.TW", "5455.TWO", "3163.TWO", "3008.TW", "4908.TWO", "3363.TWO", "4979.TWO", "4977.TW", "3711.TW", "6830.TW", "3587.TWO", "3289.TWO"]),
-    ("tw_probe",   ["6510.TWO", "6223.TWO", "6515.TW", "6257.TW", "2449.TW", "3443.TW", "6217.TWO"]),
-    ("tw_memory",  ["2408.TW", "2344.TW", "8299.TWO", "3260.TW"]),
-])
-
-
-def serenity_universe():
-    """Serenity's dynamic pick list from serenity/universe.txt (his top new
-    mentions). Empty list if the file is missing."""
-    f = SCANS / "serenity" / "universe.txt"
-    if not f.is_file():
-        return []
-    out = []
-    for line in f.read_text(encoding="utf-8").splitlines():
-        s = line.split("#", 1)[0].strip()
-        if s:
-            out.append(s)
-    return out
+# Taxonomy lives in universe.py (single source). These names are kept so the
+# rest of this file and validate.py keep working unchanged.
+import universe as _u
+SECTOR_LABELS = _u.LABELS
+SECTORS_ORDER = list(_u.all_groups().keys())
+SECTOR_TICKERS = _u.all_groups()
+serenity_universe = _u.serenity_universe
 
 
 def latest_scan_for_sector(sector: str) -> Path | None:
     """Find the most recent date dir that has scans/{date}/{sector}/sector_report.md."""
     candidates = []
+    # A v2 group reads its v1 predecessor dirs (read-only) until it has its own report.
     for d in _date_dirs():
-        rpt = d / sector / "sector_report.md"
-        if rpt.exists():
-            candidates.append((d.name, d))
+        for key in [sector] + _u.LEGACY_DIRS.get(sector, []):
+            if (d / key / "sector_report.md").exists():
+                candidates.append((d.name, d)); break
     if not candidates:
         return None
     candidates.sort(reverse=True)
@@ -386,17 +331,14 @@ def compute_top20(sectors_data: dict) -> list:
 
 def collect_payload() -> dict:
     """Walk scans/ and assemble the full dashboard data payload."""
-    # serenity sector is dynamic — his current picks from serenity/universe.txt
-    _ser = serenity_universe()
-    if _ser:
-        SECTOR_TICKERS["serenity"] = _ser
-
     sectors_data = {}
     for sector in SECTORS_ORDER:
         scan_dir = latest_scan_for_sector(sector)
         if scan_dir is None:
             continue
-        sector_report = scan_dir / sector / "sector_report.md"
+        report_key = next((k for k in [sector] + _u.LEGACY_DIRS.get(sector, [])
+                           if (scan_dir / k / "sector_report.md").exists()), sector)
+        sector_report = scan_dir / report_key / "sector_report.md"
         sr_text = sector_report.read_text(encoding="utf-8", errors="ignore") if sector_report.exists() else ""
 
         tickers = []
@@ -421,14 +363,14 @@ def collect_payload() -> dict:
             if same_date_sector_html.exists():
                 data["report_url"] = f"./daily/{latest_date}/{sector}/{sector}_{latest_date}.html#ticker-{tname.replace('.', '_')}"
             else:
-                data["report_url"] = f"./daily/{scan_dir.name}/{sector}/{sector}_{scan_dir.name}.html#ticker-{tname.replace('.', '_')}"
+                data["report_url"] = f"./daily/{scan_dir.name}/{report_key}/{report_key}_{scan_dir.name}.html#ticker-{tname.replace('.', '_')}"
             data["history"] = history
             tickers.append(data)
 
         sectors_data[sector] = {
             "label":       SECTOR_LABELS.get(sector, sector),
             "scan_date":   scan_dir.name,
-            "report_url":  f"./daily/{scan_dir.name}/{sector}/{sector}_{scan_dir.name}.html",
+            "report_url":  f"./daily/{scan_dir.name}/{report_key}/{report_key}_{scan_dir.name}.html",
             "sector_meta": parse_sector_report(sr_text),
             "tickers":     tickers,
         }
@@ -1485,10 +1427,7 @@ def render_status_banner() -> str:
             last_of[label] = (ts.strip(), subj.strip())
 
     # today's scan — per-sector done/missing (weekday sectors)
-    DAY = {1: ["semi", "tw_pkg", "serenity"], 2: ["power", "tw_power", "quantum"],
-           3: ["cooling", "tw_cooling", "memory"], 4: ["oem", "tw_server", "abf", "tw_memory"],
-           5: ["security", "materials", "robotics"], 6: ["hedge", "reit", "tw_probe"],
-           7: ["photonics", "tw_photonics"]}
+    DAY = _u.SCHEDULE
     WK = ["", "一", "二", "三", "四", "五", "六", "日"]
     today = _date.today()
     dow = today.isoweekday()

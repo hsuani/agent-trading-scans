@@ -43,16 +43,17 @@ SCAN_ROOT="$HOME/Study/scans"
 
 # Mon Tue Wed Thu Fri Sat Sun (date +%u → 1..7)
 # Multi-sector per day. Space-separated list per slot; loop runs each in sequence.
-# 16 sectors covered across 7 days, grouped by theme (US + TW supply chain pairs).
+# Keys come from pipeline/tools/universe.py SCHEDULE (test_universe.py checks they match).
+# Same tickers per day as before 1A; abf/tw_pkg/tw_probe were split into peer groups.
 declare -a DAY_SECTORS=(
-  ""                                # padding for index 0
-  "semi tw_pkg serenity"            # Mon: AI core compute (US + TW packaging) + Serenity picks (dynamic)
-  "power tw_power quantum"          # Tue: Power infrastructure (US + TW grid/PSU) + quantum computing (incl. HON=Quantinuum proxy)
-  "cooling tw_cooling memory"              # Wed: Thermal (US + TW) — tw_optics merged into tw_photonics (Sun) + memory (HBM)
-  "oem tw_server abf tw_memory"               # Thu: AI server build (US + TW ODM + ABF substrate) + TW memory
-  "security materials robotics"     # Fri: Security + raw materials + robotics (moved off Sun to make room for photonics)
-  "hedge reit tw_probe"             # Sat: Defensive (hedge 4 + REIT) + 探針測試 (TW probe-card/test, freest day after hedge trim)
-  "photonics tw_photonics"          # Sun: Silicon photonics day (US POET/CRDO/ALAB/GFS/INTC + TW 上中下游+檢測 10 檔)
+  ""                                                    # padding for index 0
+  "semi tw_asic tw_unassigned serenity"                 # Mon: AI compute + ASIC 設計服務 + 未分組 (8021/6438) + Serenity (dynamic)
+  "power tw_power quantum"                              # Tue: Power (US + TW) + quantum
+  "cooling tw_cooling memory"                           # Wed: Thermal (US + TW) + memory (HBM)
+  "oem tw_server tw_ic_substrate tw_ai_pcb tw_memory"   # Thu: AI server build + ABF 載板 + AI PCB + TW memory
+  "security materials robotics"                         # Fri: Security + raw materials + robotics
+  "hedge reit tw_probe tw_test_services"                # Sat: Defensive + 探針卡 + IC 測試服務
+  "photonics tw_photonics"                              # Sun: Silicon photonics (US + TW)
 )
 
 SECTOR=""
@@ -173,10 +174,14 @@ for SECTOR in "${SECTOR_LIST[@]}"; do
   CLAUDE_LOG="$LOG_DIR/${SECTOR}_claude.log"
   HTML_OUT="$SCAN_ROOT/daily/$DATE/${SECTOR}/${SECTOR}_${DATE}.html"
 
-  # serenity is a DYNAMIC sector — its universe is Serenity's current picks in
+  # serenity is a DYNAMIC source — its universe is Serenity's current picks in
   # serenity/universe.txt (refreshed by serenity.py). Refresh + resolve now.
+  # tw_unassigned has no peer group: pass its tickers explicitly like a dynamic source.
   SECTOR_TICKERS_ARG=""
   SECTOR_FORCE_FULL=""
+  if [[ "$SECTOR" == "tw_unassigned" ]]; then
+    SECTOR_TICKERS_ARG=$("$PY" "$TOOL_DIR/universe.py" tw_unassigned)
+  fi
   if [[ "$SECTOR" == "serenity" ]]; then
     "$PY" "$TOOL_DIR/serenity.py" >> "$RUN_LOG" 2>&1 || true
     SECTOR_TICKERS_ARG=$(grep -vE '^\s*#|^\s*$' "$SCAN_ROOT/serenity/universe.txt" 2>/dev/null | tr '\n' ',' | sed 's/,$//')
@@ -231,7 +236,8 @@ Required behaviour:
      identify TOP 3-5 picks based on Phase 1 signals. Run Phase 2-4
      (Sonnet/Opus) ONLY for those picks. Other tickers stop after Phase 1.
      Phase 5 sector-comparator notes which tickers got full pipeline.
-4. After all eligible tickers complete: run Phase 5 (sector-comparator).
+4. After all eligible tickers complete: run Phase 5 — sector-comparator for a
+   peer group; watchlist-digest (NO ranking) for serenity / tw_unassigned.
 5. Each phase output writes to /Users/yht/Study/scans/daily/${DATE}/{TICKER}/*.md
    and /Users/yht/Study/scans/daily/${DATE}/${SECTOR}/sector_report.md.
 6. Do NOT pause for confirmation. Treat tool failures as soft (log+continue).
