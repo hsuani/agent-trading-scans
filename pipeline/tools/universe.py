@@ -79,7 +79,10 @@ LABELS = {
     "serenity": "T. Serenity 追蹤標的 (@aleabitoreddit picks)",
 }
 
-# Weekly schedule (isoweekday 1..7). Same tickers per day as v1; only the keys changed.
+# Weekly schedule (isoweekday 1..7). Same 117 tickers per week as v1, but NOT the
+# same cadence for every ticker: 3443.TW moved Sat -> Mon so 世芯/創意 share the
+# tw_asic comparator. SCHEDULE_MOVES records that (test_universe.py derives it
+# from V1_SCHEDULE and fails if the two drift); outcome cards flag those tickers.
 SCHEDULE = {
     1: ["semi", "tw_asic", "tw_unassigned", "serenity"],
     2: ["power", "tw_power", "quantum"],
@@ -105,6 +108,25 @@ V1_GROUPS = OrderedDict(list(PEER_GROUPS.items())[:12] + [
 # and for pending.py staleness, so a freshly split group is not "never scanned")
 LEGACY_DIRS = {"tw_ic_substrate": ["abf"], "tw_ai_pcb": ["abf"], "tw_asic": ["tw_pkg"],
                "tw_unassigned": ["tw_pkg"], "tw_test_services": ["tw_probe"]}
+V1_SCHEDULE = {
+    1: ["semi", "tw_pkg", "serenity"], 2: ["power", "tw_power", "quantum"],
+    3: ["cooling", "tw_cooling", "memory"], 4: ["oem", "tw_server", "abf", "tw_memory"],
+    5: ["security", "materials", "robotics"], 6: ["hedge", "reit", "tw_probe"],
+    7: ["photonics", "tw_photonics"],
+}
+SCHEDULE_MOVES = {"3443.TW": {"v1_dow": 6, "v2_dow": 1}}   # the only cadence change at 1A
+
+
+def schedule_dow(ticker, schedule=None, groups=None):
+    """isoweekday a ticker is scanned on (None for dynamic picks)."""
+    schedule, groups = schedule or SCHEDULE, groups or all_groups()
+    for dow, keys in schedule.items():
+        for k in keys:
+            if k not in DYNAMIC_SOURCES and ticker in groups.get(k, []):   # static membership only
+                return dow
+    return None
+
+
 # retired v1 key -> v2 keys (pending.txt entries written before 1A are translated on read)
 RETIRED_KEYS = {"abf": ["tw_ic_substrate", "tw_ai_pcb"], "tw_pkg": ["tw_asic", "tw_unassigned"]}
 
