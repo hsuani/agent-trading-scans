@@ -1,0 +1,246 @@
+{
+  "frozen_at": "2026-09-09",
+  "git_head_sha": "393c6359a549bbb6880a4fa43eaa0742de24540a",
+  "git_dirty": false,
+  "git_diff_sha256": null,
+  "code_sha256": {
+    "build_dashboard.py": "b7425c1ce68292eb9dcabf168cb0908ddebe0e4e903fe575efa86661034d8ca6",
+    "cards.py": "f38f2655e2dbcdbdc7c632823746901505e2876cb290adcd740b254c9b333ac9",
+    "evaluate_outcomes.py": "9943022002ab0190b188cf15f493f580e2d89ffe7c2caae802b9bd0331a362e8",
+    "freeze_baseline.py": "d923fa7177887f5a1fb564901cc593de70e6a7f7a43662da93eaa18da695fcd0",
+    "political.py": "a4c8de106849586918a725e7f555fdfd93a38611804c4a3df36ab005d61a31e3",
+    "prices.py": "9f0cac14c615882eee5ce9024d8f20cd1a3159038dfad90dea2f28c00835b6a2",
+    "sensitivity.py": "bdcee1c03b6abdb6552bd11d1635c540f1cd46a717f570304366745f63dc5238",
+    "test_outcomes.py": "897de8a625adc0906af5d8b90b410b80a45210cba19d5f7ac3fa13f8a743d6ed"
+  },
+  "scan_date_range": [
+    "2026-05-15",
+    "2026-09-09"
+  ],
+  "prompt_cutoff": "2026-08-28",
+  "pm_prompt_commits": [
+    "0fee2ce7f 2026-08-27 feat: give the portfolio manager an exit frame for held positions",
+    "fe149c72f 2026-06-23 Initial commit: trading-scan pipeline bundle + daily scan archive"
+  ],
+  "pm_prompt_blob": "9694a8516b9e1c4efc3f5ab38760c795936cd7f2",
+  "positive_gate_blob": "f09537764b339a27d368f2844ca58269e4b0ee68",
+  "agent_models": {
+    "bear-researcher": "sonnet",
+    "bull-researcher": "sonnet",
+    "fundamentals-analyst": "haiku",
+    "market-analyst": "haiku",
+    "news-analyst": "haiku",
+    "portfolio-manager": "opus",
+    "research-manager": "sonnet",
+    "risk-aggressive": "sonnet",
+    "risk-conservative": "sonnet",
+    "risk-neutral": "sonnet",
+    "sector-comparator": "sonnet",
+    "sentiment-analyst": "haiku",
+    "trader": "sonnet"
+  },
+  "risk_agents": [
+    "risk-aggressive",
+    "risk-conservative",
+    "risk-neutral"
+  ],
+  "held_tickers": [
+    "3017.TW",
+    "ALB",
+    "AMT",
+    "ANET",
+    "COHR",
+    "DLR",
+    "LIN",
+    "MOD",
+    "MP",
+    "MRVL",
+    "MUB"
+  ],
+  "held_list_note": "held_tickers.txt has a single commit (2026-06-23). currently_held_ticker = today's list, NOT point-in-time; held_at_decision = PM's own framing, post-08-27 cards only",
+  "counts": {
+    "final_decisions": 2078,
+    "entry_and_stop": 652,
+    "full_price_cards": 616,
+    "full_price_cards_note": "entry+stop+T1 derivable via build_dashboard.derive_targets (long-shaped: stop < entry)"
+  },
+  "verdicts": {
+    "all": {
+      "n": 2078,
+      "BUY": 706,
+      "HOLD": 836,
+      "SELL": 24,
+      "UNKNOWN": 512,
+      "BUY_rate": 0.3397,
+      "HOLD_rate": 0.4023,
+      "SELL_rate": 0.0115,
+      "UNKNOWN_rate": 0.2464
+    },
+    "full_run": {
+      "n": 1134,
+      "BUY": 655,
+      "HOLD": 414,
+      "SELL": 21,
+      "UNKNOWN": 44,
+      "BUY_rate": 0.5776,
+      "HOLD_rate": 0.3651,
+      "SELL_rate": 0.0185,
+      "UNKNOWN_rate": 0.0388
+    },
+    "stub": {
+      "n": 944,
+      "BUY": 51,
+      "HOLD": 422,
+      "SELL": 3,
+      "UNKNOWN": 468,
+      "BUY_rate": 0.054,
+      "HOLD_rate": 0.447,
+      "SELL_rate": 0.0032,
+      "UNKNOWN_rate": 0.4958
+    },
+    "cur_held_full": {
+      "n": 136,
+      "BUY": 60,
+      "HOLD": 65,
+      "SELL": 6,
+      "UNKNOWN": 5,
+      "BUY_rate": 0.4412,
+      "HOLD_rate": 0.4779,
+      "SELL_rate": 0.0441,
+      "UNKNOWN_rate": 0.0368
+    },
+    "cur_nonheld_full": {
+      "n": 998,
+      "BUY": 595,
+      "HOLD": 349,
+      "SELL": 15,
+      "UNKNOWN": 39,
+      "BUY_rate": 0.5962,
+      "HOLD_rate": 0.3497,
+      "SELL_rate": 0.015,
+      "UNKNOWN_rate": 0.0391
+    },
+    "post_held_at_decision": {
+      "n": 13,
+      "BUY": 1,
+      "HOLD": 6,
+      "SELL": 6,
+      "UNKNOWN": 0,
+      "BUY_rate": 0.0769,
+      "HOLD_rate": 0.4615,
+      "SELL_rate": 0.4615,
+      "UNKNOWN_rate": 0.0
+    },
+    "post_new_at_decision": {
+      "n": 140,
+      "BUY": 70,
+      "HOLD": 62,
+      "SELL": 6,
+      "UNKNOWN": 2,
+      "BUY_rate": 0.5,
+      "HOLD_rate": 0.4429,
+      "SELL_rate": 0.0429,
+      "UNKNOWN_rate": 0.0143
+    },
+    "pre": {
+      "n": 1701,
+      "BUY": 632,
+      "HOLD": 626,
+      "SELL": 12,
+      "UNKNOWN": 431,
+      "BUY_rate": 0.3715,
+      "HOLD_rate": 0.368,
+      "SELL_rate": 0.0071,
+      "UNKNOWN_rate": 0.2534
+    },
+    "post": {
+      "n": 377,
+      "BUY": 74,
+      "HOLD": 210,
+      "SELL": 12,
+      "UNKNOWN": 81,
+      "BUY_rate": 0.1963,
+      "HOLD_rate": 0.557,
+      "SELL_rate": 0.0318,
+      "UNKNOWN_rate": 0.2149
+    }
+  },
+  "exploratory_cur_held_x_era_sell_rate": {
+    "cur_held_pre": {
+      "n": 117,
+      "BUY": 58,
+      "HOLD": 54,
+      "SELL": 0,
+      "UNKNOWN": 5,
+      "BUY_rate": 0.4957,
+      "HOLD_rate": 0.4615,
+      "SELL_rate": 0.0,
+      "UNKNOWN_rate": 0.0427
+    },
+    "cur_held_post": {
+      "n": 19,
+      "BUY": 2,
+      "HOLD": 11,
+      "SELL": 6,
+      "UNKNOWN": 0,
+      "BUY_rate": 0.1053,
+      "HOLD_rate": 0.5789,
+      "SELL_rate": 0.3158,
+      "UNKNOWN_rate": 0.0
+    },
+    "cur_nonheld_pre": {
+      "n": 845,
+      "BUY": 523,
+      "HOLD": 283,
+      "SELL": 9,
+      "UNKNOWN": 30,
+      "BUY_rate": 0.6189,
+      "HOLD_rate": 0.3349,
+      "SELL_rate": 0.0107,
+      "UNKNOWN_rate": 0.0355
+    },
+    "cur_nonheld_post": {
+      "n": 153,
+      "BUY": 72,
+      "HOLD": 66,
+      "SELL": 6,
+      "UNKNOWN": 9,
+      "BUY_rate": 0.4706,
+      "HOLD_rate": 0.4314,
+      "SELL_rate": 0.0392,
+      "UNKNOWN_rate": 0.0588
+    }
+  },
+  "sectors": {
+    "tw_photonics": 192,
+    "cooling": 180,
+    "semi": 171,
+    "power": 155,
+    "other": 151,
+    "quantum": 112,
+    "robotics": 99,
+    "oem": 96,
+    "security": 93,
+    "tw_probe": 91,
+    "materials": 81,
+    "photonics": 81,
+    "hedge": 80,
+    "tw_cooling": 79,
+    "abf": 78,
+    "reit": 72,
+    "tw_server": 66,
+    "tw_power": 61,
+    "memory": 56,
+    "tw_pkg": 51,
+    "tw_memory": 33
+  },
+  "modify": {
+    "-": 1021,
+    "MODIFY": 887,
+    "APPROVE": 95,
+    "REJECT": 62,
+    "減碼": 6,
+    "續抱": 6,
+    "加碼": 1
+  }
+}
