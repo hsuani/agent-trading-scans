@@ -206,7 +206,8 @@ def report(recs):
              f"pre-exit MAE median (T1_FIRST/TIMEOUT): {f['median_pre_exit_mae']}", "",
              "Outcomes: " + json.dumps(f["outcomes"], ensure_ascii=False), "",
              "## By t1_source (all cards)", "", md_table(breakdown(recs, "t1_source"), COLS), ""]
-    for name, key in (("era", "era"), ("verdict", "verdict"), ("sector", "sector")):
+    for name, key in (("era", "era"), ("verdict", "verdict"), ("sector_v1 (scanned under)", "sector_v1"),
+                      ("primary_group_v2 (1A mapping, same outcomes)", "primary_group_v2")):
         lines += [f"## Primary cohort by {name}", "", md_table(breakdown(prim, key), COLS), ""]
     lines += ["## Held — EXPLORATORY, not a treatment/control split", "",
               "`currently_held_ticker` = in today's held_tickers.txt (one commit, 2026-06-23), not the "

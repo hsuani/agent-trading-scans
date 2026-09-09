@@ -32,6 +32,7 @@ import argparse
 import json
 import re
 import sys
+from collections import OrderedDict
 from collections import defaultdict
 from datetime import datetime, date
 from pathlib import Path
@@ -46,23 +47,9 @@ DAILY = SCANS_ROOT / "daily"
 _DBASE = DAILY if DAILY.is_dir() else SCANS_ROOT   # tolerate pre-migration root
 OUT = SCANS_ROOT / "_catalysts.json"
 
-SECTORS = {
-    "semi":      ["NVDA", "AMD", "AVGO", "MRVL", "TSM", "ASML", "MU", "ARM", "CBRS"],
-    "power":     ["VST", "CEG", "TLN", "GEV", "ETN", "PWR", "NEE", "SO"],
-    "cooling":   ["VRT", "MOD", "ANET", "COHR", "LITE", "FN", "AAOI", "IPGP", "GLW"],
-    "reit":      ["EQIX", "DLR", "IRM", "AMT"],
-    "oem":       ["SMCI", "DELL", "HPE", "2317.TW", "2382.TW"],
-    "security":  ["CRWD", "PANW", "ZS", "S", "OKTA"],
-    "robotics":  ["TSLA", "ISRG", "ABBNY", "FANUY", "SYM"],
-    "materials": ["FCX", "MP", "LIN", "APD", "ALB"],
-    "quantum":   ["IONQ", "RGTI", "QBTS", "QUBT", "ARQQ", "LAES", "HON", "IBM"],
-    "photonics": ["POET", "CRDO", "ALAB", "GFS", "INTC"],
-    "memory":     ["000660.KS", "005930.KS", "SNDK", "WDC"],
-    "hedge":     ["GLD", "TLT", "UUP", "SH"],
-    "tw_photonics": ["3081.TWO", "2455.TW", "5455.TWO", "3163.TWO", "3008.TW", "4908.TWO", "3363.TWO", "4979.TWO", "4977.TW", "3711.TW", "6830.TW", "3587.TWO", "3289.TWO"],
-    "tw_memory":  ["2408.TW", "2344.TW", "8299.TWO", "3260.TW"],
-    "tw_probe":  ["6510.TWO", "6223.TWO", "6515.TW", "6257.TW", "2449.TW", "3443.TW", "6217.TWO"],
-}
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import universe as _u  # noqa: E402
+SECTORS = OrderedDict(_u.PEER_GROUPS); SECTORS[_u.UNASSIGNED_KEY] = list(_u.UNASSIGNED)   # static universe only
 TICKER_TO_SECTOR = {t: s for s, ts in SECTORS.items() for t in ts}
 
 # Quarter midpoints (mid-month of the middle month of each quarter)

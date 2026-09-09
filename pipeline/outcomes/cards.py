@@ -36,12 +36,11 @@ def held_set():
     return out
 
 
-def sector_of():
-    return {t: s for s, ts in bd.SECTOR_TICKERS.items() for t in ts}
+import universe as _u  # noqa: E402  (pipeline/tools is already on sys.path)
 
 
 def collect():
-    held, sec = held_set(), sector_of()
+    held = held_set()
     for fd in sorted((ROOT / "daily").glob("*/*/final_decision.md")):
         text = fd.read_text(encoding="utf-8", errors="ignore")
         card = bd.parse_final_decision(text)
@@ -57,7 +56,11 @@ def collect():
             t1_source = "derived_rr" if rr != 1.5 else "derived_default"
         yield {
             "ticker": fd.parent.name, "scan_date": fd.parts[-3],
-            "sector": sec.get(fd.parent.name, "other"),
+            # sector_v1 = frozen v2.0-baseline taxonomy (what the card was scanned under);
+            # primary_group_v2 = the 1A peer group, derived by mapping — history is never rewritten.
+            "sector_v1": _u.v1_group(fd.parent.name) or "other",
+            "primary_group_v2": _u.primary_group(fd.parent.name)
+                                or ("unassigned" if fd.parent.name in _u.UNASSIGNED else "other"),
             "verdict": card["verdict"], "modify": card["modify"],
             # currently_held_ticker = in TODAY's held_tickers.txt (single commit, 06-23) —
             # not a point-in-time holding. held_at_decision = the PM's own framing,

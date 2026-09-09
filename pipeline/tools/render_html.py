@@ -25,42 +25,15 @@ import yfinance as yf
 from stockstats import wrap
 
 import os as _os
+sys.path.insert(0, str(Path(__file__).resolve().parent))
 # Portable root: env override, else repo root (<repo>/pipeline/tools/ → parents[2]).
 SCANS_ROOT = Path(_os.environ.get("TRADING_SCANS_ROOT") or Path(__file__).resolve().parents[2])
 # Per-day scan output lives under daily/<date>/.
 DAILY = SCANS_ROOT / "daily"
 _DBASE = DAILY if DAILY.is_dir() else SCANS_ROOT   # tolerate pre-migration root
 
-SECTORS = {
-    "semi":       ["NVDA", "AMD", "AVGO", "MRVL", "TSM", "ASML", "MU", "ARM", "CBRS"],
-    "power":      ["VST", "CEG", "TLN", "GEV", "ETN", "PWR", "NEE", "SO"],
-    "cooling":    ["VRT", "MOD", "ANET", "COHR", "LITE", "FN", "AAOI", "IPGP", "GLW"],
-    "reit":       ["EQIX", "DLR", "IRM", "AMT"],
-    "oem":        ["SMCI", "DELL", "HPE", "2317.TW", "2382.TW"],
-    "security":   ["CRWD", "PANW", "ZS", "S", "OKTA"],
-    "robotics":   ["TSLA", "ISRG", "ABBNY", "FANUY", "SYM", "SPAI"],
-    "materials":  ["FCX", "MP", "LIN", "APD", "ALB"],
-    "quantum":    ["IONQ", "RGTI", "QBTS", "QUBT", "ARQQ", "LAES", "HON", "IBM"],
-    "photonics":  ["POET", "CRDO", "ALAB", "GFS", "INTC"],
-    "memory":     ["000660.KS", "005930.KS", "SNDK", "WDC"],
-    "hedge":      ["GLD", "TLT", "UUP", "SH"],
-    "abf":        ["3037.TW", "8046.TW", "3189.TW", "4958.TW", "2368.TW"],
-    "tw_cooling": ["3324.TWO", "8996.TW", "3017.TW", "3653.TW", "6805.TW"],
-    "tw_server":  ["6669.TW", "3231.TW", "2356.TW", "2376.TW"],
-    "tw_power":   ["2308.TW", "1513.TW", "1519.TW", "2301.TW"],
-    "tw_pkg":     ["3661.TW", "8021.TW", "6438.TW"],
-    "tw_photonics": ["3081.TWO", "2455.TW", "5455.TWO", "3163.TWO", "3008.TW", "4908.TWO", "3363.TWO", "4979.TWO", "4977.TW", "3711.TW", "6830.TW", "3587.TWO", "3289.TWO"],
-    "tw_probe":   ["6510.TWO", "6223.TWO", "6515.TW", "6257.TW", "2449.TW", "3443.TW", "6217.TWO"],
-    "tw_memory":  ["2408.TW", "2344.TW", "8299.TWO", "3260.TW"],
-}
-
-# serenity sector is dynamic — load his current picks from serenity/universe.txt
-_ser_uni = SCANS_ROOT / "serenity" / "universe.txt"
-if _ser_uni.is_file():
-    _picks = [l.split("#", 1)[0].strip() for l in _ser_uni.read_text(encoding="utf-8").splitlines()]
-    _picks = [p for p in _picks if p]
-    if _picks:
-        SECTORS["serenity"] = _picks
+import universe as _u   # canonical taxonomy (peer groups + dynamic sources)
+SECTORS = _u.all_groups()
 
 MD = markdown.Markdown(extensions=["tables", "fenced_code", "nl2br"])
 
