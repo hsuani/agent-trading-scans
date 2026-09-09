@@ -44,8 +44,10 @@ def collect():
     for fd in sorted((ROOT / "daily").glob("*/*/final_decision.md")):
         text = fd.read_text(encoding="utf-8", errors="ignore")
         card = bd.parse_final_decision(text)
-        rr = bd.parse_rr(text)
-        em, st, t1, t2 = bd.derive_targets(card["entry"], card["stop"], rr)
+        rr = bd.parse_rr(text)          # None when the card states no R:R
+        # Keep 1.5 as an explicit placeholder here ONLY so the reference cohort
+        # `derived_default` stays comparable with v2.0-baseline REPORT.md.
+        em, st, t1, t2 = bd.derive_targets(card["entry"], card["stop"], rr if rr is not None else 1.5)
         en = bd._first_nums(card["entry"], 2)
         # Prefer the analyst's own T1. derive_targets falls back to rr=1.5 when no
         # R:R parses, which puts T1 at 0.75R — a dashboard placeholder, not a thesis.
@@ -53,7 +55,7 @@ def collect():
         if stated and em and stated[0] > em:
             t1, t1_source = stated[0], "stated"
         else:
-            t1_source = "derived_rr" if rr != 1.5 else "derived_default"
+            t1_source = "derived_rr" if rr is not None else "derived_default"
         yield {
             "ticker": fd.parent.name, "scan_date": fd.parts[-3],
             # sector_v1 = frozen v2.0-baseline taxonomy (what the card was scanned under);
@@ -73,7 +75,7 @@ def collect():
             "era": "post" if fd.parts[-3] >= PROMPT_CUTOFF else "pre",
             "stub": bd.is_phase1_only(text) or not (fd.parent / "trade_proposal.md").exists(),
             "entry_lo": min(en) if en else None, "entry_hi": max(en) if en else None,
-            "entry_mid": em, "stop": st, "t1": t1, "t2": t2, "rr": rr, "t1_source": t1_source,
+            "entry_mid": em, "stop": st, "t1": t1, "t2": t2, "rr": rr if rr is not None else 1.5, "t1_source": t1_source,
             "horizon_raw": card["horizon"], "horizon_days": parse_horizon(card["horizon"]),
             "conviction": bd.parse_conviction(text),
         }
