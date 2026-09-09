@@ -81,6 +81,8 @@ def count_repo_usage(lookback_days: int) -> dict:
             if not p1:
                 continue
             units += p1 * W_HAIKU
+            if (t / "evidence_shadow.json").exists():   # Phase 1.5 shadow grader (haiku)
+                units += W_HAIKU
             if (t / "trade_proposal.md").exists():
                 units += FULL_PIPELINE_UNITS
                 tickers_full += 1
