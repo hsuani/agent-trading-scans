@@ -61,6 +61,7 @@ def collect():
             "sector_v1": _u.v1_group(fd.parent.name) or "other",
             "primary_group_v2": _u.primary_group(fd.parent.name)
                                 or ("unassigned" if fd.parent.name in _u.UNASSIGNED else "other"),
+            "schedule_changed_at_1A": fd.parent.name in _u.SCHEDULE_MOVES,
             "verdict": card["verdict"], "modify": card["modify"],
             # currently_held_ticker = in TODAY's held_tickers.txt (single commit, 06-23) —
             # not a point-in-time holding. held_at_decision = the PM's own framing,

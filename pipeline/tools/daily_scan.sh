@@ -44,7 +44,8 @@ SCAN_ROOT="$HOME/Study/scans"
 # Mon Tue Wed Thu Fri Sat Sun (date +%u → 1..7)
 # Multi-sector per day. Space-separated list per slot; loop runs each in sequence.
 # Keys come from pipeline/tools/universe.py SCHEDULE (test_universe.py checks they match).
-# Same tickers per day as before 1A; abf/tw_pkg/tw_probe were split into peer groups.
+# Same 117 tickers per week as before 1A (abf/tw_pkg/tw_probe split into peer groups);
+# one cadence change: 3443.TW Sat -> Mon (universe.SCHEDULE_MOVES).
 declare -a DAY_SECTORS=(
   ""                                                    # padding for index 0
   "semi tw_asic tw_unassigned serenity"                 # Mon: AI compute + ASIC 設計服務 + 未分組 (8021/6438) + Serenity (dynamic)

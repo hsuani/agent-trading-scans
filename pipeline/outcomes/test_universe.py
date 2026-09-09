@@ -45,7 +45,13 @@ sh = (ROOT / "pipeline" / "tools" / "daily_scan.sh").read_text(encoding="utf-8")
 days = re.findall(r'^\s+"([^"]*)"\s+#', sh[sh.index("DAY_SECTORS=("):sh.index("\n)\n", sh.index("DAY_SECTORS=("))], re.M)
 assert [d.split() for d in days[1:]] == [u.SCHEDULE[i] for i in range(1, 8)], days
 
-# 6. Phase 5 agents exist; watchlist-digest forbids ranking
+# 6. cadence: the v1 -> v2 per-ticker scan-day diff is exactly SCHEDULE_MOVES
+v1g = dict(u.V1_GROUPS); v1g["serenity"] = []
+moves = {t: {"v1_dow": u.schedule_dow(t, u.V1_SCHEDULE, v1g), "v2_dow": u.schedule_dow(t)}
+         for t in u.static_universe() if u.schedule_dow(t, u.V1_SCHEDULE, v1g) != u.schedule_dow(t)}
+assert moves == u.SCHEDULE_MOVES, moves
+
+# 7. Phase 5 agents exist; watchlist-digest forbids ranking
 agents = ROOT / ".claude" / "agents" / "trading"
 assert (agents / "sector-comparator.md").exists() and (agents / "watchlist-digest.md").exists()
 assert "watchlist-digest" in skill and "tw_unassigned" in skill

@@ -371,7 +371,10 @@ def collect_payload() -> dict:
             "label":       SECTOR_LABELS.get(sector, sector),
             "scan_date":   scan_dir.name,
             "report_url":  f"./daily/{scan_dir.name}/{report_key}/{report_key}_{scan_dir.name}.html",
-            "sector_meta": parse_sector_report(sr_text),
+            # A legacy (v1) report's ranking was over a different peer set, so its
+            # top pick / pairs must not be shown under the v2 group's name.
+            "sector_meta": (parse_sector_report(sr_text) if report_key == sector
+                            else {**parse_sector_report(""), "legacy_report": True, "legacy_key": report_key}),
             "tickers":     tickers,
         }
 
