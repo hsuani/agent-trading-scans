@@ -1,0 +1,105 @@
+# long_trade_plan_outcome — 2026-09-09
+
+616 long-shaped cards replayed (daily OHLC, horizon from decision date, MFE/MAE exclude the exit bar). **Primary cohort = stated T1 (372 cards)**; derived T1s are dashboard placeholders (rr default 1.5 -> 0.75R) and sit below for reference.
+
+## Primary KPI (stated T1)
+
+| metric | value |
+|---|---|
+| resolved_n | 220 |
+| resolved_win_rate | 0.314 |
+| expectancy_R | -0.152 |
+| expectancy_pct | -0.0138 |
+| expectancy_R_bounds | [-0.191, -0.143] |
+| matured_trigger_rate | 0.961 |
+| asof_trigger_rate | 0.837 |
+| open_entered | 38 |
+| open_not_entered | 45 |
+| timeout_rate | 0.016 |
+| ambiguous_rate | 0.122 |
+| excluded_rate | 0.059 |
+| post_stop_reentry_rate | 0.808 |
+| post_stop_hit_t1_rate | 0.258 |
+| median_days_to_entry | 1 |
+| median_days_to_exit | 5.0 |
+
+expectancy_R 95% CI (ticker-clustered bootstrap): [-0.347, 0.034]  ·  win-rate CI: [0.243, 0.384]
+
+**Ambiguity-adjusted expectancy bounds: [-0.191, -0.143]** — the cohort replayed with every ambiguous bar resolved along its stop path (lower) or its T1 path (upper); a stop-only touch on the entry bar is ignored on the upper path. No intraday order assumed.
+
+pre-exit MFE median (STOP_FIRST/TIMEOUT): {'STOP_FIRST': 0.0347, 'TIMEOUT': 0.0517}  ·  pre-exit MAE median (T1_FIRST/TIMEOUT): {'T1_FIRST': -0.0018, 'TIMEOUT': -0.0394}
+
+Outcomes: {"STOP_FIRST": 151, "CORPORATE_ACTION": 10, "T1_FIRST": 69, "OPEN": 83, "NOT_TRIGGERED": 12, "TIMEOUT": 4, "AMBIGUOUS_ENTRY_BAR": 31, "INVALID_LEVELS": 12}
+
+## By t1_source (all cards)
+
+| group | n | resolved | win | exp_R | exp_R CI95 | exp_R bounds | trig(matured) | trig(asof) | timeout | ambig | excl | T1 | STOP | reentry|stop | T1|stop |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| derived_default | 163 | 71 | 0.549 | -0.045 | [-0.263, 0.169] | [-0.047, 0.147] | 0.992 | 0.86 | 0.036 | 0.33 | 0.123 | 39 | 32 | 0.812 | 0.531 |
+| derived_rr | 81 | 44 | 0.341 | -0.116 | [-0.551, 0.346] | [-0.144, -0.144] | 0.985 | 0.901 | 0.0 | 0.137 | 0.123 | 15 | 29 | 0.621 | 0.172 |
+| stated | 372 | 220 | 0.314 | -0.152 | [-0.347, 0.034] | [-0.191, -0.143] | 0.961 | 0.837 | 0.016 | 0.122 | 0.059 | 69 | 151 | 0.808 | 0.258 |
+
+## Primary cohort by era
+
+| group | n | resolved | win | exp_R | exp_R CI95 | exp_R bounds | trig(matured) | trig(asof) | timeout | ambig | excl | T1 | STOP | reentry|stop | T1|stop |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| post | 34 | 5 | 0.0 | -0.956 | [-1.0, -0.869] | [-0.923, -0.956] | 1.0 | 0.636 | 0.0 | 0.167 | 0.029 | 0 | 5 | 0.2 | 0.0 |
+| pre | 338 | 215 | 0.321 | -0.133 | [-0.336, 0.069] | [-0.173, -0.127] | 0.958 | 0.858 | 0.016 | 0.12 | 0.062 | 69 | 146 | 0.829 | 0.267 |
+
+## Primary cohort by verdict
+
+| group | n | resolved | win | exp_R | exp_R CI95 | exp_R bounds | trig(matured) | trig(asof) | timeout | ambig | excl | T1 | STOP | reentry|stop | T1|stop |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| BUY | 246 | 168 | 0.333 | -0.098 | [-0.301, 0.123] | [-0.127, -0.077] | 0.976 | 0.868 | 0.0 | 0.077 | 0.049 | 56 | 112 | 0.857 | 0.241 |
+| HOLD | 115 | 46 | 0.261 | -0.271 | [-0.675, 0.183] | [-0.313, -0.266] | 0.92 | 0.762 | 0.046 | 0.246 | 0.087 | 12 | 34 | 0.676 | 0.353 |
+| SELL | 3 | 2 | 0.0 | -1.0 |  | [-1.0, -1.0] | 1.0 | 1.0 | 0.0 | 0.0 | 0.0 | 0 | 2 | 0.0 | 0.0 |
+| UNKNOWN | 8 | 4 | 0.25 | -0.596 | [-1.025, 0.237] | [-0.677, -0.677] | 1.0 | 0.875 | 0.167 | 0.167 | 0.0 | 1 | 3 | 1.0 | 0.0 |
+
+## Primary cohort by sector
+
+| group | n | resolved | win | exp_R | exp_R CI95 | exp_R bounds | trig(matured) | trig(asof) | timeout | ambig | excl | T1 | STOP | reentry|stop | T1|stop |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| abf | 4 | 2 | 0.5 | 0.672 |  | [0.115, 0.115] | 1.0 | 0.75 | 0.0 | 0.333 | 0.0 | 1 | 1 | 0.0 | 1.0 |
+| cooling | 52 | 37 | 0.405 | 0.056 | [-0.404, 0.594] | [-0.109, -0.056] | 1.0 | 0.961 | 0.0 | 0.178 | 0.019 | 15 | 22 | 0.727 | 0.227 |
+| hedge | 17 | 8 | 0.625 | 0.371 | [0.304, 0.529] | [0.371, 0.371] | 0.923 | 0.75 | 0.2 | 0.0 | 0.059 | 5 | 3 | 1.0 | 0.0 |
+| materials | 21 | 12 | 0.083 | -0.756 | [-1.078, -0.461] | [-0.758, -0.758] | 0.938 | 0.75 | 0.0 | 0.077 | 0.048 | 1 | 11 | 0.636 | 0.364 |
+| memory | 2 | 0 |  |  |  | [None, None] | 1.0 | 1.0 |  |  | 0.5 | 0 | 0 |  |  |
+| oem | 18 | 12 | 0.25 | -0.13 | [-0.996, 0.303] | [-0.254, -0.254] | 0.933 | 0.778 | 0.0 | 0.143 | 0.0 | 3 | 9 | 1.0 | 0.778 |
+| other | 36 | 16 | 0.125 | -0.535 | [-1.037, 0.148] | [-0.539, -0.539] | 1.0 | 0.677 | 0.0 | 0.111 | 0.139 | 2 | 14 | 0.929 | 0.214 |
+| photonics | 14 | 7 | 0.286 | 0.168 | [-1.063, 3.051] | [0.322, 0.322] | 1.0 | 0.846 | 0.0 | 0.3 | 0.071 | 2 | 5 | 0.4 | 0.0 |
+| power | 55 | 45 | 0.244 | -0.303 | [-0.637, 0.047] | [-0.328, -0.253] | 1.0 | 0.964 | 0.0 | 0.062 | 0.0 | 11 | 34 | 0.765 | 0.265 |
+| quantum | 21 | 8 | 0.375 | -0.181 | [-1.084, 1.203] | [-0.345, -0.055] | 0.923 | 0.667 | 0.0 | 0.2 | 0.143 | 3 | 5 | 0.8 | 0.0 |
+| reit | 25 | 12 | 0.083 | -0.732 | [-1.07, -0.345] | [-0.554, -0.554] | 1.0 | 0.958 | 0.071 | 0.071 | 0.04 | 1 | 11 | 0.818 | 0.091 |
+| robotics | 11 | 8 | 0.125 | -0.78 | [-1.154, 0.322] | [-0.813, -0.813] | 1.0 | 1.0 | 0.091 | 0.182 | 0.0 | 1 | 7 | 0.857 | 0.0 |
+| security | 28 | 12 | 0.583 | 0.491 | [-0.178, 1.256] | [0.491, 0.491] | 0.722 | 0.565 | 0.0 | 0.0 | 0.179 | 7 | 5 | 0.8 | 0.6 |
+| semi | 46 | 31 | 0.516 | 0.323 | [-0.255, 0.997] | [0.269, 0.346] | 0.927 | 0.826 | 0.0 | 0.088 | 0.0 | 16 | 15 | 0.933 | 0.2 |
+| tw_cooling | 2 | 2 | 0.0 | -1.0 |  | [-1.0, -1.0] | 1.0 | 1.0 | 0.0 | 0.0 | 0.0 | 0 | 2 | 1.0 | 1.0 |
+| tw_memory | 1 | 0 |  |  |  | [2.176, 2.176] | 1.0 | 1.0 | 0.0 | 1.0 | 0.0 | 0 | 0 |  |  |
+| tw_photonics | 4 | 1 | 0.0 | -1.0 |  | [-1.0, -1.0] | 1.0 | 0.75 | 0.0 | 0.5 | 0.0 | 0 | 1 | 1.0 | 0.0 |
+| tw_pkg | 2 | 1 | 0.0 | -1.0 |  | [-0.878, -1.0] | 1.0 | 1.0 | 0.0 | 0.5 | 0.0 | 0 | 1 | 1.0 | 0.0 |
+| tw_power | 7 | 3 | 0.0 | -1.125 |  | [-1.125, -1.125] | 1.0 | 0.75 | 0.0 | 0.0 | 0.429 | 0 | 3 | 1.0 | 0.0 |
+| tw_probe | 2 | 0 |  |  |  | [None, None] | 1.0 | 1.0 |  |  | 0.0 | 0 | 0 |  |  |
+| tw_server | 4 | 3 | 0.333 | -0.053 |  | [-0.053, -0.053] | 1.0 | 1.0 | 0.0 | 0.0 | 0.0 | 1 | 2 | 1.0 | 0.5 |
+
+## Held — EXPLORATORY, not a treatment/control split
+
+`currently_held_ticker` = in today's held_tickers.txt (one commit, 2026-06-23), not the holding state on the decision date. `held_at_decision` = the PM's own framing, written only since the 08-27 prompt, so it exists for the post era only. No causal reading of either.
+
+| currently_held_ticker | n | resolved | win | exp_R | exp_R CI95 | exp_R bounds | trig(matured) | trig(asof) | timeout | ambig | excl | T1 | STOP | reentry|stop | T1|stop |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| False | 309 | 185 | 0.319 | -0.11 | [-0.315, 0.108] | [-0.157, -0.1] | 0.956 | 0.825 | 0.019 | 0.108 | 0.058 | 59 | 126 | 0.849 | 0.286 |
+| True | 63 | 35 | 0.286 | -0.373 | [-0.855, 0.078] | [-0.354, -0.354] | 0.981 | 0.898 | 0.0 | 0.186 | 0.063 | 10 | 25 | 0.6 | 0.12 |
+
+| held_at_decision (post only) | n | resolved | win | exp_R | exp_R CI95 | exp_R bounds | trig(matured) | trig(asof) | timeout | ambig | excl | T1 | STOP | reentry|stop | T1|stop |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| False | 24 | 3 | 0.0 | -0.927 | [-1.0, -0.854] | [-0.884, -0.927] | 1.0 | 0.609 | 0.0 | 0.25 | 0.042 | 0 | 3 | 0.333 | 0.0 |
+| True | 7 | 2 | 0.0 | -1.0 |  | [-1.0, -1.0] | 1.0 | 0.857 | 0.0 | 0.0 | 0.0 | 0 | 2 | 0.0 | 0.0 |
+
+### DiD cells (currently_held_ticker × era) — exploratory
+
+| group | n | resolved | win | exp_R | exp_R CI95 | exp_R bounds | trig(matured) | trig(asof) | timeout | ambig | excl | T1 | STOP | reentry|stop | T1|stop |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| cur_held_pre | 56 | 33 | 0.303 | -0.335 | [-0.835, 0.151] | [-0.322, -0.322] | 0.979 | 0.904 | 0.0 | 0.195 | 0.071 | 10 | 23 | 0.652 | 0.13 |
+| cur_held_post | 7 | 2 | 0.0 | -1.0 |  | [-1.0, -1.0] | 1.0 | 0.857 | 0.0 | 0.0 | 0.0 | 0 | 2 | 0.0 | 0.0 |
+| cur_nonheld_pre | 282 | 182 | 0.324 | -0.096 | [-0.305, 0.122] | [-0.143, -0.087] | 0.953 | 0.849 | 0.019 | 0.106 | 0.06 | 59 | 123 | 0.862 | 0.293 |
+| cur_nonheld_post | 27 | 3 | 0.0 | -0.927 | [-1.0, -0.854] | [-0.884, -0.927] | 1.0 | 0.577 | 0.0 | 0.25 | 0.037 | 0 | 3 | 0.333 | 0.0 |
