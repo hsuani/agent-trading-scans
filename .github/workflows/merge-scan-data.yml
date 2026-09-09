@@ -1,22 +1,33 @@
 name: merge scan-data to main
 
 # WHY: the CCR cloud routines (nightly / backfill) no longer push to main — the
-# platform now isolates each run on its own throwaway branch
-# (claude/wizardly-bell-*  = nightly, claude/sharp-brahmagupta-*  = backfill), so
-# the scan output never reaches main and the dashboard goes stale. This Action
-# runs on GitHub's runner (which DOES have contents:write on main) and merges the
-# DATA paths from those routine branches into main, then rebuilds the dashboard.
+# platform isolates each run on its own throwaway claude/<adjective>-<name>-<id>
+# branch, so the scan output never reaches main and the dashboard goes stale.
+# This Action runs on GitHub's runner (which DOES have contents:write on main)
+# and merges the DATA paths from those branches into main, then rebuilds.
+#
+# TRIGGER: every claude/** branch, deliberately. This used to list the two stems
+# in use at the time (wizardly-bell = nightly, sharp-brahmagupta = backfill).
+# On 2026-08-27 the platform silently reissued them as stoic-mayer and
+# ecstatic-euler; the trigger stopped matching, and nobody noticed for two weeks
+# because the routines kept running and pushing normally — 25 branches and 7 scan
+# dates piled up unmerged while the dashboard sat frozen. The stems are not ours
+# to control, so we no longer name them.
+#
+# The old comment said non-routine claude/* branches are "interactive sessions"
+# to be ignored, but 39 such branches turned out to hold real scan output that
+# never reached main either (recovered 2026-08-27). Merging them is safe: the
+# step below copies DATA paths only, and a branch with no daily/ contributes
+# nothing.
 #
 # SAFETY: only DATA paths are merged (daily/ serenity/ pending.txt validation.json
 # _catalysts.json) — never source (.claude/ pipeline/ .github/), so a stale routine
-# checkout can never revert source. Scoped to the two routine branch stems only;
-# other claude/* branches (interactive sessions) are ignored.
+# checkout can never revert source.
 
 on:
   push:
     branches:
-      - "claude/wizardly-bell-**"
-      - "claude/sharp-brahmagupta-**"
+      - "claude/**"
   workflow_dispatch:
     inputs:
       backlog:
@@ -58,8 +69,7 @@ jobs:
             # recover the whole backlog: every routine branch, oldest first so the
             # newest run's version wins on any same-file overlap.
             BRANCHES=$(git for-each-ref --sort=committerdate --format='%(refname:short)' \
-              'refs/remotes/origin/claude/wizardly-bell-*' \
-              'refs/remotes/origin/claude/sharp-brahmagupta-*')
+              'refs/remotes/origin/claude/*')
           else
             BRANCHES="origin/${GITHUB_REF#refs/heads/}"
           fi
