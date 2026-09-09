@@ -432,7 +432,7 @@ def collect_payload() -> dict:
             today = date.today().isoformat()
             by_ticker = defaultdict(list)
             for c in cat_data.get("all", []):
-                if c["date"] >= today:
+                if c["date"] >= today and c.get("date_precision", "exact_day") == "exact_day":
                     by_ticker[c["ticker"]].append({
                         "date": c["date"], "category": c["category"],
                         "desc": (c["description"][:160] + "…") if len(c["description"]) > 160 else c["description"],

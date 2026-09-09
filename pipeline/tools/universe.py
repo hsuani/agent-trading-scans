@@ -16,6 +16,7 @@ dashboard read old reports until each new group has its own.
     python3 pipeline/tools/universe.py tw_asic      # tickers, comma-separated
     python3 pipeline/tools/universe.py --json       # every group
     python3 pipeline/tools/universe.py --group SNDK # primary group of a ticker
+    python3 pipeline/tools/universe.py --schedule 4 # keys scanned on isoweekday 4 (cloud routines use this)
 """
 import json
 import os
@@ -190,5 +191,9 @@ if __name__ == "__main__":
         print(json.dumps(all_groups(), ensure_ascii=False, indent=1))
     elif a[0] == "--group":
         print(primary_group(a[1]) or ("unassigned" if a[1].upper() in UNASSIGNED else "none"))
+    elif a[0] == "--schedule":
+        print(" ".join(SCHEDULE[int(a[1])]))
+    elif a[0] == "--no-peer-ranking":
+        print(" ".join(NO_PEER_RANKING))
     else:
         print(",".join(resolve(a[0])))

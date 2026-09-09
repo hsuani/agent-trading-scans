@@ -112,8 +112,8 @@ def upcoming_catalysts():
     horizon = (date.today().toordinal() + CATALYST_DAYS)
     for c in data.get("all", []):
         cd = c.get("date", "")
-        if not DATE_RE.match(cd) or cd < today:
-            continue
+        if not DATE_RE.match(cd) or cd < today or c.get("date_precision", "exact_day") != "exact_day":
+            continue   # a quarter token mapped to a mid-quarter day is not a dated catalyst
         try:
             if date.fromisoformat(cd).toordinal() > horizon:
                 continue
