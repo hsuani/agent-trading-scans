@@ -1,0 +1,7 @@
+# 情感分析
+
+**DATA_UNAVAILABLE** — ETF 無傳統分析師評級。
+
+機構持倉資料（2026年）：DATA_UNAVAILABLE (yfinance HTTP 403)
+
+SENTIMENT REPORT COMPLETE
