@@ -16,7 +16,15 @@ import sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 os.environ.setdefault("TRADING_SCANS_ROOT", os.getcwd())
 
-from build_dashboard import _first_nums, derive_targets  # noqa: E402
+from build_dashboard import _first_nums, derive_targets, parse_rr, compute_score  # noqa: E402
+
+# 0. No R:R in the card -> None, and the score must not pretend it was 1.5x.
+assert parse_rr("no ratio here") is None and parse_rr("R:R to T2 ≈ 2.70") == 2.7
+assert derive_targets("$100 – $104", "$95", None)[2] is None
+s_none = compute_score({"verdict": "BUY"}, "VERDICT: BUY 信心度 60%")[0]
+s_rr = compute_score({"verdict": "BUY"}, "VERDICT: BUY 信心度 60% R:R to T2 = 2.5")[0]
+assert s_none == 60.0 and s_rr == 90.0, (s_none, s_rr)
+assert compute_score({"verdict": "BUY"}, "VERDICT: BUY 信心度 60% PRICE_DATA_UNAVAILABLE")[0] == 21.0
 
 # 1. A card that refuses to quote a level yields NO number, whatever digits the
 #    sentence happens to contain. This is the rule that matters: the downstream

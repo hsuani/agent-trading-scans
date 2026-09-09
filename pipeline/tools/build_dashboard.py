@@ -249,10 +249,22 @@ def parse_conviction(text: str) -> int:
     return 50
 
 
-def parse_rr(text: str) -> float:
-    """Parse R:R to T2 if any. Returns ratio (default 1.5)."""
+def _conviction_parsed(text: str) -> bool:
+    """True when parse_conviction found a real figure (else it returned the 50 default)."""
     if not text:
-        return 1.5
+        return False
+    if re.search(r"(?:conviction|信心(?:度)?)[^0-9]{0,30}(\d{1,3})\s*%", text, re.I):
+        return True
+    m = re.search(r"\((\d{2,3})\s*%\)", text[:1500])
+    return bool(m and 30 <= int(m.group(1)) <= 100)
+
+
+def parse_rr(text: str):
+    """Parse R:R to T2 if any. Returns the ratio, or None when the card states
+    none — callers must not treat a placeholder as a real target (the outcome
+    tracker showed the old 1.5 default put T1 at 0.75R and inflated win rates)."""
+    if not text:
+        return None
     # Match "R:R T2 = 2.7" or "T2 R:R 3.0" or "R:R to T2 ≈ 2.70" or "T2 = 3.5x"
     patterns = [
         r"R[:\s]?R[\s\(\)]*(?:to\s+)?T2[^\d]{0,20}(\d+(?:\.\d+)?)",
@@ -268,7 +280,7 @@ def parse_rr(text: str) -> float:
                     return v
             except ValueError:
                 continue
-    return 1.5
+    return None
 
 
 def is_phase1_only(text: str) -> bool:
@@ -284,9 +296,11 @@ def compute_score(card: dict, text: str) -> tuple[float, int, float, bool]:
     conf = parse_conviction(text)
     rr = parse_rr(text)
     phase1 = is_phase1_only(text)
-    modifier = 0.35 if phase1 else 1.0
-    # Score: verdict * conviction * (1 + rr/5) * phase modifier
-    score = weight * conf * (1 + min(rr, 5) / 5) * modifier
+    price_missing = any(ph in text for ph in _DECLINED_PHRASES)
+    # Phase-1-only and no-price cards are research notes, not trade plans: demote both.
+    modifier = 0.35 if (phase1 or price_missing) else 1.0
+    # Score: verdict * conviction * (1 + rr/5) * modifier. No R:R -> factor 1, not a fake 1.5x.
+    score = weight * conf * (1 + min(rr, 5) / 5 if rr else 1.0) * modifier
     return round(score, 1), conf, rr, phase1
 
 
@@ -306,7 +320,36 @@ def compute_top20(sectors_data: dict) -> list:
                 except Exception:
                     text = ""
             score, conf, rr, phase1 = compute_score(t, text)
+            price_missing = any(ph in text for ph in _DECLINED_PHRASES)
+            emid, snum, _, _ = derive_targets(t.get("entry"), t.get("stop"), rr)
+            # A stated target is a PRICE on the right side of entry, within 0.5x–3x of it;
+            # "T1 = 1.2x" style ratios and stray numbers are not targets.
+            def _stated(field):
+                n = _first_nums(t.get(field), 1)
+                if not n or emid is None or not (0.5 * emid < n[0] < 3 * emid):
+                    return None
+                return n[0] if (n[0] < emid if t.get("verdict") == "SELL" else n[0] > emid) else None
+            t1s, t2s = _stated("t1"), _stated("t2")
+            if price_missing:
+                ready = "PRICE_MISSING"
+            elif phase1 or emid is None or snum is None:
+                ready = "RESEARCH_ONLY"
+            elif scan_date and (date.today() - date.fromisoformat(scan_date)).days > 10:
+                ready = "DATA_STALE"
+            else:
+                ready = "ACTIONABLE"
+            quality = []
+            if rr is None:
+                quality.append("no R:R parsed")
+            if t1s is None:
+                quality.append("T1 derived" if rr else "no T1")
+            if not _conviction_parsed(text):
+                quality.append("conv default")
             ranked.append({
+                "trade_ready":  ready,
+                "score_quality": quality,
+                "t1_stated":    t1s,
+                "t2_stated":    t2s,
                 "ticker":       ticker,
                 "sector":       sector,
                 "sector_label": SECTOR_LABELS.get(sector, sector),
@@ -402,7 +445,22 @@ def collect_payload() -> dict:
 
     top20 = compute_top20(sectors_data)
 
+    # Current quotes come from the L0 monitor (alerts.json), never from a scan's
+    # entry text — the dashboard's unrealized P/L must use a real last price.
+    quotes = {}
+    af = SCANS / "alerts.json"
+    if af.exists():
+        try:
+            adoc = json.loads(af.read_text(encoding="utf-8"))
+            for r in adoc.get("alerts", []):
+                if r.get("price"):
+                    quotes[r["ticker"]] = {"price": r["price"], "quote_at": adoc.get("generated_at", ""),
+                                           "source": "yfinance · L0 monitor"}
+        except Exception:
+            quotes = {}
+
     return {
+        "quotes":       quotes,
         "generated_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
         "today":        date.today().isoformat(),
         "sectors":      sectors_data,
@@ -471,7 +529,7 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
 
 <nav class="bg-slate-100 border-b border-slate-300 p-3 sticky top-0 z-10 text-sm">
   <div class="max-w-7xl mx-auto flex flex-wrap gap-3">
-    <a class="text-blue-700 hover:underline font-semibold" href="#top20">🏆 Top 20</a>
+    <a class="text-blue-700 hover:underline font-semibold" href="#top20">🔬 Research Rank</a>
     __NAV_LINKS__
     <a class="ml-auto text-blue-700 hover:underline" href="./SECTOR_OVERVIEWS.html" target="_blank">📖 族群 overview</a>
     <a class="text-blue-700 hover:underline" href="./HOWTO_READ.html" target="_blank">📘 閱讀指南</a>
@@ -495,10 +553,10 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
   <section id="top20" class="bg-white rounded-lg shadow p-4">
     <div class="flex items-baseline justify-between mb-3 border-b pb-2">
       <div>
-        <h2 class="text-xl font-bold">🏆 Top 20 綜合排行 <span class="text-xs font-normal text-slate-400">更新 __GENERATED__</span></h2>
-        <p class="text-xs text-slate-500">跨族群 score = verdict × conviction × (1 + R:R T2 / 5) × phase modifier · Phase-1-only 標 × 0.35 · 各 ticker 分析日期見「掃描」欄</p>
+        <h2 class="text-xl font-bold">🔬 Research Rank <span class="text-sm font-normal text-amber-700">(legacy heuristic — 研究順位,不是「最值得買」)</span> <span class="text-xs font-normal text-slate-400">更新 __GENERATED__</span></h2>
+        <p class="text-xs text-slate-500">score = verdict × conviction × (1 + R:R T2 / 5) × modifier · Phase-1-only / 無報價 × 0.35 · 無法解析 R:R 時不套預設值 · T1/T2 只顯示卡片自述值,≈ 為推導值 · v2.0-baseline stated-T1 expectancy −0.152R,此表僅供研究分配</p>
       </div>
-      <div class="text-xs text-slate-500">指標說明: Score 為相對分數 · Conv 信心% · R:R T2 目標報酬風險比 · Phase1=只跑 Phase 1</div>
+      <div class="text-xs text-slate-500">Trade Ready: ACTIONABLE / RESEARCH_ONLY / PRICE_MISSING / DATA_STALE · Quality 列出 score 靠 fallback 的部分</div>
     </div>
     <div class="overflow-x-auto">
       <table class="w-full text-xs">
@@ -509,6 +567,8 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
             <th>Sector</th>
             <th>Verdict</th>
             <th class="text-right">Score</th>
+            <th>Trade Ready</th>
+            <th>Quality</th>
             <th class="text-right">Conv%</th>
             <th class="text-right">R:R T2</th>
             <th>Phase</th>
@@ -790,18 +850,18 @@ function computePosition(fills) {
   return {netSize: 0, avgPrice: 0, side: "FLAT", totalCost: 0};
 }
 
-// Compute unrealized P/L % based on avg cost vs current scan price (entry midpoint).
+// Unrealized P/L % = avg cost vs the CURRENT QUOTE from the L0 monitor
+// (DATA.quotes). Never falls back to a scan's entry text — that is a plan level,
+// not a price, and showing it as "latest" produced wrong P/L.
 function unrealizedPL(pos, t) {
   if (pos.netSize === 0 || pos.avgPrice === 0) return null;
-  // Try to get current price from active_card entry or latest scan entry midpoint
-  const priceStr = (t.entry || "").match(/\$?\s*([\d,]+(?:\.\d+)?)/);
-  if (!priceStr) return null;
-  const curPrice = Number(priceStr[1].replace(/,/g, ""));
-  if (curPrice <= 0) return null;
+  const q = (DATA.quotes || {})[t.ticker];
+  if (!q || !(q.price > 0)) return null;
+  const curPrice = Number(q.price);
   const pct = pos.side === "LONG"
     ? (curPrice - pos.avgPrice) / pos.avgPrice * 100
     : (pos.avgPrice - curPrice) / pos.avgPrice * 100;
-  return {pct, curPrice};
+  return {pct, curPrice, quoteAt: q.quote_at || "", source: q.source || ""};
 }
 
 function nextStep(t) {
@@ -850,11 +910,14 @@ function tickerCard(sector, t) {
   // Avg holding price banner (shown when net position exists)
   let avgBanner = "";
   if (pos.netSize > 0) {
+    const qt = pnl && pnl.quoteAt ? new Date(pnl.quoteAt).toLocaleString("zh-TW", {timeZone: "Asia/Taipei", hour12: false, month: "2-digit", day: "2-digit", hour: "2-digit", minute: "2-digit"}) : "";
     const pnlHtml = pnl ? (
-      pnl.pct >= 0
-        ? `<span class="text-green-700 font-semibold">+${pnl.pct.toFixed(2)}% (latest ~$${pnl.curPrice.toFixed(2)})</span>`
-        : `<span class="text-rose-700 font-semibold">${pnl.pct.toFixed(2)}% (latest ~$${pnl.curPrice.toFixed(2)})</span>`
-    ) : '<span class="text-slate-400">no scan price</span>';
+      (pnl.pct >= 0
+        ? `<span class="text-green-700 font-semibold">+${pnl.pct.toFixed(2)}%</span>`
+        : `<span class="text-rose-700 font-semibold">${pnl.pct.toFixed(2)}%</span>`)
+      + ` <span class="text-slate-600">現價 $${pnl.curPrice.toFixed(2)}</span>`
+      + ` <span class="text-slate-400" title="${pnl.source}">報價 ${qt}</span>`
+    ) : '<span class="text-amber-700">— ⚠ current quote unavailable (L0 monitor 未涵蓋此檔)</span>';
     const sideColor = pos.side === "LONG" ? "bg-green-50 border-green-300 text-green-900" : "bg-rose-50 border-rose-300 text-rose-900";
     avgBanner = `
       <div class="mb-3 ${sideColor} border rounded p-2 text-xs flex flex-wrap items-center gap-3">
@@ -1115,13 +1178,15 @@ function exportHeld() {
     for (const t of DATA.sectors[sec].tickers) {
       const s = STATE[t.ticker] || {};
       const pos = computePosition(s.fills || []);
-      if (pos.netSize > 0 || s.active_card) held.add(t.ticker);
+      // Net position only. A leftover active_card after CLOSE is not a holding —
+      // exporting it would force full scans and pollute held-cohort analysis.
+      if (pos.netSize > 0) held.add(t.ticker);
     }
   }
   const list = Array.from(held).sort();
-  if (list.length === 0) { alert("尚無持倉 (需有 fill 淨部位或鎖定卡)"); return; }
+  if (list.length === 0) { alert("尚無持倉 (需有 fill 淨部位)"); return; }
   const body = "# exported from dashboard " + new Date().toISOString().slice(0,10) +
-               "\n# tickers with net position > 0 or locked active_card\n" +
+               "\n# tickers with net position > 0\n" +
                list.join("\n") + "\n";
   const blob = new Blob([body], {type:"text/plain;charset=utf-8;"});
   const link = document.createElement("a");
@@ -1248,18 +1313,26 @@ def render_top20_rows(top20: list) -> str:
         phase_cell = ('<span class="bg-slate-200 text-slate-700 px-1.5 py-0.5 rounded text-[10px]">P1 only</span>'
                       if t["phase1_only"] else
                       '<span class="bg-blue-100 text-blue-800 px-1.5 py-0.5 rounded text-[10px]">Full</span>')
-        rr_color = "text-green-700 font-semibold" if t["rr_t2"] >= 2.0 else "text-slate-700"
+        rr_color = "text-green-700 font-semibold" if (t["rr_t2"] or 0) >= 2.0 else "text-slate-700"
+        rr_disp = f"{t['rr_t2']:.2f}x" if t["rr_t2"] else "—"
+        ready = t.get("trade_ready", "")
+        ready_cls = {"ACTIONABLE": "bg-green-100 text-green-800", "PRICE_MISSING": "bg-amber-100 text-amber-800",
+                     "DATA_STALE": "bg-slate-200 text-slate-700"}.get(ready, "bg-amber-50 text-amber-800")
+        ready_cell = f'<span class="{ready_cls} px-1.5 py-0.5 rounded text-[10px]">{"✓ " if ready == "ACTIONABLE" else "⚠ "}{ready}</span>'
+        quality_cell = ('<span class="text-[10px] text-amber-700">⚠ ' + _esc(" · ".join(t.get("score_quality", []))) + "</span>"
+                        if t.get("score_quality") else '<span class="text-[10px] text-slate-400">ok</span>')
         conv_color = "text-green-700 font-semibold" if t["conviction"] >= 60 else "text-slate-700"
         rank_color = ("bg-yellow-100 text-yellow-900 font-bold" if i == 1 else
                       "bg-slate-100 text-slate-700 font-semibold" if i <= 3 else
                       "text-slate-600")
-        # T1/T2 computed from entry+stop+R:R (not parsed — report values are
-        # often empty or an 'x' ratio). entry/stop shown as clean numbers.
+        # T1/T2: the card's own stated targets when it gives them; a value derived
+        # from entry+stop+R:R only when the R:R was actually parsed (shown as ≈);
+        # never a number built on a default ratio.
         emid, snum, ct1, ct2 = derive_targets(t.get("entry"), t.get("stop"), t.get("rr_t2"))
         entry_disp = f"{emid:g}" if emid is not None else "—"
         stop_disp = f"{snum:g}" if snum is not None else "—"
-        t1_disp = f"{ct1:g}" if ct1 is not None else "—"
-        t2_disp = f"{ct2:g}" if ct2 is not None else "—"
+        t1_disp = (f"{t['t1_stated']:g}" if t.get("t1_stated") else f"≈{ct1:g}" if ct1 is not None else "—")
+        t2_disp = (f"{t['t2_stated']:g}" if t.get("t2_stated") else f"≈{ct2:g}" if ct2 is not None else "—")
         rows.append(f"""
           <tr class="hover:bg-slate-50">
             <td class="text-center {rank_color}">{i}</td>
@@ -1267,8 +1340,10 @@ def render_top20_rows(top20: list) -> str:
             <td class="text-xs">{_esc(t['sector_label'])}</td>
             <td><span class="{vcls} px-2 py-0.5 rounded font-semibold">{_esc(v)}</span></td>
             <td class="text-right font-mono font-semibold">{t['score']:.1f}</td>
+            <td>{ready_cell}</td>
+            <td>{quality_cell}</td>
             <td class="text-right font-mono {conv_color}">{t['conviction']}%</td>
-            <td class="text-right font-mono {rr_color}">{t['rr_t2']:.2f}x</td>
+            <td class="text-right font-mono {rr_color}">{rr_disp}</td>
             <td>{phase_cell}</td>
             <td class="text-xs font-mono" title="{_esc(t['entry'])}">{entry_disp}</td>
             <td class="text-xs font-mono" title="{_esc(t['stop'])}">{stop_disp}</td>
@@ -1656,6 +1731,10 @@ def main():
             .replace("__TOP20_ROWS__", top20_html)
             .replace("__DATA__", json.dumps(payload, ensure_ascii=False)))
 
+    leaked = sorted(k for k in _u.RETIRED_KEYS if k in payload["sectors"]
+                    or any(t["sector"] == k for t in payload["top20"]))
+    if leaked:
+        raise SystemExit(f"dashboard still carries retired taxonomy keys: {leaked}")
     OUT.write_text(html, encoding="utf-8")
     print(f"dashboard → {OUT}")
     print(f"  sectors covered: {len(payload['sectors'])}")

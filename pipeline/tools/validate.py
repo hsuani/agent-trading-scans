@@ -84,10 +84,19 @@ def main():
             issues.append({"level": "WARN", "ticker": tk, "sector": sec, "msg": f"verdict 異常 '{v}'"})
 
         emid, snum, ct1, ct2 = bd.derive_targets(t.get("entry"), t.get("stop"), t.get("rr_t2"))
-        # 1. levels — only demand full levels for actionable (non-Phase1) BUY/SELL
+        # Stated targets count; derived ones only exist when the card's R:R parsed.
+        ct1 = t.get("t1_stated") or ct1
+        ct2 = t.get("t2_stated") or ct2
+        # 1. levels — only demand full levels for actionable (non-Phase1) BUY/SELL.
+        # Missing entry/stop is the defect; a missing T1/T2 with entry+stop present is a
+        # report-format gap (no parsable R:R), flagged WARN so it never queues a re-scan.
         actionable = (not p1) and v in ("BUY", "SELL")
         missing = [n for n, x in (("entry", emid), ("stop", snum),
                                   ("T1", ct1), ("T2", ct2)) if x is None]
+        if missing and emid is not None and snum is not None:
+            issues.append({"level": "WARN", "ticker": tk, "sector": "",
+                           "msg": f"缺 {'/'.join(missing)}（卡片無可解析 R:R / 自述目標）"})
+            missing = []
         # PRICE_PENDING: the analyst correctly DECLINED to invent levels because no
         # real-time price was available at scan time (transient source outage). This
         # is the intended guarded behaviour, NOT a defect — flag WARN (價格待補) not
@@ -133,6 +142,16 @@ def main():
     elif ser_date < _date.today().isoformat():
         issues.append({"level": "WARN", "ticker": "SERENITY", "sector": "serenity",
                        "msg": f"每日觀點摘要過期 (最新 {ser_date})"})
+
+    # 5. Taxonomy — a rebuilt dashboard must not carry retired v1 keys as sections.
+    import universe as _u
+    dash = ROOT / "dashboard.html"
+    if dash.exists():
+        html = dash.read_text(encoding="utf-8", errors="ignore")
+        for k in _u.RETIRED_KEYS:
+            if f'id="sec-{k}"' in html or f'"{k}": {{"label"' in html:
+                issues.append({"level": "ERROR", "ticker": "DASHBOARD", "sector": "",
+                               "msg": f"dashboard 仍含已退役 taxonomy key `{k}`"})
 
     errors = [i for i in issues if i["level"] == "ERROR"]
     warns = [i for i in issues if i["level"] == "WARN"]
