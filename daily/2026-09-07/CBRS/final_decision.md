@@ -1,55 +1,16 @@
-FINAL TRANSACTION PROPOSAL: **SELL**
+# Final Decision — CBRS as of 2026-09-07
 
-# Final decision — CBRS as of 2026-09-07
+## 狀態：Phase-1-only（未達 positive-pick 門檻，未跑 Phase 2-4）
 
-## Verdict
-MODIFY
+CBRS（Cerebras Systems）Phase 1 四份報告依 positive-pick 五訊號評分僅 1/5 通過（僅 sentiment 訊號通過；fundamentals 因 FCF 重度赤字與毛利率崩塌未過、market 因技術面中性偏弱未過、news 因客戶集中度與競爭風險淨讀偏空未過、valuation 因 forward P/E 164.9x 遠超 35x 門檻且未獲利未過），未達 ≥3/5 標準，故本輪 mode=plan_all 下不進入 Phase 2-4（無 bull/bear debate、無 trade proposal、無 risk debate）。CBRS 亦不在 held_tickers.txt 或 force_full 清單內。
 
-## Final trade card
-| Field | Value |
-|---|---|
-| Direction | SHORT（以 Put spread 表達，不做裸空） |
-| Structure | 買入 $175 Put / 賣出 $90 Put，2026-12 到期 |
-| Entry zone | $190 – $205（標的參考價；PRICE_DATA_UNAVAILABLE，執行前須核對即時報價） |
-| Stop | $230（標的收盤價突破即平倉，不等權利金歸零） |
-| Target 1 | $70 |
-| Target 2 | $40 |
-| Size | Small（0.35% NAV，以權利金淨支出計） |
-| Horizon | 1–3 個月，以 Q3 2026 財報為主要節點 |
-| Conviction | M |
-| R:R to T1 | 3.9（($197.50−$70) ÷ ($230−$197.50)） |
+## Phase 1 摘要
 
-執行紀律：禁止在 PRICE_DATA_UNAVAILABLE 狀態下市價建倉。若即時報價已低於 $175，Put spread 進入價內、風險報酬劣化，改為不進場等待反彈至 $190 以上。若已跌破 $160.81，此筆交易視為「已錯過」，不追空。
+- **Fundamentals**：營收 +75% YoY 但現金流危機（FCF -596.4M YTD 2026）、毛利率 Q1→Q2 暴跌 44.5%→14.2%、內部人士 5-8 月合計拋售約 $160M。財務健康度：中度—負面。
+- **Market**：現價 ~$210，自 52 週高 $386 下挫 45.6%，RSI14 53.04 中性，MACD 負值收窄，波動率極低顯示觀望盤。
+- **News**：$25.4B 訂單積壓但 70% 依賴單一客戶 OpenAI；NVIDIA 競爭壓力上升。淨讀：混合偏看跌。
+- **Sentiment**：分析師強烈看漲（10 買/1 持）、目標價 $291-296，但內部人士高位計畫性拋售為弱空頭訊號。
 
-## Risk debate adjudication
-- Aggressive's strongest point：$244 止損實質上是為軋空留後門。$228–$232 是前期整理上緣，收盤突破該區才代表空頭論述真正失效；收窄至 $230 讓 R:R 從 2.7x 提升到 3.9x，這是本次辯論中唯一「不花錢就改善期望值」的調整，直接採納。
-- Conservative's strongest point：30.2% 浮動股遭放空 + 109% 年化波動率，使裸空的損失分布呈嚴重負偏——止損單在跳空情境下形同虛設。這一點無法用縮小倉位解決，只能用結構解決。
-- Net：我採納 neutral 較多。保守方的尾部風險診斷正確，但開的藥方（0% NAV、等破 $160.81）把診斷誤植為結論——尾部風險是「換工具」的理由，不是「不做」的理由。激進方方向與止損正確，但 1.0–1.2% NAV 在此波動率下違反倉位紀律。最終取 neutral 的 0.35% NAV + 激進方的 $230 止損 + 雙方共識的 Put spread 結構：以權利金上限吃掉軋空跳空風險，換取在 $185–$205 區間就能表態、不必踏空下跌主段。
+## 結論
 
-## 論點支柱
-| 支柱 | 當初的預期 | 現況 | 判定 |
-|---|---|---|---|
-| 估值均值回歸 | P/S 92x 對行業中位數 10x，GAAP 虧損下難防禦 | 溢價倍率 9 倍，最高成長溢價情境（50x P/S）目標價仍僅約 $120 | 成立 |
-| 內部人信號 | 管理層行為透露對估值的實質看法 | 六個月 255 賣出／0 買入、淨拋售逾 $2.1 億 | 成立 |
-| 市場已拒付增長溢價 | 好消息無法再推升股價 | Q2 超預期後仍跌 17%，三個月回報 −13.6% | 成立 |
-| 技術面趨勢 | 股價低於所有主要均線 | MA20 $212 / MA50 $204 / MA200 $217 全在價上，MACD 柱 −5.04 | 成立 |
-
-## 論點失效條件
-與 $230 價格止損分開；以下任一發生，不必等 Stop 即行動。
-- 若 SEC Form 4 出現任何金額的內部人公開市場買入，「內部人信號」支柱失效 → 出場
-- 若 Q3 2026 核心收入 > $230M 且 YoY 增速高於 Q2 的 103%，「市場已拒付溢價」與估值支柱同時鬆動 → 出場
-- 若 Amazon / Google / Microsoft 任一家公告規模化採購 CS-4，客戶集中度折價消失 → 出場
-- 若 CFIUS 明確放行 G42 / UAE 或商務部公告豁免，$25.4B 積壓兌現確定性大增 → 減碼一半
-- 若股價連續兩週收於 MA50（$204）之上且量能放大，技術支柱失效 → 減碼一半
-
-## Monitoring trigger
-標的收盤站上 $212（MA20）即啟動重新評估，不等 $230 止損；此位是空頭趨勢從「多層均線壓制」轉為「均線爭奪」的分界。反向：若收盤跌破 $160.81 且量能放大，T1 情境提前確立，將 Put spread 部分獲利了結。
-
-## Catalyst calendar
-- 2026-10 至 11 月（TBC） — Q3 2026 財報，CS-4 首個完整交付季度
-- 持續 — SEC Form 4 內部人交易申報
-- 持續 — G42 / UAE 的 CFIUS 與出口管制動態
-- 持續 — OpenAI 自研晶片進展公告
-- 2026-12 月第三個週五 — Put spread 到期日
-
-FINAL DECISION COMPLETE
+**HOLD（無倉位，不建倉）** — 現有 Phase-1 訊號不足以支撐進入完整研究管線；建議待毛利率穩定化與營運現金流轉正的證據出現後，於下次掃描週期重新評估。
