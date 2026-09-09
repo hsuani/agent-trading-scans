@@ -6,11 +6,15 @@ Behaviour:
 1. Reads /Users/yht/Study/scans/_catalysts.json (refreshed by extract_catalysts.py).
 2. Filters: only actionable categories (earnings / regulatory / corporate / macro).
    Skips category=='other' (mostly false positives).
-3. Dedupes per (ticker, date) → 1 record (keeps longest description).
-4. Renders ONE briefing HTML at /Users/yht/Study/scans/daily_briefing.html
-   — fixed path, updated in-place on every run.
-   — shows rolling window: past --lookback days + upcoming --lookahead days.
-   — dates grouped descending (upcoming first, then today, then history).
+3. Dedupes per event_key (ticker + date + type + normalised title), so two
+   real events on one day both survive and a long analyst paragraph never
+   outranks a short factual line.
+4. Renders ONE briefing HTML at /Users/yht/Study/scans/daily_briefing.html:
+     TODAY → NEXT N DAYS (exact-day events only) → LATER WATCH (quarter-precision)
+     → RECENTLY PASSED (collapsed; last 3 days open, --lookback days inside).
+   Verdicts are shown as "Current: BUY (scan …)" — the latest scan's view, not
+   the view on the event date. Header states the calendar's source scan time;
+   a calendar older than --max-stale-days is flagged and never notified as normal.
 5. Auto-opens the briefing HTML in browser (once per day unless --no-open).
 6. Sends ONE macOS notification summarising new upcoming events.
 7. seen.json prevents repeat notifications for the same (day, event-count) combo.
@@ -34,6 +38,9 @@ import sys
 from collections import defaultdict
 from datetime import date, datetime, timedelta
 from pathlib import Path
+from zoneinfo import ZoneInfo
+
+TPE = ZoneInfo("Asia/Taipei")
 
 SCANS = Path("/Users/yht/Study/scans")
 CAT = SCANS / "_catalysts.json"
@@ -114,85 +121,82 @@ def date_label(dt_iso: str, today: date) -> str:
         return f"{abs(delta)} 天前 · {dt_iso}"
 
 
-def render_briefing(
-    upcoming: list[dict],
-    history: list[dict],
-    today: date,
-    lookback: int,
-    lookahead: int,
-    out_path: Path,
-) -> None:
-    """Write consolidated briefing HTML.
-
-    Layout (date descending — most actionable at top):
-      Upcoming (today → lookahead) — highlighted
-      History (yesterday → lookback) — muted
-    """
-    all_events = upcoming + history
-    by_date: dict[str, list] = defaultdict(list)
-    for e in all_events:
-        by_date[e["date"]].append(e)
-
-    # Sort dates: upcoming first (ascending), then past (descending)
-    upcoming_dates = sorted(
-        [d for d in by_date if d >= today.isoformat()],
-    )
-    past_dates = sorted(
-        [d for d in by_date if d < today.isoformat()],
-        reverse=True,
-    )
-    ordered_dates = upcoming_dates + past_dates
-
-    sections = []
-    for dt in ordered_dates:
-        is_future = dt >= today.isoformat()
-        d = date.fromisoformat(dt)
-        delta = (d - today).days
-        label = date_label(dt, today)
-
-        # Section header style
-        if delta == 0:
-            header_extra = "border-blue-400"
-            icon = "📅"
-        elif delta > 0:
-            header_extra = "border-emerald-400"
-            icon = "🔜"
-        else:
-            header_extra = "border-slate-300"
-            icon = "🗓️"
-
-        cards = []
-        for e in by_date[dt]:
-            cat = e.get("category", "other")
-            emoji = CATEGORY_EMOJI.get(cat, "📌")
-            label_cat = CATEGORY_LABEL.get(cat, cat)
-            verdict = e.get("verdict", "UNKNOWN")
-
-            # Mute past events slightly
-            opacity = "" if is_future else "opacity-75"
-            cards.append(f"""
-            <div class="event {opacity}">
+def event_card(e: dict, muted: bool = False) -> str:
+    cat = e.get("category", "other")
+    verdict = e.get("current_verdict") or e.get("verdict", "UNKNOWN")
+    vscan = e.get("current_verdict_scan_date") or e.get("scan_date") or ""
+    prec = "" if e.get("date_precision", "exact_day") == "exact_day" else \
+        ' <span class="prec">≈ 季度推估日期</span>'
+    return f"""
+            <div class="event {'opacity-75' if muted else ''}">
               <div class="event-header">
-                <span class="emoji">{emoji}</span>
-                <span class="ticker v-{verdict}">{html.escape(e['ticker'])}</span>
-                <span class="cat">{label_cat}</span>
-                <span class="verdict v-{verdict}">{verdict}</span>
+                <span class="emoji">{CATEGORY_EMOJI.get(cat, "📌")}</span>
+                <span class="ticker">{html.escape(e['ticker'])}</span>
+                <span class="cat">{CATEGORY_LABEL.get(cat, cat)}</span>
+                <span class="verdict v-{verdict}" title="最新 scan 的看法,不是事件當日的看法">Current: {verdict}{(' · scan ' + vscan) if vscan else ''}</span>{prec}
               </div>
               <p class="desc">{html.escape(shorten(e['description'], 400))}</p>
               <p class="source">📁 {html.escape(e.get('source', ''))}</p>
-            </div>
-            """)
+            </div>"""
 
-        sections.append(f"""
+
+def date_section(dt: str, events: list[dict], today: date) -> str:
+    delta = (date.fromisoformat(dt) - today).days
+    style, icon = (("border-blue-400", "📅") if delta == 0 else
+                   ("border-emerald-400", "🔜") if delta > 0 else ("border-slate-300", "🗓️"))
+    return f"""
         <section>
-          <h2 class="date-h {header_extra}">{icon} {label} · {len(by_date[dt])} 個事件</h2>
-          {''.join(cards)}
-        </section>
-        """)
+          <h2 class="date-h {style}">{icon} {date_label(dt, today)} · {len(events)} 個事件</h2>
+          {''.join(event_card(e, muted=delta < 0) for e in events)}
+        </section>"""
 
+
+def render_briefing(upcoming, history, later, today, lookback, lookahead, out_path,
+                    calendar_generated_at="", freshness_ok=True, coverage=""):
+    """TODAY → NEXT N DAYS → LATER WATCH → RECENTLY PASSED (collapsed beyond 3 days)."""
+    def grouped(events):
+        by = defaultdict(list)
+        for e in events:
+            by[e["date"]].append(e)
+        return by
+
+    up_by, hist_by = grouped(upcoming), grouped(history)
+    today_iso = today.isoformat()
+    today_html = date_section(today_iso, up_by[today_iso], today) if up_by.get(today_iso) else \
+        '<p class="text-slate-500 py-4">今日無精確日期事件。</p>'
+    next_html = "".join(date_section(d, up_by[d], today) for d in sorted(up_by) if d > today_iso) or \
+        '<p class="text-slate-500 py-4">未來 %d 天無精確日期事件。</p>' % lookahead
+    later_html = "".join(f"""
+            <div class="event"><div class="event-header"><span class="emoji">🗓️</span>
+              <span class="ticker">{html.escape(e['ticker'])}</span>
+              <span class="cat">{CATEGORY_LABEL.get(e.get('category'), '')}</span>
+              <span class="prec">Q{(int(e['date'][5:7]) + 2) // 3} {e['date'][:4]} (日期未定)</span></div>
+              <p class="desc">{html.escape(shorten(e['description'], 300))}</p>
+              <p class="source">📁 {html.escape(e.get('source', ''))}</p></div>""" for e in later) or \
+        '<p class="text-slate-500 py-4">無季度級事件。</p>'
+    recent_dates = sorted(hist_by, reverse=True)
+    open_dates, folded_dates = recent_dates[:3], recent_dates[3:]
+    hist_html = "".join(date_section(d, hist_by[d], today) for d in open_dates)
+    if folded_dates:
+        hist_html += f"""
+        <details class="mt-4"><summary class="cursor-pointer text-slate-600">
+          再往前 {len(folded_dates)} 天 · {sum(len(hist_by[d]) for d in folded_dates)} 個事件(至 {lookback} 天前)</summary>
+          {''.join(date_section(d, hist_by[d], today) for d in folded_dates)}
+        </details>"""
+    if not history:
+        hist_html = '<p class="text-slate-500 py-4">近 %d 天無已過事件。</p>' % lookback
+
+    fresh_html = (f'<span class="text-emerald-300">✅ current</span>' if freshness_ok else
+                  f'<span class="bg-rose-600 text-white px-2 py-0.5 rounded font-bold">⚠️ CATALYST DATA STALE — last refresh {html.escape(calendar_generated_at[:16])}</span>')
+    sections = [
+        f'<h2 class="part">TODAY · {today_iso}</h2>{today_html}',
+        f'<h2 class="part">NEXT {lookahead} DAYS</h2>{next_html}',
+        f'<h2 class="part">LATER WATCH · 季度級,日期未定</h2>{later_html}',
+        f'<h2 class="part">RECENTLY PASSED</h2>{hist_html}',
+    ]
     window_start = (today - timedelta(days=lookback)).isoformat()
     window_end = (today + timedelta(days=lookahead)).isoformat()
-    total = len(all_events)
+    total = len(upcoming) + len(history)
 
     body = f"""<!DOCTYPE html>
 <html lang="zh-Hant">
@@ -221,6 +225,9 @@ def render_briefing(
   .border-slate-300 {{ border-bottom-color: #cbd5e1; }}
   h1 {{ font-size: 2rem; font-weight: 700; }}
   .opacity-75 {{ opacity: 0.75; }}
+  .part {{ font-size: 1.05rem; font-weight: 800; letter-spacing: .08em; color: #334155; margin: 28px 0 4px; }}
+  .prec {{ background: #fef9c3; color: #854d0e; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; }}
+  .ticker {{ background: #e2e8f0; color: #0f172a; }}
 </style>
 </head>
 <body class="text-slate-900">
@@ -229,9 +236,12 @@ def render_briefing(
   <div class="max-w-4xl mx-auto">
     <h1>📊 Trading Daily Briefing</h1>
     <p class="text-slate-300 text-sm mt-1">
-      今日: {today} ·
+      今日 (Asia/Taipei): {today} ·
       顯示 {window_start} → {window_end} ·
-      共 {total} 事件 ({len(upcoming)} 即將 / {len(history)} 歷史)
+      共 {total} 事件 ({len(upcoming)} 即將 / {len(history)} 歷史 / {len(later)} 季度級)
+    </p>
+    <p class="text-slate-300 text-xs mt-1">
+      Calendar source: {html.escape(calendar_generated_at[:16])} · {coverage} · Freshness: {fresh_html}
     </p>
     <div class="text-xs text-slate-400 mt-2 flex gap-3">
       <a href="./dashboard.html" class="hover:underline text-blue-300">📊 Dashboard</a>
@@ -242,17 +252,40 @@ def render_briefing(
 </header>
 
 <main class="max-w-4xl mx-auto p-6">
-  {''.join(sections) if sections else '<p class="text-slate-500 text-center py-12">無 actionable 事件 (window 內)。</p>'}
+  {''.join(sections)}
 </main>
 
 <footer class="text-center text-xs text-slate-500 p-6">
-  更新於 {datetime.now().strftime('%Y-%m-%d %H:%M')} · 自動產生, 純研究用途
+  更新於 {datetime.now(TPE).strftime('%Y-%m-%d %H:%M')} (台北) · 自動產生, 純研究用途 · verdict 為最新 scan 看法
 </footer>
 
 </body>
 </html>
 """
     out_path.write_text(body, encoding="utf-8")
+
+
+def dedup(events: list[dict]) -> list[dict]:
+    """One record per event_key. Older calendars (no event_key) fall back to
+    ticker+date+category. Never 'longest description wins'."""
+    grouped: dict[str, dict] = {}
+    for c in events:
+        key = c.get("event_key") or f"{c['ticker']}|{c['date']}|{c.get('category')}"
+        grouped.setdefault(key, c)
+    return sorted(grouped.values(), key=lambda c: (c["date"], c["ticker"]))
+
+
+def select_events(records, today: date, lookahead: int, lookback: int):
+    """(upcoming exact-day, recent-past exact-day, later quarter-precision) — all actionable, deduped."""
+    def keep(c):
+        return c.get("category") in ACTIONABLE_CATEGORIES and not is_meta_line(c.get("description", ""))
+    exact = [c for c in records if keep(c) and c.get("date_precision", "exact_day") == "exact_day"]
+    horizon, start = (today + timedelta(days=lookahead)).isoformat(), (today - timedelta(days=lookback)).isoformat()
+    upcoming = dedup([c for c in exact if today.isoformat() <= c["date"] <= horizon])
+    history = dedup([c for c in exact if start <= c["date"] < today.isoformat()])
+    later = dedup([c for c in records if keep(c) and c.get("date_precision") == "quarter"
+                   and c["date"] >= today.isoformat()])[:40]
+    return upcoming, history, later
 
 
 def main():
@@ -267,6 +300,9 @@ def main():
                    help="skip macOS notification but still render + open")
     p.add_argument("--no-open", action="store_true",
                    help="don't auto-open briefing in browser")
+    p.add_argument("--max-stale-days", type=int, default=1,
+                   help="calendar older than this is flagged STALE and not notified (default 1)")
+    p.add_argument("--today", default=None, help="override today (YYYY-MM-DD, tests)")
     args = p.parse_args()
 
     if args.refresh or not CAT.exists():
@@ -278,41 +314,26 @@ def main():
         sys.exit(2)
 
     data = json.loads(CAT.read_text(encoding="utf-8"))
-    today = date.today()
+    today = date.fromisoformat(args.today) if args.today else datetime.now(TPE).date()
     horizon = today + timedelta(days=args.lookahead)
     lookback_start = today - timedelta(days=args.lookback)
 
-    def keep(c: dict) -> bool:
-        if c.get("category") not in ACTIONABLE_CATEGORIES:
-            return False
-        if is_meta_line(c.get("description", "")):
-            return False
-        return True
+    # Freshness: the calendar must have been regenerated within max_stale_days.
+    gen = data.get("generated_at", "")
+    try:
+        gen_date = datetime.fromisoformat(gen).date()
+    except ValueError:
+        gen_date = None
+    freshness_ok = gen_date is not None and (today - gen_date).days <= args.max_stale_days
+    coverage = f"{data.get('tickers_covered', '?')} tickers · newest scan {data.get('scan_date', '?')}"
 
-    def dedup(events: list[dict]) -> list[dict]:
-        grouped: dict[tuple, dict] = {}
-        for c in events:
-            key = (c["ticker"], c["date"])
-            if key not in grouped or len(c["description"]) > len(grouped[key]["description"]):
-                grouped[key] = c
-        return sorted(grouped.values(), key=lambda c: (c["date"], c["ticker"]))
-
-    # Upcoming: today → lookahead
-    upcoming_raw = [
-        c for c in data["all"]
-        if today.isoformat() <= c["date"] <= horizon.isoformat() and keep(c)
-    ]
-    upcoming = dedup(upcoming_raw)
-
-    # History: lookback_start → yesterday
-    hist_raw = [
-        c for c in data["all"]
-        if lookback_start.isoformat() <= c["date"] < today.isoformat() and keep(c)
-    ]
-    history = dedup(hist_raw)
-
-    # Always re-render — single fixed file, updated in-place
-    render_briefing(upcoming, history, today, args.lookback, args.lookahead, BRIEFING_PATH)
+    upcoming, history, later = select_events(data["all"], today, args.lookahead, args.lookback)
+    render_briefing(upcoming, history, later, today, args.lookback, args.lookahead, BRIEFING_PATH,
+                    calendar_generated_at=gen, freshness_ok=freshness_ok, coverage=coverage)
+    if not freshness_ok:
+        print(f"WARNING: catalyst calendar stale (generated {gen or 'unknown'}); briefing flagged, no notification",
+              file=sys.stderr)
+        args.silent = True
 
     # Notification: once per (today, upcoming event count) to avoid spam
     # Only notify for upcoming events, not history
