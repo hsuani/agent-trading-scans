@@ -55,7 +55,11 @@ def kpis(docs):
         "claims_per_ticker": {"median": median(per) if per else None, "min": min(per, default=None), "max": max(per, default=None)},
         "source_coverage": pct(sum(1 for c in claims if c.get("source_url") or c.get("source_name"))),
         "url_coverage": pct(sum(1 for c in claims if c.get("source_url"))),
-        "unknown_grade_rate": pct(sum(1 for c in claims if c.get("source_grade", "UNKNOWN") == "UNKNOWN")),
+        # resolver weakness only: among claims that NAME an external source (UNSUPPORTED /
+        # analyst-own claims have no source by definition and are counted separately)
+        "unknown_grade_rate": (lambda cs: round(sum(1 for c in cs if c.get("source_grade", "UNKNOWN") == "UNKNOWN") / len(cs), 3) if cs else None)(
+            [c for c in claims if c.get("claim_status") != "UNSUPPORTED" and (c.get("source_name") or "").lower() != "analyst"]),
+        "unknown_grade_rate_all": pct(sum(1 for c in claims if c.get("source_grade", "UNKNOWN") == "UNKNOWN")),
         "unsupported_claim_rate": pct(sum(1 for c in claims if not (c.get("source_url") or c.get("source_name"))
                                           or c.get("claim_status") in ("RUMOR", "UNSUPPORTED", "UNKNOWN"))),
         "grade_distribution": dict(Counter(c.get("source_grade", "UNKNOWN") for c in claims)),
@@ -77,7 +81,7 @@ def main():
     lines = [f"# Evidence shadow report — {date.today().isoformat()}", "",
              f"{k['tickers']} tickers · {k['claims']} claims" + (f" · since {since}" if since else ""), "",
              "| KPI | value |", "|---|---|"]
-    for key in ("claims_per_ticker", "source_coverage", "url_coverage", "unknown_grade_rate",
+    for key in ("claims_per_ticker", "source_coverage", "url_coverage", "unknown_grade_rate", "unknown_grade_rate_all",
                 "unsupported_claim_rate", "duplicate_claim_rate", "duplicate_by_source", "grade_distribution", "grade_basis",
                 "status_distribution", "by_origin_agent"):
         lines.append(f"| {key} | {json.dumps(k[key], ensure_ascii=False)} |")

@@ -254,6 +254,15 @@ numbers — the final_decision states "無即時價格，暫不給進出場價�
 Phase-1-only. NEVER present a made-up price as if real (e.g. FN 7/8 showed
 $685-850 entry while the stock was ~$470 — that was hallucinated from a 403).
 
+Phase 1.5 (SHADOW, every ticker that got Phase 1 — enabled 2026-09-10 after calibration):
+  Task(evidence-shadow, TICKER, DATE)
+  → daily/{DATE}/{TICKER}/evidence_shadow.json
+  Bash: python3 pipeline/evidence/source_grades.py daily/{DATE}/{TICKER}/evidence_shadow.json
+  Run it right after the four Phase-1 reports land, before Phase 2. It is a
+  measurement sidecar: **nothing in Phase 2–5 may read evidence_shadow.json**,
+  and the four analyst prompts are unchanged. Cost = 1 haiku / ticker
+  (check_quota.py counts it). A failure here is soft — log and continue to Phase 2.
+
 Phase 2 (debate loop, max `rounds`):
   for N in 1..rounds:
     Task(bull-researcher, TICKER, DATE, ROUND=N)
@@ -334,7 +343,7 @@ daily/{DATE}/
 
 ## Cost / time estimate
 
-- Phase 1 = 4 subagent calls / ticker (parallel)
+- Phase 1 = 4 subagent calls / ticker (parallel) + 1 haiku evidence-shadow (Phase 1.5)
 - Phase 2 = 2*rounds + 1 calls / ticker
 - Phase 3 = 1 call / ticker
 - Phase 4 = 4 calls / ticker

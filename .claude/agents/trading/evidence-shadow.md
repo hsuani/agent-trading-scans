@@ -62,14 +62,26 @@ QUALIFIED    fact with a stated caveat or range (guidance range, "subject to app
 SAMPLING     partial or sampled evidence (channel checks, surveys, single-store data)
 EXPECTED     forward-looking: guidance, forecasts, plans, "expected to"
 RUMOR        unattributed or unconfirmed reports
-UNSUPPORTED  the analyst's OWN estimate or inference with no cited source
-             ("預估 18–24x", "we estimate", "likely", a ratio the analyst computed)
+UNSUPPORTED  the REPORT WRITER's own estimate or inference with no named
+             external source ("預估 18–24x", "we estimate", "合理估值",
+             "assume margins 52–58%", a ratio the writer computed)
 UNKNOWN      the report does not let you tell
 ```
 
+Two words for "analyst" — keep them apart:
+- "the analyst" in these rules = the writer of the Phase-1 report you are reading.
+- Sell-side / broker / FactSet / consensus figures ("Morgan Stanley target $265",
+  "FactSet 2026 EPS 38.28", "18 buy / 1 hold") are EXTERNAL sources: status
+  `EXPECTED` (or `CONFIRMED` for a rating that was issued), `source_name` = the
+  broker / data vendor, never `analyst`, never `UNSUPPORTED`.
 A company's own forward statement is `EXPECTED` even though the source grade
-will be A. An analyst's "預估 FCF/NI 0.70–0.85" is `UNSUPPORTED`, never
+will be A. The writer's "預估 FCF/NI 0.70–0.85" is `UNSUPPORTED`, never
 `CONFIRMED` — it has no document behind it.
+
+Never correct, round, convert or "fix" a number. If the report says $368.8B
+and you believe it should be $36.88B, record $368.8B and say so in `notes`.
+If two reports disagree, record both claims (each under its own agent) and
+note the disagreement — you are a recorder, not an editor.
 
 ## Output
 
