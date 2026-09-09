@@ -1,68 +1,43 @@
-# Sector report — robotics as of 2026-09-04
+# Sector report — Robotics as of 2026-09-04
+
+## 覆蓋範圍說明
+本輪 6 檔標的中，**ISRG、SPAI 完成完整 Phase 1-4 流程**（final_decision.md + investment_plan.md + trade_proposal.md），最終皆為 **REJECT（HOLD，不建倉）**；**TSLA、ABBNY、FANUY、SYM 屬 Phase-1-only stub**，因未達 plan_all 模式的 positive-pick 門檻（≥3/5 訊號通過）而未進入 Phase 2-4，因此無 conviction、R:R、trade card 等下游資料，僅有 Phase-1 訊號摘要可供比較。
 
 ## Ranking table
-
 | Rank | Ticker | Verdict | Conviction | R:R | Size | Horizon | Trigger |
 |------|--------|---------|------------|-----|------|---------|---------|
-| 1 | ISRG | HOLD | 35% (M) | N/A | 0% NAV | Q3 業績 ~10月 | 程序量成長 >17% + Forward P/E 壓縮 |
-| 2 | FANUY | HOLD | 30% (M) | N/A | 0% NAV | 10月 FY2027 Q2 訂單 | 訂單持續性確認（非拉貨效應） |
-| 3 | TSLA | HOLD | 30% (M) | N/A | 0% NAV | Q3 業績 9月底 | Optimus 確認訂單 >5,000 台 / 毛利率回升 |
-| 4 | ABBNY | HOLD | 20% (L) | N/A | 0% NAV | 持續觀察 | 機器人主題已出售，主題契合度低 |
-| 5 | SYM | AVOID | 70% (H，對「不進場」) | N/A | 0% NAV | 2026-09-30 Q4財報 | FCF轉正 + 高管Form 4買進（需同時達成） |
-| — | SPAI | UNKNOWN | 0% | N/A | 0% NAV | 待確認上市狀態 | 確認是否已下市 |
+| 1 | ISRG | HOLD (REJECT) | M（中性偏多） | 不適用（無部位） | 若重啟：Small 0.5% NAV | 數週至一季 | 回落 $355.93-360 **且** Q3 procedure 成長≥15.5%／毛利率維持68-69%（需同時滿足） |
+| 2 | SYM | HOLD（Phase-1 stub） | 未評級 | 不適用 | 不適用 | 不適用 | 需重新通過 Phase-1 篩選（現 2/5：Fundamentals+Market 過，News/Sentiment/Valuation 未過） |
+| 3 | ABBNY | HOLD（Phase-1 stub） | 未評級 | 不適用 | 不適用 | 不適用 | 需重新通過 Phase-1 篩選（現約 2/5：僅 Valuation 明確過） |
+| 4 | SPAI | HOLD (REJECT) | L（低信心） | 0.58（低於 1.5 門檻） | 被拒之 0.2% NAV | 數週至一季 | 放量突破 $5.30（達 2× 均量）**且** Q3 認列營收≥$2M、現金≥$7M（需同時滿足） |
+| 5 | FANUY | HOLD（Phase-1 stub） | 未評級 | 不適用 | 不適用 | 不適用 | 需重新通過 Phase-1 篩選（現 1/5，僅 Valuation 過；融券暴增 +279% 為偏空訊號） |
+| 6 | TSLA | HOLD（Phase-1 stub） | 未評級 | 不適用 | 不適用 | 不適用 | 需重新通過 Phase-1 篩選（現 0/5，五項訊號全數未過） |
 
-> 注意：本輪所有 ticker 均無技術面數據（Yahoo Finance 403 全面不可用），R:R 欄位無法計算。SPAI 可能已下市，跳過分析。
-
----
+排序邏輯：全部標的皆為 HOLD、無 BUY/SELL，故以「資料完整度＋論點品質＋量化訊號強弱」作為相對排序依據，而非可執行的 conviction/R:R 排名（多數標的無此資料）。ISRG 因財務體質最紮實（零槓桿、FCF/NI 86.6%、Q2 EPS +27.9%）且有明確可證偽的重啟觸發條件而排首位；SPAI 雖有具體訂單催化劑，但流動性陷阱（日均量僅 55,300 股、Stop 難以成交）與 R:R 0.58 使其排在多數未評級 stub 之後。
 
 ## Consensus top pick
-
-**ISRG**。在 Phase 1 篩選中擁有本族群最高信心度（35%）與最高 score（0.037）。基本面符合：Q2 營收 +18.2% YoY 超越 15% 門檻，FCF/NI 0.88，80%（23/32）分析師評定 BUY，平均目標價 $589（潛在上行 +58%）。da Vinci 5 在 Q2 安裝 246 台（YoY +37%），心臟手術 FDA 核准開啟全新市場。關鍵障礙是 Forward P/E 38-42x（略超 35x 門檻）以及 Medtronic Hugo / J&J Ottava 新興競爭。建議 Q3 業績（預估 10 月 20 日）前持觀望倉，若 Forward P/E 壓縮至 35x 以下且程序量加速，可重新評估入場。
-
----
+**無**。六檔標的當日皆為 HOLD/REJECT，sector 內無任何一檔通過完整買進門檻。若僅論「品質最佳、最接近可轉為 LONG」，為 **ISRG**：多方論據（Ion 手術量 +36%、零槓桿、FCF 加速）具體可驗證，唯一缺口是估值已站上 DCF 公允值上緣（$366.70 vs $250-350）且技術面尚未反轉，需等待 2026-10-20 Q3 財報作裁決。
 
 ## Contrarian pick
-
-**FANUY**。主流市場對其持保守態度，原因是 Q1 FY2027 訂單暴增（+36.9%）被管理層自述為「客戶提前採購」、中國市場佔比 30% 且本地競爭加劇、日元匯率逆風壓縮 ADR 美元報酬。然而市場共識忽略了三點：第一，Forward P/E 16-20x 是本族群估值最低、安全邊際最高的標的，不需要完美基本面才能保本；第二，87.5% 的 TSE 分析師評定 BUY（德銀、花旗均給 BUY），與 ADR 端市場情緒存在明顯落差；第三，NVIDIA Physical AI 合作暨 IMTS 2026 發佈提供主題性上行選擇權。主流偏空的核心假設是「訂單不可持續」——若 Q2 FY2027（10 月）數據顯示真實需求而非拉貨，股價重新定價空間顯著。
-
----
+**無**。Contrarian pick 定義為「當多數同業 HOLD/SELL 時逆勢 BUY」，但本 sector 六檔全數 HOLD，不存在任何 BUY 訊號可供逆勢操作。若要標記觀察名單中最具潛力的逆勢候選，SYM 是 stub 中唯一 Fundamentals+Market 雙過關者（營收 +25.6%、FCF 轉正 $787.9M），但 News/Sentiment/Valuation 三項未過，尚不構成可執行的逆勢買點。
 
 ## Pairs trade idea
-
-**Long FANUY / Short SYM**。同屬機器人/自動化族群，但估值與基本面質量完全相反：FANUY 以 Forward P/E 16-20x 交易，FCF/NI 健康（0.85-0.95），分析師共識強（87.5% BUY）；SYM 以 P/E 約 115x 交易，FCF 仍為負，六個月內部人累計賣出 $570M 且零買進，另有會計重述集體訴訟懸案。若 Q4 FY2026（2026-09-30）SYM 財報 FCF 未轉正，空方論點進一步強化；FANUY 同期若訂單數據良好，多方論點成立，相對報酬可望擴大。本對沖亦隔離日元匯率風險（FANUY ADR 的日元逆風可透過頭寸規模調整中和）。注意：目前兩者均無即時價格數據，需待 Yahoo Finance 403 問題解除後才能設定實際進出場點位。
-
----
+**無可執行的 pairs trade**。Pairs trade 需要「同 sector、一方 BUY 一方 SELL/SHORT」的明確方向性分歧，但本輪六檔皆無 BUY 或 SELL 訊號，僅有 HOLD/REJECT 的強弱之分。假設情境：若 ISRG 於 10/20 財報後觸發重啟轉為 LONG，可考慮以估值最貴的 stub（SYM，Forward P/E 55.4x，無明確催化劑）作為 SHORT 端做 sector 對沖，隔離「醫療機器人韌性 vs 倉儲自動化估值泡沫」的相對論點；但此純屬前瞻性假設，非當前可執行部位。
 
 ## Sector-wide observations
-
-- **共同障礙**：Yahoo Finance 403 導致全族群技術面數據（RSI、MACD、ATR、支撐/阻力）完全不可用，無法計算任何有意義的 R:R 或停損點位。在此條件下，建倉屬於蒙眼操作，管線整體保持觀望合理。
-- **共同催化劑**：AI 與機器人主題融合（NVIDIA Physical AI、工廠自動化）為中長期族群性成長驅動力；2026 秋季為業績密集期（ISRG ~10/20、FANUY ~10月、SYM 09-30），多個觀察節點集中。
-- **共同風險**：關稅與供應鏈不確定性（TSLA、FANUY 均受跨國供應鏈影響）；Forward P/E 普遍偏高（TSLA 42-45x、ISRG 38-42x、SYM 115x），若利率預期升溫則估值收縮風險顯著。
-- **主題錯位警示**：ABBNY 已將機器人部門（YuMi/GoFa）以 $53.75 億出售給 SoftBank，在 robotics 族群中的主題契合度已大幅降低，建議從族群 universe 重新評估或降權。SPAI 數據完全缺失，需確認是否已下市。
-- **擁擠觀察**：TSLA Optimus 與 SYM 均被高度討論，敘事溢價顯著——TSLA P/FCF 68-75x 內含 Optimus 成功假設、SYM P/E 115x 內含 FCF 轉正假設，兩者均尚未兌現。市場對機器人商業化的樂觀預期已部分定價，任何執行落差都可能觸發快速修正。
-- **相關性群組**：{TSLA, SYM} 具高度 AI 機器人敘事相關性，避免同時持多頭（集中風險）；{ISRG, ABBNY} 同屬工業/醫療自動化，但主題差距已因 ABBNY 業務重組拉大；{FANUY} 相對獨立（日本製造業、日元匯率曝險），可作為分散用途。
-
----
+- **共同催化劑**：Q3 財報季為 sector 內最關鍵的裁決窗口 — ISRG（2026-10-20）、SPAI（2026 年 11 月中旬）皆明確以 Q3 數字作為升級/降級的觸發條件；FANUY、ABBNY、TSLA、SYM 亦需觀察下一季財報是否能推動 Phase-1 訊號翻正。
+- **共同風險**：估值兩極化 — 高估值端（ISRG P/FCF 52.8x、SYM Forward P/E 55.4x、TSLA Forward P/E 164.0x）與低估值端（ABBNY 26.1x、FANUY 28.64x）並存，反映市場對「機器人／自動化敘事溢價」的分歧尚未收斂；同時多檔標的（ISRG 高管淨賣出逾 $70M、FANUY 融券 +279%、SPAI 內部人激勵型持股）皆帶有資訊優勢方向偏空的訊號。
+- **Crowding**：Sector 整體遇冷 — 6 檔中 5 檔（除 ISRG 外）Phase-1 訊號數 ≤2/5，顯示當前機器人／自動化板塊尚未出現機構共識買點，非擁擠交易，反而是普遍缺乏催化劑確認的階段。
+- **Correlation cluster**：{TSLA, SYM} 為高估值、高 beta、成長敘事驅動的一組（自動駕駛/倉儲自動化，對利率與成長股輪動敏感）；{ISRG, ABBNY, FANUY} 為傳統工業/醫療機器人一組（訂單能見度較高、估值相對錨定於實質獲利，對總體經濟循環更敏感）；SPAI 因市值與流動性規模懸殊（微型防務股），與其餘 5 檔相關性較低，屬獨立風險。
 
 ## Action sequencing
-
-本輪無任何 BUY 裁決，建議僅建立「觀察清單候選」順序，待催化劑確認後依序評估：
-
-1. **FANUY**（最先觀察）— 10月 FY2027 Q2 訂單數據；若訂單持續而非純拉貨，且技術面數據恢復，為族群中最具安全邊際入場點
-2. **ISRG**（次優先）— 10月 Q3 業績；若程序量加速且 Forward P/E 壓縮，基本面門檻有望達到 3/5 通過
-3. **TSLA**（第三觀察）— 9月底 Q3 業績 + Optimus 訂單確認；高估值限制，需多重催化劑同時兌現
-4. **SYM**（空方觀察）— 09-30 Q4 財報；若 FCF 未轉正，可評估 Pairs trade 空方倉位（前提：價格數據需恢復）
-5. **ABBNY**（降低優先）— 機器人主題已出售，建議從族群主動池降權或移除
-6. **SPAI**（暫停）— 先確認上市狀態，若已下市則從 universe 移除
-
----
+若要對本 sector 進行下一輪監控排序：
+1. **ISRG** 優先 — 有明確雙重觸發條件與最近財報日（10/20），且財務體質最佳，一旦觸發即可用最小摩擦升級為 LONG。
+2. **SPAI** 次之 — 9/15 關稅澄清會議＋潛在 DoD/陸軍新訂單為短期催化劑，但需先解決流動性/Stop 可執行性問題才有升級可能。
+3. **SYM** 第三 — 已通過 2/5 訊號，下一輪財報觀察 Sentiment（分析師 BUY%）與 Valuation 是否改善。
+4. **ABBNY、FANUY、TSLA** 維持例行監控 — 目前訊號強度不足，無近期明確催化劑可推動重新評估。
 
 ## Sector risk budget
+當前 sector 內無任何一檔通過完整買進門檻，**建議 sector 曝險上限為 0% NAV**（無持倉部位）。可保留最高 2% NAV 之「條件式額度」，僅在 ISRG 雙重觸發條件（價格回落 + Q3 財報雙確認）同時成立時動用，且因 ISRG 與 sector 內其餘標的相關性偏低（醫療機器人 vs 工業/防務自動化），啟用後不會顯著提高集中度風險。
 
-**建議本輪 robotics 族群 NAV 上限：0-3%**。
-
-理由：（1）全族群無 BUY 裁決，所有持倉建議均為 0% NAV；（2）技術面數據完全缺失，無法設定停損，任何部位均缺乏風險管理框架；（3）主要標的（TSLA、SYM）敘事溢價擁擠，估值超過基本面支撐；（4）若技術面數據在本週內恢復，且 FANUY 或 ISRG 通過 Phase 2-4 完整流程，建議上限可視個別標的結果調升至 5-8% NAV，但需確保 {TSLA, SYM} 相關性群組合計不超過 3% NAV 以避免集中曝險。
-
----
-
-SECTOR REPORT COMPLETE — robotics 2026-09-04
+SECTOR REPORT COMPLETE

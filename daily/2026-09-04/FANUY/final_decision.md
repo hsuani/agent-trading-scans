@@ -1,63 +1,17 @@
-# FANUY (FANUC Corp ADR) — 最終決策 2026-09-04
+# FINAL TRANSACTION PROPOSAL — FANUY（2026-09-04）
 
-**分析層級**: Phase 1 Only（未達正面選股門檻）  
-**決策人**: orchestrator  
-**pipeline 狀態**: Phase 1 完成，Phase 2-4 跳過（quota 保留）
+**Phase-1-only stub**（未通過 positive-pick 篩選，plan_all 模式下不進入 Phase 2-4）
 
----
+## Phase 1 訊號摘要
 
-## Phase 1 訊號評分
+| Signal | 判定 | 說明 |
+|---|---|---|
+| Fundamentals | ✗ | FY2026 營收 YoY +7.6%，未達 >15% 門檻 |
+| Market | ✗ | 價格 $19.19 < MA50 $20.36 |
+| News | ✗ | 淨評級 MIXED（偏淡）：訂單前移疑慮、美日新關稅 10-13.5% 壓縮北美毛利 |
+| Sentiment | ✗ | 分析師 2 位皆 HOLD（0% BUY）；機構持股僅 0.234%，無明確淨流入；融券暴增 +279% |
+| Valuation | ✓ | Forward P/E 28.64x < 35x |
 
-| 訊號 | 結果 | 說明 |
-|------|------|------|
-| 基本面（營收成長 >15% YoY） | ❌ FAIL | 營收成長 10-15% YoY（低於 15% 門檻）；FCF/NI 0.85-0.95 健康 |
-| 市場技術（RSI/MACD/MA） | ❌ FAIL | PRICE_DATA_UNAVAILABLE（Yahoo Finance 403） |
-| 新聞（30 天內正面催化劑） | ❌ FAIL | 混合：Q1 FY2027 訂單 +36.9% 強勁，但管理層警告客戶提前採購非持續；NVIDIA 合作正面 |
-| 情緒（分析師 ≥60% BUY） | ✅ PASS | 87.5% BUY（TSE 6954），德銀/花旗 BUY；FANUY ADR 共識正面 |
-| 估值（Forward P/E < 35x） | ✅ PASS | Forward P/E 16-20x，遠低於 35x 門檻 |
+**符合訊號數：1/5** — 未達 ≥3 positive-pick 門檻。
 
-**總計：2/5 訊號** — 未達正面選股門檻（需 ≥3/5）
-
----
-
-## 決策結論
-
-**裁決：HOLD / 觀察名單**  
-**倉位建議：0% NAV（不部署新資金）**  
-**信心度：30%**  
-**phase_modifier: 0.35**（Phase 1-only stub）
-
-### 拒絕理由
-
-1. **營收成長未達門檻**：10-15% YoY 低於 15%；中國市場占 30%，當地競爭加劇
-2. **訂單可持續性疑慮**：Q1 FY2027 訂單暴增 +36.9%，管理層明確警告來自客戶提前採購，不代表真實需求加速
-3. **日元匯率逆風**：USD/JPY 波動影響 FANUY ADR 美元報酬
-4. **新聞信號混合**：NVIDIA 合作正面，但同步有管理層謹慎警告
-
-### 保留看多因子
-
-- Forward P/E 16-20x 估值合理，具安全邊際
-- FY2025 銷售紀錄 ¥857B（+8% YoY）；FY2026 指引成長 6%
-- NVIDIA Physical AI 合作，IMTS 2026 發佈
-- 全球自動化市場長期受 AI 工廠需求驅動
-
-### 催化劑（觀察點）
-
-| 日期 | 事件 | 影響 |
-|------|------|------|
-| 2026 Q2 FY2027（10 月） | 訂單持續性確認 | 若持續 → 重新評估 3/5 門檻 |
-| 持續 | 中國工廠自動化復甦 | $118B 市場 2026 年規模驗證 |
-
----
-
-## 評分（dashboard 用）
-
-- verdict: HOLD
-- conviction_pct: 30
-- phase_modifier: 0.35
-- score = 0.3 × 0.30 × 1.0 × 0.35 = **0.032**（低）
-- R:R: N/A（Phase 1 only）
-
----
-
-**FINAL DECISION COMPLETE — FANUY Phase 1-only stub**
+**FINAL TRANSACTION PROPOSAL: HOLD（不進場）** — 無 Phase 2-4 交易建議。FANUY 非持倉/掛單標的（不在 HELD TICKERS 清單），維持 Phase-1-only。
