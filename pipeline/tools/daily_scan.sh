@@ -239,6 +239,8 @@ Required behaviour:
      Phase 5 sector-comparator notes which tickers got full pipeline.
 4. After all eligible tickers complete: run Phase 5 — sector-comparator for a
    peer group; watchlist-digest (NO ranking) for serenity / tw_unassigned.
+   Phase 1.5 evidence-shadow runs for every Phase-1 ticker (shadow only; Phase 2
+   never reads it) — do not skip it, do not let it block Phase 2 on failure.
 5. Each phase output writes to /Users/yht/Study/scans/daily/${DATE}/{TICKER}/*.md
    and /Users/yht/Study/scans/daily/${DATE}/${SECTOR}/sector_report.md.
 6. Do NOT pause for confirmation. Treat tool failures as soft (log+continue).
