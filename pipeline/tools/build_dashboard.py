@@ -461,6 +461,7 @@ def collect_payload() -> dict:
 
     return {
         "quotes":       quotes,
+        "no_peer_ranking": list(_u.NO_PEER_RANKING),
         "generated_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
         "today":        date.today().isoformat(),
         "sectors":      sectors_data,
@@ -507,48 +508,78 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
   .ser-md blockquote { border-left: 3px solid #99f6e4; padding-left: 0.6rem; color:#64748b; margin:0.3rem 0; }
   /* offset anchor jumps so the sticky nav doesn't cover the target section */
   section[id], [id] { scroll-margin-top: 72px; }
+  .nav-dd > summary::-webkit-details-marker, .tools-menu > summary::-webkit-details-marker { display: none; }
+  .nav-dd[open] > summary, .tools-menu[open] > summary { text-decoration: underline; }
+  .diff-table td, .diff-table th { padding: 2px 8px; }
+  .diff-table tr + tr td { border-top: 1px solid #f1f5f9; }
 </style>
 </head>
 <body class="bg-slate-50 text-slate-900">
 
-<header class="bg-slate-900 text-white p-6 shadow">
+<header class="bg-slate-900 text-white px-6 py-4 shadow">
   <div class="max-w-7xl mx-auto flex flex-wrap items-center gap-4">
     <div>
-      <h1 class="text-3xl">交易 Dashboard</h1>
-      <p class="text-slate-300 text-sm mt-1">產生於 __GENERATED__ · 互動狀態自動存 localStorage</p>
+      <h1 class="text-2xl font-bold">Trading Cockpit</h1>
+      <p class="text-slate-300 text-xs mt-1">Data as of __GENERATED__ · Quotes __QUOTES_AT__ · __SCAN_STATE__ · 互動狀態存 localStorage</p>
     </div>
-    <div class="ml-auto flex gap-2">
-      <button onclick="armAll()" class="bg-amber-500 hover:bg-amber-600 text-white px-3 py-2 rounded text-sm font-semibold">⚡ Arm 全部</button>
-      <button onclick="disarmAll()" class="bg-slate-600 hover:bg-slate-700 text-white px-3 py-2 rounded text-sm">🔒 Disarm 全部</button>
-      <button onclick="exportLog()" class="bg-blue-600 hover:bg-blue-700 text-white px-3 py-2 rounded text-sm">📥 匯出 trade log (CSV)</button>
-      <button onclick="exportHeld()" class="bg-emerald-600 hover:bg-emerald-700 text-white px-3 py-2 rounded text-sm">📤 匯出持倉 → held_tickers</button>
-      <button onclick="resetAll()" class="bg-rose-600 hover:bg-rose-700 text-white px-3 py-2 rounded text-sm">🗑 清空狀態</button>
-    </div>
+    <details class="ml-auto relative tools-menu">
+      <summary class="cursor-pointer bg-slate-700 hover:bg-slate-600 text-white px-3 py-1.5 rounded text-sm select-none">⋯ Tools</summary>
+      <div class="absolute right-0 mt-1 w-64 bg-white text-slate-800 rounded-lg shadow-xl border border-slate-200 p-2 text-sm z-30">
+        <button onclick="exportLog()" class="w-full text-left px-2 py-1.5 rounded hover:bg-slate-100">📥 匯出 trade log (CSV)</button>
+        <button onclick="exportHeld()" class="w-full text-left px-2 py-1.5 rounded hover:bg-slate-100">📤 匯出持倉 → held_tickers</button>
+        <div class="border-t my-1"></div>
+        <button onclick="armAll()" class="w-full text-left px-2 py-1.5 rounded hover:bg-amber-50 text-amber-800">⚡ Arm 全部</button>
+        <button onclick="disarmAll()" class="w-full text-left px-2 py-1.5 rounded hover:bg-slate-100">🔒 Disarm 全部</button>
+        <div class="border-t my-1"></div>
+        <a href="./HOWTO_READ.html" target="_blank" class="block px-2 py-1.5 rounded hover:bg-slate-100">📘 閱讀指南</a>
+        <a href="./SECTOR_OVERVIEWS.html" target="_blank" class="block px-2 py-1.5 rounded hover:bg-slate-100">📖 族群 overview</a>
+        <a href="./_catalysts.json" target="_blank" class="block px-2 py-1.5 rounded hover:bg-slate-100">📅 catalyst JSON</a>
+        <div class="border-t my-1"></div>
+        <div class="px-2 pt-1 text-[10px] uppercase tracking-wide text-rose-600 font-bold">Danger zone</div>
+        <button onclick="resetAll()" class="w-full text-left px-2 py-1.5 rounded hover:bg-rose-50 text-rose-700">🗑 清空所有本地狀態</button>
+      </div>
+    </details>
   </div>
 </header>
 
-<nav class="bg-slate-100 border-b border-slate-300 p-3 sticky top-0 z-10 text-sm">
-  <div class="max-w-7xl mx-auto flex flex-wrap gap-3">
-    <a class="text-blue-700 hover:underline font-semibold" href="#top20">🔬 Research Rank</a>
-    __NAV_LINKS__
-    <a class="ml-auto text-blue-700 hover:underline" href="./SECTOR_OVERVIEWS.html" target="_blank">📖 族群 overview</a>
-    <a class="text-blue-700 hover:underline" href="./HOWTO_READ.html" target="_blank">📘 閱讀指南</a>
-    <a class="text-blue-700 hover:underline" href="./_catalysts.json" target="_blank">📅 catalyst JSON</a>
-    <a class="text-rose-700 hover:underline font-semibold" href="./alerts.html" target="_blank">🚨 L0 Alerts</a>
-    <a class="text-amber-700 hover:underline font-semibold" href="#leverage">⚖️ 正2</a>
-    <a class="text-teal-700 hover:underline font-semibold" href="#serenity">🧘 Serenity</a>
+<nav class="bg-slate-100 border-b border-slate-300 px-3 py-2 sticky top-0 z-20 text-sm">
+  <div class="max-w-7xl mx-auto flex flex-wrap items-center gap-4">
+    <a class="font-semibold text-slate-800 hover:underline" href="#top">Overview</a>
+    <a class="font-semibold text-slate-800 hover:underline" href="#dashboard-root" onclick="showHoldings()">Holdings</a>
+    <details class="relative nav-dd"><summary class="cursor-pointer font-semibold text-slate-800 select-none">Research ▾</summary>
+      <div class="absolute left-0 mt-1 bg-white rounded-lg shadow-xl border border-slate-200 p-3 z-30 grid grid-cols-2 gap-x-6 gap-y-0.5 text-xs w-[30rem]">
+        <div class="col-span-2 mb-1"><a class="text-blue-700 hover:underline font-semibold" href="#top20">🔬 Research Rank</a></div>
+        <div class="font-bold text-slate-500 uppercase text-[10px] tracking-wide">US</div><div class="font-bold text-slate-500 uppercase text-[10px] tracking-wide">TW</div>
+        __NAV_RESEARCH__
+      </div></details>
+    <details class="relative nav-dd"><summary class="cursor-pointer font-semibold text-slate-800 select-none">Watchlists ▾</summary>
+      <div class="absolute left-0 mt-1 bg-white rounded-lg shadow-xl border border-slate-200 p-3 z-30 text-xs w-56 space-y-1">
+        __NAV_WATCHLISTS__
+        <div class="text-slate-400">Political Trades <span class="text-[10px]">(Phase 3)</span></div>
+      </div></details>
+    <details class="relative nav-dd"><summary class="cursor-pointer font-semibold text-slate-800 select-none">System ▾</summary>
+      <div class="absolute left-0 mt-1 bg-white rounded-lg shadow-xl border border-slate-200 p-3 z-30 text-xs w-60 space-y-1">
+        <a class="block text-blue-700 hover:underline" href="#system-status">🛠 Schedule / pipeline status</a>
+        <a class="block text-blue-700 hover:underline" href="./alerts.html" target="_blank">🚨 L0 Alerts (full)</a>
+        <a class="block text-blue-700 hover:underline" href="#leverage">⚖️ Portfolio overlay (正2)</a>
+        <a class="block text-blue-700 hover:underline" href="./pipeline/outcomes/REPORT.md" target="_blank">📐 Outcome report (v2.0-baseline)</a>
+        <a class="block text-blue-700 hover:underline" href="./pipeline/evidence/EVIDENCE_REPORT.md" target="_blank">🧾 Evidence shadow (NOT used by PM)</a>
+        <a class="block text-blue-700 hover:underline" href="./daily_briefing.html" target="_blank">📅 Daily briefing</a>
+      </div></details>
+    <span class="ml-auto text-xs text-slate-500">__SCAN_STATE__</span>
   </div>
 </nav>
 
-<main class="max-w-7xl mx-auto p-6 space-y-6">
+<main id="top" class="max-w-7xl mx-auto p-6 space-y-6">
 
   __STATUS__
 
   __ALERTS__
 
-  __LEVERAGE__
-
-  __SERENITY__
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+    __LEVERAGE__
+    __SERENITY_SUMMARY__
+  </div>
 
   <section id="top20" class="bg-white rounded-lg shadow p-4">
     <div class="flex items-baseline justify-between mb-3 border-b pb-2">
@@ -598,7 +629,11 @@ __TOP20_ROWS__
     <input type="text" id="f-search" placeholder="搜尋 ticker (e.g. TLN)" class="ml-auto" style="max-width:200px;">
   </div>
 
+  <h2 class="text-sm font-bold uppercase tracking-wide text-slate-500 pt-2">Peer groups</h2>
   <div id="dashboard-root"></div>
+
+  <h2 id="watchlists" class="text-sm font-bold uppercase tracking-wide text-slate-500 pt-2">Watchlists — dynamic signal sources (不排名)</h2>
+  __SERENITY__
 
 </main>
 
@@ -686,6 +721,11 @@ function drift(activeVal, latestVal, field) {
   }
   const cls = Math.abs(pct) > 5 ? "text-rose-600 font-semibold" : "text-amber-600";
   return `<span class="${cls}">(${pct >= 0 ? "+" : ""}${pct.toFixed(1)}%${arrow})</span>`;
+}
+
+function showHoldings() {
+  document.getElementById("f-filled").checked = true;
+  render();
 }
 
 function armAll() {
@@ -864,6 +904,21 @@ function unrealizedPL(pos, t) {
   return {pct, curPrice, quoteAt: q.quote_at || "", source: q.source || ""};
 }
 
+// "Stop 205 · 5.2% away · T1 245 · 13.3% away" against the locked card, from the current quote.
+function distanceLine(active, pnl) {
+  if (!pnl || !(pnl.curPrice > 0)) return "";
+  const cur = pnl.curPrice;
+  const stopN = parsePrice(active.stop), t1N = parsePrice(active.t1);
+  const part = (label, lvl, warnBelow) => {
+    if (!(lvl > 0)) return "";
+    const pct = (lvl - cur) / cur * 100;
+    const cls = warnBelow ? (pct > -3 ? "text-rose-700 font-semibold" : "text-slate-700") : "text-slate-700";
+    return `<span class="${cls}">${label} ${lvl}<span class="text-slate-500"> · ${Math.abs(pct).toFixed(1)}% ${pct < 0 ? "below" : "above"}</span></span>`;
+  };
+  const parts = [part("Stop", stopN, true), part("T1", t1N, false)].filter(Boolean);
+  return parts.length ? `<div class="text-xs mb-2 flex gap-4">${parts.join("")}</div>` : "";
+}
+
 function nextStep(t) {
   const s = tState(t.ticker);
   const fills = s.fills || [];
@@ -969,65 +1024,30 @@ function tickerCard(sector, t) {
     ${
       s.active_card ? `
       <div class="mb-3 bg-amber-50 border border-amber-300 rounded p-3">
-        <div class="flex items-center gap-2 mb-2">
-          <span class="bg-amber-200 text-amber-900 px-2 py-0.5 text-xs font-bold rounded">🔒 ACTIVE (進場已鎖定)</span>
-          <span class="text-xs text-slate-600">鎖定於 scan ${escapeHtml(s.active_card.scan_date)}</span>
-          <div class="ml-auto flex gap-1 flex-wrap">
-            <button onclick='resnapFromDate("${t.ticker}", ${JSON.stringify(t).replace(/'/g,"&apos;")})'
-                    class="bg-violet-600 hover:bg-violet-700 text-white text-xs px-2 py-1 rounded">🔄 從進場日重抓</button>
-            <button onclick='editActiveCard("${t.ticker}")'
-                    class="bg-amber-600 hover:bg-amber-700 text-white text-xs px-2 py-1 rounded">✏️ 編輯</button>
-            <button onclick='updateActiveCard("${t.ticker}", ${JSON.stringify(t).replace(/'/g,"&apos;")})'
-                    class="bg-blue-600 hover:bg-blue-700 text-white text-xs px-2 py-1 rounded">用最新覆蓋</button>
-            <button onclick='exitPosition("${t.ticker}")'
-                    class="bg-rose-600 hover:bg-rose-700 text-white text-xs px-2 py-1 rounded">出場</button>
-          </div>
-        </div>
-        <div class="grid grid-cols-2 lg:grid-cols-4 gap-2 text-xs">
-          <div class="bg-white border border-amber-200 p-2 rounded">
-            <b>Entry</b><br>${escapeHtml(s.active_card.entry||"-")}
-            <div class="text-[10px] text-slate-500 mt-1">latest: ${escapeHtml(t.entry||"-")} ${drift(s.active_card.entry, t.entry, "entry")}</div>
-          </div>
-          <div class="bg-white border border-amber-200 p-2 rounded">
-            <b>Stop</b><br>${escapeHtml(s.active_card.stop||"-")}
-            <div class="text-[10px] text-slate-500 mt-1">latest: ${escapeHtml(t.stop||"-")} ${drift(s.active_card.stop, t.stop, "stop")}</div>
-          </div>
-          <div class="bg-white border border-amber-200 p-2 rounded">
-            <b>T1</b><br>${escapeHtml(s.active_card.t1||"-")}
-            <div class="text-[10px] text-slate-500 mt-1">latest: ${escapeHtml(t.t1||"-")} ${drift(s.active_card.t1, t.t1, "t1")}</div>
-          </div>
-          <div class="bg-white border border-amber-200 p-2 rounded">
-            <b>T2</b><br>${escapeHtml(s.active_card.t2||"-")}
-            <div class="text-[10px] text-slate-500 mt-1">latest: ${escapeHtml(t.t2||"-")} ${drift(s.active_card.t2, t.t2, "t2")}</div>
-          </div>
-        </div>
-        <div class="text-[11px] text-slate-600 mt-2">Size: ${escapeHtml(s.active_card.size||"-")} · Horizon: ${escapeHtml(s.active_card.horizon||"-")} · 進場時 verdict: <b>${escapeHtml(s.active_card.verdict||"-")}</b></div>
-      </div>
-      <div class="mb-3 bg-sky-50 border border-sky-300 rounded p-3">
         <div class="flex items-center gap-2 mb-2 flex-wrap">
-          <span class="bg-sky-200 text-sky-900 px-2 py-0.5 text-xs font-bold rounded">📊 最新 scan 分析 (比對追蹤)</span>
-          <span class="text-xs text-slate-600">scan ${escapeHtml(t.scan_date)} · verdict <b class="${verdictClass} px-1 rounded">${escapeHtml(t.verdict||"-")}</b>${t.modify?` · ${escapeHtml(t.modify)}`:""}</span>
-          <a href="${t.report_url}" target="_blank" class="ml-auto text-xs text-blue-700 hover:underline">完整報告 →</a>
+          <span class="bg-amber-200 text-amber-900 px-2 py-0.5 text-xs font-bold rounded">🔒 Locked @ scan ${escapeHtml(s.active_card.scan_date)}</span>
+          <span class="text-xs text-slate-600">vs latest scan ${escapeHtml(t.scan_date)}</span>
+          ${(t.verdict && s.active_card.verdict && t.verdict !== s.active_card.verdict)
+              ? `<span class="bg-rose-100 text-rose-800 px-2 py-0.5 text-xs font-bold rounded">⚠ verdict ${escapeHtml(s.active_card.verdict)} → ${escapeHtml(t.verdict)}</span>` : ""}
+          <details class="ml-auto relative"><summary class="cursor-pointer text-xs text-slate-600 select-none">⋯ locked card</summary>
+            <div class="absolute right-0 mt-1 bg-white border border-slate-200 rounded shadow-lg p-1 z-30 flex flex-col text-xs w-44">
+              <button onclick='resnapFromDate("${t.ticker}", ${JSON.stringify(t).replace(/'/g,"&apos;")})' class="text-left px-2 py-1 hover:bg-slate-100 rounded">🔄 從進場日重抓</button>
+              <button onclick='editActiveCard("${t.ticker}")' class="text-left px-2 py-1 hover:bg-slate-100 rounded">✏️ 編輯鎖定值</button>
+              <button onclick='updateActiveCard("${t.ticker}", ${JSON.stringify(t).replace(/'/g,"&apos;")})' class="text-left px-2 py-1 hover:bg-slate-100 rounded">📊 用最新覆蓋</button>
+              <div class="border-t my-1"></div>
+              <button onclick='exitPosition("${t.ticker}")' class="text-left px-2 py-1 hover:bg-rose-50 text-rose-700 rounded">🚪 登記出場</button>
+            </div></details>
         </div>
-        <div class="grid grid-cols-2 lg:grid-cols-4 gap-2 text-xs">
-          <div class="bg-white border border-sky-200 p-2 rounded">
-            <b>Entry</b><br>${escapeHtml(t.entry||"-")}
-            <div class="text-[10px] text-slate-500 mt-1">vs 鎖定 ${escapeHtml(s.active_card.entry||"-")} ${drift(s.active_card.entry, t.entry, "entry")}</div>
-          </div>
-          <div class="bg-white border border-sky-200 p-2 rounded">
-            <b>Stop</b><br>${escapeHtml(t.stop||"-")}
-            <div class="text-[10px] text-slate-500 mt-1">vs 鎖定 ${escapeHtml(s.active_card.stop||"-")} ${drift(s.active_card.stop, t.stop, "stop")}</div>
-          </div>
-          <div class="bg-white border border-sky-200 p-2 rounded">
-            <b>T1</b><br>${escapeHtml(t.t1||"-")}
-            <div class="text-[10px] text-slate-500 mt-1">vs 鎖定 ${escapeHtml(s.active_card.t1||"-")} ${drift(s.active_card.t1, t.t1, "t1")}</div>
-          </div>
-          <div class="bg-white border border-sky-200 p-2 rounded">
-            <b>T2</b><br>${escapeHtml(t.t2||"-")}
-            <div class="text-[10px] text-slate-500 mt-1">vs 鎖定 ${escapeHtml(s.active_card.t2||"-")} ${drift(s.active_card.t2, t.t2, "t2")}</div>
-          </div>
-        </div>
-        <div class="text-[11px] text-slate-600 mt-2">Size: ${escapeHtml(t.size||"-")} · Horizon: ${escapeHtml(t.horizon||"-")}${(t.verdict && s.active_card.verdict && t.verdict !== s.active_card.verdict)?` · <b class="text-rose-700">⚠️ verdict 已由 ${escapeHtml(s.active_card.verdict)} 變為 ${escapeHtml(t.verdict)}</b>`:""}</div>
+        ${distanceLine(s.active_card, pnl)}
+        <table class="diff-table w-full text-xs bg-white border border-amber-200 rounded">
+          <thead><tr class="text-slate-500"><th class="text-left"></th><th class="text-right">Locked</th><th class="text-right">Latest</th><th class="text-right">Δ</th></tr></thead>
+          <tbody>
+            ${["entry","stop","t1","t2"].map(f => `<tr><td class="font-semibold">${f.toUpperCase()}</td><td class="text-right font-mono">${escapeHtml(s.active_card[f]||"-")}</td><td class="text-right font-mono">${escapeHtml(t[f]||"-")}</td><td class="text-right">${drift(s.active_card[f], t[f], f)}</td></tr>`).join("")}
+            <tr><td class="font-semibold">Verdict</td><td class="text-right">${escapeHtml(s.active_card.verdict||"-")}</td><td class="text-right">${escapeHtml(t.verdict||"-")}</td><td class="text-right">${(t.verdict && s.active_card.verdict && t.verdict !== s.active_card.verdict) ? '<span class="text-rose-700 font-semibold">⚠ changed</span>' : '<span class="text-slate-400">=</span>'}</td></tr>
+            <tr><td class="font-semibold">Size</td><td class="text-right">${escapeHtml((s.active_card.size||"-").slice(0,28))}</td><td class="text-right">${escapeHtml((t.size||"-").slice(0,28))}</td><td></td></tr>
+            <tr><td class="font-semibold">Horizon</td><td class="text-right">${escapeHtml((s.active_card.horizon||"-").slice(0,28))}</td><td class="text-right">${escapeHtml((t.horizon||"-").slice(0,28))}</td><td></td></tr>
+          </tbody>
+        </table>
       </div>
       ` : `
       <div class="grid grid-cols-2 lg:grid-cols-4 gap-2 text-xs mb-3">
@@ -1134,8 +1154,8 @@ function render() {
       <section id="sec-${sec}" class="bg-white rounded-lg shadow p-4">
         <div class="flex items-baseline justify-between mb-3 border-b pb-2">
           <div>
-            <h2 class="text-xl font-bold">${escapeHtml(s.label)}</h2>
-            <p class="text-xs text-slate-500">scan ${s.scan_date} · ${visibleTickers.length} / ${s.tickers.length} ticker 顯示</p>
+            <h2 class="text-xl font-bold">${escapeHtml(s.label)}${(DATA.no_peer_ranking||[]).includes(sec) ? ' <span class="text-xs font-normal text-purple-700">watchlist · 不排名</span>' : ''}</h2>
+            <p class="text-xs text-slate-500">scan ${s.scan_date} · ${visibleTickers.length} / ${s.tickers.length} ticker 顯示${s.sector_meta && s.sector_meta.legacy_report ? ' · <span class="text-amber-700">report 來自舊 key ' + escapeHtml(s.sector_meta.legacy_key) + '（尚無本群 Phase 5）</span>' : ''}</p>
           </div>
           <a href="${s.report_url}" target="_blank" class="text-sm text-blue-700 hover:underline">族群完整報告 →</a>
         </div>
@@ -1458,10 +1478,10 @@ def render_serenity_panel() -> str:
     picks = " ".join(f"<span class='bg-teal-100 text-teal-800 px-1.5 py-0.5 rounded text-xs'>{_esc(p)}</span>"
                      for p in d.get("new_picks", []))
     return (
-        '<section id="serenity" class="bg-white rounded-lg shadow p-4">'
+        '<section id="serenity" class="bg-white rounded-lg shadow p-4 border-l-4 border-purple-300">'
         '<div class="flex items-baseline justify-between mb-2 border-b pb-2">'
-        '<h2 class="text-xl font-bold">🧘 Serenity 追蹤 <span class="text-xs font-normal text-slate-500">'
-        f'{_esc(d.get("account",""))}</span></h2>'
+        '<h2 class="text-xl font-bold">🧘 Serenity <span class="text-xs font-normal text-purple-700">dynamic signal source · 不做同業排名</span> '
+        f'<span class="text-xs font-normal text-slate-500">{_esc(d.get("account",""))}</span></h2>'
         f'<span class="text-xs text-slate-400">feed {_esc(d.get("source_updated_at",""))} · '
         '<a class="text-blue-600" href="https://x.com/aleabitoreddit" target="_blank">X ↗</a></span></div>'
         f'<div class="mb-2 text-xs"><b>新 picks (掃描中):</b> {picks or "—"}</div>'
@@ -1474,6 +1494,53 @@ def render_serenity_panel() -> str:
         + (f'<div class="mt-3 border-t pt-2">{strat}</div>' if strat else "")
         + "</section>"
     )
+
+
+def render_serenity_summary() -> str:
+    """Overview card: only what changed — new picks, and tickers where his stance
+    and our verdict disagree. The full feed lives under Watchlists."""
+    f = SCANS / "serenity" / "serenity.json"
+    if not f.exists():
+        return ""
+    try:
+        d = json.loads(f.read_text(encoding="utf-8"))
+    except Exception:
+        return ""
+    llm_sent = {}
+    sf = SCANS / "serenity" / "sentiment.json"
+    if sf.exists():
+        try:
+            llm_sent = json.loads(sf.read_text(encoding="utf-8")).get("tickers", {})
+        except Exception:
+            pass
+    new = set(d.get("new_picks", []))
+    rows = []
+    for t in d.get("tickers", [])[:20]:
+        tk = t["ticker"]
+        tl = llm_sent.get(tk) or t.get("sentiment", {}).get("timeline", [])
+        stance = "bullish" if tl and tl[-1] > 0 else "bearish" if tl and tl[-1] < 0 else "neutral"
+        hist = collect_ticker_history(tk)
+        ours = hist[sorted(hist)[-1]]["verdict"] if hist else "—"
+        grp = _u.primary_group(tk)
+        flag = ""
+        if tk in new:
+            flag = "<span class='bg-purple-100 text-purple-800 px-1.5 rounded text-[10px] font-bold'>NEW</span>"
+        elif (stance == "bullish" and ours == "SELL") or (stance == "bearish" and ours == "BUY"):
+            flag = f"<span class='bg-rose-100 text-rose-800 px-1.5 rounded text-[10px] font-bold'>⚠ my verdict {_esc(ours)}</span>"
+        if flag:
+            rows.append(f"<tr><td class='font-mono font-semibold'>{_esc(tk)}</td><td>{flag}</td>"
+                        f"<td class='text-slate-600'>{stance}</td><td class='text-slate-500'>{_esc(grp or 'watchlist')}</td></tr>")
+        if len(rows) >= 4:
+            break
+    body = ("<table class='w-full text-xs'>" + "".join(rows) + "</table>") if rows else \
+        "<p class='text-xs text-slate-500'>no new or diverging signals</p>"
+    return (
+        '<section class="bg-white rounded-lg shadow p-4 border-l-4 border-purple-300">'
+        '<div class="flex items-baseline justify-between mb-2">'
+        '<h2 class="text-sm font-bold">🧘 Serenity Watchlist <span class="text-xs font-normal text-slate-500">'
+        f'{len(new)} new picks · feed {_esc(str(d.get("source_updated_at",""))[:16])}</span></h2>'
+        '<a href="#serenity" class="text-xs text-blue-700 hover:underline">Open watchlist →</a></div>'
+        + body + '</section>')
 
 
 def render_status_banner() -> str:
@@ -1581,14 +1648,21 @@ def render_status_banner() -> str:
         f"<td class='text-slate-600'>{_esc(last_of[label][1])[:64]}</td></tr>"
         for label, _pat in TYPES if label in last_of)
 
+    healthy = not verr and not miss_secs and not ser_stale
+    summary = (chip("Pipeline ✅ healthy", "ok") if healthy else chip("Pipeline ⚠ attention", "warn")) \
+        + (chip(f"Scan ✅ today {len(done_secs)}/{len(exp)}", "ok") if exp and not miss_secs
+           else chip(f"Scan ⏳ {len(done_secs)}/{len(exp)}", "warn") if exp else "") \
+        + (chip(f"Pending ⚠ {len(pend)}", "warn") if pend else chip("Pending 0", "ok")) \
+        + (chip(f"Price gaps ⚠ {vpp}", "warn") if vpp else "") \
+        + (chip(f"驗證 ❌ {verr}", "err") if verr else "")
     return (
-        '<section class="bg-white border border-slate-200 rounded-lg shadow-sm p-3">'
-        '<div class="flex flex-wrap items-center gap-2 text-xs">'
-        '<span class="font-bold text-slate-700">🛠 排程狀態</span>'
-        f'{scan_chip}{time_chip}{pend_chip}{val_chip}{pp_chip}{l0_chip}{ser_chip}'
-        '<details class="ml-auto"><summary class="cursor-pointer text-slate-500">最近各排程 ▾</summary>'
-        f'<table class="text-[11px] mt-2 text-slate-600">{hist}</table></details>'
-        '</div></section>'
+        '<section id="system-status" class="bg-white border border-slate-200 rounded-lg shadow-sm p-2">'
+        '<details><summary class="cursor-pointer flex flex-wrap items-center gap-2 text-xs select-none">'
+        '<span class="font-bold text-slate-700">🛠 System</span>' + summary +
+        '<span class="ml-auto text-slate-400">details ▾</span></summary>'
+        '<div class="flex flex-wrap items-center gap-2 text-xs mt-2 pt-2 border-t">'
+        f'{scan_chip}{time_chip}{pend_chip}{val_chip}{pp_chip}{l0_chip}{ser_chip}</div>'
+        f'<table class="text-[11px] mt-2 text-slate-600">{hist}</table></details></section>'
     )
 
 
@@ -1661,17 +1735,22 @@ def render_leverage_panel() -> str:
         "<div class='flex flex-wrap items-center gap-1.5 mt-2'>"
         "<span class='text-[11px] text-slate-500 mr-1'>回撤門檻階梯:</span>"
         + "".join(chips) + f"<span class='text-[11px] text-slate-600'>{gapline}</span></div>")
+    nxt = (f"下一觸發 <b>-{lv['next_trigger']:.0f}%</b> ({lv['gap_pp']:.1f}pp away)"
+           if lv.get("next_trigger") is not None else "已達最深門檻")
     return (
-        f'<section id="leverage" class="{bg} border rounded-lg shadow-sm p-4">'
-        '<div class="flex items-baseline justify-between mb-2">'
-        '<h2 class="text-lg font-bold">⚖️ 正2 Beta 調整規則 <span class="text-xs font-normal text-slate-500">'
-        f'00631L 機械式回測規則</span></h2></div>'
-        f'<div class="text-sm font-semibold mb-2">{_esc(lv["action"])}</div>'
-        f'<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-2">{grid}</div>'
+        f'<section id="leverage" class="{bg} border rounded-lg shadow-sm p-3">'
+        '<details><summary class="cursor-pointer select-none">'
+        '<div class="flex flex-wrap items-center gap-3 text-xs">'
+        '<span class="font-bold text-sm">⚖️ Portfolio Overlay</span>'
+        f'<span>00631L · <b>{_esc(lv["action"])[:40]}</b></span>'
+        f'<span>0050 回撤 <b class="{ddcol}">{dd:.1f}%</b></span>'
+        f'<span>{nxt}</span>'
+        '<span class="ml-auto text-slate-400">ladder ▾</span></div></summary>'
+        f'<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-2 mt-3">{grid}</div>'
         f'{ladder_html}'
         '<div class="text-[11px] text-slate-500 mt-2">規則：平常 Beta 1 (≈50% 00631L + 50% 現金) · '
         '0050 回撤越深越加碼 00631L (Beta→2) · 回前高 → 回 Beta 1 重建現金。'
-        '工具/回測規則，非投資建議。</div></section>'
+        '工具/回測規則，非投資建議。</div></details></section>'
     )
 
 
@@ -1715,18 +1794,36 @@ def render_alert_banner() -> str:
 def main():
     payload = collect_payload()
 
-    nav_links = []
-    for sec, sd in payload["sectors"].items():
-        nav_links.append(f'<a class="text-blue-700 hover:underline" href="#sec-{sec}">{sd["label"]}</a>')
+    # Research dropdown: peer groups split US / TW (two columns, row by row); dynamic
+    # sources go under Watchlists — the nav mirrors PEER GROUP vs DYNAMIC SOURCE.
+    us = [(k, v["label"]) for k, v in payload["sectors"].items() if k not in _u.NO_PEER_RANKING and not k.startswith("tw_")]
+    tw = [(k, v["label"]) for k, v in payload["sectors"].items() if k not in _u.NO_PEER_RANKING and k.startswith("tw_")]
+    cell = lambda kv: (f'<a class="text-blue-700 hover:underline" href="#sec-{kv[0]}">{_esc(kv[1])}</a>' if kv else "<span></span>")  # noqa: E731
+    nav_research = []
+    for i in range(max(len(us), len(tw))):
+        nav_research.append(cell(us[i] if i < len(us) else None) + cell(tw[i] if i < len(tw) else None))
+    nav_watch = [f'<a class="block text-blue-700 hover:underline" href="#serenity">🧘 Serenity</a>'
+                 if "serenity" in payload["sectors"] else ""]
+    q = payload.get("quotes") or {}
+    quotes_at = _tpe(next(iter(q.values()))["quote_at"]) if q else "—"
+    dow = date.today().isoweekday()
+    exp = _u.SCHEDULE.get(dow, [])
+    done = [k for k in exp if (DAILY / date.today().isoformat() / k / "sector_report.md").exists()]
+    scan_state = (f"Scan ✅ today {len(done)}/{len(exp)}" if exp and len(done) == len(exp)
+                  else f"Scan ⏳ today {len(done)}/{len(exp)}" if exp else "Scan —")
 
     top20_html = render_top20_rows(payload.get("top20", []))
 
     html = (HTML_TEMPLATE
             .replace("__GENERATED__", _tpe(payload["generated_at"]) + " (台北)")
-            .replace("__NAV_LINKS__", "\n".join(nav_links))
+            .replace("__NAV_RESEARCH__", "\n".join(nav_research))
+            .replace("__NAV_WATCHLISTS__", "\n".join(nav_watch))
+            .replace("__QUOTES_AT__", quotes_at)
+            .replace("__SCAN_STATE__", scan_state)
             .replace("__STATUS__", render_status_banner())
             .replace("__ALERTS__", render_validation_banner() + render_alert_banner())
             .replace("__LEVERAGE__", render_leverage_panel())
+            .replace("__SERENITY_SUMMARY__", render_serenity_summary())
             .replace("__SERENITY__", render_serenity_panel())
             .replace("__TOP20_ROWS__", top20_html)
             .replace("__DATA__", json.dumps(payload, ensure_ascii=False)))
