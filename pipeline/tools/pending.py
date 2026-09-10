@@ -96,6 +96,32 @@ def latest_complete(sector):
     return best
 
 
+# Same phrases validate.py uses: a card that declined to give levels for lack of a price.
+_PP_PHRASES = ("PRICE_DATA_UNAVAILABLE", "無即時", "暫不給進出場", "無法計算", "不設固定價位")
+
+
+def price_missing(today):
+    """Sectors whose LATEST card (<= today) for some ticker declined levels for lack
+    of a price — i.e. the scan ran but the price feed was down. Returns
+    [(sector, [tickers], latest_scan_date)] oldest scan first, so a backfill can
+    re-scan a few per run once pricefeed.py probe passes."""
+    by_sec = {}
+    for t, sec in sorted(_u._PRIMARY.items()):
+        best = None
+        for d in DAILY.iterdir():
+            if DATE_RE.match(d.name) and d.name <= today and (d / t / "final_decision.md").exists():
+                if best is None or d.name > best:
+                    best = d.name
+        if not best:
+            continue
+        txt = (DAILY / best / t / "final_decision.md").read_text(encoding="utf-8", errors="ignore")
+        if any(p in txt for p in _PP_PHRASES):
+            by_sec.setdefault(sec, {"tickers": [], "date": best})
+            by_sec[sec]["tickers"].append(t)
+            by_sec[sec]["date"] = min(by_sec[sec]["date"], best)
+    return sorted(((s, v["tickers"], v["date"]) for s, v in by_sec.items()), key=lambda x: x[2])
+
+
 def detect_stale(stale_days, today):
     """Sectors whose latest complete run is older than stale_days (or never run).
     Returns list of sector names. `today` is YYYY-MM-DD str."""
@@ -121,6 +147,10 @@ def main():
     a = sub.add_parser("add"); a.add_argument("items", nargs="+")
     r = sub.add_parser("remove"); r.add_argument("items", nargs="+")
     p = sub.add_parser("prune"); p.add_argument("--date", required=True)
+    pm = sub.add_parser("price-missing", help="sectors whose latest cards have no price (feed was down)")
+    pm.add_argument("--today", required=True)
+    pm.add_argument("--add", action="store_true", help="append SECTOR entries to pending")
+    pm.add_argument("--limit", type=int, default=0, help="only the N oldest sectors (0 = all)")
     dt = sub.add_parser("detect")
     dt.add_argument("--today", required=True)
     dt.add_argument("--stale-days", type=int, default=7)
@@ -164,6 +194,17 @@ def main():
         write_entries(kept)
         print(f"pruned {len(pruned)} done @ {args.date}: {' '.join(pruned) or '—'}")
         print(f"remaining: {' '.join(kept) or '—'}")
+    elif args.cmd == "price-missing":
+        rows = price_missing(args.today)
+        if args.limit:
+            rows = rows[: args.limit]
+        for sec, tks, d in rows:
+            print(f"{sec}\t{d}\t{' '.join(tks)}")
+        if args.add and rows:
+            write_entries(entries + [sec for sec, _, _ in rows])
+            print(f"added {len(rows)} sector(s) to pending", file=sys.stderr)
+        if not rows:
+            print("no price-missing sectors", file=sys.stderr)
     elif args.cmd == "detect":
         if not re.fullmatch(r"\d{4}-\d{2}-\d{2}", args.today):
             print("bad --today (YYYY-MM-DD)", file=sys.stderr); sys.exit(2)

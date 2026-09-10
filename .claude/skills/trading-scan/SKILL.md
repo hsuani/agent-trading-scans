@@ -245,8 +245,13 @@ Phase 1 (parallel fanout via Task):
   → daily/{DATE}/{TICKER}/{fundamentals|market|news|sentiment}.md
 
 **PRICE-DATA INTEGRITY (critical):** the market analyst gets prices via
-`pipeline/tools/ta.py <TICKER> snapshot` / `yf.py <TICKER> fast_info` (both now
-retry on Yahoo 403 rate-limiting). If after retries it STILL cannot obtain a
+`pipeline/tools/ta.py <TICKER> snapshot` / `yf.py <TICKER> fast_info`. Both now
+run through `pipeline/tools/pricefeed.py` (cnyes 鉅亨網 primary for quotes AND
+daily OHLCV, then Yahoo v8, yfinance, TWSE) — Yahoo alone is rate-limited
+locally and blocked in the cloud sandbox. Before a scan, `pricefeed.py probe`
+(exit 0/1) tells whether ANY feed answers; the routines skip scanning when it
+fails, because a full Phase 2-4 run without prices only produces
+PRICE_DATA_UNAVAILABLE cards. If after retries it STILL cannot obtain a
 real price, it MUST NOT invent/estimate price levels from news or narrative.
 Instead: report `PRICE_DATA_UNAVAILABLE`, set no RSI/MA/levels, and the
 downstream trader/portfolio-manager MUST NOT emit fabricated entry/stop/target

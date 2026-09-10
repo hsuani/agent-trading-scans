@@ -204,10 +204,20 @@ def main():
                 if tw:
                     out.update(tw); out["source"] = "twse"
     elif k == "history":
-        kw = {"period": args.period} if not (args.start or args.end) else {}
-        if args.start: kw["start"] = args.start
-        if args.end: kw["end"] = args.end
-        out = _df(t.history(**kw))
+        # cnyes-primary chain (see pricefeed.py); explicit --start/--end keep yfinance
+        if args.start or args.end:
+            kw = {}
+            if args.start: kw["start"] = args.start
+            if args.end: kw["end"] = args.end
+            out = _df(t.history(**kw))
+        else:
+            import os as _os2, sys as _sys2
+            _sys2.path.insert(0, _os2.path.dirname(_os2.path.abspath(__file__)))
+            from pricefeed import history as _ph
+            days = {"1mo": 45, "3mo": 120, "6mo": 200, "1y": 400, "2y": 760, "5d": 10}.get(args.period, 400)
+            df = _ph(args.ticker, days).rename(columns=str.capitalize)
+            df.index.name = "Date"
+            out = _df(df)
     elif k == "financials":
         out = _df(t.financials)
     elif k == "quarterly_fin":
