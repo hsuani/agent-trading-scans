@@ -162,6 +162,20 @@ if [[ "$DRY_RUN" != "1" && -f "$HELD_EXPORT" ]]; then
   "$PY" "$TOOL_DIR/sync_held.py" --export "$HELD_EXPORT" >> "$LOG_DIR/_post.log" 2>&1 || true
 fi
 
+# Price-feed gate. A scan without prices burns the full Sonnet/Opus pipeline to
+# produce PRICE_DATA_UNAVAILABLE cards that the outcome tracker then excludes.
+# If neither cnyes nor Yahoo nor TWSE answers, queue today's sectors in pending
+# and stop; the backfill re-scans them once `pricefeed.py probe` passes again.
+if [[ "$DRY_RUN" != "1" && "$FORCE" != "1" ]]; then
+  if ! PROBE_OUT=$(TRADING_SCANS_ROOT="$SCAN_ROOT" "$PY" "$TOOL_DIR/pricefeed.py" probe 2>&1); then
+    echo "price feed DOWN — skipping scan, queued: ${SECTOR_LIST[*]}" >> "$LOG_DIR/_post.log"
+    echo "$PROBE_OUT" >> "$LOG_DIR/_post.log"
+    TRADING_SCANS_ROOT="$SCAN_ROOT" "$PY" "$TOOL_DIR/pending.py" add "${SECTOR_LIST[@]}" >> "$LOG_DIR/_post.log" 2>&1 || true
+    osascript -e "display notification \"price feed down (cnyes/yahoo/twse) — scan skipped, sectors queued\" with title \"Trading scan\" sound name \"Basso\""
+    exit 0
+  fi
+fi
+
 # Load held tickers — these always get full Phase 2-4 regardless of quota cap
 HELD_TICKERS_FILE="$TOOL_DIR/held_tickers.txt"
 HELD_TICKERS=""

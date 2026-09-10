@@ -27,21 +27,14 @@ from stockstats import wrap  # noqa: E402
 
 
 def fetch(ticker, period):
-    # Yahoo rate-limits (HTTP 403) when many subagents fetch at once during a
-    # scan. Retry with backoff so the market analyst gets REAL prices instead of
-    # falling back to hallucinated levels.
-    import time
-    last = None
-    for attempt in range(5):
-        try:
-            df = yf.Ticker(ticker).history(period=period, auto_adjust=True)
-            if not df.empty:
-                return df.rename(columns=str.lower)
-            last = RuntimeError(f"no history for {ticker}")
-        except Exception as e:
-            last = e
-        time.sleep(1.5 * (attempt + 1))   # 1.5, 3, 4.5, 6, 7.5s
-    raise last or RuntimeError(f"no history for {ticker}")
+    """Daily OHLCV via pricefeed.history: cnyes -> Yahoo v8 -> yfinance -> TWSE.
+    Yahoo alone 403s under scan concurrency locally and is blocked outright in
+    the cloud sandbox; cnyes carries both US and TW."""
+    import os, sys
+    sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+    from pricefeed import history
+    days = {"1mo": 45, "3mo": 120, "6mo": 200, "1y": 400, "2y": 760}.get(period, 400)
+    return history(ticker, days)
 
 
 def compute(df):
