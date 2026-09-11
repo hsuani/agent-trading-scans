@@ -69,7 +69,7 @@ def main():
     args = ap.parse_args()
 
     payload = bd.collect_payload()
-    top = bd.compute_top20(payload["sectors"])
+    top = payload["top20"]
     if args.date:
         top = [t for t in top if t.get("scan_date") == args.date]
 
@@ -142,6 +142,12 @@ def main():
     elif ser_date < _date.today().isoformat():
         issues.append({"level": "WARN", "ticker": "SERENITY", "sector": "serenity",
                        "msg": f"每日觀點摘要過期 (最新 {ser_date})"})
+
+    # 4b. Cards whose entry is off-scale vs the live quote (LEVEL_SCALE_SUSPECT) are
+    # excluded from the rank and queued for a re-scan — the level, not the price, is wrong.
+    for n in payload.get("needs_reprice", []):
+        issues.append({"level": "WARN", "ticker": n["ticker"], "sector": n["sector"], "price_pending": True,
+                       "msg": f"需重新定價（{n['reason']}）— 卡片價位尺度與現價不符"})
 
     # 5. Taxonomy — a rebuilt dashboard must not carry retired v1 keys as sections.
     import universe as _u
