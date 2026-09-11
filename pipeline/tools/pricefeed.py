@@ -1,8 +1,11 @@
 #!/usr/bin/env python3
-"""One price chain for every tool. Yahoo is rate-limited locally and blocked
-outright in the cloud sandbox (CONNECT 403), so cnyes (鉅亨網) is primary for
-both quotes and daily OHLCV; Yahoo's v8 chart endpoint (no cookie/crumb) and
-yfinance are fallbacks; TWSE covers Taiwan when everything else is down.
+"""One price chain for every tool. Yahoo's cookie/crumb flow is rate-limited
+locally and the whole host is blocked in the cloud sandbox (CONNECT 403).
+
+  quotes : cnyes (鉅亨網) -> Yahoo fast_info -> TWSE
+  history: Yahoo v8 chart (no crumb, split-adjusted) -> cnyes charting (NOT
+           split-adjusted upstream: 0050 4:1, CRWD 4:1, 6669 3:1 all show as
+           gaps, so a heuristic back-adjustment is applied) -> yfinance -> TWSE
 
   quote(ticker)            -> {"last_price", "previous_close", ..., "source"} | None
   history(ticker, days)    -> pandas DataFrame [open high low close volume], ascending, .attrs["source"]
@@ -64,6 +67,24 @@ def quote(ticker):
 
 
 # ---------------- history ----------------
+SPLIT_GAP = 1.6   # a close/close jump beyond x1.6 or below /1.6 overnight is a split, not a move
+
+
+def split_adjust(rows):
+    """Back-adjust unadjusted daily rows: at each overnight gap beyond SPLIT_GAP the
+    factor prev_close / open is applied to every earlier bar (prices divided,
+    volume multiplied). Heuristic — stock-dividend ratios of 1.05–1.2 pass through."""
+    out, factor = [], 1.0
+    for i in range(len(rows) - 1, -1, -1):
+        d, o, h, l, c, v = rows[i]
+        out.append((d, o / factor, h / factor, l / factor, c / factor, (v or 0) * factor))
+        if i > 0 and rows[i - 1][4] and o:
+            r = rows[i - 1][4] / o
+            if r > SPLIT_GAP or r < 1 / SPLIT_GAP:
+                factor *= r
+    return out[::-1]
+
+
 def _cnyes_history(ticker, days):
     sym = cnyes_symbol(ticker)
     if not sym:
@@ -75,7 +96,8 @@ def _cnyes_history(ticker, days):
     if not d.get("t"):
         return None
     rows = sorted(zip(d["t"], d["o"], d["h"], d["l"], d["c"], d["v"]))
-    return [(datetime.fromtimestamp(t, timezone.utc).date(), o, h, l, c, v) for t, o, h, l, c, v in rows]
+    return split_adjust([(datetime.fromtimestamp(t, timezone.utc).date(), o, h, l, c, v)
+                         for t, o, h, l, c, v in rows])
 
 
 def _yahoo_v8_history(ticker, days):
@@ -119,7 +141,7 @@ def history(ticker, days=400):
     """DataFrame of daily OHLCV, ascending by date; .attrs['source'] names the feed."""
     import pandas as pd
     last = None
-    for name, fn in (("cnyes", _cnyes_history), ("yahoo_v8", _yahoo_v8_history),
+    for name, fn in (("yahoo_v8", _yahoo_v8_history), ("cnyes", _cnyes_history),
                      ("yfinance", _yfinance_history), ("twse", _twse_history)):
         try:
             rows = fn(ticker, days)
