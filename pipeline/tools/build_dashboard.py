@@ -304,9 +304,12 @@ def compute_score(card: dict, text: str) -> tuple[float, int, float, bool]:
     return round(score, 1), conf, rr, phase1
 
 
-def compute_top20(sectors_data: dict) -> list:
-    """Rank all tickers across sectors. Return top 20 by composite score."""
-    ranked = []
+def compute_top20(sectors_data: dict, quotes: dict | None = None) -> tuple[list, list]:
+    """Rank all tickers across sectors -> (top 20 by composite score, needs_reprice list).
+    Levels come from levels.plan_status: R multiples / percents are never prices;
+    a card whose entry is off-scale vs the live quote is excluded and reported."""
+    quotes = quotes or {}
+    ranked, needs_reprice = [], []
     for sector, sd in sectors_data.items():
         if sector in _u.NO_PEER_RANKING:
             continue            # serenity / tw_unassigned are watchlists, not comparables
@@ -323,23 +326,17 @@ def compute_top20(sectors_data: dict) -> list:
                     text = ""
             score, conf, rr, phase1 = compute_score(t, text)
             price_missing = any(ph in text for ph in _DECLINED_PHRASES)
-            emid, snum, _, _ = derive_targets(t.get("entry"), t.get("stop"), rr)
-            # A stated target is a PRICE on the right side of entry, within 0.5x–3x of it;
-            # "T1 = 1.2x" style ratios and stray numbers are not targets.
-            def _stated(field):
-                n = _first_nums(t.get(field), 1)
-                if not n or emid is None or not (0.5 * emid < n[0] < 3 * emid):
-                    return None
-                return n[0] if (n[0] < emid if t.get("verdict") == "SELL" else n[0] > emid) else None
-            t1s, t2s = _stated("t1"), _stated("t2")
-            if price_missing:
-                ready = "PRICE_MISSING"
-            elif phase1 or emid is None or snum is None:
-                ready = "RESEARCH_ONLY"
-            elif scan_date and (date.today() - date.fromisoformat(scan_date)).days > 10:
-                ready = "DATA_STALE"
-            else:
-                ready = "ACTIONABLE"
+            q = quotes.get(ticker) or {}
+            plan = _lv.plan_status(t, quote=q.get("price"))
+            qstat = _lv.quote_status(q.get("quote_at")) if q else "UNAVAILABLE"
+            emid, snum, t1s, t2s = plan["entry_mid"], plan["stop"], plan["t1"], plan["t2"]
+            if plan["plan"] == "LEVEL_SCALE_SUSPECT":
+                needs_reprice.append({"ticker": ticker, "sector": sector, "scan_date": scan_date,
+                                      "reason": plan["reason"]})
+                continue        # a NT$340 card on a NT$1,330 stock ranks nowhere until re-scanned
+            ready = _lv.trade_ready(plan["plan"], qstat, scan_date, phase1_only=phase1)
+            if price_missing and ready == "ACTIONABLE":
+                ready = "NEEDS_REPRICE"   # the card itself said it had no price when written
             quality = []
             if rr is None:
                 quality.append("no R:R parsed")
@@ -353,6 +350,10 @@ def compute_top20(sectors_data: dict) -> list:
                     else "MEDIUM" if quality else "HIGH")
             ranked.append({
                 "trade_ready":  ready,
+                "plan_status":  plan["plan"],
+                "plan_reason":  plan["reason"],
+                "quote_status": qstat,
+                "quote_price":  q.get("price"),
                 "score_quality": quality,
                 "score_tier":   tier,
                 "t1_stated":    t1s,
@@ -376,7 +377,7 @@ def compute_top20(sectors_data: dict) -> list:
                 "phase1_only":  phase1,
             })
     ranked.sort(key=lambda x: (x["score"], x["conviction"]), reverse=True)
-    return ranked[:20]
+    return ranked[:20], needs_reprice
 
 
 def collect_payload() -> dict:
@@ -450,8 +451,6 @@ def collect_payload() -> dict:
         except Exception:
             catalysts = {}
 
-    top20 = compute_top20(sectors_data)
-
     # Current quotes come from the L0 monitor (alerts.json), never from a scan's
     # entry text — the dashboard's unrealized P/L must use a real last price.
     quotes = {}
@@ -466,8 +465,11 @@ def collect_payload() -> dict:
         except Exception:
             quotes = {}
 
+    top20, needs_reprice = compute_top20(sectors_data, quotes)
+
     return {
         "quotes":       quotes,
+        "needs_reprice": needs_reprice,
         "no_peer_ranking": list(_u.NO_PEER_RANKING),
         "generated_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
         "today":        date.today().isoformat(),
@@ -594,7 +596,7 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
         <h2 class="text-xl font-bold">🔬 Research Rank <span class="text-sm font-normal text-amber-700">(legacy heuristic — 研究順位,不是「最值得買」)</span> <span class="text-xs font-normal text-slate-400">更新 __GENERATED__</span></h2>
         <p class="text-xs text-slate-500">score = verdict × conviction × (1 + R:R T2 / 5) × modifier · Phase-1-only / 無報價 × 0.35 · 無法解析 R:R 時不套預設值 · T1/T2 只顯示卡片自述值,≈ 為推導值 · v2.0-baseline stated-T1 expectancy −0.152R,此表僅供研究分配</p>
       </div>
-      <div class="text-xs text-slate-500">Trade Ready: ACTIONABLE / RESEARCH_ONLY / PRICE_MISSING / DATA_STALE · Quality 列出 score 靠 fallback 的部分</div>
+      <div class="text-xs text-slate-500">Trade Ready = quote (LIVE / STALE / UNAVAILABLE) × plan (PRICED / UNPRICED / LEVELS_INVALID / LEVEL_SCALE_SUSPECT) → ACTIONABLE / NEEDS_REPRICE / DATA_STALE / RESEARCH_ONLY · 尺度異常不進榜：__NEEDS_REPRICE__</div>
     </div>
     <div class="overflow-x-auto">
       <table class="w-full text-xs">
@@ -1252,39 +1254,11 @@ def _esc(s) -> str:
 # 6805.TW both derived an "entry price" of (2026+9)/2 = 1017.5 that way, then got
 # reported as hallucinated prices. The analyst had done the right thing; the
 # parser invented the number.
-_NON_PRICE_PATTERNS = (
-    r"\d+(?:\.\d+)?\s*[xX]\b",        # R:R ratios "3.9x"
-    r"\d+(?:\.\d+)?\s*%",              # percentages
-    r"20\d{2}\s*[-/]\s*\d{1,2}(?:\s*[-/]\s*\d{1,2})?",   # 2026-09 / 2026/09/15
-    r"\d{4}\s*年",                      # 2026 年
-    r"\d{1,2}\s*月",                    # 9 月
-    r"\d{1,2}\s*日",                    # 15 日
-    r"\d{4}\s*Q[1-4]",                  # 2026Q3
-    r"Q[1-4]\s*\d{2,4}",                # Q3 2026
-    r"\b[QH][1-4]\b",                   # bare Q2 / H2 — the digit is a period, not a price
-    r"\d+(?:\.\d+)?\s*[億萬兆]",        # NT$16.4 億 revenue magnitudes, not share prices
-    r"\d+(?:\.\d+)?\s*(?:pp|bps|BPS)", # margin deltas
-    # horizons: "1–3 個交易日", "4-6 週", "24–48 小時", "2-3 日"
-    r"\d+(?:\.\d+)?(?:\s*[–—~-]\s*\d+(?:\.\d+)?)?\s*個?\s*"
-    r"(?:交易日|營業日|工作天|小時|天|週|周|日|月|季)",
-)
-
-
-# A card that says any of these is explicitly refusing to quote a level, so any
-# number in the same field belongs to a condition, not to a price. Kept in sync
-# with validate.py's _PP_PHRASES.
-_DECLINED_PHRASES = ("PRICE_DATA_UNAVAILABLE", "無即時", "暫不給", "無法計算",
-                     "不設固定價位", "不設價位", "不填列", "不給具體")
-
-# Numbers written as money. When a field has any of these, they are the only
-# numbers worth reading — everything else in the sentence is EPS, revenue,
-# a horizon in days, or an R:R target.
-# Also captures the far side of a range, because entry is usually written
-# "NT$390–401" with the marker only on the low end — taking just 390 shifts the
-# midpoint that every derived stop and target hangs off.
-_MONEY_RE = re.compile(
-    r"(?:NT\$|US\$|TWD|USD|\$)\s*(\d+(?:,\d{3})*(?:\.\d+)?)"
-    r"(?:\s*[–—~-]\s*(?:NT\$|US\$|TWD|USD|\$)?\s*(\d+(?:,\d{3})*(?:\.\d+)?))?")
+# Shared with monitor.py / validate.py — see levels.py. Kept under the old names
+# so _first_nums (which the outcome cohort depends on) keeps its exact behaviour.
+from levels import DECLINED_PHRASES as _DECLINED_PHRASES, MONEY_RE as _MONEY_RE  # noqa: E402
+from levels import NON_PRICE_PATTERNS as _NON_PRICE_PATTERNS  # noqa: E402
+import levels as _lv  # noqa: E402
 
 
 def _first_nums(s, n=2):
@@ -1354,9 +1328,15 @@ def render_top20_rows(top20: list) -> str:
         rr_color = "text-green-700 font-semibold" if (t["rr_t2"] or 0) >= 2.0 else "text-slate-700"
         rr_disp = f"{t['rr_t2']:.2f}x" if t["rr_t2"] else "—"
         ready = t.get("trade_ready", "")
-        ready_cls = {"ACTIONABLE": "bg-green-100 text-green-800", "PRICE_MISSING": "bg-amber-100 text-amber-800",
+        ready_cls = {"ACTIONABLE": "bg-green-100 text-green-800", "NEEDS_REPRICE": "bg-amber-100 text-amber-800",
                      "DATA_STALE": "bg-slate-200 text-slate-700"}.get(ready, "bg-amber-50 text-amber-800")
-        ready_cell = f'<span class="{ready_cls} px-1.5 py-0.5 rounded text-[10px]">{"✓ " if ready == "ACTIONABLE" else "⚠ "}{ready}</span>'
+        qp = t.get("quote_price")
+        detail = (f'quote {"✓" if t.get("quote_status") == "LIVE" else t.get("quote_status", "—")}'
+                  f'{(" " + format(qp, "g")) if qp else ""} · plan {t.get("plan_status", "—")}'
+                  + (f' ({_esc(t["plan_reason"])})' if t.get("plan_reason") else ""))
+        ready_cell = (f'<span class="{ready_cls} px-1.5 py-0.5 rounded text-[10px]" title="{detail}">'
+                      f'{"✓ " if ready == "ACTIONABLE" else "⚠ "}{ready}</span>'
+                      f'<div class="text-[9px] text-slate-500">{detail}</div>')
         quality_cell = ('<span class="text-[10px] text-amber-700">⚠ ' + _esc(" · ".join(t.get("score_quality", []))) + "</span>"
                         if t.get("score_quality") else '<span class="text-[10px] text-slate-400">ok</span>')
         conv_color = "text-green-700 font-semibold" if t["conviction"] >= 60 else "text-slate-700"
@@ -1867,6 +1847,7 @@ def main():
             .replace("__SERENITY_SUMMARY__", render_serenity_summary())
             .replace("__SERENITY__", render_serenity_panel())
             .replace("__TOP20_ROWS__", top20_html)
+            .replace("__NEEDS_REPRICE__", (", ".join(f"{n['ticker']} ({_esc(n['reason'])})" for n in payload.get("needs_reprice", [])) or "none"))
             .replace("__DATA__", json.dumps(payload, ensure_ascii=False)))
 
     leaked = sorted(k for k in _u.RETIRED_KEYS if k in payload["sectors"]

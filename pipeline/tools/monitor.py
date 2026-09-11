@@ -87,9 +87,8 @@ def latest_card(ticker):
 
 def rr_t2(card):
     """R:R to T2 for a long: (t2-entry_mid)/(entry_mid-stop). None if invalid."""
-    lo, hi = zone(card.get("entry", ""))
-    stop = first_num(card.get("stop", ""))
-    t2 = first_num(card.get("t2", ""))
+    p = _plan_status(card)
+    lo, hi, stop, t2 = p["entry_lo"], p["entry_hi"], p["stop"], p["t2"]
     if None in (lo, hi, stop, t2):
         return None
     entry = (lo + hi) / 2
@@ -135,41 +134,21 @@ def price(ticker):
         return None
 
 
-# Long trade shape: stop < entry zone < T1 <= T2. A card whose parsed levels
-# break that (a short/option card, a "收復 $525" thesis stop read as a price,
-# numbers from two different scales after a split) must never emit a STOP /
-# T1 alert — WDC once showed STOP BREACHED and T1 HIT on the same quote.
-SCALE_RATIO = float(os.environ.get("LEVEL_SCALE_RATIO", "5"))
-
-
-def levels_invalid(lo, hi, stop, t1, t2):
-    """Reason string when the parsed levels are not a coherent long plan, else None."""
-    present = [x for x in (lo, hi, stop, t1, t2) if x is not None and x > 0]
-    if len(present) >= 2 and max(present) / min(present) > SCALE_RATIO:
-        return f"scale x{max(present) / min(present):.0f} (split / parse?)"
-    if stop is not None and stop > 0:
-        if lo is not None and stop >= lo:
-            return "stop >= entry"
-        if t1 is not None and stop >= t1:
-            return "stop >= T1"
-    if t1 is not None and hi is not None and t1 <= hi:
-        return "T1 <= entry"
-    if t1 is not None and t2 is not None and t2 < t1:
-        return "T2 < T1"
-    return None
+from levels import plan_status as _plan_status  # noqa: E402  — shared absolute-price parser
 
 
 def status(card, px):
     """Classify live price vs locked levels. Returns (urgency, flag list)."""
     if px is None:
         return (5, ["no price"])
-    lo, hi = zone(card.get("entry", ""))
-    stop = first_num(card.get("stop", ""))
-    t1 = first_num(card.get("t1", ""))
-    t2 = first_num(card.get("t2", ""))
-    bad = levels_invalid(lo, hi, stop, t1, t2)
-    if bad:
-        return (9, [f"⚠ LEVELS_INVALID ({bad}) — price monitoring suppressed"])
+    # Absolute prices only (levels.py): "T1 = 2.6" is an R multiple, "10x P/E" is a
+    # valuation, "4.30%" is a yield — none of them may fire a price trigger.
+    p = _plan_status(card, quote=px)
+    if p["plan"] in ("LEVELS_INVALID", "LEVEL_SCALE_SUSPECT"):
+        return (9, [f"⚠ {p['plan']} ({p['reason']}) — price monitoring suppressed"])
+    lo, hi, stop, t1, t2 = p["entry_lo"], p["entry_hi"], p["stop"], p["t1"], p["t2"]
+    if not any((lo, stop, t1, t2)):
+        return (9, ["UNPRICED — event / thesis only"])
     flags, urg = [], 9
     if stop is not None and stop > 0:
         dpct = (px - stop) / stop * 100
