@@ -52,3 +52,13 @@ status(card(entry="待觸發 — 催化劑確認當日收盤，當前市價 ±0%
 assert status(card(stop="$100.00"), None) == (5, ["no price"])
 
 print("ok")
+
+# Level sanity: an incoherent long plan never becomes a STOP / T1 alert.
+from monitor import levels_invalid  # noqa: E402
+assert levels_invalid(226.0, 230.0, 210.0, 250.0, 270.0) is None
+assert levels_invalid(226.0, 230.0, 525.0, 250.0, None) == "stop >= entry"        # WDC "收復 $525" thesis stop
+assert levels_invalid(226.0, 230.0, 210.0, 228.0, None) == "T1 <= entry"
+assert levels_invalid(20.0, 21.0, 19.0, 150.0, None).startswith("scale")           # split / parse mix
+urg, flags = status(card(entry="$226.00 – $230.00", stop="$525", t1="$250"), 493.71)
+assert urg == 9 and flags[0].startswith("⚠ LEVELS_INVALID"), (urg, flags)
+print("ok")

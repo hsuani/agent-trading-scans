@@ -126,13 +126,37 @@ def upcoming_catalysts():
 
 
 def price(ticker):
-    """Live last price via fast_info (free). None on failure."""
+    """Live last price via pricefeed.quote (cnyes -> Yahoo -> TWSE). None on failure."""
     try:
-        fi = yf.Ticker(ticker).fast_info
-        p = fi.get("last_price") or fi.get("lastPrice")
-        return float(p) if p else None
+        from pricefeed import quote
+        q = quote(ticker)
+        return float(q["last_price"]) if q and q.get("last_price") else None
     except Exception:
         return None
+
+
+# Long trade shape: stop < entry zone < T1 <= T2. A card whose parsed levels
+# break that (a short/option card, a "收復 $525" thesis stop read as a price,
+# numbers from two different scales after a split) must never emit a STOP /
+# T1 alert — WDC once showed STOP BREACHED and T1 HIT on the same quote.
+SCALE_RATIO = float(os.environ.get("LEVEL_SCALE_RATIO", "5"))
+
+
+def levels_invalid(lo, hi, stop, t1, t2):
+    """Reason string when the parsed levels are not a coherent long plan, else None."""
+    present = [x for x in (lo, hi, stop, t1, t2) if x is not None and x > 0]
+    if len(present) >= 2 and max(present) / min(present) > SCALE_RATIO:
+        return f"scale x{max(present) / min(present):.0f} (split / parse?)"
+    if stop is not None and stop > 0:
+        if lo is not None and stop >= lo:
+            return "stop >= entry"
+        if t1 is not None and stop >= t1:
+            return "stop >= T1"
+    if t1 is not None and hi is not None and t1 <= hi:
+        return "T1 <= entry"
+    if t1 is not None and t2 is not None and t2 < t1:
+        return "T2 < T1"
+    return None
 
 
 def status(card, px):
@@ -143,6 +167,9 @@ def status(card, px):
     stop = first_num(card.get("stop", ""))
     t1 = first_num(card.get("t1", ""))
     t2 = first_num(card.get("t2", ""))
+    bad = levels_invalid(lo, hi, stop, t1, t2)
+    if bad:
+        return (9, [f"⚠ LEVELS_INVALID ({bad}) — price monitoring suppressed"])
     flags, urg = [], 9
     if stop is not None and stop > 0:
         dpct = (px - stop) / stop * 100
@@ -177,11 +204,18 @@ def leverage_rule():
                    os.environ.get("LEVERAGE_TRIGGERS", "10,15,20,25,30").split(",") if x.strip())
     near = float(os.environ.get("LEVERAGE_NEAR", "1"))
     lookback = os.environ.get("LEVERAGE_LOOKBACK", "2y")
+    unavailable = {"underlying": und, "etf": etf, "triggers": trigs, "ladder": [],
+                   "price": None, "drawdown_pct": None, "max_drawdown_pct": None,
+                   "next_trigger": None, "gap_pp": None, "deepest_crossed": None, "etf_price": None,
+                   "signal": "DATA_UNAVAILABLE", "urgency": 3,
+                   "action": f"⚠ {und} quote unavailable — Beta action paused until the feed recovers"}
     try:
-        df = yf.Ticker(und).history(period=lookback, auto_adjust=True)
-        c = df["Close"] if "Close" in df else df["close"]
-        if c.empty:
-            return None
+        from pricefeed import history as _hist
+        days = {"1y": 400, "2y": 760, "6mo": 200}.get(lookback, 760)
+        df = _hist(und, days)
+        c = df["close"].dropna()
+        if c.empty or not (float(c.iloc[-1]) > 0):
+            return unavailable
         peak = float(c.max()); peak_dt = str(c.idxmax().date())
         cur = float(c.iloc[-1])
         after = c[c.index >= c.idxmax()]
@@ -220,7 +254,8 @@ def leverage_rule():
             "signal": sig, "action": action, "urgency": urg,
         }
     except Exception as e:
-        return {"error": str(e)}
+        unavailable["error"] = str(e)
+        return unavailable
 
 
 def main():

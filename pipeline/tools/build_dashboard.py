@@ -308,6 +308,8 @@ def compute_top20(sectors_data: dict) -> list:
     """Rank all tickers across sectors. Return top 20 by composite score."""
     ranked = []
     for sector, sd in sectors_data.items():
+        if sector in _u.NO_PEER_RANKING:
+            continue            # serenity / tw_unassigned are watchlists, not comparables
         for t in sd.get("tickers", []):
             # Re-read final_decision text for scoring
             scan_date = t.get("scan_date")
@@ -345,9 +347,14 @@ def compute_top20(sectors_data: dict) -> list:
                 quality.append("T1 derived" if rr else "no T1")
             if not _conviction_parsed(text):
                 quality.append("conv default")
+            # LOW = the score rests on a fallback (default conviction or no R:R) —
+            # no ordinal rank for those; MEDIUM = derived T1 only; HIGH = all parsed.
+            tier = ("LOW" if ("conv default" in quality or "no R:R parsed" in quality)
+                    else "MEDIUM" if quality else "HIGH")
             ranked.append({
                 "trade_ready":  ready,
                 "score_quality": quality,
+                "score_tier":   tier,
                 "t1_stated":    t1s,
                 "t2_stated":    t2s,
                 "ticker":       ticker,
@@ -1325,8 +1332,19 @@ def derive_targets(entry, stop, rr):
 
 
 def render_top20_rows(top20: list) -> str:
+    """Ordinal ranks only for rows whose score is not a fallback; LOW-quality rows
+    sit below a separator with no number, so four identical 50s never read as #1–#4."""
     rows = []
-    for i, t in enumerate(top20, 1):
+    ranked = [t for t in top20 if t.get("score_tier") != "LOW"]
+    low = [t for t in top20 if t.get("score_tier") == "LOW"]
+    ordered = [(i, t) for i, t in enumerate(ranked, 1)] + [(None, t) for t in low]
+    if low:
+        ordered.insert(len(ranked), ("SEP", None))
+    for i, t in ordered:
+        if i == "SEP":
+            rows.append('<tr><td colspan="17" class="bg-amber-50 text-amber-800 text-[11px] px-2 py-1">'
+                        f'── Insufficient score quality — 不給名次（{len(low)} 檔:conviction 用預設值或無 R:R）──</td></tr>')
+            continue
         v = t["verdict"]
         vcls = {"BUY": "bg-green-100 text-green-800", "HOLD": "bg-amber-100 text-amber-800",
                 "SELL": "bg-rose-100 text-rose-800"}.get(v, "bg-slate-100 text-slate-700")
@@ -1342,9 +1360,11 @@ def render_top20_rows(top20: list) -> str:
         quality_cell = ('<span class="text-[10px] text-amber-700">⚠ ' + _esc(" · ".join(t.get("score_quality", []))) + "</span>"
                         if t.get("score_quality") else '<span class="text-[10px] text-slate-400">ok</span>')
         conv_color = "text-green-700 font-semibold" if t["conviction"] >= 60 else "text-slate-700"
-        rank_color = ("bg-yellow-100 text-yellow-900 font-bold" if i == 1 else
+        rank_color = ("text-slate-400" if i is None else
+                      "bg-yellow-100 text-yellow-900 font-bold" if i == 1 else
                       "bg-slate-100 text-slate-700 font-semibold" if i <= 3 else
                       "text-slate-600")
+        rank_disp = "—" if i is None else str(i)
         # T1/T2: the card's own stated targets when it gives them; a value derived
         # from entry+stop+R:R only when the R:R was actually parsed (shown as ≈);
         # never a number built on a default ratio.
@@ -1355,7 +1375,7 @@ def render_top20_rows(top20: list) -> str:
         t2_disp = (f"{t['t2_stated']:g}" if t.get("t2_stated") else f"≈{ct2:g}" if ct2 is not None else "—")
         rows.append(f"""
           <tr class="hover:bg-slate-50">
-            <td class="text-center {rank_color}">{i}</td>
+            <td class="text-center {rank_color}">{rank_disp}</td>
             <td class="font-mono font-bold"><a href="#sec-{t['sector']}" class="text-blue-700 hover:underline">{_esc(t['ticker'])}</a></td>
             <td class="text-xs">{_esc(t['sector_label'])}</td>
             <td><span class="{vcls} px-2 py-0.5 rounded font-semibold">{_esc(v)}</span></td>
@@ -1514,6 +1534,12 @@ def render_serenity_summary() -> str:
         except Exception:
             pass
     new = set(d.get("new_picks", []))
+    try:
+        feed_dt = datetime.fromisoformat(str(d.get("source_updated_at", ""))[:19])
+        age = (datetime.now() - feed_dt).days
+    except ValueError:
+        age = None
+    fresh = ("NEW" if age is not None and age <= 1 else "RECENT" if age is not None and age <= 3 else "STALE")
     rows = []
     for t in d.get("tickers", [])[:20]:
         tk = t["ticker"]
@@ -1524,7 +1550,9 @@ def render_serenity_summary() -> str:
         grp = _u.primary_group(tk)
         flag = ""
         if tk in new:
-            flag = "<span class='bg-purple-100 text-purple-800 px-1.5 rounded text-[10px] font-bold'>NEW</span>"
+            flag = (f"<span class='bg-purple-100 text-purple-800 px-1.5 rounded text-[10px] font-bold'>{fresh}</span>"
+                    if fresh != "STALE" else
+                    "<span class='bg-slate-200 text-slate-700 px-1.5 rounded text-[10px] font-bold'>CACHED</span>")
         elif (stance == "bullish" and ours == "SELL") or (stance == "bearish" and ours == "BUY"):
             flag = f"<span class='bg-rose-100 text-rose-800 px-1.5 rounded text-[10px] font-bold'>⚠ my verdict {_esc(ours)}</span>"
         if flag:
@@ -1537,8 +1565,11 @@ def render_serenity_summary() -> str:
     return (
         '<section class="bg-white rounded-lg shadow p-4 border-l-4 border-purple-300">'
         '<div class="flex items-baseline justify-between mb-2">'
-        '<h2 class="text-sm font-bold">🧘 Serenity Watchlist <span class="text-xs font-normal text-slate-500">'
-        f'{len(new)} new picks · feed {_esc(str(d.get("source_updated_at",""))[:16])}</span></h2>'
+        '<h2 class="text-sm font-bold">🧘 Serenity Watchlist '
+        + ('<span class="bg-amber-100 text-amber-800 px-1.5 rounded text-[10px] font-bold">⚠ STALE · feed '
+           f'{age}d old</span> ' if fresh == "STALE" else "")
+        + '<span class="text-xs font-normal text-slate-500">'
+        f'{len(new)} {"cached" if fresh == "STALE" else "new"} picks · feed {_esc(str(d.get("source_updated_at",""))[:16])}</span></h2>'
         '<a href="#serenity" class="text-xs text-blue-700 hover:underline">Open watchlist →</a></div>'
         + body + '</section>')
 
@@ -1561,9 +1592,11 @@ def render_status_banner() -> str:
     # regardless of how deep it is (a window-based scan gets flooded by the
     # per-phase + per-sector dashboard-rebuild commits and misses the wrapper
     # commits). Needs full history: CI checkouts must use fetch-depth: 0.
+    # Anchored to the routine's own commit subjects — a source commit that merely
+    # mentions "正2" or "Serenity" must not show up as a routine run.
     TYPES = [("🌙 nightly scan", r"^scan 2[0-9]"), ("🔁 backfill", r"^backfill 2[0-9]"),
-             ("📊 L0 monitor", r"L0 monitor"), ("⚖️ 正2 盤中", r"正2"),
-             ("🧘 Serenity", r"[Ss]erenity")]
+             ("📊 L0 monitor", r"^L0 monitor"), ("⚖️ 正2 盤中", r"^正2 intraday"),
+             ("🧘 Serenity", r"^serenity digest")]
     last_of = {}   # label -> (iso_time, subject)
     for label, pat in TYPES:
         out = git("log", "-1", "-i", "-E", "--grep=" + pat, "--pretty=format:%cI|%s")
@@ -1700,8 +1733,16 @@ def render_leverage_panel() -> str:
         lv = json.loads(f.read_text(encoding="utf-8")).get("leverage")
     except Exception:
         lv = None
-    if not lv or lv.get("error"):
+    if not lv:
         return ""
+    if lv.get("signal") == "DATA_UNAVAILABLE" or lv.get("price") in (None, 0) or lv.get("drawdown_pct") is None:
+        return ('<section id="leverage" class="bg-slate-100 border border-slate-300 rounded-lg shadow-sm p-3">'
+                '<div class="flex flex-wrap items-center gap-3 text-xs">'
+                '<span class="font-bold text-sm">⚖️ Portfolio Overlay</span>'
+                f'<span>{_esc(lv.get("etf", "00631L"))} · Beta 1</span>'
+                f'<span class="text-amber-700 font-semibold">⚠ {_esc(lv.get("underlying", "0050"))} quote unavailable</span>'
+                '<span>Drawdown —</span><span class="text-slate-500">Action paused until quote recovers</span>'
+                '</div></section>')
     urg = lv.get("urgency", 3)
     bg = {0: "bg-rose-100 border-rose-300", 1: "bg-green-100 border-green-300",
           3: "bg-slate-100 border-slate-300"}.get(urg, "bg-slate-100 border-slate-300")
