@@ -1572,17 +1572,34 @@ def render_status_banner() -> str:
     # regardless of how deep it is (a window-based scan gets flooded by the
     # per-phase + per-sector dashboard-rebuild commits and misses the wrapper
     # commits). Needs full history: CI checkouts must use fetch-depth: 0.
-    # Anchored to the routine's own commit subjects — a source commit that merely
-    # mentions "正2" or "Serenity" must not show up as a routine run.
-    TYPES = [("🌙 nightly scan", r"^scan 2[0-9]"), ("🔁 backfill", r"^backfill 2[0-9]"),
-             ("📊 L0 monitor", r"^L0 monitor"), ("⚖️ 正2 盤中", r"^正2 intraday"),
-             ("🧘 Serenity", r"^serenity digest")]
-    last_of = {}   # label -> (iso_time, subject)
+    # Routine activity is read from ARTIFACTS, not commit subjects: the cloud
+    # routines' "scan …"/"backfill …" commits reach main through a merge
+    # workflow that keeps only "merge routine scan data", so a --grep on main
+    # stopped at 2026-08-21 while scans were still happening.
+    TYPES = [("🌙 nightly routine", None), ("📁 latest scan data", None),
+             ("📊 L0 monitor", r"^L0 monitor"), ("⚖️ 正2 盤中", r"^正2 intraday")]
+    last_of = {}   # label -> (iso_time, detail)
     for label, pat in TYPES:
+        if not pat:
+            continue
         out = git("log", "-1", "-i", "-E", "--grep=" + pat, "--pretty=format:%cI|%s")
         if "|" in out:
             ts, subj = out.split("|", 1)
             last_of[label] = (ts.strip(), subj.strip())
+    # nightly: it writes serenity/strategy_<date>.md as its very first step, even
+    # when the price-feed gate then stops the scan — so that file's date is the
+    # last night the routine ran at all.
+    sdir0 = SCANS / "serenity"
+    strat = sorted(sdir0.glob("strategy_*.md")) if sdir0.is_dir() else []
+    if strat:
+        d0 = strat[-1].stem.replace("strategy_", "")
+        last_of["🌙 nightly routine"] = (d0 + "T00:00:00+08:00", f"digest {d0}")
+    # scans: newest daily/<date>/<sector>/sector_report.md and which sectors it covered
+    scan_dates = sorted(d for d in _date_dirs() if any(p.is_file() for p in d.glob("*/sector_report.md")))
+    if scan_dates:
+        dd = scan_dates[-1]
+        secs = " ".join(sorted(p.parent.name for p in dd.glob("*/sector_report.md")))
+        last_of["📁 latest scan data"] = (dd.name + "T00:00:00+08:00", secs)
 
     # today's scan — per-sector done/missing (weekday sectors)
     DAY = _u.SCHEDULE
@@ -1643,9 +1660,12 @@ def render_status_banner() -> str:
         parts.append("待跑 " + _esc(' '.join(miss_secs)))
         scan_chip = chip(f"⏳ 今日(週{WK[dow]}) scan · " + " · ".join(parts), "warn")
 
-    last_scan = short(last_of.get("🌙 nightly scan", ("", ""))[0])
-    last_bf = short(last_of.get("🔁 backfill", ("", ""))[0])
-    time_chip = chip(f"🌙 scan {last_scan} · 🔁 backfill {last_bf}", "info")
+    last_data = last_of.get("📁 latest scan data", ("", ""))
+    time_chip = chip(f"🌙 nightly {last_of.get('🌙 nightly routine', ('', ''))[1] or '—'} · "
+                     f"📁 data {last_data[0][:10] or '—'} {_esc(last_data[1])[:40]}", "info")
+    # cloud price-feed gate: today's sectors all queued in pending and none reported
+    gate_chip = (chip("⛔ cloud price feed down — today's sectors queued, not scanned", "err")
+                 if exp and not done_secs and all(x in pend for x in exp) else "")
 
     pend_chip = (chip(f"⚠️ pending {len(pend)}: {_esc(' '.join(pend[:8]))}", "err")
                  if pend else chip("pending 0", "ok"))
@@ -1674,7 +1694,7 @@ def render_status_banner() -> str:
         '<span class="font-bold text-slate-700">🛠 System</span>' + summary +
         '<span class="ml-auto text-slate-400">details ▾</span></summary>'
         '<div class="flex flex-wrap items-center gap-2 text-xs mt-2 pt-2 border-t">'
-        f'{scan_chip}{time_chip}{pend_chip}{val_chip}{pp_chip}{l0_chip}{ser_chip}</div>'
+        f'{scan_chip}{gate_chip}{time_chip}{pend_chip}{val_chip}{pp_chip}{l0_chip}{ser_chip}</div>'
         f'<table class="text-[11px] mt-2 text-slate-600">{hist}</table></details></section>'
     )
 
