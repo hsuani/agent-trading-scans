@@ -146,6 +146,22 @@ fi
 OVERALL_RC=0
 HTML_LIST=()
 
+# Local scans used to stay untracked on this Mac — invisible to the cloud
+# routines, the dashboard rebuild and the outcome tracker, and the very reason
+# refresh_repo's pull kept colliding with them. Publish output paths only
+# (same GADD list as the cloud routines); never stage source.
+publish() {   # publish "<commit subject>"
+  local subj="$1"
+  ( cd "$SCAN_ROOT" || exit 0
+    [[ "$(git config user.email)" == "yhtseng91@gmail.com" ]] || { echo "publish: wrong git identity, skipped" >> "$LOG_DIR/_post.log"; exit 0; }
+    git add -A -- daily serenity pending.txt validation.json _catalysts.json alerts.json alerts.html 2>/dev/null
+    git diff --cached --quiet && exit 0
+    git commit -q -m "$subj" || exit 0
+    git pull -q --rebase --autostash origin main 2>>"$LOG_DIR/_post.log" || true
+    git push -q origin main 2>>"$LOG_DIR/_post.log" && echo "published: $subj" >> "$LOG_DIR/_post.log" \
+      || echo "publish FAILED: $subj" >> "$LOG_DIR/_post.log" )
+}
+
 # Sync held_tickers.txt from the dashboard's exported holdings, if present.
 # Dashboard "📤 匯出持倉" button downloads held_export.txt to ~/Downloads (browser
 # file:// can't pick the dir). Pull it into scans/ first (newest wins), THEN
@@ -306,6 +322,7 @@ Begin."
     echo "html: $HTML_OUT"
     echo "===== end ($SECTOR) ====="
   } >> "$RUN_LOG"
+  publish "scan $DATE $SECTOR (local)"
 done
 
 # ---- After-all: refresh catalyst calendar + dashboard once ----
@@ -324,6 +341,8 @@ if [[ "$DRY_RUN" != "1" ]]; then
   VAL_OUT=$("$PY" "$TOOL_DIR/validate.py" 2>&1); VAL_RC=$?
   echo "$VAL_OUT" >> "$GLOBAL_LOG"
   echo "validate exit: $VAL_RC" >> "$GLOBAL_LOG"
+
+  publish "finalize $DATE (local)"
 
   # Summary notification (flag validation errors so bad levels don't slip by)
   SECTOR_SUMMARY=$(printf "%s " "${SECTOR_LIST[@]}")

@@ -24,8 +24,6 @@ import sys
 from datetime import date, datetime, timezone
 from pathlib import Path
 
-import yfinance as yf
-
 # Reuse the battle-tested parsers from the dashboard builder (same dir).
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from build_dashboard import parse_final_decision, collect_ticker_history  # noqa: E402

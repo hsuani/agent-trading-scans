@@ -21,7 +21,6 @@ import warnings
 
 warnings.filterwarnings("ignore")
 
-import yfinance as yf  # noqa: E402
 import pandas as pd  # noqa: E402
 from stockstats import wrap  # noqa: E402
 
