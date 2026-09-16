@@ -30,6 +30,14 @@ LOG="$ROOT/.refresh.log"
   git merge  --abort 2>/dev/null || true
   git checkout -- dashboard.html _catalysts.json daily_briefing.html \
                   alerts.json alerts.html validation.json 2>/dev/null || true
+  # Unmerged paths (pending.txt / serenity.json after a failed autostash) blocked
+  # every pull from 2026-09-13 to 09-16. Local scans are published by
+  # daily_scan.sh now, so tracked local edits carry nothing worth keeping:
+  # take origin's version and move on. Untracked files survive reset --hard.
+  if [[ -n "$(git diff --name-only --diff-filter=U)" ]]; then
+    echo "unmerged paths -> reset --hard origin/main"
+    git reset -q --hard origin/main
+  fi
   BEFORE=$(git rev-parse HEAD)
   git pull --rebase --autostash origin main 2>&1
   AFTER=$(git rev-parse HEAD)

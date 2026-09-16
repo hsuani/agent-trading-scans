@@ -36,72 +36,12 @@ import warnings
 
 warnings.filterwarnings("ignore")
 
+import sys as _sys, os as _os
+_sys.path.insert(0, _os.path.dirname(_os.path.abspath(__file__)))
 import yfinance as yf  # noqa: E402
 
 
-def _cnyes_quote(ticker):
-    """Real-time quote from the 鉅亨網 (cnyes) public API — covers US AND TW
-    (and global). Universal fallback when Yahoo rate-limits. .TW/.TWO ->
-    TWS:<num>:STOCK, else US -> USS:<TICKER>:STOCK. fast_info-shaped or None."""
-    import json as _json
-    import urllib.request as _u
-    u = ticker.upper()
-    if u.endswith((".TW", ".TWO")):
-        sym = "TWS:" + u.replace(".TWO", "").replace(".TW", "") + ":STOCK"
-    else:
-        sym = "USS:" + u + ":STOCK"
-    url = f"https://ws.api.cnyes.com/ws/api/v1/quote/quotes/{sym}"
-    try:
-        req = _u.Request(url, headers={"User-Agent": "Mozilla/5.0"})
-        with _u.urlopen(req, timeout=12) as r:
-            d = _json.loads(r.read().decode("utf-8"))
-        arr = d.get("data") or []
-        if not arr:
-            return None
-        m = arr[0]
-        last = m.get("6")
-        if not last:
-            return None
-        return {"last_price": float(last), "previous_close": m.get("21"),
-                "day_high": m.get("12"), "day_low": m.get("13"),
-                "currency": "TWD" if u.endswith((".TW", ".TWO")) else "USD",
-                "name": m.get("200009")}
-    except Exception:
-        return None
-
-
-def _twse_quote(ticker):
-    """Real-time quote from the TWSE official MIS API for a TW ticker.
-    .TW -> 上市 (tse_), .TWO -> 上櫃 (otc_). Returns fast_info-shaped dict or
-    None. No Yahoo rate limit; reliable primary/fallback for Taiwan stocks."""
-    import json as _json
-    import urllib.request as _u
-    num = ticker.upper().replace(".TWO", "").replace(".TW", "")
-    ex = "otc" if ticker.upper().endswith(".TWO") else "tse"
-    url = (f"https://mis.twse.com.tw/stock/api/getStockInfo.jsp?"
-           f"ex_ch={ex}_{num}.tw&json=1")
-    try:
-        req = _u.Request(url, headers={"User-Agent": "Mozilla/5.0"})
-        with _u.urlopen(req, timeout=12) as r:
-            d = _json.loads(r.read().decode("utf-8"))
-        arr = d.get("msgArray") or []
-        if not arr:
-            return None
-        m = arr[0]
-        def f(k):
-            v = m.get(k, "")
-            try:
-                return float(v)
-            except (TypeError, ValueError):
-                return None
-        last = f("z")                      # 最新成交價 ("-" if no trade)
-        if last is None:
-            last = f("y") or f("o")        # fall back to prev-close / open
-        return {"last_price": last, "previous_close": f("y"), "open": f("o"),
-                "day_high": f("h"), "day_low": f("l"), "currency": "TWD",
-                "name": m.get("n"), "as_of": m.get("t")}
-    except Exception:
-        return None
+from pricefeed import _cnyes_quote, _twse_quote  # noqa: E402  — shared with the probe / monitor
 
 
 def _df(df):
