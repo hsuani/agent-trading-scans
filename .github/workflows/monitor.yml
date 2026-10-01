@@ -9,9 +9,10 @@ on:
     # 21:40 UTC = 05:40 Asia/Taipei — after the nightly/backfill scan routines,
     # and US market has closed (post-close prices). Also catches pre-open.
     - cron: "40 21 * * *"
-    # 20:15 UTC = 04:15 Asia/Taipei — after the US close (20:00Z), 45 min before the 21:00Z
-    # nightly scan routine; the cloud sandbox cannot reach any quote host.
-    - cron: "15 20 * * *"
+    # One run a day is enough for the price caches too: the scan routines run at
+    # 15:00Z (backfill) and 20:00Z (nightly), both BEFORE the US close, so they
+    # read the previous session's full bar written here at 21:40Z. A refresh
+    # between the US open and close would hand them a partial bar instead.
   workflow_dispatch: {}   # manual "Run workflow" button
 
 permissions:
@@ -41,8 +42,7 @@ jobs:
           TRADING_SCANS_ROOT: ${{ github.workspace }}
         run: python3 pipeline/tools/pricefeed.py refresh-cache || echo "price cache refresh failed (non-fatal)"
 
-      - name: Refresh yfinance cache (financials / holders / ratings — ~10 min, once a day)
-        if: github.event.schedule != '15 20 * * *'
+      - name: Refresh yfinance cache (financials / holders / ratings — ~5 min)
         env:
           TRADING_SCANS_ROOT: ${{ github.workspace }}
         run: python3 pipeline/tools/yf.py refresh-cache || echo "yf cache refresh failed (non-fatal)"
