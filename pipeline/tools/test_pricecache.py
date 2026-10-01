@@ -34,4 +34,14 @@ except RuntimeError:
 meta["_refreshed_at"] = (now - timedelta(days=pf.CACHE_MAX_AGE_DAYS + 1)).isoformat(timespec="seconds")
 (pf.CACHE_DIR / "quotes.json").write_text(json.dumps(meta))
 assert pf._cache_quote("NVDA") is None and pf._cache_history("NVDA", 30) is None
+# yf.py fundamentals cache: fresh file answers, stale file is ignored
+import yf as y  # noqa: E402
+y.YF_CACHE_DIR.mkdir()
+(y.YF_CACHE_DIR / "NVDA.json").write_text(json.dumps({"info": {"shortName": "NVIDIA"}, "insider": [],
+                                                     "_refreshed_at": now.isoformat(timespec="seconds")}))
+assert y._cached("nvda", "info") == {"shortName": "NVIDIA", "source": "cache", "cached_at": now.isoformat(timespec="seconds")}
+assert y._cached("NVDA", "insider") == [] and y._cached("NVDA", "financials") is None and y._cached("AMD", "info") is None
+(y.YF_CACHE_DIR / "NVDA.json").write_text(json.dumps({"info": {"shortName": "NVIDIA"},
+                                                     "_refreshed_at": (now - timedelta(days=y.CACHE_MAX_AGE_DAYS + 1)).isoformat(timespec="seconds")}))
+assert y._cached("NVDA", "info") is None
 print("test_pricecache ok")

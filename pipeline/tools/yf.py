@@ -28,6 +28,11 @@ Kinds:
   actions          splits + dividends combined
 
 Output: JSON to stdout. Errors to stderr, exit 1.
+
+Cache: the cloud scan sandbox cannot reach Yahoo at all, so the GitHub Actions
+monitor workflow runs `yf.py refresh-cache` and commits prices/yf/<TICKER>.json
+(every kind in CACHED_KINDS). When a live call fails or comes back empty, that
+file answers instead (stale by at most a day; ignored after CACHE_MAX_AGE_DAYS).
 """
 import argparse
 import json
@@ -41,7 +46,53 @@ _sys.path.insert(0, _os.path.dirname(_os.path.abspath(__file__)))
 import yfinance as yf  # noqa: E402
 
 
-from pricefeed import _cnyes_quote, _twse_quote, _cache_quote  # noqa: E402  — shared with the probe / monitor
+from pricefeed import _cnyes_quote, _twse_quote, _cache_quote, CACHE_DIR, cache_universe  # noqa: E402
+
+YF_CACHE_DIR = CACHE_DIR / "yf"
+CACHE_MAX_AGE_DAYS = 14
+CACHED_KINDS = ("info", "financials", "quarterly_fin", "balance_sheet", "quarterly_bs",
+                "cashflow", "quarterly_cf", "earnings_dates", "recommendations", "rec_summary",
+                "insider", "major_holders", "inst_holders")
+
+
+def _cached(ticker, kind):
+    from datetime import datetime, timedelta, timezone
+    f = YF_CACHE_DIR / f"{ticker.upper()}.json"
+    try:
+        d = json.loads(f.read_text(encoding="utf-8"))
+        age = datetime.now(timezone.utc) - datetime.fromisoformat(d["_refreshed_at"])
+    except (OSError, ValueError, KeyError):
+        return None
+    if age > timedelta(days=CACHE_MAX_AGE_DAYS):
+        return None
+    v = d.get(kind)
+    return dict(v, source="cache", cached_at=d["_refreshed_at"]) if isinstance(v, dict) else v
+
+
+def refresh_cache(tickers):
+    """Live Yahoo -> prices/yf/<TICKER>.json for every CACHED_KINDS (Actions only)."""
+    import time
+    from datetime import datetime, timezone
+    YF_CACHE_DIR.mkdir(parents=True, exist_ok=True)
+    written, failed = 0, []
+    for tk in sorted({x.upper() for x in tickers}):
+        t = yf.Ticker(tk)
+        d, misses = {}, []
+        for k in CACHED_KINDS:
+            try:
+                v = fetch(t, k, argparse.Namespace(ticker=tk, kind=k, period="1y", start=None, end=None, date=None, limit=20))
+            except Exception as e:                    # noqa: BLE001
+                v, misses = None, misses + [f"{k}: {e}"]
+            d[k] = v
+        if d.get("info") is None and d.get("financials") in (None, []):
+            failed.append(f"{tk}: {misses[:2]}")       # nothing useful came back — keep the old file
+            continue
+        d["_refreshed_at"] = datetime.now(timezone.utc).isoformat(timespec="seconds")
+        d["_misses"] = misses
+        (YF_CACHE_DIR / f"{tk}.json").write_text(json.dumps(d, default=str, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
+        written += 1
+        time.sleep(0.5)
+    return {"ok": len(failed) * 2 <= len(set(tickers)), "written": written, "failed": failed}
 
 
 def _df(df):
@@ -81,7 +132,22 @@ def main():
 
     t = yf.Ticker(args.ticker)
     k = args.kind
+    if k not in CACHED_KINDS:
+        out = fetch(t, k, args)
+    else:
+        err = None
+        try:
+            out = fetch(t, k, args)
+        except Exception as e:                        # noqa: BLE001
+            out, err = None, e
+        if out in (None, [], {}):
+            out = _cached(args.ticker, k)             # repo cache (cloud sandbox has no egress)
+            if out is None:
+                raise err or RuntimeError(f"{k}: empty and no cache")
+    print(json.dumps(out, default=str, indent=2, ensure_ascii=False))
 
+
+def fetch(t, k, args):
     # Retry wrapper — Yahoo 403-rate-limits under scan concurrency; retry so
     # subagents get real quotes instead of hallucinating levels.
     import time as _time
@@ -212,13 +278,16 @@ def main():
     elif k == "actions":
         out = _df(t.actions)
     else:
-        print(f"unknown kind: {k}", file=sys.stderr)
-        sys.exit(1)
+        raise ValueError(f"unknown kind: {k}")
+    return out
 
-    print(json.dumps(out, default=str, indent=2, ensure_ascii=False))
 
 
 if __name__ == "__main__":
+    if sys.argv[1:2] == ["refresh-cache"]:
+        r = refresh_cache(cache_universe())
+        print(json.dumps(r, ensure_ascii=False))
+        sys.exit(0 if r["ok"] else 1)
     try:
         main()
     except Exception as e:
