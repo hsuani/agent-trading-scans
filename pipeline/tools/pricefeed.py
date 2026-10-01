@@ -7,16 +7,24 @@ locally and the whole host is blocked in the cloud sandbox (CONNECT 403).
            split-adjusted upstream: 0050 4:1, CRWD 4:1, 6669 3:1 all show as
            gaps, so a heuristic back-adjustment is applied) -> yfinance -> TWSE
 
+  cache  : prices/<TICKER>.csv + prices/quotes.json, committed by the GitHub
+           Actions monitor workflow (its runner has open egress; the cloud scan
+           sandbox has none). Last resort for both quote() and history(), only
+           while younger than CACHE_MAX_AGE_DAYS.
+
   quote(ticker)            -> {"last_price", "previous_close", ..., "source"} | None
   history(ticker, days)    -> pandas DataFrame [open high low close volume], ascending, .attrs["source"]
   probe()                  -> {"us": {...}, "tw": {...}, "ok": bool}
+  refresh_cache(tickers)   -> writes prices/ from the live feeds (Actions only)
 
 CLI:
   pricefeed.py NVDA quote
   pricefeed.py 2330.TW history --days 400
   pricefeed.py probe            # exit 0 when a US and a TW ticker both have quote + history
+  pricefeed.py refresh-cache    # static universe + serenity + held -> prices/
 """
 import json
+import os
 import sys
 import time
 import urllib.request
@@ -26,6 +34,9 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 UA = {"User-Agent": "Mozilla/5.0"}
+ROOT = Path(os.environ.get("TRADING_SCANS_ROOT", Path(__file__).resolve().parents[2]))
+CACHE_DIR = ROOT / "prices"
+CACHE_MAX_AGE_DAYS = 4   # weekend + one holiday; older = the Actions refresh is broken, fail the probe
 
 
 def _get(url, timeout=12):
@@ -110,7 +121,7 @@ def _twse_quote(ticker):
 
 
 
-def quote(ticker):
+def quote(ticker, cache=True):
     q = _cnyes_quote(ticker)
     if q and q.get("last_price"):
         q["source"] = "cnyes"; return q
@@ -128,7 +139,77 @@ def quote(ticker):
         q = _twse_quote(ticker)
         if q and q.get("last_price"):
             q["source"] = "twse"; return q
-    return None
+    return _cache_quote(ticker) if cache else None
+
+
+# ---------------- repo cache (written by .github/workflows/monitor.yml) ----------------
+def _cache_meta():
+    try:
+        return json.loads((CACHE_DIR / "quotes.json").read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        return {}
+
+
+def _cache_fresh(meta):
+    ts = meta.get("_refreshed_at")
+    return bool(ts) and datetime.now(timezone.utc) - datetime.fromisoformat(ts) < timedelta(days=CACHE_MAX_AGE_DAYS)
+
+
+def _cache_quote(ticker):
+    m = _cache_meta()
+    q = m.get(ticker.upper())
+    if not (q and q.get("last_price") and _cache_fresh(m)):
+        return None
+    return dict(q, source="cache", cached_at=m["_refreshed_at"])
+
+
+def _cache_history(ticker, days):
+    f = CACHE_DIR / f"{ticker.upper()}.csv"
+    if not f.is_file() or not _cache_fresh(_cache_meta()):
+        return None
+    rows = []
+    for line in f.read_text(encoding="utf-8").splitlines()[1:]:
+        d, o, h, l, c, v = line.split(",")
+        rows.append((date.fromisoformat(d), float(o), float(h), float(l), float(c), float(v or 0)))
+    return rows[-days:] or None          # bars, not calendar days — a superset is harmless
+
+
+def refresh_cache(tickers, days=500):
+    """Live feeds -> prices/. quotes.json is only re-stamped when most tickers
+    answered, so a dead runner cannot pass stale data off as fresh."""
+    CACHE_DIR.mkdir(exist_ok=True)
+    quotes = {k: v for k, v in _cache_meta().items() if not k.startswith("_")}   # subset refresh keeps the rest
+    failed, written = [], 0
+    for t in sorted({x.upper() for x in tickers}):
+        try:
+            df = history(t, days, cache=False)
+            q = quote(t, cache=False)
+            if not q:
+                raise RuntimeError("no quote")
+        except Exception as e:                        # noqa: BLE001
+            failed.append(f"{t}: {e}")
+            continue
+        lines = ["date,open,high,low,close,volume"] + [
+            f"{i.date().isoformat()},{r.open:.6g},{r.high:.6g},{r.low:.6g},{r.close:.6g},{int(r.volume or 0)}"
+            for i, r in df.iterrows()]
+        (CACHE_DIR / f"{t}.csv").write_text("\n".join(lines) + "\n", encoding="utf-8")
+        quotes[t] = {k: q.get(k) for k in ("last_price", "previous_close", "open", "day_high", "day_low", "currency", "as_of")}
+        quotes[t]["feed"] = q.get("source")
+        written += 1
+        time.sleep(0.3)
+    ok = len(failed) * 2 <= len(set(tickers))
+    if ok:
+        quotes["_refreshed_at"] = datetime.now(timezone.utc).isoformat(timespec="seconds")
+        quotes["_failed"] = failed
+        (CACHE_DIR / "quotes.json").write_text(json.dumps(quotes, ensure_ascii=False, indent=1, sort_keys=True), encoding="utf-8")
+    return {"ok": ok, "written": written, "failed": failed}
+
+
+def cache_universe():
+    import universe as u
+    held = ROOT / "pipeline" / "tools" / "held_tickers.txt"
+    hs = [l.split("#", 1)[0].strip() for l in held.read_text(encoding="utf-8").splitlines()] if held.is_file() else []
+    return u.static_universe() | set(u.serenity_universe()) | {h for h in hs if h} | {"NVDA", "2330.TW"}   # probe pair
 
 
 # ---------------- history ----------------
@@ -202,12 +283,15 @@ def _twse_history(ticker, days):
     return sorted(out) or None
 
 
-def history(ticker, days=400):
+def history(ticker, days=400, cache=True):
     """DataFrame of daily OHLCV, ascending by date; .attrs['source'] names the feed."""
     import pandas as pd
     last = None
-    for name, fn in (("yahoo_v8", _yahoo_v8_history), ("cnyes", _cnyes_history),
-                     ("yfinance", _yfinance_history), ("twse", _twse_history)):
+    chain = [("yahoo_v8", _yahoo_v8_history), ("cnyes", _cnyes_history),
+             ("yfinance", _yfinance_history), ("twse", _twse_history)]
+    if cache:
+        chain.append(("cache", _cache_history))
+    for name, fn in chain:
         try:
             rows = fn(ticker, days)
         except Exception as e:                        # noqa: BLE001 — try the next feed
@@ -242,6 +326,10 @@ if __name__ == "__main__":
     a = sys.argv[1:]
     if a and a[0] == "probe":
         r = probe()
+        print(json.dumps(r, ensure_ascii=False))
+        sys.exit(0 if r["ok"] else 1)
+    if a and a[0] == "refresh-cache":
+        r = refresh_cache(cache_universe())
         print(json.dumps(r, ensure_ascii=False))
         sys.exit(0 if r["ok"] else 1)
     tk, kind = a[0], a[1]

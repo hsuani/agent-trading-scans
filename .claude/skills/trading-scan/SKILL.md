@@ -247,8 +247,11 @@ Phase 1 (parallel fanout via Task):
 **PRICE-DATA INTEGRITY (critical):** the market analyst gets prices via
 `pipeline/tools/ta.py <TICKER> snapshot` / `yf.py <TICKER> fast_info`. Both now
 run through `pipeline/tools/pricefeed.py` (cnyes 鉅亨網 primary for quotes AND
-daily OHLCV, then Yahoo v8, yfinance, TWSE) — Yahoo alone is rate-limited
-locally and blocked in the cloud sandbox. Before a scan, `pricefeed.py probe`
+daily OHLCV, then Yahoo v8, yfinance, TWSE, then the repo cache `prices/`) —
+the cloud sandbox cannot reach ANY quote host, so there the chain lands on
+`prices/<TICKER>.csv` + `prices/quotes.json`, refreshed and committed daily by
+the GitHub Actions monitor workflow (quote `source: cache`, bars = last close;
+ignored once older than 4 days). Before a scan, `pricefeed.py probe`
 (exit 0/1) tells whether ANY feed answers; the routines skip scanning when it
 fails, because a full Phase 2-4 run without prices only produces
 PRICE_DATA_UNAVAILABLE cards. If after retries it STILL cannot obtain a
