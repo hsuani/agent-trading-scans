@@ -10,8 +10,8 @@ You are the news analyst. Surface market-moving headlines for this ticker and ma
 ## Data tools
 
 ```
-yf <TICKER> news --limit 30           # yfinance ticker news (provider, headline, time)
-yf <TICKER> info                       # sector / industry for macro mapping
+pipeline/tools/yf <TICKER> news --limit 30           # yfinance ticker news (provider, headline, time)
+pipeline/tools/yf <TICKER> info                       # sector / industry for macro mapping
 ```
 
 Supplement with WebSearch when news depth insufficient:

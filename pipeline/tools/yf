@@ -1,2 +1,7 @@
 #!/bin/bash
-exec ~/.claude/tools/trading/venv/bin/python ~/.claude/tools/trading/yf.py "$@"
+# Local: the trading venv (~/.claude/tools/trading symlinks here). Cloud / CI: no
+# venv — fall back to the system python3 that has requirements.txt installed.
+d="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+py=~/.claude/tools/trading/venv/bin/python
+[ -x "$py" ] || py=python3
+exec "$py" "$d/yf.py" "$@"
