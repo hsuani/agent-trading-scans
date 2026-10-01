@@ -9,10 +9,11 @@ on:
     # 21:40 UTC = 05:40 Asia/Taipei — after the nightly/backfill scan routines,
     # and US market has closed (post-close prices). Also catches pre-open.
     - cron: "40 21 * * *"
-    # One run a day is enough for the price caches too: the scan routines run at
-    # 15:00Z (backfill) and 20:00Z (nightly), both BEFORE the US close, so they
-    # read the previous session's full bar written here at 21:40Z. A refresh
-    # between the US open and close would hand them a partial bar instead.
+    # 06:00 UTC = 14:00 Asia/Taipei — after the TW close (05:30Z), before the US
+    # open (13:30Z): gives the 15:00Z backfill and 20:00Z nightly today's full TW
+    # bar and yesterday's full US bar. Never refresh between the US open and
+    # close — the scans would read a partial bar as if it were a close.
+    - cron: "0 6 * * *"
   workflow_dispatch: {}   # manual "Run workflow" button
 
 permissions:
