@@ -251,7 +251,10 @@ daily OHLCV, then Yahoo v8, yfinance, TWSE, then the repo cache `prices/`) —
 the cloud sandbox cannot reach ANY quote host, so there the chain lands on
 `prices/<TICKER>.csv` + `prices/quotes.json`, refreshed and committed daily by
 the GitHub Actions monitor workflow (quote `source: cache`, bars = last close;
-ignored once older than 4 days). Before a scan, `pricefeed.py probe`
+ignored once older than 4 days). The same workflow caches `yf.py` fundamentals
+(info / statements / earnings_dates / ratings / insider / holders) to
+`prices/yf/<TICKER>.json`, which `yf.py <kind>` serves when Yahoo is unreachable
+(≤ 14 days old). Before a scan, `pricefeed.py probe`
 (exit 0/1) tells whether ANY feed answers; the routines skip scanning when it
 fails, because a full Phase 2-4 run without prices only produces
 PRICE_DATA_UNAVAILABLE cards. If after retries it STILL cannot obtain a

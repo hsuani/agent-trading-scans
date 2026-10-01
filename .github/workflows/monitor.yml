@@ -41,6 +41,12 @@ jobs:
           TRADING_SCANS_ROOT: ${{ github.workspace }}
         run: python3 pipeline/tools/pricefeed.py refresh-cache || echo "price cache refresh failed (non-fatal)"
 
+      - name: Refresh yfinance cache (financials / holders / ratings — ~10 min, once a day)
+        if: github.event.schedule != '0 19 * * *'
+        env:
+          TRADING_SCANS_ROOT: ${{ github.workspace }}
+        run: python3 pipeline/tools/yf.py refresh-cache || echo "yf cache refresh failed (non-fatal)"
+
       - name: Run L0 monitor
         env:
           TRADING_SCANS_ROOT: ${{ github.workspace }}
