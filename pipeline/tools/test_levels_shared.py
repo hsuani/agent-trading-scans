@@ -62,6 +62,7 @@ assert quote_status(None) == "UNAVAILABLE"
 from datetime import date as _date
 assert trade_ready("PRICED", "LIVE", "2026-09-10", today=_date(2026, 9, 11)) == "ACTIONABLE"
 assert trade_ready("LEVEL_SCALE_SUSPECT", "LIVE", "2026-09-10", today=_date(2026, 9, 11)) == "NEEDS_REPRICE"
+assert trade_ready("UNPRICED", "LIVE", "2026-09-10", today=_date(2026, 9, 11)) == "RESEARCH_ONLY"
 assert trade_ready("PRICED", "STALE", "2026-09-10", today=_date(2026, 9, 11)) == "DATA_STALE"
 assert trade_ready("PRICED", "UNAVAILABLE", "2026-09-10", today=_date(2026, 9, 11)) == "RESEARCH_ONLY"
 print("ok")

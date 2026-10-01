@@ -162,10 +162,10 @@ def quote_status(quote_at, now=None, stale_hours=24):
 
 def trade_ready(plan, quote, scan_date, phase1_only=False, today=None, stale_days=10):
     today = today or date.today()
-    if phase1_only:
-        return "RESEARCH_ONLY"
-    if plan in ("UNPRICED", "LEVELS_INVALID", "LEVEL_SCALE_SUSPECT"):
-        return "NEEDS_REPRICE"
+    if phase1_only or plan == "UNPRICED":
+        return "RESEARCH_ONLY"          # no absolute plan on the card: nothing to trade, nothing to fix
+    if plan in ("LEVELS_INVALID", "LEVEL_SCALE_SUSPECT"):
+        return "NEEDS_REPRICE"          # a plan exists but its numbers are wrong: re-scan
     if quote == "UNAVAILABLE":
         return "RESEARCH_ONLY"
     if quote == "STALE" or (scan_date and (today - date.fromisoformat(scan_date)).days > stale_days):

@@ -39,7 +39,17 @@ LOG="$ROOT/.refresh.log"
     git reset -q --hard origin/main
   fi
   BEFORE=$(git rev-parse HEAD)
-  git pull --rebase --autostash origin main 2>&1
+  if ! git pull --rebase --autostash origin main 2>&1; then
+    # Unpushed local commits that no longer rebase cleanly (generated files
+    # diverged from the cloud's). Keep their daily/ scan output, drop the rest.
+    echo "pull failed -> salvage daily/ from $BEFORE and reset to origin/main"
+    git rebase --abort 2>/dev/null || true
+    git reset -q --hard origin/main
+    if git checkout "$BEFORE" -- daily 2>/dev/null && [[ -n "$(git status --short -- daily)" ]]; then
+      git add -A -- daily && git commit -q -m "data: salvage local scans ($(date +%F))" && git push -q origin main \
+        || echo "salvage push failed; daily/ kept in the working tree"
+    fi
+  fi
   AFTER=$(git rev-parse HEAD)
   if [[ "$BEFORE" == "$AFTER" ]]; then
     echo "already up to date ($AFTER)"

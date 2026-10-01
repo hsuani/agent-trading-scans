@@ -154,7 +154,10 @@ publish() {   # publish "<commit subject>"
   local subj="$1"
   ( cd "$SCAN_ROOT" || exit 0
     [[ "$(git config user.email)" == "yhtseng91@gmail.com" ]] || { echo "publish: wrong git identity, skipped" >> "$LOG_DIR/_post.log"; exit 0; }
-    git add -A -- daily serenity pending.txt validation.json _catalysts.json alerts.json alerts.html 2>/dev/null
+    # daily/ only: pending.txt / validation.json / _catalysts.json / serenity are
+    # cloud-owned and regenerated hourly — committing them locally produced the
+    # rebase conflicts that stalled the Mac checkout for two weeks.
+    git add -A -- daily 2>/dev/null
     git diff --cached --quiet && exit 0
     git commit -q -m "$subj" || exit 0
     git pull -q --rebase --autostash origin main 2>>"$LOG_DIR/_post.log" || true

@@ -336,7 +336,7 @@ def compute_top20(sectors_data: dict, quotes: dict | None = None) -> tuple[list,
                 continue        # a NT$340 card on a NT$1,330 stock ranks nowhere until re-scanned
             ready = _lv.trade_ready(plan["plan"], qstat, scan_date, phase1_only=phase1)
             if price_missing and ready == "ACTIONABLE":
-                ready = "NEEDS_REPRICE"   # the card itself said it had no price when written
+                ready = "RESEARCH_ONLY"   # the card itself said it had no price when written
             quality = []
             if rr is None:
                 quality.append("no R:R parsed")
@@ -596,7 +596,7 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
         <h2 class="text-xl font-bold">🔬 Research Rank <span class="text-sm font-normal text-amber-700">(legacy heuristic — 研究順位,不是「最值得買」)</span> <span class="text-xs font-normal text-slate-400">更新 __GENERATED__</span></h2>
         <p class="text-xs text-slate-500">score = verdict × conviction × (1 + R:R T2 / 5) × modifier · Phase-1-only / 無報價 × 0.35 · 無法解析 R:R 時不套預設值 · T1/T2 只顯示卡片自述值,≈ 為推導值 · v2.0-baseline stated-T1 expectancy −0.152R,此表僅供研究分配</p>
       </div>
-      <div class="text-xs text-slate-500">Trade Ready = quote (LIVE / STALE / UNAVAILABLE) × plan (PRICED / UNPRICED / LEVELS_INVALID / LEVEL_SCALE_SUSPECT) → ACTIONABLE / NEEDS_REPRICE / DATA_STALE / RESEARCH_ONLY · 尺度異常不進榜：__NEEDS_REPRICE__</div>
+      <div class="text-xs text-slate-500">Trade Ready = quote (LIVE / STALE / UNAVAILABLE) × plan (PRICED / UNPRICED / LEVELS_INVALID / LEVEL_SCALE_SUSPECT) → ACTIONABLE / NEEDS_REPRICE（數字錯,要重掃）/ RESEARCH_ONLY（無價位計畫）/ DATA_STALE · 尺度異常不進榜：__NEEDS_REPRICE__</div>
     </div>
     <div class="overflow-x-auto">
       <table class="w-full text-xs">
