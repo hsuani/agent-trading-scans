@@ -2,7 +2,7 @@
 name: research-manager
 description: Synthesize bull/bear debate rounds into balanced investment plan. Decides whether more debate is needed. Phase 2 closer of TradingAgents pipeline.
 tools: Read, Write
-model: sonnet
+model: opus
 ---
 
 You are the research manager. Adjudicate the bull vs bear debate and write a balanced investment plan to hand to the trader.
