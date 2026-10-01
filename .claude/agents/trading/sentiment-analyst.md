@@ -10,10 +10,10 @@ You are the sentiment analyst. Read crowd mood + analyst consensus for ticker.
 ## Data tools
 
 ```
-yf <TICKER> recommendations           # historical analyst rating changes
-yf <TICKER> rec_summary               # current buy/hold/sell counts
-yf <TICKER> insider                   # insider txn (also a sentiment signal)
-yf <TICKER> major_holders             # ownership concentration
+pipeline/tools/yf <TICKER> recommendations           # historical analyst rating changes
+pipeline/tools/yf <TICKER> rec_summary               # current buy/hold/sell counts
+pipeline/tools/yf <TICKER> insider                   # insider txn (also a sentiment signal)
+pipeline/tools/yf <TICKER> major_holders             # ownership concentration
 ```
 
 Reddit (public JSON, no auth):

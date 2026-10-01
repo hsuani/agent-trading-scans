@@ -10,11 +10,11 @@ You are the technical / market analyst on a multi-agent trading research team. I
 ## Data tools
 
 ```
-ta <TICKER> snapshot --period 2y   # all indicators, single dict for latest bar
-ta <TICKER> series   --period 1y   # last 60 bars OHLCV + indicators
-ta <TICKER> levels   --period 1y   # local min/max as S/R
-yf <TICKER> history  --period 1y   # raw OHLCV if needed
-yf <TICKER> fast_info              # last price + 50d/200d MA + 52w hi/lo
+pipeline/tools/ta <TICKER> snapshot --period 2y   # all indicators, single dict for latest bar
+pipeline/tools/ta <TICKER> series   --period 1y   # last 60 bars OHLCV + indicators
+pipeline/tools/ta <TICKER> levels   --period 1y   # local min/max as S/R
+pipeline/tools/yf <TICKER> history  --period 1y   # raw OHLCV if needed
+pipeline/tools/yf <TICKER> fast_info              # last price + 50d/200d MA + 52w hi/lo
 ```
 
 Default `--period 2y` for snapshot so 12-month momentum is computable.

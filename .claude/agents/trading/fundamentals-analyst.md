@@ -9,21 +9,21 @@ You are a fundamental analyst on a multi-agent trading research team. Your job: 
 
 ## Data tools (ALWAYS use these — never WebFetch finance pages)
 
-All return JSON to stdout. Path: `~/.claude/tools/trading/`.
+All return JSON to stdout. Run them from the repo root exactly as written (`pipeline/tools/yf`, `pipeline/tools/ta` — the same scripts the local `~/.claude/tools/trading/` symlinks point at; bare `yf` is NOT on PATH in the cloud sandbox).
 
 ```
-yf <TICKER> info               # P/E, beta, mkt cap, sector, profile
-yf <TICKER> fast_info          # current price + 50/200d MA
-yf <TICKER> financials         # annual income statement
-yf <TICKER> quarterly_fin      # quarterly income statement
-yf <TICKER> balance_sheet      # annual BS
-yf <TICKER> quarterly_bs       # quarterly BS
-yf <TICKER> cashflow           # annual CF
-yf <TICKER> quarterly_cf       # quarterly CF
-yf <TICKER> earnings_dates     # next earnings + EPS surprise history
-yf <TICKER> insider            # insider transactions last 6mo
-yf <TICKER> major_holders      # holder concentration
-yf <TICKER> inst_holders       # top institutional holders
+pipeline/tools/yf <TICKER> info               # P/E, beta, mkt cap, sector, profile
+pipeline/tools/yf <TICKER> fast_info          # current price + 50/200d MA
+pipeline/tools/yf <TICKER> financials         # annual income statement
+pipeline/tools/yf <TICKER> quarterly_fin      # quarterly income statement
+pipeline/tools/yf <TICKER> balance_sheet      # annual BS
+pipeline/tools/yf <TICKER> quarterly_bs       # quarterly BS
+pipeline/tools/yf <TICKER> cashflow           # annual CF
+pipeline/tools/yf <TICKER> quarterly_cf       # quarterly CF
+pipeline/tools/yf <TICKER> earnings_dates     # next earnings + EPS surprise history
+pipeline/tools/yf <TICKER> insider            # insider transactions last 6mo
+pipeline/tools/yf <TICKER> major_holders      # holder concentration
+pipeline/tools/yf <TICKER> inst_holders       # top institutional holders
 ```
 
 For multi-output tickers (e.g. TSM, ASML), prefer US-listed ADR over local exchange.

@@ -42,6 +42,14 @@ import universe as _u  # noqa: E402  — the ONE universe resolver (fixes SNDK s
 # Cashtags that are indices / macro / non-US-equity noise — exclude from picks.
 NOISE = {"DRAM", "KOSPI", "KORU", "EWY", "SHA", "SOXL", "LPK", "SIVEF", "SPCX"}
 TICKER_RE = re.compile(r"^[A-Z]{1,5}$")
+# Cashtags he uses for non-US listings -> the Yahoo/cnyes symbol every feed resolves.
+# Bare "SIVE" / "ESMT" 404 everywhere (Sivers trades in Stockholm, 晶豪科 on TWSE).
+ALIASES = {"SIVE": "SIVE.ST", "ESMT": "3006.TW"}
+
+
+def _tag(c):
+    c = c.upper()
+    return ALIASES.get(c, c)
 
 # Bilingual (EN/中文) sentiment lexicon for a fast, zero-LLM heuristic polarity.
 # Crude on sarcasm — the nightly LLM digest carries the authoritative narrative;
@@ -98,7 +106,7 @@ def main():
         ts = t.get("displayTime") or t.get("createdAt") or ""
         pol = tweet_polarity(t.get("text", ""))
         for c in (t.get("cashtags") or []):
-            c = c.upper()
+            c = _tag(c)
             mentions[c] += 1
             if c not in last_seen or ts > last_seen[c]:
                 last_seen[c] = ts
@@ -125,7 +133,8 @@ def main():
     new_picks = [
         r["ticker"] for r in ranked
         if not r["in_universe"] and r["mentions"] >= MIN_MENTIONS
-        and TICKER_RE.match(r["ticker"]) and r["ticker"] not in NOISE
+        and (TICKER_RE.match(r["ticker"]) or r["ticker"] in ALIASES.values())
+        and r["ticker"] not in NOISE
     ][:TOP_N]
 
     # High-conviction subset (mention count >= CONVICTION_MIN) — these force full
@@ -139,7 +148,7 @@ def main():
             "text": (t.get("text") or "")[:600],
             "url": t.get("url", ""),
             "time": t.get("displayTime") or t.get("createdAt") or "",
-            "cashtags": [c.upper() for c in (t.get("cashtags") or [])],
+            "cashtags": [_tag(c) for c in (t.get("cashtags") or [])],
             "is_retweet": bool(t.get("isRetweet")),
         })
 
