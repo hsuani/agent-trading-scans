@@ -41,7 +41,7 @@ _sys.path.insert(0, _os.path.dirname(_os.path.abspath(__file__)))
 import yfinance as yf  # noqa: E402
 
 
-from pricefeed import _cnyes_quote, _twse_quote  # noqa: E402  — shared with the probe / monitor
+from pricefeed import _cnyes_quote, _twse_quote, _cache_quote  # noqa: E402  — shared with the probe / monitor
 
 
 def _df(df):
@@ -133,7 +133,12 @@ def main():
                 fi = _retry(lambda: t.fast_info)
             except Exception:
                 fi = None
-            out = {key: (getattr(fi, key, None) if fi else None) for key in [
+            def _g(key):                 # fast_info attrs fetch lazily and raise KeyError offline
+                try:
+                    return getattr(fi, key, None) if fi else None
+                except Exception:
+                    return None
+            out = {key: _g(key) for key in [
                 "last_price", "previous_close", "open", "day_high", "day_low",
                 "fifty_day_average", "two_hundred_day_average",
                 "year_high", "year_low", "market_cap", "currency",
@@ -143,6 +148,10 @@ def main():
                 tw = _twse_quote(args.ticker)
                 if tw:
                     out.update(tw); out["source"] = "twse"
+            if out.get("last_price") in (None, 0):
+                cq = _cache_quote(args.ticker)       # repo cache (cloud sandbox has no egress)
+                if cq:
+                    out.update(cq)
     elif k == "history":
         # cnyes-primary chain (see pricefeed.py); explicit --start/--end keep yfinance
         if args.start or args.end:

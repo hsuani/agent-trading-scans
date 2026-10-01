@@ -9,6 +9,9 @@ on:
     # 21:40 UTC = 05:40 Asia/Taipei — after the nightly/backfill scan routines,
     # and US market has closed (post-close prices). Also catches pre-open.
     - cron: "40 21 * * *"
+    # 19:00 UTC = 03:00 Asia/Taipei — refresh prices/ 45 min before the 19:45Z
+    # nightly scan routine; the cloud sandbox cannot reach any quote host.
+    - cron: "0 19 * * *"
   workflow_dispatch: {}   # manual "Run workflow" button
 
 permissions:
@@ -32,6 +35,11 @@ jobs:
 
       - name: Install deps
         run: pip install --quiet -r pipeline/tools/requirements.txt   # pinned set incl. lxml — see requirements.txt
+
+      - name: Refresh price cache (the scan sandbox has no egress to quote hosts)
+        env:
+          TRADING_SCANS_ROOT: ${{ github.workspace }}
+        run: python3 pipeline/tools/pricefeed.py refresh-cache || echo "price cache refresh failed (non-fatal)"
 
       - name: Run L0 monitor
         env:
@@ -68,7 +76,7 @@ jobs:
         run: |
           git config user.name  "YHT"
           git config user.email "yhtseng91@gmail.com"
-          git add alerts.json alerts.html dashboard.html serenity/ pending.txt
+          git add alerts.json alerts.html dashboard.html serenity/ pending.txt prices/
           if git diff --cached --quiet; then
             echo "no change"
           else
