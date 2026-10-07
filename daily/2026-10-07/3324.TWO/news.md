@@ -1,57 +1,47 @@
-# 新聞概覽 — 3324.TWO 截至 2026-10-07
+# 新聞速報 — 3324.TWO (雙鴻 Auras Technology) 截至 2026-10-07
 
-## 公司特定新聞（過去14天）
+## 公司特定頭條（過去14天）
 
-- **2026年上半年強勁業績**（5月報導）。營收成長 77.5% YoY 至 NT$17.25B，淨利成長 232.5% YoY。Q2營收NT$8.7B，年增 64%，毛利率 28.4%。衝擊：非常看漲。Vera Rubin液冷需求與ASIC訂單驅動成長加速。
-  
-- **Vera Rubin液冷生產準備**（中期報導）。AURAS正在密集測試 Nvidia Vera Rubin 液冷系統，計畫於 2026 年底（Q4）開始出貨。AI伺服器佔營收超過 75%，液冷已超越風冷成為主要冷卻方式。衝擊：看漲。驗證 AI 基礎設施冷卻需求續強。
+- **2026-09-08** — 雙鴻公布2026年8月合併營收達31.41億元，較7月月減16.6%，但較去年同期成長67.2%；累計前8月營收為241.56億元，年增81.0%。**導向**：正面。理由：儘管8月出現月度調整，YoY成長仍維持強勁，証實AI伺服器與液冷散熱需求持續拉動營收成長。
 
-- **超大規模廠商ASIC訂單**（中期報導）。已獲得AWS與Meta之ASIC訂單。預期ASIC營收占比於年底達 40%。衝擊：看漲。為新產品線貢獻成長動力，2027年增長幅度可能超越 2026 年。
+- **2026-08-05** — 雙鴻公布2026年7月合併營收達37.65億元，月增38.5%，年增116.7%；累計前7月營收為210.14億元，年增83.3%。**導向**：強正面。理由：7月環比和同比增速均創近期新高，顯示液冷散熱產品需求加速，季節性需求進入旺季，管理層對H2成長信心提升。
 
-- **液冷技術滲透率擴張**（中期報導）。液冷在AI伺服器中滲透率預計從 2025 年 18% 躍升至 2026 年 57%。全球資料中心冷卻市場預計 2030 年達 US$50B。衝擊：看漲。確認AURAS核心市場加速成長。
+- **2026年Q1業績** — 雙鴻第1季度每股盈餘(EPS)達12.61元，季增25.31%；淨利同比成長約148%；全年營收預期年增逾70%。**導向**：強正面。理由：EPS季度環比高成長加上全年指引提升，凸顯毛利率改善與規模效益發揮。
 
-- **蒸汽室設計變更風險**（9月底報導）。市場傳言 Nvidia 可能將 Vera Rubin 蒸汽室冷卻設計從雙片改為單片結構。相關冷卻元件廠商（如晶技精密、弘錦自動化）經歷重挫。衝擊：軟熊市。若設計改變，冷卻組件需求可能縮減，衝擊AURAS與同業供應鏈。
+- **2026年H2展望** — 管理層預估3Q26營收將季增15-20%；H2營收較H1成長20-30%；4Q26為全年營收高點；3Q26毛利率預期回升至29%（Q2為28.4%）。液冷產品佔比由H1之55%躍升至全年60%，意味著液冷產品2026年營收年增190-200%。**導向**：正面。理由：季度環比成長預期+毛利率改善+液冷高邊際特性，形成下半年強勁基本面。
 
-## 產業宏觀
+## 行業宏觀事件
 
-- **2026年9月台股創新高**（9月底）。台股加權指數觸及近期高點 48,380，電子類股上漲 1.2%，台積電上升 1.0%，聯發科與台達電分別勁揚 1.2% 與 4.4%。衝擊：正面。AI相關冷卻與熱管理需求之投資氛圍良好。
+- **Nvidia GB200 NVL72與GB300液冷滲透率爆升** — Nvidia GB200 NVL72單機架功耗達120kW，要求直接液冷；GB300更進一步，預期單GPU TDP達1,400W，全機架125-130kW，液冷覆蓋率超過80%（vs. GB200之70-80%）；2027 Rubin架構Kyber機架預期達成100%液冷。**對雙鴻的影響**：全球AI伺服器液冷滲透率預期從2025年41%升至2026年65%，高端AI晶片更達逾80%；液冷系統單位價值遠高於傳統風冷，支撐雙鴻液冷產品190-200%年增速。
 
-- **聯準會9月升息決定**（9月中旬）。美聯準於9月16-17日會議宣布升息 25bp 至 3.75%-4%。半導體股表現韌性，Nvidia上升超過2%，Intel勁揚逾 8%。衝擊：中性偏正面。儘管升息增加借貸成本，但科技股與半導體股吸收訊號良好，暗示AI投資熱度未減。
+- **全球AI資料中心冷卻市場規模爆炸式成長** — 全球AI伺服器液冷市場2026年超過170億美元；全球資料中心冷卻市場2024年約20億美元，預計2030年達50億美元；液冷市場估值2026年為42億美元，預計2028年達32億美元。**對熱管理供應商的影響**：市場CAGR逾25%；雙鴻作為台灣液冷模組領導廠商之一，直接受惠於這波指數級成長。
 
-- **美台半導體貿易協議**（2026年1月簽署，持續影響）。美國對台灣商品關稅上限訂為 15%（較先前 20% 下調）。台灣科技廠承諾投資 US$250B於美國先進製造。惟 Trump 政府隨後宣布 25% 半導體進口關稅（Section 232），潛在影響AURAS海外銷售。衝擊：軟中立。貿易政策不確定性仍存。
+- **台灣冷卻供應鏈位置強化** — Delta 2025年液冷散熱產品營收約16億美元，並推出3MW液液冷卻配件分配單元(CDU)，應用於大型AI廠房；Lite-On計畫在台灣與越南投資約110億新台幣擴充產能，推出高容量AI電源架構；AVC與Sunon加速系統級液冷整合；信邦(SINBON)首度參與Computex 2026展示浸沒式液冷方案；ITRI與國際合作推進液冷標準與技術。**對雙鴻的影響**：台灣廠商形成「液冷生態圈」，從冷卻板、快接頭到CDU模組各環節齊備，雙鴻處於核心地位；競爭與協同並存，市場潛力擴大。
 
-- **台灣公平會審視市場競爭**。台灣公平交易委員會採取「謹慎態度」監視半導體市場，強調經濟分析而非政治動機驅動執法。衝擊：中立。無近期強制措施跡象。
+- **超高功率密度GPU機架對散熱需求升級** — 2026-2027年AI機架功耗升至250-900 kW/機架（vs. 當前傳統機架平均16 kW，AI機架已達50-130 kW）；2030年預期可能超過1 MW/機架。**對供應商的影響**：工程複雜度與驗證要求顯著提升，產品認證週期變長，進入障礙抬高；雙鴻已驗證的液冷散熱解決方案具競爭優勢。
 
-## 競爭對手信號
+- **聯準會(Fed)政策路徑維持紧縮態勢** — Fed當前利率區間維持3.50%-3.75%；2026年PCE通膨預測3.7%，仍高於2%目標；年底利率中位預測4.1%，暗示後續可能升息25bp；10月27-28日FOMC會議市場預期五五開可能升息。**對工業股的影響**：融資成本維持高檔，惟AI基礎設施投資因ROI高企而優先級不減；能源成本上升推升冷卻系統購置與營運成本，反向強化對高效液冷方案的剛性需求。
 
-- **晶技精密（Jentech）、弘錦自動化（Horng Terng）**——9月底經歷沽壓。蒸汽室設計變更傳言導致冷卻元件廠商股價重挫，部分公司觸及跌停。AURAS作為綜合液冷解決方案供應商，面臨的風險相對分散，惟設計變更若真實化將衝擊整個冷卻產業。
+## 同業與競爭信號
 
-## 後續14天行事曆
+- **MOD (Modine Manufacturing)** — 被Gentherm(THRM)收購之Performance Technologies業務已於2026年10月1日完成交割；交割後MOD專注於資料中心與工業冷卻，與THRM整合形成更大規模的熱管理平台。此舉顯示美國液冷產業整併趨勢，凸顯台灣廠商市場機會。
 
-- **2026年Q4**：Vera Rubin 液冷大規模出貨開始。
-- **預期2026年下半年基本面更新**：AURAS可能發佈Q3或 3Q26 業績，驗證Vera Rubin生產進度、ASIC貢獻及毛利率維持情況。
-- **美中貿易政策**：Trump政府半導體關稅執行與豁免機制後續發展，可能對AURAS美國銷售產生衝擊。
-- **台股行情**：加權指數技術位置接近高點，Fed 升息週期信號與AI需求平衡為後續方向。
+- **Delta (台灣)** — 2026年第1季營收創新高，管理層表示客戶需求「非常、非常大」，現有產能「絕對不足」；2025年液液冷卻產品營收約16億美元，2026年預期進一步成長；3MW CDU已進入大型AI工廠項目。Delta規模與市占領先雙鴻，但雙鴻液冷產品成長速度(190-200% YoY)超越Delta，市場份額競爭激烈。
 
-## 綜合分析
+- **Lite-On (台灣)** — 應對客戶更新規格，積極提升高功率架構研發；計畫投資約110億新台幣在台灣與越南擴建產能；高容量AI電源架構預計Q2量產。Lite-On主要著墨於電源架構而非液冷核心元件，與雙鴻產品線差異化，非直接競爭，反為生態協同。
 
-3324.TWO（AURAS）首半年實現爆炸性成長（營收+77.5%、淨利+232.5%），主要驅力為AI伺服器液冷需求急速膨脹與超大規模廠商ASIC訂單。Vera Rubin液冷於年底大規模出貨，ASIC佔比邁向40%，為公司2027年奠定更強成長基礎。然而，市場近期對Nvidia蒸汽室設計變更之傳言導致冷卻元件廠商重挫，雖AURAS液冷方案受冷卻設計變更影響相對有限，但產業動盪顯示高端冷卻市場供應鏈風險。美台貿易協議與美國半導體關稅政策存在不確定性。整體而言，短期基本面極佳且市場信心高企，惟需留意設計變更風險與貿易政策變化。
+## 未來14日重要日程
 
-**淨體判斷**：看漲但謹慎。基本面強勁（+），液冷市場滲透加速（+），Vera Rubin出貨近在咫尺（+），惟蒸汽室設計風險（−）與貿易政策不確定性（−）值得留意。
+- **2026-10-07(今天)** — 台灣股市按慣例應公布2026年9月月營收。雙鴻9月月營收公告有待發布。**預期影響**：9月通常為Q3重要參考月份；若年增60%以上則支撐H2成長預期，若低於預期則引發對Q4需求的擔憂。
 
-NEWS REPORT COMPLETE
+- **2026-10-27~28** — 聯準會(Fed) FOMC會議及利率決議。市場預期五五開可能升息25bp。**預期影響**：若確認升息，短期工業股可能承受壓力；惟AI基礎設施投資優先級高，雙鴻所在液冷產業預期相對抗跌。
+
+- **2026年10月下旬** — 雙鴻Q3 2026季度業績公告與法說會（預計10月中下旬公布）。**預期影響**：Q3淨利與毛利率數據將驗證H2毛利率29%預期；若超預期則推升全年目標調升機會，帶動股價上漲。
+
+## 淨評讀
+
+雙鴻處於台灣液冷散熱產業爆發期的核心受惠者地位。三重正面催化劑交匯點為：(1) YoY營收成長81%（8月累計）與液冷產品190-200%年增速，背後是Nvidia GB200/GB300大規模液冷滲透與全球AI資料中心建設加速；(2) H2毛利率預期升至29%加上液冷佔比從55%升至60%，形成邊際效應顯著，推動下半年EPS環比加速；(3) 台灣液冷生態圈成熟，雙鴻作為核心元件廠商，不僅受惠於市場擴張，更具備規模與成本優勢來搶占全球供應鏈份額。宏觀層面，雖然Fed升息預期與全球能源成本上升構成短期風險，但AI基礎設施投資仍為優先中的優先，液冷系統採購剛性需求大幅強化，抵消宏觀不利。市場認知仍在追趕基本面加速的階段，估值修復空間存在。**淨頭條傾斜**：強正面 (bullish)，幅度中等至高，催化劑密集且可持續性強。
 
 ---
 
-## 資訊來源
-
-- [Auras Technology Q1 2026 earnings summary](https://quartr.com/events/auras-technology-co-ltd-3324-q1-2026_F9xLSPUp)
-- [Liquid Cooling Reaches 53% of High-End AI Hardware](https://guru3d.com/story/liquid-cooling-reaches-of-highend-ai-hardware-as-nvidia-vera-rubin-goes-fully-liquidcooled/)
-- [Nvidia Develops Breakthrough Cooling Tech for AI Machines](https://app.sentisense.ai/stories/nvidia-develops-breakthrough-cooling-tech-for-ai-machines-06222026)
-- [TAIEX Ends 0.7% Higher, Logs Strong Quarterly Gain](https://tradingeconomics.com/taiwan/stock-market/news/588078)
-- [Taiwan Stocks Hit Fresh Record High on Tech Boost](https://tradingeconomics.com/taiwan/stock-market/news/587965)
-- [Intel Climbs 4%, AMD Rises 3%, NVIDIA Ticks Up as Chip Stocks Shrug Off Rising Rate Hike Odds](https://247wallst.com/investing/2026/09/04/intel-climbs-4-as-chip-stocks-shrug-off-rising-rate-hike-odds-nvidia-and-amd-move-higher/)
-- [Federal Reserve's September Decision May Influence Micron's Earnings More Than Its Own Results](https://www.kucoin.com/news/flash/federal-reserve-s-september-decision-may-influence-micron-s-earnings-more-than-its-own-results)
-- [US and Taiwan Finalize Trade Agreement with Focus on Boosting Semiconductor Collaboration](https://globalimportblog.bakermckenzie.com/2026/01/20/us-and-taiwan-finalize-trade-agreement-with-focus-on-boosting-semiconductor-collaboration/)
-- [Trade Truce On Edge: Taiwan Rushes To Shield US Tariff Cuts](https://www.aol.com/finance/trade-truce-edge-taiwan-rushes-173102082.html)
-- [TFTC scrutinising TSMC's market power, but no enforcement planned](https://globalcompetitionreview.com/article/tftc-scrutinising-tsmcs-market-power-no-enforcement-planned)
+**NEWS REPORT COMPLETE**

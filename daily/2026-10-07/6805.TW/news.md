@@ -1,56 +1,72 @@
-# 新聞 — 6805.TW（華碩）截至 2026-10-07
+# 新聞公告 — 6805.TW 至 2026-10-07
 
-## 上市公司重要新聞（過去14天）
+## 公司重大新聞 (過去14天)
 
-- **2026-08（Q2財報期間）** — 華碩公布Q2 2026財報創紀錄高位：合併營收新台幣241億元（年增39%）、營業利益新台幣19.6億元（年增230%）、稅後淨利新台幣19億元（年增94%）。衝擊：強勢看多。伺服器業務營收倍增，商用PC連續六季正成長(年增50%)，PC業務全年成長20%。
+**2026年8月4日** — 富世達發布第二季度及上半年2026年財務結果。公司營收創新高，2025全年營收達NT$12.41億(+51.61% YoY)，淨利NT$2.13億(+73.19% YoY)。第二季度伺服器業務(水冷連接器及GPU快速釋放連接器)占營收55.7%，較去年同期的19.2%大幅成長。預計2026年伺服器相關產品(用於Nvidia AI超級運算機GB300/Vera Rubin的UQD)增長164% YoY (來源: Goldman Sachs升級評等，來自Digitimes)。**影響：看漲** — 水冷連接器業務成為營收引擎，取代傳統摺疊手機鉸鏈，反映市場轉向AI基礎設施。
 
-- **2026-08（同期）** — 華碩宣布首度發行海外債券，籌資新台幣2.5億美元以支應AI伺服器業務擴張及長期供應鏈需求。其中1.5億美元為可轉換公司債，1億美元為以Advantech股份擔保之交換公司債。衝擊：強勢看多。表示公司產能瓶頸，需要融資因應強勁訂單。
+**2026年9月初** — 富世達被Goldman Sachs升級2026E-27E盈利預測，維持買進評等，引用液冷組件營收增加及高端手機鉸鏈受惠。公司指引2026E營收預期增長2%，主要由液冷組件及AI伺服器業務驅動 (來源: TradingView, StockAnalysis)。**影響：看漲** — 分析師信心提升，顯示投資者對公司從傳統鉸鏈轉向AI熱管理的戰略轉變有信心。
 
-- **2026-09-03** — 華碩於首爾舉辦ASUS AI Tech展示會，展示整合AI基礎設施與營運治理解決方案。衝擊：中性。企業AI布局持續深化。
+**2026年8月1日前後** — 富世達宣布擴產計畫，目標2026年生產350,000個伺服器滑軌組件及300萬個GPU快速釋放連接器，生產基地設於越南廠。同時加快出貨Nvidia AI超級運算機GB300伺服器用水冷快速連接器 (來源: TechNews/TechYorker)。**影響：中性至看漲** — 產能擴張支撑Vera Rubin/GB300出貨需求，但執行風險及成本投入需留意。
 
-- **2026-09-08** — 華碩於東南亞醫療展覽會(Medical Fair Asia)展示MH系列醫療臨床顯示器，並完成泰國產品註冊。衝擊：中性。醫療應用多角化拓展。
+**摺疊手機鉸鏈業務變化** — 摺疊手機鉸鏈營收佔比從2024年的82.6%下降至56.4%，但公司估計更多手機廠商將推出摺疊機型，預計2026年上半年華為新品將帶動需求。華為是公司主要客戶，新機型預計H1 2026發佈 (來源: TechNews, PhoneArena)。**影響：中性** — 鉸鏈業務相對衰退但未來有復甦空間，摺疊機市場仍在成長初期。
 
-- **2026-Q2財報指引** — 華碩發布Q3 2026指引：PC營收環比成長15%-20%（成長均來自均價與出貨量提升）、組件營收環比成長5%-10%、伺服器營收環比成長10%-15%。全年伺服器成長目標上修至150% YoY。衝擊：強勢看多。展示公司三大業務並進，惟全球PC市場H2衰退預期超10% YoY。
+## 產業巨集觀動態
 
-## 產業總體背景
+**2026年6月1日** — Nvidia CEO黃仁勳於Nvidia GTC Taipei宣布Vera Rubin AI基礎設施平台已進入全面量產。每套Vera Rubin系統包含近200萬個零件，需要100-150個台灣供應商。超過100萬個機櫃組件在台灣25個廠區組裝，組裝時間從2小時縮短至5分鐘。Vera Rubin供應鏈規模為上一代Grace Blackwell的兩倍 (來源: TVBS/Economic Daily News/UDN)。**對台灣冷卻/連接器產業影響：極為正面** — 确認了台灣在AI基礎設施高端製造的中心地位，直接帶動富世達等連接器和冷卻零件供應商的需求。
 
-- **2026年台灣半導體產業** — 台灣半導體產業產值預計達新台幣7.13兆元（年增10%），2026年TSMC預期銷售成長達40%+，由AI及高效能運算晶片需求帶動。衝擊：中性至正向。華碩做為終端系統廠受惠於AI伺服器成長。
+**2026年6月前後 (Computex 2026)** — Computex 2026(6月2-5日)成為重要產業里程碑。展會上展示了功耗超過1,000瓦特的晶片，機櫃瞄準1百萬瓦特，冷卻從週邊轉變為伺服器設計的中心。Stäubli等連接器製造商展示液冷快速連接方案、電源分配連接器。液冷伺服器占比：2024年15%→2025年54%→2026年預測76% (來源: TVBS, TechNews, Bernama, Stäubli)。**對富世達業務影響：極為正面** — 該趨勢直接推動水冷快速連接器從邊際走向核心，成為毛利最高的產品線。
 
-- **2026年GPU市場瓶頸** — NVIDIA遊戲GPU晶片短缺預期持續至2026年底，三星、海力士、美光等記憶體廠商優先供應高頻寬記憶體(HBM)至AI伺服器，導致GeForce用GDDR7供應稀缺，遊戲卡交期延長12-20週。衝擊：正向。華碩ROG遊戲本供應受限將推升均價；同時伺服器GPU與HBM需求持續暢旺。
+**2026年5月** — Asia Vital Components(AVC)報告5月營收NT$15.9億(US$5億)，年成長61%，前五月累計NT$80.5億(US$25億)，年成長90%。AVC主席稱2026為「液冷時代」，正在越南擴產冷板、分岐管、機櫃產能 (來源: TVBS News)。**對富世達影響：競爭升高但市場蛋糕巨大** — 冷卻供應商整體需求強勁，但AVC及Auras Technology等同業也在搶佔市場。
 
-- **美台貿易協定** — 美國對台灣進口商品關稅由初始32%降至20%、再進一步降至15%，半導體產品豁免課稅。衝擊：中性。華碩海外供應鏈成本壓力舒緩。
+**2026年初-中** — Auras Technology(台灣散熱專家)2025年全年營收NT$23.3億(US$7.4億)，成長47%，2026年1月年成長121.6%。該公司正在測試Nvidia Vera Rubin液冷產品，計畫年底後出貨AWS、Meta等大型客戶 (來源: TVBS News)。**對富世達業務影響：同業成長驗證市場需求，但也面臨競爭** — Auras主要是冷卻模組，富世達是連接器，產品線不同但都受惠於同一個需求浪潮。
 
-## 競爭對手訊號
+**2026年8月7日起** — 美國對台灣商品徵收20%關稅(自2025年8月7日起實施；詢問確認)，台灣政府稱為臨時性，正與美協商最終稅率。電子、資訊通訊科技將受分別關稅適用 (來源: TaiwanPlus, Yahoo News)。**對富世達業務風險：中等風險** — 如果連接器被列為電子組件適用分別較低稅率，影響或可控；但若被納入更高稅率，出口到美國之GB300/Vera Rubin零件成本上升。
 
-- **技嘉(Gigabyte)** — 於Gamescom 2026展示AORUS INFINITY生態系統，包括X870E主機板、RTX 50系列GPU及內建16吋顯示螢幕之機殼；於東京電玩展(TGS)期間(9月17-21)持續展示。衝擊：中性。高階遊戲設備競爭激烈。
+**2026年9月** — 台灣央行在9月議息會維持政策利率2%(創2008年來高點)，已連續6季維持此水位。通膨仍高於央行2%目標(8月為2.04%)，但經濟成長加速，2026全年預測上調至11.48%，主要由AI boom及半導體出口成長驅動 (來源: Focus Taiwan, TradingEconomics)。**對富世達融資環境影響：中性** — 高利率環保持謹慎，但強勁經濟成長支撑需求。
 
-- **微星(MSI)** — 推出PRO MAX系列高階工作平台。衝擊：中性。工作站市場競爭加劇。
+**2026年10月15日** — TSMC第三季度盈利電話會議定於美東時間凌晨2:00舉行。該公司預計Q3營收介於$44.6B-$45.8B，已上調全年營收成長至40%+，資本支出上調至$60-64B。投資者將關注高效能運算(HPC/GPU伺服器)營收佔比是否維持在Q2的66%或更高 (來源: CryptoBriefing, MorningStar, Benzinga)。**對富世達業務影響：間接正面** — TSMC作為Nvidia GPU晶片供應商，其資本支出及HPC營收佔比反映AI伺服器需求強度，直接影響富世達連接器出貨。
 
-- **NVIDIA RTX 50系列** — NVIDIA新一代RTX 50遊戲GPU全面推出，華碩ROG/TUF/ProArt筆電與桌機廣泛採用，對標所有主要筆電廠商(Dell/HP/Lenovo等)。衝擊：中性。華碩得利於RTX 50採用加速，但競爭對手亦同步受惠。
+## 同業動向信號
 
-## 未來行事曆（往後14天）
+- **Auras Technology (3324.TW)** — 2026年1月年成長121.6%，正測試Vera Rubin液冷模組，預計年底出貨，客戶包括AWS、Meta。冷卻模組業務強勁。
 
-- **2026-11-05** — 華碩Q3 2026財報發布。預期重點：伺服器營收與毛利率動向、PC業務H2需求狀況、新產品(ROG AI筆電、伺服器硬體)出貨貢獻程度。
+- **Asia Vital Components** — 5月營收年成長61%，液冷冷板、分岐管、機櫃全線擴產。與富世達互補但競爭加劇。
 
-## 淨評估
+- **Delta Electronics (台達電)** — 電源供應模組受惠於高功耗GPU伺服器需求，資料中心電源市場景氣持續向上。
 
-華碩2026年趨勢強勢，驅動力為AI伺服器需求爆發(倍增成長)與商用PC逆勢增長(年增50%)，雙引擎並行；ROG遊戲及AI筆電系列受惠NVIDIA RTX 50推出及GPU短缺帶動均價。財報創紀錄營利率230%反映強勁獲利動能。關鍵風險為：(1)全球消費型PC預期H2衰退超10% YoY，對整體營收占比有壓；(2)GPU供應鏈瓶頸雖推升遊戲產品毛利，但若供應延遲將傷及銷量；(3)轉換債券融資顯示訂單超預期卻產能不足。標題基調：強勢看多。強度：中等偏強(核心伺服器與商用PC成長足以抵銷消費PC疲弱，11月Q3財報將驗證指引達成度)。
+- **Lite-On Technology (光磊科技)** — 熱管理模組及電源組件受益於1000W+晶片功耗趨勢。
+
+## 14天前瞻日程 (2026-10-07 至 2026-10-21)
+
+| 日期 | 事件 | 預期影響 |
+|------|------|--------|
+| 2026-10-15 (美東時間凌晨2:00) | TSMC Q3盈利電話會 | 若HPC占比仍高，利多GPU伺服器及相關連接器供應商如富世達 |
+| 2026-10-中下旬 | 台股上市公司Q3月營收陸續申報 | 富世達、Auras、AVC等AI供應鏈廠商10月営收公開，可觀測產業淡旺季動向 |
+| 2026-10下旬 | 富世達Q3季報預期公佈 (推測) | 關鍵指標：伺服器業務佔比進展、水冷連接器出貨量、毛利率 |
+| 2026年Q4 | Vera Rubin系統量產交付加速 | 伺服器連接器需求高峰期，富世達等供應商訂單景氣驗證 |
+
+## 總體評估
+
+富世達(6805.TW)作為台灣AI伺服器液冷連接器的關鍵供應商，正處於長期結構成長週期的上升段。Nvidia Vera Rubin平台的全面量產確認、台灣被確立為全球AI基礎設施組裝樞紐(超過100萬機櫃組件)，以及液冷技術從15%(2024)→54%(2025)→76%(2026預測)的滲透率飆升，都為公司的水冷連接器業務(UQD)提供強勁尾風。公司2025年營收+51.61%、淨利+73.19%，2026E預期營收+2%略顯保守，但Goldman Sachs升級評等及164% YoY的UQD增速預測顯示分析師相當樂觀。風險方面，美國20%關稅(雖為臨時性)對出口美國之GB300/Vera Rubin零件成本構成潛在壓力；同時Auras、AVC等同業液冷產品線競爭激烈，富世達需確保連接器市場佔有率。整體而言，**短中期前景偏樂觀** — 受惠於AI基礎設施建設周期，公司從傳統摺疊手機鉸鏈向高毛利AI連接器的轉型正在兌現，但需關注執行力及地緣政經風險。
+
+**新聞播報完成**
 
 ---
 
-**新聞報告完成**
+## 資料來源
 
-Sources:
-- [ASUS Q2 FY 2026 Earnings Hit Record Revenue on AI Servers](https://futurumgroup.com/insights/asus-q2-fy-2026-earnings-hit-record-revenue-on-ai-servers/)
-- [ASUS (2357) Q2 2026 earnings summary](https://quartr.com/events/asustek-computer-inc-2357-q2-2026_F9Qxh3If)
-- [ASUS Q2 Financial Results Record Profits AI Server Growth and 2.5 Billion USD Fund](https://www.technetbooks.com/2026/08/asus-q2-financial-results-record.html)
-- [ASUS Showcases Extensive 2026 Laptop and Mini PC Lineup at CES 2026](https://www.vortez.net/news_tags/rog_zephyrus.html)
-- [Taiwan's semiconductor industry output value projected to exceed NT$7 trillion](https://www.creating-nanotech.com/en-US/newsc269-itri-taiwan-s-semiconductor-industry-output-value-is-estimated-to-exceed-nt-7-trillion-next-year-with-a-projected-increase-of-10)
-- [Nvidia's GPU Squeeze Hits Everyone: How AI Demand Is Starving Gamers, Startups and Researchers](https://www.webpronews.com/nvidias-gpu-squeeze-hits-everyone-how-ai-demand-is-starving-gamers-startups-and-researchers/)
-- [GPU shortage and price increases in 2026](https://info.fusionww.com/blog/gpu-shortage-and-price-increases-in-2026?hsLang=en)
-- [US Eases Some Tariffs on Taiwan to Formalize Trade Agreement](https://news.bgov.com/international-trade/us-eases-some-tariffs-on-taiwan-to-formalize-trade-agreement)
-- [Taiwan US Tariff Deal Breakthrough Economic Impact Turns Positive](https://datatrack.trendforce.com/blog/content/52338/taiwan-us-tariff-deal-breakthrough-economic-impact-turns-positive)
-- [GIGABYTE Opens COMPUTEX 2026 with ENTER INFINITY](https://www.aap.com.au/aapreleases/cision20260602ae70977/)
-- [Gigabyte AORUS at Tokyo Game Show 2026](https://gaming-st.com/news/gigabyte-aorus-tgs2026-booth/)
-- [ASUS 2026 Laptop Lineup ROG Zephyrus TUF ProArt with RTX 5000 GPUs](https://respawn.outlookindia.com/gaming/gaming-news/asus-2026-laptop-lineup-rog-zephyrus-tuf-proart-rtx-5000-gpus)
-- [ASUS Q3 2026 Earnings Call Details](https://www.roic.ai/quote/2357.TW/transcripts)
+- [Taiwan News - Fositek reports over 70% profit increase amid AI boom](https://www.taiwannews.com.tw/news/6315329)
+- [Digitimes - Fositek lifts server revenue mix to 56% and plans capacity expansion](https://www.digitimes.com/news/a20260805PD211/fositek-revenue-capacity-server-shipments-sales.html)
+- [TVBS News - Nvidia GTC Taipei announcement on Vera Rubin](https://news.tvbs.com.tw/tech/3218910)
+- [Economic Daily News - Nvidia GTC Taiwan Vera Rubin full production](https://ec.ltn.com.tw/article/breakingnews/5456500)
+- [TaiwanNews - Vera Rubin buildout and Taiwan supply chain](https://www.taiwannews.com.tw/news/6320692)
+- [TrendForce - Vera Rubin production details](https://www.trendforce.com/news/?p=58464)
+- [TVBS News - Auras Technology and AVC cooling capacity expansion](https://news.tvbs.com.tw/english/3229366)
+- [TaiwanNews - Asia Vital Components May 2026 revenue](https://www.taiwannews.com.tw/news/6435018)
+- [Computex 2026 AI server and cooling technology highlights](https://news.tvbs.com.tw/english/3196927)
+- [TaiwanPlus - US 20% tariff on Taiwan exports](https://www.taiwanplus.com/news/taiwan-news/economy/250801010)
+- [Focus Taiwan - Taiwan Central Bank interest rate decision September 2026](https://focustaiwan.tw/business/202609120009)
+- [CryptoBriefing - TSMC Q3 earnings call October 15 2026](https://cryptobriefing.com/tsmc-q3-earnings-nvidia-broadcom-amd/)
+- [PhoneArena - Huawei foldable phone hinge developments 2026](https://www.phonearena.com/news/next-gen-hinge-rumored-for-huaweis-clamshell-foldable_id136756)
+- [StockAnalysis - Fositek Corp financials](https://stockanalysis.com/quote/tpe/6805/financials/income-statement/)
+- [TradingView - Fositek Corp earnings forecasts](https://www.tradingview.com/symbols/TWSE-6805/financials-earnings/)
