@@ -26,6 +26,21 @@ s_rr = compute_score({"verdict": "BUY"}, "VERDICT: BUY 信心度 60% R:R to T2 =
 assert s_none == 60.0 and s_rr == 90.0, (s_none, s_rr)
 assert compute_score({"verdict": "BUY"}, "VERDICT: BUY 信心度 60% PRICE_DATA_UNAVAILABLE")[0] == 21.0
 
+# 0b. The PM's trade-card table is the primary source: letter grade maps to a %
+#     only when the card gives none, R:R to T1 drives the score, 不適用 is None.
+from build_dashboard import parse_card, GRADE_PCT  # noqa: E402
+card = "| Field | Value |\n|---|---|\n| Conviction | M |\n| R:R to T1 | 1.5 |\n"
+assert parse_card(card) == {"grade": "M", "conviction": None, "rr_t1": 1.5, "rr_t2": None}
+assert parse_card("| Conviction | L（約 40%） |\n| R:R to T1 | 約 2.4（區間中點 $3,725 計）|\n| R:R to T2 | 約 4.4 |") \
+    == {"grade": "L", "conviction": 40, "rr_t1": 2.4, "rr_t2": 4.4}
+assert parse_card("| Conviction | REJECT 信心 M |\n| R:R to T1 | 不適用（多、空兩向 R:R 均低於 2.0 門檻） |")["rr_t1"] is None
+assert parse_card("| Conviction | M（續抱）／L（加碼） |")["grade"] == "M"
+sc, conf, rr, _, meta = compute_score({"verdict": "BUY"}, card)
+assert (conf, rr, meta["conv_source"], meta["rr_source"]) == (GRADE_PCT["M"], 1.5, "grade", "T1")
+assert sc == round(55 * (1 + 1.5 / 5), 1), sc
+assert compute_score({"verdict": "BUY"}, "VERDICT: BUY 信心度 60%")[4]["conv_source"] == "stated"
+assert compute_score({"verdict": "BUY"}, "nothing here")[4] == {"grade": None, "conv_source": "default", "rr_source": None, "rr_t1": None, "rr_t2": None}
+
 # 1. A card that refuses to quote a level yields NO number, whatever digits the
 #    sentence happens to contain. This is the rule that matters: the downstream
 #    treats a missing level as 價格待補, which is the truth.
