@@ -259,6 +259,43 @@ def _conviction_parsed(text: str) -> bool:
     return bool(m and 30 <= int(m.group(1)) <= 100)
 
 
+GRADE_PCT = {"H": 75, "M": 55, "L": 40}   # PM card letter grade -> % when the card gives no figure
+_CARD_ROW = r"^\|\s*{label}\s*\|\s*(.+?)\s*\|"
+
+
+def _card_cell(text: str, label: str):
+    m = re.search(_CARD_ROW.format(label=label), text, re.M | re.I)
+    return m.group(1) if m else None
+
+
+def _cell_ratio(cell):
+    if not cell or re.search(r"不適用|N/?A|無", cell[:6]):
+        return None
+    m = re.search(r"\d+(?:\.\d+)?", cell)
+    if m and 0.2 <= float(m.group()) <= 20:
+        return float(m.group())
+    return None
+
+
+def parse_card(text: str) -> dict:
+    """Read the portfolio-manager's trade-card table (`| Conviction | M（約 55%） |`,
+    `| R:R to T1 | 1.8 |`). Returns grade H/M/L, stated conviction %, R:R to T1/T2 —
+    each None when the row is absent or says 不適用."""
+    out = {"grade": None, "conviction": None, "rr_t1": None, "rr_t2": None}
+    if not text:
+        return out
+    cell = _card_cell(text, "Conviction")
+    if cell:
+        g = re.search(r"\b([HML])\b", cell)
+        out["grade"] = g.group(1) if g else None
+        pct = re.search(r"(\d{1,3})\s*%", cell)
+        if pct and 1 <= int(pct.group(1)) <= 100:
+            out["conviction"] = int(pct.group(1))
+    out["rr_t1"] = _cell_ratio(_card_cell(text, r"R:R to T1"))
+    out["rr_t2"] = _cell_ratio(_card_cell(text, r"R:R to T2"))
+    return out
+
+
 def parse_rr(text: str):
     """Parse R:R to T2 if any. Returns the ratio, or None when the card states
     none — callers must not treat a placeholder as a real target (the outcome
@@ -289,19 +326,35 @@ def is_phase1_only(text: str) -> bool:
     return bool(re.search(r"PHASE 1 ONLY|Phase-1-only|跳過.*Top\s*\d", text, re.I))
 
 
-def compute_score(card: dict, text: str) -> tuple[float, int, float, bool]:
-    """Score a ticker for Top 20 ranking. Returns (score, conviction%, rr_t2, phase1_only)."""
+def compute_score(card: dict, text: str) -> tuple[float, int, float, bool, dict]:
+    """Score a ticker for Top 20 ranking. Returns (score, conviction%, rr, phase1_only, meta).
+    rr is the stated R:R to T1 (the PM card's field) or, for legacy free-text cards,
+    the parsed R:R to T2; meta says which, plus the letter grade and conviction source."""
     v = (card.get("verdict") or "UNKNOWN").upper()
     weight = {"BUY": 1.0, "SELL": 0.65, "HOLD": 0.3, "UNKNOWN": 0.05}.get(v, 0.05)
-    conf = parse_conviction(text)
-    rr = parse_rr(text)
+    cd = parse_card(text)
+    if cd["conviction"] is not None:
+        conf, conv_src = cd["conviction"], "stated"
+    elif cd["grade"]:
+        conf, conv_src = GRADE_PCT[cd["grade"]], "grade"
+    elif _conviction_parsed(text):
+        conf, conv_src = parse_conviction(text), "stated"
+    else:
+        conf, conv_src = 50, "default"
+    if cd["rr_t1"] is not None:
+        rr, rr_src = cd["rr_t1"], "T1"
+    else:
+        legacy = parse_rr(text)
+        rr, rr_src = (legacy, "T2") if legacy is not None else (None, None)
     phase1 = is_phase1_only(text)
     price_missing = any(ph in text for ph in _DECLINED_PHRASES)
     # Phase-1-only and no-price cards are research notes, not trade plans: demote both.
     modifier = 0.35 if (phase1 or price_missing) else 1.0
     # Score: verdict * conviction * (1 + rr/5) * modifier. No R:R -> factor 1, not a fake 1.5x.
     score = weight * conf * (1 + min(rr, 5) / 5 if rr else 1.0) * modifier
-    return round(score, 1), conf, rr, phase1
+    meta = {"grade": cd["grade"], "conv_source": conv_src, "rr_source": rr_src,
+            "rr_t1": cd["rr_t1"], "rr_t2": cd["rr_t2"]}
+    return round(score, 1), conf, rr, phase1, meta
 
 
 def compute_top20(sectors_data: dict, quotes: dict | None = None) -> tuple[list, list]:
@@ -324,7 +377,7 @@ def compute_top20(sectors_data: dict, quotes: dict | None = None) -> tuple[list,
                     text = final_md.read_text(encoding="utf-8", errors="ignore")
                 except Exception:
                     text = ""
-            score, conf, rr, phase1 = compute_score(t, text)
+            score, conf, rr, phase1, meta = compute_score(t, text)
             price_missing = any(ph in text for ph in _DECLINED_PHRASES)
             q = quotes.get(ticker) or {}
             plan = _lv.plan_status(t, quote=q.get("price"))
@@ -340,10 +393,16 @@ def compute_top20(sectors_data: dict, quotes: dict | None = None) -> tuple[list,
             quality = []
             if rr is None:
                 quality.append("no R:R parsed")
+            elif meta["rr_source"] == "T2":
+                quality.append("R:R from T2")      # legacy free-text card, no T1 ratio
             if t1s is None:
                 quality.append("T1 derived" if rr else "no T1")
-            if not _conviction_parsed(text):
+            if meta["conv_source"] == "default":
                 quality.append("conv default")
+            # R:R to T2: the card's own figure, else arithmetic on its stated levels (≈)
+            rr2, rr2_derived = meta["rr_t2"], False
+            if rr2 is None and None not in (emid, snum, t2s) and emid > snum:
+                rr2, rr2_derived = round((t2s - emid) / (emid - snum), 2), True
             # LOW = the score rests on a fallback (default conviction or no R:R) —
             # no ordinal rank for those; MEDIUM = derived T1 only; HIGH = all parsed.
             tier = ("LOW" if ("conv default" in quality or "no R:R parsed" in quality)
@@ -373,7 +432,12 @@ def compute_top20(sectors_data: dict, quotes: dict | None = None) -> tuple[list,
                 "report_url":   t.get("report_url", ""),
                 "score":        score,
                 "conviction":   conf,
-                "rr_t2":        rr,
+                "conv_grade":   meta["grade"],
+                "conv_source":  meta["conv_source"],
+                "rr_t1":        meta["rr_t1"],
+                "rr_t2":        rr2,
+                "rr_t2_derived": rr2_derived,
+                "rr_source":    meta["rr_source"],
                 "phase1_only":  phase1,
             })
     ranked.sort(key=lambda x: (x["score"], x["conviction"]), reverse=True)
@@ -594,7 +658,7 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
     <div class="flex items-baseline justify-between mb-3 border-b pb-2">
       <div>
         <h2 class="text-xl font-bold">🔬 Research Rank <span class="text-sm font-normal text-amber-700">(legacy heuristic — 研究順位,不是「最值得買」)</span> <span class="text-xs font-normal text-slate-400">更新 __GENERATED__</span></h2>
-        <p class="text-xs text-slate-500">score = verdict × conviction × (1 + R:R T2 / 5) × modifier · Phase-1-only / 無報價 × 0.35 · 無法解析 R:R 時不套預設值 · T1/T2 只顯示卡片自述值,≈ 為推導值 · v2.0-baseline stated-T1 expectancy −0.152R,此表僅供研究分配</p>
+        <p class="text-xs text-slate-500">score = verdict × conviction × (1 + R:R T1 / 5) × modifier · Phase-1-only / 無報價 × 0.35 · 無法解析 R:R 時不套預設值 · conviction 用卡片百分比,只有 H/M/L 時取 75/55/40% · R:R T1 為卡片自述;R:R T2 / T1 / T2 的 ≈ 為由自述價位推得 · v2.0-baseline stated-T1 expectancy −0.152R,此表僅供研究分配</p>
       </div>
       <div class="text-xs text-slate-500">Trade Ready = quote (LIVE / STALE / UNAVAILABLE) × plan (PRICED / UNPRICED / LEVELS_INVALID / LEVEL_SCALE_SUSPECT) → ACTIONABLE / NEEDS_REPRICE（數字錯,要重掃）/ RESEARCH_ONLY（無價位計畫）/ DATA_STALE · 尺度異常不進榜：__NEEDS_REPRICE__</div>
     </div>
@@ -610,6 +674,7 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
             <th>Trade Ready</th>
             <th>Quality</th>
             <th class="text-right">Conv%</th>
+            <th class="text-right">R:R T1</th>
             <th class="text-right">R:R T2</th>
             <th>Phase</th>
             <th>Entry</th>
@@ -1317,7 +1382,7 @@ def render_top20_rows(top20: list) -> str:
     for i, t in ordered:
         if i == "SEP":
             rows.append('<tr><td colspan="17" class="bg-amber-50 text-amber-800 text-[11px] px-2 py-1">'
-                        f'── Insufficient score quality — 不給名次（{len(low)} 檔:conviction 用預設值或無 R:R）──</td></tr>')
+                        f'── Insufficient score quality — 不給名次（{len(low)} 檔:卡片無 conviction 或無 R:R）──</td></tr>')
             continue
         v = t["verdict"]
         vcls = {"BUY": "bg-green-100 text-green-800", "HOLD": "bg-amber-100 text-amber-800",
@@ -1325,8 +1390,11 @@ def render_top20_rows(top20: list) -> str:
         phase_cell = ('<span class="bg-slate-200 text-slate-700 px-1.5 py-0.5 rounded text-[10px]">P1 only</span>'
                       if t["phase1_only"] else
                       '<span class="bg-blue-100 text-blue-800 px-1.5 py-0.5 rounded text-[10px]">Full</span>')
+        rr1 = t.get("rr_t1")
+        rr1_color = "text-green-700 font-semibold" if (rr1 or 0) >= 2.0 else "text-slate-700"
+        rr1_disp = f"{rr1:.1f}x" if rr1 else "—"
         rr_color = "text-green-700 font-semibold" if (t["rr_t2"] or 0) >= 2.0 else "text-slate-700"
-        rr_disp = f"{t['rr_t2']:.2f}x" if t["rr_t2"] else "—"
+        rr_disp = (("≈" if t.get("rr_t2_derived") else "") + f"{t['rr_t2']:.1f}x") if t["rr_t2"] else "—"
         ready = t.get("trade_ready", "")
         ready_cls = {"ACTIONABLE": "bg-green-100 text-green-800", "NEEDS_REPRICE": "bg-amber-100 text-amber-800",
                      "DATA_STALE": "bg-slate-200 text-slate-700"}.get(ready, "bg-amber-50 text-amber-800")
@@ -1340,6 +1408,10 @@ def render_top20_rows(top20: list) -> str:
         quality_cell = ('<span class="text-[10px] text-amber-700">⚠ ' + _esc(" · ".join(t.get("score_quality", []))) + "</span>"
                         if t.get("score_quality") else '<span class="text-[10px] text-slate-400">ok</span>')
         conv_color = "text-green-700 font-semibold" if t["conviction"] >= 60 else "text-slate-700"
+        grade = t.get("conv_grade")
+        conv_disp = (f'<span class="text-[10px] text-slate-500" title="PM grade {grade}'
+                     f'{" → " + str(t["conviction"]) + "% (mapped)" if t.get("conv_source") == "grade" else ""}">{grade}</span> '
+                     if grade else "") + f'{t["conviction"]}%'
         rank_color = ("text-slate-400" if i is None else
                       "bg-yellow-100 text-yellow-900 font-bold" if i == 1 else
                       "bg-slate-100 text-slate-700 font-semibold" if i <= 3 else
@@ -1348,7 +1420,10 @@ def render_top20_rows(top20: list) -> str:
         # T1/T2: the card's own stated targets when it gives them; a value derived
         # from entry+stop+R:R only when the R:R was actually parsed (shown as ≈);
         # never a number built on a default ratio.
-        emid, snum, ct1, ct2 = derive_targets(t.get("entry"), t.get("stop"), t.get("rr_t2"))
+        emid, snum, _, _ = derive_targets(t.get("entry"), t.get("stop"), None)
+        risk = (emid - snum) if None not in (emid, snum) and emid > snum else None
+        ct1 = round(emid + rr1 * risk, 2) if (risk and rr1) else None                       # from stated R:R T1
+        ct2 = round(emid + t["rr_t2"] * risk, 2) if (risk and t["rr_t2"] and not t.get("rr_t2_derived")) else None
         entry_disp = f"{emid:g}" if emid is not None else "—"
         stop_disp = f"{snum:g}" if snum is not None else "—"
         t1_disp = (f"{t['t1_stated']:g}" if t.get("t1_stated") else f"≈{ct1:g}" if ct1 is not None else "—")
@@ -1362,7 +1437,8 @@ def render_top20_rows(top20: list) -> str:
             <td class="text-right font-mono font-semibold">{t['score']:.1f}</td>
             <td>{ready_cell}</td>
             <td>{quality_cell}</td>
-            <td class="text-right font-mono {conv_color}">{t['conviction']}%</td>
+            <td class="text-right font-mono {conv_color}">{conv_disp}</td>
+            <td class="text-right font-mono {rr1_color}">{rr1_disp}</td>
             <td class="text-right font-mono {rr_color}">{rr_disp}</td>
             <td>{phase_cell}</td>
             <td class="text-xs font-mono" title="{_esc(t['entry'])}">{entry_disp}</td>
