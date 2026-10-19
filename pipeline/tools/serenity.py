@@ -181,21 +181,36 @@ def main():
 
 
 def status(today=None, stale_days=2):
-    """FRESH|STALE <newest tweet date> <age days> <upstream updatedAt> — read from the
-    committed serenity.json, no network. STALE = nothing newer than `stale_days`
-    before today: the nightly then writes a one-line digest instead of re-telling
-    the same tweets. Exit 0 = FRESH, 1 = STALE, 2 = no cache."""
-    from datetime import date
+    """FRESH|STALE — read from the committed serenity.json, no network. STALE =
+    no tweet dated on/after the previous digest (strategy_<date>.md before today),
+    i.e. nothing the last digest has not already covered; without a previous
+    digest, STALE = newest tweet older than `stale_days`. The nightly then writes
+    a one-line digest instead of re-telling the same tweets. Exit 0/1/2 = FRESH/STALE/no cache."""
+    from datetime import date, datetime
     f = OUT_DIR / "serenity.json"
     if not f.is_file():
         print("NOCACHE"); return 2
     d = json.loads(f.read_text(encoding="utf-8"))
-    times = sorted((t.get("time") or "")[:10] for t in d.get("tweets", []) if t.get("time"))
+
+    def _day(s):   # "2026-10-17 05:25" (displayTime) or "Fri Oct 16 21:25:06 +0000 2026" (createdAt)
+        for fmt in ("%Y-%m-%d", "%a %b %d %H:%M:%S %z %Y"):
+            try:
+                return datetime.strptime(s[:10] if fmt == "%Y-%m-%d" else s, fmt).date().isoformat()
+            except ValueError:
+                pass
+        return ""
+    times = sorted(filter(None, (_day(t.get("time") or "") for t in d.get("tweets", []))))
     newest = times[-1] if times else ""
     today = date.fromisoformat(today) if today else date.today()
     age = (today - date.fromisoformat(newest)).days if newest else 999
-    tag = "FRESH" if age <= stale_days else "STALE"
-    print(f"{tag} newest={newest} age_days={age} upstream={d.get('source_updated_at', '')[:16]}")
+    prev = sorted(f.stem[len("strategy_"):] for f in OUT_DIR.glob("strategy_????-??-??.md")
+                  if f.stem[len("strategy_"):] < today.isoformat())
+    if prev:
+        tag = "FRESH" if newest >= prev[-1] else "STALE"
+    else:
+        tag = "FRESH" if age <= stale_days else "STALE"
+    print(f"{tag} newest={newest} age_days={age} prev_digest={prev[-1] if prev else '-'} "
+          f"upstream={d.get('source_updated_at', '')[:16]}")
     return 0 if tag == "FRESH" else 1
 
 
