@@ -180,5 +180,27 @@ def main():
     print(f"  -> {OUT_DIR/'serenity.json'}, universe.txt, force_full.txt")
 
 
+def status(today=None, stale_days=2):
+    """FRESH|STALE <newest tweet date> <age days> <upstream updatedAt> — read from the
+    committed serenity.json, no network. STALE = nothing newer than `stale_days`
+    before today: the nightly then writes a one-line digest instead of re-telling
+    the same tweets. Exit 0 = FRESH, 1 = STALE, 2 = no cache."""
+    from datetime import date
+    f = OUT_DIR / "serenity.json"
+    if not f.is_file():
+        print("NOCACHE"); return 2
+    d = json.loads(f.read_text(encoding="utf-8"))
+    times = sorted((t.get("time") or "")[:10] for t in d.get("tweets", []) if t.get("time"))
+    newest = times[-1] if times else ""
+    today = date.fromisoformat(today) if today else date.today()
+    age = (today - date.fromisoformat(newest)).days if newest else 999
+    tag = "FRESH" if age <= stale_days else "STALE"
+    print(f"{tag} newest={newest} age_days={age} upstream={d.get('source_updated_at', '')[:16]}")
+    return 0 if tag == "FRESH" else 1
+
+
 if __name__ == "__main__":
+    if sys.argv[1:2] == ["status"]:
+        today = sys.argv[sys.argv.index("--today") + 1] if "--today" in sys.argv else None
+        sys.exit(status(today))
     main()
