@@ -51,7 +51,7 @@ declare -a DAY_SECTORS=(
   "semi tw_asic tw_unassigned serenity"                 # Mon: AI compute + ASIC 設計服務 + 未分組 (8021/6438) + Serenity (dynamic)
   "power tw_power quantum"                              # Tue: Power (US + TW) + quantum
   "cooling tw_cooling memory"                           # Wed: Thermal (US + TW) + memory (HBM)
-  "oem tw_server tw_ic_substrate tw_ai_pcb tw_memory"   # Thu: AI server build + ABF 載板 + AI PCB + TW memory
+  "oem tw_server tw_ic_substrate tw_ai_pcb tw_ccl tw_memory"   # Thu: AI server build + ABF 載板 + AI PCB + CCL/銅箔 + TW memory
   "security materials robotics"                         # Fri: Security + raw materials + robotics
   "hedge reit tw_probe tw_test_services"                # Sat: Defensive + 探針卡 + IC 測試服務
   "photonics tw_photonics"                              # Sun: Silicon photonics (US + TW)
