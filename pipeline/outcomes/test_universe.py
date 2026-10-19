@@ -14,7 +14,9 @@ import universe as u  # noqa: E402
 
 # 1. same static universe as v2.0-baseline, one primary group per ticker
 v1 = {t for ts in u.V1_GROUPS.values() for t in ts}
-assert u.static_universe() == v1, u.static_universe() ^ v1
+added = {t for k in u.ADDED_AFTER_1A for t in u.PEER_GROUPS[k]}
+assert u.static_universe() - added == v1, (u.static_universe() - added) ^ v1
+assert not (added & v1), "a post-1A group re-routes a baseline ticker"
 flat = [t for ts in u.PEER_GROUPS.values() for t in ts] + list(u.UNASSIGNED)
 assert len(flat) == len(set(flat)), "ticker in two groups"
 assert u.primary_group("8021.TW") is None and u.theme_tags("8021.TW") == ["pcb_consumables"]
@@ -48,7 +50,7 @@ assert [d.split() for d in days[1:]] == [u.SCHEDULE[i] for i in range(1, 8)], da
 # 6. cadence: the v1 -> v2 per-ticker scan-day diff is exactly SCHEDULE_MOVES
 v1g = dict(u.V1_GROUPS); v1g["serenity"] = []
 moves = {t: {"v1_dow": u.schedule_dow(t, u.V1_SCHEDULE, v1g), "v2_dow": u.schedule_dow(t)}
-         for t in u.static_universe() if u.schedule_dow(t, u.V1_SCHEDULE, v1g) != u.schedule_dow(t)}
+         for t in u.static_universe() - added if u.schedule_dow(t, u.V1_SCHEDULE, v1g) != u.schedule_dow(t)}
 assert moves == u.SCHEDULE_MOVES, moves
 
 # 7. Phase 5 agents exist; watchlist-digest forbids ranking

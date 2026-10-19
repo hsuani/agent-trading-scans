@@ -35,6 +35,7 @@ SECTORS = {
   # Taiwan supply chain — ONE primary peer group per ticker, no overlaps
   "tw_ic_substrate":  ["3037.TW", "8046.TW", "3189.TW"],                 # ABF 載板三雄
   "tw_ai_pcb":        ["2368.TW", "4958.TW"],                            # AI PCB 金像電 / 臻鼎
+  "tw_ccl":           ["2383.TW", "6274.TWO", "6213.TW", "8358.TWO", "1815.TWO", "5475.TWO"],  # CCL 三雄 + 銅箔 + 玻纖布
   "tw_cooling":       ["3324.TWO", "8996.TW", "3017.TW", "3653.TW", "6805.TW"],
   "tw_server":        ["6669.TW", "3231.TW", "2356.TW", "2376.TW"],
   "tw_power":         ["2308.TW", "1513.TW", "1519.TW", "2301.TW"],
@@ -58,6 +59,7 @@ Retired keys (history under `daily/<date>/<key>/` is kept, never rewritten):
 |---|---|---|
 | `tw_ic_substrate` | ABF 載板三雄 (AI CPU/GPU substrate) | 欣興 3037 / 南電 8046 / 景碩 3189 |
 | `tw_ai_pcb` | AI PCB (Vera Rubin 高層數板) | 金像電 2368 / 臻鼎 4958 |
+| `tw_ccl` | PCB 上游材料: CCL 銅箔基板 + 銅箔 + 玻纖布 (TW) | CCL: 台光電 2383 / 台燿 6274 / 聯茂 6213 · 銅箔: 金居 8358 · 玻纖布: 富喬 1815 / 德宏 5475 |
 | `tw_cooling` | 散熱模組 (TW VRT/MOD analogue) | 雙鴻 3324 / 高力 8996 / 奇鋐 3017 |
 | `tw_server` | AI server ODM (補 oem 2317/2382) | 緯穎 6669 / 緯創 3231 / 英業達 2356 |
 | `tw_power` | 電源 / 電網 (TW power) | 台達電 2308 / 中興電 1513 / 華城 1519 |
@@ -100,7 +102,10 @@ Retired keys (history under `daily/<date>/<key>/` is kept, never rewritten):
 | 6257 | 矽格 | .TW | | 4958 | 臻鼎-KY | .TW |
 | 2368 | 金像電 | .TW | | 2376 | 技嘉 | .TW |
 | 2301 | 光寶科 | .TW | | 3653 | 健策 | .TW |
-| 6805 | 富世達 | .TW | | | | |
+| 6805 | 富世達 | .TW | | 2383 | 台光電 | .TW |
+| 6274 | 台燿 | **.TWO** | | 6213 | 聯茂 | .TW |
+| 8358 | 金居 | **.TWO** | | 1815 | 富喬 | **.TWO** |
+| 5475 | 德宏 | **.TWO** | | | | |
 
 Vera Rubin 台灣供應鏈新增 (2026-07): 載板 臻鼎4958/金像電2368 → `tw_ai_pcb`; ODM 技嘉2376 → `tw_server`; 電源 光寶科2301 → `tw_power`; 散熱 健策3653/富世達6805 → `tw_cooling`. (旺矽/穎崴/日月光/欣興/南電/景碩/鴻海/廣達/緯穎/緯創/台達電/奇鋐/雙鴻 已在既有 sector)
 

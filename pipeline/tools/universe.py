@@ -42,6 +42,7 @@ PEER_GROUPS = OrderedDict([
     # Taiwan supply chain — one primary peer group per ticker, no overlaps
     ("tw_ic_substrate",  ["3037.TW", "8046.TW", "3189.TW"]),                 # ABF 載板三雄
     ("tw_ai_pcb",        ["2368.TW", "4958.TW"]),                            # AI PCB (金像電 / 臻鼎)
+    ("tw_ccl",           ["2383.TW", "6274.TWO", "6213.TW", "8358.TWO", "1815.TWO", "5475.TWO"]),  # CCL 三雄 + 銅箔 + 玻纖布
     ("tw_cooling",       ["3324.TWO", "8996.TW", "3017.TW", "3653.TW", "6805.TW"]),
     ("tw_server",        ["6669.TW", "3231.TW", "2356.TW", "2376.TW"]),
     ("tw_power",         ["2308.TW", "1513.TW", "1519.TW", "2301.TW"]),
@@ -69,7 +70,7 @@ LABELS = {
     "semi": "A. 半導體核心", "power": "B. 電力 / 電網", "cooling": "C. 散熱 / 網通 / 光通訊",
     "reit": "D. 資料中心 REIT", "oem": "E. AI 伺服器 OEM (US+TW)", "security": "F. AI 安全",
     "robotics": "G. 機器人 / 自駕", "materials": "H. 原料 / 稀土", "hedge": "I. 避險",
-    "tw_ic_substrate": "J. ABF 載板 (TW)", "tw_ai_pcb": "J2. AI PCB (TW)",
+    "tw_ic_substrate": "J. ABF 載板 (TW)", "tw_ai_pcb": "J2. AI PCB (TW)", "tw_ccl": "J3. CCL / 銅箔 / 玻纖布 (TW)",
     "tw_cooling": "K. 散熱模組 (TW)", "tw_server": "L. AI server ODM (TW)",
     "tw_power": "N. 電源 / 電網 (TW)", "tw_asic": "O. ASIC 設計服務 (TW)",
     "quantum": "P. 量子運算 (incl. Quantinuum=HON)", "photonics": "Q. 矽光子 (US pure-play)",
@@ -88,11 +89,15 @@ SCHEDULE = {
     1: ["semi", "tw_asic", "tw_unassigned", "serenity"],
     2: ["power", "tw_power", "quantum"],
     3: ["cooling", "tw_cooling", "memory"],
-    4: ["oem", "tw_server", "tw_ic_substrate", "tw_ai_pcb", "tw_memory"],
+    4: ["oem", "tw_server", "tw_ic_substrate", "tw_ai_pcb", "tw_ccl", "tw_memory"],
     5: ["security", "materials", "robotics"],
     6: ["hedge", "reit", "tw_probe", "tw_test_services"],
     7: ["photonics", "tw_photonics"],
 }
+
+# Groups added AFTER the v2.0 baseline / 1A recut: new tickers, not a re-routing.
+# Their cards carry no sector_v1 and join the outcome cohort only from their first scan.
+ADDED_AFTER_1A = {"tw_ccl": "2026-10-19"}
 
 # Frozen v2.0-baseline taxonomy (what daily/<date>/<key>/ dirs were written under
 # before 1A). Outcome cohorts keep this as `sector_v1`; never edit.
