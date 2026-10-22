@@ -1905,7 +1905,7 @@ def render_dca_panel() -> str:
     a = (f"<div class='mt-3 text-xs'><div class='font-bold mb-1 flex flex-wrap items-center gap-2'>A. TQQQ 濾網（QQQ 200 日線）　{a_state}"
          f"<span class='text-slate-500 font-normal'>{sl['days']} 天，自 {_esc(sl['since'])}</span>"
          "<label class='font-normal ml-auto'>我目前 <select id='dca-pos' class='border rounded px-1 py-0.5 text-xs'>"
-         "<option value='flat'>空手</option><option value='held'>持有 TQQQ</option></select></label></div>"
+         "<option value='flat'>空手</option><option value='held'>持有 TQQQ</option><option value='na'>尚未開通槓桿資格</option></select></label></div>"
          "<div id='dca-cta' class='rounded px-2 py-1.5 mb-2 text-sm font-bold'></div>"
          "<div class='grid grid-cols-2 md:grid-cols-5 gap-2'>"
          + cell.format(k="QQQ 收盤", v=f"{lead['close']:g}")
@@ -1921,7 +1921,8 @@ def render_dca_panel() -> str:
   var ma=%s, px=%s;
   function paint(){
     var held=sel.value==='held', msg, cls;
-    if(above && !held){ msg='🟢 進場訊號：QQQ '+px+' 在 MA200 '+ma+' 之上 → 隔日買 TQQQ（停損紀律 = 收盤跌破 '+ma+' 隔日出場）'; cls='bg-green-200 text-green-900'; }
+    if(sel.value==='na'){ msg=(above?'⏸ 等資格開通 · 濾網目前在線上（QQQ '+px+' > MA200 '+ma+'）· 衛星金先存 BOXX，開通當天若仍在線上就一次買進累積額':'⏸ 等資格開通 · 濾網目前在線下（QQQ '+px+' < MA200 '+ma+'）· 衛星金存 BOXX，開通後等站回再進'); cls='bg-slate-200 text-slate-700'; }
+    else if(above && !held){ msg='🟢 進場訊號：QQQ '+px+' 在 MA200 '+ma+' 之上 → 隔日買 TQQQ（停損紀律 = 收盤跌破 '+ma+' 隔日出場）'; cls='bg-green-200 text-green-900'; }
     else if(above && held){ msg='✅ 持有 TQQQ：出場線 '+ma+'（收盤跌破 → 隔日賣）'; cls='bg-green-100 text-green-800'; }
     else if(!above && held){ msg='🔴 出場訊號：QQQ '+px+' 收在 MA200 '+ma+' 之下 → 隔日賣 TQQQ 換 BIL/BOXX'; cls='bg-rose-200 text-rose-900'; }
     else { msg='⏸ 空手等待：QQQ 收盤站回 '+ma+' 之上才進場'; cls='bg-slate-200 text-slate-700'; }
