@@ -1934,22 +1934,13 @@ def render_dca_panel() -> str:
 })();</script>""" % (sl["exit_below"], lead["close"])
     # B. monthly core split
     chips = " · ".join(f"<b>{_esc(x['ticker'])}</b> ${x['per_1000']:,.0f}" for x in d.get("plan", []))
-    b = (f"<div class='mt-3 text-xs'><div class='font-bold mb-1'>B. 定投（每 $1,000）　<span class='font-normal'>{chips}</span></div>"
+    plan_str = ",".join(f"{x['ticker']}:{x['per_1000']:.0f}" for x in d.get("plan", []))
+    b = (f"<div class='mt-3 text-xs'><div class='font-bold mb-1 flex flex-wrap items-center gap-2'>B. 定投（每 $1,000）　<span id='dca-plan-chips' class='font-normal'>{chips}</span>"
+         f"<label class='ml-auto font-normal'>拆分 <input id='dca-plan' class='border rounded px-1 py-0.5 w-72 font-mono' value='{plan_str}' title='標的:每千金額，逗號分隔；總和 1000'></label></div>"
          "<div class='text-slate-600'>每週一次 $1,000（週五收盤前或週一開盤）= 這份拆分剛好一次；52 週 ≈ $4,333/月。要壓在 $4,000/月就每週 $923。"
-         "固定扣、不看行情、不停扣。</div>"
+         "固定扣、不看行情、不停扣。券商定期定額沒有的標的（如豐存股無 VGT）就換：XLK ≈ VGT（15 年 CAGR 20.9% vs 21.0%）；都沒有就併入 QQQM。</div>"
          "<div class='text-slate-600 mt-1'><b>TQQQ 衛星金額</b>：每 $1,000 現金流撥 <b>$130</b>（≈13%，含 $4,000 定投 + $1,000 加碼金的 $5,000/月 → 每月 $650）。"
          "濾網在線上 → 當期的 $130 買 TQQQ；線下 → 存 BOXX，站回時一次投入累積額。TQQQ 市值 > 總資產 15% 時當季停買並平回核心。</div></div>")
-    # C. boost ladder
-    lad = []
-    for st in bo["ladder"]:
-        is_next = bo.get("next_pct") == st["pct"]
-        cls = ("bg-amber-500 text-white" if st["crossed"] else
-               "bg-amber-100 text-amber-900 ring-2 ring-amber-400" if is_next else "bg-white text-slate-400 border border-slate-300")
-        lad.append(f"<span class='{cls} px-2 py-0.5 rounded text-xs font-semibold' title='QQQ ≤ {st['qqq_level']:g}'>"
-                   f"-{st['pct']:.0f}% → {st['share']:.0f}%（${st['per_1000']:.0f}/千 · ${st['reserve_amt']:,.0f}）{'✓' if st['crossed'] else ''}</span>")
-    nxt = (f"下一檔 <b>-{bo['next_pct']:.0f}%</b>（QQQ ≤ {bo['next_level']:g}），還差 <b>{bo['gap_pp']:.1f}pp</b>"
-           if bo.get("next_pct") is not None else "已達最深門檻")
-    reset = "<span class='text-green-700 ml-2'>已回高點 → 階梯重置，加碼金重新累積</span>" if bo.get("reset") else ""
     if bo.get("next_pct") is not None:
         c_now = (f"現在距高點 <b>{bo['drawdown_pct']:+.1f}%</b>，還沒到首檔 −{bo['next_pct']:.0f}%（QQQ ≤ {bo['next_level']:g}，還差 {bo['gap_pp']:.1f}pp）→ "
                  f"<b>本期加碼 $0，加碼金繼續存</b>" if not bo["deployable_share"] else
@@ -1973,87 +1964,70 @@ def render_dca_panel() -> str:
          "<th class='px-2 text-right'>投存量的</th><th class='px-2 text-right'>每 $1,000 存量</th><th class='px-2 text-right'>以目前存量 <span id='dca-reserve-now'></span></th></tr></thead>"
          + "".join(lad) + "</table>"
          "<div class='text-[11px] text-slate-500 mt-1'>加碼金每月 +$1,000 存 BOXX；跨一檔就把那檔的金額按 B 的四檔比例買進（不是只買 QQQ）；回到高點 1% 內重置。"
-         "「以目前存量」= E 的 BOXX 存量（沒有紀錄時用 monitor.yml 的 DCA_RESERVE）。</div></div>")
-    # E. ledger (localStorage) — user logs every buy / sell / deposit; totals recompute here
+         "「以目前存量」= E 的 BOXX 存量欄位。</div></div>")
+    # E. positions (localStorage) — the user edits shares + total cost (fees included) directly
     closes = json.dumps(d.get("closes", {}))
-    e = ("<div class='mt-3 text-xs' id='dca-ledger'><div class='font-bold mb-1 flex flex-wrap items-center gap-2'>E. 交易紀錄與持倉（存在瀏覽器，匯出備份）"
-         "<span class='font-normal text-slate-500'>每次扣款／加碼／TQQQ 進出／存 BOXX 都記一筆，上面的金額會跟著算</span>"
-         "<span class='ml-auto'><button id='dl-export' class='border rounded px-2 py-0.5'>匯出</button> <button id='dl-import' class='border rounded px-2 py-0.5'>匯入</button></span></div>"
-         "<div class='flex flex-wrap items-end gap-2 mb-2'>"
-         "<label>日期<br><input id='dl-date' type='date' class='border rounded px-1 py-0.5'></label>"
-         "<label>類別<br><select id='dl-kind' class='border rounded px-1 py-0.5'><option>定投</option><option>加碼</option><option>TQQQ</option><option>存入BOXX</option></select></label>"
-         "<label>標的<br><select id='dl-tk' class='border rounded px-1 py-0.5'><option>VOO</option><option>QQQM</option><option>SMH</option><option>VGT</option><option>TQQQ</option><option>BOXX</option></select></label>"
-         "<label>買/賣<br><select id='dl-side' class='border rounded px-1 py-0.5'><option value='1'>買</option><option value='-1'>賣</option></select></label>"
-         "<label>股數<br><input id='dl-sh' type='number' step='0.0001' class='border rounded px-1 py-0.5 w-24'></label>"
-         "<label>價位 $<br><input id='dl-px' type='number' step='0.01' class='border rounded px-1 py-0.5 w-24'></label>"
-         "<button id='dl-add' class='bg-slate-800 text-white rounded px-3 py-1'>新增</button>"
-         "<label class='ml-4'>每月定投目標 $<input id='dl-target' type='number' class='border rounded px-1 py-0.5 w-20' value='4000'></label>"
-         "<label>定投日<select id='dl-wd' class='border rounded px-1 py-0.5'><option value='1'>週一</option><option value='2'>週二</option><option value='3'>週三</option><option value='4'>週四</option><option value='5' selected>週五</option></select></label>"
-         "<label>頻率<select id='dl-freq' class='border rounded px-1 py-0.5'><option value='w'>每週</option><option value='m'>每月</option></select></label>"
-         "</div>"
-         "<div id='dl-remind' class='rounded px-2 py-1 mb-2 font-semibold'></div>"
-         "<div class='grid md:grid-cols-2 gap-3'>"
-         "<div><div class='font-semibold text-slate-600 mb-1'>持倉</div><table class='w-full text-xs' id='dl-pos'></table></div>"
-         "<div><div class='font-semibold text-slate-600 mb-1'>紀錄（最近 30 筆）</div><div class='max-h-56 overflow-y-auto'><table class='w-full text-xs' id='dl-rows'></table></div></div>"
-         "</div></div>")
+    e = ("<div class='mt-3 text-xs' id='dca-pos-block'><div class='font-bold mb-1 flex flex-wrap items-center gap-2'>E. 庫存與現金（直接改股數／總成本，含手續費；存在瀏覽器）"
+         "<span class='ml-auto'><button id='dp-add' class='border rounded px-2 py-0.5'>＋標的</button> <button id='dp-export' class='border rounded px-2 py-0.5'>匯出</button> <button id='dp-import' class='border rounded px-2 py-0.5'>匯入</button></span></div>"
+         "<table class='w-full text-xs' id='dp-table'></table>"
+         "<div class='flex flex-wrap items-end gap-3 mt-2'>"
+         "<label>BOXX 存量 $<br><input id='dp-boxx' type='number' step='0.01' class='border rounded px-1 py-0.5 w-28'></label>"
+         "<label>高點後已投加碼 $<br><input id='dp-boost' type='number' step='0.01' class='border rounded px-1 py-0.5 w-28' title='QQQ 這次高點（C 的日期）之後已經投出去的加碼金；回高點重置時歸零'></label>"
+         "<label>最近定投日<br><input id='dp-last' type='date' class='border rounded px-1 py-0.5'></label>"
+         "<label>每月定投目標 $<br><input id='dp-target' type='number' class='border rounded px-1 py-0.5 w-20' value='4000'></label>"
+         "<label>定投日<br><select id='dp-wd' class='border rounded px-1 py-0.5'><option value='1'>週一</option><option value='2'>週二</option><option value='3'>週三</option><option value='4'>週四</option><option value='5' selected>週五</option></select></label>"
+         "<label>頻率<br><select id='dp-freq' class='border rounded px-1 py-0.5'><option value='w'>每週</option><option value='m'>每月</option></select></label>"
+         "</div><div id='dp-remind' class='rounded px-2 py-1 mt-2 font-semibold'></div></div>")
     ledger_js = """<script>(function(){
-  var CL=%s, HIGH_DATE='%s', RES_ENV=%s, LAD=%s;
-  var K='dca_ledger', KC='dca_cfg';
-  function load(k,d){ try{return JSON.parse(localStorage.getItem(k))||d;}catch(e){return d;} }
+  var CL=%s, RES_ENV=%s, LAD=%s, PLAN_DEF='%s';
+  var K='dca_pos', KM='dca_misc', KP='dca_plan';
+  function load(k,d){ try{var v=JSON.parse(localStorage.getItem(k)); return v==null?d:v;}catch(e){return d;} }
   function save(k,v){ try{localStorage.setItem(k,JSON.stringify(v));}catch(e){} }
-  var L=load(K,[]), C=load(KC,{target:4000,wd:5,freq:'w'});
   var $=function(id){return document.getElementById(id);};
-  $('dl-date').value=new Date().toISOString().slice(0,10); $('dl-target').value=C.target; $('dl-wd').value=C.wd; $('dl-freq').value=C.freq;
+  var P=load(K,null), M=load(KM,{boxx:RES_ENV,boost:0,last:'',target:4000,wd:5,freq:'w'}), planStr=load(KP,PLAN_DEF);
+  function plan(){ var o=[]; planStr.split(',').forEach(function(x){var a=x.split(':'); if(a.length===2&&parseFloat(a[1])>0) o.push({tk:a[0].trim().toUpperCase(),amt:parseFloat(a[1])});}); return o; }
+  if(!P){ P={}; plan().forEach(function(x){P[x.tk]={sh:0,cost:0};}); P.TQQQ={sh:0,cost:0}; }
+  $('dca-plan').value=planStr; $('dp-boxx').value=M.boxx; $('dp-boost').value=M.boost; $('dp-last').value=M.last||''; $('dp-target').value=M.target; $('dp-wd').value=M.wd; $('dp-freq').value=M.freq;
   function fmt(n,d){ return (n<0?'-':'')+'$'+Math.abs(n).toLocaleString(undefined,{maximumFractionDigits:d==null?0:d}); }
   function recalc(){
-    L.sort(function(a,b){return a.date<b.date?-1:1;});
-    var pos={}, boxx=0, boostSinceHigh=0, monthDca=0, lastDca=null, now=new Date(), ym=now.toISOString().slice(0,7);
-    L.forEach(function(r){
-      var amt=r.sh*r.px*r.side;
-      if(r.tk==='BOXX'){ boxx+=amt; return; }
-      var p=pos[r.tk]||(pos[r.tk]={sh:0,cost:0}); 
-      if(r.side>0){ p.sh+=r.sh; p.cost+=r.sh*r.px; } else { var avg=p.sh?p.cost/p.sh:0; p.sh-=r.sh; p.cost-=avg*r.sh; }
-      if(r.kind==='加碼'||r.kind==='TQQQ'){ boxx-=amt; }           // 加碼與 TQQQ 衛星都從 BOXX 存量出；賣出回流
-      if(r.kind==='加碼'&&r.side>0&&r.date>=HIGH_DATE) boostSinceHigh+=amt;
-      if(r.kind==='定投'&&r.side>0){ if(r.date.slice(0,7)===ym) monthDca+=amt; lastDca=r.date; }
-    });
-    var reserve = L.some(function(r){return r.tk==='BOXX';}) ? boxx : RES_ENV;
-    // positions table
-    var h='<tr class="text-slate-500"><th class="text-left">ETF</th><th class="text-right">股數</th><th class="text-right">均價</th><th class="text-right">現價</th><th class="text-right">市值</th><th class="text-right">損益</th></tr>', tv=0, tc=0;
-    Object.keys(pos).forEach(function(t){ var p=pos[t]; if(p.sh<=1e-9) return; var px=CL[t]||0, mv=p.sh*px, pl=mv-p.cost; tv+=mv; tc+=p.cost;
-      h+='<tr><td class="font-mono font-bold">'+t+'</td><td class="text-right font-mono">'+p.sh.toFixed(4)+'</td><td class="text-right font-mono">'+(p.cost/p.sh).toFixed(2)+'</td><td class="text-right font-mono">'+(px?px.toFixed(2):'—')+'</td><td class="text-right font-mono">'+fmt(mv)+'</td><td class="text-right font-mono '+(pl>=0?'text-green-700':'text-rose-700')+'">'+fmt(pl)+(p.cost?' ('+(pl/p.cost*100).toFixed(1)+'%%)':'')+'</td></tr>'; });
-    h+='<tr class="font-semibold border-t"><td>ETF 合計</td><td></td><td></td><td></td><td class="text-right font-mono">'+fmt(tv)+'</td><td class="text-right font-mono '+(tv-tc>=0?'text-green-700':'text-rose-700')+'">'+fmt(tv-tc)+'</td></tr>';
-    h+='<tr><td>BOXX 存量</td><td colspan="4"></td><td class="text-right font-mono">'+fmt(reserve)+'</td></tr>';
-    var tq=pos.TQQQ&&pos.TQQQ.sh>0?pos.TQQQ.sh*(CL.TQQQ||0):0, tot=tv+reserve;
-    h+='<tr><td>TQQQ 占總資產</td><td colspan="4" class="text-slate-500">上限 15%%，超過季末平回核心</td><td class="text-right font-mono '+(tot&&tq/tot>0.15?'text-rose-700 font-bold':'')+'">'+(tot?(tq/tot*100).toFixed(1):'0.0')+'%%</td></tr>';
-    $('dl-pos').innerHTML=h;
-    // ladder amounts from live reserve + already-deployed since the high
+    var pl=plan(), tot=pl.reduce(function(a,x){return a+x.amt;},0);
+    $('dca-plan-chips').innerHTML=pl.map(function(x){return '<b>'+x.tk+'</b> $'+x.amt;}).join(' · ')+(Math.abs(tot-1000)>0.5?' <span class="text-rose-700">（總和 '+tot+'，應為 1000）</span>':'');
+    var h='<tr class="text-slate-500"><th class="text-left">ETF</th><th class="text-right">股數</th><th class="text-right">總成本（含手續費）</th><th class="text-right">均價</th><th class="text-right">現價</th><th class="text-right">市值</th><th class="text-right">損益</th><th></th></tr>', tv=0, tc=0, tq=0;
+    Object.keys(P).forEach(function(t){ var p=P[t], px=CL[t]||0, mv=p.sh*px, pls=mv-p.cost; tv+=mv; tc+=p.cost; if(t==='TQQQ') tq=mv;
+      h+='<tr><td class="font-mono font-bold">'+t+'</td><td class="text-right"><input data-t="'+t+'" data-f="sh" type="number" step="0.0001" class="dp-in border rounded px-1 w-24 text-right font-mono" value="'+p.sh+'"></td>'
+        +'<td class="text-right"><input data-t="'+t+'" data-f="cost" type="number" step="0.01" class="dp-in border rounded px-1 w-28 text-right font-mono" value="'+p.cost+'"></td>'
+        +'<td class="text-right font-mono">'+(p.sh?(p.cost/p.sh).toFixed(2):'—')+'</td><td class="text-right font-mono">'+(px?px.toFixed(2):'<span class="text-amber-700" title="無報價：monitor DCA_TICKERS 加上這檔">—</span>')+'</td>'
+        +'<td class="text-right font-mono">'+fmt(mv)+'</td><td class="text-right font-mono '+(pls>=0?'text-green-700':'text-rose-700')+'">'+(px?fmt(pls)+(p.cost?' ('+(pls/p.cost*100).toFixed(1)+'%%)':''):'—')+'</td>'
+        +'<td><button data-t="'+t+'" class="dp-del text-rose-600">✕</button></td></tr>'; });
+    var boxx=parseFloat($('dp-boxx').value)||0, total=tv+boxx;
+    h+='<tr class="font-semibold border-t"><td>ETF 合計</td><td></td><td class="text-right font-mono">'+fmt(tc)+'</td><td></td><td></td><td class="text-right font-mono">'+fmt(tv)+'</td><td class="text-right font-mono '+(tv-tc>=0?'text-green-700':'text-rose-700')+'">'+fmt(tv-tc)+(tc?' ('+((tv-tc)/tc*100).toFixed(1)+'%%)':'')+'</td><td></td></tr>';
+    h+='<tr><td>總資產（ETF + BOXX）</td><td colspan="4"></td><td class="text-right font-mono">'+fmt(total)+'</td><td colspan="2"></td></tr>';
+    h+='<tr><td>TQQQ 占總資產</td><td colspan="4" class="text-slate-500">上限 15%%，超過季末平回核心</td><td class="text-right font-mono '+(total&&tq/total>0.15?'text-rose-700 font-bold':'')+'">'+(total?(tq/total*100).toFixed(1):'0.0')+'%%</td><td colspan="2"></td></tr>';
+    $('dp-table').innerHTML=h;
+    document.querySelectorAll('.dp-in').forEach(function(i){ i.onchange=function(){ P[i.getAttribute('data-t')][i.getAttribute('data-f')]=parseFloat(i.value)||0; save(K,P); recalc(); }; });
+    document.querySelectorAll('.dp-del').forEach(function(b){ b.onclick=function(){ if(confirm('移除 '+b.getAttribute('data-t')+'？')){ delete P[b.getAttribute('data-t')]; save(K,P); recalc(); } }; });
+    // ladder amounts from the BOXX balance; still-due = crossed share × reserve − already deployed since the high
     var dep=0; LAD.forEach(function(t){ if(t.crossed) dep+=t.share; });
-    document.querySelectorAll('.dca-tier-amt').forEach(function(td){ td.textContent=fmt(reserve*parseFloat(td.getAttribute('data-share'))/100); });
-    var due=reserve*dep/100-boostSinceHigh;
-    $('dca-reserve-now').textContent=fmt(reserve)+(dep?'；已跨 '+dep+'%% → 應投 '+fmt(reserve*dep/100)+'，高點後已投 '+fmt(boostSinceHigh)+'，<b>待投 '+fmt(Math.max(due,0))+'</b>':'');
-    $('dca-reserve-now').innerHTML=$('dca-reserve-now').textContent;
-    // reminder: next DCA date + overdue + month progress
-    var wd=parseInt(C.wd), d=new Date(now); var diff=(wd-d.getDay()+7)%%7; var next=new Date(d); next.setDate(d.getDate()+diff);
-    var per = C.freq==='w' ? Math.round(C.target/4.33) : C.target;
-    var overdue = lastDca ? (now-new Date(lastDca))/864e5 > (C.freq==='w'?8:33) : true;
-    var m='下次定投 '+next.toISOString().slice(0,10)+'（'+['日','一','二','三','四','五','六'][wd]+'）'+(diff===0?' <b>就是今天</b>':'，還 '+diff+' 天')+' · 每次 '+fmt(per)+'（VOO '+fmt(per*.45)+' / QQQM '+fmt(per*.30)+' / SMH '+fmt(per*.15)+' / VGT '+fmt(per*.10)+'） · 本月已定投 '+fmt(monthDca)+' / '+fmt(C.target);
-    if(overdue) m='⚠ 超過一個週期沒有定投紀錄（最近 '+(lastDca||'無')+'）— 扣完請記一筆 · '+m;
-    $('dl-remind').innerHTML=m; $('dl-remind').className='rounded px-2 py-1 mb-2 font-semibold '+(overdue?'bg-amber-100 text-amber-900':diff===0?'bg-blue-100 text-blue-900':'bg-slate-100 text-slate-700');
-    // rows
-    var r='<tr class="text-slate-500"><th class="text-left">日期</th><th>類別</th><th>標的</th><th></th><th class="text-right">股數</th><th class="text-right">價位</th><th class="text-right">金額</th><th></th></tr>';
-    L.slice(-30).reverse().forEach(function(x){ var i=L.indexOf(x); r+='<tr><td>'+x.date+'</td><td>'+x.kind+'</td><td class="font-mono">'+x.tk+'</td><td>'+(x.side>0?'買':'<span class="text-rose-700">賣</span>')+'</td><td class="text-right font-mono">'+x.sh+'</td><td class="text-right font-mono">'+x.px+'</td><td class="text-right font-mono">'+fmt(x.sh*x.px)+'</td><td><button data-i="'+i+'" class="dl-del text-rose-600">✕</button></td></tr>'; });
-    $('dl-rows').innerHTML=r;
-    document.querySelectorAll('.dl-del').forEach(function(b){ b.onclick=function(){ L.splice(parseInt(b.getAttribute('data-i')),1); save(K,L); recalc(); }; });
+    document.querySelectorAll('.dca-tier-amt').forEach(function(td){ td.textContent=fmt(boxx*parseFloat(td.getAttribute('data-share'))/100); });
+    var done=parseFloat($('dp-boost').value)||0, due=boxx*dep/100-done;
+    $('dca-reserve-now').innerHTML=fmt(boxx)+(dep?'；已跨 '+dep+'%% → 應投 '+fmt(boxx*dep/100)+'，已投 '+fmt(done)+'，<b>待投 '+fmt(Math.max(due,0))+'</b>':'');
+    // reminder
+    var now=new Date(), wd=parseInt($('dp-wd').value), freq=$('dp-freq').value, target=parseFloat($('dp-target').value)||4000;
+    var diff=(wd-now.getDay()+7)%%7, next=new Date(now); next.setDate(now.getDate()+diff);
+    var per= freq==='w' ? Math.round(target/4.33) : target, last=$('dp-last').value;
+    var overdue = last ? (now-new Date(last))/864e5 > (freq==='w'?8:33) : true;
+    var split=pl.map(function(x){return x.tk+' '+fmt(per*x.amt/1000);}).join(' / ');
+    var m='下次定投 '+next.toISOString().slice(0,10)+'（'+['日','一','二','三','四','五','六'][wd]+'）'+(diff===0?' <b>就是今天</b>':'，還 '+diff+' 天')+' · 每次 '+fmt(per)+'（'+split+'）'+(last?' · 最近 '+last:'');
+    if(overdue) m='⚠ 超過一個週期沒更新 — 扣完請改庫存並更新「最近定投日」 · '+m;
+    $('dp-remind').innerHTML=m; $('dp-remind').className='rounded px-2 py-1 mt-2 font-semibold '+(overdue?'bg-amber-100 text-amber-900':diff===0?'bg-blue-100 text-blue-900':'bg-slate-100 text-slate-700');
   }
-  $('dl-add').onclick=function(){ var sh=parseFloat($('dl-sh').value), px=parseFloat($('dl-px').value); if(!(sh>0)||!(px>0)) return alert('股數與價位要大於 0（BOXX 存入：股數填 1、價位填金額）');
-    L.push({date:$('dl-date').value, kind:$('dl-kind').value, tk:$('dl-tk').value, side:parseInt($('dl-side').value), sh:sh, px:px}); save(K,L); $('dl-sh').value=''; $('dl-px').value=''; recalc(); };
-  $('dl-kind').onchange=function(){ var k=this.value; $('dl-tk').value = k==='TQQQ'?'TQQQ':k==='存入BOXX'?'BOXX':$('dl-tk').value; };
-  ['dl-target','dl-wd','dl-freq'].forEach(function(id){ $(id).onchange=function(){ C={target:parseFloat($('dl-target').value)||4000, wd:parseInt($('dl-wd').value), freq:$('dl-freq').value}; save(KC,C); recalc(); }; });
-  $('dl-export').onclick=function(){ var t=JSON.stringify({ledger:L,cfg:C}); navigator.clipboard&&navigator.clipboard.writeText(t); prompt('已複製到剪貼簿，也可從這裡複製：',t); };
-  $('dl-import').onclick=function(){ var t=prompt('貼上匯出的 JSON'); if(!t) return; try{ var o=JSON.parse(t); L=o.ledger||[]; C=o.cfg||C; save(K,L); save(KC,C); recalc(); }catch(e){ alert('格式不對'); } };
+  ['dp-boxx','dp-boost','dp-last','dp-target','dp-wd','dp-freq'].forEach(function(id){ $(id).onchange=function(){ M={boxx:parseFloat($('dp-boxx').value)||0, boost:parseFloat($('dp-boost').value)||0, last:$('dp-last').value, target:parseFloat($('dp-target').value)||4000, wd:parseInt($('dp-wd').value), freq:$('dp-freq').value}; save(KM,M); recalc(); }; });
+  $('dca-plan').onchange=function(){ planStr=$('dca-plan').value; save(KP,planStr); plan().forEach(function(x){ if(!P[x.tk]) P[x.tk]={sh:0,cost:0}; }); save(K,P); recalc(); };
+  $('dp-add').onclick=function(){ var t=prompt('標的代號'); if(!t) return; t=t.trim().toUpperCase(); if(!P[t]) P[t]={sh:0,cost:0}; save(K,P); recalc(); };
+  $('dp-export').onclick=function(){ var t=JSON.stringify({pos:P,misc:M,plan:planStr}); navigator.clipboard&&navigator.clipboard.writeText(t); prompt('已複製到剪貼簿，也可從這裡複製：',t); };
+  $('dp-import').onclick=function(){ var t=prompt('貼上匯出的 JSON'); if(!t) return; try{ var o=JSON.parse(t); P=o.pos||P; M=o.misc||M; planStr=o.plan||planStr; save(K,P); save(KM,M); save(KP,planStr); location.reload(); }catch(e){ alert('格式不對'); } };
   recalc();
-})();</script>""" % (closes, bo["high_date"], d.get("reserve", 0), json.dumps(bo["ladder"]))
+})();</script>""" % (closes, d.get("reserve", 0), json.dumps(bo["ladder"]), plan_str)
     # D. per-ETF table
     rows = []
     for r in d.get("tickers", []):

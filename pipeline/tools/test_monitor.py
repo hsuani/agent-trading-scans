@@ -82,7 +82,7 @@ def _fake_hist(trend):
 
 up = dca_rule(_fake_hist("up"))
 assert up["signal"] == "ABOVE" and up["sleeve"]["hold"] and "核心定投照常" in up["action"], up["action"]
-assert up["plan_total"] == 1000 and [x["ticker"] for x in up["plan"]] == ["VOO", "QQQM", "SMH", "VGT"]
+assert up["plan_total"] == 1000 and [x["ticker"] for x in up["plan"]] == ["VOO", "QQQM", "SMH", "XLK"]
 assert up["boost"]["deployable_share"] == 0 and up["boost"]["next_pct"] == 10 and up["boost"]["reset"]
 down = dca_rule(_fake_hist("down"))          # -28% from the high, below the MA
 assert down["signal"] == "BELOW" and not down["sleeve"]["hold"] and "出場" in down["action"]
