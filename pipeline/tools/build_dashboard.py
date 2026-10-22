@@ -1937,7 +1937,7 @@ def render_dca_panel() -> str:
     plan_str = ",".join(f"{x['ticker']}:{x['per_1000']:.0f}" for x in d.get("plan", []))
     b = (f"<div class='mt-3 text-xs'><div class='font-bold mb-1 flex flex-wrap items-center gap-2'>B. 定投（每 $1,000）　<span id='dca-plan-chips' class='font-normal'>{chips}</span>"
          f"<label class='ml-auto font-normal'>拆分 <input id='dca-plan' class='border rounded px-1 py-0.5 w-72 font-mono' value='{plan_str}' title='標的:每千金額，逗號分隔；總和 1000'></label></div>"
-         "<div class='text-slate-600'>每週一次 $1,000（週五收盤前或週一開盤）= 這份拆分剛好一次；52 週 ≈ $4,333/月。要壓在 $4,000/月就每週 $923。"
+         "<div class='text-slate-600'>每月 3 / 13 / 23 / 29 日各扣 $1,000 = 這份拆分剛好一次，一個月 $4,000。"
          "固定扣、不看行情、不停扣。券商定期定額沒有的標的（如豐存股無 VGT）就換：XLK ≈ VGT（15 年 CAGR 20.9% vs 21.0%）；都沒有就併入 QQQM。</div>"
          "<div class='text-slate-600 mt-1'><b>TQQQ 衛星金額</b>：每 $1,000 現金流撥 <b>$130</b>（≈13%，含 $4,000 定投 + $1,000 加碼金的 $5,000/月 → 每月 $650）。"
          "濾網在線上 → 當期的 $130 買 TQQQ；線下 → 存 BOXX，站回時一次投入累積額。TQQQ 市值 > 總資產 15% 時當季停買並平回核心。</div></div>")
@@ -1975,8 +1975,9 @@ def render_dca_panel() -> str:
          "<label>高點後已投加碼 $<br><input id='dp-boost' type='number' step='0.01' class='border rounded px-1 py-0.5 w-28' title='QQQ 這次高點（C 的日期）之後已經投出去的加碼金；回高點重置時歸零'></label>"
          "<label>最近定投日<br><input id='dp-last' type='date' class='border rounded px-1 py-0.5'></label>"
          "<label>每月定投目標 $<br><input id='dp-target' type='number' class='border rounded px-1 py-0.5 w-20' value='4000'></label>"
-         "<label>定投日<br><select id='dp-wd' class='border rounded px-1 py-0.5'><option value='1'>週一</option><option value='2'>週二</option><option value='3'>週三</option><option value='4'>週四</option><option value='5' selected>週五</option></select></label>"
-         "<label>頻率<br><select id='dp-freq' class='border rounded px-1 py-0.5'><option value='w'>每週</option><option value='m'>每月</option></select></label>"
+         "<label>頻率<br><select id='dp-freq' class='border rounded px-1 py-0.5'><option value='d' selected>每月固定日</option><option value='w'>每週</option><option value='m'>每月一次</option></select></label>"
+         "<label>扣款日（每月固定日）<br><input id='dp-days' class='border rounded px-1 py-0.5 w-28 font-mono' value='3,13,23,29'></label>"
+         "<label>週幾（每週）<br><select id='dp-wd' class='border rounded px-1 py-0.5'><option value='1'>週一</option><option value='2'>週二</option><option value='3'>週三</option><option value='4'>週四</option><option value='5' selected>週五</option></select></label>"
          "</div><div id='dp-remind' class='rounded px-2 py-1 mt-2 font-semibold'></div></div>")
     ledger_js = """<script>(function(){
   var CL=%s, RES_ENV=%s, LAD=%s, PLAN_DEF='%s';
@@ -1984,11 +1985,13 @@ def render_dca_panel() -> str:
   function load(k,d){ try{var v=JSON.parse(localStorage.getItem(k)); return v==null?d:v;}catch(e){return d;} }
   function save(k,v){ try{localStorage.setItem(k,JSON.stringify(v));}catch(e){} }
   var $=function(id){return document.getElementById(id);};
-  var P=load(K,null), M=load(KM,{boxx:RES_ENV,boost:0,last:'',target:4000,wd:5,freq:'w'}), planStr=load(KP,PLAN_DEF);
+  var P=load(K,null), M=load(KM,{boxx:RES_ENV,boost:0,last:'',target:4000,wd:5,freq:'d',days:'3,13,23,29'}), planStr=load(KP,PLAN_DEF);
+  if(!M.days) M.days='3,13,23,29'; if(!M.freq) M.freq='d';
   function plan(){ var o=[]; planStr.split(',').forEach(function(x){var a=x.split(':'); if(a.length===2&&parseFloat(a[1])>0) o.push({tk:a[0].trim().toUpperCase(),amt:parseFloat(a[1])});}); return o; }
   if(!P){ P={}; plan().forEach(function(x){P[x.tk]={sh:0,cost:0};}); P.TQQQ={sh:0,cost:0}; }
-  $('dca-plan').value=planStr; $('dp-boxx').value=M.boxx; $('dp-boost').value=M.boost; $('dp-last').value=M.last||''; $('dp-target').value=M.target; $('dp-wd').value=M.wd; $('dp-freq').value=M.freq;
+  $('dca-plan').value=planStr; $('dp-boxx').value=M.boxx; $('dp-boost').value=M.boost; $('dp-last').value=M.last||''; $('dp-target').value=M.target; $('dp-wd').value=M.wd; $('dp-freq').value=M.freq; $('dp-days').value=M.days;
   function fmt(n,d){ return (n<0?'-':'')+'$'+Math.abs(n).toLocaleString(undefined,{maximumFractionDigits:d==null?0:d}); }
+  function ymd(x){ return x.getFullYear()+'-'+('0'+(x.getMonth()+1)).slice(-2)+'-'+('0'+x.getDate()).slice(-2); }
   function recalc(){
     var pl=plan(), tot=pl.reduce(function(a,x){return a+x.amt;},0);
     $('dca-plan-chips').innerHTML=pl.map(function(x){return '<b>'+x.tk+'</b> $'+x.amt;}).join(' · ')+(Math.abs(tot-1000)>0.5?' <span class="text-rose-700">（總和 '+tot+'，應為 1000）</span>':'');
@@ -2012,16 +2015,24 @@ def render_dca_panel() -> str:
     var done=parseFloat($('dp-boost').value)||0, due=boxx*dep/100-done;
     $('dca-reserve-now').innerHTML=fmt(boxx)+(dep?'；已跨 '+dep+'%% → 應投 '+fmt(boxx*dep/100)+'，已投 '+fmt(done)+'，<b>待投 '+fmt(Math.max(due,0))+'</b>':'');
     // reminder
-    var now=new Date(), wd=parseInt($('dp-wd').value), freq=$('dp-freq').value, target=parseFloat($('dp-target').value)||4000;
-    var diff=(wd-now.getDay()+7)%%7, next=new Date(now); next.setDate(now.getDate()+diff);
-    var per= freq==='w' ? Math.round(target/4.33) : target, last=$('dp-last').value;
-    var overdue = last ? (now-new Date(last))/864e5 > (freq==='w'?8:33) : true;
+    var now=new Date(), wd=parseInt($('dp-wd').value), freq=$('dp-freq').value, target=parseFloat($('dp-target').value)||4000, last=$('dp-last').value;
+    var today=new Date(now.getFullYear(),now.getMonth(),now.getDate()), next, per, gapMax, label;
+    if(freq==='d'){
+      var days=$('dp-days').value.split(',').map(function(x){return parseInt(x);}).filter(function(x){return x>=1&&x<=31;}).sort(function(a,b){return a-b;});
+      if(!days.length) days=[1];
+      per=Math.round(target/days.length); gapMax=Math.ceil(31/days.length)+2;
+      next=null; for(var k=0;k<3&&!next;k++){ var y=now.getFullYear(), mo=now.getMonth()+k; days.forEach(function(dd){ if(next) return; var cand=new Date(y,mo,dd); if(cand.getMonth()!==((mo%%12)+12)%%12) cand=new Date(y,mo+1,0); if(cand>=today) next=cand; }); }
+      label='每月 '+days.join('/')+' 日';
+    } else if(freq==='w'){ var diffw=(wd-now.getDay()+7)%%7; next=new Date(today); next.setDate(today.getDate()+diffw); per=Math.round(target/4.33); gapMax=8; label='每週'+['日','一','二','三','四','五','六'][wd]; }
+    else { next=new Date(now.getFullYear(),now.getMonth()+(now.getDate()>1?1:0),1); per=target; gapMax=33; label='每月 1 日'; }
+    var diff=Math.round((next-today)/864e5);
+    var overdue = last ? (now-new Date(last))/864e5 > gapMax : true;
     var split=pl.map(function(x){return x.tk+' '+fmt(per*x.amt/1000);}).join(' / ');
-    var m='下次定投 '+next.toISOString().slice(0,10)+'（'+['日','一','二','三','四','五','六'][wd]+'）'+(diff===0?' <b>就是今天</b>':'，還 '+diff+' 天')+' · 每次 '+fmt(per)+'（'+split+'）'+(last?' · 最近 '+last:'');
+    var m=label+' · 下次 '+ymd(next)+(diff===0?' <b>就是今天</b>':'，還 '+diff+' 天')+' · 每次 '+fmt(per)+'（'+split+'）'+(last?' · 最近 '+last:'');
     if(overdue) m='⚠ 超過一個週期沒更新 — 扣完請改庫存並更新「最近定投日」 · '+m;
     $('dp-remind').innerHTML=m; $('dp-remind').className='rounded px-2 py-1 mt-2 font-semibold '+(overdue?'bg-amber-100 text-amber-900':diff===0?'bg-blue-100 text-blue-900':'bg-slate-100 text-slate-700');
   }
-  ['dp-boxx','dp-boost','dp-last','dp-target','dp-wd','dp-freq'].forEach(function(id){ $(id).onchange=function(){ M={boxx:parseFloat($('dp-boxx').value)||0, boost:parseFloat($('dp-boost').value)||0, last:$('dp-last').value, target:parseFloat($('dp-target').value)||4000, wd:parseInt($('dp-wd').value), freq:$('dp-freq').value}; save(KM,M); recalc(); }; });
+  ['dp-boxx','dp-boost','dp-last','dp-target','dp-wd','dp-freq','dp-days'].forEach(function(id){ $(id).onchange=function(){ M={boxx:parseFloat($('dp-boxx').value)||0, boost:parseFloat($('dp-boost').value)||0, last:$('dp-last').value, target:parseFloat($('dp-target').value)||4000, wd:parseInt($('dp-wd').value), freq:$('dp-freq').value, days:$('dp-days').value}; save(KM,M); recalc(); }; });
   $('dca-plan').onchange=function(){ planStr=$('dca-plan').value; save(KP,planStr); plan().forEach(function(x){ if(!P[x.tk]) P[x.tk]={sh:0,cost:0}; }); save(K,P); recalc(); };
   $('dp-add').onclick=function(){ var t=prompt('標的代號'); if(!t) return; t=t.trim().toUpperCase(); if(!P[t]) P[t]={sh:0,cost:0}; save(K,P); recalc(); };
   $('dp-export').onclick=function(){ var t=JSON.stringify({pos:P,misc:M,plan:planStr}); navigator.clipboard&&navigator.clipboard.writeText(t); prompt('已複製到剪貼簿，也可從這裡複製：',t); };
