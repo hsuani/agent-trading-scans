@@ -246,7 +246,7 @@ def dca_rule(hist=None):
                ladder resets once QQQ is back within 1% of its high
       sleeve : TQQQ held only while QQQ closes above its 200-day MA — exit the
                day after a close below, re-enter the day after a close above"""
-    tickers = [t.strip().upper() for t in os.environ.get("DCA_TICKERS", "QQQ,SPY,SMH,VGT,TQQQ").split(",") if t.strip()]
+    tickers = [t.strip().upper() for t in os.environ.get("DCA_TICKERS", "QQQ,SPY,SMH,VGT,TQQQ,VOO,QQQM").split(",") if t.strip()]
     plan = [(k.strip().upper(), float(v)) for k, v in
             (x.split(":") for x in os.environ.get("DCA_PLAN", "VOO:450,QQQM:300,SMH:150,VGT:100").split(",") if ":" in x)]
     tiers = [(float(k), float(v)) for k, v in
@@ -275,6 +275,7 @@ def dca_rule(hist=None):
             rows.append({"ticker": t, "close": None, "above": None, "error": str(e)})
     lead = rows[0] if rows else {}
     out = {"tickers": rows, "reserve": reserve,
+           "closes": {r["ticker"]: r["close"] for r in rows if r.get("close")},
            "plan": [{"ticker": k, "per_1000": v} for k, v in plan], "plan_total": sum(v for _, v in plan)}
     if lead.get("above") is None:
         out.update(signal="DATA_UNAVAILABLE", urgency=3, boost=None, sleeve=None,
