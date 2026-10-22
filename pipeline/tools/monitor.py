@@ -235,6 +235,54 @@ def leverage_rule():
         return unavailable
 
 
+def dca_rule(hist=None):
+    """ETF 定投 + 200 日線濾網 tracker — mechanical, zero-LLM. For each ETF in
+    DCA_TICKERS: close vs 200-day MA, distance from the lookback high, days since
+    the last MA cross. The headline signal keys on the FIRST ticker (QQQ):
+      ABOVE MA200 -> core DCA as scheduled; a leveraged sleeve (if any) may be held
+      BELOW MA200 -> core DCA still as scheduled (never pause); leveraged sleeve -> BIL
+    DCA_PLAN ("VOO:1800,QQQM:1200,SMH:600,VGT:400") is echoed for the dashboard."""
+    tickers = [t.strip().upper() for t in os.environ.get("DCA_TICKERS", "QQQ,SPY,SMH,VGT").split(",") if t.strip()]
+    plan = [(k.strip().upper(), float(v)) for k, v in
+            (x.split(":") for x in os.environ.get("DCA_PLAN", "VOO:1800,QQQM:1200,SMH:600,VGT:400").split(",") if ":" in x)]
+    if hist is None:
+        from pricefeed import history as hist
+    rows, err = [], None
+    for t in tickers:
+        try:
+            c = hist(t, 760)["close"].dropna()
+            if len(c) < 210:
+                raise RuntimeError(f"{len(c)} bars")
+            ma = c.rolling(200).mean()
+            above = (c > ma).iloc[-1]
+            state = (c > ma).astype(int)
+            flips = state[state.diff().fillna(0) != 0]
+            cross_dt = str(flips.index[-1].date()) if len(flips) else str(c.index[0].date())
+            days = int((c.index[-1] - (flips.index[-1] if len(flips) else c.index[0])).days)
+            rows.append({"ticker": t, "close": round(float(c.iloc[-1]), 2), "ma200": round(float(ma.iloc[-1]), 2),
+                         "vs_ma200_pct": round(float(c.iloc[-1] / ma.iloc[-1] - 1) * 100, 2),
+                         "vs_high_pct": round(float(c.iloc[-1] / c.max() - 1) * 100, 2),
+                         "high_date": str(c.idxmax().date()), "above": bool(above),
+                         "cross_date": cross_dt, "days_in_state": days, "as_of": str(c.index[-1].date())})
+        except Exception as e:                        # noqa: BLE001
+            err = f"{t}: {e}"
+            rows.append({"ticker": t, "close": None, "above": None, "error": str(e)})
+    lead = rows[0] if rows else {}
+    if lead.get("above") is None:
+        sig, urg, action = "DATA_UNAVAILABLE", 3, f"⚠ {tickers[0] if tickers else '—'} history unavailable — 濾網狀態未知，核心定投照常"
+    elif lead["above"]:
+        sig, urg = "ABOVE", 1
+        action = (f"🟢 {lead['ticker']} 在 200 日線上 +{lead['vs_ma200_pct']:.1f}%（{lead['days_in_state']} 天）→ "
+                  f"核心定投照常；槓桿衛星可持有")
+    else:
+        sig, urg = "BELOW", 0
+        action = (f"🔻 {lead['ticker']} 跌破 200 日線 {lead['vs_ma200_pct']:.1f}%（{lead['days_in_state']} 天）→ "
+                  f"核心定投照常、不停扣；槓桿衛星轉 BIL、不加碼")
+    return {"tickers": rows, "plan": [{"ticker": k, "amount": v} for k, v in plan],
+            "plan_total": sum(v for _, v in plan), "signal": sig, "urgency": urg, "action": action,
+            **({"error": err} if err else {})}
+
+
 def main():
     held = set()
     if HELD_FILE.exists():
@@ -292,6 +340,7 @@ def main():
         "rr_min": RR_MIN, "catalyst_days": CATALYST_DAYS,
         "count": len(rows), "alerts": rows,
         "leverage": leverage_rule(),
+        "dca": dca_rule(),
     }
     (ROOT / "alerts.json").write_text(json.dumps(payload, ensure_ascii=False, indent=2),
                                       encoding="utf-8")
