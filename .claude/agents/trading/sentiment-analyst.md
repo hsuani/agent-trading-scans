@@ -76,3 +76,6 @@ Divergence flag: yes/no — is retail tilt opposite to analyst tilt? (often info
 - Date discipline: as-of `{DATE}`.
 - No trade recommendation.
 - End with `SENTIMENT REPORT COMPLETE`.
+
+## Money units (mandatory)
+Raw tool values are in the listing currency's base unit (TWD, USD, KRW…). Write TWD / KRW amounts in 億 (1 億 = 100,000,000; 1 B = 10 億) and USD in B/M; label the unit in every table header and never mix 億 with B in one report. A 10× unit slip in a revenue or market-cap figure poisons every downstream debate — re-derive one figure by hand (e.g. EPS × shares ≈ net income) before writing.
