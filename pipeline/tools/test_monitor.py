@@ -68,3 +68,22 @@ assert flags[0].startswith("⚠ LEVEL_SCALE_SUSPECT"), flags
 _, flags = status(card(entry="$100 – $104", stop="$95", t1="$110", t2="$120"), 121.0)
 assert "🎯 T2 HIT" in flags, flags
 print("ok")
+
+
+# dca_rule: 200-day-MA state per ETF from a stubbed feed; headline keys on the first ticker
+import pandas as pd  # noqa: E402
+from monitor import dca_rule  # noqa: E402
+
+def _fake_hist(trend):
+    idx = pd.bdate_range("2024-01-01", periods=400)
+    base = pd.Series(range(400), index=idx, dtype=float)
+    close = 100 + base * 0.1 if trend == "up" else 140 - base * 0.1
+    return lambda t, d: pd.DataFrame({"close": close})
+
+up = dca_rule(_fake_hist("up"))
+assert up["signal"] == "ABOVE" and up["tickers"][0]["above"] and "核心定投照常" in up["action"], up["action"]
+assert up["plan_total"] == 4000 and [x["ticker"] for x in up["plan"]] == ["VOO", "QQQM", "SMH", "VGT"]
+down = dca_rule(_fake_hist("down"))
+assert down["signal"] == "BELOW" and "轉 BIL" in down["action"] and down["tickers"][0]["vs_ma200_pct"] < 0
+assert dca_rule(lambda t, d: (_ for _ in ()).throw(RuntimeError("nope")))["signal"] == "DATA_UNAVAILABLE"
+print("ok")
