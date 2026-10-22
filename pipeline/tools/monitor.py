@@ -236,15 +236,22 @@ def leverage_rule():
 
 
 def dca_rule(hist=None):
-    """ETF 定投 + 200 日線濾網 tracker — mechanical, zero-LLM. For each ETF in
-    DCA_TICKERS: close vs 200-day MA, distance from the lookback high, days since
-    the last MA cross. The headline signal keys on the FIRST ticker (QQQ):
-      ABOVE MA200 -> core DCA as scheduled; a leveraged sleeve (if any) may be held
-      BELOW MA200 -> core DCA still as scheduled (never pause); leveraged sleeve -> BIL
-    DCA_PLAN ("VOO:1800,QQQM:1200,SMH:600,VGT:400") is echoed for the dashboard."""
-    tickers = [t.strip().upper() for t in os.environ.get("DCA_TICKERS", "QQQ,SPY,SMH,VGT").split(",") if t.strip()]
+    """ETF 定投 / 加碼 / TQQQ 濾網 tracker — mechanical, zero-LLM. Everything is
+    quoted per $1,000 so the user scales it; DCA_RESERVE (cash parked in BOXX) is
+    echoed for absolute amounts. Three rules, all keyed on QQQ:
+      core   : fixed monthly split (DCA_PLAN weights per $1,000) — never paused
+      boost  : the accumulated 加碼 reserve is deployed by a drawdown ladder on
+               QQQ's 2-year high (DCA_BOOST_TIERS "10:30,15:30,20:40" = at -10%
+               deploy 30% of the reserve, -15% another 30%, -20% the rest);
+               ladder resets once QQQ is back within 1% of its high
+      sleeve : TQQQ held only while QQQ closes above its 200-day MA — exit the
+               day after a close below, re-enter the day after a close above"""
+    tickers = [t.strip().upper() for t in os.environ.get("DCA_TICKERS", "QQQ,SPY,SMH,VGT,TQQQ").split(",") if t.strip()]
     plan = [(k.strip().upper(), float(v)) for k, v in
-            (x.split(":") for x in os.environ.get("DCA_PLAN", "VOO:1800,QQQM:1200,SMH:600,VGT:400").split(",") if ":" in x)]
+            (x.split(":") for x in os.environ.get("DCA_PLAN", "VOO:450,QQQM:300,SMH:150,VGT:100").split(",") if ":" in x)]
+    tiers = [(float(k), float(v)) for k, v in
+             (x.split(":") for x in os.environ.get("DCA_BOOST_TIERS", "10:30,15:30,20:40").split(",") if ":" in x)]
+    reserve = float(os.environ.get("DCA_RESERVE", "11200"))
     if hist is None:
         from pricefeed import history as hist
     rows, err = [], None
@@ -254,33 +261,65 @@ def dca_rule(hist=None):
             if len(c) < 210:
                 raise RuntimeError(f"{len(c)} bars")
             ma = c.rolling(200).mean()
-            above = (c > ma).iloc[-1]
             state = (c > ma).astype(int)
             flips = state[state.diff().fillna(0) != 0]
-            cross_dt = str(flips.index[-1].date()) if len(flips) else str(c.index[0].date())
-            days = int((c.index[-1] - (flips.index[-1] if len(flips) else c.index[0])).days)
+            last_flip = flips.index[-1] if len(flips) else c.index[0]
             rows.append({"ticker": t, "close": round(float(c.iloc[-1]), 2), "ma200": round(float(ma.iloc[-1]), 2),
                          "vs_ma200_pct": round(float(c.iloc[-1] / ma.iloc[-1] - 1) * 100, 2),
-                         "vs_high_pct": round(float(c.iloc[-1] / c.max() - 1) * 100, 2),
-                         "high_date": str(c.idxmax().date()), "above": bool(above),
-                         "cross_date": cross_dt, "days_in_state": days, "as_of": str(c.index[-1].date())})
+                         "vs_high_pct": round(float(c.iloc[-1] / c.max() - 1) * 100, 2), "high": round(float(c.max()), 2),
+                         "high_date": str(c.idxmax().date()), "above": bool(state.iloc[-1]),
+                         "cross_date": str(last_flip.date()), "days_in_state": int((c.index[-1] - last_flip).days),
+                         "as_of": str(c.index[-1].date())})
         except Exception as e:                        # noqa: BLE001
             err = f"{t}: {e}"
             rows.append({"ticker": t, "close": None, "above": None, "error": str(e)})
     lead = rows[0] if rows else {}
+    out = {"tickers": rows, "reserve": reserve,
+           "plan": [{"ticker": k, "per_1000": v} for k, v in plan], "plan_total": sum(v for _, v in plan)}
     if lead.get("above") is None:
-        sig, urg, action = "DATA_UNAVAILABLE", 3, f"⚠ {tickers[0] if tickers else '—'} history unavailable — 濾網狀態未知，核心定投照常"
-    elif lead["above"]:
-        sig, urg = "ABOVE", 1
-        action = (f"🟢 {lead['ticker']} 在 200 日線上 +{lead['vs_ma200_pct']:.1f}%（{lead['days_in_state']} 天）→ "
-                  f"核心定投照常；槓桿衛星可持有")
-    else:
+        out.update(signal="DATA_UNAVAILABLE", urgency=3, boost=None, sleeve=None,
+                   action=f"⚠ {tickers[0] if tickers else '—'} history unavailable — 濾網／加碼狀態未知，核心定投照常")
+        if err:
+            out["error"] = err
+        return out
+    # --- sleeve: TQQQ on/off ---
+    sleeve = {"etf": "TQQQ", "hold": lead["above"], "exit_below": lead["ma200"], "enter_above": lead["ma200"],
+              "buffer_pct": lead["vs_ma200_pct"], "days": lead["days_in_state"], "since": lead["cross_date"],
+              "tqqq_price": next((r.get("close") for r in rows if r["ticker"] == "TQQQ"), None)}
+    # --- boost ladder on QQQ drawdown ---
+    dd = -lead["vs_high_pct"]                       # magnitude
+    ladder, cum = [], 0.0
+    for pct, share in tiers:
+        cum += share
+        ladder.append({"pct": pct, "share": share, "cum_share": cum, "crossed": dd >= pct,
+                       "per_1000": round(10 * share, 0), "reserve_amt": round(reserve * share / 100, 0),
+                       "qqq_level": round(lead["high"] * (1 - pct / 100), 2)})
+    crossed = [x for x in ladder if x["crossed"]]
+    pending = [x for x in ladder if not x["crossed"]]
+    at_high = dd <= 1.0
+    boost = {"drawdown_pct": round(-dd, 2), "high": lead["high"], "high_date": lead["high_date"], "ladder": ladder,
+             "deployable_share": sum(x["share"] for x in crossed), "deployable_per_1000": round(10 * sum(x["share"] for x in crossed), 0),
+             "deployable_reserve": round(reserve * sum(x["share"] for x in crossed) / 100, 0),
+             "next_pct": pending[0]["pct"] if pending else None, "next_level": pending[0]["qqq_level"] if pending else None,
+             "gap_pp": round(pending[0]["pct"] - dd, 2) if pending else None, "reset": at_high}
+    # --- headline ---
+    if not lead["above"]:
         sig, urg = "BELOW", 0
-        action = (f"🔻 {lead['ticker']} 跌破 200 日線 {lead['vs_ma200_pct']:.1f}%（{lead['days_in_state']} 天）→ "
-                  f"核心定投照常、不停扣；槓桿衛星轉 BIL、不加碼")
-    return {"tickers": rows, "plan": [{"ticker": k, "amount": v} for k, v in plan],
-            "plan_total": sum(v for _, v in plan), "signal": sig, "urgency": urg, "action": action,
-            **({"error": err} if err else {})}
+        action = (f"🔻 QQQ 跌破 200 日線 {lead['vs_ma200_pct']:.1f}%（{lead['days_in_state']} 天）→ TQQQ 出場／不進場；"
+                  f"核心定投照常" + (f"；加碼階梯已跨 -{crossed[-1]['pct']:.0f}%" if crossed else ""))
+    elif crossed:
+        sig, urg = "BOOST", 2
+        action = (f"🟠 QQQ 距高點 {-dd:.1f}% 已跨 -{crossed[-1]['pct']:.0f}% → 加碼金可投 {boost['deployable_share']:.0f}%"
+                  f"（每 $1,000 投 ${boost['deployable_per_1000']:.0f}）；TQQQ 在線上持有")
+    else:
+        sig, urg = "ABOVE", 1
+        action = (f"🟢 QQQ 在 200 日線上 +{lead['vs_ma200_pct']:.1f}%（{lead['days_in_state']} 天）→ 核心定投照常、"
+                  f"TQQQ 持有、加碼金續存（距首檔 -{tiers[0][0]:.0f}% 還差 {boost['gap_pp']:.1f}pp）" if pending else
+                  f"🟢 QQQ 在 200 日線上 → 核心定投照常、TQQQ 持有")
+    out.update(signal=sig, urgency=urg, action=action, sleeve=sleeve, boost=boost)
+    if err:
+        out["error"] = err
+    return out
 
 
 def main():
