@@ -305,17 +305,17 @@ def dca_rule(hist=None):
     # --- headline ---
     if not lead["above"]:
         sig, urg = "BELOW", 0
-        action = (f"🔻 QQQ 跌破 200 日線 {lead['vs_ma200_pct']:.1f}%（{lead['days_in_state']} 天）→ TQQQ 出場／不進場；"
+        action = (f"🔻 QQQ 跌破 200 日線 {lead['vs_ma200_pct']:.1f}%（{lead['days_in_state']} 天）→ TQQQ 濾網=出場區；"
                   f"核心定投照常" + (f"；加碼階梯已跨 -{crossed[-1]['pct']:.0f}%" if crossed else ""))
     elif crossed:
         sig, urg = "BOOST", 2
         action = (f"🟠 QQQ 距高點 {-dd:.1f}% 已跨 -{crossed[-1]['pct']:.0f}% → 加碼金可投 {boost['deployable_share']:.0f}%"
-                  f"（每 $1,000 投 ${boost['deployable_per_1000']:.0f}）；TQQQ 在線上持有")
+                  f"（每 $1,000 投 ${boost['deployable_per_1000']:.0f}）；TQQQ 濾網=持有區")
     else:
         sig, urg = "ABOVE", 1
         action = (f"🟢 QQQ 在 200 日線上 +{lead['vs_ma200_pct']:.1f}%（{lead['days_in_state']} 天）→ 核心定投照常、"
-                  f"TQQQ 持有、加碼金續存（距首檔 -{tiers[0][0]:.0f}% 還差 {boost['gap_pp']:.1f}pp）" if pending else
-                  f"🟢 QQQ 在 200 日線上 → 核心定投照常、TQQQ 持有")
+                  f"TQQQ 濾網=持有區、加碼金續存（距首檔 -{tiers[0][0]:.0f}% 還差 {boost['gap_pp']:.1f}pp）" if pending else
+                  f"🟢 QQQ 在 200 日線上 → 核心定投照常、TQQQ 濾網=持有區")
     out.update(signal=sig, urgency=urg, action=action, sleeve=sleeve, boost=boost)
     if err:
         out["error"] = err

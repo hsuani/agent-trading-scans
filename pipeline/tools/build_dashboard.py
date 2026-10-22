@@ -1889,30 +1889,54 @@ def render_dca_panel() -> str:
           2: "bg-amber-100 border-amber-300"}.get(urg, "bg-slate-100 border-slate-300")
     cell = ("<div class='bg-white/70 rounded p-2'><div class='text-[10px] text-slate-500'>{k}</div>"
             "<div class='font-bold text-sm'>{v}</div></div>")
-    head = (f'<section id="dca" class="{bg} border rounded-lg shadow-sm p-3"><details><summary class="cursor-pointer select-none">'
+    above_attr = "1" if (d.get("sleeve") or {}).get("hold") else "0"
+    head = (f'<section id="dca" class="{bg} border rounded-lg shadow-sm p-3" data-above="{above_attr}"><details><summary class="cursor-pointer select-none">'
             '<div class="flex flex-wrap items-center gap-3 text-xs"><span class="font-bold text-sm">📆 ETF 定投 / 加碼 / TQQQ</span>'
-            f'<span><b>{_esc(d["action"])}</b></span><span class="ml-auto text-slate-400">details ▾</span></div></summary>')
+            f'<span><b>{_esc(d["action"])}</b></span><span id="dca-cta-head" class="font-bold"></span>'
+            '<span class="ml-auto text-slate-400">details ▾</span></div></summary>')
     if not d.get("sleeve"):
         return head + f'<div class="text-xs text-amber-700 mt-2">{_esc(d.get("error", "no data"))}</div></details></section>'
     sl, bo = d["sleeve"], d["boost"]
     lead = d["tickers"][0]
     # A. TQQQ sleeve
     hold = sl["hold"]
-    a_state = ("<span class='bg-green-100 text-green-800 px-1.5 rounded font-bold'>持有中</span>" if hold
-               else "<span class='bg-rose-100 text-rose-800 px-1.5 rounded font-bold'>空手（BIL/BOXX）</span>")
-    a = (f"<div class='mt-3 text-xs'><div class='font-bold mb-1'>A. TQQQ 濾網（QQQ 200 日線）　{a_state}"
-         f"<span class='text-slate-500 font-normal ml-2'>{sl['days']} 天，自 {_esc(sl['since'])}</span></div>"
+    a_state = ("<span class='bg-green-100 text-green-800 px-1.5 rounded font-bold'>濾網：持有區</span>" if hold
+               else "<span class='bg-rose-100 text-rose-800 px-1.5 rounded font-bold'>濾網：出場區</span>")
+    a = (f"<div class='mt-3 text-xs'><div class='font-bold mb-1 flex flex-wrap items-center gap-2'>A. TQQQ 濾網（QQQ 200 日線）　{a_state}"
+         f"<span class='text-slate-500 font-normal'>{sl['days']} 天，自 {_esc(sl['since'])}</span>"
+         "<label class='font-normal ml-auto'>我目前 <select id='dca-pos' class='border rounded px-1 py-0.5 text-xs'>"
+         "<option value='flat'>空手</option><option value='held'>持有 TQQQ</option></select></label></div>"
+         "<div id='dca-cta' class='rounded px-2 py-1.5 mb-2 text-sm font-bold'></div>"
          "<div class='grid grid-cols-2 md:grid-cols-5 gap-2'>"
          + cell.format(k="QQQ 收盤", v=f"{lead['close']:g}")
          + cell.format(k="QQQ MA200", v=f"{sl['exit_below']:g}")
          + cell.format(k="緩衝", v=f"{sl['buffer_pct']:+.1f}%")
-         + cell.format(k=("出場：QQQ 收盤 < " if hold else "進場：QQQ 收盤 > "), v=f"{sl['exit_below']:g} → 隔日" + ("賣 TQQQ 換 BIL" if hold else "買 TQQQ"))
+         + cell.format(k="出場線（收盤跌破 → 隔日賣）", v=f"{sl['exit_below']:g}")
          + cell.format(k="TQQQ", v=(f"${sl['tqqq_price']:.2f}" if sl.get("tqqq_price") else "—"))
          + "</div></div>")
+    cta_js = """<script>(function(){
+  var sec=document.getElementById('dca'); if(!sec) return;
+  var above=sec.getAttribute('data-above')==='1', sel=document.getElementById('dca-pos'),
+      cta=document.getElementById('dca-cta'), head=document.getElementById('dca-cta-head');
+  var ma=%s, px=%s;
+  function paint(){
+    var held=sel.value==='held', msg, cls;
+    if(above && !held){ msg='🟢 進場訊號：QQQ '+px+' 在 MA200 '+ma+' 之上 → 隔日買 TQQQ（停損紀律 = 收盤跌破 '+ma+' 隔日出場）'; cls='bg-green-200 text-green-900'; }
+    else if(above && held){ msg='✅ 持有 TQQQ：出場線 '+ma+'（收盤跌破 → 隔日賣）'; cls='bg-green-100 text-green-800'; }
+    else if(!above && held){ msg='🔴 出場訊號：QQQ '+px+' 收在 MA200 '+ma+' 之下 → 隔日賣 TQQQ 換 BIL/BOXX'; cls='bg-rose-200 text-rose-900'; }
+    else { msg='⏸ 空手等待：QQQ 收盤站回 '+ma+' 之上才進場'; cls='bg-slate-200 text-slate-700'; }
+    cta.className='rounded px-2 py-1.5 mb-2 text-sm font-bold '+cls; cta.textContent=msg;
+    head.textContent=' · '+msg.split('：')[0]; head.className='font-bold '+(cls.indexOf('rose')>=0?'text-rose-700':cls.indexOf('green-200')>=0?'text-green-800':'text-slate-600');
+  }
+  try{ sel.value=localStorage.getItem('dca_tqqq_pos')||'flat'; }catch(e){}
+  sel.addEventListener('change',function(){ try{localStorage.setItem('dca_tqqq_pos',sel.value);}catch(e){} paint(); });
+  paint();
+})();</script>""" % (sl["exit_below"], lead["close"])
     # B. monthly core split
     chips = " · ".join(f"<b>{_esc(x['ticker'])}</b> ${x['per_1000']:,.0f}" for x in d.get("plan", []))
-    b = (f"<div class='mt-3 text-xs'><div class='font-bold mb-1'>B. 每月定投（每 $1,000）　<span class='font-normal'>{chips}</span>"
-         "<span class='text-slate-500 ml-2'>固定扣款，不看行情、不停扣；$4,000 ×4，$8,000 ×8</span></div></div>")
+    b = (f"<div class='mt-3 text-xs'><div class='font-bold mb-1'>B. 定投（每 $1,000）　<span class='font-normal'>{chips}</span></div>"
+         "<div class='text-slate-600'>每週一次 $1,000（週五收盤前或週一開盤）= 這份拆分剛好一次；52 週 ≈ $4,333/月。要壓在 $4,000/月就每週 $923。"
+         "固定扣、不看行情、不停扣。</div></div>")
     # C. boost ladder
     lad = []
     for st in bo["ladder"]:
@@ -1928,7 +1952,7 @@ def render_dca_panel() -> str:
          f"<span class='font-normal'>現 <b>{bo['drawdown_pct']:+.1f}%</b> · 可投 <b>{bo['deployable_share']:.0f}%</b> 的加碼金"
          f"（每 $1,000 投 ${bo['deployable_per_1000']:.0f}；BOXX 存量 ${d['reserve']:,.0f} → ${bo['deployable_reserve']:,.0f}）</span>{reset}</div>"
          "<div class='flex flex-wrap items-center gap-1.5'>" + "".join(lad) + f"<span class='text-[11px] text-slate-600'>　{nxt}</span></div>"
-         "<div class='text-[11px] text-slate-500 mt-1'>加碼金每月 +$1,000 存 BOXX；跨一檔投一檔、按 B 的比例買；回到高點 1% 內重置。</div></div>")
+         "<div class='text-[11px] text-slate-500 mt-1'>加碼金每月 +$1,000 存 BOXX；QQQ 只是觸發參考 —— 跨一檔投一檔、<b>按 B 的四檔比例買</b>（不是只買 QQQ）；回到高點 1% 內重置。</div></div>")
     # D. per-ETF table
     rows = []
     for r in d.get("tickers", []):
@@ -1943,7 +1967,7 @@ def render_dca_panel() -> str:
     dtab = ("<table class='w-full text-xs mt-3'><thead><tr class='text-slate-500'><th class='text-left'>ETF</th><th class='text-right'>收盤</th>"
             "<th class='text-right'>MA200</th><th class='text-right'>vs MA200</th><th class='text-left'>狀態</th><th class='text-right'>距 2 年高</th></tr></thead>"
             + "".join(rows) + "</table>")
-    return (head + a + b + c + dtab +
+    return (head + a + b + c + dtab + cta_js +
             '<div class="text-[11px] text-slate-500 mt-2">回測：TQQQ 濾網 2016–2026 CAGR 39% ≈ 買進持有，最大回撤 −56% vs −82%；'
             '核心擇時版本全輸固定扣款。工具/回測規則，非投資建議。</div></details></section>')
 
