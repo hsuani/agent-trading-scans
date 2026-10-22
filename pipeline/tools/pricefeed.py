@@ -81,7 +81,7 @@ def _cnyes_quote(ticker):
         return {"last_price": float(last), "previous_close": m.get("21"),
                 "day_high": m.get("12"), "day_low": m.get("13"),
                 "currency": "TWD" if u.endswith((".TW", ".TWO")) else "USD",
-                "name": m.get("200009")}
+                "name": m.get("200009"), "trade_ts": m.get("200007")}   # 200007 = last-trade epoch (UTC)
     except Exception:
         return None
 
@@ -298,12 +298,42 @@ def history(ticker, days=400, cache=True):
             last = f"{name}: {e}"
             continue
         if rows:
+            rows, appended = _append_live_bar(ticker, sorted(rows))
             df = pd.DataFrame(rows, columns=["date", "open", "high", "low", "close", "volume"])
             df["date"] = pd.to_datetime(df["date"])
             df = df.set_index("date").sort_index()
-            df.attrs["source"] = name
+            df.attrs["source"] = name + ("+quote" if appended else "")
             return df
     raise RuntimeError(f"no history for {ticker} ({last})")
+
+
+def _append_live_bar(ticker, rows, q=None):
+    """Yahoo's chart lags one session for TW names after the 13:30 close, so the
+    chain could hand TA a stale last bar. If the live quote's previous_close equals
+    our last close (i.e. the quote IS the next session) and today is later than the
+    last bar, append today's bar from the quote. The equality guard makes this
+    exact rather than a guess; a cached quote never qualifies."""
+    try:
+        q = q if q is not None else quote(ticker, cache=False)
+        if not q or q.get("source") == "cache" or not q.get("last_price") or not q.get("previous_close"):
+            return rows, False
+        last_d, last_c = rows[-1][0], rows[-1][4]
+        if not q.get("trade_ts"):
+            return rows, False                        # no session timestamp -> cannot date the bar
+        from zoneinfo import ZoneInfo
+        tz = ZoneInfo("Asia/Taipei" if ticker.upper().endswith((".TW", ".TWO")) else "America/New_York")
+        sess = datetime.fromtimestamp(int(q["trade_ts"]), timezone.utc).astimezone(tz)
+        session_d = sess.date()
+        closed = sess.time() >= (datetime.strptime("13:30", "%H:%M").time() if tz.key == "Asia/Taipei"
+                                 else datetime.strptime("16:00", "%H:%M").time())
+        if session_d <= last_d or not closed or abs(float(q["previous_close"]) - float(last_c)) > 1e-6 * max(1.0, abs(last_c)):
+            return rows, False
+        o = q.get("open") or q["last_price"]
+        h = q.get("day_high") or max(o, q["last_price"])
+        l = q.get("day_low") or min(o, q["last_price"])
+        return rows + [(session_d, float(o), float(h), float(l), float(q["last_price"]), 0.0)], True
+    except Exception:                                 # noqa: BLE001 — never let the append break history()
+        return rows, False
 
 
 def probe(us="NVDA", tw="2330.TW"):

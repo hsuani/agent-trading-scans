@@ -39,4 +39,19 @@ try:
     pf.history("X", 30); raise AssertionError("expected failure")
 except RuntimeError as e:
     assert "no history" in str(e)
+
+# live-bar append: only when the quote carries a post-close trade timestamp for a session
+# newer than our last bar AND its previous_close equals our last close (exact, not a guess)
+from datetime import date as _d, datetime as _dt, timezone as _tz
+rows = [(_d(2026, 10, 20), 1, 1, 1, 430.0, 10), (_d(2026, 10, 21), 1, 1, 1, 436.5, 10)]
+ts_close = int(_dt(2026, 10, 22, 5, 30, tzinfo=_tz.utc).timestamp())      # 13:30 Taipei = TW close
+ts_open = int(_dt(2026, 10, 22, 2, 0, tzinfo=_tz.utc).timestamp())        # 10:00 Taipei = mid-session
+q = {"last_price": 414.0, "previous_close": 436.5, "open": 440.0, "day_high": 442.5, "day_low": 412.0, "source": "cnyes", "trade_ts": ts_close}
+r2, ok = pf._append_live_bar("2408.TW", rows, q)
+assert ok and r2[-1][0] == _d(2026, 10, 22) and r2[-1][4] == 414.0 and r2[-1][1] == 440.0, r2[-1]
+assert not pf._append_live_bar("2408.TW", rows, dict(q, trade_ts=ts_open))[1]          # still trading -> no
+assert not pf._append_live_bar("2408.TW", rows, dict(q, previous_close=420.0))[1]      # prev close mismatch -> no
+assert not pf._append_live_bar("2408.TW", rows, dict(q, source="cache"))[1]            # cached quote -> no
+assert not pf._append_live_bar("2408.TW", rows + [(_d(2026, 10, 22), 1, 1, 1, 414.0, 10)], q)[1]   # already have it
+assert not pf._append_live_bar("2408.TW", rows, {k: v for k, v in q.items() if k != "trade_ts"})[1]  # no timestamp -> no
 print("ok")
