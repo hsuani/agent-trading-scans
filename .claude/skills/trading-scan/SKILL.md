@@ -239,6 +239,26 @@ Tiebreak within cap: rank by (conviction_signals × R:R_estimate). Pick highest 
 
 ## Pipeline (per ticker)
 
+### MODEL TIERS — pass `model` EXPLICITLY on every Task/Agent call
+
+The cloud routine sandbox ignores the `model:` frontmatter in `.claude/agents/trading/*.md`
+and runs every subagent on the session model unless the call names one. Always pass it:
+
+| model | agents |
+|---|---|
+| `haiku` | fundamentals-analyst, market-analyst, news-analyst, sentiment-analyst, evidence-shadow |
+| `sonnet` | bull-researcher, bear-researcher, trader, risk-aggressive, risk-conservative, risk-neutral, sector-comparator, watchlist-digest |
+| `opus` | research-manager |
+| `fable` | portfolio-manager |
+
+### ORCHESTRATION — the session running this skill spawns every persona itself
+
+NEVER hand a whole sector, or a ticker's whole Phase 1-5, to one Agent "to run the
+trading-scan skill". A sub-agent has no Agent/Task tool, so it writes bull, bear, the
+risk trio and the portfolio manager itself in one context with one model, and skips
+evidence_shadow — a silent quality failure (2026-10-22 tw_memory ran that way). If you
+want parallelism, spawn personas for several tickers at once; the fan-out is yours.
+
 Run all 4 Phase-1 analysts **in parallel** via Task tool, then sequential.
 
 ```
