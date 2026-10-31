@@ -11,7 +11,7 @@ FINAL TRANSACTION PROPOSAL: **HOLD**
 | Field | Value |
 |---|---|
 | Direction | LONG（既有持倉，不新增、不減碼） |
-| Entry zone | 不適用（持倉自 5/29 materials picks；新資金暫不進場） |
+| Entry zone | 不適用（既有持倉自 materials 清單；新資金暫不進場） |
 | Stop | $494.50（由 $488.88 上移；收盤跌破為準） |
 | Target 1 | $548.20（52 週高點） |
 | Target 2 | $591.00（分析師最高目標） |
