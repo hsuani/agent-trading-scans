@@ -364,7 +364,7 @@
    "source_date": "2026-11-02",
    "claim_status": "CONFIRMED",
    "confidence": 0.7,
-   "notes": "-28.8x equals $10.88 / -0.378 (FY2027E EPS), not the FY2026E -0.293 that the report names beside it. Recorded as written; flag for the resolver.",
+   "notes": "-28.8x equals $10.88 / -0.378 (FY2027E EPS), not the FY2026E -0.293 that the report names beside it. Recorded as written; flag for the resolver. EV/EBITDA -21.5x is the report's ratio, not a feed field.",
    "source_domain": "",
    "source_grade": "C",
    "grade_basis": "name"
@@ -912,14 +912,14 @@
   {
    "claim_id": "news-19",
    "origin_agent": "news",
-   "claim": "BIS 900 系列 ECCN 已對量子項目設出口管制，行政命令暗示後續可能新增管制",
+   "claim": "BIS 900 系列 ECCN 已對量子項目設出口管制",
    "evidence_key": "BIS_ECCN_900_series_quantum_controls",
    "source_url": "https://sanctionsnews.bakermckenzie.com/united-states-administration-issues-new-executive-order-on-quantum-innovation/",
    "source_name": "Baker McKenzie",
    "source_date": "",
    "claim_status": "CONFIRMED",
    "confidence": 0.6,
-   "notes": "Future-tightening part is an inference from the executive order per the report, and is status EXPECTED in substance; recorded as the controls claim only.",
+   "notes": "The report's further point that the executive order hints at possible new controls is its own inference and is not recorded as a separate claim.",
    "source_domain": "sanctionsnews.bakermckenzie.com",
    "source_grade": "UNKNOWN",
    "grade_basis": "none"
@@ -994,7 +994,7 @@
    "source_date": "2026-11-02",
    "claim_status": "CONFIRMED",
    "confidence": 0.75,
-   "notes": "Feed values; news report uses info (15:34 UTC cache). Short % uses float, not shares out; fundamentals report says 20.8% of shares out and 23.7% of float.",
+   "notes": "Feed values; news report uses info (15:34 UTC cache). News labels the 23.7% as a share of shares outstanding; fundamentals-32 labels 23.7% as share of float (20.8% of shares outstanding). Not reconciled.",
    "source_domain": "",
    "source_grade": "C",
    "grade_basis": "name"
@@ -1107,20 +1107,35 @@
   {
    "claim_id": "sentiment-08",
    "origin_agent": "sentiment",
-   "claim": "2026-05-21 GC Diane Nguyen 賣出 40,000 股，均價 25.01 USD，約 $1.0M；2026-06-15 Rohit Ghai 董事賣出 13,518 股，均價 26.41 USD，約 $0.36M",
+   "claim": "2026-05-21 GC Diane Nguyen 賣出 40,000 股，均價 25.01 USD，約 $1.0M",
    "evidence_key": "Form4_2026-05-21_Nguyen_sale",
    "source_url": "",
    "source_name": "yfinance",
    "source_date": "2026-05-21",
    "claim_status": "CONFIRMED",
    "confidence": 0.75,
-   "notes": "Ghai sale recorded under a separate key Form4_2026-06-15_Ghai_sale in the same report. Split is for dedupe.",
+   "notes": "Same transaction appears in the sentiment table; fundamentals report lists it as about $1.0M.",
    "source_domain": "",
    "source_grade": "C",
    "grade_basis": "name"
   },
   {
    "claim_id": "sentiment-09",
+   "origin_agent": "sentiment",
+   "claim": "董事 Rohit Ghai 2026-06-15 賣出 13,518 股，均價 26.41 USD，約 $0.36M",
+   "evidence_key": "Form4_2026-06-15_Ghai_sale",
+   "source_url": "",
+   "source_name": "yfinance",
+   "source_date": "2026-06-15",
+   "claim_status": "CONFIRMED",
+   "confidence": 0.75,
+   "notes": "",
+   "source_domain": "",
+   "source_grade": "C",
+   "grade_basis": "name"
+  },
+  {
+   "claim_id": "sentiment-10",
    "origin_agent": "sentiment",
    "claim": "董事 John D. DiLullo 2026-09-08 賣出 1,100 股，均價 18.00 USD，約 $0.02M",
    "evidence_key": "Form4_2026-09-08_DiLullo_sale",
@@ -1135,7 +1150,7 @@
    "grade_basis": "name"
   },
   {
-   "claim_id": "sentiment-10",
+   "claim_id": "sentiment-11",
    "origin_agent": "sentiment",
    "claim": "2026-05 選擇權流向偏多；call 合約約佔 80%（2026-05-22 選擇權數據網站）；X 貼文約 80% 偏正面",
    "evidence_key": "historicaloptiondata_2026-05-22_call_share",
@@ -1150,7 +1165,7 @@
    "grade_basis": "none"
   },
   {
-   "claim_id": "sentiment-11",
+   "claim_id": "sentiment-12",
    "origin_agent": "sentiment",
    "claim": "現金部位約 $1B，財務彈性被視為優勢（retail theme from search results）",
    "evidence_key": "retail_theme_search_results",
@@ -1165,7 +1180,7 @@
    "grade_basis": "none"
   },
   {
-   "claim_id": "sentiment-12",
+   "claim_id": "sentiment-13",
    "origin_agent": "sentiment",
    "claim": "公司表示 2026 年多數營收將落在第四季（相關報導見 tikr）",
    "evidence_key": "QBTS_company_statement_Q4_revenue_concentration",
@@ -1178,21 +1193,6 @@
    "source_domain": "tikr.com",
    "source_grade": "UNKNOWN",
    "grade_basis": "none"
-  },
-  {
-   "claim_id": "analyst-01",
-   "origin_agent": "fundamentals",
-   "claim": "Analyst estimate: 6-month insider-sale context and valuation stance are the writer's own reading; no separate numeric estimate beyond items above",
-   "evidence_key": "analyst_estimate",
-   "source_url": "",
-   "source_name": "analyst",
-   "source_date": "",
-   "claim_status": "UNSUPPORTED",
-   "confidence": 0.3,
-   "notes": "Placeholder entry for the writer's judgment that the stock's valuation cannot be anchored on fundamentals. Included only so the UNSUPPORTED count reflects that no numeric estimate was found beyond items above. Low-value; resolver may drop.",
-   "source_domain": "",
-   "source_grade": "UNKNOWN",
-   "grade_basis": "name"
   }
  ],
  "graded_by": "source_grades.py"
