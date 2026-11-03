@@ -432,14 +432,14 @@
   {
    "claim_id": "market-02",
    "origin_agent": "market",
-   "claim": "Price is 8.7% below MA20, 2.0% below MA50, and 41.5% above MA200; BB %B 0.16; 20-day annualized volatility 60.4%; ATR14 NT$392.79 (about 6.5% of price).",
+   "claim": "Price is 8.7% below MA20, 2.0% below MA50, and 41.5% above MA200.",
    "evidence_key": "analyst_estimate",
    "source_url": "",
    "source_name": "analyst",
    "source_date": "",
    "claim_status": "UNSUPPORTED",
    "confidence": 0.8,
-   "notes": "Distances are writer-computed from the snapshot. The 60.4% volatility and ATR are from the data feed and are recorded under yfinance_snapshot in the feed sense, but this record uses analyst key for the computed distances.",
+   "notes": "Distances are writer-computed from the snapshot price and MAs in market-01.",
    "source_domain": "",
    "source_grade": "UNKNOWN",
    "grade_basis": "name"
@@ -492,6 +492,21 @@
   {
    "claim_id": "market-06",
    "origin_agent": "market",
+   "claim": "20-day annualized volatility 60.4%; ATR14 NT$392.79 (about 6.5% of price); BB %B 0.16; RSI14 43.57 described as neutral-weak.",
+   "evidence_key": "yfinance_snapshot_2026-11-03",
+   "source_url": "",
+   "source_name": "yfinance",
+   "source_date": "2026-11-03",
+   "claim_status": "CONFIRMED",
+   "confidence": 0.75,
+   "notes": "The 6.5% ATR ratio is writer-computed. Volume versus 10-day average is marked unavailable in the report.",
+   "source_domain": "",
+   "source_grade": "C",
+   "grade_basis": "name"
+  },
+  {
+   "claim_id": "market-07",
+   "origin_agent": "market",
    "claim": "Support and resistance: resistance NT$6,095.00 (2026-09-01 local high), NT$6,158.00 (MA50), NT$6,608.25 (MA20); support NT$5,765.66 (Bollinger lower band), NT$5,210.00 (2026-09-16 local low), NT$4,230 (near MA200), NT$3,260.00, NT$2,990.00.",
    "evidence_key": "yfinance_snapshot_2026-11-03",
    "source_url": "",
@@ -499,13 +514,13 @@
    "source_date": "2026-11-03",
    "claim_status": "CONFIRMED",
    "confidence": 0.75,
-   "notes": "Level derivation (local highs and lows, Bollinger band) is from the feed. Cached 6,095 level conflicts with 52-week high basis per news report.",
+   "notes": "Level derivation (local highs and lows, Bollinger band) is from the feed. The 6,095 level conflicts with the 52-week high basis per news report.",
    "source_domain": "",
    "source_grade": "C",
    "grade_basis": "name"
   },
   {
-   "claim_id": "market-07",
+   "claim_id": "market-08",
    "origin_agent": "market",
    "claim": "Suggested stop-loss at a close below NT$5,210; a 2x ATR stop gives about NT$786 risk per share (about 13% of price).",
    "evidence_key": "analyst_estimate",
@@ -522,14 +537,14 @@
   {
    "claim_id": "news-01",
    "origin_agent": "news",
-   "claim": "September consolidated revenue NT$3.054 億 (report: 30.54 億元), down 5.3% MoM and up 80.0% YoY; cumulative first nine months 220.73 億元, up 47.1% YoY.",
+   "claim": "September consolidated revenue 30.54 億元, down 5.3% MoM and up 80.0% YoY; cumulative first nine months 220.73 億元, up 47.1% YoY.",
    "evidence_key": "TechNews_2026-10-08_Sep_monthly_revenue",
    "source_url": "",
    "source_name": "TechNews",
    "source_date": "2026-10-08",
    "claim_status": "CONFIRMED",
    "confidence": 0.85,
-   "notes": "Cumulative 220.73 vs Q1+Q2 cache (53.05 + 72.75 = 125.80) implies Jul-Sep about 94.9 億, not checked against the monthly figures. Report says 9-month totals are not yet in a filing.",
+   "notes": "Cumulative 220.73 vs Q1+Q2 cache (53.05 + 72.75 = 125.80) implies Jul-Sep about 94.9 億, not checked against the monthly figures.",
    "source_domain": "",
    "source_grade": "C",
    "grade_basis": "name"
@@ -604,7 +619,7 @@
    "source_date": "",
    "claim_status": "EXPECTED",
    "confidence": 0.75,
-   "notes": "Date not stated (report says 日期不詳). Buy rating itself is CONFIRMED as issued; the target is a forward-looking broker figure. Report says the target above 9,420 is the latest, with the Nvidia cooling spec upgrade as the driver.",
+   "notes": "Date not stated (report says 日期不詳). Buy rating itself is CONFIRMED as issued; the target is a forward-looking broker figure. Report attributes the target raise to AI cooling spec upgrades.",
    "source_domain": "",
    "source_grade": "C",
    "grade_basis": "name"
@@ -822,14 +837,14 @@
   {
    "claim_id": "news-21",
    "origin_agent": "news",
-   "claim": "Auras 2026 Q1 revenue about NT$8.55 billion, up 94% YoY.",
+   "claim": "Auras 2026 Q1 revenue about NT$8.55 billion (report unit), up 94% YoY.",
    "evidence_key": "Auras_2026Q1_revenue",
    "source_url": "",
    "source_name": "",
    "source_date": "",
    "claim_status": "CONFIRMED",
    "confidence": 0.6,
-   "notes": "Report uses NT$8.55 billion (B unit) for the 億 figure 85.5. Recorded as written. Source not named.",
+   "notes": "Report gives NT$8.55 billion (B unit) and 85.5億 in another place; recorded as written. Source not named.",
    "source_domain": "",
    "source_grade": "UNKNOWN",
    "grade_basis": "none"
@@ -867,20 +882,35 @@
   {
    "claim_id": "news-24",
    "origin_agent": "news",
-   "claim": "AVC expected to ship Vera Rubin cold plates from 2026 Q3; Delta holds an estimated about 60% share of AI server power supply.",
+   "claim": "AVC expected to ship Vera Rubin cold plates from 2026 Q3.",
    "evidence_key": "AVC_Rubin_shipment_plan",
    "source_url": "",
    "source_name": "",
    "source_date": "",
    "claim_status": "EXPECTED",
-   "confidence": 0.55,
-   "notes": "Two claims combined. The Delta 60% share is an estimate with no source named (status should be read as UNKNOWN for that part).",
+   "confidence": 0.6,
+   "notes": "Source not named.",
    "source_domain": "",
    "source_grade": "UNKNOWN",
    "grade_basis": "none"
   },
   {
    "claim_id": "news-25",
+   "origin_agent": "news",
+   "claim": "Delta holds an estimated about 60% share of AI server power supply.",
+   "evidence_key": "Delta_PSU_share_estimate",
+   "source_url": "",
+   "source_name": "",
+   "source_date": "",
+   "claim_status": "UNKNOWN",
+   "confidence": 0.5,
+   "notes": "Report says 市占估約 60%, with no source named.",
+   "source_domain": "",
+   "source_grade": "UNKNOWN",
+   "grade_basis": "none"
+  },
+  {
+   "claim_id": "news-26",
    "origin_agent": "news",
    "claim": "Jentech's October 2026 revenue is due by 2026-11-10 (regulatory deadline); comparison base is October 2025 revenue of 17.01 億元.",
    "evidence_key": "MOPS_monthly_revenue_filing_rule",
@@ -895,9 +925,9 @@
    "grade_basis": "none"
   },
   {
-   "claim_id": "news-26",
+   "claim_id": "news-27",
    "origin_agent": "news",
-   "claim": "If September's 30.54 億 level holds, October revenue would be up about 80% YoY.",
+   "claim": "If September's 30.54 億元 level holds, October revenue would be up about 80% YoY.",
    "evidence_key": "analyst_estimate",
    "source_url": "",
    "source_name": "analyst",
@@ -910,7 +940,7 @@
    "grade_basis": "name"
   },
   {
-   "claim_id": "news-27",
+   "claim_id": "news-28",
    "origin_agent": "news",
    "claim": "Q3 2026 earnings expected about 2026-11-12 (yfinance estimate, unconfirmed; statutory deadline 11-14); 2026 EPS consensus 68 to 69 TWD (broker).",
    "evidence_key": "yfinance_snapshot_2026-11-03",
@@ -925,7 +955,7 @@
    "grade_basis": "name"
   },
   {
-   "claim_id": "news-28",
+   "claim_id": "news-29",
    "origin_agent": "news",
    "claim": "NVIDIA FY2027 Q3 earnings and investor call on 11-17 (US Eastern 17:00, Pacific 14:00), confirmed by NVIDIA.",
    "evidence_key": "NVIDIA_IR_FY2027Q3_earnings_date",
@@ -940,7 +970,7 @@
    "grade_basis": "none"
   },
   {
-   "claim_id": "news-29",
+   "claim_id": "news-30",
    "origin_agent": "news",
    "claim": "Jentech's Q3 investor conference date for late November or early December is unconfirmed; past dates were 2023-11-30 and 2024-12-04.",
    "evidence_key": "news_Q3_investor_call_date_unconfirmed",
@@ -955,7 +985,7 @@
    "grade_basis": "none"
   },
   {
-   "claim_id": "news-30",
+   "claim_id": "news-31",
    "origin_agent": "news",
    "claim": "At 2026 EPS of 68 to 69 TWD, the P/E is about 88x (price 6,035).",
    "evidence_key": "analyst_estimate",
@@ -1009,7 +1039,7 @@
    "source_date": "",
    "claim_status": "EXPECTED",
    "confidence": 0.65,
-   "notes": "Year not stated in report (06-02 only); assumed 2026 by context but not confirmed.",
+   "notes": "Year not stated in report (06-02 only).",
    "source_domain": "",
    "source_grade": "C",
    "grade_basis": "name"
