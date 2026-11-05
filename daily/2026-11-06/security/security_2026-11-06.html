@@ -1,0 +1,4837 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Trading Scan — SECURITY — 2026-11-06</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+  .verdict-BUY  { background: #dcfce7; color: #166534; }
+  .verdict-HOLD { background: #fef3c7; color: #92400e; }
+  .verdict-SELL { background: #fee2e2; color: #991b1b; }
+  .verdict-UNKNOWN { background: #f3f4f6; color: #374151; }
+  details > summary { cursor: pointer; }
+  details[open] > summary { margin-bottom: 0.5rem; }
+  .agent-prose h1, .agent-prose h2, .agent-prose h3 { font-weight: 600; margin-top: 1rem; margin-bottom: 0.5rem; }
+  .agent-prose h1 { font-size: 1.5rem; }
+  .agent-prose h2 { font-size: 1.25rem; }
+  .agent-prose h3 { font-size: 1.1rem; }
+  .agent-prose p { margin-bottom: 0.5rem; line-height: 1.5; }
+  .agent-prose ul { list-style-type: disc; margin-left: 1.5rem; margin-bottom: 0.5rem; }
+  .agent-prose ol { list-style-type: decimal; margin-left: 1.5rem; margin-bottom: 0.5rem; }
+  .agent-prose table { border-collapse: collapse; margin: 0.75rem 0; font-size: 0.875rem; }
+  .agent-prose th, .agent-prose td { border: 1px solid #d1d5db; padding: 0.375rem 0.75rem; text-align: left; }
+  .agent-prose th { background: #f9fafb; font-weight: 600; }
+  .agent-prose code { background: #f3f4f6; padding: 0.1rem 0.25rem; border-radius: 0.25rem; font-size: 0.875rem; }
+  .agent-prose pre { background: #1f2937; color: #f9fafb; padding: 0.75rem; border-radius: 0.375rem; overflow-x: auto; font-size: 0.85rem; margin: 0.5rem 0; }
+  .agent-prose strong { font-weight: 600; }
+  nav a { color: #2563eb; text-decoration: none; }
+  nav a:hover { text-decoration: underline; }
+</style>
+</head>
+<body class="bg-slate-50 text-slate-900">
+
+<header class="bg-slate-900 text-white p-6 shadow-md">
+  <div class="max-w-6xl mx-auto">
+    <h1 class="text-3xl font-bold">交易掃描 — SECURITY</h1>
+    <p class="text-slate-300 text-sm mt-1">as of 2026-11-06 · 產生於 2026-11-05 20:29</p>
+  </div>
+</header>
+
+<nav class="bg-slate-100 border-b border-slate-300 p-3 sticky top-0 z-10">
+  <div class="max-w-6xl mx-auto flex flex-wrap gap-3 text-sm">
+    <a href="#sector-overview" class="font-semibold">族群總覽</a>
+    <a href="#ticker-CRWD" class="px-2 py-1 rounded verdict-HOLD">CRWD</a>
+<a href="#ticker-PANW" class="px-2 py-1 rounded verdict-HOLD">PANW</a>
+<a href="#ticker-ZS" class="px-2 py-1 rounded verdict-HOLD">ZS</a>
+<a href="#ticker-S" class="px-2 py-1 rounded verdict-HOLD">S</a>
+<a href="#ticker-OKTA" class="px-2 py-1 rounded verdict-HOLD">OKTA</a>
+    <a href="../HOWTO_READ.html" class="ml-auto text-blue-700 hover:underline" target="_blank">📖 閱讀指南</a>
+  </div>
+</nav>
+
+<main class="max-w-6xl mx-auto p-6">
+
+  <section id="sector-overview" class="mb-10 bg-white rounded-lg shadow p-6">
+    <h2 class="text-2xl font-bold mb-4">族群總覽 (Sector overview)</h2>
+    <div class="agent-prose text-sm">
+      <h1>Sector report — security as of 2026-11-06</h1>
+<p><strong>重要提示</strong>: 今日 (2026-11-05 盤中) 整個 security 板塊遭遇廣泛性拋售 (五家個股盤中跌幅 -6.4% 至 -9.3%), 本報告所涵蓋的五個標的 (CRWD, PANW, ZS, S, OKTA) 在 Phase 1 positive-pick 篩選中<strong>全數未達 ≥3/5 訊號門檻</strong>, 均停留在 Phase-1-only / HOLD, 未進入 Phase 2-4 (辯論/交易員/風險/投資組合經理) 流程。因此<strong>本報告今日無任何可執行的 BUY/SELL 交易建議</strong>, 排名僅依 Phase 1 相對強度 (距離 3/5 門檻的遠近、資料品質、風險輪廓之相對優劣) 排序, 供觀察名單與明日重新評分參考。</p>
+<h2>Ranking table (Phase-1 相對強度排序, 非交易建議)</h2>
+<table>
+<thead>
+<tr>
+<th>Rank</th>
+<th>Ticker</th>
+<th>Verdict</th>
+<th>Phase-1 分數</th>
+<th>R:R</th>
+<th>Size</th>
+<th>Horizon</th>
+<th>Trigger (距3/5門檻)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>CRWD</td>
+<td>HOLD (Phase-1-only)</td>
+<td>2/5</td>
+<td>N/A</td>
+<td>0%</td>
+<td>待觀察</td>
+<td>技術面僅差 -1.0% 未站上 MA50 ($243.44), 若收復即可補上第3項訊號</td>
+</tr>
+<tr>
+<td>2</td>
+<td>PANW</td>
+<td>HOLD (Phase-1-only)</td>
+<td>2/5</td>
+<td>N/A</td>
+<td>0%</td>
+<td>待觀察</td>
+<td>技術面仍落後 MA50 -6.5%, 距門檻較遠; 11-18 財報為解套/惡化關鍵</td>
+</tr>
+<tr>
+<td>3</td>
+<td>S</td>
+<td>HOLD (Phase-1-only)</td>
+<td>1/5</td>
+<td>N/A</td>
+<td>0%</td>
+<td>待觀察</td>
+<td>技術 (-1.7% 低於MA50) 與情緒 (52.9% vs 60%) 均為小幅未達, 兩項任一翻正即達2/5</td>
+</tr>
+<tr>
+<td>4</td>
+<td>ZS</td>
+<td>HOLD (Phase-1-only)</td>
+<td>1/5</td>
+<td>N/A</td>
+<td>0%</td>
+<td>待觀察</td>
+<td>基本面因 FCF/NI 嚴重崩落 (≈-12.3) 遭嚴重未過關, 現金流品質為結構性隱憂</td>
+</tr>
+<tr>
+<td>5</td>
+<td>OKTA</td>
+<td>HOLD (Phase-1-only)</td>
+<td>1/5</td>
+<td>N/A</td>
+<td>0%</td>
+<td>待觀察</td>
+<td>營收成長連續四季減速 (21.8%→15.3%→11.8%→10.6%), 結構性問題非單日拋售所能解釋</td>
+</tr>
+</tbody>
+</table>
+<h2>共識首選 (今日無)</h2>
+<p>今日五個標的均未達 Phase 1 門檻, 無任何 BUY 訊號, 故<strong>無共識首選可供進場</strong>。若僅作觀察名單排序, CRWD 距門檻最近 (技術面僅差 1.0%, 基本面 YoY +25.8% 與 FCF/NI ≈25.8x 皆穩健, 分析師買進 64%), 為五者中最值得優先重新評分的對象; 但其估值極端 (forward P/E 135.7x) 與內部人六個月內賣出 $497.3M 零買入, 不構成任何倉位建議。</p>
+<h2>逆向觀點 (今日無)</h2>
+<p>由於全部五個標的皆為 HOLD, 無 BUY/SELL 分歧可供識別「主流看法與逆向標的」, 本欄位今日不適用。</p>
+<h2>配對交易構想 (假設性, 非活躍交易)</h2>
+<p>因無標的進入 Phase 2+, 沒有經風險/規模確認的活躍配對交易。若僅做相對強弱假設性比較: Long CRWD / Short OKTA — CRWD 技術面距 MA50 僅差 1.0% 且基本面成長最強 (YoY +25.8%, FCF/NI 最佳), OKTA 則呈現四季連續成長減速的結構性弱點且已死亡交叉。此構想僅反映 Phase 1 相對強度差異, <strong>未經 Phase 2-4 驗證, 不建議實際執行</strong>。</p>
+<h2>板塊整體觀察</h2>
+<ul>
+<li><strong>共同催化</strong>: 2026-11-05 盤中板塊性全面重挫 (-6.4%~-9.3%), 原因在各標的工具資料中均未能確認, 疑似宏觀利率/板塊輪動驅動而非個股特定基本面事件。</li>
+<li><strong>共同風險</strong>: 五個標的中有四個 (CRWD, PANW, S, OKTA) 今日跌破 MA50; 僅 ZS 價格仍高於 MA50 但 MACD 已死亡交叉。估值普遍偏高 (forward P/E 自 37x 至 136x), CRWD 與 PANW 尤其極端。CRWD、OKTA、S 均出現顯著內部人賣出且零買入。</li>
+<li><strong>擁擠度</strong>: 儘管板塊今日重挫, 分析師買進共識仍普遍偏高 (52.9%~77.3%), 顯示賣方機構尚未全面調降評等, 板塊可能仍處於「多頭共識尚未修正」的擁擠倉位狀態, 若拋售延續, 後續分析師下調評等可能引發二次去槓桿賣壓。</li>
+<li><strong>相關性群組</strong>: {CRWD, PANW, ZS, S, OKTA} 今日同步重挫, 顯示高度同向相關性, 單一宏觀/板塊因子主導全體走勢。目前持有板塊內多個標的並不能有效分散風險, 須視為單一集中倉位對待。</li>
+</ul>
+<h2>行動排序</h2>
+<p>今日無活躍交易構想, 行動排序改為「重新評分優先順序」:<br />
+1. CRWD 優先 — 距 3/5 門檻最近 (僅差技術面站上 MA50), 基本面與情緒面已過關, 明日應優先重新檢視價格是否收復 MA50。<br />
+2. PANW 次之 — 2026-11-18 財報為窗口內最重要催化事件, 將決定 GAAP 獲利惡化 (併購費用) 是否為一次性因素, 進而影響估值判斷。<br />
+3. S、ZS、OKTA 列入觀察 — 分別留意 S 的空單比例變化 (7.1%, 兩個月增 18.4%)、ZS 的下一份財報 (約 11-24, 未確認) 之現金流品質改善狀況、OKTA 的 12-01 財報能否止住營收成長連續減速趨勢。</p>
+<h2>板塊風險預算</h2>
+<p>由於今日全部五標的皆未達 Phase 1 門檻, 無任何新倉位建議, <strong>建議今日對 security 板塊新增曝險上限為 0% NAV</strong>。若帳上已有既有倉位, 考量五者高度同步相關性 (今日同步下跌 -6.4%~-9.3%), 建議將整體板塊集中度上限壓低至 ≤5–8% NAV, 且單一標的不宜超過 2–3% NAV, 直至任一標的重新評分達到 ≥3/5 並進入 Phase 2-4 驗證為止。</p>
+<p>SECTOR REPORT COMPLETE</p>
+    </div>
+  </section>
+
+  
+<section id="ticker-CRWD" class="mb-10 bg-white rounded-lg shadow overflow-hidden">
+
+  <div class="flex items-start justify-between p-6 border-b border-slate-200 verdict-HOLD">
+    <div>
+      <h2 class="text-3xl font-bold">CRWD</h2>
+      <p class="text-sm mt-1 opacity-80">CrowdStrike — endpoint AI</p>
+    </div>
+    <div class="text-right">
+      <div class="text-4xl font-bold">HOLD</div>
+      <div class="text-sm opacity-80 mt-1">HOLD</div>
+    </div>
+  </div>
+
+  <div class="p-6 grid grid-cols-1 lg:grid-cols-2 gap-6">
+
+    <div>
+      <h3 class="text-lg font-bold mb-2">價格 + 技術指標 (2 年)</h3>
+      <div id="chart-CRWD" style="height: 380px;"></div>
+    </div>
+
+    <div>
+      <h3 class="text-lg font-bold mb-2">最終決策 (Final decision)</h3>
+      <div class="agent-prose text-sm bg-slate-50 p-4 rounded border border-slate-200">
+        <h1>Final Decision — CRWD as of 2026-11-06</h1>
+<h2>Phase 1 positive-pick 評分 (需 ≥3/5 訊號才進入 Phase 2-4)</h2>
+<table>
+<thead>
+<tr>
+<th>訊號</th>
+<th>條件</th>
+<th>結果</th>
+<th>判定</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fundamentals</td>
+<td>YoY 營收成長 &gt;15% 且無 FCF 崩落 (FCF/NI &gt; -1)</td>
+<td>最近季營收 YoY +25.8%; TTM FCF/NI ≈ 25.8x (正向)</td>
+<td>✅ PASS</td>
+</tr>
+<tr>
+<td>Market (technical)</td>
+<td>RSI14&lt;72 且 MACD 柱非深度負值 且 價格&gt;MA50</td>
+<td>RSI14=45.30 (PASS); MACD hist -1.80 且連續擴大; 價格 $241.00 低於 MA50 $243.44 (-1.0%)</td>
+<td>❌ FAIL (價格未站上 MA50)</td>
+</tr>
+<tr>
+<td>News</td>
+<td>淨新聞情緒偏多</td>
+<td>Net read: 偏向 bearish (板塊拋售敘事、11-05 盤中 -9.3% 原因未確認)</td>
+<td>❌ FAIL</td>
+</tr>
+<tr>
+<td>Sentiment</td>
+<td>分析師共識 ≥60% Buy 或機構流向偏多</td>
+<td>64 位分析師, 買進側 64% (41/64)</td>
+<td>✅ PASS</td>
+</tr>
+<tr>
+<td>Valuation</td>
+<td>Forward P/E &lt;35x 或明確 EPS 成長催化</td>
+<td>Forward P/E 135.7x; PEG 6.3x; 無明確確認的 EPS 成長催化</td>
+<td>❌ FAIL</td>
+</tr>
+</tbody>
+</table>
+<p><strong>總分: 2/5 — 未達標, 不進入 Phase 2-4。</strong></p>
+<h2>VERDICT: HOLD (Phase-1-only)</h2>
+<p>FINAL TRANSACTION PROPOSAL: <strong>HOLD</strong> — Phase-1-only, 未進入 Phase 2-4 (debate / trader / risk / portfolio-manager)。</p>
+<p>說明: CRWD 基本面成長動能強勁且分析師共識偏多, 但今日 (2026-11-05) 盤中大跌 9.3% 且已跌破 MA50, 新聞面偏空, 估值極端 (forward P/E 135.7x, P/S 41.5x)。Phase 1 positive-pick 評分僅 2/5 (需 ≥3/5), 未達進入完整辯論/交易/風險流程的門檻。依標準流程本次僅完成 Phase 1 分析, 不產出進場/停損/目標價位, 亦無交易建議。</p>
+<h2>風險提示</h2>
+<ul>
+<li>內部人 6 個月內賣出 $497.3M, 零買入, 需留意出貨訊號是否持續。</li>
+<li>SBC 佔營收 23.1%, 扣除 SBC 後 FCF margin 僅約 5.2%, 估值缺乏安全邊際。</li>
+<li>下次財報 2026-12-01, 財報前波動風險上升。</li>
+</ul>
+<p>FINAL DECISION COMPLETE (PHASE 1 ONLY)</p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="px-6 pb-6">
+
+    <details class="mb-4 border border-slate-200 rounded">
+      <summary class="bg-slate-50 px-4 py-2 font-semibold">投資計劃 (Research manager)</summary>
+      <div class="agent-prose p-4 text-sm"><em>n/a</em></div>
+    </details>
+
+    <details class="mb-4 border border-slate-200 rounded">
+      <summary class="bg-slate-50 px-4 py-2 font-semibold">交易提案 (Trader)</summary>
+      <div class="agent-prose p-4 text-sm"><em>n/a</em></div>
+    </details>
+
+    <details class="mb-4 border border-slate-200 rounded">
+      <summary class="bg-slate-50 px-4 py-2 font-semibold">Phase 1 — 四 Analyst 報告</summary>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+        <div>
+          <h4 class="font-bold text-slate-700 mb-2">基本面 (Fundamentals)</h4>
+          <div class="agent-prose text-sm bg-slate-50 p-3 rounded"><h1>Fundamentals — CRWD as of 2026-11-06</h1>
+<p>資料時點: yfinance 快取於 2026-11-05 14:35 UTC (美東 09:35, 盤中). 未見 2026-11-06 之後資料, 無 post-date 問題. 價格 $218.51 較前收 $241.00 下跌 9.33% (盤中, 日內區間 $217.66–$231.67). <code>fast_info</code> 的 $241.00 是前收, 不是現價, 以 <code>info</code> 為準. 財報期間為 FYE 1 月底; FY2026 指 2026-01-31 年度, 最近季為 2026-07-31 季. 單位: 年度與季度金額以 USD B / USD M 標示, 本報告無 TWD/KRW 金額.</p>
+<h2>Executive summary</h2>
+<p>CRWD 成長動能仍強: 最近一季營收 $1.471B, YoY +25.8%, TTM 自由現金流 $1.523B (FCF margin 28.2%), 資產負債表淨現金 $4.19B. 但 GAAP 仍為營業虧損 (TTM 營業利益 -$0.119B), SBC 佔營收 23.1%, 扣除 SBC 後 FCF 僅約 $0.279B (5.2%). 估值極端 (P/S 41.5x, forward P/E 135.7x, P/FCF 約 147x), 且 6 個月內內部人賣出約 $497M 無公開市場買入, 財務體質健康但估值吸引力低, 對成長持續性與獲利轉正高度依賴.</p>
+<h2>Revenue &amp; profitability</h2>
+<p><strong>年度 (USD B)</strong></p>
+<table>
+<thead>
+<tr>
+<th>會計年度</th>
+<th>營收</th>
+<th>YoY</th>
+<th>毛利率</th>
+<th>營業利益率</th>
+<th>淨利率</th>
+<th>淨利 (GAAP)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FY2023</td>
+<td>2.241</td>
+<td>n/a</td>
+<td>73.2%</td>
+<td>-8.5%</td>
+<td>-8.2%</td>
+<td>-0.183</td>
+</tr>
+<tr>
+<td>FY2024</td>
+<td>3.056</td>
+<td>+36.3%</td>
+<td>75.2%</td>
+<td>-0.6%</td>
+<td>+2.4%</td>
+<td>+0.072</td>
+</tr>
+<tr>
+<td>FY2025</td>
+<td>3.954</td>
+<td>+29.4%</td>
+<td>75.0%</td>
+<td>-2.9%</td>
+<td>-0.4%</td>
+<td>-0.015</td>
+</tr>
+<tr>
+<td>FY2026</td>
+<td>4.812</td>
+<td>+21.7%</td>
+<td>74.7%</td>
+<td>-6.1%</td>
+<td>-3.4%</td>
+<td>-0.163</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>3 年營收 CAGR (FY2023→FY2026): 29.0%. 成長率逐年放緩 (36.3% → 29.4% → 21.7%), 但最近季 YoY +25.8% 高於 FY2026 全年.</li>
+<li>營收 FY2022 以前資料缺, 5 年 CAGR 無法計算.</li>
+</ul>
+<p><strong>季度 (USD M)</strong></p>
+<table>
+<thead>
+<tr>
+<th>季度 (截至)</th>
+<th>營收</th>
+<th>QoQ</th>
+<th>毛利率</th>
+<th>營業利益</th>
+<th>淨利 (GAAP)</th>
+<th>稀釋 EPS (GAAP)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2025-07-31</td>
+<td>1,169.0</td>
+<td>n/a</td>
+<td>73.6%</td>
+<td>-105.5</td>
+<td>-70.2</td>
+<td>-0.0775</td>
+</tr>
+<tr>
+<td>2025-10-31</td>
+<td>1,234.2</td>
+<td>+5.6%</td>
+<td>75.0%</td>
+<td>-69.4</td>
+<td>-34.0</td>
+<td>-0.035</td>
+</tr>
+<tr>
+<td>2026-01-31</td>
+<td>1,305.4</td>
+<td>+5.8%</td>
+<td>76.1%</td>
+<td>+13.8</td>
+<td>+59.4</td>
+<td>+0.0375</td>
+</tr>
+<tr>
+<td>2026-04-30</td>
+<td>1,385.6</td>
+<td>+6.1%</td>
+<td>75.3%</td>
+<td>-30.6</td>
+<td>+27.8</td>
+<td>+0.0275</td>
+</tr>
+<tr>
+<td>2026-07-31</td>
+<td>1,470.9</td>
+<td>+6.2%</td>
+<td>74.6%</td>
+<td>-33.2</td>
+<td>+5.3</td>
+<td>+0.01</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>營收連續 4 季 QoQ 約 6%, 年化約 27%, 成長穩定.</li>
+<li>營業利益率 TTM -2.2% (yfinance <code>operatingMargins</code> -2.26%, 一致). 季度間波動大, 2026-01 季曾轉正 (+1.1%) 但 2026-04、2026-07 季回落至 -2.2% 與 -2.3%.</li>
+<li>營業費用 FY2026: R&amp;D $1.385B (占營收 28.8%, FY2025 為 27.2%); SG&amp;A $2.502B (占營收 52.0%, FY2025 為 50.7%). 費用率上升, 與獲利改善不同步.</li>
+<li>淨利 TTM 季度加總 $58.5M (淨利率 1.1%); <code>info</code> 的 <code>netIncomeToCommon</code> 為 $45.0M, 兩者差異未於資料中說明.</li>
+<li>獲利結構: 季度利息收入約 $43.9M (2026-07 季) 是稅前獲利的重要來源, 本業仍接近損益兩平.</li>
+<li>ROE (TTM) 1.46%, ROA -0.78% (<code>info</code>). ROIC 為推估值: TTM 營業利益 -$0.120B / 2026-07 投入資本 $5.85B ≈ -2.0% (稅前, 推估, 非 yfinance 欄位).</li>
+<li>分部營收: yfinance 與 <code>longBusinessSummary</code> 未提供分部營收, 僅說明以 Falcon 平台與雲端模組訂閱為主要收入, 分部占比 n/a.</li>
+</ul>
+<h2>Cashflow &amp; balance sheet</h2>
+<p><strong>現金流 (USD B)</strong></p>
+<table>
+<thead>
+<tr>
+<th>會計年度</th>
+<th>營運現金流</th>
+<th>資本支出</th>
+<th>自由現金流</th>
+<th>FCF margin</th>
+<th>SBC</th>
+<th>FCF − SBC</th>
+<th>SBC / 營收</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FY2023</td>
+<td>0.941</td>
+<td>0.266</td>
+<td>0.675</td>
+<td>30.1%</td>
+<td>0.527</td>
+<td>0.148</td>
+<td>23.5%</td>
+</tr>
+<tr>
+<td>FY2024</td>
+<td>1.166</td>
+<td>0.237</td>
+<td>0.929</td>
+<td>30.4%</td>
+<td>0.649</td>
+<td>0.280</td>
+<td>21.2%</td>
+</tr>
+<tr>
+<td>FY2025</td>
+<td>1.382</td>
+<td>0.314</td>
+<td>1.068</td>
+<td>27.0%</td>
+<td>0.861</td>
+<td>0.206</td>
+<td>21.8%</td>
+</tr>
+<tr>
+<td>FY2026</td>
+<td>1.612</td>
+<td>0.371</td>
+<td>1.242</td>
+<td>25.8%</td>
+<td>1.097</td>
+<td>0.145</td>
+<td>22.8%</td>
+</tr>
+<tr>
+<td>TTM (至 2026-07)</td>
+<td>2.017</td>
+<td>0.494</td>
+<td>1.523</td>
+<td>28.2%</td>
+<td>1.244</td>
+<td>0.279</td>
+<td>23.1%</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>FCF/NI: FY2026 淨利為負, TTM 淨利 $0.059B, FCF/NI 約 26x, 比率無實質意義, 主因是 SBC 作為非現金費用加回.</li>
+<li>品質判斷: FCF 規模大且 FCF margin 穩定在 25–30%, 但 SBC 約等於 FCF 的 88% (FY2026: 1.097 / 1.242). 扣除 SBC 後的現金利潤率僅 3–5%.</li>
+<li>yfinance <code>info.freeCashflow</code> 為 $1.995B, 與本報告以 OCF 減 CapEx 推算的 TTM FCF $1.523B 不符 (<code>info</code> 的 OCF $2.017B 與季度加總一致, 差異來自 CapEx 口徑). 本報告採用推算值, 並請下游注意此差異.</li>
+</ul>
+<p><strong>資產負債表 (2026-07-31, USD B)</strong></p>
+<ul>
+<li>現金及短期投資: $5.014 (2026-01-31 為 $5.230).</li>
+<li>總債務: $0.820 (長期債務 $0.746, 含租賃負債 $0.074). 淨現金 = 5.014 − 0.820 = <strong>$4.19B</strong>.</li>
+<li>股東權益: $5.102. 負債/權益 16.1% (<code>info</code> debtToEquity 15.96%, 一致). 總資產 $12.03.</li>
+<li>流動比率 1.57 (6.955 / 4.430, 與 <code>info</code> 一致). 營運資金 $2.53.</li>
+<li>商譽 $2.251, 較 2026-01-31 的 $1.363 增加 65%, 為收購所致 (見下節).</li>
+<li>流動遞延收入 (訂閱預收) $3.497, YoY +25.8% (2025-07-31 為 $2.781), 顯示訂閱能見度維持.</li>
+<li>應收帳款 $1.039, YoY +17.2%, 增速低於營收, 收款狀況無異常訊號.</li>
+<li>企業價值 (推估) = 市值 $223.7B + 債務 $0.8B − 現金 $5.0B ≈ $219.5B. <code>info</code> 的 <code>enterpriseValue</code> 為 $242.6B, 兩者不一致, 本報告採用推估值.</li>
+</ul>
+<h2>Capital allocation &amp; insider signal</h2>
+<p><strong>資本配置</strong><br />
+- CapEx 持續上升: FY2026 $0.371B (占營收 7.7%), 2026-07 季 $0.154B, 為 2025-07 季 $0.048B 的 3.2 倍.<br />
+- 併購: FY2026 收購支出 $0.382B; 2025-10 季 $0.381B; 2026-04 季 $0.881B. 近三季併購支出合計約 $1.26B. 收購標的與金額明細於 yfinance 未揭露, 標的 n/a.<br />
+- 買回: 2026-04 季買回 $0.176B, 其他季度未見. 買回規模小於 SBC.<br />
+- 股利: 無 (dividendYield 0).<br />
+- 稀釋: 稀釋股數 2025-07 季 999.6M → 2026-07 季 1,044.5M, +4.5% YoY. 流通股數 1,023.9M (2026-07-31).<br />
+- 空頭: 空單 24.03M 股, 占流通股 2.39% (前月 27.93M), days-to-cover 2.49.<br />
+- 機構持股 77.5%, 內部人持股 1.3%. 前幾大機構為 BlackRock (2.13%) 與 Vanguard (1.58%).</p>
+<p><strong>內部人交易 (2026-05-06 至 2026-11-05 共 6 個月, 工具回傳至 2026-11-03)</strong><br />
+- 賣出: 117 筆, 合計 1.643M 股, 金額 <strong>$497.3M</strong>. 買入: 0 筆. 其他: 17 筆股票獎勵, 3 筆贈與, 無金額資料 2 筆.<br />
+- 占市值 ($223.7B) 比重 0.22%. 數值規模不大, 但方向單向賣出.<br />
+- 主要賣方: CEO George Kurtz 視窗內賣出 $298.7M (占市值 0.13%); 其餘 Sameer Gandhi (董事, 6 個月全期間 $61.8M), Michael Sentonas (全期間 $49.3M), Gerhard Watzinger (全期間 $35.6M), CFO Burt Podbere (全期間 $18.2M). 全期間為工具回傳範圍 (自 2026-03-26 起).<br />
+- 成交價區間約 $240–$268, 高於目前 $218.51. 資料未標示是否為 10b5-1 計畫, 無法判斷是否為預定交易.</p>
+<h2>Valuation</h2>
+<p>以盤中價 $218.51 與市值 $223.7B 計算 (流通股 1,023.9M, 已核對 218.51 × 1,023.9M ≈ $223.7B).</p>
+<table>
+<thead>
+<tr>
+<th>指標</th>
+<th>數值</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Trailing P/E</td>
+<td>4,370x</td>
+<td>GAAP TTM EPS $0.05, 不具意義</td>
+</tr>
+<tr>
+<td>Forward P/E</td>
+<td>135.7x</td>
+<td>forward EPS $1.61</td>
+</tr>
+<tr>
+<td>本年度 P/E</td>
+<td>173.8x</td>
+<td>epsCurrentYear $1.257</td>
+</tr>
+<tr>
+<td>P/S (TTM)</td>
+<td>41.5x</td>
+<td><code>info</code> 與推算 $223.7B / $5.396B 一致</td>
+</tr>
+<tr>
+<td>EV/Revenue (TTM)</td>
+<td>40.7x</td>
+<td>推估 EV $219.5B</td>
+</tr>
+<tr>
+<td>EV/EBITDA</td>
+<td>2,270x</td>
+<td><code>info</code> EBITDA TTM $0.107B (GAAP, SBC 未加回), 不具意義</td>
+</tr>
+<tr>
+<td>P/FCF (TTM)</td>
+<td>147x</td>
+<td>推算 FCF $1.523B; 以 <code>info</code> FCF 計為 112x</td>
+</tr>
+<tr>
+<td>P/B</td>
+<td>43.9x</td>
+<td><code>info</code> priceToBook</td>
+</tr>
+<tr>
+<td>PEG</td>
+<td>6.31x</td>
+<td><code>info</code> pegRatio</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>股價位置: 52 週區間 $85.68–$286.99, 距高點 -23.9%. 低於 50 日均線 $243.44 (-10.2%), 高於 200 日均線 $169.19 (+29.2%).</li>
+<li>分析師: 50 位, 平均推薦 1.66 (buy), 目標均價 $248.45 (較現價 +13.7%), 中位數 $250, 區間 $132–$325 (-39.6% 至 +48.7%).</li>
+<li>同業中位數 (估計, 非 yfinance 資料): 大型軟體-基礎架構 P/S 約 10–12x, forward P/E 約 35–45x, P/FCF 約 30–40x, 毛利率約 76–78%. CRWD 估值明顯高於此估計區間.</li>
+</ul>
+<h2>Key catalysts</h2>
+<ul>
+<li>下次財報: 2026-12-01 (Yahoo <code>earningsTimestamp</code> 對應 21:00 UTC, 非估計日期). 本季 EPS 一致預期 $0.31 (非 GAAP 口徑), 距今約 25 天.</li>
+<li>前一季 (2026-08-26 公布): EPS $0.31 vs 預估 $0.29, 超出 +6.4%. 列表中有預估值的歷史季度皆為正向 EPS surprise (+1.6% 至 +33%, 2020-12 季為 +18,282%, 基期極低, 不納入比較).</li>
+<li>公司指引: yfinance 未提供營收或 EPS 指引, 標示為 n/a.</li>
+<li>併購: 商譽 +65% 與近三季 $1.26B 併購支出, 整合進度與減損風險需追蹤; 標的 n/a.</li>
+<li>當日 (2026-11-05) 盤中 -9.3%, 資料未揭露原因. 需以新聞與公告核實, 本報告不推測.</li>
+<li>財年結束 2027-01-31.</li>
+</ul>
+<h2>Metrics table</h2>
+<p>表中「同業中位數」為估計值 (非 yfinance 資料).</p>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Latest</th>
+<th>YoY</th>
+<th>Sector median (估計)</th>
+<th>Verdict</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>營收 (最近季, USD M)</td>
+<td>1,470.9</td>
+<td>+25.8%</td>
+<td>約 +12–15%</td>
+<td>成長優於同業</td>
+</tr>
+<tr>
+<td>營收 TTM (USD B)</td>
+<td>5.396</td>
+<td>FY2026 +21.7%</td>
+<td>n/a</td>
+<td>規模持續擴大</td>
+</tr>
+<tr>
+<td>毛利率 (最近季)</td>
+<td>74.6%</td>
+<td>FY2026 74.7%, 較 FY2025 小幅下降</td>
+<td>約 76–78%</td>
+<td>略低於同業, 持平</td>
+</tr>
+<tr>
+<td>營業利益率 (TTM)</td>
+<td>-2.2%</td>
+<td>FY2026 -6.1% → TTM 改善</td>
+<td>約 0% (GAAP)</td>
+<td>接近損益兩平, 尚未達標</td>
+</tr>
+<tr>
+<td>淨利率 (TTM)</td>
+<td>1.1%</td>
+<td>FY2026 -3.4%</td>
+<td>約 2–5%</td>
+<td>偏弱</td>
+</tr>
+<tr>
+<td>ROE (TTM)</td>
+<td>1.46%</td>
+<td>n/a</td>
+<td>約 8–10%</td>
+<td>偏低</td>
+</tr>
+<tr>
+<td>FCF margin (TTM)</td>
+<td>28.2%</td>
+<td>FY2026 25.8% (-1.2 pt)</td>
+<td>約 20–25%</td>
+<td>優</td>
+</tr>
+<tr>
+<td>FCF − SBC margin (TTM)</td>
+<td>5.2%</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>弱</td>
+</tr>
+<tr>
+<td>SBC / 營收 (TTM)</td>
+<td>23.1%</td>
+<td>FY2026 22.8% (FY2025 21.8%)</td>
+<td>約 10–15%</td>
+<td>偏高, 紅旗</td>
+</tr>
+<tr>
+<td>淨現金 (USD B)</td>
+<td>4.19</td>
+<td>2026-01 淨現金 4.41</td>
+<td>n/a</td>
+<td>健康</td>
+</tr>
+<tr>
+<td>負債/權益</td>
+<td>16.1%</td>
+<td>n/a</td>
+<td>約 20–30%</td>
+<td>健康</td>
+</tr>
+<tr>
+<td>流動比率</td>
+<td>1.57</td>
+<td>n/a</td>
+<td>約 1.5</td>
+<td>中性</td>
+</tr>
+<tr>
+<td>P/S (TTM)</td>
+<td>41.5x</td>
+<td>n/a</td>
+<td>約 10–12x</td>
+<td>極高</td>
+</tr>
+<tr>
+<td>Forward P/E</td>
+<td>135.7x</td>
+<td>n/a</td>
+<td>約 35–45x</td>
+<td>極高</td>
+</tr>
+<tr>
+<td>EV/Revenue (TTM)</td>
+<td>40.7x</td>
+<td>n/a</td>
+<td>約 10x</td>
+<td>極高</td>
+</tr>
+<tr>
+<td>P/FCF (TTM)</td>
+<td>147x</td>
+<td>n/a</td>
+<td>約 30–40x</td>
+<td>極高</td>
+</tr>
+<tr>
+<td>內部人淨買賣 (6 個月)</td>
+<td>淨賣出 $497.3M, 買入 0</td>
+<td>n/a</td>
+<td>不適用</td>
+<td>偏空訊號</td>
+</tr>
+<tr>
+<td>空頭占流通股</td>
+<td>2.39%</td>
+<td>前月 2.73% (按 27.93M / 1,007M 估)</td>
+<td>約 3–5%</td>
+<td>低</td>
+</tr>
+<tr>
+<td>分析師平均目標 vs 現價</td>
+<td>+13.7%</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>樂觀</td>
+</tr>
+</tbody>
+</table>
+<h2>Red flags</h2>
+<ul>
+<li>GAAP 營業虧損仍存在 (TTM -$0.119B), 近幾季獲利主要靠利息收入 (約 $0.04B/季) 支撐稅前利潤.</li>
+<li>SBC 佔營收 23%, 扣除 SBC 後 FCF margin 僅約 5%. 股權稀釋 +4.5% YoY.</li>
+<li>估值極端: forward P/E 135.7x, P/S 41.5x, PEG 6.3x. 獲利與估值之間需要長期成長兌現才能消化.</li>
+<li>內部人 6 個月賣出 $497M, 0 筆買入, 且成交價高於現價; 10b5-1 狀態未知.</li>
+<li>2026 年併購加速, 商譽由 $1.36B 升至 $2.25B; 收購標的與整合績效未於資料中揭露.</li>
+<li>盤中 -9.3%, 股價跌破 50 日均線, 距 52 週高點 -23.9%; 原因資料未揭露.</li>
+<li>FY2026 稅費 $34.2M, 但稅前虧損 $127.0M, 實際稅率無意義, 需留意稅務結構.</li>
+<li>資料一致性問題: <code>info.freeCashflow</code> ($1.995B) 與推算 FCF ($1.523B) 不符; <code>info.enterpriseValue</code> ($242.6B) 與推算 EV ($219.5B) 不符; <code>info.netIncomeToCommon</code> ($45.0M) 與季度加總 ($58.5M) 不符; <code>fast_info.last_price</code> 為前收. 本報告採用可核對的推算值, 下游引用時請注意.</li>
+</ul>
+<p>FUNDAMENTALS REPORT COMPLETE</p></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-slate-700 mb-2">技術面 (Market / Technical)</h4>
+          <div class="agent-prose text-sm bg-slate-50 p-3 rounded"><h1>Technical — CRWD as of 2026-11-06</h1>
+<blockquote>
+<p>資料說明：請求日期為 2026-11-06，但本次可取得的最新 K 線與指標為 2026-11-04 收盤（系統當日為 2026-11-05）。以下所有數字皆以 2026-11-04 收盤為準，2026-11-05 與 11-06 盤中走勢未納入。</p>
+</blockquote>
+<h2>Snapshot</h2>
+<p>Price $241.00, MA20 $250.47, MA50 $243.44, MA200 $169.19, RSI14=45.30, MACD hist=-1.80</p>
+<h2>Trend</h2>
+<p>短期趨勢轉弱，中期趨勢仍偏多。價格位於 MA20（$250.47）之下約 3.8%，且剛跌破 MA50（$243.44）之下約 1.0%，MA20 已開始走平向下，MA50 仍向上但斜率趨緩。長期結構上 MA50 高於 MA200（$169.19），黃金交叉狀態仍維持，MA200 距價格約 +42%，與 MA50 的距離已明顯收斂。</p>
+<p>自 2026-10-06 52 週高點 $286.99 形成後，價格出現高點下移：10-06 高 $286.99 → 10-28 反彈高 $272.29 未能再創新高，跌回整理區。10-16 跌破 $230 附近後於 10-20 測試 $221.36 獲得支撐，隨後反彈至 10-28 高 $272.29 失敗，11-02 以來連續收在 $241–$251 區間，形成高點下移、回落至 MA50 附近的結構。目前偏向區間整理與趨勢修正，尚未確認跌破 $221.36 的主要支撐。</p>
+<h2>Momentum</h2>
+<ul>
+<li>MACD：MACD 線 0.41 低於訊號線 2.21，hist=-1.80，為負值且自 11-02 起持續擴大（-0.90 → -1.34 → -1.80），空方動能增強中。MACD 線已自 10-06 前後的高檔 15.54 大幅回落，屬於動能衰退。</li>
+<li>RSI14：45.30，位於中性區間偏弱，已由 10-06 的 72.0 回落，未進入超賣（&lt;30）。</li>
+<li>多週期報酬（snapshot 提供）：1 個月 -13.6%、3 個月 +16.2%、6 個月 +106.0%、12 個月 +74.7%。中長期動能仍為大幅正值，但近一個月明顯轉負。</li>
+</ul>
+<h2>Key levels</h2>
+<ul>
+<li>Resistance: $250.47（MA20，動態壓力）、$257.91（2026-10-23 盤中高，近期反彈高點）、$272.29（2026-10-28 盤中高）、$286.99（2026-10-06 local high，52 週高點）</li>
+<li>Support:    $237.21（2026-11-04 盤中低，短期支撐）、$224.60（2026-10-16 盤中低）、$221.36（2026-10-20 local low，<code>ta levels</code> 支撐）、$181.24（2026-08-26 local low）、$174.14（2026-07-28 local low）</li>
+<li>Stop-loss suggestion (logical, not advice): below $221.36 (last support break)，即 10-20 local low 若被有效跌破，原多頭結構的關鍵支撐失守，下一個結構性參考為 $181.24。</li>
+</ul>
+<p>距離 52 週高點 $286.99 約 -16.0%；距離 52 週低點 $85.68 約 +181%。</p>
+<h2>Volatility profile</h2>
+<p>ATR-implied daily move ~$13.18（約 5.5% 價格），annualized vol 57.9%（20 日年化）。以年化波動換算，日標準差約 3.6%（約 $8.8）。ATR 近期由 10-20 的 11.93 升至 11-04 的 13.18，波動率小幅擴大。部位大小建議以 ATR 為基準，單日 2 ATR 約 $26，若以 $221.36 為停損，距離約 $19.6（約 1.5 ATR），停損距離相對緊密，需注意假跌破。</p>
+<h2>Setup</h2>
+<p>中性偏弱（neutral to bearish short-term）。結構為高點下移、MA50 附近整理，尚未出現明確破底確認。多方條件：中長期報酬強勁、MA50 &gt; MA200。空方條件：價格低於 MA20 與（幾乎）MA50、MACD 死叉後 hist 擴大、RSI 轉弱至 45。關鍵觀察點：能否守住 MA50 附近的 $237–$243 區間；收復 $250.47（MA20）為轉強訊號；跌破 $221.36 則結構轉為明確偏空。</p>
+<h2>Volume confirmation</h2>
+<p>最新成交量 8,892,000 股，10 日平均 9,327,810 股，比值約 0.95x，量能略低於近期均量。近期 10-16 與 10-23 的放量（13.9M、13.4M）伴隨大幅波動；11-02 至 11-04 的回落過程量能並未放大，屬於縮量整理，尚無明顯恐慌性賣壓訊號。</p>
+<h2>Indicators table</h2>
+<table>
+<thead>
+<tr>
+<th>Indicator</th>
+<th>Value</th>
+<th>Reading</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Price</td>
+<td>$241.00</td>
+<td>2026-11-04 收盤</td>
+</tr>
+<tr>
+<td>MA20</td>
+<td>$250.47</td>
+<td>價格低於 MA20 約 -3.8%，短期偏弱</td>
+</tr>
+<tr>
+<td>MA50</td>
+<td>$243.44</td>
+<td>價格低於 MA50 約 -1.0%，接近支撐</td>
+</tr>
+<tr>
+<td>MA200</td>
+<td>$169.19</td>
+<td>價格高於 MA200 約 +42%，長期多頭</td>
+</tr>
+<tr>
+<td>MA50 vs MA200</td>
+<td>243.44 &gt; 169.19</td>
+<td>黃金交叉狀態維持，未接近死叉</td>
+</tr>
+<tr>
+<td>RSI14</td>
+<td>45.30</td>
+<td>中性偏弱，非超賣</td>
+</tr>
+<tr>
+<td>MACD line / signal</td>
+<td>0.41 / 2.21</td>
+<td>MACD 位於訊號線下方</td>
+</tr>
+<tr>
+<td>MACD hist</td>
+<td>-1.80</td>
+<td>負值且擴大，空方動能增強</td>
+</tr>
+<tr>
+<td>BB %B</td>
+<td>0.34</td>
+<td>位於中軌下方、接近中軌偏下，未極端</td>
+</tr>
+<tr>
+<td>BB mid / upper / lower</td>
+<td>250.47 / 279.41 / 221.53</td>
+<td>價格位於中下段</td>
+</tr>
+<tr>
+<td>ATR14</td>
+<td>$13.18</td>
+<td>約 5.5% 價格，波動偏高</td>
+</tr>
+<tr>
+<td>20d annualized vol</td>
+<td>57.9%</td>
+<td>高波動標的</td>
+</tr>
+<tr>
+<td>1m return</td>
+<td>-13.6%</td>
+<td>近期明顯回檔</td>
+</tr>
+<tr>
+<td>3m return</td>
+<td>+16.2%</td>
+<td>中期仍為正報酬</td>
+</tr>
+<tr>
+<td>6m return</td>
+<td>+106.0%</td>
+<td>半年強勁上漲</td>
+</tr>
+<tr>
+<td>12m return</td>
+<td>+74.7%</td>
+<td>一年期強勁上漲</td>
+</tr>
+<tr>
+<td>% from 52w high</td>
+<td>-16.0%</td>
+<td>距 $286.99 高點仍有距離</td>
+</tr>
+<tr>
+<td>% from 52w low</td>
+<td>+181.3%</td>
+<td>遠高於 52 週低點</td>
+</tr>
+<tr>
+<td>Volume vs 10d avg</td>
+<td>0.95x</td>
+<td>量能略低於均量</td>
+</tr>
+</tbody>
+</table>
+<p>MARKET REPORT COMPLETE</p></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-slate-700 mb-2">新聞 (News)</h4>
+          <div class="agent-prose text-sm bg-slate-50 p-3 rounded"><h1>News — CRWD as of 2026-11-06</h1>
+<p>注意事項（先看）:<br />
+- 系統日期為 2026-11-05，任務 DATE 為 2026-11-06。本報告只採用 2026-11-05 以前可見的資料；11-06 當日新聞無法確認，視為未知。<br />
+- <code>pipeline/tools/yf CRWD news</code> 失敗，原因是代理伺服器對 finance.yahoo.com / query2.finance.yahoo.com / fc.yahoo.com 的 CONNECT 回應 403（政策拒絕，代理狀態端點 recentRelayFailures 有紀錄）。依規則不重試、不繞過，故公司新聞只能靠 WebSearch，深度不足。<code>yf info</code> 可用，數據來源為快取（cached_at 2026-11-05T14:35 UTC，即美東 09:35，開盤後不久的快照）。</p>
+<h2>價格快照（yf info，USD）</h2>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>數值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>前收</td>
+<td>241.00</td>
+</tr>
+<tr>
+<td>現價（快照）</td>
+<td>218.51</td>
+</tr>
+<tr>
+<td>日變動</td>
+<td>-22.49（-9.33%）</td>
+</tr>
+<tr>
+<td>日內區間</td>
+<td>217.66 – 231.67</td>
+</tr>
+<tr>
+<td>成交量 vs 10 日均量</td>
+<td>1.04M vs 9.33M（開盤後早盤，非全日）</td>
+</tr>
+<tr>
+<td>市值 / EV</td>
+<td>$223.7B / $242.6B</td>
+</tr>
+<tr>
+<td>52 週區間</td>
+<td>85.68 – 286.99（+81% YoY）</td>
+</tr>
+<tr>
+<td>Forward P/E / Forward EPS</td>
+<td>135.7 / 1.61</td>
+</tr>
+<tr>
+<td>分析師均值目標 / 區間</td>
+<td>248.45（132 – 325），recommendationMean 1.66（buy），50 位</td>
+</tr>
+<tr>
+<td>空單佔流通股</td>
+<td>2.4%（sharesShort 24.0M）</td>
+</tr>
+</tbody>
+</table>
+<p>數據自洽檢查: trailingEps 0.05 × 1.024B 股 ≈ $51M，對照 netIncomeToCommon $45M，同一量級。4:1 split 日期（lastSplitDate）為 2026-07-02，與 WebSearch 摘要「已宣布 4-for-1 split」一致。bid/ask（230.24 / 255.56）價差過寬，判定為無效報價，不採用。</p>
+<h2>Top company-specific headlines (last 14d)</h2>
+<ul>
+<li>2026-11-05 — 盤中跌約 9.3%（前收 241.00 → 218.51），區間 217.66–231.67。來源: yf info 快照。Impact: bearish（價格）。WebSearch 找不到當日任何對應的公司新聞，觸發原因未確認；可能為板塊或同業資訊，但無證據，不應直接歸因。</li>
+<li>2026-10 下旬（具體日期未確認） — 一篇 I/O Fund 文章指出，當日網路安全股因「OpenAI 收購資安新創」報導而下跌，CRWD 約 -3%。來源: I/O Fund（經 WebSearch 摘要，原文未開啟）。Impact: bearish（情緒/競爭敘事）。日期不明，是否在 14 天內無法確認。</li>
+<li>日期不明（rallies.ai 兩篇）— 「CrowdStrike 因軟體情緒降溫及內部人賣出下跌 3%」與「因 AI 顛覆疑慮超過新增 5 億美元回購而下跌近 4%」。來源: rallies.ai。Impact: 混合（回購為 bullish，AI 疑慮為 bearish）。文章無日期，不計入 14 天判斷，只作為背景。</li>
+<li>2026-10-07 — 盤中下跌約 5%，無具體新聞，Motley Fool 指 YTD 漲幅約 126%。來源: Motley Fool。Impact: neutral（price action，已屏除 churn）。在 14 天窗口外，僅供背景。</li>
+</ul>
+<p>已排除（非 14 天內或屬噪音）: Q1 FY2027 財報後跌約 11%（indmoney，財報日未標明，推測為 2026 年中）；2026-09-24 Forrester Wave 認證；2026 Global Threat Report；2026 年 1 月兩項收購（SGNL、Seraphic）；2026 年 2 月 Claude Code Security 引發的 AI 顛覆拋售。</p>
+<h2>Sector macro</h2>
+<ul>
+<li>2026 年全年 — AI 顛覆疑慮反覆衝擊軟體/資安股（2026-02 單日級別拋售約 1 兆美元；2026-03 AWS AI agent 報導再度拋售）。Impact on 資安/軟體板塊: 估值敏感度高，任何 AI 能力發布都可能引發同向拋售，偏 bearish 的尾部風險。來源: Reuters/Morningstar 經 WebSearch 摘要。</li>
+<li>2026-10 — 地緣政治風險上升（Webull，2026-10 資安股選股文）；板塊 YTD 漲幅高（CRWD +123%、FTNT +141%、PANW +117%，截至 10 月），估值相對 10 年中位數溢價（PANW 約 178%、CRWD 約 93%，P/S 口徑）。Impact: 高估值下對利空更敏感，偏 bearish 的結構性風險。來源: Webull、I/O Fund。</li>
+<li>宏觀數據與央行: 本次搜尋未取得 2026-11 的 CPI、利率或關稅相關可靠新聞，無法列出具體事件，留白不推論。</li>
+</ul>
+<h2>Peer signals</h2>
+<ul>
+<li>FTNT — 財報日期來源衝突（一說 2026-10-28 盤後，一說依歷史推估 2026-11-04）。若為 11-04 盤後，則可能是 11-05 板塊同步下跌的候選原因，但未經證實，不可當成已知。YTD 漲幅約 97%–116%（時點不一）。</li>
+<li>PANW — 無 11 月價格或新聞可查證；YTD 約 +80%（來源日期不明）。</li>
+<li>ZS — 下一財報日未確認；過去一年跌約 30.6%（Zacks 比較文，未標日期），與 FTNT 走勢分化。</li>
+<li>同業 11-05 當日表現: 未能取得可靠資料，無法確認是否同向下跌。</li>
+</ul>
+<h2>Forward calendar (next 14d, 2026-11-06 至 2026-11-20)</h2>
+<ul>
+<li>2026-12-01 — CRWD 財報（yf earningsTimestamp 轉換為 2026-12-01 21:00 UTC；isEarningsDateEstimate=false，但公司正式公告未在本次搜尋中找到）。在 14 天窗口之外，不列為近期催化。</li>
+<li>2026-11 中 — 無可確認的 CRWD 公司事件（產品發布、投資人日、回購執行公告等）。</li>
+<li>2026-11-04 或 10-28 — FTNT 財報（衝突，見 Peer），已在窗口之前，列為近期回顧項目。</li>
+<li>宏觀: 本次未確認 FOMC 與主要數據發布日期（例如 2026 年 12 月 FOMC 通常在 12 月上旬，屬窗口之外，未驗證），不列入窗口。</li>
+<li>PANW 等同業財報可能落在窗口內，但本次未取得確認日期，列為待查。</li>
+</ul>
+<h2>Net read</h2>
+<p>本次可用的新聞深度有限，最強訊號是 2026-11-05 盤中 -9.3% 的價格變動，但觸發原因在本次搜尋中無法確認，因此把它定性為「價格訊號強、新聞歸因弱」。新聞面整體偏向 bearish：板塊對 AI 顛覆的反覆拋售、CRWD 估值（forward P/E 約 136、EV/Revenue 約 45）對利空敏感、近期情緒轉向（OpenAI 資安新創收購報導）等，都指向下行風險。反向因素包括 4:1 split 後的回購、分析師均值目標 248（隱含約 +14%）與 1.66 的買入共識，以及空單比例偏低（2.4%）。近 14 天公司級明確催化少，財報在 12 月初，窗口內沒有硬性事件。淨新聞傾向為 bearish，強度中等，但信心偏低，因為缺乏 11-05 當日原因、yahoo 新聞源被代理拒絕、11-06 之後資料不可見。建議上游在拿到 11-05 收盤與原始新聞（IR 頁、Reuters、Bloomberg 或其他可用來源）後，再覆核 -9.3% 的歸因。</p>
+<p>Sources (WebSearch 摘要、yf info 快取): https://rallies.ai/news/crowdstrike-slides-nearly-4-as-ai-disruption-fears-outweigh-fresh-500m-buyback ; https://rallies.ai/news/crowdstrike-falls-3-as-software-sentiment-cools-and-insider-sales-stay-in-focus ; https://www.fool.com/investing/2026/10/07/why-crowdstrike-stock-slumped-on-wednesday/ ; https://www.webull.com/news/15742617654469632 ; https://www.indmoney.com/blog/us-stocks/crowdstrike-stock-falls-q1-fy2027-earnings-crwd-stock-analysis ; https://www.morningstar.com/markets/what-know-about-software-stock-selloff ; https://www.barchart.com/story/news/1782237/palo-alto-networks-and-crowdstrike-shares-are-soaring-what-you-need-to-know ; https://www.zacks.com/stock/news/3011142/can-fortinets-sase-momentum-propel-the-stock-to-new-highs</p>
+<p>NEWS REPORT COMPLETE</p></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-slate-700 mb-2">情緒 (Sentiment)</h4>
+          <div class="agent-prose text-sm bg-slate-50 p-3 rounded"><h1>Sentiment — CRWD as of 2026-11-06</h1>
+<blockquote>
+<p>資料注意事項<br />
+- 請求日期 2026-11-06 晚於系統今日 2026-11-05。最新可得內部人交易為 2026-11-03，分析師快照與新聞時間戳也不一致，報告以可得資料為準。<br />
+- Reddit（r/wallstreetbets、r/stocks）WebFetch 皆失敗（"unable to fetch"），散戶社群面無資料。<br />
+- StockTwits 因 api.stocktwits.com DNS 解析失敗未取得資料。需在 session 網路設定允許此網域，才能重試。</p>
+</blockquote>
+<h2>分析師共識</h2>
+<p><strong>64 位分析師：10 Strong Buy / 31 Buy / 11 Hold / 0 Sell / 1 Strong Sell</strong>（rec_summary 與 recommendations 的 0m 欄位一致）。</p>
+<ul>
+<li>買進側（Strong Buy + Buy）41 位，占 64%；持有 11 位，占 17%；賣出側 1 位，占 2%。</li>
+<li>近四個月評級分布幾乎不變（-1m 至 -3m 皆為 10 / 30 / 12 / 0 / 1），無明顯上調或下調趨勢。</li>
+<li>近期評級異動：工具未提供升降級歷史明細。網路搜尋（時間戳混雜，可信度低）提及 11 月內多家券商上調目標價，部分目標價 600 美元以上；另有 Berenberg 以 Hold、目標 600 美元首次評等，認為樂觀情緒已反映在股價中。這些說法需獨立驗證。</li>
+</ul>
+<h2>散戶社群</h2>
+<ul>
+<li>Reddit：兩個子版皆無法抓取，無法計算提及量與傾向。</li>
+<li>StockTwits / X：StockTwits 無資料。網路搜尋未找到可辨識的近期散戶貼文，僅有少數第三方文章。</li>
+<li>提及量：無法量化（無資料），不做定性推斷。</li>
+<li>主題：無可靠樣本。網路摘要提到兩點，屬二手說法，未經原始貼文核實：</li>
+<li>期權市場在財報前隱含波動率上升，偏多。</li>
+<li>股價自 11 月 11 日高點回落約 8–10%，市場被描述為「show me」型故事，執行上稍有瑕疵即可能引發獲利了結。</li>
+<li>下一個催化劑：一則來源提到 12 月 2 日公布季度財報（時間待確認）。</li>
+<li>散戶傾向：<strong>無法判定</strong>。</li>
+</ul>
+<h2>內部人活動</h2>
+<p>近 6 個月（2026-05-06 起）：<strong>買進 $0，賣出約 $497M</strong>（依工具 Value 欄位加總，未經獨立核對）。</p>
+<ul>
+<li>賣出分布：</li>
+<li>CEO George Robert Kurtz 約 $299M（約六成），多數為每筆 2 萬股左右的規律性交易，疑為預設交易計畫（10b5-1）。</li>
+<li>董事 Sameer K. Gandhi 約 $62M。</li>
+<li>總裁 Michael Sentonas 約 $49M。</li>
+<li>董事 Gerhard Watzinger 約 $36M。</li>
+<li>CFO Burt W. Podbere 約 $17M。</li>
+<li>其他董事與高階主管合計約 $40M。</li>
+<li>近期：2026-11-03 CEO 賣出 45,395 股（約 $11.2M，價格區間 240.93–252.60）；2026-11-02 CFO 賣出 7,710 股（約 $1.9M）；董事 Gandhi 賣出 14,000 股（約 $3.4M）。</li>
+<li>股票獎勵（Stock Award）為例行發放，不計入買進。</li>
+<li>資料品質警示：2026-06 至 07 月的價格序列出現約 4 倍落差（6 月約 $670–780，7 月起約 $175–290），且有 $3,052–3,091 等異常價位，疑為拆股未調整或資料錯誤。跨越此區間的 USD 金額總計可能失真，應在下游使用前重新核對。</li>
+</ul>
+<h2>股權結構</h2>
+<ul>
+<li>機構持股比例約 77.5%（流通股口徑 78.6%），機構持有人數 3,373。</li>
+<li>內部人持股約 1.3%。</li>
+<li>僅有單一時點快照，無法判斷機構集中度的變化趨勢。</li>
+</ul>
+<h2>綜合情緒判斷</h2>
+<ul>
+<li>分析師面：<strong>偏多</strong>，信心度高（買進側 64%，評級結構穩定）。</li>
+<li>內部人面：<strong>偏空</strong>（賣出為主、零買進），但 CEO 大量賣出多為規律性交易，對訊號強度應打折，信心度中等。</li>
+<li>散戶面：<strong>無法判定</strong>（社群資料缺失）。</li>
+<li>綜合：分析師偏多、內部人偏空，整體中性偏多，信心度低至中（缺社群資料，且價格資料有異常）。</li>
+</ul>
+<p><strong>背離旗標：是。</strong> 分析師偏多與內部人持續賣出方向相反。散戶與分析師之間的背離無法判定，因缺少散戶資料。</p>
+<p>SENTIMENT REPORT COMPLETE</p></div>
+        </div>
+      </div>
+    </details>
+
+    <details class="mb-4 border border-slate-200 rounded">
+      <summary class="bg-slate-50 px-4 py-2 font-semibold">Phase 2 — Bull vs Bear 辯論</summary>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+        <div>
+          <h4 class="font-bold text-green-700 mb-2">🐂 多方 (Bull)</h4>
+          <div class="agent-prose text-sm bg-green-50 p-3 rounded border border-green-200"><em>n/a</em></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-red-700 mb-2">🐻 空方 (Bear)</h4>
+          <div class="agent-prose text-sm bg-red-50 p-3 rounded border border-red-200"><em>n/a</em></div>
+        </div>
+      </div>
+    </details>
+
+    <details class="mb-4 border border-slate-200 rounded">
+      <summary class="bg-slate-50 px-4 py-2 font-semibold">Phase 4 — 風險辯論 (Risk debate)</summary>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 p-4">
+        <div>
+          <h4 class="font-bold text-red-700 mb-2">⚡ 進攻 (Aggressive)</h4>
+          <div class="agent-prose text-sm bg-red-50 p-3 rounded border border-red-200"><em>n/a</em></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-blue-700 mb-2">🛡️ 保守 (Conservative)</h4>
+          <div class="agent-prose text-sm bg-blue-50 p-3 rounded border border-blue-200"><em>n/a</em></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-slate-700 mb-2">⚖️ 中立 (Neutral)</h4>
+          <div class="agent-prose text-sm bg-slate-100 p-3 rounded border border-slate-300"><em>n/a</em></div>
+        </div>
+      </div>
+    </details>
+
+  </div>
+
+  <script>
+    (function() {
+      var d = {};
+      if (!d.dates) return;
+      var traces = [
+        {x: d.dates, y: d.close, name: 'Close',  line: {color: '#1f2937', width: 2}},
+        {x: d.dates, y: d.ma20,  name: 'MA20',   line: {color: '#0ea5e9', width: 1, dash: 'dot'}},
+        {x: d.dates, y: d.ma50,  name: 'MA50',   line: {color: '#f59e0b', width: 1, dash: 'dot'}},
+        {x: d.dates, y: d.ma200, name: 'MA200',  line: {color: '#ef4444', width: 1, dash: 'dash'}}
+      ];
+      var layout = {
+        margin: {l: 50, r: 20, t: 10, b: 40},
+        legend: {orientation: 'h', y: -0.15},
+        xaxis: {showgrid: false},
+        yaxis: {title: '價格 ($)'}
+      };
+      Plotly.newPlot('chart-CRWD', traces, layout, {displayModeBar: false, responsive: true});
+    })();
+  </script>
+
+</section>
+
+
+<section id="ticker-PANW" class="mb-10 bg-white rounded-lg shadow overflow-hidden">
+
+  <div class="flex items-start justify-between p-6 border-b border-slate-200 verdict-HOLD">
+    <div>
+      <h2 class="text-3xl font-bold">PANW</h2>
+      <p class="text-sm mt-1 opacity-80">Palo Alto Networks — Cortex XSIAM</p>
+    </div>
+    <div class="text-right">
+      <div class="text-4xl font-bold">HOLD</div>
+      <div class="text-sm opacity-80 mt-1">HOLD</div>
+    </div>
+  </div>
+
+  <div class="p-6 grid grid-cols-1 lg:grid-cols-2 gap-6">
+
+    <div>
+      <h3 class="text-lg font-bold mb-2">價格 + 技術指標 (2 年)</h3>
+      <div id="chart-PANW" style="height: 380px;"></div>
+    </div>
+
+    <div>
+      <h3 class="text-lg font-bold mb-2">最終決策 (Final decision)</h3>
+      <div class="agent-prose text-sm bg-slate-50 p-4 rounded border border-slate-200">
+        <h1>Final Decision — PANW as of 2026-11-06</h1>
+<h2>Phase 1 positive-pick 評分 (需 ≥3/5 訊號才進入 Phase 2-4)</h2>
+<table>
+<thead>
+<tr>
+<th>訊號</th>
+<th>條件</th>
+<th>結果</th>
+<th>判定</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fundamentals</td>
+<td>YoY 營收成長 &gt;15% 且無 FCF 崩落 (FCF/NI &gt; -1)</td>
+<td>FY26 營收 YoY +24.5%; FY26 FCF/NI ≈ 13.4x (正向)</td>
+<td>✅ PASS</td>
+</tr>
+<tr>
+<td>Market (technical)</td>
+<td>RSI14&lt;72 且 MACD 柱非深度負值 且 價格&gt;MA50</td>
+<td>RSI14=41.2 (PASS); MACD hist -3.29 且擴大; 價格 $348.04 低於 MA50 $372.17 (-6.5%)</td>
+<td>❌ FAIL (價格未站上 MA50)</td>
+</tr>
+<tr>
+<td>News</td>
+<td>淨新聞情緒偏多</td>
+<td>Net read: 混合偏空 (11-05 盤中 -8.8%, 原因未確認)</td>
+<td>❌ FAIL</td>
+</tr>
+<tr>
+<td>Sentiment</td>
+<td>分析師共識 ≥60% Buy 或機構流向偏多</td>
+<td>55 位分析師, 買進側 76% (42/55)</td>
+<td>✅ PASS</td>
+</tr>
+<tr>
+<td>Valuation</td>
+<td>Forward P/E &lt;35x 或明確 EPS 成長催化</td>
+<td>Forward P/E 約 71x; GAAP EPS 反而 YoY -75% (受併購費用影響), non-GAAP 連續 24 季優於預期但催化未達「明確確認」門檻</td>
+<td>❌ FAIL</td>
+</tr>
+</tbody>
+</table>
+<p><strong>總分: 2/5 — 未達標, 不進入 Phase 2-4。</strong></p>
+<h2>VERDICT: HOLD (Phase-1-only)</h2>
+<p>FINAL TRANSACTION PROPOSAL: <strong>HOLD</strong> — Phase-1-only, 未進入 Phase 2-4 (debate / trader / risk / portfolio-manager)。</p>
+<p>說明: PANW 營收成長強勁且分析師共識偏多, 但今日 (2026-11-05) 盤中大跌 8.8% 且已跌破 MA50, GAAP 獲利因大型併購費用大幅惡化, 估值偏高 (forward P/E 約 71x, P/S 約 24.8x)。Phase 1 positive-pick 評分僅 2/5 (需 ≥3/5), 未達進入完整辯論/交易/風險流程的門檻。依標準流程本次僅完成 Phase 1 分析, 不產出進場/停損/目標價位, 亦無交易建議。</p>
+<h2>風險提示</h2>
+<ul>
+<li>FY26 大型併購使商譽占總資產 59.9%, 有形帳面價值轉負 (-$1.54B), 減損風險需留意。</li>
+<li>股本年增 22%, 買回 (1.0B) 未能抵銷稀釋。</li>
+<li>下次財報 2026-11-18, 為窗口內最重要催化事件。</li>
+</ul>
+<p>FINAL DECISION COMPLETE (PHASE 1 ONLY)</p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="px-6 pb-6">
+
+    <details class="mb-4 border border-slate-200 rounded">
+      <summary class="bg-slate-50 px-4 py-2 font-semibold">投資計劃 (Research manager)</summary>
+      <div class="agent-prose p-4 text-sm"><em>n/a</em></div>
+    </details>
+
+    <details class="mb-4 border border-slate-200 rounded">
+      <summary class="bg-slate-50 px-4 py-2 font-semibold">交易提案 (Trader)</summary>
+      <div class="agent-prose p-4 text-sm"><em>n/a</em></div>
+    </details>
+
+    <details class="mb-4 border border-slate-200 rounded">
+      <summary class="bg-slate-50 px-4 py-2 font-semibold">Phase 1 — 四 Analyst 報告</summary>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+        <div>
+          <h4 class="font-bold text-slate-700 mb-2">基本面 (Fundamentals)</h4>
+          <div class="agent-prose text-sm bg-slate-50 p-3 rounded"><h1>Fundamentals — PANW as of 2026-11-06</h1>
+<p>資料截至 2026-11-05 (fast_info 快取時間 2026-11-05 14:30 UTC), 未見 2026-11-06 之後的資料; 下次財報 2026-11-18 在 DATE 之後, 屬未來事件。</p>
+<h2>Executive summary</h2>
+<p>PANW 的營收動能強勁 (FY26 營收 11.48B USD, YoY +24.5%, Q4 YoY +34.4%), 現金流也維持高水準 (FY26 FCF 4.11B USD, FCF margin 35.8%)。但 GAAP 獲利大幅惡化 (FY26 GAAP EPS 0.40 vs FY25 1.60, Q4 GAAP 淨損 -282M USD), 且 FY26 出現大型併購 (商譽由 4.57B 增至 22.01B USD、股本由 667.9M 股增至 815M 股), 使每股盈餘與資本結構的可比性下降。估值為 forward P/E 約 71x、P/S 約 24.8x, 相對一般大型資安軟體估值偏高 (sector median 為估計值), 基本面面的估值吸引力偏低。</p>
+<h2>Revenue &amp; profitability</h2>
+<p>單位: USD (B = 十億美元, M = 百萬美元)。</p>
+<table>
+<thead>
+<tr>
+<th>年度 (FYE 7 月)</th>
+<th>Revenue (B)</th>
+<th>YoY</th>
+<th>Gross margin</th>
+<th>Operating margin (GAAP)</th>
+<th>Net margin (GAAP)</th>
+<th>Diluted EPS (GAAP)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FY23</td>
+<td>6.89</td>
+<td>n/a</td>
+<td>72.3%</td>
+<td>5.6%</td>
+<td>6.4%</td>
+<td>0.64</td>
+</tr>
+<tr>
+<td>FY24</td>
+<td>8.03</td>
+<td>+16.5%</td>
+<td>74.3%</td>
+<td>8.5%</td>
+<td>32.1%*</td>
+<td>3.64</td>
+</tr>
+<tr>
+<td>FY25</td>
+<td>9.22</td>
+<td>+14.9%</td>
+<td>73.4%</td>
+<td>13.5%</td>
+<td>12.3%</td>
+<td>1.60</td>
+</tr>
+<tr>
+<td>FY26</td>
+<td>11.48</td>
+<td>+24.5%</td>
+<td>70.4%</td>
+<td>6.1%</td>
+<td>2.7%</td>
+<td>0.40</td>
+</tr>
+</tbody>
+</table>
+<p>*FY24 淨利率受稅務利益 -1.59B USD (Tax Provision) 墊高, 非經常性, 不宜當作正常獲利水準。</p>
+<ul>
+<li>營收 3 年 CAGR (FY23→FY26): 約 18.5%。FY26 成長加速, 季度趨勢為 Q1 FY26 2.47B、Q2 2.59B、Q3 3.00B、Q4 3.41B, Q4 YoY +34.4%, QoQ +13.6%。Q4 跳升與併購併表時點高度吻合 (由股本與商譽變化推斷, 資料未直接標示)。</li>
+<li>毛利率連續兩年下滑: FY25 73.4% → FY26 70.4% (-3.1pp); Q4 毛利率 67.6%, 與 Q3 的 67.6% 持平, 低於 FY25 Q4 的 73.2%。Cost of revenue FY26 3.40B, YoY +38.9%, 超過營收成長。</li>
+<li>GAAP 營業利益 FY26 695M USD (YoY -44%), 但季度序列顯示 Q3 營業利益 -183M, Q4 +172M。</li>
+<li>GAAP 淨利 FY26 307M USD (YoY -73%); 季度 Q4 淨損 -282M USD, Q3 淨損 -177M USD。</li>
+<li>Adjusted EPS (yfinance earnings_dates, 非 GAAP): FY26 Q4 (報告於 2026-09-01) 1.02 vs 預估 0.98, beat +4.35%。</li>
+<li>資料一致性提醒: Q4 FY26 的 Operating Income 列為 172M, 但 EBIT 列為 -269M, 稅前淨利 -269M; 兩者差約 -441M 的非營業項目未在資料中拆解, 需以 10-K / 10-Q 核對。</li>
+<li>獲利能力: ROE (NI / 平均股東權益) 約 1.7%; ROIC 粗估約 2.2% (NOPAT 以營業利益 × (1-40%) 計, 平均投入資本 18.5B)。兩者均被併購後的大幅權益擴張與 GAAP 費用稀釋。</li>
+<li>分部營收: 資料未提供分部拆分 (info.longBusinessSummary 僅列產品線: Prisma Access、Cortex XSIAM/XDR/XSOAR、Unit 42 等), 分部占比 n/a。</li>
+</ul>
+<h2>Cashflow &amp; balance sheet</h2>
+<p>單位: USD B。</p>
+<p>現金流:<br />
+- FCF FY23-FY26: 2.63 / 3.10 / 3.47 / 4.11 B USD, FCF CAGR (FY23-26) 約 16%。<br />
+- FCF margin: FY23 38.2%、FY24 38.6%、FY25 37.6%、FY26 35.8%, 呈小幅下滑但仍在高檔。<br />
+- OCF FY26 4.55B USD, CapEx 0.44B USD (佔營收 3.8%, FY25 為 0.25B USD)。<br />
+- FCF / NI: FY26 為 13.4x (FY25 3.1x), 因 GAAP 淨利被 GAAP 費用壓低, 此比率失真, 不能單獨作為現金流品質的正面證據。以 FCF 對 SBC 看: SBC 1.77B USD, 佔營收 15.5%, 佔 FCF 43%, 是 FCF 的重要扣除項。<br />
+- 季度 FCF: Q1 FY26 1.69B、Q2 0.38B、Q3 0.79B、Q4 1.25B USD, 季度間波動大。</p>
+<p>資產負債表 (2026-07-31):<br />
+- 現金與約當現金 2.51B USD; 含短期投資 Cash+STI 3.07B USD。<br />
+- 總債務 2.50B USD (FY25 為 0.34B USD), 其中長期債務 1.77B USD、Q3 的流動債務 0.16B USD。資料中的 interest expense 列為 0, 與債務增加不一致, 屬資料缺口。<br />
+- 淨現金: 以 BS 計約 0.57B USD (info 以 totalDebt 2.567B 計約 0.50B USD)。<br />
+- 流動比率 0.87, 速動比率 0.51, 營運資金 -1.28B USD; 流動負債中 Current Deferred Revenue 7.75B USD, 為訂閱制軟體的典型結構 (以預收收入支撐營運資金)。<br />
+- 權益比債務: 總債務 / 股東權益 約 9.1% (info debtToEquity 9.34, 單位為百分比); 總負債 / 股東權益 0.76x。<br />
+- 資產品質: 商譽 22.01B + 無形資產 7.02B = 29.03B USD, 佔總資產 48.46B USD 的 59.9%; 有形帳面價值 TBV 為 -1.54B USD。FY25 TBV 為 +2.49B USD。<br />
+- 股東權益 27.49B USD (FY25 7.82B USD), 增加主要來自股票對價 (Capital Stock 由 5.29B 增至 24.77B USD)。</p>
+<h2>Capital allocation &amp; insider signal</h2>
+<p>資本配置:<br />
+- 股利: 無 (dividendYield 0)。<br />
+- 買回: FY26 買回股票 1.00B USD (FY25 為 0, FY24 0.57B, FY23 0.27B); 占 FY26 FCF 24%。<br />
+- 併購: FY26 Purchase of Business 現金支出 4.66B USD (FY25 1.05B USD); 加上股票對價, 為 FY26 最主要的資本配置動作。資料未標示被併標的, 由商譽與股本變化推斷為大型收購。<br />
+- 股本: 期末普通股 815M 股 vs FY25 667.9M 股, 年增約 22%; 稀釋後平均股數 764M vs 709.3M, 年增 7.7%。買回金額未能抵銷股本擴張。<br />
+- CapEx 占營收 3.8%, 為輕資產模式。</p>
+<p>內部人交易 (以 2026-05-05 至 2026-11-05 為 6 個月窗口):<br />
+- 共 20 筆公開市場賣出, 合計約 54.4M USD, 約 173k 股。<br />
+- 賣出金額前三名: Klarich Lee 16.3M、Goetz James Joseph 13.1M、Golechha Dipak 12.2M USD。<br />
+- 窗口內 0 筆公開市場買入。<br />
+- 規模: 54.4M USD 占市值 (以 348.04 × 818.4M 股 ≈ 284.9B USD 計) 約 0.02%, 數量級很小。<br />
+- 2026-03-27 CEO Nikesh Arora 買入 10.0M USD (146.87-147.48 USD/股), 在窗口之外, 但為近一年唯一的重要公開市場買入。<br />
+- 大量 Stock Award (2026-10-30 多名高管) 屬例行股權授予, 非市場交易。<br />
+- 機構持股 83.7%, 內部人持股 0.63%。<br />
+- 治理風險分數 (yfinance, 1-10, 數字越高風險越大): overall 9、compensation 10、board 9、shareholder rights 9、audit 1。薪酬風險評分最高, 需留意。</p>
+<h2>Valuation</h2>
+<p>價格基準: fast_info 最新價 348.04 USD (快取 2026-11-05)。info 的 marketCap 259.65B USD 與 forwardPE 65.0x 對應約 317 USD/股 (較舊的價格基準), 本報告統一以 348.04 USD 重算。</p>
+<table>
+<thead>
+<tr>
+<th>指標</th>
+<th>數值</th>
+<th>計算 / 來源</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Trailing P/E</td>
+<td>約 870x</td>
+<td>348.04 / GAAP EPS 0.40 (info 顯示 793x 為舊價格基準); 不具參考性</td>
+</tr>
+<tr>
+<td>Forward P/E</td>
+<td>約 71x</td>
+<td>348.04 / forwardEps 4.88 (info 顯示 65.0x)</td>
+</tr>
+<tr>
+<td>P/S (TTM)</td>
+<td>約 24.8x</td>
+<td>市值 284.9B / Revenue 11.48B (info 22.6x 為舊基準)</td>
+</tr>
+<tr>
+<td>EV/Revenue</td>
+<td>約 24.8x</td>
+<td>EV ≈ 284.9B + 2.50B 債 - 3.07B 現金 ≈ 284.3B</td>
+</tr>
+<tr>
+<td>EV/EBITDA</td>
+<td>約 204x (FY26 EBITDA 1.39B USD); info 182x (TTM EBITDA 1.56B USD)</td>
+<td>GAAP EBITDA 受併購費用影響</td>
+</tr>
+<tr>
+<td>P/FCF</td>
+<td>約 69x</td>
+<td>市值 284.9B / FCF 4.11B</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>分析師: 50 位, 推薦 buy, 平均目標價 398.52 USD (約較現價 +14.5%)。</li>
+<li>價格位置: 52 週區間 139.57-432.33 USD, 現價距 52 週高點 -19.5%; 距 50 日均線 372.17 USD 為 -6.5%; 高於 200 日均線 272.27 USD 約 +27.9%。Beta 0.97。</li>
+<li>與同業比較: 資料未提供 sector median, 以下為估計值 (非工具輸出): 大型資安軟體 forward P/E 約 40x、P/S 約 12x、P/FCF 約 35x、非 GAAP 營業利益率約 28%、毛利率約 78%。PANW 以 GAAP 計算的毛利率與獲利率均明顯低於估計中位數, 但 forward P/E 與 P/S 皆約為估計中位數的 1.8-2 倍。</li>
+</ul>
+<h2>Key catalysts</h2>
+<ul>
+<li>下次財報: 2026-11-18 (yfinance 時間 21:00 UTC, 即美股盤後), 距 DATE 12 天。Consensus adjusted EPS 0.97 USD。</li>
+<li>歷史: yfinance 資料內的 24 個已報告季度, adjusted EPS 全部優於預估, 平均 surprise 約 +8%; 最近一季 (2026-09-01) +4.35%。</li>
+<li>營收動能: Q4 FY26 YoY +34.4% 是否在併購併表後延續, 為下一季核心觀察點。</li>
+<li>毛利率: 需確認 70.4% 的下滑來自併購攤銷 / 整合成本, 或是產品組合與定價壓力。</li>
+<li>指引 (guidance): 工具資料未提供 management guidance, 此項 n/a。</li>
+<li>分部: 分部營收 n/a。</li>
+<li>整合與槓桿: 2.5B USD 債務與 29.0B USD 無形資產的減損風險 (商譽佔總資產 60%) 為中期關注點。</li>
+</ul>
+<h2>Metrics table</h2>
+<p>單位: 營收與市值 (USD B); 比率 (%, x)。</p>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Latest (FY26 或 2026-11-05)</th>
+<th>YoY</th>
+<th>Sector median (estimate, 非工具資料)</th>
+<th>Verdict</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Revenue (USD B)</td>
+<td>11.48</td>
+<td>+24.5%</td>
+<td>n/a</td>
+<td>強</td>
+</tr>
+<tr>
+<td>Q4 Revenue (USD B)</td>
+<td>3.41</td>
+<td>+34.4%</td>
+<td>n/a</td>
+<td>強 (含併購效果)</td>
+</tr>
+<tr>
+<td>Gross margin (GAAP)</td>
+<td>70.4%</td>
+<td>-3.1pp</td>
+<td>約 78%</td>
+<td>弱</td>
+</tr>
+<tr>
+<td>Operating margin (GAAP)</td>
+<td>6.1%</td>
+<td>-7.4pp</td>
+<td>約 28% (non-GAAP)</td>
+<td>弱</td>
+</tr>
+<tr>
+<td>Net margin (GAAP)</td>
+<td>2.7%</td>
+<td>-9.6pp</td>
+<td>約 10%</td>
+<td>弱</td>
+</tr>
+<tr>
+<td>Diluted EPS (GAAP, USD)</td>
+<td>0.40</td>
+<td>-75%</td>
+<td>n/a</td>
+<td>弱</td>
+</tr>
+<tr>
+<td>ROE</td>
+<td>1.7%</td>
+<td>n/a</td>
+<td>約 10%</td>
+<td>弱</td>
+</tr>
+<tr>
+<td>ROIC (粗估)</td>
+<td>約 2.2%</td>
+<td>n/a</td>
+<td>約 10%</td>
+<td>弱</td>
+</tr>
+<tr>
+<td>FCF (USD B)</td>
+<td>4.11</td>
+<td>+18.5%</td>
+<td>n/a</td>
+<td>強</td>
+</tr>
+<tr>
+<td>FCF margin</td>
+<td>35.8%</td>
+<td>-1.9pp</td>
+<td>約 25%</td>
+<td>強</td>
+</tr>
+<tr>
+<td>FCF / NI</td>
+<td>13.4x</td>
+<td>失真</td>
+<td>&gt;0.9 健康</td>
+<td>不具參考性</td>
+</tr>
+<tr>
+<td>SBC / revenue</td>
+<td>15.5%</td>
+<td>約 +1.6pp (FY25 14.0%)</td>
+<td>約 12%</td>
+<td>偏高</td>
+</tr>
+<tr>
+<td>Net cash (USD B, BS)</td>
+<td>約 +0.57</td>
+<td>由 FY25 淨負債 (-) 轉為淨現金</td>
+<td>n/a</td>
+<td>中性</td>
+</tr>
+<tr>
+<td>Total debt (USD B)</td>
+<td>2.50</td>
+<td>+640% (FY25 0.34)</td>
+<td>n/a</td>
+<td>需留意</td>
+</tr>
+<tr>
+<td>Current ratio</td>
+<td>0.87</td>
+<td>FY25 0.94</td>
+<td>約 1.5</td>
+<td>偏弱 (訂閱預收結構)</td>
+</tr>
+<tr>
+<td>Debt / Equity</td>
+<td>9.1%</td>
+<td>n/a</td>
+<td>約 20%</td>
+<td>健康</td>
+</tr>
+<tr>
+<td>Goodwill+Intangibles / Assets</td>
+<td>59.9%</td>
+<td>由 FY25 22.6% 升</td>
+<td>約 30%</td>
+<td>偏高</td>
+</tr>
+<tr>
+<td>Tangible BV (USD B)</td>
+<td>-1.54</td>
+<td>由 +2.49 轉負</td>
+<td>n/a</td>
+<td>弱</td>
+</tr>
+<tr>
+<td>CapEx / revenue</td>
+<td>3.8%</td>
+<td>+1.1pp</td>
+<td>約 3-5%</td>
+<td>中性</td>
+</tr>
+<tr>
+<td>Buyback (USD B)</td>
+<td>1.00</td>
+<td>由 0 增加</td>
+<td>n/a</td>
+<td>不足以抵銷稀釋</td>
+</tr>
+<tr>
+<td>Shares outstanding (M)</td>
+<td>815</td>
+<td>+22%</td>
+<td>n/a</td>
+<td>稀釋</td>
+</tr>
+<tr>
+<td>Insider net sales 6mo (USD M)</td>
+<td>54.4 (0 買入)</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>小幅賣出, 規模 0.02% 市值</td>
+</tr>
+<tr>
+<td>P/E forward (x)</td>
+<td>約 71</td>
+<td>n/a</td>
+<td>約 40</td>
+<td>偏貴</td>
+</tr>
+<tr>
+<td>P/S TTM (x)</td>
+<td>約 24.8</td>
+<td>n/a</td>
+<td>約 12</td>
+<td>偏貴</td>
+</tr>
+<tr>
+<td>P/FCF (x)</td>
+<td>約 69</td>
+<td>n/a</td>
+<td>約 35</td>
+<td>偏貴</td>
+</tr>
+<tr>
+<td>EV/EBITDA (x)</td>
+<td>約 204 (GAAP)</td>
+<td>n/a</td>
+<td>約 40 (non-GAAP)</td>
+<td>不具參考性 (GAAP EBITDA 低)</td>
+</tr>
+<tr>
+<td>Adj. EPS beat rate (24Q)</td>
+<td>24/24 beat</td>
+<td>n/a</td>
+<td>約 75%</td>
+<td>強</td>
+</tr>
+</tbody>
+</table>
+<h2>Red flags</h2>
+<ul>
+<li>GAAP 獲利大幅惡化: FY26 淨利 307M USD (YoY -73%), Q4 淨損 -282M USD, Q3 淨損 -177M USD, GAAP 毛利率下滑 3.1pp。</li>
+<li>Q4 FY26 營業利益 (172M) 與 EBIT (-269M) 不一致, 約 -441M 非營業項目需以財報核對, 資料單獨不足以判定。</li>
+<li>大型併購 (FY26 現金 4.66B USD + 股票對價, 商譽增加 17.4B USD) 使前後期不可比; 有形權益轉負 (TBV -1.54B USD), 商譽減損風險。</li>
+<li>債務由 0.34B 增至 2.50B USD, 但 interest expense 為 0, 與債務規模不符, 需確認利息成本與債務條款。</li>
+<li>股本擴張 22%, SBC 1.77B USD (佔 FCF 43%), 買回 1.0B USD 未抵銷稀釋。</li>
+<li>估值偏高: forward P/E 約 71x、P/S 約 24.8x、P/FCF 約 69x。</li>
+<li>治理與薪酬風險評分高 (compensation 10/10, overall 9/10)。</li>
+<li>價格 348.04 USD 低於 50 日均線 (-6.5%), 距 52 週高點 -19.5%; 近期內部人在 347-396 USD 區間持續賣出。</li>
+<li>資料缺口: fast_info 的 50/200 日均線與市值欄位為 null (以 info 替代); Yahoo cookie/crumb 多次失敗; info 與 fast_info 價格基準不一致; 分部營收、管理層指引、sector median 均為 n/a 或估計值。</li>
+</ul>
+<p>FUNDAMENTALS REPORT COMPLETE</p></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-slate-700 mb-2">技術面 (Market / Technical)</h4>
+          <div class="agent-prose text-sm bg-slate-50 p-3 rounded"><h1>Technical — PANW as of 2026-11-06</h1>
+<p><strong>資料日期說明</strong>：要求的日期為 2026-11-06，但今天是 2026-11-05，工具最新資料僅到 2026-11-04 收盤。本報告所有數字皆為 2026-11-04 收盤資料，並非 11-06 盤後資料。</p>
+<h2>Snapshot</h2>
+<p>Price $348.04, MA20 $372.92, MA50 $372.17, MA200 $272.27, RSI14=41.2, MACD hist=-3.29</p>
+<h2>Trend</h2>
+<p>中期趨勢仍在多頭結構內：MA50 ($372.17) 遠高於 MA200 ($272.27)，價格高於 MA200 約 27.8%，且 MA200 仍在上升，尚未出現死亡交叉。但短期已轉弱：價格同時跌破 MA20 與 MA50（分別低 6.7% 與 6.5%），且自 52 週高點 $432.33 回落 19.5%。</p>
+<p>MA20 ($372.92) 與 MA50 ($372.17) 幾乎重疊，兩條均線走平，短期 20/50 日均線可能很快交叉。近 10 個交易日從 10 月下旬收盤高點 $401.70 連續下跌至 $348.04，屬於高檔回檔，目前未跌破 10 月 20 日的支撐 $334.75。</p>
+<h2>Momentum</h2>
+<p>MACD 線 (-5.22) 低於訊號線 (-1.92)，柱狀體 (-3.29) 負值且較 11-03 的 -2.65 持續擴大，屬空方動能加速。RSI14 為 41.2，位於中性偏弱區，尚未進入超賣（&lt;30）。</p>
+<p>多週期報酬：1 個月 -17.1%、3 個月 -3.2%、6 個月 +89.5%、12 個月 +58.8%。短期動能明顯轉負，中長期動能仍為正。</p>
+<h2>Key levels</h2>
+<ul>
+<li>Resistance: $372.9 (MA20/MA50 匯合區), $368.80 (2026-07-17 local high), $398.88 (2026-08-13 local high), $432.33 (2026-10-06 local high / 52 週高點)</li>
+<li>Support:    $341.45 (2026-11-04 盤中低點，近期最低), $334.75 (2026-10-20 local low), $321.39 (2026-09-02 local low), $308.54 (2026-07-28 local low)</li>
+<li>較低參考：$302.95 (2026-06-01 local high，目前已在價格之下)</li>
+<li>Stop-loss suggestion (logical, not advice): below $334.75 (最近未被跌破的關鍵支撐；若跌破則下一個參考為 $321.39)</li>
+</ul>
+<h2>Volatility profile</h2>
+<p>ATR14 = $19.12，約為股價的 5.5%，即 ATR-implied daily move ~$19.12。20 日年化波動率 58.0%，對應日標準差約 $12.7（348.04 × 0.58 / √252）。<br />
+部位規模含意：以 1.5–2 ATR 作為停損距離時約為 $29–38；波動率高，同樣風險金額下部位應相對縮小。</p>
+<h2>Setup</h2>
+<p>偏空（短線）/ 中性（中期）。型態上是高檔回檔：自 10 月底起出現較低高點，且 11-02 至 11-04 三根 K 線收盤持續下跌（351.72 → 350.20 → 348.04），目前處於 $341–362 區間下緣附近，正在測試 $334.75 支撐。若守住 $334.75 且 MACD 柱狀體轉向，可視為區間整理；若跌破則空方結構確認。</p>
+<p>量能：11-04 成交量 5.73M，為 10 日均量 6.12M 的 0.94 倍。近兩日下跌量能未放大（11-02 為 6.65M，11-03 為 5.45M），下跌動能的量能確認偏弱。</p>
+<h2>Indicators table</h2>
+<table>
+<thead>
+<tr>
+<th>Indicator</th>
+<th>Value</th>
+<th>Reading</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Price</td>
+<td>$348.04</td>
+<td>位於 MA20/MA50 之下，MA200 之上</td>
+</tr>
+<tr>
+<td>MA20</td>
+<td>$372.92</td>
+<td>價格低 6.7%，短期轉弱</td>
+</tr>
+<tr>
+<td>MA50</td>
+<td>$372.17</td>
+<td>價格低 6.5%，均線走平</td>
+</tr>
+<tr>
+<td>MA200</td>
+<td>$272.27</td>
+<td>價格高 27.8%，長期仍在上方</td>
+</tr>
+<tr>
+<td>MA20 vs MA50</td>
+<td>+$0.75 (約 0.2%)</td>
+<td>短期均線即將交叉，方向待定</td>
+</tr>
+<tr>
+<td>RSI14</td>
+<td>41.2</td>
+<td>中性偏弱，未超賣</td>
+</tr>
+<tr>
+<td>MACD</td>
+<td>-5.22</td>
+<td>低於訊號線，空方</td>
+</tr>
+<tr>
+<td>MACD signal</td>
+<td>-1.92</td>
+<td>—</td>
+</tr>
+<tr>
+<td>MACD hist</td>
+<td>-3.29</td>
+<td>負值且擴大，空方加速</td>
+</tr>
+<tr>
+<td>BB %B</td>
+<td>0.25</td>
+<td>位於下半軌與中軌之間，未觸及下軌 (324.07)</td>
+</tr>
+<tr>
+<td>BB 上/下軌</td>
+<td>$421.78 / $324.07</td>
+<td>上軌為 MA20+2σ，下軌 $324 為下一個動態支撐</td>
+</tr>
+<tr>
+<td>ATR14</td>
+<td>$19.12</td>
+<td>日波動約 5.5%</td>
+</tr>
+<tr>
+<td>20d 年化波動率</td>
+<td>58.0%</td>
+<td>高波動，部位宜縮小</td>
+</tr>
+<tr>
+<td>1M return</td>
+<td>-17.1%</td>
+<td>短期大幅回落</td>
+</tr>
+<tr>
+<td>3M return</td>
+<td>-3.2%</td>
+<td>持平偏弱</td>
+</tr>
+<tr>
+<td>6M return</td>
+<td>+89.5%</td>
+<td>中期強勢</td>
+</tr>
+<tr>
+<td>12M return</td>
+<td>+58.8%</td>
+<td>長期強勢</td>
+</tr>
+<tr>
+<td>距 52 週高點</td>
+<td>-19.5%</td>
+<td>高點 $432.33 (2026-10-06)</td>
+</tr>
+<tr>
+<td>距 52 週低點</td>
+<td>+149.4%</td>
+<td>低點 $139.57</td>
+</tr>
+<tr>
+<td>成交量 vs 10 日均量</td>
+<td>0.94x</td>
+<td>量能未放大，下跌無量確認</td>
+</tr>
+</tbody>
+</table>
+<p>MARKET REPORT COMPLETE</p></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-slate-700 mb-2">新聞 (News)</h4>
+          <div class="agent-prose text-sm bg-slate-50 p-3 rounded"><h1>News — PANW as of 2026-11-06</h1>
+<p><strong>資料限制（先讀）</strong><br />
+- <code>pipeline/tools/yf PANW news</code> 連續兩次回傳 403（proxy 擋 query2.finance.yahoo.com / guce.yahoo.com），本次沒有取得 provider 新聞列表。以下新聞來自 WebSearch，多數結果無日期或互相矛盾，已標註。<br />
+- 報告日期為 2026-11-06，但目前系統日期是 2026-11-05。資料僅到 2026-11-05 盤中，之後的事件一律視為未知。</p>
+<h2>Top company-specific headlines (last 14d)</h2>
+<table>
+<thead>
+<tr>
+<th>日期</th>
+<th>事件</th>
+<th>來源</th>
+<th>影響</th>
+<th>理由</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2026-11-05</td>
+<td>盤中跌 8.85% 至 $317.24（前收 $348.04，日內區間 $316.03–$338.87，成交量約為 10 日均量的 15%）</td>
+<td>yfinance info 快取（cached 2026-11-05 14:37 UTC）</td>
+<td>偏空（價格面）</td>
+<td>單日跌幅大，成因未找到。搜尋結果沒有 11/5 當日的新聞。</td>
+</tr>
+<tr>
+<td>2026-10 下旬</td>
+<td>10/29 維也納掛牌（歐元）收盤 336.95，單日 -5.19%；Tickeron 稱 10 月初突破 $430 後回落至中 $300，下旬反彈至約 $388</td>
+<td>stockanalysis VIE history、Tickeron</td>
+<td>中性</td>
+<td>價格來源不一致，只能看出高波動。</td>
+</tr>
+<tr>
+<td>日期未確定（疑為 2026 年）</td>
+<td>Phillip Securities 調降至 Neutral，目標價 $346，股價跌 3.6% 至 $403.81</td>
+<td>Webull/Barchart 報導（搜尋摘要）</td>
+<td>偏空</td>
+<td>評級下調，但無法確認發生日期，不納入主要判斷。</td>
+</tr>
+<tr>
+<td>2026-10</td>
+<td>分析師共識：平均目標 $398.52，中位數 $415，最高 $525，最低 $190，推薦均值 1.69（Buy），共 50 家</td>
+<td>yfinance info</td>
+<td>中性</td>
+<td>現價 $317 低於平均目標，共識仍偏多。</td>
+</tr>
+</tbody>
+</table>
+<p>Background，日期不明，不作為近 14 日事件：FQ4 2026（2026-09-01）財報優於預期並給出偏強的 FY27 指引，股價當時上漲。2026-09-01 也有股價單日 -6.4% 的報導。</p>
+<p>沒有找到 M&amp;A、高階人事、監管或訴訟的新 headline。</p>
+<h2>Sector macro</h2>
+<ul>
+<li>2026-11-05（盤中，原因未確認）— 軟體股是否再次因 AI 工具衝擊而拋售，無法確認。搜尋結果顯示 2026 年 2 月、4 月曾出現類似軟體股拋售，其中 4/23 IGV 單日 -5.4%。Impact on 網路安全 / 軟體: 若這次也是軟體族群拋售，PANW 的 -8.8% 可能有族群成分；但目前沒有證據。</li>
+<li>2026-10-27/28 — FOMC 會議。結果來源矛盾：有的寫維持 4%，有的寫 9 月升息 25bp，另一份寫 10 月「待決」。市場討論 12 月升息機率。Impact on 軟體估值: 若利率不降，高估值成長股（PANW forward P/E 約 65x）承受折現率壓力。需以 federalreserve.gov 原文確認。</li>
+<li>2026-10-21 — 網路安全重大漏洞揭露，加上 Evercore ISI 渠道調查顯示年底資安預算轉強。Impact on 網路安全: 需求面偏多。</li>
+</ul>
+<h2>Peer signals</h2>
+<ul>
+<li>CRWD — 2026 年 10 月約 +123% YTD。11/5 盤中走勢未取得，無法判斷是否同步下跌。</li>
+<li>FTNT — 2026 年 10 月約 +141% YTD。11/5 無資料。</li>
+<li>ZS — 無 2026 年 10 月後的可靠價格資料。</li>
+<li>同業在 11/5 是否也下跌，是判斷 PANW 跌幅屬於族群還是個股的關鍵，目前無法確認。</li>
+</ul>
+<h2>Forward calendar (next 14d)</h2>
+<ul>
+<li>2026-11-10（週二）08:30 ET — 美國 10 月 CPI。通膨高於預期會加重利率壓力，對高估值軟體股偏空。</li>
+<li>2026-11-18（週三）14:00 ET — FOMC 10 月會議紀錄，同日 Beige Book。</li>
+<li>2026-11-18（週三）盤後 16:00 ET，電話會議 16:30 ET — PANW FQ1 FY27 財報（yfinance 時間戳；快取 earningsTimestamp = 2026-11-18）。<strong>注意</strong>：Trendlyne 寫 11/19，日期需以 PANW IR 為準。Q1 FY27 調整後 EPS 指引 $0.96–0.98，營收約 $3.3B（未經原始新聞稿核對）。</li>
+<li>12/09 FOMC、12/10 CPI 超出 14 日窗口，僅列出供參考。</li>
+</ul>
+<h2>Net read</h2>
+<p>目前新聞面的主要訊號是 2026-11-05 盤中 -8.8% 的單日跌幅，成因沒有確認，這是最重要也最不確定的部分。近期公司基本面資訊偏多：FQ4 財報優於預期、FY27 指引偏強、分析師共識 Buy（均值 1.69）、空單占流通股僅約 2.6%。但估值極高（trailing P/E 約 793x，forward P/E 約 65x，EV/Revenue 約 24.8x），相對 TTM 營收約 $11.48B、TTM 淨利約 $307M，對利率與軟體族群情緒特別敏感。依可取得的資料，淨 headline 傾向為<strong>混合偏空</strong>，強度中高，主要來自價格面與 11/5 的未知原因。10/29 之後的 CPI 與 11/18 財報是下一個重要催化劑。在確認 11/5 下跌的成因（個股公告、族群拋售或利率因素）以及同業同日走勢之前，不應把這個偏空判讀當成基本面惡化的證據。</p>
+<p><strong>單位</strong>：市值約 $260B（259.65B USD）、EV 約 $284B、TTM 營收約 $11.48B、TTM 淨利約 $307M、自由現金流約 $4.24B。交叉驗證：trailing EPS 0.40 × 股數 818M ≈ $327M，與淨利 $307M 大致相符。</p>
+<p>NEWS REPORT COMPLETE</p></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-slate-700 mb-2">情緒 (Sentiment)</h4>
+          <div class="agent-prose text-sm bg-slate-50 p-3 rounded"><h1>Sentiment — PANW as of 2026-11-06</h1>
+<p><strong>日期注意:</strong> 指定的 DATE 為 2026-11-06, 但執行環境系統日期為 2026-11-05。最新內部人交易為 2026-11-02, 分析師彙總計數的日期工具未標示。WebSearch 未找到 2026 年 11 月的內容。</p>
+<h2>Analyst consensus</h2>
+<p>55 家覆蓋 (rec_summary 0m): <strong>42 買入側</strong> (Strong Buy 10 + Buy 32) / <strong>12 持有</strong> / <strong>1 賣出</strong> (Strong Sell 0), 買入側占 76%。</p>
+<table>
+<thead>
+<tr>
+<th>期間</th>
+<th>Strong Buy</th>
+<th>Buy</th>
+<th>Hold</th>
+<th>Sell</th>
+<th>Strong Sell</th>
+<th>買入側占比</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>當期 (0m)</td>
+<td>10</td>
+<td>32</td>
+<td>12</td>
+<td>1</td>
+<td>0</td>
+<td>76%</td>
+</tr>
+<tr>
+<td>前 1 月 (-1m)</td>
+<td>10</td>
+<td>32</td>
+<td>11</td>
+<td>1</td>
+<td>1</td>
+<td>76%</td>
+</tr>
+<tr>
+<td>前 2 月 (-2m)</td>
+<td>11</td>
+<td>33</td>
+<td>9</td>
+<td>1</td>
+<td>1</td>
+<td>80%</td>
+</tr>
+</tbody>
+</table>
+<p>近兩個月買入側由 44 家降至 42 家, 持有由 9 家增至 12 家, 評等有緩和偏中性的跡象, 但整體仍偏多。</p>
+<p><strong>近期升降評與目標價:</strong> <code>recommendations</code> 工具只回傳彙總計數, 沒有個別評等變更與目標價紀錄, 因此無法列出具體升降評。WebSearch 找到一篇 MarketBeat 摘要, 提到 6 月有多家上調目標價至 $207–$360, 但這是二手資訊且日期久遠, 未經驗證。</p>
+<h2>Retail social</h2>
+<ul>
+<li><strong>Reddit (r/wallstreetbets, r/stocks):</strong> 無法取得。WebFetch 回報無法連線 www.reddit.com, 無貼文樣本, 無法判定 tilt。</li>
+<li><strong>StockTwits:</strong> 無法取得。api.stocktwits.com 解析失敗 (ENOTFOUND), 需在 session 網路設定中允許該網域。本次未重試。</li>
+<li><strong>X / 新聞聚合:</strong> WebSearch 結果以 options-flow 聚合頁 (historicaloptiondata.com) 為主。8/26–9/3 間有大量自動產生的交易分析頁, 顯示期權市場討論在 8 月底較熱絡。這不是散戶社群樣本, 只能當作間接訊號。</li>
+<li><strong>討論量:</strong> 無法量化 (缺 Reddit / StockTwits 計數), 定性判斷無法判定。</li>
+<li><strong>Tilt:</strong> 無可靠判定。聚合來源中多數 8 月分析判讀期權流偏多, 另有一篇 8/26 判讀偏空、一篇 8/27 判讀中性。</li>
+<li><strong>主要論點 (來自聚合來源, 未取得可引用的原文):</strong></li>
+<li>多方: 產品與服務被認為強, 公司被視為 AI 驅動的資安領導者。</li>
+<li>空方: 估值偏高 (聚合頁記載 P/E 約 278), 股價漲幅過快, 獲利了結壓力。</li>
+<li>財報反應: 9 月初單一來源提到財報超預期後股價仍下跌約 9%, 未經驗證。</li>
+</ul>
+<h2>Insider activity</h2>
+<p>觀察期: 2026-05-06 至 2026-11-02 (6 個月)。金額單位為 USD M。</p>
+<p><strong>Net 6mo: 公開市場買入 $0M, 賣出約 $54.3M</strong> (19 筆 Sale 記錄)。工具未標示是否為 10b5-1 計畫, 無法判斷賣出是否為預定計畫。</p>
+<table>
+<thead>
+<tr>
+<th>日期</th>
+<th>內部人</th>
+<th>職稱</th>
+<th>股數</th>
+<th>金額 (USD M)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2026-11-02</td>
+<td>William D. Jenkins Jr.</td>
+<td>President</td>
+<td>18,222</td>
+<td>6.54</td>
+</tr>
+<tr>
+<td>2026-09-24</td>
+<td>Dipak Golechha</td>
+<td>CFO</td>
+<td>27,500</td>
+<td>10.77</td>
+</tr>
+<tr>
+<td>2026-09-17</td>
+<td>James J. Goetz</td>
+<td>Director (間接持有)</td>
+<td>20,000</td>
+<td>7.53</td>
+</tr>
+<tr>
+<td>2026-06-12</td>
+<td>James J. Goetz</td>
+<td>Director (間接持有)</td>
+<td>20,000</td>
+<td>5.60</td>
+</tr>
+<tr>
+<td>2026-05-22</td>
+<td>Lee Klarich</td>
+<td>CTO, Officer and Director</td>
+<td>62,904</td>
+<td>16.27</td>
+</tr>
+<tr>
+<td>2026-06-12</td>
+<td>John P. Key</td>
+<td>Director</td>
+<td>7,500</td>
+<td>2.09</td>
+</tr>
+<tr>
+<td>2026-06-23</td>
+<td>Dipak Golechha</td>
+<td>CFO</td>
+<td>5,000</td>
+<td>1.45</td>
+</tr>
+<tr>
+<td>2026-09-14</td>
+<td>John P. Key</td>
+<td>Director</td>
+<td>2,500</td>
+<td>0.94</td>
+</tr>
+</tbody>
+</table>
+<p>另有 Joshua D. Paul (Officer) 每月小額賣出 (約 $0.16–0.34M/筆) 及 Aparna Bawa (Director) 的小額賣出。</p>
+<ul>
+<li><strong>股權獎勵 (非市場交易, 未計入淨額):</strong> 2026-10-30 多名高管授予獎勵股 (Jenkins 264,195 股、Klarich 198,152 股、Golechha 132,101 股); 2026-09-18 Paul 授予 7,211 股。</li>
+<li><strong>CEO Nikesh Arora:</strong> 觀察期內無交易。最近一次公開市場買入為 2026-03-27, 68,085 股, 約 $10.0M, 成交價約 $147, 約為當前股價的 4 成。</li>
+</ul>
+<h2>Ownership</h2>
+<ul>
+<li>機構持股 83.7% (3,973 家機構)。內部人持股 0.63%。</li>
+<li>只有單一時點快照, 沒有歷史序列, 無法判定機構集中度的趨勢。</li>
+</ul>
+<h2>Net sentiment score</h2>
+<ul>
+<li><strong>分析師:</strong> 偏多 (買入側 76%, 覆蓋 55 家), 信心中高。</li>
+<li><strong>內部人:</strong> 偏空 (6 個月淨賣約 $54.3M, 無公開市場買入; CEO 最近一次買入為 3 月)。</li>
+<li><strong>散戶:</strong> 無法判定 (Reddit / StockTwits 無資料, 聚合來源訊號互相矛盾)。</li>
+<li><strong>綜合:</strong> 中性, 信心低至中。分析師偏多被內部人淨賣抵銷, 散戶端資料缺失。</li>
+</ul>
+<p><strong>Divergence flag:</strong> 部分是。分析師偏多 vs 內部人淨賣, 方向相反。散戶 vs 分析師無法確認, 因為缺少散戶資料。</p>
+<p>SENTIMENT REPORT COMPLETE</p></div>
+        </div>
+      </div>
+    </details>
+
+    <details class="mb-4 border border-slate-200 rounded">
+      <summary class="bg-slate-50 px-4 py-2 font-semibold">Phase 2 — Bull vs Bear 辯論</summary>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+        <div>
+          <h4 class="font-bold text-green-700 mb-2">🐂 多方 (Bull)</h4>
+          <div class="agent-prose text-sm bg-green-50 p-3 rounded border border-green-200"><em>n/a</em></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-red-700 mb-2">🐻 空方 (Bear)</h4>
+          <div class="agent-prose text-sm bg-red-50 p-3 rounded border border-red-200"><em>n/a</em></div>
+        </div>
+      </div>
+    </details>
+
+    <details class="mb-4 border border-slate-200 rounded">
+      <summary class="bg-slate-50 px-4 py-2 font-semibold">Phase 4 — 風險辯論 (Risk debate)</summary>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 p-4">
+        <div>
+          <h4 class="font-bold text-red-700 mb-2">⚡ 進攻 (Aggressive)</h4>
+          <div class="agent-prose text-sm bg-red-50 p-3 rounded border border-red-200"><em>n/a</em></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-blue-700 mb-2">🛡️ 保守 (Conservative)</h4>
+          <div class="agent-prose text-sm bg-blue-50 p-3 rounded border border-blue-200"><em>n/a</em></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-slate-700 mb-2">⚖️ 中立 (Neutral)</h4>
+          <div class="agent-prose text-sm bg-slate-100 p-3 rounded border border-slate-300"><em>n/a</em></div>
+        </div>
+      </div>
+    </details>
+
+  </div>
+
+  <script>
+    (function() {
+      var d = {};
+      if (!d.dates) return;
+      var traces = [
+        {x: d.dates, y: d.close, name: 'Close',  line: {color: '#1f2937', width: 2}},
+        {x: d.dates, y: d.ma20,  name: 'MA20',   line: {color: '#0ea5e9', width: 1, dash: 'dot'}},
+        {x: d.dates, y: d.ma50,  name: 'MA50',   line: {color: '#f59e0b', width: 1, dash: 'dot'}},
+        {x: d.dates, y: d.ma200, name: 'MA200',  line: {color: '#ef4444', width: 1, dash: 'dash'}}
+      ];
+      var layout = {
+        margin: {l: 50, r: 20, t: 10, b: 40},
+        legend: {orientation: 'h', y: -0.15},
+        xaxis: {showgrid: false},
+        yaxis: {title: '價格 ($)'}
+      };
+      Plotly.newPlot('chart-PANW', traces, layout, {displayModeBar: false, responsive: true});
+    })();
+  </script>
+
+</section>
+
+
+<section id="ticker-ZS" class="mb-10 bg-white rounded-lg shadow overflow-hidden">
+
+  <div class="flex items-start justify-between p-6 border-b border-slate-200 verdict-HOLD">
+    <div>
+      <h2 class="text-3xl font-bold">ZS</h2>
+      <p class="text-sm mt-1 opacity-80">Zscaler — zero trust</p>
+    </div>
+    <div class="text-right">
+      <div class="text-4xl font-bold">HOLD</div>
+      <div class="text-sm opacity-80 mt-1">HOLD</div>
+    </div>
+  </div>
+
+  <div class="p-6 grid grid-cols-1 lg:grid-cols-2 gap-6">
+
+    <div>
+      <h3 class="text-lg font-bold mb-2">價格 + 技術指標 (2 年)</h3>
+      <div id="chart-ZS" style="height: 380px;"></div>
+    </div>
+
+    <div>
+      <h3 class="text-lg font-bold mb-2">最終決策 (Final decision)</h3>
+      <div class="agent-prose text-sm bg-slate-50 p-4 rounded border border-slate-200">
+        <h1>Final Decision — ZS as of 2026-11-06</h1>
+<h2>Phase 1 positive-pick 評分 (需 ≥3/5 訊號才進入 Phase 2-4)</h2>
+<table>
+<thead>
+<tr>
+<th>訊號</th>
+<th>條件</th>
+<th>結果</th>
+<th>判定</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fundamentals</td>
+<td>YoY 營收成長 &gt;15% 且無 FCF 崩落 (FCF/NI &gt; -1)</td>
+<td>FY26 營收 YoY +25.4% (PASS 成長); 但 FY26 GAAP 淨利為負 (-$63.2M), FCF/NI ≈ -12.3 (低於 -1 門檻)</td>
+<td>❌ FAIL (FCF/NI 未過關)</td>
+</tr>
+<tr>
+<td>Market (technical)</td>
+<td>RSI14&lt;72 且 MACD 柱非深度負值 且 價格&gt;MA50</td>
+<td>RSI14=45.15 (PASS); MACD hist -4.11 且已死亡交叉; 價格 (盤中 $216.13) 高於 MA50 $208.05</td>
+<td>⚠️ 2/3 通過, MACD 死叉偏空, 判定 FAIL</td>
+</tr>
+<tr>
+<td>News</td>
+<td>淨新聞情緒偏多</td>
+<td>Net read: mixed 偏 bearish (11-05 盤中 -7.1%, 原因未確認)</td>
+<td>❌ FAIL</td>
+</tr>
+<tr>
+<td>Sentiment</td>
+<td>分析師共識 ≥60% Buy 或機構流向偏多</td>
+<td>47 位分析師, 買進側 76.6% (36/47)</td>
+<td>✅ PASS</td>
+</tr>
+<tr>
+<td>Valuation</td>
+<td>Forward P/E &lt;35x 或明確 EPS 成長催化</td>
+<td>Forward P/E 37.1x (略高於門檻); 7 季連續優於預期但未達「明確確認」門檻</td>
+<td>❌ FAIL</td>
+</tr>
+</tbody>
+</table>
+<p><strong>總分: 1/5 — 未達標, 不進入 Phase 2-4。</strong></p>
+<h2>VERDICT: HOLD (Phase-1-only)</h2>
+<p>FINAL TRANSACTION PROPOSAL: <strong>HOLD</strong> — Phase-1-only, 未進入 Phase 2-4 (debate / trader / risk / portfolio-manager)。</p>
+<p>說明: ZS 營收成長強勁且分析師共識偏多, 但 GAAP 仍虧損且扣除 SBC 後 FCF 轉負 (-$42.8M), 今日 (2026-11-05) 盤中大跌 7.1% 且 MACD 已死亡交叉, 新聞面偏空。Phase 1 positive-pick 評分僅 1/5 (需 ≥3/5), 未達進入完整辯論/交易/風險流程的門檻。依標準流程本次僅完成 Phase 1 分析, 不產出進場/停損/目標價位, 亦無交易建議。</p>
+<h2>風險提示</h2>
+<ul>
+<li>SBC 佔營收 24.5%, 扣除後 FCF 轉負, 現金流品質為本次最大紅旗。</li>
+<li>Q4 FY26 FCF 較去年同期下滑 65%, capex 大增。</li>
+<li>下次財報約 2026-11-24 (估計日期, 未確認)。</li>
+</ul>
+<p>FINAL DECISION COMPLETE (PHASE 1 ONLY)</p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="px-6 pb-6">
+
+    <details class="mb-4 border border-slate-200 rounded">
+      <summary class="bg-slate-50 px-4 py-2 font-semibold">投資計劃 (Research manager)</summary>
+      <div class="agent-prose p-4 text-sm"><em>n/a</em></div>
+    </details>
+
+    <details class="mb-4 border border-slate-200 rounded">
+      <summary class="bg-slate-50 px-4 py-2 font-semibold">交易提案 (Trader)</summary>
+      <div class="agent-prose p-4 text-sm"><em>n/a</em></div>
+    </details>
+
+    <details class="mb-4 border border-slate-200 rounded">
+      <summary class="bg-slate-50 px-4 py-2 font-semibold">Phase 1 — 四 Analyst 報告</summary>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+        <div>
+          <h4 class="font-bold text-slate-700 mb-2">基本面 (Fundamentals)</h4>
+          <div class="agent-prose text-sm bg-slate-50 p-3 rounded"><h1>Fundamentals — ZS (Zscaler, Inc.) as of 2026-11-06</h1>
+<p>資料時點: 價格為 2026-11-05 盤中快照 (yf info regularMarketPrice 208.5); 財報至 FY26 Q4 (會計年度截至 2026-07-31)。未發現 2026-11-06 之後的資料。FY27 Q1 (2026-10-31 季) 尚未公布。<br />
+單位: 金額皆為 USD。大額以 B (十億美元) 表示, 中小額以 M (百萬美元) 表示。</p>
+<h2>Executive summary</h2>
+<p>Zscaler 營收仍維持約 25% 成長 (FY26 $3.35B, YoY +25.4%), 毛利率穩定在 76–77%, 現金加短期投資 $3.47B 高於總債務 $1.86B, 財務體質尚可。然而 GAAP 仍為淨損 (FY26 -$63.2M), SBC 高達 $821.9M (佔營收 24.5%), 扣除 SBC 後 FCF 轉為 -$42.8M, 且 Q4 FCF 較去年同期下降約 65%。估值上 EV/Sales 約 9.7x、forward P/E 約 37x、P/FCF 約 44x, 以成長型軟體標準偏高, 扣除 SBC 後的估值吸引力較弱; 今日股價 -7.1% 至 $208.5, 距 52 週高點 $333.9 仍低 37.6%。</p>
+<h2>Revenue &amp; profitability</h2>
+<ul>
+<li>營收趨勢 (USD B): FY23 1.617 → FY24 2.168 (+34.1%) → FY25 2.673 (+23.3%) → FY26 3.353 (+25.4%)。3 年 CAGR (FY23–FY26) 為 27.5%。FY22 無資料, 無法計算 4–5 年 CAGR。</li>
+<li>Q4 FY26 營收 $898.2M, YoY +24.9% (Q4 FY25 $719.2M)。四季加總 $3,352.6M 與年度值一致。</li>
+<li>分部: info 與 financials 皆無分部營收資料。業務描述列出 Zero Trust SASE、ZIA/ZPA、Data Security、Security for AI、Agentic SOC 等產品線, 但無各產品營收占比 → n/a。</li>
+<li>毛利率: FY23 77.6% / FY24 78.0% / FY25 76.9% / FY26 76.8%; Q4 FY26 76.7%。</li>
+<li>GAAP 營業利益率 (yf Operating Income): FY23 -14.5% / FY24 -5.6% / FY25 -4.8% / FY26 -3.6%。Q4 FY26 -0.4% (Q4 FY25 -4.3%), 持續收斂。</li>
+<li>GAAP 淨利率: FY23 -12.5% / FY24 -2.7% / FY25 -1.6% / FY26 -1.9%。FY26 淨損 -$63.2M 較 FY25 -$41.5M 擴大約 52%, 主因稅費上升 (FY26 Tax Provision $46.0M, 稅前虧損 -$17.1M)。</li>
+<li>GAAP EPS (diluted): FY26 -$0.39, FY25 -$0.27。與 NI / 加權股數 (-63.2 / 160.2) 一致。</li>
+<li>ROE (GAAP, 平均權益) 約 -2.9%; ROIC 約 -2.5% (以 21% 稅率估算, 負值, n/m)。</li>
+<li>非 GAAP EPS 可見的 7 季 (2025-03 至 2026-09) 皆優於一致預期, 超預期幅度 +7.1% 至 +12.7%。最近一季 (2026-09-03 公布) 實際 $1.19 vs 預估 $1.09 (+9.2%)。</li>
+</ul>
+<h2>Cashflow &amp; balance sheet</h2>
+<p>現金流 (USD M):<br />
+- OCF: FY23 462.3 / FY24 779.8 / FY25 972.5 / FY26 1,129.7 (FY26 OCF margin 33.7%)。<br />
+- Capex (yf Capital Expenditure): FY26 350.5 (營收占比 10.5%, FY25 9.2%)。<br />
+- FCF: FY23 333.6 / FY24 585.0 / FY25 726.7 / FY26 779.1。FY26 YoY +7.2%, 明顯落後營收成長 (+25.4%)。<br />
+- FCF margin: FY23 20.6% / FY24 27.0% / FY25 27.2% / FY26 23.2%。<br />
+- FCF / NI: NI 為負, 比率 n/m。<br />
+- FCF − SBC: FY25 +65.3 → FY26 -42.8。這是本報告最重要的現金流品質警訊。<br />
+- 季度 FCF 依序為 2025-10 季 413.3 (FY26 Q1)、2026-01 季 169.1、2026-04 季 136.0、2026-07 季 60.8 (FY26 Q4)。2026-07 季 Q4 FCF 60.8 vs 2025-07 季 171.9, 下降約 65%; 同季 capex 218.5 (前一年同季 78.7), 增幅顯著。</p>
+<p>資產負債表 (2026-07-31, USD B 或 M):<br />
+- 現金及約當: $928.4M (FY25 $2,389.0M); 短期投資 $2,545.8M (FY25 $1,183.4M); 合計 $3,474.2M (FY25 $3,572.4M, -2.7%)。大部分現金已轉為短期投資。<br />
+- 總債務: $1,855.8M (FY25 $1,796.6M)。其中長期債務 $1,696.4M, 租賃等其他 $159.5M。債務性質 (如可轉債) 資料未標註。<br />
+- 淨現金 (自算 = 現金+短期投資 − 總債務): 約 +$1.62B; 扣除租賃後約 +$1.78B。注意: yf 的 Net Debt 欄位顯示 $768.0M, 與上述數字無法複算, 視為資料不一致, 以自算值為準。<br />
+- 流動比率: 1.70 (FY25 2.01); 速動比率 1.57 (yf)。<br />
+- 負債/權益: 0.71x (1,855.8 / 2,598.3)。<br />
+- 股東權益: $2.598B (FY25 $1.799B), 增加主因為 APIC 增加 (股權發行與 SBC)。<br />
+- 有形帳面淨值: $1.166B (FY25 $1.334B), 下降, 因併購增加商譽。<br />
+- 商譽: $1.218B (FY25 $0.418B)。商譽加無形資產合計 $1.433B, 占總資產 $7.867B 的 18.2%。<br />
+- 遞延收入: 流動 $2.481B + 非流動 $0.445B = $2.926B, YoY +18.5% (流動部分 +20.7%)。為未來營收能見度的正面指標, 但流動負債 $2.961B 中有 84% 為遞延收入。<br />
+- 應收帳款: $1.149B (YoY +15.8%), 增速低於營收, 收款品質尚可。</p>
+<h2>Capital allocation &amp; insider signal</h2>
+<p>資本配置:<br />
+- 無股息 (dividend yield 0%)。FY26 現金流量表無股票回購。<br />
+- 股數: FY25 158.3M → FY26 163.1M (+3.0%)。加權稀釋股數 154.4M → 160.2M (+3.8%)。<br />
+- 併購: FY26 購買業務現金合計 $918.1M (2025-10 季 $672.8M, 2026-04 季 $97.3M, 2026-07 季 $148.0M), 為商譽大增的主因。<br />
+- 併購加上 capex 上升, 使 FCF 成長有限 (FCF 增速 +7.2%)。</p>
+<p>內部人交易 (2026-05-05 至 2026-11-05, 公開市場賣出; yf insider 資料):<br />
+- 賣出 23 筆, 合計 79,666 股, 約 $14.9M, 佔市值 $34.0B 的 0.044%。<br />
+- 公開市場買入: 0 筆。<br />
+- 主要賣方: Adam Geller (Officer) $8.57M (41,621 股); CFO Kevin Rubin $2.13M (12,682 股); Robert Schlossman $1.94M (10,987 股); Michael Rich $1.32M (8,292 股); CEO Jagtar Singh Chaudhry $0.91M (5,730 股)。<br />
+- 另有期權行使 (conversion) 26,041 股與 RSU/授予 35,025 股, 屬薪酬性質。<br />
+- 解讀: 絕對金額小, 且無買入。賣出價格 (約 $122–$261) 遠低於 2025 年約 $300 的水準。yf 未標示 10b5-1 計畫, 無法判斷是否為計畫性或稅務相關賣出。<br />
+- 持股: 內部人持股 34.7% (yf heldPercentInsiders), 機構 52.2%。最大機構 BlackRock 6.07% (2026-06-30 持股, QoQ +15.4%)。<br />
+- 空方: 空單 5.95M 股, 佔浮動股 5.6%, 回補天數 1.9 日。</p>
+<h2>Valuation</h2>
+<p>以股價 $208.5、流通股 163.05M 計算, 市值約 $34.0B (yf marketCap $34.0B, 驗算一致)。<br />
+- Trailing P/E: n/a (GAAP EPS 為負)。<br />
+- Forward P/E: 37.1x (yf forwardPE, forwardEps $5.62, 為非 GAAP 定義); 以 epsCurrentYear $4.91 計為 42.5x。<br />
+- EV (自算, 市值 + 總債務 − 現金及短期投資): 約 $32.4B。yf 報 $35.0B, 定義不同。<br />
+- EV/Revenue (FY26): 9.7x (自算); yf enterpriseToRevenue 為 10.4x。<br />
+- EV/EBITDA: 以 GAAP EBITDA $178.5M 計為約 181x; 以 Normalized EBITDA $190.6M 計為約 170x。yf enterpriseToEbitda 798x 使用 EBITDA $43.9M, 不可採用。<br />
+- P/S: 10.1x (yf priceToSalesTrailing12Months 10.14, 驗算一致)。<br />
+- P/FCF: 43.6x (FCF $779.1M), FCF yield 2.3%。扣除 SBC 後 FCF yield 約 -0.1%。<br />
+- P/B: 13.1x。PEG (yf): 2.31。<br />
+- 分析師: 45 家。平均目標 $235.19 (+12.8%), 中位數 $247 (+18.5%), 低 $164.75 (-21.0%), 高 $298 (+42.9%)。推薦均值 1.62 (buy)。<br />
+- 股價位置: 50 日均 $207.1, 200 日均 $167.1; 52 週區間 $114.6–$333.9; 52 週變動 -29.4%; Beta 0.84。<br />
+- 相對同業 (估計, 非資料來源): 軟體基礎設施 / 資安 SaaS 之 EV/Sales 中位數估計約 8–10x, forward P/E 估計約 30–40x。ZS 的 EV/Sales 位於中上段, forward P/E 略高於估計中位數, P/FCF 偏高。<br />
+- 估值評語: 以 SBC 調整後的現金流計算, 估值缺乏安全邊際, 估值依賴營收持續高成長與 GAAP 盈利轉正。</p>
+<h2>Key catalysts</h2>
+<ul>
+<li>下次財報: 2026-11-24 (yf 估計日期, isEarningsDateEstimate=true), 為 FY27 Q1 (2026-10-31 季)。EPS 一致預期 $1.16 (非 GAAP)。</li>
+<li>歷史表現: 可見 7 季皆超預期, 超預期幅度 +7.1% 至 +12.7%。</li>
+<li>指引 (guidance): 工具未提供 FY27 營收或 EPS 指引 → n/a。</li>
+<li>產品與併購: 業務描述強調 AI 安全 (Security for AI)、Agentic SOC、資料安全等擴張方向。FY26 併購 $918M, 整合成效與營收貢獻需在 FY27 季報驗證。</li>
+<li>今日 -7.1%: 工具資料未說明原因, 需由消息面另行查證, 本報告不推論。</li>
+<li>空方部位 5.6% 浮動股, 財報前後波動風險較高。</li>
+</ul>
+<h2>Metrics table</h2>
+<p>金額單位: USD (B = 十億美元, M = 百萬美元)。同業中位數為估計值, 非資料來源。</p>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Latest (FY26 / 2026-07)</th>
+<th>YoY</th>
+<th>Sector median (estimate)</th>
+<th>Verdict</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>營收 (USD B)</td>
+<td>3.35</td>
+<td>+25.4%</td>
+<td>約 15–20% 成長 (估計)</td>
+<td>高成長, 優</td>
+</tr>
+<tr>
+<td>毛利率</td>
+<td>76.8%</td>
+<td>-0.1pt</td>
+<td>約 75–80% (估計)</td>
+<td>優</td>
+</tr>
+<tr>
+<td>GAAP 營業利益率</td>
+<td>-3.6%</td>
+<td>+1.2pt</td>
+<td>約 -5% 至 0% (估計)</td>
+<td>仍虧損, 改善中</td>
+</tr>
+<tr>
+<td>GAAP 淨利率</td>
+<td>-1.9%</td>
+<td>-0.3pt</td>
+<td>n/a</td>
+<td>仍虧損</td>
+</tr>
+<tr>
+<td>ROE (GAAP)</td>
+<td>-2.9%</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>負</td>
+</tr>
+<tr>
+<td>FCF margin</td>
+<td>23.2%</td>
+<td>-4.0pt</td>
+<td>約 20–25% (估計)</td>
+<td>良</td>
+</tr>
+<tr>
+<td>FCF − SBC (USD M)</td>
+<td>-42.8</td>
+<td>由 +65.3 轉負</td>
+<td>正值 (估計)</td>
+<td>弱</td>
+</tr>
+<tr>
+<td>SBC / 營收</td>
+<td>24.5%</td>
+<td>持平</td>
+<td>約 10–20% (估計)</td>
+<td>偏高</td>
+</tr>
+<tr>
+<td>Q4 FCF (USD M)</td>
+<td>60.8</td>
+<td>-65% (vs 171.9)</td>
+<td>n/a</td>
+<td>弱</td>
+</tr>
+<tr>
+<td>流動比率</td>
+<td>1.70</td>
+<td>2.01 → -0.31</td>
+<td>約 1.5–2.5 (估計)</td>
+<td>尚可</td>
+</tr>
+<tr>
+<td>負債/權益</td>
+<td>0.71x</td>
+<td>n/a</td>
+<td>約 0.3–0.7x (估計)</td>
+<td>中性</td>
+</tr>
+<tr>
+<td>淨現金 (自算, USD B)</td>
+<td>+1.62</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>佳</td>
+</tr>
+<tr>
+<td>現金+短期投資 (USD B)</td>
+<td>3.47</td>
+<td>-2.7%</td>
+<td>n/a</td>
+<td>佳</td>
+</tr>
+<tr>
+<td>總債務 (USD B)</td>
+<td>1.86</td>
+<td>+3.3%</td>
+<td>n/a</td>
+<td>中性</td>
+</tr>
+<tr>
+<td>流通股數 (M)</td>
+<td>163.1</td>
+<td>+3.0%</td>
+<td>約 1–3% (估計)</td>
+<td>偏弱</td>
+</tr>
+<tr>
+<td>遞延收入 (USD B)</td>
+<td>2.93</td>
+<td>+18.5%</td>
+<td>n/a</td>
+<td>佳</td>
+</tr>
+<tr>
+<td>商譽+無形資產 / 總資產</td>
+<td>18.2%</td>
+<td>由約 10% 升至 18%</td>
+<td>n/a</td>
+<td>併購增加, 注意減損風險</td>
+</tr>
+<tr>
+<td>Forward P/E</td>
+<td>37.1x</td>
+<td>n/a</td>
+<td>約 30–40x (估計)</td>
+<td>偏高</td>
+</tr>
+<tr>
+<td>EV/Sales (自算)</td>
+<td>9.7x</td>
+<td>n/a</td>
+<td>約 8–10x (估計)</td>
+<td>偏高</td>
+</tr>
+<tr>
+<td>P/FCF</td>
+<td>43.6x</td>
+<td>n/a</td>
+<td>約 25–35x (估計)</td>
+<td>偏高</td>
+</tr>
+<tr>
+<td>內部人 6M 公開市場交易</td>
+<td>賣出 $14.9M / 買入 0</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>中性偏弱 (規模小)</td>
+</tr>
+</tbody>
+</table>
+<h2>Red flags</h2>
+<ul>
+<li>SBC 佔營收 24.5% (FY26 $821.9M), 扣除後 FCF 轉負 (-$42.8M); GAAP 淨損連續 4 年 (FY23–FY26)。</li>
+<li>股數持續稀釋 (+3.0% YoY), 且無回購抵銷。</li>
+<li>Q4 FY26 FCF 大減 65%, Q4 capex $218.5M 較去年同季 $78.7M 大增 (177%)。FCF 成長 (+7.2%) 遠低於營收 (+25.4%)。</li>
+<li>併購 $918M 使商譽增至 $1.218B, 有形帳面淨值下降; 整合與減損風險待觀察。</li>
+<li>現金及短期投資較 FY25 微減 2.7%; 流動比率由 2.01 降至 1.70。</li>
+<li>FY26 稅費 $46.0M, 在稅前虧損下仍有支出, 拉高淨損。</li>
+<li>內部人持續賣出 (6 個月 $14.9M, 0 買入), 規模小但方向一致。</li>
+<li>估值 (EV/Sales 9.7x, forward P/E 37x, P/FCF 44x) 高於估計同業中位數, 股價今日 -7.1%, 距 52 週高點 -37.6%。</li>
+</ul>
+<p>FUNDAMENTALS REPORT COMPLETE</p></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-slate-700 mb-2">技術面 (Market / Technical)</h4>
+          <div class="agent-prose text-sm bg-slate-50 p-3 rounded"><h1>Technical — ZS as of 2026-11-06</h1>
+<h2>資料注意事項</h2>
+<ul>
+<li><code>ta snapshot</code> 與 <code>ta series</code> 最新一根 K 線為 2026-11-05，但該根成交量僅 55,847，開盤 215.63、收盤 216.125，明顯是盤中未收盤的不完整 K 線。snapshot 的價格、MA、RSI、MACD、BB 等數值都以這根不完整 K 線計算。</li>
+<li><code>yf fast_info</code> 無法直連 Yahoo（proxy 回 403），只回傳快取值 last_price 224.44，與 2026-11-04 收盤價相同（來源 cnyes 快取，時間 2026-11-05T14:30 UTC）。因此「現價」有兩個版本：盤中 216.125 與前一收盤 224.44。</li>
+<li>本報告同時列出以 2026-11-04 完整日線（series 欄位）計算的參考值，標註「11-04 收盤」。</li>
+<li><code>ta levels</code> 只回傳 2 個壓力與 2 個支撐，且壓力位（156.98、190.97）都已在現價下方，不足以描述目前結構。近期關鍵價位改由 series 最近 60 根 K 線的高低點補足，並註明日期。</li>
+<li>snapshot 的 52w 高點 333.9 與低點 114.625 有數值，但 series 未涵蓋該日期，無法標註發生日。</li>
+</ul>
+<h2>Snapshot</h2>
+<p>Price $216.13（2026-11-05 盤中，不完整）；前收 $224.44（2026-11-04 收盤）；MA20 $231.98、MA50 $208.05、MA200 $167.11；RSI14=45.15（11-04 為 49.61）；MACD hist=-4.11（11-04 為 -3.14）。</p>
+<h2>Trend</h2>
+<p>中期趨勢仍偏多。價格高於 MA50（+3.9%，以盤中價計）與 MA200（+29.3%），MA50 持續上升（11-04 為 207.14，10-21 為 194.67），MA50 於 2026-09-21 上穿 MA200 形成黃金交叉，目前未出現死亡交叉。</p>
+<p>短期結構已轉弱。自 2026-10-27 高點 $267.87（收盤高點 $260.15，2026-10-26）之後，高點依序下移（10-30 $250.00、11-02 $239.00、11-03 $229.16、11-04 $229.85），低點也依序下移（10-30 $233.40、11-02 $223.38、11-04 $220.08、11-05 盤中 $215.00）。11-04 收盤 $224.44 較高點收盤回落約 13.7%，盤中 $216.13 較 $267.87 回落約 19.3%。價格已跌破 MA20（$231.98）與 11-04 低點 $220.08，趨勢強度屬中期多頭、短期修正。</p>
+<h2>Momentum</h2>
+<ul>
+<li>MACD：MACD 線 5.94 在 Signal 10.05 下方，2026-11-02 出現死亡交叉，柱狀體連續 4 根收在負值（11-02 -1.14、11-03 -2.36、11-04 -3.14、11-05 盤中 -4.11）。MACD 線由 10-28 高點 15.25 快速下降，屬於動能轉弱且負向擴大。</li>
+<li>RSI14：盤中 45.15、11-04 為 49.61，位於中性區間偏弱。RSI 自 10-27 的 73.21 下降，未進入超賣（&lt;30）。</li>
+<li>多週期報酬（snapshot，以盤中價計算）：1 個月 +1.2%、3 個月 +28.1%、6 個月 +41.5%、12 個月 -34.2%。12 個月為負，是因為一年前基期價位較高，不代表近期趨勢轉弱。</li>
+<li>量能：11-04 成交量 1,582,400，為近 10 根完整日線均量 2,563,580 的 0.62 倍（均量以 10-22 至 11-04 計算）。回檔期間量縮，屬於較溫和的修正特徵，並非大量出貨。11-05 量能為盤中數值，不作比較。</li>
+</ul>
+<h2>Key levels</h2>
+<ul>
+<li>Resistance:</li>
+<li>$229.85（2026-11-04 高點，近期 lower high 區）</li>
+<li>$231.98（MA20，動態壓力）</li>
+<li>$239.00（2026-11-02 高點）</li>
+<li>$250.00（2026-10-30 高點）</li>
+<li>$267.87（2026-10-27 高點，近期擺動高點）</li>
+<li>$333.90（52w 高點，發生日未於資料中提供）</li>
+<li>Support:</li>
+<li>$215.00（2026-11-05 盤中低點，已跌破 $220.08，為短線最新支撐測試）</li>
+<li>$208.05（MA50，動態支撐）</li>
+<li>$203.33（2026-10-16 低點，未被跌破之最近擺動低點）</li>
+<li>$195.11（2026-10-02 低點）、$192.74（2026-09-25 低點）</li>
+<li>$190.97（2026-08-18，ta levels 壓力位，現為下方支撐參考）</li>
+<li>$159.20（2026-09-08，ta levels 支撐）</li>
+<li>$119.50（2026-06-12，ta levels 支撐）</li>
+<li>Stop-loss suggestion (logical, not advice): below $203.33（2026-10-16 低點，最近一個未被跌破的擺動低點，約為盤中價下方 5.9%，11-04 收盤價下方 9.4%）。</li>
+</ul>
+<h2>Volatility profile</h2>
+<p>ATR14 = $12.22（盤中）、$12.43（11-04），ATR-implied daily move 約 $12.2，相當於盤中價的 5.7%。20 日年化波動率 66.4%，約為每日 4.2% 標準差。<br />
+部位規模含義：此股波動度高，若以 ATR 為停損距離，單筆部位需相應縮小名目金額，以維持可接受的單筆風險；停損若設在 $203.33，距離約 $13，已超過一根 ATR。布林通道寬度（BB upper 264.58、lower 199.37）仍偏寬，表示波動環境尚未收斂。</p>
+<h2>Setup</h2>
+<p>中性偏空（短線）、中期仍偏多。形態為自 10-27 高點後的 lower high 與 lower low 結構，屬於多頭趨勢中的修正段；價格已跌破 MA20 與 11-04 低點 $220.08，MACD 死亡交叉且柱狀體擴大。若價格能重新站回 $224.44 至 $231.98 區間（MA20 與 11-04 收盤價），短線結構可暫視為整理；若跌破 $208.05（MA50）則需評估中期結構是否受損。</p>
+<p>條件讀數（僅描述條件，不構成買賣建議）：<br />
+- 偏空條件：收盤持續低於 MA20 與 $215.00；MACD 柱狀體持續擴大為負。<br />
+- 轉中性條件：站回 $224.44 並帶量收復 MA20。<br />
+- 結構失效條件：收盤跌破 $203.33。</p>
+<h2>Indicators table</h2>
+<table>
+<thead>
+<tr>
+<th>指標</th>
+<th>數值（盤中 2026-11-05）</th>
+<th>數值（11-04 收盤）</th>
+<th>判讀</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>收盤價</td>
+<td>216.125</td>
+<td>224.44</td>
+<td>盤中價低於前收 3.7%</td>
+</tr>
+<tr>
+<td>MA20</td>
+<td>231.98</td>
+<td>232.01</td>
+<td>價格低於 MA20（-6.8% / -3.3%），短線弱</td>
+</tr>
+<tr>
+<td>MA50</td>
+<td>208.05</td>
+<td>207.14</td>
+<td>價格高於 MA50（+3.9% / +8.4%），MA50 上升</td>
+</tr>
+<tr>
+<td>MA200</td>
+<td>167.11</td>
+<td>167.08</td>
+<td>價格高於 MA200（+29.3% / +34.3%），長線多頭</td>
+</tr>
+<tr>
+<td>MA20 vs MA50</td>
+<td>231.98 &gt; 208.05</td>
+<td>232.01 &gt; 207.14</td>
+<td>無死亡交叉，間距收斂中</td>
+</tr>
+<tr>
+<td>黃金交叉（MA50 上穿 MA200）</td>
+<td>—</td>
+<td>2026-09-21</td>
+<td>仍維持多頭排列</td>
+</tr>
+<tr>
+<td>RSI14</td>
+<td>45.15</td>
+<td>49.61</td>
+<td>中性偏弱，未超賣</td>
+</tr>
+<tr>
+<td>MACD 線 / Signal</td>
+<td>5.94 / 10.05</td>
+<td>7.93 / 11.07</td>
+<td>MACD 在 Signal 下方（2026-11-02 死亡交叉）</td>
+</tr>
+<tr>
+<td>MACD hist</td>
+<td>-4.11</td>
+<td>-3.14</td>
+<td>負值且連 4 根擴大，空方動能增加</td>
+</tr>
+<tr>
+<td>BB %B</td>
+<td>0.26</td>
+<td>0.38</td>
+<td>位於中軌與下軌之間，未觸及下軌（&lt;0）</td>
+</tr>
+<tr>
+<td>BB 上軌 / 下軌</td>
+<td>264.58 / 199.37</td>
+<td>264.55 / 199.47</td>
+<td>通道寬度尚未明顯收斂</td>
+</tr>
+<tr>
+<td>ATR14</td>
+<td>12.22</td>
+<td>12.43</td>
+<td>約為價格 5.7%，波動偏高</td>
+</tr>
+<tr>
+<td>20 日年化波動率</td>
+<td>66.4%</td>
+<td>—</td>
+<td>高波動，部位需縮小</td>
+</tr>
+<tr>
+<td>1 個月報酬</td>
+<td>+1.2%</td>
+<td>—</td>
+<td>短期持平</td>
+</tr>
+<tr>
+<td>3 個月報酬</td>
+<td>+28.1%</td>
+<td>—</td>
+<td>中期強勢</td>
+</tr>
+<tr>
+<td>6 個月報酬</td>
+<td>+41.5%</td>
+<td>—</td>
+<td>中期強勢</td>
+</tr>
+<tr>
+<td>12 個月報酬</td>
+<td>-34.2%</td>
+<td>—</td>
+<td>基期高，長期仍為下跌後反彈的結構（年度比較）</td>
+</tr>
+<tr>
+<td>距 52w 高點</td>
+<td>-35.3%（333.90）</td>
+<td>—</td>
+<td>仍在 52 週高點之下很遠</td>
+</tr>
+<tr>
+<td>距 52w 低點</td>
+<td>+88.5%（114.625）</td>
+<td>—</td>
+<td>自低點大幅反彈</td>
+</tr>
+<tr>
+<td>成交量 vs 10 日均量</td>
+<td>盤中 55,847（不可比）</td>
+<td>0.62x（均量 2,563,580）</td>
+<td>回檔量縮，屬溫和修正</td>
+</tr>
+</tbody>
+</table>
+<p>MARKET REPORT COMPLETE</p></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-slate-700 mb-2">新聞 (News)</h4>
+          <div class="agent-prose text-sm bg-slate-50 p-3 rounded"><h1>News — ZS (Zscaler, Inc.) as of 2026-11-06</h1>
+<p><strong>資料限制（先讀）</strong><br />
+- 系統日期為 2026-11-05，任務指定的 DATE 為 2026-11-06。依日期紀律，本報告只納入 11-05 (含) 以前的資訊，11-06 之後一律視為未知。<br />
+- <code>pipeline/tools/yf ZS news</code> 失敗：egress proxy 對 query2.finance.yahoo.com 與 finance.yahoo.com 回 403（政策阻擋），依規定不繞過、不重試。因此公司新聞改以 WebSearch 補足，來源品質參差。<br />
+- <code>pipeline/tools/yf ZS info</code> 成功（快取時間 2026-11-05 14:38 UTC，即美東 09:38 盤中早段），價格為盤中數字，不是收盤價。</p>
+<h2>Top company-specific headlines (last 14d)</h2>
+<ul>
+<li>2026-11-05 — ZS 盤中大跌 -7.1%，報 208.50 USD（前收 224.44，日內區間 206.93–216.38，盤中量 約 19 萬股，遠低於 10 日均量 256 萬股）。目前找不到公司層級的負面公告。(yf info 快照；WebSearch 多家來源一致描述為板塊性賣壓，單一來源 StockStory 歸因於美國期中選舉後的監管與 AI 資本支出疑慮，未獲證實)。Impact: bearish（價格面）。原因不明，屬盤中數字，收盤可能不同。</li>
+<li>2026-11-05 — 有一則第三方報導稱 ZS 收盤 -7.44% 於 207.75，並歸因於雲端與資安同業普跌 (WebSearch 結果，未能於原始來源確認)。Impact: bearish（同上）。此數字與 yf 盤中數字不一致，僅供參考。</li>
+<li>近期 (日期不明) — Barchart 等來源提到銷售領導層異動 (sales leadership transition)，另有來源稱 CRO 離職與 Q3 營收不如預期。這些說法與 ZS 目前財年 (FY27) 指引不符，疑為舊文或錯誤來源，未獲確認。Impact: neutral 至 bearish（若屬實）。</li>
+<li>2026-10-06 — 2026 Investor Day 重申 FY27 Q1 與全年指引，未上調。FY27 全年指引：營收 39.08–39.38 億 USD、ARR 43.96–44.26 億 USD、non-GAAP EPS 4.86–4.90 USD、FCF margin 23.0–23.5%；Q1 營收 9.35–9.39 億 USD、non-GAAP 營業利益 2.15–2.17 億 USD。來源：SEC 8-K 與 zscaler.com 新聞稿。Impact: neutral（重申而非上修，市場未給予正向催化）。</li>
+<li>2026-09-03 — FY26 Q4 財報：EPS 超出預期，FY27 營收指引高於共識。部分來源 (feedbagel) 稱財報後股價 -19%，但原文日期與數字不明，與其他來源衝突，僅列為待確認。Impact: 原始指引為 bullish，股價反應不明。</li>
+<li>2026-10 (日期不明) — 分析師目標價調整：BofA 由 240 上調至 285 USD；Citi 由 245 上調至 260 USD。來源為 WebSearch 摘要，原文日期未確認。Impact: bullish。</li>
+<li>2026-04-09 — BTIG 降評為 Neutral，股價盤中 -8.8%（舊聞，列為背景）。Impact: bearish（歷史）。</li>
+</ul>
+<h2>Sector macro</h2>
+<ul>
+<li>2026-11-03 — 美國期中選舉結果（一說民主黨取勝），市場擔憂之後更嚴格的監管與資料中心擴張受限 (StockStory 單一來源，未獲證實)。Impact on 資安/軟體 sector: 情緒面偏空，對 ZS 的直接營收影響小，但可能壓低估值倍數。</li>
+<li>雲端與 AI 資本支出敘事：市場對 AI 基礎建設支出的疑慮是當前估值壓力來源之一 (StockStory 歸因)。Impact on 資安/SaaS: 估值面偏空，屬定性判斷。</li>
+<li>估值背景：ZS forward P/E 約 37.1x，forward EPS 5.62 USD（yf），PEG 2.31，EV/Revenue TTM 10.4x。對高估值題材的利率與風險偏好變化較敏感，但本次未找到具體利率或總體經濟事件的來源支持。</li>
+<li>未能找到 11-05 當天具體的關稅、供應鏈或地緣政治事件公告，不予編造。</li>
+</ul>
+<h2>Peer signals</h2>
+<ul>
+<li>CRWD — 2026 年至今約 +123%（經轉載文章）。同業估值擴張，ZS 相對落後。</li>
+<li>PANW — 2026 年至今約 +117%。Impact: 同業強勢，ZS 呈現相對弱勢。</li>
+<li>FTNT — 2026 年至今約 +141%。</li>
+<li>NTSK (Netskope) — 同為 SASE/ZT 競爭對手，2026-10 獲推薦名單，但未取得其 11-05 當日價格走勢，無法判斷是否同步下跌。</li>
+<li>注意：目前找不到 11-05 同業當日漲跌資料，無法確認 ZS 的 -7% 是否為板塊性。同業 YTD 數字來源為轉載文章，口徑可能不一致。</li>
+<li>指引背景：ZS 2026 年 7 月價格約 151 USD（10jqka 報導），與目前 208.5 USD 的漲幅與 YTD 數字需以即時行情核對；來源互相矛盾。</li>
+</ul>
+<h2>Forward calendar (next 14d)</h2>
+<ul>
+<li>2026-11-06 至 11-20 — 無已確認的 ZS 公司事件。</li>
+<li>約 2026-11-12 至 11-13（日期未確認）— 美國 10 月 CPI，屬一般宏觀事件，對高估值成長股影響通常較大。</li>
+<li>2026-11-24（yf 估計，ZS 公司未確認）— FY27 Q1 財報。Traders Union 另稱 12-02，第三方日曆稱 11-27。三者互相矛盾。ZS 通常於前一個月初公布財報日期與電話會議資訊，待 ir.zscaler.com 確認。預期 Q1 營收 9.35–9.39 億 USD、non-GAAP EPS 1.15–1.16 USD（指引）；WebSearch 另有共識 EPS 0.12 USD 之數字，與指引口徑衝突，需核對。</li>
+<li>約 2026-11 中下旬（典型時程，未確認）— PANW 財季報告，可作為同業資安需求的參考。</li>
+<li>2026-12-08 至 12-09 — FOMC（依 2026 年日曆推定，未於本次來源確認），在 14d 窗口之外。</li>
+</ul>
+<h2>Net read</h2>
+<p>綜合判斷，短期新聞面偏空，但信心低。最強的負面訊號是 2026-11-05 盤中 -7.1% 的價格走勢，且目前找不到公司層級的催化劑，只能歸因於板塊情緒與期中選舉後的監管擔憂，這些說法都未獲獨立來源證實。基本面的新聞沒有轉弱：Investor Day 重申 FY27 全年與 Q1 指引，未有下修；分析師共識仍為 Buy（45 位，平均評級 1.6，平均目標價 235.19 USD，相對 208.5 約 +12.8%，中位數 247 USD）。同業在 2026 年強勢上漲，ZS 相對落後，是另一個值得留意的相對強弱訊號。整體淨新聞傾向為 mixed 偏 bearish，幅度中等。主要不確定性在於：(1) 11-05 的跌幅是盤中數字，收盤與原因都未確認；(2) 財報日期未確認，可能落在 14 天窗口之外；(3) 部分來源（CRO 離職、Q3 營收不如預期、財報後 -19%）的日期與可信度存疑，需在上游交叉核對後才能作為決策依據。</p>
+<p>NEWS REPORT COMPLETE</p></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-slate-700 mb-2">情緒 (Sentiment)</h4>
+          <div class="agent-prose text-sm bg-slate-50 p-3 rounded"><h1>Sentiment — ZS as of 2026-11-06</h1>
+<p>註：系統當日為 2026-11-05，本報告以 2026-11-06 標示。資料為 2026-11-05 當下可取得的最新快照，內部人交易最新至 2026-11-02。</p>
+<h2>Analyst consensus</h2>
+<p>目前 47 位分析師：36 buy（7 strong buy + 29 buy）/ 11 hold / 0 sell（yf rec_summary，0m 期）。<br />
+近三期趨勢（yf recommendations，0m / -1m / -2m）：<br />
+| 期間 | Buy 合計 | Hold | Sell |<br />
+|---|---|---|---|<br />
+| 0m（目前） | 36 | 11 | 0 |<br />
+| -1m | 36 | 10 | 0 |<br />
+| -2m | 37 | 9 | 0 |</p>
+<p>Buy 略減 1 家、Hold 增 2 家，評級仍偏多，無賣方評級。<br />
+近期升降評等：yf 此工具只回傳彙總counts，沒有個別 upgrade/downgrade 紀錄，無法逐筆確認日期。WebSearch 找到的 Guggenheim 升至 Buy、UBS 與 Freedom Broker 調升目標價、Evercore 調升目標價至 $195 維持 In Line 等訊息，都沒有可確認日期，視為未驗證，不納入結論。另一來源提到部分券商因估值與競爭疑慮下調評等，同樣未驗證。<br />
+目標價：未取得可靠的最新平均目標價。WebSearch 的 MarketScreener 數字（均價約 $328）與其他目標價區間皆無日期，不採用。</p>
+<h2>Retail social</h2>
+<ul>
+<li>Reddit（r/wallstreetbets、r/stocks）：本次無法取得。WebFetch 被拒絕存取 www.reddit.com，屬 soft-fail。無貼文樣本，無法判定散戶語氣。</li>
+<li>StockTwits：本次無法取得。api.stocktwits.com 在本 session 網路中無法解析，需在 session 網路設定中加入允許清單。</li>
+<li>X / 新聞輿情：僅一次 WebSearch，結果多為分析師頁面與彙總站，缺乏真實散戶貼文。Benzinga 頁面（無日期）提到約 5.9% 空單比例。</li>
+<li>聲量：無法量化，因無社群樣本可比。</li>
+<li>主題：無法從本次資料歸納。以上為資料缺口，不是情緒判斷。</li>
+<li>引述樣本：無。</li>
+</ul>
+<h2>Insider activity</h2>
+<p>區間：2026-05-06 至 2026-11-02（6 個月）。<br />
+- 公開市場買入：0 筆，$0.00M。<br />
+- 公開市場賣出：23 筆，約 79,666 股，合計 $14.94M。<br />
+- 另有期權轉換（exercise）約 $5.35M，與部分賣出配對，未計入賣出金額。<br />
+- 主要賣方（賣出金額 USD M）：<br />
+  - Adam Geller（Officer）$8.57M，含 2026-10-12 以 $225–236 賣出 25,000 股約 $5.65M，為最大單筆。<br />
+  - Kevin E. Rubin（CFO）$2.13M，多次小額定期賣出，每次約 500 股上下，型態可能為事先安排，但資料無法證實。<br />
+  - Robert S. Schlossman（Officer）$1.94M。<br />
+  - Michael J. Rich（Officer）$1.32M。<br />
+  - Jagtar Singh Chaudhry（CEO）$0.91M，2026-06-16 與 2026-09-16 各一次。<br />
+  - James Alexander Beer（Director）$0.06M。<br />
+- 賣價區間：6 月約 $122–127，9 月約 $192–200，10 月約 $225–262，11 月初約 $238。賣出集中在股價大幅上漲之後。<br />
+- 內部人持股：34.68%（yf major_holders）。</p>
+<h2>Ownership shifts</h2>
+<ul>
+<li>機構持股：52.19%，流通股中 79.90%，機構數 1,218 家（yf major_holders）。</li>
+<li>僅有單一快照，無法判斷集中度趨勢。</li>
+</ul>
+<h2>Net sentiment score</h2>
+<ul>
+<li>分析師：偏多（bullish，信心中）。36/47 buy，0 sell，但 Hold 近兩期增加。</li>
+<li>內部人：偏空方向（bearish 方向，信心低）。6 個月只有賣出、無買入，但多數賣出發生在股價大幅反彈後，且含期權行使，資訊價值有限。</li>
+<li>散戶：無資料，無法評分。</li>
+<li>綜合：偏多（bullish-leaning），信心低。分析師一致性高，但內部人持續賣出，且散戶面缺乏樣本，整體判斷只能保留在偏多但不確定的範圍。</li>
+</ul>
+<p>Divergence flag: 部分。分析師偏多而內部人只賣不買，方向不一致；散戶面無資料，無法判斷是否與分析師相反。</p>
+<p>SENTIMENT REPORT COMPLETE</p></div>
+        </div>
+      </div>
+    </details>
+
+    <details class="mb-4 border border-slate-200 rounded">
+      <summary class="bg-slate-50 px-4 py-2 font-semibold">Phase 2 — Bull vs Bear 辯論</summary>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+        <div>
+          <h4 class="font-bold text-green-700 mb-2">🐂 多方 (Bull)</h4>
+          <div class="agent-prose text-sm bg-green-50 p-3 rounded border border-green-200"><em>n/a</em></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-red-700 mb-2">🐻 空方 (Bear)</h4>
+          <div class="agent-prose text-sm bg-red-50 p-3 rounded border border-red-200"><em>n/a</em></div>
+        </div>
+      </div>
+    </details>
+
+    <details class="mb-4 border border-slate-200 rounded">
+      <summary class="bg-slate-50 px-4 py-2 font-semibold">Phase 4 — 風險辯論 (Risk debate)</summary>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 p-4">
+        <div>
+          <h4 class="font-bold text-red-700 mb-2">⚡ 進攻 (Aggressive)</h4>
+          <div class="agent-prose text-sm bg-red-50 p-3 rounded border border-red-200"><em>n/a</em></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-blue-700 mb-2">🛡️ 保守 (Conservative)</h4>
+          <div class="agent-prose text-sm bg-blue-50 p-3 rounded border border-blue-200"><em>n/a</em></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-slate-700 mb-2">⚖️ 中立 (Neutral)</h4>
+          <div class="agent-prose text-sm bg-slate-100 p-3 rounded border border-slate-300"><em>n/a</em></div>
+        </div>
+      </div>
+    </details>
+
+  </div>
+
+  <script>
+    (function() {
+      var d = {};
+      if (!d.dates) return;
+      var traces = [
+        {x: d.dates, y: d.close, name: 'Close',  line: {color: '#1f2937', width: 2}},
+        {x: d.dates, y: d.ma20,  name: 'MA20',   line: {color: '#0ea5e9', width: 1, dash: 'dot'}},
+        {x: d.dates, y: d.ma50,  name: 'MA50',   line: {color: '#f59e0b', width: 1, dash: 'dot'}},
+        {x: d.dates, y: d.ma200, name: 'MA200',  line: {color: '#ef4444', width: 1, dash: 'dash'}}
+      ];
+      var layout = {
+        margin: {l: 50, r: 20, t: 10, b: 40},
+        legend: {orientation: 'h', y: -0.15},
+        xaxis: {showgrid: false},
+        yaxis: {title: '價格 ($)'}
+      };
+      Plotly.newPlot('chart-ZS', traces, layout, {displayModeBar: false, responsive: true});
+    })();
+  </script>
+
+</section>
+
+
+<section id="ticker-S" class="mb-10 bg-white rounded-lg shadow overflow-hidden">
+
+  <div class="flex items-start justify-between p-6 border-b border-slate-200 verdict-HOLD">
+    <div>
+      <h2 class="text-3xl font-bold">S</h2>
+      <p class="text-sm mt-1 opacity-80">SentinelOne — Singularity AI</p>
+    </div>
+    <div class="text-right">
+      <div class="text-4xl font-bold">HOLD</div>
+      <div class="text-sm opacity-80 mt-1">HOLD</div>
+    </div>
+  </div>
+
+  <div class="p-6 grid grid-cols-1 lg:grid-cols-2 gap-6">
+
+    <div>
+      <h3 class="text-lg font-bold mb-2">價格 + 技術指標 (2 年)</h3>
+      <div id="chart-S" style="height: 380px;"></div>
+    </div>
+
+    <div>
+      <h3 class="text-lg font-bold mb-2">最終決策 (Final decision)</h3>
+      <div class="agent-prose text-sm bg-slate-50 p-4 rounded border border-slate-200">
+        <h1>Final Decision — S (SentinelOne) as of 2026-11-06</h1>
+<h2>Phase 1 positive-pick 評分 (需 ≥3/5 訊號才進入 Phase 2-4)</h2>
+<table>
+<thead>
+<tr>
+<th>訊號</th>
+<th>條件</th>
+<th>結果</th>
+<th>判定</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fundamentals</td>
+<td>YoY 營收成長 &gt;15% 且無 FCF 崩落 (FCF/NI &gt; -1)</td>
+<td>最新季 YoY +20.6%, FY26 YoY +21.9% (PASS); TTM FCF/NI ≈ -0.09 (大於 -1 門檻, PASS)</td>
+<td>✅ PASS</td>
+</tr>
+<tr>
+<td>Market (technical)</td>
+<td>RSI14&lt;72 且 MACD 柱非深度負值 且 價格&gt;MA50</td>
+<td>RSI14=44.34 (PASS); MACD hist -0.197 (幅度小); 價格 $22.74 低於 MA50 $23.12 (-1.7%)</td>
+<td>❌ FAIL (價格未站上 MA50)</td>
+</tr>
+<tr>
+<td>News</td>
+<td>淨新聞情緒偏多</td>
+<td>Net read: 偏空, 中等幅度 (11-05 盤中 -6.4%, 原因未確認; 板塊與利率驅動)</td>
+<td>❌ FAIL</td>
+</tr>
+<tr>
+<td>Sentiment</td>
+<td>分析師共識 ≥60% Buy 或機構流向偏多</td>
+<td>34 位分析師, 買進側 52.9% (18/34, 未達 60%); 機構流向無趨勢資料可判定</td>
+<td>❌ FAIL</td>
+</tr>
+<tr>
+<td>Valuation</td>
+<td>Forward P/E &lt;35x 或明確 EPS 成長催化</td>
+<td>Forward P/E 47.7x; 最新季 EPS 未達預期 (miss -16.5%)</td>
+<td>❌ FAIL</td>
+</tr>
+</tbody>
+</table>
+<p><strong>總分: 1/5 — 未達標, 不進入 Phase 2-4。</strong></p>
+<h2>VERDICT: HOLD (Phase-1-only)</h2>
+<p>FINAL TRANSACTION PROPOSAL: <strong>HOLD</strong> — Phase-1-only, 未進入 Phase 2-4 (debate / trader / risk / portfolio-manager)。</p>
+<p>說明: S 營收成長穩健且 FCF 相對 NI 的崩落檢驗通過, 但分析師買進共識未達 60% 門檻、估值偏高 (forward P/E 47.7x)、最新季 EPS 不如預期, 今日 (2026-11-05) 盤中又下跌 6.4% 且跌破 MA50。Phase 1 positive-pick 評分僅 1/5 (需 ≥3/5), 未達進入完整辯論/交易/風險流程的門檻。依標準流程本次僅完成 Phase 1 分析, 不產出進場/停損/目標價位, 亦無交易建議。</p>
+<h2>風險提示</h2>
+<ul>
+<li>SBC 佔營收 29.3%, 扣除後 TTM FCF 約 -$291M, 現金流品質弱。</li>
+<li>CEO 近 6 個月出售 $22.2M (含行權後出售), 內部人訊號偏負面。</li>
+<li>空單佔浮動股數 7.1%, 兩個月內增加 18.4%, 財報前波動風險上升; 下次財報約 2026-12-03 (估計日期, 未確認)。</li>
+</ul>
+<p>FINAL DECISION COMPLETE (PHASE 1 ONLY)</p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="px-6 pb-6">
+
+    <details class="mb-4 border border-slate-200 rounded">
+      <summary class="bg-slate-50 px-4 py-2 font-semibold">投資計劃 (Research manager)</summary>
+      <div class="agent-prose p-4 text-sm"><em>n/a</em></div>
+    </details>
+
+    <details class="mb-4 border border-slate-200 rounded">
+      <summary class="bg-slate-50 px-4 py-2 font-semibold">交易提案 (Trader)</summary>
+      <div class="agent-prose p-4 text-sm"><em>n/a</em></div>
+    </details>
+
+    <details class="mb-4 border border-slate-200 rounded">
+      <summary class="bg-slate-50 px-4 py-2 font-semibold">Phase 1 — 四 Analyst 報告</summary>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+        <div>
+          <h4 class="font-bold text-slate-700 mb-2">基本面 (Fundamentals)</h4>
+          <div class="agent-prose text-sm bg-slate-50 p-3 rounded"><h1>Fundamentals — S (SentinelOne, Inc.) as of 2026-11-06</h1>
+<h2>Executive summary</h2>
+<p>SentinelOne 營收維持高成長 (FY26 營收 USD 1.001B, YoY +21.9%; 最新季 2026-07-31 YoY +20.6%), 毛利率約 72%, 無實質有息負債且淨現金約 USD 0.64B, 資產負債表尚穩健。獲利與現金流品質仍弱: 最新季 GAAP 營業利益率 -22.7%, TTM 淨虧損 USD -340M, SBC 佔營收約 29%, 扣除 SBC 後 TTM FCF 約 USD -291M。以盤中價 USD 22.00 計, P/S 約 7.0x、forward P/E 約 47.7x, 估值對獲利能力而言偏高; 另有 CEO 近 6 個月大額出售 (USD 22.2M)、流動遞延收入增速放緩 (YoY +9.5%) 與 yfinance 部分欄位對不上的資料品質問題需留意。</p>
+<h2>Revenue &amp; profitability</h2>
+<p><strong>營收趨勢 (USD B, 財年截止 1/31)</strong></p>
+<table>
+<thead>
+<tr>
+<th>財年</th>
+<th>營收</th>
+<th>YoY</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FY23 (2023-01)</td>
+<td>0.422</td>
+<td>n/a</td>
+</tr>
+<tr>
+<td>FY24 (2024-01)</td>
+<td>0.621</td>
+<td>+47.1%</td>
+</tr>
+<tr>
+<td>FY25 (2025-01)</td>
+<td>0.821</td>
+<td>+32.2%</td>
+</tr>
+<tr>
+<td>FY26 (2026-01)</td>
+<td>1.001</td>
+<td>+21.9%</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>3 年 CAGR (FY23→FY26) 約 33.3%, 但成長率逐年放緩 (47% → 32% → 22%)。</li>
+<li>TTM 營收 USD 1.099B (= 最近四季加總, 與 info.totalRevenue 吻合)。最新季 (2026-07-31) 營收 USD 0.292B, YoY +20.6% (2025-07 季 USD 0.242B), QoQ +5.5%。</li>
+<li>分部營收: 工具輸出未揭露分部數字。業務摘要為單一 Singularity 平台, 另含 Purple AI、SIEM、雲端安全、身分安全、弱點管理與威脅服務等產品線, 分部占比 n/a。</li>
+</ul>
+<p><strong>毛利與費用結構</strong><br />
+- 毛利率 FY26 74.1% (FY25 74.3%, FY24 71.1%, FY23 65.9%)。最新季 72.1%, 低於 2025-07 季 75.0%, 下降約 2.9 個百分點, 原因 (成本端 vs 定價) 工具未揭露。TTM 毛利率 72.5%。<br />
+- FY26 費用占營收: S&amp;M USD 0.525B (52.4%, FY25 為 59.3%), R&amp;D USD 0.324B (32.3%, FY25 32.5%), G&amp;A USD 0.202B (20.2%)。S&amp;M 效率改善, R&amp;D 占比持平。</p>
+<p><strong>獲利能力</strong><br />
+- 營業利益 FY26 USD -0.309B (營業利益率 -30.9%), FY25 -0.329B (-40.1%), FY24 -0.372B (-59.8%), FY23 -0.403B (-95.4%)。改善趨勢明確。<br />
+- 最新季營業利益 USD -66.3M (營業利益率 -22.7%), 2025-07 季為 USD -76.7M (-31.7%)。TTM 營業利益 USD -296.0M (-26.9%)。<br />
+- 淨利 FY26 USD -450.7M (淨利率 -45.0%), 但其中所得稅費用 USD 171.0M (稅前虧損 USD -279.7M), 稅費異常偏高, 原因工具未揭露 (推測為遞延稅資產估值備抵或一次性項目, 需查 10-K 確認)。FY25 淨利 USD -288.4M (-35.1%)。<br />
+- TTM 淨利 USD -340.1M (淨利率 -31.0%), 最新季 USD -93.4M (-32.0%)。<br />
+- EPS: FY26 稀釋 EPS -1.37, TTM -1.01。<br />
+- ROE TTM -23.0% (info.returnOnEquity); 以 TTM 淨利 / 2026-07-31 股東權益 (USD 1.4485B) 估算 -23.5%。ROA -7.6%。<br />
+- ROIC 近似值: TTM 營業利益 USD -296.0M / 股東權益 USD 1.4485B (以權益近似投入資本, 未扣除現金) 約 -20%。獲利為負, ROIC 不具投資報酬意義。</p>
+<h2>Cashflow &amp; balance sheet</h2>
+<p><strong>現金流品質 (USD M)</strong></p>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>FY26</th>
+<th>FY25</th>
+<th>FY24</th>
+<th>TTM (至 2026-07)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>營業現金流 (OCF)</td>
+<td>76.6</td>
+<td>33.7</td>
+<td>-68.4</td>
+<td>57.4</td>
+</tr>
+<tr>
+<td>資本支出 (Capex)</td>
+<td>-24.9</td>
+<td>-27.1</td>
+<td>-18.8</td>
+<td>-26.3</td>
+</tr>
+<tr>
+<td>自由現金流 (OCF - Capex)</td>
+<td>51.7</td>
+<td>6.6</td>
+<td>-87.1</td>
+<td>30.9</td>
+</tr>
+<tr>
+<td>FCF 利潤率</td>
+<td>5.2%</td>
+<td>0.8%</td>
+<td>-14.0%</td>
+<td>2.8%</td>
+</tr>
+<tr>
+<td>SBC (股票報酬)</td>
+<td>297.6</td>
+<td>267.5</td>
+<td>216.9</td>
+<td>322.0</td>
+</tr>
+<tr>
+<td>SBC / 營收</td>
+<td>29.7%</td>
+<td>32.6%</td>
+<td>34.9%</td>
+<td>29.3%</td>
+</tr>
+<tr>
+<td>FCF - SBC</td>
+<td>-245.9</td>
+<td>-260.9</td>
+<td>-304.0</td>
+<td>-291.1</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>FCF / NI: 淨利為負, 比率 n/m。FCF 雖轉正, 但 FCF 利潤率僅 2.8% (TTM), 遠低於 &gt;20% 的健康軟體水準。</li>
+<li>yfinance info 的 freeCashflow 為 USD 296.9M (FCF 利潤率約 27%), 與季度現金流表加總 (USD 30.9M) 嚴重不符, 本報告採季度與年度現金流表推算值。</li>
+<li>SBC 規模是現金流品質的核心問題: 扣除 SBC 後 TTM 現金流為 USD -291M。</li>
+</ul>
+<p><strong>資產負債表 (USD M)</strong></p>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>2026-07-31 (最新季)</th>
+<th>2025-07-31</th>
+<th>2026-01-31 (FYE)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>現金及短期投資</td>
+<td>655.2</td>
+<td>810.8</td>
+<td>628.7</td>
+</tr>
+<tr>
+<td>有息負債 (主要為租賃)</td>
+<td>n/a (季報未揭露)</td>
+<td>n/a</td>
+<td>15.0</td>
+</tr>
+<tr>
+<td>淨現金 (估)</td>
+<td>約 640</td>
+<td>n/a</td>
+<td>約 614</td>
+</tr>
+<tr>
+<td>股東權益</td>
+<td>1,448.5</td>
+<td>1,507.8</td>
+<td>1,437.1</td>
+</tr>
+<tr>
+<td>總負債</td>
+<td>933.0</td>
+<td>842.7</td>
+<td>1,001.0</td>
+</tr>
+<tr>
+<td>總資產</td>
+<td>2,381.5</td>
+<td>2,350.5</td>
+<td>2,438.1</td>
+</tr>
+<tr>
+<td>流動比率</td>
+<td>1.45</td>
+<td>1.83</td>
+<td>n/a</td>
+</tr>
+<tr>
+<td>速動比率 (info)</td>
+<td>1.27</td>
+<td>n/a</td>
+<td>n/a</td>
+</tr>
+<tr>
+<td>商譽 + 無形資產</td>
+<td>1,020.8</td>
+<td>723.9</td>
+<td>1,042.2</td>
+</tr>
+<tr>
+<td>有形淨值</td>
+<td>427.7</td>
+<td>783.9</td>
+<td>394.9</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>淨現金約 USD 0.64B, 每股現金 USD 1.88, 負債以營運負債 (流動遞延收入 USD 500.5M, 應付與應計費用) 為主, 有息負債幾乎為零。D/E 約 1.0%。</li>
+<li>流動比率由 1.83 降至 1.45, 主因現金減少與 FY26 收購後的流動資產變動。</li>
+<li>商譽與無形資產占總資產約 43%, 有形淨值 USD 0.43B 遠低於帳面淨值, 收購整合風險需追蹤。</li>
+<li>應收帳款 USD 219.9M, YoY +22.6%, 增速高於營收。</li>
+<li>流動遞延收入 USD 500.5M, YoY +9.5% (2025-07 為 USD 457.2M); 含非流動在內總遞延收入 USD 577.5M, YoY +5.6%。遞延收入增速 (+5.6% to +9.5%) 明顯低於營收增速 (+20.6%), 為未來營收可見度的警示訊號。</li>
+</ul>
+<h2>Capital allocation &amp; insider signal</h2>
+<p><strong>資本配置</strong><br />
+- 買回: FY26 買回 USD 200.0M (FY25 無); FY26 買回金額為 FCF (USD 51.7M) 的約 3.9 倍, 以現金庫存支應。<br />
+- 股本仍在擴張: 2026-07-31 普通股 346.0M 股, YoY +4.2% (2025-07 為 332.1M 股); FY26 年底 337.8M 股, YoY +3.8%。買回未能抵消 SBC 稀釋。<br />
+- 併購: FY26 併購支出 USD 249.0M (FY25 USD 123.8M), 商譽由 USD 629.6M 增至 USD 912.7M。<br />
+- 股利: 無 (dividendYield 0)。<br />
+- Capex 占營收約 2.5% (FY26), 維持輕資產模式。</p>
+<p><strong>內部人交易 (近 6 個月, 2026-05-06 至 2026-11-06)</strong><br />
+- 賣出 29 筆, 合計 USD 28.4M, 約 1.33M 股; 窗內無公開市場買入。占市值 (USD 7.66B) 約 0.37%。<br />
+- CEO Tomer Weingarten 占 USD 22.2M (佔窗內賣出 78%)。其中 2026-10-05 出售 527,368 股 @ USD 25.26 (USD 13.3M), 同日行權 500,000 股 @ USD 9.74 (USD 4.87M)。另 2026-05-04 有一筆 USD 3.55M 出售, 落在窗口外未計入。<br />
+- 其他賣方: Sonalee Parekh USD 2.57M, Robin Tomasello USD 1.02M, Keenan Conder USD 0.90M, Barry Padgett USD 0.86M, Ana Pinczuk USD 0.82M。<br />
+- 近兩年唯一買入: Mark Peek 2025-12-16, USD 0.60M。<br />
+- 內部人持股 0.89%。<br />
+- 解讀: 規模占市值僅 0.37%, 但 CEO 持續且集中的出售 (含行權後出售) 對情緒為負面訊號。</p>
+<p><strong>機構與空單</strong><br />
+- 機構持股 86.2% (658 家)。前幾大: AQR 6.82% (QoQ +18.0%)、BlackRock 6.75% (+3.4%)、Vanguard PM 5.70% (-10.0%)、Vanguard CM 4.27% (-2.3%)、First Trust 3.20% (+20.7%)。截至 2026-06-30。<br />
+- 空單: 2026-10-15 共 23.87M 股, 較 2026-09-15 的 20.15M 股增加 18.4%; 佔浮動股數 7.08%, 空單回補天數 (short ratio) 2.22 日。</p>
+<h2>Valuation</h2>
+<p><strong>價格基準</strong>: 盤中價 USD 22.00 (info.currentPrice, 2026-11-05 14:37 UTC, 約美東 09:37), 前收 USD 23.50, 當日 -6.4%。fast_info 快取價為 USD 23.49 (前收), 兩者不一致, 本報告以較新的 USD 22.00 為準。</p>
+<table>
+<thead>
+<tr>
+<th>指標</th>
+<th>數值</th>
+<th>備註</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>市值</td>
+<td>USD 7.66B</td>
+<td>info.marketCap; 以 342.2M 股 × USD 22.00 估約 USD 7.53B</td>
+</tr>
+<tr>
+<td>企業價值 EV</td>
+<td>USD 7.52B (yfinance) / 約 USD 7.02B (自算)</td>
+<td>自算 = 市值 7.66 + 負債 0.015 - 現金 0.655</td>
+</tr>
+<tr>
+<td>Trailing P/E</td>
+<td>n/m</td>
+<td>TTM EPS -1.01</td>
+</tr>
+<tr>
+<td>Forward P/E</td>
+<td>47.7x</td>
+<td>forward EPS 0.461</td>
+</tr>
+<tr>
+<td>當年度 P/E</td>
+<td>68.9x</td>
+<td>當年 EPS 估 0.319</td>
+</tr>
+<tr>
+<td>P/S (TTM)</td>
+<td>6.97x</td>
+<td>市值 / TTM 營收 USD 1.099B</td>
+</tr>
+<tr>
+<td>EV/Revenue (TTM)</td>
+<td>6.85x (yfinance) / 約 6.39x (自算)</td>
+<td></td>
+</tr>
+<tr>
+<td>EV/EBITDA</td>
+<td>n/m</td>
+<td>TTM EBITDA USD -237.8M</td>
+</tr>
+<tr>
+<td>P/FCF (TTM)</td>
+<td>約 248x (季報推算 FCF USD 30.9M) / 25.8x (info FCF USD 296.9M, 不採用)</td>
+<td></td>
+</tr>
+<tr>
+<td>P/B</td>
+<td>5.26x</td>
+<td></td>
+</tr>
+<tr>
+<td>P/TBV</td>
+<td>約 17.9x</td>
+<td>市值 / 有形淨值 USD 0.428B</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>分析師: 30 位, 推薦均值 2.03 (Buy), 目標價均值 USD 24.92 (較現價 +13.3%), 中位數 USD 25.50, 高 USD 31.00, 低 USD 17.50。</li>
+<li>52 週區間 USD 11.81–26.50, 現價位於區間約 69% 位置; 52 週漲幅 +43.6% (S&amp;P 500 同期 +14.4%)。Beta 0.565。</li>
+<li>估值解讀: 以 P/S 約 7x 相對 &gt;20% 成長的軟體公司, 不算極端, 但 forward P/E 約 48x 且 GAAP 仍虧損, 估值對獲利改善的依賴度高。目標價均值較現價有約 13% 空間, 顯示分析師仍偏多。</li>
+</ul>
+<h2>Key catalysts</h2>
+<ul>
+<li><strong>下次財報</strong>: 2026-12-03 (yfinance 時間戳 21:00 UTC; isEarningsDateEstimate = True, 尚未正式確認)。第 3 季 (2026-10-31 截止) EPS 一致預期 USD 0.09 (口徑未揭露)。</li>
+<li><strong>上次財報</strong> (2026-08-27): EPS -0.27, 低於預期 -0.23 (miss -16.5%); 最新季營收 USD 0.292B, YoY +20.6%。</li>
+<li>2026-05-28 財報: EPS 0.04 vs 預期 0.02 (beat +88%)。注意 earnings_dates 各列 EPS 口徑不一致 (部分為 non-GAAP, 部分與 GAAP 稀釋 EPS 相同), 不宜直接比較。</li>
+<li><strong>公司指引 (guidance)</strong>: 工具未提供, n/a。</li>
+<li><strong>產品與合作</strong>: AWS (Amazon Bedrock) AI 治理合作、Purple AI 生成式安全助理。FY26 收購整合 (USD 249M) 的營收貢獻待觀察。</li>
+<li><strong>財年終點</strong>: FY27 結束於 2027-01-31。</li>
+<li><strong>籌碼面</strong>: 空單 7.1% 浮動股數且 2 個月內增加 18%, 財報前波動風險上升。</li>
+</ul>
+<h2>Metrics table</h2>
+<p>單位: 營收與市值為 USD B, 季度與年度現金流為 USD M。Sector median 欄為模型估計值, 非工具回傳數據, 僅供參考。</p>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Latest</th>
+<th>YoY</th>
+<th>Sector median (estimate)</th>
+<th>Verdict</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>營收 TTM (USD B)</td>
+<td>1.099</td>
+<td>Q +20.6% / FY26 +21.9%</td>
+<td>成長中位數約 15%</td>
+<td>優於同業</td>
+</tr>
+<tr>
+<td>毛利率 (最新季)</td>
+<td>72.1%</td>
+<td>-2.9 pt</td>
+<td>約 75%</td>
+<td>略低</td>
+</tr>
+<tr>
+<td>營業利益率 (最新季)</td>
+<td>-22.7%</td>
+<td>+9.0 pt (由 -31.7%)</td>
+<td>約 0% (估)</td>
+<td>偏弱, 但改善中</td>
+</tr>
+<tr>
+<td>GAAP 淨利率 (TTM)</td>
+<td>-31.0%</td>
+<td>FY26 -45.0% vs FY25 -35.1% (受稅費影響)</td>
+<td>約 -10% (估)</td>
+<td>偏弱</td>
+</tr>
+<tr>
+<td>ROE (TTM)</td>
+<td>-23.0%</td>
+<td>n/a</td>
+<td>約 0% 至正值 (估)</td>
+<td>偏弱</td>
+</tr>
+<tr>
+<td>FCF 利潤率 (TTM)</td>
+<td>2.8%</td>
+<td>FY26 5.2% vs FY25 0.8%</td>
+<td>約 15–20% (估)</td>
+<td>偏弱</td>
+</tr>
+<tr>
+<td>SBC / 營收 (TTM)</td>
+<td>29.3%</td>
+<td>FY26 29.7% vs FY25 32.6%</td>
+<td>約 15–20% (估)</td>
+<td>偏高, 但改善中</td>
+</tr>
+<tr>
+<td>FCF - SBC (TTM, USD M)</td>
+<td>-291.1</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>高風險</td>
+</tr>
+<tr>
+<td>現金及短期投資 (USD M)</td>
+<td>655.2</td>
+<td>-19.2% (vs 810.8)</td>
+<td>n/a</td>
+<td>充裕</td>
+</tr>
+<tr>
+<td>淨現金 (USD M, 估)</td>
+<td>約 640</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>健康</td>
+</tr>
+<tr>
+<td>流動比率</td>
+<td>1.45</td>
+<td>由 1.83 降至 1.45</td>
+<td>約 1.5–2.0 (估)</td>
+<td>中性</td>
+</tr>
+<tr>
+<td>負債 / 股東權益</td>
+<td>約 1.0% (Jan-26)</td>
+<td>n/a</td>
+<td>約 20–40% (估)</td>
+<td>極低, 優</td>
+</tr>
+<tr>
+<td>股本 YoY</td>
+<td>346.0M 股</td>
+<td>+4.2%</td>
+<td>約 1–2% (估)</td>
+<td>偏弱 (稀釋)</td>
+</tr>
+<tr>
+<td>買回 FY26 (USD M)</td>
+<td>200.0</td>
+<td>由 0 增至 200</td>
+<td>n/a</td>
+<td>相對 FCF 偏大</td>
+</tr>
+<tr>
+<td>流動遞延收入 YoY</td>
+<td>USD 500.5M</td>
+<td>+9.5%</td>
+<td>接近營收增速 (估)</td>
+<td>警示</td>
+</tr>
+<tr>
+<td>P/S (TTM)</td>
+<td>6.97x</td>
+<td>n/a</td>
+<td>約 6–8x (估)</td>
+<td>中性偏高</td>
+</tr>
+<tr>
+<td>Forward P/E</td>
+<td>47.7x</td>
+<td>n/a</td>
+<td>約 35–45x (估)</td>
+<td>偏高</td>
+</tr>
+<tr>
+<td>EV/EBITDA</td>
+<td>n/m</td>
+<td>n/a</td>
+<td>n/m</td>
+<td>不適用</td>
+</tr>
+<tr>
+<td>P/FCF (TTM 推算)</td>
+<td>約 248x</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>不適用</td>
+</tr>
+<tr>
+<td>內部人 6 個月淨賣出 (USD M)</td>
+<td>28.4 (約市值 0.37%)</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>偏負面</td>
+</tr>
+<tr>
+<td>空單 / 浮動股數</td>
+<td>7.08%</td>
+<td>月增 +18.4%</td>
+<td>約 3–5% (估)</td>
+<td>偏空</td>
+</tr>
+<tr>
+<td>分析師目標價均值</td>
+<td>USD 24.92 (+13.3%)</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>中性偏多</td>
+</tr>
+</tbody>
+</table>
+<h2>Red flags</h2>
+<ul>
+<li>GAAP 仍虧損: TTM 淨虧損 USD -340M, 淨利率 -31%。FY26 所得稅費用 USD 171M 異常, 原因未揭露。</li>
+<li>SBC 過高: TTM SBC USD 322M (29.3% 營收), 扣除 SBC 後現金流為 USD -291M, 股東稀釋 (股本 YoY +4.2%) 抵消了買回效果。</li>
+<li>遞延收入增速低於營收: 流動遞延收入 YoY +9.5%, 總遞延收入 +5.6%, 營收 +20.6%。未來營收可見度需追蹤。</li>
+<li>毛利率下滑: 最新季 72.1%, 較去年同期 75.0% 下降 2.9 pt。</li>
+<li>最新季 EPS 低於預期 (-0.27 vs -0.23)。</li>
+<li>內部人集中出售: CEO 近 6 個月 USD 22.2M, 含 2026-10-05 行權後出售。</li>
+<li>空單增加: 2026-10-15 空單較 9-15 增 18.4%, 佔浮動股數 7.1%。</li>
+<li>收購與商譽: FY26 併購 USD 249M, 商譽與無形資產占總資產 43%, 有形淨值僅 USD 0.43B。</li>
+<li>資料品質 (需注意):</li>
+<li>info.freeCashflow (USD 296.9M) 與季度現金流加總 (USD 30.9M) 不符, 本報告採後者。</li>
+<li>info.enterpriseValue (USD 7.52B) 與自算 (約 USD 7.02B) 不符。</li>
+<li>info.totalDebt = 0, 但資產負債表有 USD 15.0M 租賃負債 (2026-01-31)。</li>
+<li>股價: fast_info USD 23.49 vs info USD 22.00, 本報告採 USD 22.00。</li>
+<li>earnings_dates 各列 EPS 口徑 (non-GAAP vs GAAP) 不一致。</li>
+<li>未取得 2026-07-31 之後的季報數據; 分部、指引數據工具未提供 (n/a)。</li>
+<li>資料時間: 所有工具資料最晚為 2026-11-05 14:37 UTC (盤中), 早於分析基準日 2026-11-06, 無超出基準日的資料。yfinance cookie/crumb 取得失敗, 部分欄位來自快取 (source: cache)。</li>
+</ul>
+<p>FUNDAMENTALS REPORT COMPLETE</p></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-slate-700 mb-2">技術面 (Market / Technical)</h4>
+          <div class="agent-prose text-sm bg-slate-50 p-3 rounded"><h1>Technical — S (SentinelOne) as of 2026-11-06</h1>
+<blockquote>
+<p>資料注意: 工具資料最新一根 bar 為 2026-11-05, 成交量僅 83,126 (前 10 日均量約 10.19M), 判定為盤中或未完整交易日資料, 收盤價 $22.74 不一定為正式收盤價。以下數據依工具輸出, 結論需待完整收盤資料確認。請求日期為 2026-11-06, 工具資料截至 2026-11-05。</p>
+</blockquote>
+<h2>Snapshot</h2>
+<p>Price $22.74, MA20 $23.84, MA50 $23.12, MA200 $17.81, RSI14=44.34, MACD hist=-0.197</p>
+<h2>Trend</h2>
+<p>中期趨勢仍偏多: MA50 ($23.12) 高於 MA200 ($17.81), 兩線已呈多頭排列 (不是即將發生的黃金交叉, 而是已成立的狀態), 價格高於 MA200 達 +27.7%。52 週高點 $26.50 (2026-10-09), 目前距離高點 -14.2%, 距離 52 週低點 +92.5%。</p>
+<p>短期趨勢轉弱: 價格跌破 MA20 ($23.84, -4.6%) 並落到 MA50 下方 (-1.7%), MA20 已由 11-02 的 $24.20 下彎至 $23.84。自 10-29 高點 $26.21 以來, 股價連續走低, 11-02 單日跌 -7.9% (收 $23.16, 量 10.63M), 之後 11-03、11-04 反彈乏力, 高點逐步下降 (23.63 → 23.86), 形成反彈高點降低的回檔結構。若 11-05 數據為完整收盤, 則收盤已失守 MA50, 為短線轉弱訊號。</p>
+<h2>Momentum</h2>
+<ul>
+<li>MACD: 線 0.087 位於訊號線 0.284 下方, 柱狀體 -0.197 (自 11-03 起連續三日負值且擴大: -0.090 → -0.129 → -0.197), 動能偏空且加速。MACD 線自 11-02 的 0.401 快速下降。</li>
+<li>RSI14 = 44.34, 中性偏弱區間, 自 11-04 的 48.21 下滑, 尚未進入超賣 (&lt;30)。</li>
+<li>多期間報酬: 1 個月 -10.2%, 3 個月 +6.3%, 6 個月 +42.8%, 12 個月 +34.8%。中長期動能仍為正, 短期動能轉負。</li>
+</ul>
+<h2>Key levels</h2>
+<ul>
+<li>Resistance: $23.95 (2026-08-14 / 2026-08-13 local high, 亦為 MA50 上方壓力帶), $23.84 (MA20), $26.50 (2026-10-09 local high, 亦為 52 週高點)</li>
+<li>Support:    $21.08 (2026-10-16 local low), $20.71 (2026-07-15 local high, 現已位於股價下方, 轉為支撐), $19.07 (2026-09-08 local low), $14.31 (2026-06-11 local low)</li>
+<li>Stop-loss suggestion (logical, not advice): below $21.08 (last support break 前的重要低點; 若收盤跌破, 則 $20.71 為下一層參考)</li>
+</ul>
+<h2>Volatility profile</h2>
+<p>ATR14 = $1.23, 約為價格 5.4%。以 ATR 估算, 單日合理波動幅度約 ~$1.23 (上下約 $22–$24 區間)。20 日年化波動率 65.5%, 屬高波動股, 部位大小應以 ATR 或停損距離 (至 $21.08 約 -7.3%) 反推, 避免以固定股數承擔過大風險。</p>
+<h2>Setup</h2>
+<p>中性偏空 (短線)。結構為「長期多頭趨勢中的回檔整理」: 高點 $26.50 (10-09) → 10-29 $26.21 之後的高點逐步降低, 短線跌破 MA20 與 MA50, 目前測試 $21.08 支撐前的整理區間。若能守住 $21.08 且站回 MA20 ($23.84) 與 $23.95, 型態可回到區間震盪; 若跌破 $21.08 則回檔結構確認, 下一支撐在 $20.71 / $19.07。資料需以完整收盤確認。</p>
+<h2>Indicators table</h2>
+<table>
+<thead>
+<tr>
+<th>Indicator</th>
+<th>Value</th>
+<th>Reading</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Price</td>
+<td>$22.74</td>
+<td>盤中或未完整, 待確認</td>
+</tr>
+<tr>
+<td>MA20</td>
+<td>$23.84</td>
+<td>價格位於下方 (-4.6%), MA20 下彎</td>
+</tr>
+<tr>
+<td>MA50</td>
+<td>$23.12</td>
+<td>價格位於下方 (-1.7%), 已失守</td>
+</tr>
+<tr>
+<td>MA200</td>
+<td>$17.81</td>
+<td>價格位於上方 (+27.7%), 長期多頭</td>
+</tr>
+<tr>
+<td>MA50 vs MA200</td>
+<td>23.12 vs 17.81</td>
+<td>多頭排列 (已成立)</td>
+</tr>
+<tr>
+<td>MACD line / signal</td>
+<td>0.087 / 0.284</td>
+<td>線位於訊號線下方, 偏空</td>
+</tr>
+<tr>
+<td>MACD hist</td>
+<td>-0.197</td>
+<td>負值擴大, 偏空加速</td>
+</tr>
+<tr>
+<td>RSI14</td>
+<td>44.34</td>
+<td>中性偏弱, 未超賣</td>
+</tr>
+<tr>
+<td>BB %B</td>
+<td>0.318</td>
+<td>位於中軌下方 (中軌 $23.84, 上軌 $26.85, 下軌 $20.83), 偏弱但未觸及下軌</td>
+</tr>
+<tr>
+<td>ATR14</td>
+<td>$1.23</td>
+<td>約 5.4% 日波動</td>
+</tr>
+<tr>
+<td>20d annualized vol</td>
+<td>65.5%</td>
+<td>高波動</td>
+</tr>
+<tr>
+<td>1m return</td>
+<td>-10.2%</td>
+<td>短期走弱</td>
+</tr>
+<tr>
+<td>3m return</td>
+<td>+6.3%</td>
+<td>中期仍正</td>
+</tr>
+<tr>
+<td>6m return</td>
+<td>+42.8%</td>
+<td>中期強勢</td>
+</tr>
+<tr>
+<td>12m return</td>
+<td>+34.8%</td>
+<td>長期強勢</td>
+</tr>
+<tr>
+<td>% from 52w high</td>
+<td>-14.2%</td>
+<td>距高點 $26.50</td>
+</tr>
+<tr>
+<td>% from 52w low</td>
+<td>+92.5%</td>
+<td>距低點 $11.81 (低點日期工具未提供)</td>
+</tr>
+<tr>
+<td>Volume (latest bar)</td>
+<td>83,126</td>
+<td>盤中或未完整, 不具比較意義</td>
+</tr>
+<tr>
+<td>Volume 10d avg (prior full bars)</td>
+<td>~10.19M</td>
+<td>11-02 至 11-04 量能: 10.63M / 5.81M / 7.01M, 下跌量縮</td>
+</tr>
+</tbody>
+</table>
+<p>MARKET REPORT COMPLETE</p></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-slate-700 mb-2">新聞 (News)</h4>
+          <div class="agent-prose text-sm bg-slate-50 p-3 rounded"><h1>News — S (SentinelOne, NYSE) as of 2026-11-06</h1>
+<p><strong>資料限制（先讀）</strong><br />
+- 日期差異：任務指定 DATE=2026-11-06，但系統今日為 2026-11-05。本報告只納入 11-05 以前可取得的資訊，11-06 當日及之後的新聞一律視為未知。<br />
+- 新聞來源受限：<code>pipeline/tools/yf S news</code> 回傳 403（proxy 政策拒絕）。依規定不重試、不繞道。改以 WebSearch 補足，<strong>新聞覆蓋深度不足，且多數來源未註明日期</strong>。<br />
+- 價格快照：yf info 快取時間為 2026-11-05 14:37 UTC（美東 09:37），是開盤後不久的盤中資料，成交量僅 427,277 股（10 日均量約 10.2M），並非收盤數據。</p>
+<h2>快照（yf info 快取，USD）</h2>
+<table>
+<thead>
+<tr>
+<th>欄位</th>
+<th>數值</th>
+<th>單位</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>現價（盤中）</td>
+<td>22.00</td>
+<td>USD/股</td>
+</tr>
+<tr>
+<td>前收</td>
+<td>23.50</td>
+<td>USD/股</td>
+</tr>
+<tr>
+<td>日變動</td>
+<td>-1.50（-6.38%）</td>
+<td>USD / %</td>
+</tr>
+<tr>
+<td>市值</td>
+<td>7.66</td>
+<td>B USD</td>
+</tr>
+<tr>
+<td>企業價值 EV</td>
+<td>7.52</td>
+<td>B USD</td>
+</tr>
+<tr>
+<td>TTM 營收</td>
+<td>1.10</td>
+<td>B USD</td>
+</tr>
+<tr>
+<td>毛利率</td>
+<td>72.5</td>
+<td>%</td>
+</tr>
+<tr>
+<td>自由現金流 TTM</td>
+<td>0.30</td>
+<td>B USD</td>
+</tr>
+<tr>
+<td>淨利 TTM（普通股）</td>
+<td>-0.34</td>
+<td>B USD</td>
+</tr>
+<tr>
+<td>Forward P/E</td>
+<td>47.7</td>
+<td>x</td>
+</tr>
+<tr>
+<td>分析師目標價（中位／平均／區間）</td>
+<td>25.5 / 24.9 / 17.5–31.0</td>
+<td>USD/股</td>
+</tr>
+<tr>
+<td>52 週區間</td>
+<td>11.81–26.50</td>
+<td>USD/股</td>
+</tr>
+<tr>
+<td>空單佔流通股</td>
+<td>7.1</td>
+<td>%</td>
+</tr>
+</tbody>
+</table>
+<p>Sanity check：淨利 -0.34B ÷ 股數約 0.342B ≈ -0.99 USD/股，與 trailingEps -1.01 大致一致；市值 7.66B ÷ 股數 0.342B ≈ 22.4 USD/股，與現價 22.00 相符。</p>
+<h2>Top company-specific headlines (last 14d)</h2>
+<ul>
+<li>2026-11-05 — 盤中跌幅約 -6.4%（22.00 vs 前收 23.50），<strong>無法查到任何當日公司公告或新聞來源解釋原因</strong>。Impact: 偏空（價格面）。原因未確認，可能與同業或 AI 敘事拋售有關，但屬推測，不可當成事實引用。</li>
+<li>2026-10-22 至 10-29 — 軟體與資安股在 10-28 後盤後再次重挫，FTNT、ServiceNow 財報後即使超出營收預期仍下跌（247wallst 摘要，2026-10-29，僅搜尋摘要，未核對全文）。Impact: 偏空（板塊情緒）。這是影響 S 的板塊事件，並非 S 本身公告。</li>
+<li>2026-10-20 至 10-22 — OneCon26 年度大會於 Las Vegas 舉行（ITdaily）。Impact: 中性。此為活動預告，未查到產品或財務公告內容，且日期早於 14 日窗口。</li>
+<li>日期不明（搜尋摘要未標註）— 多則報導指 S 因 Anthropic 相關資安工具或模型消息，單日下跌約 5%–9%（rallies.ai；MarketScreener，Mythos 洩漏相關）。Impact: 偏空。來源多為聚合站且日期缺失，需以原始日期核對。此模式可作為 11-05 下跌的一種可能解釋，但未經證實。</li>
+</ul>
+<p><strong>14 日窗口外的基準事件（僅供背景）</strong><br />
+- 2026-08-27 — FY27 Q2 財報（Nasdaq）。公司給出 FY27 營收指引 1.202–1.207B USD；FQ3 指引：營收 309–311M USD、non-GAAP 營業利益 38–40M USD、non-GAAP EPS 0.08–0.09 USD。Impact: 中性偏弱（指引偏保守，營收增速已放緩至約 20% 區間）。<br />
+- 2026-06 — 裁員約 8%，強調內部 AI 使用（單一低品質來源，未核對）。Impact: 中性（成本面正面，但顯示營運調整）。<br />
+- 2026-05 — 弱指引加上裁員重組，股價單日跌 8%–12%（搜尋摘要）。Impact: 偏空（已在股價反映，列為背景）。<br />
+- 2026-03-24 — CFO 異動生效（搜尋摘要）。Impact: 中性。</p>
+<h2>Sector macro</h2>
+<ul>
+<li>2026-10-28 — FOMC 維持聯邦基金利率 3.75%–4.00%，投票 10–2，其中一位理事（Hammack）主張升息 25bp。前一次於 2026-09 升息 25bp，為 2023 年以來首次升息。Impact on 軟體與資安: 偏空。升息循環或升息預期壓低長久期成長股估值，S 的 Forward P/E 約 47.7x、EV/Sales 約 6.8x，對利率敏感度高。</li>
+<li>2026-10 至 11 — 市場報導定價 12 月升息機率上升（單一來源標題）。Impact on 軟體與資安: 偏空，機率數字來源不一，未能核實。</li>
+<li>2026 年多次 — AI 敘事衝擊，包括 Anthropic 資安工具與模型消息引發的板塊拋售（見上文）。Impact on 資安: 偏空，尤其對 endpoint 與 EDR 等與 AI 替代敘事重疊的品類。部分分析師（如 Barclays，據搜尋摘要）認為拋售過度，因 AI 工具不直接取代核心資安產品。</li>
+<li>地緣政治：一則 2026-10 報導提及「地緣風險升溫」推動資安配置。未查到具體事件，影響無法量化。</li>
+</ul>
+<h2>Peer signals</h2>
+<ul>
+<li>CRWD — 預計 FQ3 財報約 12 月 1 日（未確認）。板塊情緒主要受其影響。YTD 表現來源衝突：一則 2026-10 報導寫 +123%（同文寫 FTNT +141%、PANW +117%），另一則寫 YTD 約 -20%。<strong>兩者矛盾，不可引用其中任一作為事實</strong>。</li>
+<li>PANW — FQ4 FY26 於 2026-09-01 公布，FQ1 FY27 EPS 指引 0.96–0.98 USD。FQ1 財報預計約 11-18（推算，未經公司確認）。是 14 日窗口內最重要的同業事件。</li>
+<li>FTNT — 2026-10 後段財報營收超預期但股價仍跌，拖累板塊（見上文）。</li>
+<li>ZS、TENB、QLYS — 在 Anthropic 相關拋售日同步重挫，幅度通常較 S 大（搜尋摘要，日期不明）。</li>
+</ul>
+<h2>Forward calendar (next 14d)</h2>
+<ul>
+<li>2026-11-06 至 11-20 — <strong>未查到 S 本身的已確認財報、投資人活動或產品事件</strong>。</li>
+<li>約 2026-11-18 — PANW FQ1 FY27 財報（推算，未確認）。Expected impact: 板塊級波動，若 PANW 指引偏弱，S 可能再受波及。</li>
+<li>2026-11 中旬（推論）— S 通常於財報前約 3 週公告財報日期。2025 年的 FQ3 FY26 日期公告於 2025-11-13。本季若沿用相同節奏，可能在窗口內公告日期，但這只是依過去模式的推論。</li>
+<li>2026-12-01 至 12-04 — S FQ3 FY27 財報（未確認；三個來源各異：Yahoo 估 12-03、AJ Bell 為 12-04、EarningsWhispers 為 11-26）。均在 14 日窗口之外。Expected impact: 最大的單一催化劑，財報前可能有波動。</li>
+<li>2026-12-08 至 12-09 — FOMC 會議，含 SEP 與點陣圖（窗口外，舊利率資料可能過時）。</li>
+</ul>
+<h2>Net read</h2>
+<p>目前可用的新聞訊號偏空、力度中等，但信心偏低。最直接的負面證據是 11-05 盤中 -6.4%，不過我查不到原因，只能判斷為板塊情緒拋售的可能性較高，因為 2026 年 10 月下旬以來資安與軟體股連續遭拋售，而 S 過去多次在 AI 敘事消息日下跌 5%–9%。宏觀面偏空：Fed 在 9 月升息、10 月按兵不動但多數派偏鷹，市場定價 12 月升息，對 Forward P/E 約 47x 的成長股不利。公司面則較中性：FY27 指引與 FQ3 指引顯示成長率放緩但仍為正，分析師評級 Buy（平均 2.03，30 位分析師）、平均目標價 24.9 USD 高於現價，空單比例約 7%，尚不構成極端壓力。14 日窗口內最重要的已知事件是 PANW 財報（約 11-18，未確認），S 本身的財報預計在窗口之外。整體淨新聞傾向：偏空，中等幅度，主要由板塊與利率驅動，而非公司特有公告；因新聞工具不可用、多數來源缺乏日期，本判斷應以低信心看待。</p>
+<p>NEWS REPORT COMPLETE</p></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-slate-700 mb-2">情緒 (Sentiment)</h4>
+          <div class="agent-prose text-sm bg-slate-50 p-3 rounded"><h1>Sentiment — S (SentinelOne) as of 2026-11-06</h1>
+<p>資料來源狀態: yfinance 工具可用 (analyst、insider、ownership)。Reddit 經代理回 403, StockTwits 網域無法解析 (DNS 失敗), X/新聞僅能用 WebSearch, 且搜尋結果多為 2026 年中以前的頁面, 沒有 11 月的即時資料。本報告的零售端資料因此缺漏。</p>
+<h2>Analyst consensus</h2>
+<p>工具回傳的 analyst 分布 (共 34 位, 單位為家數):</p>
+<table>
+<thead>
+<tr>
+<th>時點</th>
+<th>Strong Buy</th>
+<th>Buy</th>
+<th>Hold</th>
+<th>Sell</th>
+<th>Strong Sell</th>
+<th>合計 Buy 側 / Hold / Sell 側</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0m (目前)</td>
+<td>3</td>
+<td>15</td>
+<td>16</td>
+<td>0</td>
+<td>0</td>
+<td>18 / 16 / 0</td>
+</tr>
+<tr>
+<td>-1m</td>
+<td>3</td>
+<td>15</td>
+<td>15</td>
+<td>0</td>
+<td>1</td>
+<td>18 / 15 / 1</td>
+</tr>
+<tr>
+<td>-2m</td>
+<td>3</td>
+<td>16</td>
+<td>15</td>
+<td>0</td>
+<td>0</td>
+<td>19 / 15 / 0</td>
+</tr>
+<tr>
+<td>-3m</td>
+<td>3</td>
+<td>18</td>
+<td>14</td>
+<td>0</td>
+<td>0</td>
+<td>21 / 14 / 0</td>
+</tr>
+</tbody>
+</table>
+<p>目前為 18 Buy / 16 Hold / 0 Sell, 偏多但評等偏向 Hold 的趨勢在上升: 3 個月內 Buy 側由 21 降到 18, Hold 由 14 升到 16。</p>
+<ul>
+<li>個別升降評等與目標價變動: <code>recommendations</code> 工具回傳的內容與 <code>rec_summary</code> 相同, 沒有逐筆事件, 無法列出誰升評、誰降評, 也沒有目標價歷史。</li>
+<li>網路搜尋的補充 (未註明日期, 信心較低): MarketBeat 顯示 17 Buy / 11 Hold / 1 Sell, 與工具數字不一致, 不採用。另有 Piper Sandler、D.A. Davidson 維持 Hold、目標價 $20 的 2026 年 8 月資料, 同樣無法確認是否為最新。</li>
+</ul>
+<h2>Retail social</h2>
+<ul>
+<li>Reddit (r/wallstreetbets、r/stocks): 無法取得 (代理 403)。</li>
+<li>StockTwits: 無法取得 (api.stocktwits.com 無法解析)。需要在 session 網路設定允許該網域才能重試。</li>
+<li>X / 新聞: WebSearch 未找到 2026 年 11 月的散戶意見文章。網路上較新的描述為「情緒轉冷」 (Simply Wall St 提到 trailing one-year 報酬約 -37%), 但該頁面日期不明。</li>
+<li>散戶聲量相對一般水準: 無法量化。</li>
+<li>主題: 無法萃取。因為沒有任何 Reddit / StockTwits 貼文, 本報告不引用任何散戶原文。</li>
+<li>散戶傾向: 無法判定 (資料缺漏)。</li>
+</ul>
+<h2>Insider activity</h2>
+<p>期間: 2026-05-06 至 2026-11-06 (6 個月)。</p>
+<ul>
+<li>公開市場買入: 0 筆, $0。</li>
+<li>公開市場賣出: 29 筆, 合計約 $28.4M。</li>
+<li>CEO Tomer Weingarten: 約 $22.2M, 分散在多次出售中。最大一筆是 2026-10-05 以 $25.26 賣出約 $13.3M, 同日有 500,000 股衍生性證券行使 (行使價 $9.74)。</li>
+<li>CFO Sonalee Parekh: 約 $2.3M (2026-07-06、07-27、09-08、10-06 各一批)。</li>
+<li>其他: President Barry Padgett、Ana Pinczuk (Officer and Director)、Robin Tomasello、Keenan Conder 等, 合計約 $6.2M。</li>
+<li>集中在 2026-10-05/06 的賣出價約 $25.26–25.33, 是樣本內最高價。工具資料無法確認這些交易是否屬於 10b5-1 計畫。</li>
+<li>獎勵發放 (Stock Award, 價格 0) 與 2026-06-25、2026-04-15 的董事獎勵, 不計入賣出。</li>
+<li>6 個月以前的唯一公開市場買入: 董事 Mark Peek 2025-12-16 以 $14.89 買入約 $0.6M。</li>
+</ul>
+<p>解讀: 內部人在股價由 2026 年 3–4 月的約 $13 升至 10 月約 $25 的過程中持續賣出, 沒有買入。</p>
+<h2>Ownership shifts</h2>
+<ul>
+<li>機構持股: 86.2% (流通股 86.9%), 機構數 658 家。</li>
+<li>內部人持股: 0.89%。</li>
+<li>本次只有單一時點快照, 無法判斷機構集中度的趨勢。</li>
+</ul>
+<h2>Net sentiment score</h2>
+<ul>
+<li>分析師: 偏多 (信心中)。0 Sell, 18 Buy; 但 Buy 側近 3 個月減少 3 家, Hold 增加。</li>
+<li>內部人: 偏空 (信心中高)。6 個月內 $28.4M 賣出、0 買入, 而且集中在股價高點。</li>
+<li>零售: 無資料, 不計入綜合分數。</li>
+<li>綜合: 中性 (信心低-中)。分析師端偏多, 內部人端偏空, 兩者不一致, 但沒有零售資料支持判斷。</li>
+</ul>
+<p>Divergence flag: 無法判定。零售端缺資料, 無法檢查零售與分析師是否反向。分析師與內部人之間的反向訊號 (分析師多半 Buy/Hold、內部人高價大量賣出) 值得留意。</p>
+<p>SENTIMENT REPORT COMPLETE</p></div>
+        </div>
+      </div>
+    </details>
+
+    <details class="mb-4 border border-slate-200 rounded">
+      <summary class="bg-slate-50 px-4 py-2 font-semibold">Phase 2 — Bull vs Bear 辯論</summary>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+        <div>
+          <h4 class="font-bold text-green-700 mb-2">🐂 多方 (Bull)</h4>
+          <div class="agent-prose text-sm bg-green-50 p-3 rounded border border-green-200"><em>n/a</em></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-red-700 mb-2">🐻 空方 (Bear)</h4>
+          <div class="agent-prose text-sm bg-red-50 p-3 rounded border border-red-200"><em>n/a</em></div>
+        </div>
+      </div>
+    </details>
+
+    <details class="mb-4 border border-slate-200 rounded">
+      <summary class="bg-slate-50 px-4 py-2 font-semibold">Phase 4 — 風險辯論 (Risk debate)</summary>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 p-4">
+        <div>
+          <h4 class="font-bold text-red-700 mb-2">⚡ 進攻 (Aggressive)</h4>
+          <div class="agent-prose text-sm bg-red-50 p-3 rounded border border-red-200"><em>n/a</em></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-blue-700 mb-2">🛡️ 保守 (Conservative)</h4>
+          <div class="agent-prose text-sm bg-blue-50 p-3 rounded border border-blue-200"><em>n/a</em></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-slate-700 mb-2">⚖️ 中立 (Neutral)</h4>
+          <div class="agent-prose text-sm bg-slate-100 p-3 rounded border border-slate-300"><em>n/a</em></div>
+        </div>
+      </div>
+    </details>
+
+  </div>
+
+  <script>
+    (function() {
+      var d = {};
+      if (!d.dates) return;
+      var traces = [
+        {x: d.dates, y: d.close, name: 'Close',  line: {color: '#1f2937', width: 2}},
+        {x: d.dates, y: d.ma20,  name: 'MA20',   line: {color: '#0ea5e9', width: 1, dash: 'dot'}},
+        {x: d.dates, y: d.ma50,  name: 'MA50',   line: {color: '#f59e0b', width: 1, dash: 'dot'}},
+        {x: d.dates, y: d.ma200, name: 'MA200',  line: {color: '#ef4444', width: 1, dash: 'dash'}}
+      ];
+      var layout = {
+        margin: {l: 50, r: 20, t: 10, b: 40},
+        legend: {orientation: 'h', y: -0.15},
+        xaxis: {showgrid: false},
+        yaxis: {title: '價格 ($)'}
+      };
+      Plotly.newPlot('chart-S', traces, layout, {displayModeBar: false, responsive: true});
+    })();
+  </script>
+
+</section>
+
+
+<section id="ticker-OKTA" class="mb-10 bg-white rounded-lg shadow overflow-hidden">
+
+  <div class="flex items-start justify-between p-6 border-b border-slate-200 verdict-HOLD">
+    <div>
+      <h2 class="text-3xl font-bold">OKTA</h2>
+      <p class="text-sm mt-1 opacity-80">Okta — identity</p>
+    </div>
+    <div class="text-right">
+      <div class="text-4xl font-bold">HOLD</div>
+      <div class="text-sm opacity-80 mt-1">HOLD</div>
+    </div>
+  </div>
+
+  <div class="p-6 grid grid-cols-1 lg:grid-cols-2 gap-6">
+
+    <div>
+      <h3 class="text-lg font-bold mb-2">價格 + 技術指標 (2 年)</h3>
+      <div id="chart-OKTA" style="height: 380px;"></div>
+    </div>
+
+    <div>
+      <h3 class="text-lg font-bold mb-2">最終決策 (Final decision)</h3>
+      <div class="agent-prose text-sm bg-slate-50 p-4 rounded border border-slate-200">
+        <h1>Final Decision — OKTA as of 2026-11-06</h1>
+<h2>Phase 1 positive-pick 評分 (需 ≥3/5 訊號才進入 Phase 2-4)</h2>
+<table>
+<thead>
+<tr>
+<th>訊號</th>
+<th>條件</th>
+<th>結果</th>
+<th>判定</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fundamentals</td>
+<td>YoY 營收成長 &gt;15% 且無 FCF 崩落 (FCF/NI &gt; -1)</td>
+<td>Q2 FY27 營收 YoY +10.6% (未達 &gt;15% 門檻)</td>
+<td>❌ FAIL</td>
+</tr>
+<tr>
+<td>Market (technical)</td>
+<td>RSI14&lt;72 且 MACD 柱非深度負值 且 價格&gt;MA50</td>
+<td>RSI14=43.48 (PASS); MACD hist -3.90 且已死亡交叉; 價格 $191.05 低於 MA50 $196.16 (-2.6%)</td>
+<td>❌ FAIL</td>
+</tr>
+<tr>
+<td>News</td>
+<td>淨新聞情緒偏多</td>
+<td>Net read: 混合偏空, 幅度中等偏弱 (板塊情緒與利率不確定性為主因)</td>
+<td>❌ FAIL</td>
+</tr>
+<tr>
+<td>Sentiment</td>
+<td>分析師共識 ≥60% Buy 或機構流向偏多</td>
+<td>44 位分析師, 買進側 77.3% (34/44)</td>
+<td>✅ PASS</td>
+</tr>
+<tr>
+<td>Valuation</td>
+<td>Forward P/E &lt;35x 或明確 EPS 成長催化</td>
+<td>Forward P/E 39.6x (略高於門檻); 7 季連續優於預期 (平均 +7.9%) 但未達「明確確認」門檻</td>
+<td>❌ FAIL</td>
+</tr>
+</tbody>
+</table>
+<p><strong>總分: 1/5 — 未達標, 不進入 Phase 2-4。</strong></p>
+<h2>VERDICT: HOLD (Phase-1-only)</h2>
+<p>FINAL TRANSACTION PROPOSAL: <strong>HOLD</strong> — Phase-1-only, 未進入 Phase 2-4 (debate / trader / risk / portfolio-manager)。</p>
+<p>說明: OKTA 營收成長已減速至 10.6% YoY (低於門檻), 技術面已跌破 MA50 且 MACD 死亡交叉, 新聞面混合偏空, 估值 (forward P/E 39.6x) 略高於門檻。僅分析師共識偏多 (77.3% buy) 一項通過。Phase 1 positive-pick 評分僅 1/5 (需 ≥3/5), 未達進入完整辯論/交易/風險流程的門檻。依標準流程本次僅完成 Phase 1 分析, 不產出進場/停損/目標價位, 亦無交易建議。</p>
+<h2>風險提示</h2>
+<ul>
+<li>營收成長持續減速 (21.8% → 15.3% → 11.8% → 10.6%)。</li>
+<li>內部人 6 個月內賣出 $46.5M (CEO、CFO 為主), 零公開市場買入。</li>
+<li>今日 (2026-11-05) 盤中下跌 9.3%, 原因未在工具資料中找到, 需後續確認; 下次財報 2026-12-01。</li>
+</ul>
+<p>FINAL DECISION COMPLETE (PHASE 1 ONLY)</p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="px-6 pb-6">
+
+    <details class="mb-4 border border-slate-200 rounded">
+      <summary class="bg-slate-50 px-4 py-2 font-semibold">投資計劃 (Research manager)</summary>
+      <div class="agent-prose p-4 text-sm"><em>n/a</em></div>
+    </details>
+
+    <details class="mb-4 border border-slate-200 rounded">
+      <summary class="bg-slate-50 px-4 py-2 font-semibold">交易提案 (Trader)</summary>
+      <div class="agent-prose p-4 text-sm"><em>n/a</em></div>
+    </details>
+
+    <details class="mb-4 border border-slate-200 rounded">
+      <summary class="bg-slate-50 px-4 py-2 font-semibold">Phase 1 — 四 Analyst 報告</summary>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+        <div>
+          <h4 class="font-bold text-slate-700 mb-2">基本面 (Fundamentals)</h4>
+          <div class="agent-prose text-sm bg-slate-50 p-3 rounded"><h1>Fundamentals — OKTA as of 2026-11-06</h1>
+<blockquote>
+<p>資料說明: 數據快照為 2026-11-05 約 14:30 UTC (盤中, 約開盤後 7 分鐘)。分析基準日 2026-11-06, 未見 2026-11-06 之後的資料。FY 定義: Okta 會計年度止於 1 月 31 日, FY26 = 2026-01-31 年度, Q2 FY27 = 2026-07-31 季度。所有金額為 USD, 以 M (百萬) 或 B (十億) 標示。</p>
+</blockquote>
+<h2>Executive summary</h2>
+<p>OKTA 財務體質已由虧轉盈且為淨現金 (現金及短期投資 2.30B、總債務 0.05B), TTM 自由現金流 959M (FCF margin 31.2%), 但營收成長由 FY24 的 21.8% 持續降至 Q2 FY27 的 10.6%, 且 SBC 佔營收 16.4% (TTM), 扣除 SBC 後的 FCF 僅約 456M。估值方面, GAAP 追溯 P/E 104.3x、EV/EBITDA 約 68x (自算), 以 non-GAAP 前瞻 P/E 39.6x 計算仍屬高估值區間; 過去 6 個月內部人合計出售約 46.5M USD, 無公開市場買進。今日盤中股價較前收 191.05 下跌 9.3%, 原因未在工具資料中找到, 需後續確認。</p>
+<h2>Revenue &amp; profitability</h2>
+<p><strong>年度趨勢 (USD M)</strong></p>
+<table>
+<thead>
+<tr>
+<th>指標</th>
+<th>FY23</th>
+<th>FY24</th>
+<th>FY25</th>
+<th>FY26</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Total Revenue</td>
+<td>1,858</td>
+<td>2,263</td>
+<td>2,610</td>
+<td>2,919</td>
+</tr>
+<tr>
+<td>YoY</td>
+<td>n/a</td>
+<td>+21.8%</td>
+<td>+15.3%</td>
+<td>+11.8%</td>
+</tr>
+<tr>
+<td>Gross Profit</td>
+<td>1,312</td>
+<td>1,682</td>
+<td>1,992</td>
+<td>2,258</td>
+</tr>
+<tr>
+<td>Gross margin</td>
+<td>70.6%</td>
+<td>74.3%</td>
+<td>76.3%</td>
+<td>77.4%</td>
+</tr>
+<tr>
+<td>Operating income (GAAP, as reported)</td>
+<td>-812</td>
+<td>-516</td>
+<td>-74</td>
+<td>149</td>
+</tr>
+<tr>
+<td>Operating margin</td>
+<td>-43.7%</td>
+<td>-22.8%</td>
+<td>-2.8%</td>
+<td>5.1%</td>
+</tr>
+<tr>
+<td>Net income</td>
+<td>-815</td>
+<td>-355</td>
+<td>28</td>
+<td>235</td>
+</tr>
+<tr>
+<td>Net margin</td>
+<td>-43.9%</td>
+<td>-15.7%</td>
+<td>1.1%</td>
+<td>8.0%</td>
+</tr>
+<tr>
+<td>Diluted EPS (USD)</td>
+<td>-5.16</td>
+<td>-2.17</td>
+<td>0.06</td>
+<td>1.31</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>營收 CAGR: FY23→FY26 三年 CAGR 約 16.3%; FY24→FY26 兩年 CAGR 約 13.6%。FY22 資料為 null, 無法計算 4-5 年 CAGR。</li>
+<li>成長減速: 21.8% → 15.3% → 11.8%, 且 Q2 FY27 YoY 為 10.6%, 減速趨勢未止。</li>
+<li>季度營收 (USD M): Q2 FY26 728 / Q3 FY26 742 / Q4 FY26 761 / Q1 FY27 765 / Q2 FY27 805。Q2 FY27 季增 +5.3%。Q1 FY26 (2025-04) 資料為 null, 無法計算 Q1 FY27 YoY。</li>
+<li>TTM 營收 3,073M (與 info.totalRevenue 3,072,999,936 吻合)。</li>
+<li>營收結構: <code>longBusinessSummary</code> 列出 SSO、Adaptive MFA、Universal Directory、Identity Governance、Auth0 CIAM、AI Agents 等產品線, 但 info 與 financials 均未提供分部營收, 分部占比 n/a。</li>
+</ul>
+<p><strong>季度獲利能力</strong></p>
+<table>
+<thead>
+<tr>
+<th>季度</th>
+<th>Q2 FY26</th>
+<th>Q3 FY26</th>
+<th>Q4 FY26</th>
+<th>Q1 FY27</th>
+<th>Q2 FY27</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Gross margin</td>
+<td>76.9%</td>
+<td>77.1%</td>
+<td>77.9%</td>
+<td>77.8%</td>
+<td>79.6%</td>
+</tr>
+<tr>
+<td>Operating margin (GAAP)</td>
+<td>5.6%</td>
+<td>3.1%</td>
+<td>6.0%</td>
+<td>7.3%</td>
+<td>13.3%</td>
+</tr>
+<tr>
+<td>Net margin</td>
+<td>9.2%</td>
+<td>5.8%</td>
+<td>8.3%</td>
+<td>9.7%</td>
+<td>14.4%</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Q2 FY27 營業利益率 13.3%, 較去年同期 +7.7 pp, 為連續擴張。</li>
+<li>ROE: info.returnOnEquity 4.3%, 與 TTM NI 296M / 權益 6,973M 約 4.2% 吻合。</li>
+<li>ROIC (估算): TTM 營業利益 232M × (1-21%) ÷ 投入資本約 4,727M (權益 6,973 + 債務 53 - 現金 2,299) ≈ 3.9%。</li>
+<li>獲利品質提醒: FY26 稅前利潤 255M 中, 利息收入約 106M (約 42%), 且 FY26 稅率僅 7.9%, Q2 FY27 稅率為 7.9%。GAAP 獲利部分來自利息收入與低稅率, 而非純營業槓桿。</li>
+</ul>
+<h2>Cashflow &amp; balance sheet</h2>
+<p><strong>現金流 (USD M)</strong></p>
+<table>
+<thead>
+<tr>
+<th>指標</th>
+<th>FY23</th>
+<th>FY24</th>
+<th>FY25</th>
+<th>FY26</th>
+<th>TTM (Q3 FY26-Q2 FY27)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Operating cash flow</td>
+<td>86</td>
+<td>512</td>
+<td>750</td>
+<td>884</td>
+<td>n/a (季度合計 ~974)</td>
+</tr>
+<tr>
+<td>Capex</td>
+<td>-23</td>
+<td>-24</td>
+<td>-20</td>
+<td>-21</td>
+<td>季度合計 -27</td>
+</tr>
+<tr>
+<td>Free cash flow</td>
+<td>63</td>
+<td>488</td>
+<td>730</td>
+<td>863</td>
+<td>959</td>
+</tr>
+<tr>
+<td>FCF margin</td>
+<td>3.4%</td>
+<td>21.6%</td>
+<td>28.0%</td>
+<td>29.6%</td>
+<td>31.2%</td>
+</tr>
+<tr>
+<td>FCF / NI</td>
+<td>n/m</td>
+<td>n/m</td>
+<td>26.1x</td>
+<td>3.67x</td>
+<td>3.24x</td>
+</tr>
+<tr>
+<td>SBC</td>
+<td>677</td>
+<td>684</td>
+<td>565</td>
+<td>544</td>
+<td>503</td>
+</tr>
+<tr>
+<td>SBC % revenue</td>
+<td>36.4%</td>
+<td>30.2%</td>
+<td>21.6%</td>
+<td>18.6%</td>
+<td>16.4%</td>
+</tr>
+<tr>
+<td>FCF 扣除 SBC</td>
+<td>-614</td>
+<td>-196</td>
+<td>165</td>
+<td>319</td>
+<td>456</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>FCF/NI 遠高於 0.9 的健康門檻, 但分母 NI 受利息收入與低稅率提升, 分子 FCF 受 SBC (非現金費用) 推升, 單看此比率會高估現金流品質。扣除 SBC 後 TTM FCF margin 約 14.8%。</li>
+<li>FY23 營業現金流 86M 與 FY26 884M 相比明顯改善, 由於 SBC 占比下降與營收增長。</li>
+<li>Capex 極低 (FY26 占營收 0.7%), 資本密集度低。</li>
+</ul>
+<p><strong>資產負債表 (2026-07-31, USD M)</strong></p>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>數值</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>現金及短期投資</td>
+<td>2,299</td>
+<td>與 info.totalCash 2,299M 吻合</td>
+</tr>
+<tr>
+<td>總債務</td>
+<td>53</td>
+<td>自 2026-01 的 422 降至 53</td>
+</tr>
+<tr>
+<td>淨現金</td>
+<td>約 2,246</td>
+<td>2,299 - 53, 自算</td>
+</tr>
+<tr>
+<td>股東權益</td>
+<td>6,973</td>
+<td></td>
+</tr>
+<tr>
+<td>有形帳面價值</td>
+<td>1,406</td>
+<td></td>
+</tr>
+<tr>
+<td>流動資產 / 流動負債</td>
+<td>3,089 / 2,025</td>
+<td></td>
+</tr>
+<tr>
+<td>流動比率</td>
+<td>1.53</td>
+<td>與 info.currentRatio 1.525 吻合</td>
+</tr>
+<tr>
+<td>速動比率</td>
+<td>1.38</td>
+<td>info.quickRatio</td>
+</tr>
+<tr>
+<td>債務/權益</td>
+<td>0.8%</td>
+<td>info.debtToEquity 0.76 (百分比格式)</td>
+</tr>
+<tr>
+<td>流動遞延收入</td>
+<td>1,751</td>
+<td>佔流動負債約 86%, 為主要負債來源</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>負債結構以遞延收入為主, 有息債務已大幅清償: 2025-10 季度償還約 510M, 2026-07 總債務降至 53M。</li>
+<li>遞延收入 (流動) 同比 +13.0% (1,751 vs 1,550), 為營收可見度的正面訊號。</li>
+</ul>
+<h2>Capital allocation &amp; insider signal</h2>
+<p><strong>資本配置</strong><br />
+- 股息: 無 (dividendRate 0)。<br />
+- 買回: FY26 買回 -73M; FY27 上半年 (Q1 -248M, Q2 -124M) 合計約 -372M。<br />
+- 股本: 普通股 177.36M (2026-01) → 174.82M (2026-07), 半年減少 1.4%。稀釋加權股數 Q2 FY27 178.8M vs Q2 FY26 181.0M, 同比 -1.2%。買回已超過 SBC 稀釋, 但 SBC 仍為主要成本。<br />
+- 債務: 優先清償可轉債類債務, 利息費用趨近於 0 (Q2 FY27 利息費用 0)。<br />
+- 資本支出: 極低, 無重大擴產。</p>
+<p><strong>內部人交易 (6 個月窗口: 2026-05-05 至 2026-11-05)</strong></p>
+<p>公開市場賣出 (Sale) 共 11 筆, 合計約 46.46M USD (約 312K 股), 占市值約 0.15%:</p>
+<table>
+<thead>
+<tr>
+<th>日期</th>
+<th>內部人</th>
+<th>職位</th>
+<th>股數</th>
+<th>金額 (USD M)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2026-05-07</td>
+<td>Schwartz</td>
+<td>Officer</td>
+<td>6,377</td>
+<td>0.49</td>
+</tr>
+<tr>
+<td>2026-05-18</td>
+<td>Archambeau</td>
+<td>Director</td>
+<td>2,500</td>
+<td>0.21</td>
+</tr>
+<tr>
+<td>2026-06-02</td>
+<td>Schwartz</td>
+<td>Officer</td>
+<td>24,971</td>
+<td>3.35</td>
+</tr>
+<tr>
+<td>2026-06-08</td>
+<td>Tighe</td>
+<td>CFO</td>
+<td>65,000</td>
+<td>7.62</td>
+</tr>
+<tr>
+<td>2026-06-18</td>
+<td>Kelleher</td>
+<td>President</td>
+<td>3,977</td>
+<td>0.45</td>
+</tr>
+<tr>
+<td>2026-06-22</td>
+<td>Schwartz</td>
+<td>Officer</td>
+<td>2,463</td>
+<td>0.30</td>
+</tr>
+<tr>
+<td>2026-07-08</td>
+<td>McKinnon</td>
+<td>CEO</td>
+<td>68,936</td>
+<td>10.11</td>
+</tr>
+<tr>
+<td>2026-09-02</td>
+<td>Tighe</td>
+<td>CFO</td>
+<td>80,000</td>
+<td>12.88</td>
+</tr>
+<tr>
+<td>2026-09-11</td>
+<td>Kelleher</td>
+<td>President</td>
+<td>2,549</td>
+<td>0.43</td>
+</tr>
+<tr>
+<td>2026-09-18</td>
+<td>Kelleher</td>
+<td>President</td>
+<td>6,395</td>
+<td>1.17</td>
+</tr>
+<tr>
+<td>2026-09-22</td>
+<td>McKinnon</td>
+<td>CEO</td>
+<td>48,822</td>
+<td>9.45</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>窗口內公開市場買進: 0 筆。最近一筆買進為 2026-04-16 Schellhase (董事) 約 0.27M USD, 已超出窗口。</li>
+<li>淨額: 約 -46.5M USD。賣方以 CEO 與 CFO 為主 (合計約 40.0M, 佔 86%)。是否為 10b5-1 預定計畫或稅務代扣, 工具資料無法判定。</li>
+<li>占比: 市值 30.28B, 賣出金額占 0.15%, 幅度有限, 但方向一致 (連續賣出, 無買進)。</li>
+<li>持股: 內部人持股 0.51%, 機構持股 98.7%, 空單佔流通股 4.66% (6.96M 股, 約 1.9 天覆蓋)。</li>
+</ul>
+<h2>Valuation</h2>
+<p><strong>股價與市值</strong><br />
+- 現價 173.215 (2026-11-05 盤中); 前收 191.05; 日內 -9.33%, 日內區間 173.00-184.53。<br />
+- 52 週區間 62.66-235.00, 現價距 52 週高點 -26.3%。50 日均線 196.16 (現價 -11.7%), 200 日均線 125.98 (現價 +37.5%)。<br />
+- 市值 30.28B (= 現價 × 普通股 174.82M)。<br />
+- 注意: info.sharesOutstanding 為 167.14M, 與 impliedSharesOutstanding 174.82M 不一致, 本報告採用 174.82M。</p>
+<p><strong>估值倍數 (自算, USD)</strong></p>
+<table>
+<thead>
+<tr>
+<th>指標</th>
+<th>數值</th>
+<th>計算</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Trailing P/E (GAAP, TTM EPS 1.66)</td>
+<td>104.3x</td>
+<td>info.trailingPE</td>
+</tr>
+<tr>
+<td>Forward P/E (forwardEps 4.38, non-GAAP)</td>
+<td>39.6x</td>
+<td>info.forwardPE</td>
+</tr>
+<tr>
+<td>Current-year P/E (epsCurrentYear 3.93)</td>
+<td>44.1x</td>
+<td>173.215 ÷ 3.929</td>
+</tr>
+<tr>
+<td>EV (自算)</td>
+<td>28.04B</td>
+<td>市值 30.28B - 淨現金 2.25B</td>
+</tr>
+<tr>
+<td>EV/Sales (TTM 3.07B)</td>
+<td>9.1x</td>
+<td>28.04 ÷ 3.07</td>
+</tr>
+<tr>
+<td>EV/EBITDA (TTM 季度 EBITDA 412M)</td>
+<td>約 68x</td>
+<td>28.04B ÷ 0.412B</td>
+</tr>
+<tr>
+<td>P/S (TTM)</td>
+<td>9.9x</td>
+<td>info.priceToSalesTrailing12Months 9.85</td>
+</tr>
+<tr>
+<td>P/FCF (TTM 959M)</td>
+<td>31.6x</td>
+<td>30.28 ÷ 0.959</td>
+</tr>
+<tr>
+<td>EV/FCF (TTM)</td>
+<td>29.2x</td>
+<td>28.04 ÷ 0.959</td>
+</tr>
+<tr>
+<td>P/B</td>
+<td>4.3x</td>
+<td>info.priceToBook</td>
+</tr>
+<tr>
+<td>PEG</td>
+<td>1.36</td>
+<td>info.pegRatio</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>分析師: 43 位, 評等均值 1.66 (Buy), 目標價均值 214.72 (較現價 +24.0%), 最高 250 (+44.3%), 最低 127 (-26.7%)。</li>
+</ul>
+<p><strong>相對同業 (sector median 為粗估, 非工具資料)</strong><br />
+- Software-Infrastructure 中位數 (估計) 的 forward P/E 約 30-35x, EV/Sales 約 6-8x, P/FCF 約 25-30x, Gross margin 約 75%。OKTA 的 forward P/E、P/FCF 高於估計中位數; Gross margin 高於中位數。</p>
+<h2>Key catalysts</h2>
+<ul>
+<li>下次財報: 2026-12-01 (Q3 FY27), isEarningsDateEstimate = False。EPS 共識 (non-GAAP) 0.93。</li>
+<li>最近一季 (Q2 FY27, 2026-08-26 公告): non-GAAP EPS 實際 1.05 vs 共識 0.96, 超出 +8.9%; GAAP 稀釋 EPS 0.65。</li>
+<li>近 7 季 EPS 超出共識幅度: 平均約 +7.9%, 連續 7 季正超出。</li>
+<li>正式財測 (guidance): 工具資料無法取得, n/a。</li>
+<li>今日 -9.3% 下跌原因: 工具資料中無新聞或公告, 需確認是否與產品、競爭對手、監管或同業事件有關。</li>
+</ul>
+<h2>Metrics table</h2>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Latest</th>
+<th>YoY</th>
+<th>Sector median (估計)</th>
+<th>Verdict</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>營收 (TTM, USD B)</td>
+<td>3.07</td>
+<td>+10.6% (Q2 FY27)</td>
+<td>約 10-15%</td>
+<td>中等, 持續減速</td>
+</tr>
+<tr>
+<td>營收成長 (FY26, %)</td>
+<td>11.8%</td>
+<td>FY25 15.3%</td>
+<td>約 12%</td>
+<td>中等偏弱</td>
+</tr>
+<tr>
+<td>Gross margin (Q2 FY27)</td>
+<td>79.6%</td>
+<td>+2.7 pp</td>
+<td>約 75%</td>
+<td>優</td>
+</tr>
+<tr>
+<td>Operating margin (Q2 FY27, GAAP)</td>
+<td>13.3%</td>
+<td>+7.7 pp</td>
+<td>約 5-10%</td>
+<td>良, 快速改善</td>
+</tr>
+<tr>
+<td>Net margin (TTM)</td>
+<td>9.6%</td>
+<td>由負轉正</td>
+<td>n/a</td>
+<td>含利息收入與低稅率</td>
+</tr>
+<tr>
+<td>ROE (TTM)</td>
+<td>4.3%</td>
+<td>n/a</td>
+<td>約 10%</td>
+<td>偏弱</td>
+</tr>
+<tr>
+<td>ROIC (估算)</td>
+<td>約 3.9%</td>
+<td>n/a</td>
+<td>約 8-10%</td>
+<td>偏弱</td>
+</tr>
+<tr>
+<td>FCF margin (TTM)</td>
+<td>31.2%</td>
+<td>較 FY25 +3.2 pp</td>
+<td>約 20%</td>
+<td>優</td>
+</tr>
+<tr>
+<td>FCF 扣除 SBC margin (TTM)</td>
+<td>14.8%</td>
+<td>n/a</td>
+<td>約 10%</td>
+<td>中等</td>
+</tr>
+<tr>
+<td>FCF / NI (TTM)</td>
+<td>3.24x</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>高估 (NI 偏低)</td>
+</tr>
+<tr>
+<td>SBC % revenue (TTM)</td>
+<td>16.4%</td>
+<td>-5.2 pp (FY25→TTM)</td>
+<td>約 10%</td>
+<td>偏高</td>
+</tr>
+<tr>
+<td>淨現金 (USD B)</td>
+<td>2.25</td>
+<td>n/a</td>
+<td>視情況</td>
+<td>優</td>
+</tr>
+<tr>
+<td>流動比率</td>
+<td>1.53</td>
+<td>n/a</td>
+<td>約 1.5</td>
+<td>中性</td>
+</tr>
+<tr>
+<td>債務/權益</td>
+<td>0.8%</td>
+<td>大幅下降</td>
+<td>約 30%</td>
+<td>優</td>
+</tr>
+<tr>
+<td>Trailing P/E (GAAP)</td>
+<td>104.3x</td>
+<td>n/a</td>
+<td>約 n/a (多數負值)</td>
+<td>偏高</td>
+</tr>
+<tr>
+<td>Forward P/E</td>
+<td>39.6x</td>
+<td>n/a</td>
+<td>約 30-35x</td>
+<td>偏高</td>
+</tr>
+<tr>
+<td>EV/EBITDA (TTM, 自算)</td>
+<td>約 68x</td>
+<td>n/a</td>
+<td>約 25-30x</td>
+<td>偏高</td>
+</tr>
+<tr>
+<td>P/FCF (TTM)</td>
+<td>31.6x</td>
+<td>n/a</td>
+<td>約 25-30x</td>
+<td>偏高</td>
+</tr>
+<tr>
+<td>EV/Sales (TTM)</td>
+<td>9.1x</td>
+<td>n/a</td>
+<td>約 6-8x</td>
+<td>偏高</td>
+</tr>
+<tr>
+<td>內部人淨買賣 (6 個月)</td>
+<td>-46.5M USD</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>淨賣出, 占市值 0.15%</td>
+</tr>
+</tbody>
+</table>
+<h2>Red flags</h2>
+<ul>
+<li>營收成長持續減速: 21.8% → 15.3% → 11.8% → Q2 FY27 10.6%。</li>
+<li>SBC 偏高: FY26 SBC 544M (18.6% 營收); TTM 扣除 SBC 後 FCF margin 約 14.8%, 而非表面的 31.2%。</li>
+<li>GAAP 獲利品質: FY26 稅前利潤中約 42% 來自利息收入, 稅率僅 7.9%, 獲利基礎薄。</li>
+<li>GAAP 與 non-GAAP 差距大: Q2 FY27 GAAP EPS 0.65 vs non-GAAP 1.05。</li>
+<li>內部人連續賣出: 6 個月內 CEO 與 CFO 合計賣出約 40M USD, 窗口內無公開市場買進。</li>
+<li>估值偏高: 前瞻 P/E 39.6x, EV/Sales 9.1x, P/FCF 31.6x。</li>
+<li>今日 -9.3% 跌幅, 現價距 52 週高點 -26%, 原因未明。</li>
+</ul>
+<p>FUNDAMENTALS REPORT COMPLETE</p></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-slate-700 mb-2">技術面 (Market / Technical)</h4>
+          <div class="agent-prose text-sm bg-slate-50 p-3 rounded"><h1>Technical — OKTA as of 2026-11-06</h1>
+<p><strong>注意事項:</strong> 本報告要求日期為 2026-11-06, 但今日為 2026-11-05, 且 ta 工具最新一根K棒為 2026-11-04 收盤。以下所有數據截至 2026-11-04 收盤, 未包含 11-05 或 11-06 的行情。<code>yf fast_info</code> 呼叫失敗 (CONNECT tunnel 403), 故 50d/200d MA 與 52w 高低點均採用 <code>ta snapshot</code> 的數值。</p>
+<h2>Snapshot</h2>
+<p>Price $191.05 (2026-11-04 收盤), MA20 $209.25, MA50 $196.16, MA200 $125.98, RSI14=43.48, MACD hist=-3.90</p>
+<h2>Trend</h2>
+<p>中期 (MA50/MA200) 仍為多頭結構: 價格位於 MA50 ($196.16) 與 MA200 ($125.98) 之上, MA200 距離 +51.6%, MA50 距離 -2.6%。MA200 持續上升 (約 $116 於 10-12 升至 $126), 長期趨勢未破壞。</p>
+<p>短期 (MA20) 已轉弱: 價格 $191.05 低於 MA20 $209.25 (-8.7%), 且 MA20 在 10-29 高點 $213.9 之後已開始走平並轉下。10-12 高點 $235.00 (52w 高) 之後, 高點依序為 $228.00 (10-27)、$222.64 (10-30)、$206.00 (11-02)、$190.43 (11-03), 形成連續降低的高點。低點方面, 10-16 低點 $184.89 之後出現 $183.12 (11-02)、$180.00 (11-03)、$180.14 (11-04), 低點亦下移。目前為「長期多頭、短期高檔回落、結構偏空」的狀態。</p>
+<h2>Momentum</h2>
+<p>MACD 線 (-0.011) 已跌破訊號線 (3.89), 柱狀體 (-3.90) 連續三日擴大 (11-02 -2.71, 11-03 -3.59, 11-04 -3.90), 動能偏空。RSI14 為 43.48, 位於中性偏弱區, 尚未進入超賣 (&lt;30)。</p>
+<p>多週期報酬: 1m -12.6%, 3m +33.1%, 6m +146.7%, 12m +109.8%。中長期動能仍強, 近一個月明顯回檔。</p>
+<h2>Key levels</h2>
+<ul>
+<li>Resistance: $209.25 (MA20, 11-04), $228.00 (2026-10-27 local high), $235.00 (2026-10-12 local high, 52w 高點), 另 MA50 $196.16 為近端動態阻力</li>
+<li>Support: $180.00 (2026-11-03 swing low, 盤中低點), $183.12 (2026-11-02 low), $184.89 (2026-10-16 low), $157.00 (2026-07-15 local high, 現位於價格下方, 為前高轉支撐區), $142.35 (2026-06-01 local high, 同上), $129.02 (2026-07-28 local low), $127.60 (2026-08-26 local low), $107.00 (2026-06-18 local low)</li>
+<li>註: <code>ta levels</code> 將 $157.00 與 $142.35 標為 resistance, 但目前價格已高於兩者, 實質作用為下方支撐區。</li>
+<li>距 52w 高點 $235.00: -18.7%; 距 52w 低點 $62.66: +204.9%</li>
+<li>Stop-loss suggestion (logical, not advice): below $180.00 (11-03 swing low, 最近一次關鍵低點被測試)。若以 ATR14 $13.04 作為緩衝, 則止損區間約 $167 至 $180。</li>
+</ul>
+<h2>Volatility profile</h2>
+<p>ATR14 = $13.04, 即每日 ATR 隱含波動約 $13.04 (約 6.8% of price)。20 日年化波動率 79.7%, 換算日標準差約 5.0% (約 $9.6)。波動率極高, 部位規模應以 ATR 或年化波動率調整, 單日跳空或盤中 $10 以上的振幅屬常態。</p>
+<h2>Setup</h2>
+<p>中性偏空 (短期結構)。型態為: 自 10-12 高點 $235 起之降低高點與降低低點 (lower highs / lower lows), 價格跌破 MA20 並跌回 MA50 附近 ($196.16)。目前接近 $180–$184 支撐帶, 若該區失守則下一個結構性支撐為 $157.00。若價格重新站回 MA20 $209.25 並以量能確認, 則結構轉為中性偏多。</p>
+<p>成交量: 11-03 成交量 33.80M, 為前 8 日平均 (約 3.43M) 的約 9.9 倍, 盤中自 $180.00 低點反彈收於 $189.68, 屬高量下的放量回測與長下影反應。11-04 成交量 3.68M, 為 10 日平均 (約 6.49M) 的約 0.57 倍, 量能回落。</p>
+<h2>Indicators table</h2>
+<table>
+<thead>
+<tr>
+<th>Indicator</th>
+<th>Value</th>
+<th>Reading</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Price</td>
+<td>$191.05</td>
+<td>2026-11-04 收盤</td>
+</tr>
+<tr>
+<td>MA20</td>
+<td>$209.25</td>
+<td>價格低於 MA20 (-8.7%), MA20 走平轉下</td>
+</tr>
+<tr>
+<td>MA50</td>
+<td>$196.16</td>
+<td>價格低於 MA50 (-2.6%)</td>
+</tr>
+<tr>
+<td>MA200</td>
+<td>$125.98</td>
+<td>價格高於 MA200 (+51.6%), 長期多頭</td>
+</tr>
+<tr>
+<td>MACD line / signal</td>
+<td>-0.011 / +3.890</td>
+<td>線在訊號線下方, 死亡交叉已成立</td>
+</tr>
+<tr>
+<td>MACD hist</td>
+<td>-3.90</td>
+<td>負向且連續三日擴大, 偏空加速</td>
+</tr>
+<tr>
+<td>RSI14</td>
+<td>43.48</td>
+<td>中性偏弱, 未超賣</td>
+</tr>
+<tr>
+<td>BB %B</td>
+<td>0.20</td>
+<td>位於下半區, 接近下軌 $178.54</td>
+</tr>
+<tr>
+<td>BB 上軌 / 中軌 / 下軌</td>
+<td>$239.97 / $209.25 / $178.54</td>
+<td>價格距下軌約 $12.5</td>
+</tr>
+<tr>
+<td>ATR14</td>
+<td>$13.04</td>
+<td>每日隱含波動高</td>
+</tr>
+<tr>
+<td>20d 年化波動率</td>
+<td>79.7%</td>
+<td>極高波動</td>
+</tr>
+<tr>
+<td>1m 報酬</td>
+<td>-12.6%</td>
+<td>近期回檔</td>
+</tr>
+<tr>
+<td>3m 報酬</td>
+<td>+33.1%</td>
+<td>中期仍強</td>
+</tr>
+<tr>
+<td>6m 報酬</td>
+<td>+146.7%</td>
+<td>半年動能強</td>
+</tr>
+<tr>
+<td>12m 報酬</td>
+<td>+109.8%</td>
+<td>年度動能強</td>
+</tr>
+<tr>
+<td>% from 52w high</td>
+<td>-18.7%</td>
+<td>距 $235.00</td>
+</tr>
+<tr>
+<td>% from 52w low</td>
+<td>+204.9%</td>
+<td>距 $62.66</td>
+</tr>
+<tr>
+<td>成交量 (11-03) vs 前 8 日均量</td>
+<td>約 9.9x</td>
+<td>異常放量</td>
+</tr>
+<tr>
+<td>成交量 (11-04) vs 10 日均量</td>
+<td>約 0.57x</td>
+<td>量能回落</td>
+</tr>
+</tbody>
+</table>
+<p>MARKET REPORT COMPLETE</p></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-slate-700 mb-2">新聞 (News)</h4>
+          <div class="agent-prose text-sm bg-slate-50 p-3 rounded"><h1>News — OKTA as of 2026-11-06</h1>
+<h2>資料來源與限制</h2>
+<ul>
+<li>yf 工具無法使用：Yahoo 網域被 egress proxy 以 403 拒絕。本報告改以 WebSearch 取得資料，<code>yf news</code> 與 <code>yf info</code> 的結果缺席，sector/industry 未能從資料源確認（OKTA 一般歸類為 Software—Infrastructure / 雲端身分安全，屬常識推定，未查證）。</li>
+<li>日期紀律：系統日期為 2026-11-05，DATE 為 2026-11-06。本報告只採計發布日 ≤ 2026-11-05 的來源（最新為 2026-11-02）。</li>
+<li>多數第三方資料之間互相矛盾（見各段標註），以公司公告為準。</li>
+</ul>
+<h2>Top company-specific headlines (last 14d)</h2>
+<ul>
+<li>2026-11-02 — Okta 公告 FQ3 FY2027 (季度止 2026-10-31) 財報將於 2026-12-01 (週二) 美股收盤後公布，當日 14:00 PT 召開 webcast（Okta 官方新聞稿）。Impact: neutral。公告本身不含數字，只確認時程；第三方日曆給的 11-25 與 12-07 為估計，應忽略。</li>
+<li>2026-11-02 — Tickeron 報導 OKTA 單日下跌約 5%，延續前一週回檔；歸因為 AI 支出驅動的軟體與雲端拋售，並提到「資料外洩」標題帶來的疑慮（Tickeron，自動化類部落格，屬次要來源）。Impact: bearish（短線價格動能）。注意：我未能確認該資料外洩標題的具體內容與來源，不採為事實。</li>
+<li>2026-10-12 — Wall Street Zen 將 OKTA 評級由 Buy 下調至 Hold（單一來源）。Impact: bearish（輕微，量化評級系統，影響有限）。</li>
+<li>2026-10-09 — BMO Capital 將目標價由 USD 230 上調至 USD 245（單一來源）。Impact: bullish（輕微，分析師端仍維持正面）。</li>
+<li>14d 以外背景（2026-08-26，FQ2 FY2027，供基準）：Revenue USD 805M (+11% YoY)，non-GAAP EPS 1.05 vs FactSet 0.97；RPO USD 4.858B (+17%)，cRPO USD 2.585B (+14%)；FY2027 revenue 指引上調至 USD 3.216–3.226B，FCF 指引上調至 USD 910–930M（前值 855–885M）；FQ3 指引 revenue USD 813–817M，non-GAAP EPS 0.92–0.94。Okta for AI Agents 於 2026-04-30 GA，CFO 表示 AI 對 FY2027 仍不具重大性，可能於 FY2028 起變得重要。Impact: 基本面 bullish（但已過期，僅作基準）。</li>
+<li>訴訟背景（非新聞，無 14d 內事件）：10-K 顯示 2022 年資安事件相關證券集體訴訟已於 2024-11-19 獲最終核准並駁回；加州聯邦法院之股東衍生訴訟仍在進行中。Impact: neutral。</li>
+<li>未發現 14d 內的 M&amp;A、高階管理層異動、監管或新產品公告。搜尋未找到 2026 年新的資安事件或訴訟。</li>
+</ul>
+<h2>Sector macro</h2>
+<ul>
+<li>2026-10 至 2026-11-02 — AI 支出驅動的軟體與雲端拋售，高估值資安股承壓（Tickeron 描述；未查到確切事件或數據，此標籤不採用）。Impact on sector: bearish，情緒面壓力，與 2026 年初的 "SaaS rout" 與 AI 替代疑慮延續同一敘事。</li>
+<li>2026 年初 — AI 替代資安平台的疑慮（Anthropic 推出 AI 安全軟體的消息）曾使 OKTA 於 2026-02-23 觸及 52 週低點 USD 68.77；Raymond James 則論述 AI agent 將擴大身分安全市場（背景，已過期）。Impact: 雙向，敘事仍是 OKTA 估值的核心變數。</li>
+<li>Fed 利率路徑（資料互相矛盾）：一來源稱 2026-07-28/29 維持 3.50–3.75%；另一來源稱 2026-09-16 已升息至 3.75–4.00%。10-27/28 會議結果未能查證。若 FOMC 偏鷹，對高本益比軟體股的折現率形成壓力。Impact on sector: 偏空，幅度依實際決議而定（未確認）。</li>
+<li>身分安全賽道：Jefferies 將身分安全列為 2026 下半年資安偏好子產業（單一來源）。Impact on sector: 基本面正面（TAM 獲認可），但競爭加劇。</li>
+</ul>
+<h2>Peer signals</h2>
+<ul>
+<li>PANW — 轉向身分安全與 agentic identity（分析師將目標價上調至 USD 275，日期不明）。另有報導稱 PANW 接近以逾 USD 200 億收購 CyberArk，但日期與是否完成均未確認。Read-across: 若屬實，身分安全整併將提高 OKTA 的競爭與估值比較壓力。</li>
+<li>CRWD / ZS — 未查到 2026-10 至 11 月的可確認新聞。某報導稱 ZS 在 FQ3 財報後暴跌 31%，但日期不明，不採計。JPMorgan 將 CRWD、PANW、ZS 列為長期贏家（日期不明）。</li>
+<li>2026-08 — 多家分析師（ZS、CRWD、OKTA、PANW）上調目標價（background，已過期）。</li>
+</ul>
+<h2>Forward calendar (next 14d, 2026-11-06 至 2026-11-20)</h2>
+<ul>
+<li>2026-11-18（單一來源）— FOMC 2026-10-27/28 會議紀錄公布，expected impact: 對利率路徑與高估值軟體股情緒有中度影響。</li>
+<li>2026-11-06 至 11-20 — 未確認任何 OKTA 公司層級事件（無法 webcast、無財報）。</li>
+<li>2026-12-01（公司公告，14d 外，距 DATE 25 天）— OKTA FQ3 FY2027 財報，盤後公布。第三方日曆的 11-25 與 12-07 為估計。Impact: 此為主要催化劑，屆時比較 FQ3 指引 USD 813–817M 與 FY 指引 USD 3.216–3.226B。</li>
+<li>2026-12-08/09（14d 外）— 最後一次 2026 年 FOMC 會議與 SEP。</li>
+</ul>
+<h2>Net read</h2>
+<p>近 14 天的確認性公司新聞很少，唯一可靠的是 12-01 財報時程公告（中性）。情緒面以 AI 支出驅動的軟體拋售為主軸，Tickeron 報導的 5% 單日跌幅與 Wall Street Zen 降評為偏空訊號，BMO 上調目標價為偏多訊號，兩者均屬次要來源或單一來源。基本面背景仍強（FQ2 beat and raise、RPO +17%、AI agent 仍小但增長），但這些資訊已屬 8 月以前。Fed 路徑與 PANW–CyberArk 整併屬於不確定性來源，未能完全查證。綜合來看，新聞面淨傾向為混合偏空，幅度中等偏弱，主因是板塊情緒與利率不確定性，而非公司層面的負面事件。</p>
+<p>NEWS REPORT COMPLETE</p></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-slate-700 mb-2">情緒 (Sentiment)</h4>
+          <div class="agent-prose text-sm bg-slate-50 p-3 rounded"><h1>Sentiment — OKTA as of 2026-11-06</h1>
+<p>注意事項: 系統日期為 2026-11-05, 報告 as-of 日期 2026-11-06 晚於系統當日。analyst 與 insider 資料為工具當下回傳值, 最新 insider 交易僅到 2026-09-22, 約 6 週無新申報, 需確認 feed 是否延遲。Reddit 與 StockTwits 無法取得, 散戶情緒段落為缺漏, 不可視為中性。</p>
+<h2>Analyst consensus</h2>
+<p>目前 44 位分析師: 9 strongBuy + 25 buy = 34 buy / 10 hold / 0 sell (0 strongSell)。<br />
+近三個月分布變化:</p>
+<table>
+<thead>
+<tr>
+<th>期間</th>
+<th>strongBuy</th>
+<th>buy</th>
+<th>hold</th>
+<th>sell</th>
+<th>strongSell</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0m (現在)</td>
+<td>9</td>
+<td>25</td>
+<td>10</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>-1m</td>
+<td>9</td>
+<td>25</td>
+<td>10</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>-2m</td>
+<td>9</td>
+<td>26</td>
+<td>9</td>
+<td>0</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<p>近期動向: -2m 至 -1m 之間有一檔 buy 降為 hold, 其餘期間未變。目標價 (PT) 工具未提供, 無法量化調整幅度。網路搜尋提到 BTIG 維持 Buy 但下修 PT; BofA 維持 Underperform, 理由為成長疑慮。BofA 的 Underperform 在工具計數中未見於 sell, 疑似分類差異, 未能核實。</p>
+<h2>Retail social</h2>
+<ul>
+<li>Reddit (r/wallstreetbets, r/stocks): 無法取得 (WebFetch 回報 unable to fetch www.reddit.com), 無貼文樣本, 無法判斷 tilt 與 buzz 量。</li>
+<li>StockTwits: 無法取得 (api.stocktwits.com DNS 無法解析, 需在 session 網路設定允許此網域後才能重試)。</li>
+<li>X / 新聞鏈: 搜尋結果彙整的觀點偏正面 (分析師評級), 但另有內部人賣出與 PT 下修的負面聲音, 價格來源互相矛盾 ($170.60 / $143 / $118.72), 不採信為即時報價。</li>
+<li>聲量: 無法量化 (無 Reddit/StockTwits 計數)。</li>
+<li>主題 (僅來自二手新聞摘要): AI 安全支出能否轉化為可持續成長; 內部人持續賣出; 下次財報預計 2026-11-25 盤後 (未經官方確認)。</li>
+</ul>
+<h2>Insider activity</h2>
+<p>6 個月窗口 (2026-05-06 至 2026-11-06), 以公開市場交易為準 (工具 Value 欄位, USD):</p>
+<table>
+<thead>
+<tr>
+<th>日期</th>
+<th>人員</th>
+<th>職稱</th>
+<th>股數</th>
+<th>金額 (USD M)</th>
+<th>類型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2026-05-07</td>
+<td>SCHWARTZ LARISSA NICOLE</td>
+<td>Officer</td>
+<td>6,377</td>
+<td>0.49</td>
+<td>賣出</td>
+</tr>
+<tr>
+<td>2026-05-18</td>
+<td>ARCHAMBEAU SHELLYE L</td>
+<td>Director</td>
+<td>2,500</td>
+<td>0.21</td>
+<td>賣出</td>
+</tr>
+<tr>
+<td>2026-06-02</td>
+<td>SCHWARTZ LARISSA NICOLE</td>
+<td>Officer</td>
+<td>24,971</td>
+<td>3.35</td>
+<td>賣出</td>
+</tr>
+<tr>
+<td>2026-06-08</td>
+<td>TIGHE BRETT</td>
+<td>CFO</td>
+<td>65,000</td>
+<td>7.62</td>
+<td>賣出</td>
+</tr>
+<tr>
+<td>2026-06-18</td>
+<td>KELLEHER ERIC ROBERT</td>
+<td>President</td>
+<td>3,977</td>
+<td>0.45</td>
+<td>賣出</td>
+</tr>
+<tr>
+<td>2026-06-22</td>
+<td>SCHWARTZ LARISSA NICOLE</td>
+<td>Officer</td>
+<td>2,463</td>
+<td>0.30</td>
+<td>賣出</td>
+</tr>
+<tr>
+<td>2026-07-08</td>
+<td>MCKINNON TODD</td>
+<td>CEO</td>
+<td>68,936</td>
+<td>10.11</td>
+<td>賣出</td>
+</tr>
+<tr>
+<td>2026-09-02</td>
+<td>TIGHE BRETT</td>
+<td>CFO</td>
+<td>80,000</td>
+<td>12.88</td>
+<td>賣出</td>
+</tr>
+<tr>
+<td>2026-09-11</td>
+<td>KELLEHER ERIC ROBERT</td>
+<td>President</td>
+<td>2,549</td>
+<td>0.43</td>
+<td>賣出</td>
+</tr>
+<tr>
+<td>2026-09-18</td>
+<td>KELLEHER ERIC ROBERT</td>
+<td>President</td>
+<td>6,395</td>
+<td>1.17</td>
+<td>賣出</td>
+</tr>
+<tr>
+<td>2026-09-22</td>
+<td>MCKINNON TODD</td>
+<td>CEO</td>
+<td>48,822</td>
+<td>9.45</td>
+<td>賣出</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>6 個月淨額: 買入 0 USD M; 賣出約 46.5 USD M (11 筆有金額之公開市場賣出)。</li>
+<li>單位核對: 48,822 股 × 約 $193 ≈ $9.4M, 與工具金額一致, 無 10 倍級單位錯位。</li>
+<li>買入: 窗口內無公開市場買入。2026-04-16 董事 SCHELLHASE 買入 3,712 股 (約 $0.27M) 在窗口之外。</li>
+<li>價格脈絡: 6 月賣出約 $108–137, 9 月賣出約 $158–198, 顯示 insider 在股價上漲後加速減持。CEO McKinnon 與 CFO Tighe 為本窗口主要賣方。</li>
+</ul>
+<h2>Ownership shifts</h2>
+<ul>
+<li>機構持股 98.7%, 機構數 1,276 家; 內部人持股 0.51%。</li>
+<li>單一快照, 無時序資料, 無法判斷集中度趨勢。</li>
+</ul>
+<h2>Net sentiment score</h2>
+<ul>
+<li>分析師: 偏多 (34/44 買進, 0 賣出; 近期僅小幅降評)。</li>
+<li>內部人: 偏空 (窗口內約 46.5 USD M 賣出, 零公開買入, 集中於 CEO/CFO/President)。</li>
+<li>散戶: 無資料, 無法評估。</li>
+<li>綜合: 中性 (confidence: 低)。信心低的原因: 散戶來源全部缺漏; insider feed 最新僅到 9 月下旬; 網路價格來源矛盾, 無可靠即時報價。</li>
+</ul>
+<p>Divergence flag: 無法判定 (缺散戶資料)。若以分析師 vs 內部人作對照: 分析師偏多與內部人密集賣出方向相反, 但 insider 賣出可能來自既定計畫或分散持股需求, 無法單靠此資料判定其資訊含量。</p>
+<p>SENTIMENT REPORT COMPLETE</p></div>
+        </div>
+      </div>
+    </details>
+
+    <details class="mb-4 border border-slate-200 rounded">
+      <summary class="bg-slate-50 px-4 py-2 font-semibold">Phase 2 — Bull vs Bear 辯論</summary>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+        <div>
+          <h4 class="font-bold text-green-700 mb-2">🐂 多方 (Bull)</h4>
+          <div class="agent-prose text-sm bg-green-50 p-3 rounded border border-green-200"><em>n/a</em></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-red-700 mb-2">🐻 空方 (Bear)</h4>
+          <div class="agent-prose text-sm bg-red-50 p-3 rounded border border-red-200"><em>n/a</em></div>
+        </div>
+      </div>
+    </details>
+
+    <details class="mb-4 border border-slate-200 rounded">
+      <summary class="bg-slate-50 px-4 py-2 font-semibold">Phase 4 — 風險辯論 (Risk debate)</summary>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 p-4">
+        <div>
+          <h4 class="font-bold text-red-700 mb-2">⚡ 進攻 (Aggressive)</h4>
+          <div class="agent-prose text-sm bg-red-50 p-3 rounded border border-red-200"><em>n/a</em></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-blue-700 mb-2">🛡️ 保守 (Conservative)</h4>
+          <div class="agent-prose text-sm bg-blue-50 p-3 rounded border border-blue-200"><em>n/a</em></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-slate-700 mb-2">⚖️ 中立 (Neutral)</h4>
+          <div class="agent-prose text-sm bg-slate-100 p-3 rounded border border-slate-300"><em>n/a</em></div>
+        </div>
+      </div>
+    </details>
+
+  </div>
+
+  <script>
+    (function() {
+      var d = {};
+      if (!d.dates) return;
+      var traces = [
+        {x: d.dates, y: d.close, name: 'Close',  line: {color: '#1f2937', width: 2}},
+        {x: d.dates, y: d.ma20,  name: 'MA20',   line: {color: '#0ea5e9', width: 1, dash: 'dot'}},
+        {x: d.dates, y: d.ma50,  name: 'MA50',   line: {color: '#f59e0b', width: 1, dash: 'dot'}},
+        {x: d.dates, y: d.ma200, name: 'MA200',  line: {color: '#ef4444', width: 1, dash: 'dash'}}
+      ];
+      var layout = {
+        margin: {l: 50, r: 20, t: 10, b: 40},
+        legend: {orientation: 'h', y: -0.15},
+        xaxis: {showgrid: false},
+        yaxis: {title: '價格 ($)'}
+      };
+      Plotly.newPlot('chart-OKTA', traces, layout, {displayModeBar: false, responsive: true});
+    })();
+  </script>
+
+</section>
+
+
+</main>
+
+<footer class="bg-slate-200 text-slate-600 text-xs p-4 text-center">
+  多 agent 交易研究 — 純研究 / 教學用途, 非投資建議。
+</footer>
+
+</body>
+</html>
