@@ -90,3 +90,30 @@ assert down["boost"]["deployable_share"] == 100 and down["boost"]["deployable_pe
 assert [x["crossed"] for x in down["boost"]["ladder"]] == [True, True, True]
 assert dca_rule(lambda t, d: (_ for _ in ()).throw(RuntimeError("nope")))["signal"] == "DATA_UNAVAILABLE"
 print("ok")
+
+
+# crash_rule: five flags from stubbed feeds; composite count drives the deployment share
+from monitor import crash_rule  # noqa: E402
+
+def _hist_calm(t, d, cache=True):
+    idx = pd.bdate_range("2024-01-01", periods=400)
+    if t == "^VIX": return pd.DataFrame({"close": pd.Series(15.0, index=idx)})
+    return pd.DataFrame({"close": pd.Series(100 + pd.Series(range(400), index=idx) * 0.1)})
+def _hist_panic(t, d, cache=True):
+    idx = pd.bdate_range("2024-01-01", periods=400)
+    if t == "^VIX": return pd.DataFrame({"close": pd.Series(45.0, index=idx)})
+    return pd.DataFrame({"close": pd.Series(140 - pd.Series(range(400), index=idx) * 0.1)})   # falling: < MA200, RSI low
+def _fred_calm(s, days=400): return [(f"2026-01-{i%28+1:02d}", 3.3 if s.startswith("BAML") else 3.88) for i in range(200)]
+def _fred_stress(s, days=400):
+    if s.startswith("BAML"): return [("d", 6.0)] * 150 + [("d", 5.2)] * 50          # 60d high 6.0, now 5.2 -> eased 80bp, > 4
+    return [("d", 4.5)] * 150 + [("d", 4.0)] * 50                                    # f[-91] = 4.5 -> cut 50bp vs 90d ago
+
+calm = crash_rule(_hist_calm, _fred_calm, breadth_closes={"A": _hist_calm("A", 0)["close"]})
+assert calm["count"] == 0 and calm["signal"] == "CALM" and calm["deploy_share"] == 0, calm["action"]
+falling = _hist_panic("A", 0)["close"]
+panic = crash_rule(_hist_panic, _fred_stress, breadth_closes={"A": falling, "B": falling})
+assert panic["count"] == 5 and panic["signal"] == "DEPLOY" and panic["deploy_share"] == 100, (panic["count"], panic["action"])
+assert all(panic["flags"][k]["on"] for k in ("vix", "spx", "breadth", "hy", "fed")), panic["flags"]
+broken = crash_rule(lambda t, d, cache=True: (_ for _ in ()).throw(RuntimeError("x")), lambda s, days=400: (_ for _ in ()).throw(RuntimeError("y")), breadth_closes={})
+assert broken["count"] == 0 and len(broken["unknown"]) == 5 and broken["errors"]
+print("ok")

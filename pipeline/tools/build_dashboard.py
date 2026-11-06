@@ -654,6 +654,11 @@ HTML_TEMPLATE = r"""<!DOCTYPE html>
     __SERENITY_SUMMARY__
   </div>
 
+  <section id="us-dca" class="space-y-3">
+    <h2 class="text-lg font-bold px-1">🇺🇸 美股 ETF 定投 <span class="text-xs font-normal text-slate-500">核心定投 · 加碼階梯 · TQQQ 濾網 · 崩跌訊號（進階）· GitHub Actions 每日 21:40Z 更新</span></h2>
+    __US_DCA__
+  </section>
+
   <section id="top20" class="bg-white rounded-lg shadow p-4">
     <div class="flex items-baseline justify-between mb-3 border-b pb-2">
       <div>
@@ -2059,6 +2064,46 @@ def render_dca_panel() -> str:
             '核心擇時版本全輸固定扣款。工具/回測規則，非投資建議。</div></details></section>')
 
 
+def render_crash_panel() -> str:
+    """🚨 崩跌加碼訊號（進階）— reads alerts.json['crash'] (monitor.py crash_rule).
+    Five flags with live level vs threshold, the composite count, and the
+    deployment share of the boost reserve the tiers imply. Backtest numbers
+    quoted from pipeline/research/crash_signals_backtest.py."""
+    f = SCANS / "alerts.json"
+    if not f.exists():
+        return ""
+    try:
+        d = json.loads(f.read_text(encoding="utf-8")).get("crash")
+    except Exception:
+        d = None
+    if not d:
+        return ""
+    urg = d.get("urgency", 3)
+    bg = {0: "bg-rose-100 border-rose-300", 2: "bg-amber-50 border-amber-300"}.get(urg, "bg-slate-50 border-slate-300")
+    rows = []
+    for k in ("vix", "spx", "breadth", "hy", "fed"):
+        x = d["flags"].get(k)
+        if not x:
+            continue
+        st = ("<span class='bg-rose-600 text-white px-1.5 rounded text-[10px] font-bold'>ON</span>" if x["on"]
+              else "<span class='bg-slate-200 text-slate-500 px-1.5 rounded text-[10px]'>off</span>" if x["on"] is not None
+              else "<span class='bg-amber-100 text-amber-800 px-1.5 rounded text-[10px]'>無資料</span>")
+        rows.append(f"<tr><td>{st}</td><td class='font-semibold'>{_esc(x['label'])}</td><td class='font-mono'>{_esc(x['level'])}</td>"
+                    f"<td class='text-slate-600'>{_esc(x['threshold'])}</td><td class='text-slate-500'>{_esc(x.get('note', ''))}</td></tr>")
+    tiers = " · ".join(f"≥{t['min_signals']} 個 → 投 {t['share']:.0f}%" for t in d.get("tiers", []))
+    return (
+        f'<section id="crash" class="{bg} border rounded-lg shadow-sm p-3"><details><summary class="cursor-pointer select-none">'
+        '<div class="flex flex-wrap items-center gap-3 text-xs"><span class="font-bold text-sm">🚨 崩跌加碼訊號（進階）</span>'
+        f'<span><b>{_esc(d["action"])}</b></span><span class="ml-auto text-slate-400">details ▾</span></div></summary>'
+        "<table class='w-full text-xs mt-2'><thead><tr class='text-slate-500'><th></th><th class='text-left'>訊號</th><th class='text-left'>今日</th>"
+        "<th class='text-left'>門檻</th><th class='text-left'>備註</th></tr></thead>" + "".join(rows) + "</table>"
+        f"<div class='text-[11px] text-slate-600 mt-2'>門檻：{tiers}（存量 = E 的 BOXX 存量；與 C 的回撤階梯取較大者，不疊加）。</div>"
+        "<div class='text-[11px] text-slate-500 mt-1'>回測 1993–2026（首次觸發、60 日冷卻、QQQ 往後 6 個月）：VIX &gt; 40 → 中位 +21.7%、92% 正報酬（12 次）；"
+        "≥3 訊號 → +12.4%、85%（13 次）；VIX &gt; 30 → +14.6%、79%；SPY &lt; MA200 且 RSI &lt; 30 → +12.5%、65%；"
+        "<b>Fed 降息單獨出現 → -1.4%、48%，不是買點</b>；任意日買 QQQ 基準 +9.3%。寬度為掃描 universe 美股代理，非全市場。工具/回測規則，非投資建議。</div>"
+        "</details></section>")
+
+
 def render_alert_banner() -> str:
     """Top-of-dashboard L0 monitor banner from alerts.json (zero-LLM price
     tracker output). Shows the most urgent actionable alerts (urgency<=2:
@@ -2127,7 +2172,8 @@ def main():
             .replace("__SCAN_STATE__", scan_state)
             .replace("__STATUS__", render_status_banner())
             .replace("__ALERTS__", render_validation_banner() + render_alert_banner())
-            .replace("__LEVERAGE__", render_leverage_panel() + "\n" + render_dca_panel())
+            .replace("__LEVERAGE__", render_leverage_panel())
+            .replace("__US_DCA__", render_dca_panel() + "\n" + render_crash_panel())
             .replace("__SERENITY_SUMMARY__", render_serenity_summary())
             .replace("__SERENITY__", render_serenity_panel())
             .replace("__TOP20_ROWS__", top20_html)

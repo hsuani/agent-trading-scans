@@ -323,6 +323,116 @@ def dca_rule(hist=None):
     return out
 
 
+def _fred(series, days=400):
+    """Latest `days` observations of a FRED series as [(date, value)], via the
+    public CSV endpoint (no key). Raises on network failure; callers soft-fail."""
+    import urllib.request
+    from datetime import date, timedelta
+    start = (date.today() - timedelta(days=days)).isoformat()
+    raw = urllib.request.urlopen(f"https://fred.stlouisfed.org/graph/fredgraph.csv?id={series}&cosd={start}", timeout=15).read().decode()
+    out = []
+    for line in raw.splitlines()[1:]:
+        d, v = line.split(",")[:2]
+        try:
+            out.append((d, float(v)))
+        except ValueError:
+            continue                                  # "." = missing
+    return out
+
+
+def crash_rule(hist=None, fred=None, breadth_closes=None):
+    """進階加碼訊號 — mechanical, zero-LLM, independent of the QQQ drawdown ladder.
+    Five flags, each with a level, a threshold and whether it is ON today:
+      vix      ^VIX close > 30 (fear) / > 40 (panic)
+      spx      SPY close < MA200 AND RSI14 < 30
+      breadth  share of the scan universe's US names within 10% of their 52-week
+               low >= 40% (proxy; no free index-wide breadth feed)
+      hy       ICE BofA HY OAS (FRED BAMLH0A0HYM2) > 4% AND >= 50bp below its
+               60-day high — credit stress that has started to EASE
+      fed      effective fed funds (FRED DFF) >= 25bp below 90 days ago
+    Composite = number of ON flags. Deployment (share of the boost reserve) by
+    CRASH_TIERS "2:25,3:50,4:100" — informational: the backtest shows VIX > 40
+    and >= 3 flags are the only ones that beat buying on a random day."""
+    if hist is None:
+        from pricefeed import history as hist
+    fred = fred or _fred
+    tiers = [(int(k), float(v)) for k, v in
+             (x.split(":") for x in os.environ.get("CRASH_TIERS", "2:25,3:50,4:100").split(",") if ":" in x)]
+    flags, errs = {}, []
+
+    def flag(key, label, on, level, threshold, note=""):
+        flags[key] = {"label": label, "on": bool(on) if on is not None else None, "level": level,
+                      "threshold": threshold, "note": note}
+    # vix
+    try:
+        v = hist("^VIX", 400, cache=False)["close"].dropna()
+        lv = float(v.iloc[-1]); hi60 = float(v.tail(60).max())
+        flag("vix", "VIX 恐慌", lv > 30, f"{lv:.1f}", "> 30（> 40 極端）",
+             f"60 日高 {hi60:.1f}" + ("，極端 > 40 ✓" if lv > 40 else ""))
+    except Exception as e:                            # noqa: BLE001
+        errs.append(f"vix: {e}"); flag("vix", "VIX 恐慌", None, "—", "> 30")
+    # spx
+    try:
+        c = hist("SPY", 760)["close"].dropna()
+        ma = float(c.rolling(200).mean().iloc[-1])
+        d = c.diff(); up = d.clip(lower=0).ewm(alpha=1/14, adjust=False).mean(); dn = (-d.clip(upper=0)).ewm(alpha=1/14, adjust=False).mean()
+        rsi = float((100 - 100 / (1 + up / dn)).iloc[-1]); px = float(c.iloc[-1]); hi52 = float(c.tail(252).max())
+        flag("spx", "SPY 跌破年線且超賣", px < ma and rsi < 30,
+             f"{px:.0f} vs MA200 {ma:.0f}（{(px/ma-1)*100:+.1f}%），RSI14 {rsi:.0f}", "收盤 < MA200 且 RSI14 < 30",
+             f"距 52 週高 {(px/hi52-1)*100:+.1f}%")
+    except Exception as e:                            # noqa: BLE001
+        errs.append(f"spx: {e}"); flag("spx", "SPY 跌破年線且超賣", None, "—", "< MA200 且 RSI14 < 30")
+    # breadth (proxy from the scan universe's US names)
+    try:
+        if breadth_closes is None:
+            import universe as _u
+            us = sorted(t for t in _u.static_universe() if "." not in t)
+            breadth_closes = {}
+            for t in us:
+                try:
+                    breadth_closes[t] = hist(t, 400)["close"].dropna()
+                except Exception:                     # noqa: BLE001
+                    continue
+        near_low = [float(c.iloc[-1]) <= float(c.tail(252).min()) * 1.10 for c in breadth_closes.values() if len(c) >= 200]
+        below_ma = [float(c.iloc[-1]) < float(c.rolling(200).mean().iloc[-1]) for c in breadth_closes.values() if len(c) >= 200]
+        if not near_low:
+            raise RuntimeError("no closes")
+        pl, pb = 100 * sum(near_low) / len(near_low), 100 * sum(below_ma) / len(below_ma)
+        flag("breadth", "市場寬度極差（代理）", pl >= 40, f"{pl:.0f}% 在 52 週低點 10% 內；{pb:.0f}% 在年線下", ">= 40% 近 52 週低點",
+             f"樣本 = 掃描 universe 美股 {len(near_low)} 檔，非全市場")
+    except Exception as e:                            # noqa: BLE001
+        errs.append(f"breadth: {e}"); flag("breadth", "市場寬度極差（代理）", None, "—", ">= 40% 近 52 週低點")
+    # hy
+    try:
+        h = fred("BAMLH0A0HYM2", 200)
+        vals = [x[1] for x in h]; cur = vals[-1]; hi60 = max(vals[-60:])
+        flag("hy", "高收益債利差由高點收斂", cur > 4.0 and hi60 - cur >= 0.5, f"{cur:.2f}%（60 日高 {hi60:.2f}%，{(cur-hi60)*100:+.0f}bp）",
+             "> 4% 且較 60 日高點回落 >= 50bp", f"FRED BAMLH0A0HYM2 {h[-1][0]}")
+    except Exception as e:                            # noqa: BLE001
+        errs.append(f"hy: {e}"); flag("hy", "高收益債利差由高點收斂", None, "—", "> 4% 且回落 >= 50bp")
+    # fed
+    try:
+        f = fred("DFF", 200)
+        cur = f[-1][1]; ago = f[-91][1] if len(f) > 91 else f[0][1]
+        flag("fed", "聯準會轉向寬鬆", cur - ago <= -0.25, f"{cur:.2f}%（90 日前 {ago:.2f}%，{(cur-ago)*100:+.0f}bp）", "較 90 日前降 >= 25bp",
+             "回測：單獨出現時 6 個月正報酬率僅 48%，當輔助不當觸發")
+    except Exception as e:                            # noqa: BLE001
+        errs.append(f"fed: {e}"); flag("fed", "聯準會轉向寬鬆", None, "—", "降 >= 25bp / 90 日")
+    on = [k for k, x in flags.items() if x["on"]]
+    unknown = [k for k, x in flags.items() if x["on"] is None]
+    n = len(on)
+    share = max([v for k, v in tiers if n >= k], default=0.0)
+    if n == 0:
+        sig, urg, action = "CALM", 3, f"⚪ 崩跌訊號 0/5 → 進階加碼不啟動" + (f"（{len(unknown)} 項無資料）" if unknown else "")
+    elif share == 0:
+        sig, urg, action = "WATCH", 2, f"🟡 崩跌訊號 {n}/5（{'、'.join(flags[k]['label'] for k in on)}）→ 觀察，未達加碼門檻 {tiers[0][0]} 個"
+    else:
+        sig, urg, action = "DEPLOY", 0, (f"🔴 崩跌訊號 {n}/5（{'、'.join(flags[k]['label'] for k in on)}）→ 進階加碼：投入加碼金 {share:.0f}%"
+                                         f"（每 $1,000 存量投 ${10*share:.0f}）")
+    return {"flags": flags, "count": n, "unknown": unknown, "tiers": [{"min_signals": k, "share": v} for k, v in tiers],
+            "deploy_share": share, "signal": sig, "urgency": urg, "action": action, **({"errors": errs} if errs else {})}
+
+
 def main():
     held = set()
     if HELD_FILE.exists():
@@ -381,6 +491,7 @@ def main():
         "count": len(rows), "alerts": rows,
         "leverage": leverage_rule(),
         "dca": dca_rule(),
+        "crash": crash_rule(),
     }
     (ROOT / "alerts.json").write_text(json.dumps(payload, ensure_ascii=False, indent=2),
                                       encoding="utf-8")
