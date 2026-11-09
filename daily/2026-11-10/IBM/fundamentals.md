@@ -38,7 +38,7 @@ IBM 財務體質穩健，TTM 毛利率約 58%、淨利率約 16%、FCF 約 14.0B
 - ROE 34.8%、ROA 5.3%（info）。ROE 受高槓桿放大，股東權益約 35.5B USD。
 - ROIC 為估算值：TTM 營業利益 12.81B × (1 − 約 12.5% 稅率) ≈ NOPAT 11.2B；投入資本 ≈ 總負債 67.1B + 股東權益 35.5B − 現金 11.1B ≈ 91.6B；ROIC ≈ 12%。
 - 非 GAAP 與 GAAP 差距：Q3 FY26 Yahoo 公布 EPS 為 2.95（與估計 2.87 比較，超出 +2.7%），但 GAAP 稀釋 EPS 為 2.30。差距約 0.65 元（約 22%），主要來自無形資產攤銷、重組等調整項目，投資人需留意。
-- Q4 FY25 GAAP 淨利 5.60B 含約 1.4B USD 稅務利益（Tax Provision −14.35 億單位，即約 −1.44B），使 TTM GAAP EPS 11.72 被墊高約 1.5 元。若剔除此項，TTM EPS 約 10.2，trailing P/E 約 24x（估算）。
+- Q4 FY25 GAAP 淨利 5.60B 含約 1.44B USD 稅務利益（Tax Provision 約 −1.44B），使 TTM GAAP EPS 11.72 被墊高約 1.5 元。若剔除此項，TTM EPS 約 10.2，trailing P/E 約 24x（估算）。
 
 ## Cashflow & balance sheet
 
