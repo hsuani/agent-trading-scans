@@ -1,0 +1,4536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Trading Scan — TW_SERVER — 2026-11-12</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+  .verdict-BUY  { background: #dcfce7; color: #166534; }
+  .verdict-HOLD { background: #fef3c7; color: #92400e; }
+  .verdict-SELL { background: #fee2e2; color: #991b1b; }
+  .verdict-UNKNOWN { background: #f3f4f6; color: #374151; }
+  details > summary { cursor: pointer; }
+  details[open] > summary { margin-bottom: 0.5rem; }
+  .agent-prose h1, .agent-prose h2, .agent-prose h3 { font-weight: 600; margin-top: 1rem; margin-bottom: 0.5rem; }
+  .agent-prose h1 { font-size: 1.5rem; }
+  .agent-prose h2 { font-size: 1.25rem; }
+  .agent-prose h3 { font-size: 1.1rem; }
+  .agent-prose p { margin-bottom: 0.5rem; line-height: 1.5; }
+  .agent-prose ul { list-style-type: disc; margin-left: 1.5rem; margin-bottom: 0.5rem; }
+  .agent-prose ol { list-style-type: decimal; margin-left: 1.5rem; margin-bottom: 0.5rem; }
+  .agent-prose table { border-collapse: collapse; margin: 0.75rem 0; font-size: 0.875rem; }
+  .agent-prose th, .agent-prose td { border: 1px solid #d1d5db; padding: 0.375rem 0.75rem; text-align: left; }
+  .agent-prose th { background: #f9fafb; font-weight: 600; }
+  .agent-prose code { background: #f3f4f6; padding: 0.1rem 0.25rem; border-radius: 0.25rem; font-size: 0.875rem; }
+  .agent-prose pre { background: #1f2937; color: #f9fafb; padding: 0.75rem; border-radius: 0.375rem; overflow-x: auto; font-size: 0.85rem; margin: 0.5rem 0; }
+  .agent-prose strong { font-weight: 600; }
+  nav a { color: #2563eb; text-decoration: none; }
+  nav a:hover { text-decoration: underline; }
+</style>
+</head>
+<body class="bg-slate-50 text-slate-900">
+
+<header class="bg-slate-900 text-white p-6 shadow-md">
+  <div class="max-w-6xl mx-auto">
+    <h1 class="text-3xl font-bold">交易掃描 — TW_SERVER</h1>
+    <p class="text-slate-300 text-sm mt-1">as of 2026-11-12 · 產生於 2026-11-11 21:01</p>
+  </div>
+</header>
+
+<nav class="bg-slate-100 border-b border-slate-300 p-3 sticky top-0 z-10">
+  <div class="max-w-6xl mx-auto flex flex-wrap gap-3 text-sm">
+    <a href="#sector-overview" class="font-semibold">族群總覽</a>
+    <a href="#ticker-6669_TW" class="px-2 py-1 rounded verdict-BUY">6669.TW</a>
+<a href="#ticker-3231_TW" class="px-2 py-1 rounded verdict-HOLD">3231.TW</a>
+<a href="#ticker-2356_TW" class="px-2 py-1 rounded verdict-HOLD">2356.TW</a>
+<a href="#ticker-2376_TW" class="px-2 py-1 rounded verdict-HOLD">2376.TW</a>
+    <a href="../HOWTO_READ.html" class="ml-auto text-blue-700 hover:underline" target="_blank">📖 閱讀指南</a>
+  </div>
+</nav>
+
+<main class="max-w-6xl mx-auto p-6">
+
+  <section id="sector-overview" class="mb-10 bg-white rounded-lg shadow p-6">
+    <h2 class="text-2xl font-bold mb-4">族群總覽 (Sector overview)</h2>
+    <div class="agent-prose text-sm">
+      <h1>Sector report — tw_server as of 2026-11-12</h1>
+<h2>Ranking table</h2>
+<table>
+<thead>
+<tr>
+<th>Rank</th>
+<th>Ticker</th>
+<th>Verdict</th>
+<th>Conviction</th>
+<th>R:R</th>
+<th>Size</th>
+<th>Horizon</th>
+<th>Trigger</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>6669.TW</td>
+<td>BUY (MODIFY)</td>
+<td>L</td>
+<td>2.6（中點 $1,615；上緣 $1,640 進場降至 1.6）</td>
+<td>Small 0.5% NAV（上限 1.0%）</td>
+<td>1-3 個月</td>
+<td>限價 $1,590–$1,640，回測量縮止跌才成交；現價 $1,680 不追</td>
+</tr>
+<tr>
+<td>2</td>
+<td>2376.TW</td>
+<td>HOLD (REJECT，不開倉)</td>
+<td>M（中性立場把握度，方向把握低）</td>
+<td>無法誠信計算（ATR 4.5%、11/6 曾跳空 -9.9%）</td>
+<td>0% NAV</td>
+<td>數日（11/13 財報）至 1-2 季</td>
+<td>Q3'26 財報（存貨/OCF/毛利率/淨負債）公布次一交易日收盤後重估；跌破 $282 取消多方候選資格</td>
+</tr>
+<tr>
+<td>3</td>
+<td>3231.TW</td>
+<td>HOLD (REJECT，不開倉)</td>
+<td>M（中性立場把握度，方向把握低）</td>
+<td>無法誠信計算（固定停損會被跳空穿透，帳面 3.7% vs 實際尾部約 12.9%）</td>
+<td>0% NAV</td>
+<td>數日-2週（11-14 財報）至 1-2 季</td>
+<td>Q3 財報後，至少兩項同向轉正（毛利率≥6.5%、OCF轉正或 AR 增速低於營收）才重新送案</td>
+</tr>
+<tr>
+<td>4</td>
+<td>2356.TW</td>
+<td>HOLD（Phase-1 篩選未過，觀望）</td>
+<td>不適用（未進入 Phase 2-4）</td>
+<td>不適用</td>
+<td>0% NAV</td>
+<td>不適用</td>
+<td>僅 1/5 訊號通過（Valuation），需重新達 ≥3/5 才進入全流程</td>
+</tr>
+</tbody>
+</table>
+<h2>共識首選（Consensus top pick）</h2>
+<p>6669.TW。四檔中唯一的 BUY，且是基於已公布、可驗證的 Q3'26 財報（營收季增 56%、單季純益 233.64 億、前三季純益已超過 2025 全年）而非預測。熊方的「成長停滯」論點已被新資料推翻，但現金流、槓桿與毛利率三根支柱仍待驗證，因此以 L 信心、0.5% NAV 小倉位、限價區間進場，R:R 在 1.6–2.6 之間，屬於「方向對、倉位小」的試單結構，而非重倉確信。</p>
+<h2>逆向觀點（Contrarian pick）</h2>
+<p>目前無真正的逆向 BUY——三檔同業皆為 HOLD/REJECT，沒有同業看空而本案獨多的情形。最接近「逆向觀察」資格的是 2376.TW：10 月營收 YoY +136.7%，為四檔中最強，且技術面已出現初步止跌（RSI 26.60→33.02、MACD 柱狀體連續四日收斂），優於 3231.TW 仍在走空頭排列（死亡交叉、量縮反彈）。但這只是「財報後最可能轉多」的候選，11/13 財報尚未公布，現在進場仍是押注二元事件，不構成現時的逆向買進理由。</p>
+<h2>配對交易構想（Pairs trade idea）</h2>
+<p>本期無法成立標準配對交易：四檔中沒有任何一檔是 SELL 或具空方信心的標的，無法找到「同信心強度、方向相反」的對手倉。可考慮的替代做法是時序性的相對倉位，而非真正的多空對沖：優先執行 6669.TW 的多單（已有 Q3 財報驗證、事件風險已過），同時對 3231.TW、2376.TW 保持零曝險直到各自的 Q3 財報（11/13、11/14 前後）落地——這本質上是「已驗證 vs 未驗證」的時間分層，不是行業對沖，請勿誤用槓桿放空任一檔來對沖 6669.TW 多單。</p>
+<h2>產業整體觀察（Sector-wide observations）</h2>
+<ul>
+<li><strong>共同催化劑</strong>：Hyperscaler 2027 資本支出指引上修、Nvidia Vera Rubin 量產出貨、GB300/SP7 新平台備料週期；Nvidia FQ3 財報（11/17 美東時間）將是全產業情緒的共同觸發點。</li>
+<li><strong>共同風險</strong>：三檔（6669、3231、2376）皆呈現「營收高速成長、但營運資金膨脹、現金流為負、槓桿上升」的同構風險——存貨與應收帳款增速持續高於營收增速，且都以短債/舉債支應股利，Q3 財報能否轉正是共同的分水嶺。</li>
+<li><strong>壅塞觀察</strong>：整個族群同時押注同一個 AI 伺服器資本支出敘事，分析師評等普遍偏多（3231.TW 甚至 100% 買進共識），但過去季度多次不如預期（3231.TW 過去 8 季 5 季不及預期），敘事壅塞程度高，財報前任何追價都是在同一宏觀因子上加碼集中度。</li>
+<li><strong>相關性群組</strong>：6669.TW、3231.TW、2376.TW 在 AI 伺服器資本支出與 Nvidia 新聞流上高度同向；6669.TW final_decision 另提示帳上 3017.TW、MRVL、ANET、COHR、MOD 屬同一 AI 供應鏈風險因子，應併入總曝險計算，避免分散倉位實為集中賭注。2356.TW 因基本面與情緒訊號皆弱（分析師買進占比僅 30%），較可能在負面消息下與其他三檔脫鉤走弱，不建議與前三者同一籃子看待。</li>
+</ul>
+<h2>行動排序（Action sequencing）</h2>
+<ol>
+<li><strong>6669.TW 先行</strong>——唯一已通過 Q3 財報驗證、現時可下限價單的標的，依 $1,590–$1,640 限價區間等待回測。</li>
+<li><strong>2376.TW 次之</strong>——11/13 財報為最近催化劑，財報後次一交易日依四根支柱（存貨、OCF、毛利率、淨負債）重新評估，暫不動作。</li>
+<li><strong>3231.TW 再次</strong>——11-14 前後財報，需至少兩項支柱同向轉正才重新送案，目前維持空手。</li>
+<li><strong>2356.TW 最後</strong>——Phase-1 篩選未過，暫無下一步行動，待下一輪掃描重新評分。</li>
+</ol>
+<h2>產業風險預算（Sector risk budget）</h2>
+<p>目前唯一活躍曝險為 6669.TW 的 0.5% NAV（上限 1.0%）。考慮到三檔核心標的與既有 AI 供應鏈持股（3017.TW、MRVL、ANET、COHR、MOD）的高相關性，且 3231.TW、2376.TW 的 Q3 財報為同週binary 事件，建議本產業（tw_server + 關聯 AI 伺服器供應鏈）總曝險上限暫訂 <strong>2% NAV</strong>，待 11/13–11/14 財報結果明朗、且任一標的轉為 LONG(M) 以上信心後，再評估是否上調。</p>
+<p>SECTOR REPORT COMPLETE</p>
+    </div>
+  </section>
+
+  
+<section id="ticker-6669_TW" class="mb-10 bg-white rounded-lg shadow overflow-hidden">
+
+  <div class="flex items-start justify-between p-6 border-b border-slate-200 verdict-BUY">
+    <div>
+      <h2 class="text-3xl font-bold">6669.TW</h2>
+      <p class="text-sm mt-1 opacity-80">緯穎 (6669) — AI server ODM</p>
+    </div>
+    <div class="text-right">
+      <div class="text-4xl font-bold">BUY</div>
+      <div class="text-sm opacity-80 mt-1">MODIFY</div>
+    </div>
+  </div>
+
+  <div class="p-6 grid grid-cols-1 lg:grid-cols-2 gap-6">
+
+    <div>
+      <h3 class="text-lg font-bold mb-2">價格 + 技術指標 (2 年)</h3>
+      <div id="chart-6669_TW" style="height: 380px;"></div>
+    </div>
+
+    <div>
+      <h3 class="text-lg font-bold mb-2">最終決策 (Final decision)</h3>
+      <div class="agent-prose text-sm bg-slate-50 p-4 rounded border border-slate-200">
+        <p>FINAL TRANSACTION PROPOSAL: <strong>BUY</strong></p>
+<h1>Final decision — 6669.TW as of 2026-11-12</h1>
+<h2>FINAL TRANSACTION PROPOSAL: <strong>BUY</strong></h2>
+<h2>Verdict</h2>
+<p>MODIFY</p>
+<p>（框架判定：6669.TW 不在 <code>held_tickers.txt</code>，屬新倉，走 A 框架。）</p>
+<h2>Final trade card</h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Direction</td>
+<td>LONG</td>
+</tr>
+<tr>
+<td>Entry zone</td>
+<td>$1,590 – $1,640（限價，回測量縮止跌才成交；現價 $1,680 不追）</td>
+</tr>
+<tr>
+<td>Stop</td>
+<td>$1,548.88（收盤確認制）</td>
+</tr>
+<tr>
+<td>Target 1</td>
+<td>$1,785</td>
+</tr>
+<tr>
+<td>Target 2</td>
+<td>$2,075</td>
+</tr>
+<tr>
+<td>Size</td>
+<td>Small（0.5% NAV，上限 1.0%）</td>
+</tr>
+<tr>
+<td>Horizon</td>
+<td>1-3 個月</td>
+</tr>
+<tr>
+<td>Conviction</td>
+<td>L</td>
+</tr>
+<tr>
+<td>R:R to T1</td>
+<td>2.6（以中點 $1,615 計；上緣 $1,640 成交降至 1.6）</td>
+</tr>
+</tbody>
+</table>
+<p>相對原案的修改：<br />
+1. 刪除「放量站回 $1,704 後於 $1,700–$1,750 追價」的第二進場路徑。該路徑 R:R to T1 不足 1.0，不符門檻；若未回測即突破，本單不成立，另案重評。<br />
+2. 加碼上限由 1.5% 降為 1.0%，且必須以 Q3'26 營業現金流轉正為必要條件，技術突破單獨成立不得加碼。<br />
+3. 不採用 call spread，僅做現股。<br />
+4. 成交前須將帳上 3017.TW、MRVL、ANET、COHR、MOD 併入同一 AI 供應鏈風險因子檢視總曝險。</p>
+<h2>Risk debate adjudication</h2>
+<ul>
+<li>Aggressive's strongest point: Q3'26 損益已公布（營收季增 56%、單季純益 233.64 億），熊方的成長停滯論確實建立在舊資料上，只等回測有錯過行情的風險。</li>
+<li>Conservative's strongest point: 停損距離 4.1% 小於 ATR14 的 6.3%，加上台股 10% 跌停機制，$1,548.88 在壞消息情境下可能無法成交，實際虧損會高於帳面 R:R。</li>
+<li>Net: I weight neutral more here because 損益表轉強不等於現金流與槓桿問題解除，aggressive 把部分驗證當成全部驗證，且其「已站上短期均線」的說法與價格位於 MA20/MA50/MA200 之下的事實不符。conservative 的滑價提醒成立，但 0.5% 部位在最壞情境下損失約 0.05–0.1% NAV，不構成延後進場的理由。在加碼條件上我比 neutral 更嚴：現金流是熊方核心論點，必須先被否證。</li>
+</ul>
+<h2>論點支柱</h2>
+<table>
+<thead>
+<tr>
+<th>支柱</th>
+<th>當初的預期</th>
+<th>現況</th>
+<th>判定</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>營收與獲利動能</td>
+<td>Q3 營收明顯季增，10 月營收年增 &gt;60%</td>
+<td>Q3 季增 56%，10 月年增 80.9%，前三季純益 524.48 億超過 2025 全年</td>
+<td>成立</td>
+</tr>
+<tr>
+<td>估值安全邊際</td>
+<td>現價約 12 倍 FY2026E EPS（約 138 元）</td>
+<td>取決於 584M 股本口徑，與 192M 的矛盾尚未核對完成</td>
+<td>觀察中</td>
+</tr>
+<tr>
+<td>營運資金為暫時備貨</td>
+<td>Q3 營業現金流轉正、存貨增速低於營收</td>
+<td>資料只到 Q2：TTM FCF -650.2 億、D/E 120.7%、存貨半年 +52.2%</td>
+<td>觀察中</td>
+</tr>
+<tr>
+<td>毛利率守穩</td>
+<td>Q4 毛利率 ≥8.3%</td>
+<td>Q3 為 8.87%，Citi 預估 Q4 約 8.5%</td>
+<td>觀察中</td>
+</tr>
+</tbody>
+</table>
+<p>四根支柱只有一根成立，這是信心定為 L、部位壓在 0.5% 的原因。</p>
+<h2>論點失效條件</h2>
+<p>必須可證偽，且與 Stop 分開。<br />
+- 若 Q3'26 現金流量表顯示營業現金流仍為負，且短期借款較 Q2 增加，營運資金支柱失效 → 出場<br />
+- 若 Q4'26 毛利率低於 8.3%，毛利率支柱失效 → 出場<br />
+- 若 11 月營收（12 月初公布）年增低於 60%，動能支柱鬆動 → 減碼一半；連續兩個月低於 60% → 出場<br />
+- 若股本核對結果為 192M 以外的口徑使 FY2026E EPS 低於 110 元（前瞻本益比高於 15 倍），估值支柱失效 → 出場<br />
+- 若出口管制清單確認列入主要客戶 → 出場</p>
+<p>任一觸發皆不攤平、不加碼。</p>
+<h2>Monitoring trigger</h2>
+<p>If 開盤跳空跌破 $1,640 逾 5%（約 $1,558 以下），或 Nvidia 財報後單日跌停鎖死，re-evaluate before stop is hit。若限價單至 2026-12-10 仍未成交，撤單重評。</p>
+<h2>Catalyst calendar</h2>
+<ul>
+<li>2026-11 中下旬（待公布）— Q3'26 完整資產負債表與現金流量表（MOPS）</li>
+<li>2026-11 下旬 — Nvidia 財報（Vera Rubin 出貨能見度）</li>
+<li>2026-12 初 — 11 月營收公告</li>
+<li>2027-02-25 — Q4'26 財報（毛利率最終驗證）</li>
+</ul>
+<p>FINAL DECISION COMPLETE</p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="px-6 pb-6">
+
+    <details class="mb-4 border border-slate-200 rounded">
+      <summary class="bg-slate-50 px-4 py-2 font-semibold">投資計劃 (Research manager)</summary>
+      <div class="agent-prose p-4 text-sm"><h1>Investment plan — 6669.TW as of 2026-11-12</h1>
+<h2>Directional stance</h2>
+<p>LONG — conviction LOW</p>
+<h2>Crux of debate</h2>
+<ol>
+<li>Crux 1：營運資金膨脹是暫時備貨還是結構性問題。TTM FCF -650.2 億、存貨半年 +52.2%、D/E 升至 120.7%，但資料只到 2026Q2。Q3'26 營收季增 56%，若 Q3/Q4 營業現金流轉正、存貨周轉回升，熊方的核心論點就會失效。</li>
+<li>Crux 2：Q4 毛利率能否守住約 8.5%。Q3 為 8.87%，Citi 預估 Q4 降至約 8.5%，BofA 因毛利率疑慮下修目標價。ASIC 比重超越通用型能否撐住毛利率，決定 EPS 是否真能達到約 138 元。</li>
+<li>Crux 3：獲利創高後股價仍下跌，究竟是籌碼與外資流出造成的錯殺，還是利多出盡後的出貨。關鍵價位：MA200 1,704 元與支撐 1,548.88 元。</li>
+</ol>
+<h2>Where the bull is right</h2>
+<ul>
+<li>熊方資料已過時：熊方稱 Q3'26 財報「狀態不明」，並以 2026Q2 季增 +0.6% 論證進入平台期；實際上 Q3 已於 11-06 公布，營收 4,346.18 億、季增 56%，稅後純益 233.64 億，前三季累計 524.48 億，已超過 2025 全年。</li>
+<li>熊方的估值基礎有誤：10× P/E 套用的是舊的 TTM EPS 98.08 元。若把 Q3'26 約 40 元的 EPS（以 584M 股計）換入，TTM EPS 約 115 元。牛方估的 FY2026E EPS 約 138 元可由 Q3 淨利率 5.4% 推得，現價約為其 12 倍。</li>
+<li>需求能見度有具體數據佐證：10 月營收年增 80.9%，hyperscaler 2027 年 capex 指引上修，Vera Rubin 已量產，同業 10 月營收全面大增。</li>
+<li>以 584M 股為口徑時，earnings_dates 的 EPS 與淨利交叉驗證一致，股本矛盾對多方而言並非致命傷。</li>
+</ul>
+<h2>Where the bear is right</h2>
+<ul>
+<li>現金流與槓桿的惡化可以追溯、有數字支持：股利由舉債支應，流動負債半年 +116%，短期債務大增。牛方把這些歸因於「為確定訂單備貨」，但沒有拿出 Q3 現金流數據佐證。</li>
+<li>毛利率較 2024 年下滑 2.1 個百分點，Q4 還有進一步承壓的外資預估；2026Q2 EPS 低於預期 6.4%。</li>
+<li>技術面仍是空頭結構：高點一路降低（2,875→2,335→1,785），價格位於 MA20、MA50 與 MA200 之下，MACD 在零軸下方。牛方以 RSI 未超賣論證「有反彈空間」，邏輯並不成立。</li>
+<li>客戶集中度與出口管制的影響程度都沒有揭露，屬於無法量化的尾部風險。</li>
+<li>牛方 20× P/E 的依據引自 2026 年 8 月的舊報告，而且當時的目標價（7,147→10,000 元）與現行股價口徑不一致，可信度低。</li>
+</ul>
+<h2>Net verdict (3-5 sentences)</h2>
+<p>牛方的證據較新、可驗證，而熊方的成長停滯論與估值計算都建立在 Q3 公布前的舊資料上，因此方向上偏多。不過熊方指出的現金流、槓桿與毛利率風險確實存在，牛方也沒有用資料化解，只能等 Q3 資產負債表與 Q4 毛利率來驗證。加上技術面趨勢仍向下、外資持續流出台股，現在下重注並不划算。結論是以約 12 倍前瞻本益比為安全邊際，採低信心偏多，分批建立部位，並設好明確的失效條件。</p>
+<h2>What would change the verdict</h2>
+<ul>
+<li>Upside trigger：放量站回 MA200（1,704 元）並突破 1,785 元；Q3 資產負債表顯示存貨增速低於營收增速、營業現金流轉正；11 月營收（12 月初公布）維持年增 &gt;60%。</li>
+<li>Downside trigger：收盤跌破 1,548.88 元；Q3 營業現金流進一步惡化，或淨負債繼續擴大；Q4 毛利率低於 8.3%；出口管制清單確認衝擊主要客戶。</li>
+<li>Key data point to monitor：Q3'26 合併資產負債表與現金流量表（MOPS）中的存貨、營業現金流與短期借款，並同步核對股本 584M 對 192M 的口徑。</li>
+</ul>
+<h2>Position-sizing guidance (qualitative, not advice)</h2>
+<p>低信心偏多，建議以半倉以下試單。ATR 約佔股價 6.3%、20 日年化波動率 64.1%，停損距離要放寬，部位相應縮小。只有在 Upside trigger 中的技術面確認與現金流確認都出現後，才考慮加碼到標準部位。若觸發 Downside trigger，應出場而不是攤平。</p>
+<h2>Time horizon</h2>
+<p>以週到季為主（約 1-3 個月）。主要驗證點依序為：11 月下旬 Nvidia 財報、12 月初的 11 月營收、Q3 完整財報揭露的資產負債表，以及 2027-02-25 的 Q4 財報（毛利率最終驗證）。不適合以短天期交易逆勢搶反彈。</p>
+<p>INVESTMENT PLAN COMPLETE</p></div>
+    </details>
+
+    <details class="mb-4 border border-slate-200 rounded">
+      <summary class="bg-slate-50 px-4 py-2 font-semibold">交易提案 (Trader)</summary>
+      <div class="agent-prose p-4 text-sm"><p>FINAL TRANSACTION PROPOSAL: <strong>BUY</strong></p>
+<h1>Trade proposal — 6669.TW as of 2026-11-12</h1>
+<h2>Direction</h2>
+<p>LONG（低信心，分批建倉）</p>
+<h2>Setup</h2>
+<p>Entry: $1,590 – $1,640（回踩 11-11 盤中低點 $1,640 一線支撐區，偏向等待小幅回測而非追價現價 $1,680）<br />
+Stop: $1,548.88（2026-07-17 區域低點；收盤跌破代表 Downside trigger 成立，熊方現金流／槓桿論點勝出，趨勢結構維持高點降低格局）<br />
+Target 1: $1,785（2026-11-04 反彈高點 / 近期壓力，亦是 Upside trigger 的突破關鍵價，對應放量站回 MA200 後的第一個賣壓測試區）<br />
+Target 2: $2,075（2026-09-24 前支撐轉壓力；對應基本面 Q3 淨利率反推 FY2026E EPS 約 138 元、約 12-15 倍前瞻本益比的重新評值區間）<br />
+R:R: 約 2.5 到 T1，約 7.0 到 T2（以進場區中點 $1,615 計算；若在進場區上緣 $1,640 成交，R:R 降至約 1.6/5.8，仍符合長倉 ≥1.5 門檻）</p>
+<h2>Sizing</h2>
+<p>Small（0.5% NAV）起始試單；僅在 Upside trigger（放量站回 MA200 $1,704 並突破 $1,785）與 Q3 財報現金流轉正兩項條件同時確認後，才考慮加碼至 Medium（1.5%）。<br />
+Rationale：conviction Low（熊牛爭論未解，Q3 資產負債表與現金流尚未公布，技術面仍在 MA20/MA50/MA200 之下），ATR14 約 $105.96（現價 6.3%），20 日年化波動率 64.1%（高波動），因此停損距離必須放寬、部位相應縮小以避免被日內雜訊洗出。</p>
+<h2>Time horizon</h2>
+<p>1-3 個月（週到季）。核心驗證點：11 月下旬 Nvidia 財報 → 12 月初 11 月營收公告 → Q3'26 完整資產負債表 / 現金流量表（MOPS）→ 2027-02-25 Q4 財報（毛利率最終驗證）。不適合以短天期逆勢搶反彈。</p>
+<h2>Trigger</h2>
+<p>等待其一：<br />
+1. 價格回測 $1,590–$1,640 支撐區，量縮止跌 → 進第一筆小量試單；<br />
+2. 若不回測，改以放量收盤站回 $1,704（MA200）作為確認訊號，突破後於 $1,700–$1,750 區間追加同等級試單，待 $1,785 站穩再評估加碼至 Medium。<br />
+現價 $1,680 位於兩觸發點之間，暫不建議在此價位全額進場。</p>
+<h2>Invalidation</h2>
+<ul>
+<li>收盤跌破 $1,548.88（技術失效）；</li>
+<li>Q3'26 現金流量表顯示營業現金流未轉正、存貨周轉仍惡化、淨負債繼續擴大（基本面失效，呼應 fundamentals.md 中 TTM FCF -650.2 億、D/E 120.7%、存貨半年 +52.2% 等紅旗）；</li>
+<li>Q4 毛利率低於 8.3%（Citi 預估 8.5% 的下緣）；</li>
+<li>出口管制清單確認衝擊主要客戶。<br />
+以上任一觸發應出場，不攤平、不加碼。</li>
+</ul>
+<h2>Catalyst calendar</h2>
+<ul>
+<li>2026-11 下旬 — Nvidia 財報（Vera Rubin 出貨能見度）</li>
+<li>2026-12 初 — 11 月營收公告</li>
+<li>2026-11 中下旬（待公布）— Q3'26 完整合併資產負債表與現金流量表（MOPS）</li>
+<li>2027-02-25 — Q4'26 財報（EPS 與毛利率最終驗證）</li>
+</ul>
+<p>TRADE PROPOSAL COMPLETE</p></div>
+    </details>
+
+    <details class="mb-4 border border-slate-200 rounded">
+      <summary class="bg-slate-50 px-4 py-2 font-semibold">Phase 1 — 四 Analyst 報告</summary>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+        <div>
+          <h4 class="font-bold text-slate-700 mb-2">基本面 (Fundamentals)</h4>
+          <div class="agent-prose text-sm bg-slate-50 p-3 rounded"><h1>Fundamentals — 6669.TW (緯穎 Wiwynn) as of 2026-11-12</h1>
+<p>資料基準：yfinance 快取，最新快照 2026-11-11 14:00 UTC（報價為延遲 / cnyes 來源）。金額單位：TWD 億（1 億 = 100,000,000）。</p>
+<h2>Executive summary</h2>
+<p>緯穎營收動能強勁（2025 年營收 9,506.6 億，年增 163.7%；2026 年第二季營收 2,781.5 億，年增 26.0%），且 TTM 毛利率 8.2%、營業利益率 6.6%、ROE 約 42%-48%，獲利端表現穩定。但現金流嚴重惡化：TTM 營業現金流 -453.5 億、自由現金流 -650.2 億（FCF/NI = -1.12），同時總負債由 2025 年底 1,040.7 億升至 2026 年 6 月 1,657.4 億，存貨一個半季內增加 52%，財務體質明顯轉弱。估值面以 info 的 584M 股本計算，trailing P/E 約 17.1x、forward P/E 約 8.6x、EV/EBITDA 約 11.9x，相對 AI 伺服器 ODM 同業並不便宜但也不貴；然而資料內股本數字存在 584M 與約 192M 兩種互相矛盾的版本，會使估值差 3 倍，須在下游研究前先核對。</p>
+<h2>資料完整性警示（必讀）</h2>
+<ul>
+<li>本次首次批次抓取的 info / financials / balance_sheet / cashflow 快取內容曾混入 2356.TW（Inventec 英業達）資料：info 第一段 symbol 為 2356.TW、shortName 為 INVENTEC CORP；年度財報的 2025 年營收 6,912 億、股數 3.59B 屬於英業達。此批資料已全數捨棄，本報告所有數字均來自重新抓取、symbol 核對為 6669.TW 之結果。</li>
+<li>股本衝突：info 的 sharesOutstanding = 584,025,917 股（市值 9,812 億、trailingEps 98.08 與季度 EPS 報告 24-27 元相符）；但 balance_sheet 的 Ordinary Shares Number 與 quarterly_fin / financials 的 Diluted Average Shares 約 1.9 億股（對應 Diluted EPS 265.5 / 季 EPS 72-80）。報告以 584M 為主要基準（有 earnings_dates 報告 EPS 與 NI 反推共 3 組獨立數字支持），但 192M 版本若為真，P/E 將僅約 5.5x、市值約 3,234 億。<strong>此項未能確認，需以公開資訊觀測站 (MOPS) 年報或季報核對。</strong></li>
+<li>info 與季報加總數字不一致：info totalRevenue 1,281.7 億（季報 TTM 加總 11,139.2 億）、info netIncomeToCommon 662 億（季報 TTM 582.8 億）、info totalDebt 1,843 億（資產負債表 2026-06 為 1,657.4 億）。本報告以季報加總為主，info 數字僅作對照。</li>
+<li>季報 Diluted EPS 列（72-80 元）與 earnings_dates 報告 EPS（24-27 元）不一致，本報告不採用季報 EPS 列。</li>
+<li>無公司未來指引 (guidance)、無分部營收占比資料（info 只提供業務描述），相關欄位標 n/a。</li>
+</ul>
+<h2>Revenue &amp; profitability</h2>
+<p><strong>營收趨勢（年度，TWD 億）</strong></p>
+<table>
+<thead>
+<tr>
+<th>年度</th>
+<th>營收</th>
+<th>年增</th>
+<th>毛利率</th>
+<th>營業利益率</th>
+<th>淨利率</th>
+<th>淨利</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2022</td>
+<td>2,928.8</td>
+<td>n/a</td>
+<td>8.19%</td>
+<td>6.09%</td>
+<td>4.84%</td>
+<td>141.7</td>
+</tr>
+<tr>
+<td>2023</td>
+<td>2,419.0</td>
+<td>-17.4%</td>
+<td>9.37%</td>
+<td>6.56%</td>
+<td>4.98%</td>
+<td>120.4</td>
+</tr>
+<tr>
+<td>2024</td>
+<td>3,605.4</td>
+<td>+49.0%</td>
+<td>10.37%</td>
+<td>7.80%</td>
+<td>6.32%</td>
+<td>227.8</td>
+</tr>
+<tr>
+<td>2025</td>
+<td>9,506.6</td>
+<td>+163.7%</td>
+<td>8.25%</td>
+<td>6.72%</td>
+<td>5.38%</td>
+<td>511.2</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>2022-2025 年營收 CAGR 約 +48.1%；2023-2025 CAGR 約 +98.2%（基期低、2025 年跳增）。</li>
+<li>2025 年淨利年增 +124.4%，但毛利率較 2024 年下滑 2.1 個百分點，顯示成長來自低毛利的大型機櫃 / 伺服器出貨結構。</li>
+</ul>
+<p><strong>季度趨勢（TWD 億）</strong></p>
+<table>
+<thead>
+<tr>
+<th>季度</th>
+<th>營收</th>
+<th>毛利</th>
+<th>營業利益</th>
+<th>淨利（歸母）</th>
+<th>毛利率</th>
+<th>營業利益率</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2025Q2</td>
+<td>2,207.4</td>
+<td>189.4</td>
+<td>156.5</td>
+<td>121.2</td>
+<td>8.6%</td>
+<td>7.1%</td>
+</tr>
+<tr>
+<td>2025Q3</td>
+<td>2,668.2</td>
+<td>235.3</td>
+<td>195.7</td>
+<td>154.1</td>
+<td>8.8%</td>
+<td>7.3%</td>
+</tr>
+<tr>
+<td>2025Q4</td>
+<td>2,924.4</td>
+<td>211.3</td>
+<td>164.6</td>
+<td>137.9</td>
+<td>7.2%</td>
+<td>5.6%</td>
+</tr>
+<tr>
+<td>2026Q1</td>
+<td>2,765.1</td>
+<td>208.8</td>
+<td>174.6</td>
+<td>141.1</td>
+<td>7.6%</td>
+<td>6.3%</td>
+</tr>
+<tr>
+<td>2026Q2</td>
+<td>2,781.5</td>
+<td>257.6</td>
+<td>202.2</td>
+<td>149.7</td>
+<td>9.3%</td>
+<td>7.3%</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>2026Q2 年增 +26.0%，季增 +0.6%，營收進入平台期；毛利率由 Q4'25 的 7.2% 回升至 Q2'26 的 9.3%。</li>
+<li>TTM（2025Q3-2026Q2）：營收 11,139.2 億、毛利率 8.2%、營業利益率 6.6%、淨利率 5.2%。</li>
+<li>研發費用 (R&amp;D) 占營收比例下滑：2022 約 1.2%、2024 約 1.7%、2025 約 1.0%（2025 年 R&amp;D 94.2 億）。</li>
+</ul>
+<p><strong>獲利能力</strong><br />
+- ROE：TTM 約 42.5%（以 2026Q2 期末權益 1,372.6 億計算）；2025 年約 48.0%（平均權益）；info 報 44.7%。高 ROE 主要來自高財務槓桿與小權益基數。<br />
+- ROIC（估算，NOPAT / (權益 + 有息負債 - 現金)）：2025 年約 35.6%，2024 年約 30.8%。NOPAT 以營業利益 × (1 - 2025 有效稅率 22.7%) 估算。</p>
+<p><strong>分部 / 業務結構</strong>：info 業務描述為多節點與儲存伺服器、Open Rack、邊緣 / AI 平台、多用途伺服器、機櫃及 OCP 網路 mezzanine 卡等；分部營收占比資料 n/a。</p>
+<h2>Cashflow &amp; balance sheet</h2>
+<p><strong>現金流（TWD 億）</strong></p>
+<table>
+<thead>
+<tr>
+<th>年度 / 期間</th>
+<th>營業現金流</th>
+<th>資本支出</th>
+<th>自由現金流</th>
+<th>FCF / NI</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2022</td>
+<td>306.8</td>
+<td>15.9</td>
+<td>290.9</td>
+<td>2.05</td>
+</tr>
+<tr>
+<td>2023</td>
+<td>230.6</td>
+<td>50.0</td>
+<td>180.6</td>
+<td>1.50</td>
+</tr>
+<tr>
+<td>2024</td>
+<td>-199.9</td>
+<td>51.1</td>
+<td>-251.0</td>
+<td>-1.10</td>
+</tr>
+<tr>
+<td>2025</td>
+<td>-6.2</td>
+<td>139.3</td>
+<td>-145.6</td>
+<td>-0.28</td>
+</tr>
+<tr>
+<td>TTM（至 2026Q2）</td>
+<td>-453.5</td>
+<td>196.7</td>
+<td>-650.2</td>
+<td>-1.12</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>2024 年起營運現金流轉負，主要原因為存貨與應收帳款大幅增加（2025 年底存貨 1,362.6 億、應收 768.9 億；2026 年 6 月存貨 2,074.4 億、應收 843.3 億）。</li>
+<li>2026Q2 單季營業現金流 -454.1 億、資本支出 67.2 億，為近年最差單季。</li>
+<li>FCF / NI 遠低於 0.9 的健康門檻，現金轉換品質不佳。</li>
+</ul>
+<p><strong>資產負債表（TWD 億）</strong></p>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>2022</th>
+<th>2023</th>
+<th>2024</th>
+<th>2025-12</th>
+<th>2026-06</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>總負債 (Total debt)</td>
+<td>104.5</td>
+<td>128.5</td>
+<td>321.4</td>
+<td>1,040.7</td>
+<td>1,657.4</td>
+</tr>
+<tr>
+<td>現金</td>
+<td>262.3</td>
+<td>374.9</td>
+<td>483.3</td>
+<td>899.3</td>
+<td>853.3</td>
+</tr>
+<tr>
+<td>股東權益</td>
+<td>387.9</td>
+<td>422.3</td>
+<td>882.0</td>
+<td>1,246.5</td>
+<td>1,372.6</td>
+</tr>
+<tr>
+<td>流動負債</td>
+<td>385.6</td>
+<td>364.9</td>
+<td>763.6</td>
+<td>1,796.5</td>
+<td>3,880.8</td>
+</tr>
+<tr>
+<td>存貨</td>
+<td>360.1</td>
+<td>301.8</td>
+<td>862.1</td>
+<td>1,362.6</td>
+<td>2,074.4</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>淨負債：2026-06 為 762.8 億（資料內 Net Debt）；總負債減現金為 804.1 億。2025-12 為 102.5 億。半年內淨負債增加約 660 億。</li>
+<li>負債權益比 (D/E) 2026-06 約 120.7%；info debtToEquity 98.0%。</li>
+<li>流動比率 1.32（與 info 1.316 一致）；速動比率約 0.79（以流動資產扣除存貨計算）。</li>
+<li>流動負債 2026-06 較 2025-12 增加 116%，其中 2025-12 短期借款 / 一年內到期債務為 722.0 億（2024 年底僅 61.2 億）。</li>
+<li>2025 年舉債毛額 (Issuance of Debt) 4,767.8 億，為資金來源主要部分。</li>
+</ul>
+<h2>Capital allocation &amp; insider signal</h2>
+<p><strong>資本支出</strong>：2022 年 15.9 億 → 2023 年 50.0 億 → 2024 年 51.1 億 → 2025 年 139.3 億（年增約 173%）→ TTM 196.7 億。資本支出加速，與現金流惡化方向一致。</p>
+<p><strong>股利</strong><br />
+- 每股股利 48.41 元，殖利率 2.88%，payout ratio 49.4%（以 TTM EPS 98.08 計算）。<br />
+- 現金股利實際支付：2024 年 73.4 億、2025 年 137.5 億。2025 年股利 137.5 億，而同年 FCF 為 -145.6 億，股利完全無法由自由現金流覆蓋，實質由借款支應，<strong>股利覆蓋率（以 FCF 計）為負</strong>。<br />
+- 2026 年 6 月 ex-dividend 日期已過，下一次配息需待下次公告。</p>
+<p><strong>庫藏股</strong>：資料中無 Repurchase Of Capital Stock 列，n/a。</p>
+<p><strong>內部人與股東結構</strong><br />
+- 內部人持股 44.0%，機構持股 29.8%，機構數 344 家（major_holders）。<br />
+- insider 交易明細（近 6 個月）回傳為空，無法判斷內部人淨買賣方向與規模；此為資料缺口，不視為無交易。</p>
+<h2>Valuation</h2>
+<p><strong>價格與技術位置</strong>：收盤價 1,680 元（2026-11-11 快照），當日區間 1,640-1,710 元，前收 1,680 元；52 週區間 1,102.99-2,875.0 元，距 52 週高點 -41.6%；50 日均線 2,083.3 元（價格低於 50 日均線約 19%），200 日均線 1,719.1 元。</p>
+<p><strong>估值倍數（以 584M 股本為基準）</strong></p>
+<table>
+<thead>
+<tr>
+<th>指標</th>
+<th>數值</th>
+<th>計算基礎</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>市值</td>
+<td>9,812 億</td>
+<td>1,680 元 × 584.0M 股</td>
+</tr>
+<tr>
+<td>企業價值 EV</td>
+<td>10,634 億</td>
+<td>info enterpriseValue</td>
+</tr>
+<tr>
+<td>Trailing P/E</td>
+<td>17.1x（info）/ 16.8x（自算）</td>
+<td>TTM EPS 98.08 / NI 582.8 億</td>
+</tr>
+<tr>
+<td>Forward P/E</td>
+<td>8.6x</td>
+<td>forwardEps 194.9 元</td>
+</tr>
+<tr>
+<td>EV/EBITDA</td>
+<td>11.9x</td>
+<td>EBITDA 895 億（info）</td>
+</tr>
+<tr>
+<td>P/B</td>
+<td>5.2x（info）/ 7.1x（自算）</td>
+<td>權益 1,372.6 億</td>
+</tr>
+<tr>
+<td>P/S</td>
+<td>0.77x（info）/ 0.88x（季報加總）</td>
+<td>市值 / TTM 營收</td>
+</tr>
+<tr>
+<td>P/FCF</td>
+<td>n/a（FCF 為負）</td>
+<td>—</td>
+</tr>
+<tr>
+<td>PEG</td>
+<td>n/a</td>
+<td>info 未提供</td>
+</tr>
+</tbody>
+</table>
+<p><strong>若股本為 192M（資料內另一版本）</strong>：trailing P/E 約 5.5x、市值約 3,234 億、P/B 約 2.4x、P/S 約 0.29x。兩種版本估值差距極大，需先核對股本。</p>
+<p><strong>分析師共識</strong>：19 位分析師，recommendationKey = strong_buy；目標價均值 2,723.9 元（較現價 +62.1%）、中位數 2,600 元、最高 4,000 元、最低 1,800 元。目標價區間寬，且以 forward EPS 194.9 元為前提，該前提與季報 EPS 尚未對齊（見資料警示）。</p>
+<p><strong>估值相對同業</strong>：Taiwan AI 伺服器 ODM / 電腦硬體同業的參考區間為估計值，yfinance 未提供同業中位數。</p>
+<h2>Key catalysts</h2>
+<ul>
+<li><strong>下次財報</strong>：yfinance 列出下次財報日為 2027-02-25（EPS 估計 40.49 元），但此估計與近四季報告 EPS 24-27 元的水準差距很大，需存疑。2026 年第三季財報（過去多為 11 月上旬，例如 2025-11-07、2024-11-13）未出現於資料中，目前狀態不明，可能已公布或即將公布，須在下游補充確認。</li>
+<li><strong>近期業績（EPS 報告 vs 估計）</strong>：</li>
+<li>2025-11-07（Q3'25）報告 26.82 元 vs 估計 22.62 元，超出 +18.6%</li>
+<li>2026-02-26（Q4'25）報告 24.88 元 vs 估計 23.65 元，超出 +5.2%</li>
+<li>2026-05-08（Q1'26）報告 25.46 元 vs 估計 22.28 元，超出 +14.3%</li>
+<li>2026-08-09（Q2'26）報告 24.26 元 vs 估計 25.92 元，<strong>低於估計 -6.4%</strong>，為近四季唯一不及預期</li>
+<li><strong>指引 (guidance)</strong>：資料內無公司管理層營收 / 毛利率指引。</li>
+<li><strong>分部轉變</strong>：無分部占比資料；業務描述顯示產品線向 AI / 邊緣平台與 OCP 相關延伸。</li>
+</ul>
+<h2>Metrics table</h2>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Latest</th>
+<th>YoY</th>
+<th>Sector median (estimate)</th>
+<th>Verdict</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>營收（TWD 億，2025 年）</td>
+<td>9,506.6</td>
+<td>+163.7%</td>
+<td>年增 10%-20%（估計）</td>
+<td>強勁，屬於超高速成長</td>
+</tr>
+<tr>
+<td>季營收（2026Q2，TWD 億）</td>
+<td>2,781.5</td>
+<td>+26.0%</td>
+<td>—</td>
+<td>成長放緩，季增僅 +0.6%</td>
+</tr>
+<tr>
+<td>毛利率（TTM）</td>
+<td>8.2%</td>
+<td>2025 年 8.25% vs 2024 10.37%，下滑 2.1 pct</td>
+<td>6%-8%（估計）</td>
+<td>處於同業中上，但偏低</td>
+</tr>
+<tr>
+<td>營業利益率（TTM）</td>
+<td>6.6%</td>
+<td>2025 年 6.72% vs 2024 7.80%，下滑 1.1 pct</td>
+<td>4%-6%（估計）</td>
+<td>略高於同業</td>
+</tr>
+<tr>
+<td>淨利率（TTM）</td>
+<td>5.2%</td>
+<td>2025 年 5.38% vs 2024 6.32%</td>
+<td>3%-5%（估計）</td>
+<td>持平</td>
+</tr>
+<tr>
+<td>ROE（TTM）</td>
+<td>42.5%</td>
+<td>2025 年 48.0%</td>
+<td>約 15%（估計）</td>
+<td>極高，主要靠槓桿</td>
+</tr>
+<tr>
+<td>ROIC（2025 估算）</td>
+<td>35.6%</td>
+<td>2024 約 30.8%</td>
+<td>約 10%-15%（估計）</td>
+<td>高，資本效率佳</td>
+</tr>
+<tr>
+<td>營業現金流（TTM，TWD 億）</td>
+<td>-453.5</td>
+<td>n/a</td>
+<td>正值（估計）</td>
+<td>惡化，負面</td>
+</tr>
+<tr>
+<td>自由現金流（TTM，TWD 億）</td>
+<td>-650.2</td>
+<td>2025 為 -145.6（vs 2024 -251.0）</td>
+<td>正值（估計）</td>
+<td>負面</td>
+</tr>
+<tr>
+<td>FCF / NI（TTM）</td>
+<td>-1.12</td>
+<td>2025 為 -0.28</td>
+<td>&gt; 0.9（健康門檻）</td>
+<td>不健康</td>
+</tr>
+<tr>
+<td>總負債（2026-06，TWD 億）</td>
+<td>1,657.4</td>
+<td>較 2025-12 +59.2%</td>
+<td>—</td>
+<td>快速上升，負面</td>
+</tr>
+<tr>
+<td>負債權益比 D/E</td>
+<td>120.7%</td>
+<td>2025-12 約 83.5%</td>
+<td>約 50%-80%（估計）</td>
+<td>偏高</td>
+</tr>
+<tr>
+<td>流動比率</td>
+<td>1.32</td>
+<td>2025-12 約 1.71</td>
+<td>約 1.5（估計）</td>
+<td>偏低，流動負債急增</td>
+</tr>
+<tr>
+<td>存貨（2026-06，TWD 億）</td>
+<td>2,074.4</td>
+<td>較 2025-12 +52.2%</td>
+<td>—</td>
+<td>偏高，存貨風險</td>
+</tr>
+<tr>
+<td>資本支出（TTM，TWD 億）</td>
+<td>196.7</td>
+<td>2025 年 +173%</td>
+<td>—</td>
+<td>擴張中</td>
+</tr>
+<tr>
+<td>股利殖利率</td>
+<td>2.88%</td>
+<td>—</td>
+<td>約 2%（估計）</td>
+<td>持平，但由借款支應</td>
+</tr>
+<tr>
+<td>Trailing P/E</td>
+<td>17.1x（584M）/ 5.5x（192M）</td>
+<td>—</td>
+<td>約 18x-22x（估計）</td>
+<td>視股本而定，須核對</td>
+</tr>
+<tr>
+<td>Forward P/E</td>
+<td>8.6x</td>
+<td>—</td>
+<td>約 15x-20x（估計）</td>
+<td>偏低，前提未確認</td>
+</tr>
+<tr>
+<td>EV/EBITDA</td>
+<td>11.9x</td>
+<td>—</td>
+<td>約 12x-15x（估計）</td>
+<td>中性</td>
+</tr>
+<tr>
+<td>P/S</td>
+<td>0.77x-0.88x</td>
+<td>—</td>
+<td>約 0.6x-1.0x（估計）</td>
+<td>中性</td>
+</tr>
+<tr>
+<td>內部人交易（6 個月）</td>
+<td>n/a（無明細）</td>
+<td>n/a</td>
+<td>—</td>
+<td>資料缺口</td>
+</tr>
+<tr>
+<td>分析師目標價均值</td>
+<td>2,723.9 元（+62.1%）</td>
+<td>—</td>
+<td>—</td>
+<td>樂觀，但離散度高</td>
+</tr>
+</tbody>
+</table>
+<h2>Red flags</h2>
+<ul>
+<li>現金流深度為負：TTM FCF -650.2 億，FCF / NI -1.12；2026Q2 單季營業現金流 -454.1 億。</li>
+<li>負債快速上升：總負債由 2025-12 的 1,040.7 億升至 2026-06 的 1,657.4 億；流動負債單半年增 116%；短期債務 722.0 億（2025-12）。</li>
+<li>存貨與應收帳款堆積：2026-06 存貨 2,074.4 億（較 2025-12 +52.2%），應收 843.3 億，營運資金消耗大。</li>
+<li>股利由舉債支應：2025 年現金股利 137.5 億，同年 FCF 為 -145.6 億，股利實質由借款支應。</li>
+<li>毛利率偏薄（TTM 8.2%），且 2025 年較 2024 年下降 2.1 個百分點，成長的盈餘品質受壓。</li>
+<li>2026Q2 EPS 報告 24.26 元，低於估計 25.92 元（-6.4%），為近四季唯一不及預期。</li>
+<li>資料完整性：股本 584M 與 192M 互相矛盾，估值倍數差距 3 倍；info 與季報的營收、淨利、負債數字不一致；首批快取曾混入 2356.TW 資料。需在下游引用前完成核對。</li>
+<li>2026 年第三季財報狀態不明，為近期最大事件風險。</li>
+<li>股價距 52 週高點 -41.6%，且低於 50 日均線約 19%，市場已反映部分風險。</li>
+<li>無 insider 交易明細，無法判斷內部人信號。</li>
+</ul>
+<p>資料時點註記：本報告分析基準日為 2026-11-12，最新資料快取為 2026-11-11 14:00 UTC，無晚於分析基準日的資料；但 2026 年第三季財報資料缺失。</p>
+<p>FUNDAMENTALS REPORT COMPLETE</p></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-slate-700 mb-2">技術面 (Market / Technical)</h4>
+          <div class="agent-prose text-sm bg-slate-50 p-3 rounded"><h1>Technical, 6669.TW (緯穎) as of 2026-11-12 (資料截至 2026-11-11 收盤)</h1>
+<p><strong>資料說明:</strong> 請求日期為 2026-11-12，但今日為 2026-11-11，尚無 11-12 的 K 棒。本報告以 2026-11-11 收盤為最新資料。<code>yf</code> 工具因 Yahoo 連線 403 失敗，<code>fast_info</code> 僅取得 cnyes 快取報價 (1680.0，與 <code>ta</code> 收盤一致)，其 50d/200d 均線與 52w 高低欄位為 null，均線與 52 週數字改採 <code>ta snapshot</code>。</p>
+<h2>Snapshot</h2>
+<p>價格 $1,680.00，MA20 $1,820.75，MA50 $2,091.35，MA200 $1,704.47，RSI14=36.43，MACD hist=-11.81</p>
+<h2>Trend</h2>
+<p>趨勢向下。股價自 2026-09-02 的 52 週高點 $2,875 起，連續出現高點降低、低點降低的結構，10-06 高點 $2,335、11-04 反彈高點 $1,785。股價目前位於 MA20 ($1,820.75) 下方 7.7%、MA50 ($2,091.35) 下方 19.7%，並已跌破 MA200 ($1,704.47)，收盤低於 MA200 約 1.4%。MA50 仍在 MA200 上方，尚未形成死亡交叉，但 MA50 持續下彎，短中期均線結構偏空。</p>
+<p>趨勢強度屬於中度偏弱。11-05 至 11-06 放量下跌，收盤來到 $1,555，之後 11-09 至 11-11 價格在 $1,645 至 $1,680 之間窄幅整理，量能縮小。目前處於跌深後的整理，但尚未看到站回 MA20 或 MA200 的確認。</p>
+<h2>Momentum</h2>
+<p>MACD 位於零軸下方，MACD -119.09 低於 signal -107.28，柱狀體 -11.81。前一日柱狀體為 -17.53，負值縮小，空方動能有減弱跡象，但尚未翻正。</p>
+<p>RSI14 為 36.43，屬於偏弱但未達超賣 (&lt;30)。</p>
+<p>多期間報酬: 1 個月 -26.2%、3 個月 -16.6%、6 個月 -6.2%、12 個月 +22.7%。短期動能明顯轉弱，12 個月報酬仍為正，代表中期仍高於一年前水準。</p>
+<h2>Key levels</h2>
+<ul>
+<li>壓力: $1,785.24 (2026-07-06 區域高點), $1,820.75 (MA20), $1,704.47 (MA200，現價上方), $2,075.00 (2026-09-24 前支撐，跌破後轉壓力), $2,335.00 (2026-10-06 區域高點), $2,875.00 (2026-09-02 52 週高點)</li>
+<li>支撐: $1,640.00 (2026-11-11 盤中低點), $1,548.88 (2026-07-17 區域低點), $1,424.84 (2026-06-26 區域低點), 52 週低點 $1,102.99 (日期未提供)</li>
+<li>停損參考 (邏輯條件，非投資建議): 跌破 $1,548.88 (前一波重要支撐)。較近的觸發點為收盤跌破 $1,640 的整理區下緣。</li>
+</ul>
+<h2>Volatility profile</h2>
+<p>ATR14 為 $105.96，約為現價 6.3%，因此單日波動的估計幅度約為 ±$106。20 日年化波動率為 64.1%，屬於高波動。部位大小需以較寬的停損距離與較小部位來對應，避免被日內雜訊洗出。</p>
+<h2>Setup</h2>
+<p>偏空 (neutral-to-bearish)。型態為下跌趨勢中的低點整理:<br />
+- 高點降低 (2875 → 2335 → 1785)，結構仍偏空。<br />
+- 跌破 MA200 並位於 MA20/MA50 下方。<br />
+- 11-05 至 11-06 放量下跌後，11-09 至 11-11 量縮整理於 $1,645 至 $1,680，構成潛在的止跌區間，但尚未突破 MA200 或 $1,785 壓力。<br />
+- 成交量: 最新 3,677,765 股，為 10 日均量 4,123,019 股的 0.89 倍，量能低於均量。</p>
+<p>要轉為中性或偏多的條件是收盤站回 $1,704 (MA200) 並伴隨放量；反之，若跌破 $1,640 整理下緣，下方目標為 $1,548.88。</p>
+<h2>Indicators table</h2>
+<table>
+<thead>
+<tr>
+<th>Indicator</th>
+<th>Value</th>
+<th>Reading</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Price</td>
+<td>1,680.00</td>
+<td>收盤 2026-11-11</td>
+</tr>
+<tr>
+<td>MA20</td>
+<td>1,820.75</td>
+<td>價格低於 MA20 7.7%，偏弱</td>
+</tr>
+<tr>
+<td>MA50</td>
+<td>2,091.35</td>
+<td>價格低於 MA50 19.7%，均線下彎</td>
+</tr>
+<tr>
+<td>MA200</td>
+<td>1,704.47</td>
+<td>價格低於 MA200 1.4%，長期趨勢跌破</td>
+</tr>
+<tr>
+<td>MA50 vs MA200</td>
+<td>2,091 &gt; 1,704</td>
+<td>尚未死亡交叉，但接近性需追蹤</td>
+</tr>
+<tr>
+<td>RSI14</td>
+<td>36.43</td>
+<td>偏弱，未達超賣</td>
+</tr>
+<tr>
+<td>MACD</td>
+<td>-119.09</td>
+<td>零軸下方</td>
+</tr>
+<tr>
+<td>MACD signal</td>
+<td>-107.28</td>
+<td>MACD 低於 signal，空方</td>
+</tr>
+<tr>
+<td>MACD hist</td>
+<td>-11.81</td>
+<td>負值縮小 (前日 -17.53)，動能減弱</td>
+</tr>
+<tr>
+<td>BB %B</td>
+<td>0.23</td>
+<td>位於下半區，未超賣</td>
+</tr>
+<tr>
+<td>BB 上軌 / 下軌</td>
+<td>2,082.45 / 1,559.05</td>
+<td>下軌 1,559 為統計下緣</td>
+</tr>
+<tr>
+<td>ATR14</td>
+<td>105.96</td>
+<td>約 6.3% 價格，波動偏高</td>
+</tr>
+<tr>
+<td>20d 年化波動率</td>
+<td>64.1%</td>
+<td>高波動</td>
+</tr>
+<tr>
+<td>1 個月報酬</td>
+<td>-26.2%</td>
+<td>短期急跌</td>
+</tr>
+<tr>
+<td>3 個月報酬</td>
+<td>-16.6%</td>
+<td>中期偏弱</td>
+</tr>
+<tr>
+<td>6 個月報酬</td>
+<td>-6.2%</td>
+<td>半年仍為負</td>
+</tr>
+<tr>
+<td>12 個月報酬</td>
+<td>+22.7%</td>
+<td>一年期仍為正</td>
+</tr>
+<tr>
+<td>距 52 週高點</td>
+<td>-41.6%</td>
+<td>遠低於高點</td>
+</tr>
+<tr>
+<td>距 52 週低點</td>
+<td>+52.3%</td>
+<td>距低點仍有距離</td>
+</tr>
+<tr>
+<td>量比 (最新/10d 均量)</td>
+<td>0.89x</td>
+<td>量能略低於均量</td>
+</tr>
+</tbody>
+</table>
+<p>MARKET REPORT COMPLETE</p></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-slate-700 mb-2">新聞 (News)</h4>
+          <div class="agent-prose text-sm bg-slate-50 p-3 rounded"><h1>News — 6669.TW (緯穎 Wiwynn) as of 2026-11-12</h1>
+<blockquote>
+<p>資料說明：yfinance 新聞端點 (query2/fc.yahoo.com) 遭 agent proxy 政策阻擋 (403 CONNECT)，無法取得 yfinance 原始新聞列表，本報告改以 WebSearch 補足。實際可取得的最新資料截至 2026-11-11，2026-11-12 當日資訊視為未知。價格欄位取自 yfinance info 快取 (cached_at 2026-11-11)，與部分聚合站報價不一致，已於下文標註。金額單位：TWD 以億元計，USD 以 B 計。</p>
+</blockquote>
+<h2>Top company-specific headlines (last 14d)</h2>
+<ul>
+<li>2026-11-06 — 10 月合併營收 1,651.32 億元，月減 4.3%、年增 80.9%；前 10 月累計 1.15 兆元，年增 54.0% (finance.technews.tw, 2026/11/06)。Impact: bullish。YoY 動能仍強，月減屬 AI 伺服器拉貨節奏波動。</li>
+<li>2026-11-06 — 第三季財報：營收 4,346.18 億元，季增 56%、年增 63%；毛利率 8.87%，營業利益率 7.47%，稅後純益 233.64 億元；前三季稅後純益 524.48 億元創歷史新高，已超過 2025 全年獲利 (uanalyze.com.tw；finance.technews.tw/2026/11/09)。Impact: bullish。規模與獲利雙創高；毛利率已成市場關注焦點。</li>
+<li>2026-11-06 — 董事會通過對美國子公司增資 0.25 B USD、對馬來西亞子公司增資 0.2 B USD，合計 0.45 B USD (uanalyze.com.tw)。Impact: neutral to bullish。海外產能與在地化投資，有利承接美系 hyperscaler 需求，但短期稀釋現金。</li>
+<li>2026-11-09 — 外資目標價分歧：Citi 買進、目標價 3,200 元，預估 Q4 營收季增約 20%、毛利率降至約 8.5%；Morgan Stanley 目標價 2,515 元，預估 Q4 營收約 5,200 億元 (年增約 78%)；BofA 目標價由 2,387 元下修至 2,310 元，主因毛利率疑慮 (finance.technews.tw/2026/11/09)。Impact: mixed。營收預估上修與毛利率下修並存，市場焦點由規模轉向獲利率。</li>
+<li>2026-10-15 — JPMorgan 維持 Buy、目標價 3,300 元 (investing.com 聚合頁，來源權重低，僅供參考)。Impact: bullish。</li>
+<li>管理層背景 (時間點不明，來源為 uanalyze 9272255032)：管理層稱整體營收與存貨能量充足、Q4 展望樂觀，預期 Q4 ASIC 伺服器比重超越通用型，季底有 GPU 伺服器出貨；下半年資本支出近 300 億元，明年將再上調。Impact: bullish。需以公司法說簡報原文核對日期與數字。</li>
+</ul>
+<p>已排除為雜訊：Computex 2026 共同封裝光學 (CPO) 相關公告 (simplywall.st，日期不明)、單純股價漲跌統計、聚合站的歷史股價 (2,140 / 5,315 / 5,925 元等明顯過期或錯誤的數值)。</p>
+<h2>Sector macro</h2>
+<ul>
+<li>2026-10 下旬 (來源：fxstreet / Commerzbank, 2026/11/06) — 台灣央行 (CBC) 為穩定新台幣進場干預，外資股票大幅流出，外匯存底約 596.4 B USD (2026 年 10 月底)。Impact on 伺服器 ODM: 新台幣貶值對以台幣計價的獲利 (折算) 有正向影響，但外資持續流出增加台股評價壓力；Wiwynn 股價 P/B 約 5.2 倍，對資金面較敏感。</li>
+<li>2026-10 — 台灣經濟部長表示將把先進半導體與 AI 伺服器納入出口管制清單，部分管制將對齊美國規則，生效時程未定 (aiweekly / letsdatascience 等報導)。Impact on 伺服器 ODM: bearish 偏中性。若限制中國客戶，Wiwynn 受影響程度取決於中國相關業務占比，目前來源未揭露，需確認。</li>
+<li>2026-10 — 台灣對 AI 伺服器走私案件持續偵辦：2026/08/24 起訴 9 人走私含 Nvidia 晶片之 Super Micro 伺服器至中國；另一案 50 台 GB300 伺服器經日本、香港轉運 (taiwannews / fdd.org 等)。Impact: bearish 偏中性。合規成本與供應鏈稽核趨嚴；同業 Supermicro 創辦人於 2026 年 3 月遭美國起訴。</li>
+<li>2026 — 美國對台灣的對等關稅 (32%) 與伺服器主機板出口相關之貿易政策，來源多為 2025 年舊資料，2026 年現行稅率與狀態未查證 (cwnewsroom 等)。Impact: 不確定。需以專門搜尋確認後才能下結論。</li>
+<li>總體 AI capex：Nvidia CFO 估計 2026 年超大型雲端業者 (hyperscaler) capex 約 650 B 至 775 B USD，2027 年約 1,300 B USD；Goldman Sachs (2026/06) 基本情境 2027 約 1,100 B USD；Morgan Stanley 2027 約 1,120 B USD (數字來源分歧，定義不一)。Impact on 伺服器 ODM: bullish。需求能見度延伸至 2027 年，Vera Rubin 據報已進入量產。Amazon 2026 capex 指引升至 220 B USD。</li>
+<li>台灣通膨：2026 年 10 月 CPI 年增 2.33%，低於預期但仍高於央行 2% 警戒線；CBC 12 月會議預期維持 2.00% (Commerzbank / MUFG 評論)。Impact: neutral。對伺服器 ODM 本身影響有限，主要影響 TWD 與資金面。</li>
+</ul>
+<h2>Peer signals</h2>
+<ul>
+<li>2317 Hon Hai (鴻海) — 第三季營收約 3.03 兆元 (30,300 億元)，超過市場預估；AI 伺服器機櫃出貨預估 2026 年倍增，並與 OpenAI 合作。Bullish 同業景氣。(cryptobriefing / statementdog 等，部分報導指稱 Q3 完整審計財報 11/14 公布)</li>
+<li>3231 Wistron (緯創) — 2026 年 10 月營收年增約 118% (ec.ltn.com.tw)；Q3 股價為「電子五哥」中漲幅最大，漲逾 10%。Bullish 同業景氣，但 Wistron 為 GB300 機櫃組裝核心，與 Wiwynn 競爭重疊。</li>
+<li>2382 Quanta (廣達) — 據報 Q4 AI 伺服器出貨季增雙位數；報導日期不明，可信度低。Neutral to bullish。Inventec 同期股價表現弱於 Wistron (uanalyze.com.tw)。</li>
+<li>台灣 AI 伺服器廠 (鴻海、緯創、廣達、英業達等，個別代號未逐一核對) — 10 月營收年增 46% 至 137%，顯示 ODM 普遍受惠 (fourweekmba.com 彙整，來源為各公司公告)。Bullish 產業面。</li>
+<li>NVDA — Vera Rubin 據報已在 CoreWeave、Google Cloud、Microsoft Azure、Oracle、Nebius 等量產。Bullish 上游需求；Wiwynn 為 ASIC 與 GPU 伺服器雙線供應商。</li>
+<li>SMCI — 2026 年 3 月美國起訴共同創辦人 Wally Liaw 等人 (相關中國走私案)。Bearish 同業法遵風險，提高市場對 AI 伺服器出口合規之關注。</li>
+</ul>
+<h2>Forward calendar (next 14d)</h2>
+<ul>
+<li>2026-11-12 ~ 11-26 — 無已確認之 Wiwynn 公司層級事件 (財報已於 11/6 公布；10 月營收已於 11/6 公布)。</li>
+<li>2026-11-14 — 鴻海 (2317) Q3 完整審計財報公布 (據單一來源，需核對)。Expected impact: 同業景氣訊號，偏 bullish 或中性。</li>
+<li>2026-11 下旬 — Nvidia 財報 (FQ3) 通常在此時段，確切日期未查證。Expected impact: 超大型雲端 capex 與 Rubin 放量訊號，偏 bullish。</li>
+<li>2026-11 下旬 — 台灣 AI 伺服器出口管制清單正式公告時程未定。Expected impact: 偏 bearish，若限制中國相關出貨。</li>
+<li>窗口外參考：Wiwynn / 同業 11 月營收約 12 月初公布；台灣央行 12 月理監事會 (維持 2.00% 預期)；12 月 FOMC (日期未查證)。</li>
+</ul>
+<h2>Net read</h2>
+<p>近 14 天的公司層面新聞整體偏多，但市場焦點已從營收規模轉向獲利率。10 月營收年增 80.9%、第三季營收與前三季稅後純益雙創高，且 Q3 財報已於 11/6 公布，仍是最強的正向訊號。另一方面，三家外資普遍預期 Q4 毛利率承壓，Citi 與 MS 目標價維持正向，BofA 下修目標價，顯示獲利率壓力 (零組件與記憶體成本、GPU 伺服器產品組合) 已成主要爭點。Q3 毛利率 8.87% 高於外資預估的 Q4 約 8.5%，但 Q4 若真如預估降至 8.5%，會在下一季財報形成壓力。宏觀面，AI capex 能見度至 2027 年仍強，對需求有利；出口管制與走私案件則增加合規成本與不確定性。淨新聞傾向：偏多 (bullish)，強度中等，主要受營收與獲利創高驅動，獲利率疑慮與出口管制為主要抵銷因素。</p>
+<p>資料一致性備註：(1) 價格：yfinance info 快取為 1,680 元 (previousClose 同值)，Investing.com 顯示 11/09 收盤 1,645 元、前收 1,555 元，兩者不一致，需以 TWSE 行情為準。(2) 獲利：yfinance netIncomeToCommon 約 662 億元，與 trailingEps 98.08 × 流通股數 5.84 億股 ≈ 573 億元不符，本報告未採用 yfinance 的 netIncomeToCommon。(3) Q2 毛利率：一篇報導稱 9.26%，但由 Q3 季增 0.41 個百分點反推約 8.46%，兩者不一致。</p>
+<p>NEWS REPORT COMPLETE</p></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-slate-700 mb-2">情緒 (Sentiment)</h4>
+          <div class="agent-prose text-sm bg-slate-50 p-3 rounded"><h1>Sentiment — 6669.TW (緯穎) as of 2026-11-12</h1>
+<p>資料完整度：分析師評等可用；Reddit、StockTwits 無法取得；內部人交易資料為空，無法判讀是否為真實零交易；X / 新聞僅有零星搜尋結果。整體信心偏低。</p>
+<h2>Analyst consensus</h2>
+<table>
+<thead>
+<tr>
+<th>指標</th>
+<th>數量</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Strong Buy</td>
+<td>6</td>
+</tr>
+<tr>
+<td>Buy</td>
+<td>14</td>
+</tr>
+<tr>
+<td>Hold</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Sell</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Strong Sell</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<p>合計 20 家，全數為買進評等（Buy 或 Strong Buy），無持有、無賣出。</p>
+<p>近四個月（0m、-1m、-2m、-3m）的評等分布變化很小：Buy 維持 14 家，Strong Buy 由 5 家變為 6 家（-2m 至 -1m 之間有一家升為 Strong Buy），未見降評。</p>
+<p>近期目標價與評等動態（搜尋結果，來源時間不完全一致，需再核對）：<br />
+- 2025 年 12 月：高盛目標價調至 6,000 元，看好 ASIC AI 伺服器滲透率提升。麥格理當時喊 8,000 元。<br />
+- 2026 年 8 月：一家美系外資把 2026 至 2028 年 EPS 預估上調，目標價由 7,147 元升至 10,000 元，評等維持買進，本益比假設由 15.8 倍提高到 20 倍。<br />
+- 注意：未能從資料源確認 2026 年 11 月的最新個別券商目標價，此部分僅能視為歷史線索。</p>
+<h2>Retail social</h2>
+<ul>
+<li>Reddit：r/wallstreetbets 與 r/stocks 的搜尋 JSON 皆無法連線（WebFetch 被拒），本次無樣本，無法判斷情緒傾向與討論量。</li>
+<li>StockTwits：api.stocktwits.com 無法解析（網路白名單限制），本次未取得。</li>
+<li>X / 新聞：一般搜尋僅找到以 2025 年至 2026 年 8 月為主的新聞與外資報導，沒有可辨識的 2026 年 11 月散戶討論。以「2026 年 11 月」為基準的散戶熱度無法量化。</li>
+<li>討論量：無法評估（相對於一般水準，本次無法判定高於或低於常態）。</li>
+<li>主題：無法從本次資料中歸納。從新聞標題可見的媒體主軸是 AI 伺服器、ASIC 客戶與獲利創新高，但這屬於新聞報導而非散戶語氣，不應直接當作散戶情緒。</li>
+<li>散戶傾向：無法判定（資料缺失）。</li>
+</ul>
+<h2>Insider activity</h2>
+<p>Net 6mo：資料為空（yf insider 回傳空陣列）。無法確認 6 個月內是否有 CEO、CFO 或其他內部人買賣。此結果可能代表真的沒有申報交易，也可能是資料源（Yahoo cookie/crumb 取得失敗）造成的缺漏。在補查前不應解讀為「無內部人交易」。</p>
+<p>注意：major_holders 顯示內部人持股比例約 44.0%，這是持股結構，不是近期交易。</p>
+<h2>Ownership shifts</h2>
+<ul>
+<li>內部人持股：約 44.0%（單一快照）</li>
+<li>機構持股：約 29.8%（佔流通股約 53.2%）</li>
+<li>機構家數：344</li>
+<li>趨勢：本次只有單一時點快照，無法判斷機構集中度是上升或下降。需要下一期快照或季度持股變化資料才能判讀。</li>
+</ul>
+<h2>Net sentiment score</h2>
+<p>Composite：<strong>偏多（bullish），信心低</strong></p>
+<ul>
+<li>分析師面：偏多，信心中高。20 家全數買進、無降評、近期目標價有上修紀錄，但目標價資料時間不完整。</li>
+<li>散戶面：無法評估（Reddit、StockTwits 皆未取得）。</li>
+<li>內部人面：無法評估（資料為空）。</li>
+<li>基本面線索：搜尋結果顯示前三季稅後純益約 524.48 億元（每股純益約 94.04 元），年增約四成，但日期與年度標示有矛盾，需再確認是 2025 年還是 2026 年前三季。</li>
+</ul>
+<p>Divergence flag：<strong>無法判定</strong>。缺少散戶語氣資料，無法比較散戶傾向與分析師傾向是否相反。</p>
+<p>待補項目：<br />
+1. 補抓 Reddit（r/wallstreetbets、r/stocks）與 StockTwits，確認網路白名單後重跑。<br />
+2. 重跑 yf insider，確認 Yahoo cookie 是否恢復，以判斷空陣列是真的無交易還是資料缺漏。<br />
+3. 取得 2026 年 11 月的個別券商目標價與評等。</p>
+<p>SENTIMENT REPORT COMPLETE</p></div>
+        </div>
+      </div>
+    </details>
+
+    <details class="mb-4 border border-slate-200 rounded">
+      <summary class="bg-slate-50 px-4 py-2 font-semibold">Phase 2 — Bull vs Bear 辯論</summary>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+        <div>
+          <h4 class="font-bold text-green-700 mb-2">🐂 多方 (Bull)</h4>
+          <div class="agent-prose text-sm bg-green-50 p-3 rounded border border-green-200"><h1>Bull case round 1 — 6669.TW</h1>
+<h2>Thesis（一句話）</h2>
+<p>緯穎在 AI 伺服器需求能見度延伸至 2027 年、ASIC 與 Vera Rubin 世代雙渠道放量的背景下，營收與獲利規模持續創高，現階段股價已反映過度悲觀的現金流與毛利率擔憂，提供優於風險的風險報酬比。</p>
+<h2>Growth drivers</h2>
+<ul>
+<li>10 月合併營收 1,651.32 億元，年增 <strong>+80.9%</strong>；前 10 月累計 1.15 兆元，年增 +54.0%（news.md）。</li>
+<li>Q3'26 營收 4,346.18 億元，季增 +56%、年增 +63%；前三季稅後純益 524.48 億元，<strong>已超過 2025 全年獲利 511.2 億元</strong>，創歷史新高（news.md / fundamentals.md）。</li>
+<li>管理層指引：Q4 ASIC 伺服器比重將超越通用型，季底有 GPU 伺服器出貨；下半年資本支出近 300 億元，明年再上調（news.md）。</li>
+<li>宏觀能見度：Nvidia CFO 估 2026 年 hyperscaler capex 650-775B USD，2027 年達 1,300B USD；Amazon capex 指引上修至 220B USD；Vera Rubin 已於 CoreWeave、Google Cloud、Azure、Oracle、Nebius 進入量產（news.md）。緯穎同時是 ASIC 與 GPU 伺服器雙線供應商，直接受益於兩條放量曲線。</li>
+<li>董事會通過美國子公司增資 0.25B USD、馬來西亞子公司增資 0.2B USD，擴產承接美系客戶需求、分散地緣風險（news.md）。</li>
+</ul>
+<h2>Moat</h2>
+<p>緯穎的護城河來自 Open Rack / OCP 生態系的設計導入深度與機櫃級整合能力——客戶（美系 hyperscaler）的認證週期長、重新導入成本高，形成實質切換成本。ROIC（2025 估算約 35.6%，fundamentals.md）顯著高於資本成本，顯示其在高毛利 ASIC 機種上具備議價能力，而非單純代工價格戰。美國 + 馬來西亞雙產地布局進一步強化對出口管制與關稅風險的韌性，屬規模與地緣雙重優勢。</p>
+<h2>Upside scenario</h2>
+<p>以 584M 股本基準（fundamentals.md 的主要採用口徑）：<br />
+- FY2026E：前三季 NI 524.48 億 + Q4 估（參考 Citi/MS 的 Q4 營收與毛利率假設，淨利率約 5.4%、營收約 5,200 億）≈ 280 億，全年 NI ≈ 804 億，EPS ≈ 138 元。<br />
+- <strong>Base</strong>：P/E 15× × EPS 138 = 2,070 元，較現價 1,680 元 <strong>+23%</strong>。<br />
+- <strong>Bull</strong>：P/E 20×（即 sentiment.md 揭露美系外資將目標 P/E 假設由 15.8x 上修至 20x 的區間）× EPS 138 = 2,760 元，<strong>+64%</strong>，與分析師目標價均值 2,723.9 元（+62.1%）及 Citi 3,200 元、JPMorgan 3,300 元高度一致。<br />
+- 若股本實為 192M（fundamentals.md 揭露的另一版本），trailing P/E 僅 5.5x，下檔風險更小、上行空間更大，兩種股本情境均不構成看空理由。</p>
+<h2>Catalysts（dated）</h2>
+<ul>
+<li>2026-11-14 — 鴻海 (2317) Q3 完整審計財報，確認同業景氣訊號。</li>
+<li>2026-11 下旬 — Nvidia FQ3 財報，驗證 hyperscaler capex 與 Vera Rubin 放量進度。</li>
+<li>2026-11 下旬～12 月 — 台灣 AI 伺服器出口管制清單正式公告，風險明朗化後可能消除不確定性折價。</li>
+<li>2026-12 初 — 緯穎 11 月營收公布，檢驗 Q4 ASIC 比重超越通用型的指引是否落實。</li>
+<li>2027-02-25 — 下次財報（yfinance 預估 EPS 40.49 元，雖與近四季 24-27 元水準有落差，但方向上支持獲利持續成長）。</li>
+</ul>
+<h2>Tactical（技術面）</h2>
+<p>RSI14 為 36.43，尚未超賣，留有反彈空間；MACD 柱狀體由 -17.53 收斂至 -11.81，空方動能減弱。股價自 11-06 急殺至 1,555 元後，於 1,645-1,680 元區間量縮整理，顯示賣壓衰竭跡象。12 個月報酬仍達 +22.7%，長期多頭結構未破。現價 1,680 元緊貼 MA200（1,704 元）之下僅 1.4%，一旦放量站回 MA200，具備技術面反轉催化的條件，形成不對稱的風險報酬（上方空間遠大於下方 1,548.88 元支撐的距離）。</p>
+<h2>Rebuttal to bear round 0</h2>
+<p>（本輪無 round_0_bear.md 可讀，以下針對 fundamentals.md 與 market.md 自身揭露的風險點預先反駁）<br />
+- 熊方可能稱："TTM 自由現金流 -650.2 億，現金流惡化。"<br />
+  反駁：現金流流出主因存貨半年增 52%（為承接 10 月營收 +80.9%、Q3 營收季增 56% 的確定訂單所做的備貨），屬成長型 ODM 常見的營運資金前置現象，非盈餘品質結構性惡化；同業（緯創 10 月營收 +118%）亦呈現同樣備貨特徵。<br />
+- 熊方可能稱："負債半年內由 1,040.7 億增至 1,657.4 億，股利靠借款支應。"<br />
+  反駁：負債增加對應資本支出同期 +173% 及董事會核准的 0.45B USD 海外擴產，屬對已確認需求的擴產融資，而非經營虧損舉債；ROE 42-48%、營業利益率 6.6-7.3% 的現金創造能力仍遠高於借貸成本。<br />
+- 熊方可能稱："Q2'26 毛利率外資預估 Q4 降至 8.5%，獲利率承壓。"<br />
+  反駁：Q3'26 毛利率已達 8.87%，優於外資對 Q4 的保守估計，且高於 2025 全年 8.25%；管理層指引 ASIC 比重提升本應支撐毛利率，近四季 EPS 三次優於預期。<br />
+- 熊方可能稱："股價跌破 MA50、處於空頭排列。"<br />
+  反駁：MACD 動能已收斂、RSI 未超賣，且 20 家分析師全數維持買進評等、無一家降評，顯示機構對基本面趨勢的信心未受技術面回檔動搖。</p>
+<h2>Confidence</h2>
+<p>7/10。基本面成長與獲利創高的證據充分，分析師一致買進且目標價隱含逾六成上行；主要不確定性來自股本口徑矛盾與 Q4 毛利率尚待驗證，建議搭配 11 月營收與 Q4 財報滾動確認。</p>
+<p>BULL ROUND 1 COMPLETE</p></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-red-700 mb-2">🐻 空方 (Bear)</h4>
+          <div class="agent-prose text-sm bg-red-50 p-3 rounded border border-red-200"><h1>Bear case round 1 — 6669.TW</h1>
+<h2>Thesis（一句話）</h2>
+<p>緯穎的營收與獲利規模雖創新高，但其成長完全靠舉債堆出存貨與應收帳款換來，TTM 自由現金流 -650.2 億、FCF/NI -1.12、半年內總負債暴增 59.2%，毛利率結構性承壓且已遭三大外資點名，股價在跌破 MA200、距 52 週高點 -41.6% 之後仍未止穩，風險報酬明顯偏空。</p>
+<h2>Demand / market risks</h2>
+<p>10 月合併營收月減 4.3%，季營收 2026Q2 季增僅 +0.6%，顯示出貨節奏已從爆發式成長轉為平台期，而外資對 Q4 展望分歧：Citi 預估營收季增約 20% 但毛利率降至 8.5%，Morgan Stanley 預估年增約 78%，BofA 反而下修目標價至 2,310 元。資料完全缺乏客戶集中度揭露（info 僅有業務描述，無分部占比），在 ODM 業務模式下，單一或少數 hyperscaler 砍單／調整拉貨節奏的風險無法被量化排除，這本身就是資料缺口型風險。台灣經濟部正研議將先進半導體與 AI 伺服器納入出口管制清單，若牽涉中國相關出貨，將直接影響訂單結構；加上 2026 年多起 AI 伺服器走私至中國的起訴案，合規稽核成本正在上升。</p>
+<h2>Margin / cashflow risks</h2>
+<p>TTM 毛利率僅 8.2%，營業利益率 6.6%，較 2024 年的 10.37% / 7.80% 已下滑超過 1-2 個百分點，2025 年淨利年增 124.4% 主要靠大型機櫃低毛利出貨堆量，盈餘品質偏弱。更嚴重的是現金流：TTM 營業現金流 -453.5 億、資本支出 196.7 億、自由現金流 -650.2 億，FCF/NI 為 -1.12，遠低於 0.9 健康門檻；2026Q2 單季營業現金流 -454.1 億，為近年最差單季。存貨半年內由 1,362.6 億暴增至 2,074.4 億（+52.2%），應收帳款同步升至 843.3 億，營運資金吞噬現金的速度遠超獲利成長。2025 年現金股利 137.5 億，同年 FCF 為 -145.6 億，股利實質由借款支應，覆蓋率為負——這不是穩健配息，是拿槓桿撐股利表面好看。</p>
+<h2>Valuation risk</h2>
+<ul>
+<li>Bear：以 TTM EPS 98.08 元為基礎，鑒於毛利率結構性承壓、FCF 連續轉負、負債快速攀升，給予較低的 10× P/E（遠低於資料估計同業區間 15x-20x 及目前 trailing 17.1x），目標價約 $980.8，較現價 $1,680 下跌約 -41.6%。</li>
+<li>Worst：若 Q4 毛利率真如 Citi 預估降至 8.5%，且延續 2026Q2 EPS 已低於估計 -6.4% 的不及預期趨勢，給予 8× P/E，目標價約 $784.6，下跌約 -53.3%。</li>
+<li>估值前提本身不可靠：分析師目標價均值 2,723.9 元（+62.1%）建立在 forward EPS 194.9 元之上，但近四季實際 EPS 僅 24-27 元區間，兩者無法對齊；股本更存在 584M 與 192M 兩版本矛盾，若以 192M 計算則 P/E 僅 5.5x——基礎資料本身不確定，任何樂觀估值都建立在未核實的分母上。</li>
+</ul>
+<h2>Competitive / regulatory</h2>
+<p>台灣出口管制清單若對齊美國規則並納入 AI 伺服器，將壓縮對中國相關客戶的出貨彈性；同業走私案（含 SMCI 創辦人遭美國起訴）已拉高整個產業的合規與稽核成本。競爭面上，鴻海（AI 機櫃出貨 2026 年倍增並與 OpenAI 合作）、緯創（GB300 機櫃組裝核心、10 月營收年增 118%）與廣達均在同一供應鏈卡位，Wiwynn 的機櫃與伺服器業務與緯創高度重疊，議價力無法保證獨享成長。R&amp;D 占營收比例由 2022 年 1.2% 降至 2025 年 1.0%，技術投入強度隨營收規模擴大反而下滑，長期護城河存疑。</p>
+<h2>Tactical（technical）</h2>
+<p>關鍵支撐 $1,548.88，若跌破則下一目標為 $1,424.84，再下則為 52 週低點 $1,102.99。股價現收 $1,680，已跌破 MA200（$1,704.47，低於 1.4%），且持續位於 MA20（-7.7%）與 MA50（-19.7%，均線下彎）之下；MACD 位於零軸下方（-119.09）且低於訊號線，雖然柱狀體負值由 -17.53 縮小至 -11.81，動能減弱但尚未翻正。RSI14 僅 36.43，未達超賣，意味下跌仍有空間。11-09 至 11-11 量縮整理（量比 0.89x），缺乏買盤進場的確認，屬於典型的「反彈乏力」而非止跌訊號；1 個月報酬 -26.2%、3 個月 -16.6%，顯示即使 Q3 財報創高，股價仍持續遭拋售，呈現利多出盡後的分配（distribution）特徵。</p>
+<h2>Rebuttal to bull round 0</h2>
+<p>（本輪尚無前一輪牛方報告，以下針對市場上最常見、資料中已出現的樂觀論點直接反駁）</p>
+<ul>
+<li>
+<p>潛在牛方論點：「20 家分析師全數買進，目標價均值+62%，AI capex 能見度到 2027 年。」<br />
+  反駁：目標價建立在 forward EPS 194.9 元，與近四季實際 EPS 24-27 元無法對齊；且 2026Q2 EPS 已首度不及預期（-6.4%）。宏觀 capex 樂觀是產業面訊號，不能替代公司執行層面已出現的毛利率下滑與現金燒錄。</p>
+</li>
+<li>
+<p>潛在牛方論點：「Q3 營收與前三季淨利雙創新高，10 月營收年增 80.9%。」<br />
+  反駁：規模創高建立在低毛利大型機櫃出貨與存貨、應收大幅墊高之上，TTM FCF 為 -650.2 億，淨利成長並未轉換為現金；股利已靠舉債支應，獲利品質遠不如表面數字。</p>
+</li>
+<li>
+<p>潛在牛方論點：「ROE 高達 42-48%，資本效率佳。」<br />
+  反駁：高 ROE 主要來自財務槓桿放大（D/E 由 2025-12 的 83.5% 升至 2026-06 的 120.7%），而非營運效率提升，半年內淨負債增加約 660 億，槓桿風險正在累積。</p>
+</li>
+</ul>
+<h2>Confidence</h2>
+<p>7/10。現金流與負債端的惡化數字明確且可追溯（TTM FCF -650.2 億、總負債半年 +59.2%），技術面空頭結構清楚；但下修空間部分依賴外資毛利率預估與股本/EPS 資料矛盾未核實，且 Q3'26 財報狀態不明，若下一季財報優於預期或股本/估值矛盾被澄清為對多方有利方向，論點強度會下降。</p>
+<p>BEAR ROUND 1 COMPLETE</p></div>
+        </div>
+      </div>
+    </details>
+
+    <details class="mb-4 border border-slate-200 rounded">
+      <summary class="bg-slate-50 px-4 py-2 font-semibold">Phase 4 — 風險辯論 (Risk debate)</summary>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 p-4">
+        <div>
+          <h4 class="font-bold text-red-700 mb-2">⚡ 進攻 (Aggressive)</h4>
+          <div class="agent-prose text-sm bg-red-50 p-3 rounded border border-red-200"><h1>Aggressive risk view — 6669.TW</h1>
+<h2>Where trader is too cautious</h2>
+<ul>
+<li>Sizing 0.5% NAV 完全配不上手上的證據強度。Q3'26 財報已於 11-06 公布：營收季增 56%、單季稅後純益 233.64 億，前三季累計已超過 2025 全年全年，牛方論點已經被最新資料驗證，不再是「爭論未解」。用 Low conviction 的倉位去交易一個已經有新財報佐證的多頭論點，是系統性地低估了資訊優勢。</li>
+<li>進場邏輯本末倒置：現價 $1,680 已站上多數短期均線附近並逼近 MA200 $1,704，交易計畫卻要等回踩 $1,590–1,640 才進場。若 11 月下旬 Nvidia 財報或 12 月初營收公告提前點燃行情，股價直接放量突破 $1,704–$1,785，等回測的人將完全錯過這段，alpha 被「等便宜」這個動作吃掉。</li>
+<li>R:R 到 T2 高達約 7.0，這種不對稱結構正是該用滿倉位、而非半倉以下試單去捕捉的機會，計畫裡卻把加碼條件疊兩層（技術確認 + 現金流確認同時成立），實質上把倉位鎖在 0.5% 很久。</li>
+</ul>
+<h2>Recommended adjustments</h2>
+<ul>
+<li>Size: Small（0.5%）→ 建議第一筆直接 1.0% 市價進場（不等回測），技術面確認（放量站回 $1,704 並站穩 $1,785）後再加碼到 2.0%，而非計畫中的 1.5%。</li>
+<li>Stop: 維持 $1,548.88（收盤基準），這個距離（約 -4.1% 自進場中點，接近近 1 倍 ATR14）本身不算寬，不建議再收窄；但不要用盤中觸價出場，只用收盤確認，避免被高波動（20 日年化 64.1%）洗出。</li>
+<li>Entry: 現在就進場一部分（1.0%），不要全部押注回測假設；若真的回踩 $1,590–1,640 再加碼，兩頭都顧到。</li>
+<li>Consider: 用 call spread 複製槓桿曝險、同時限制最大虧損——買進 1 月到期（約 2027-01 月）執行價 $1,700 call，賣出執行價 $2,075 call，用 T2 作為賣出端，鎖定重新評值區間的凸性報酬，premium 成本遠低於等倉位現股的最大虧損。</li>
+</ul>
+<h2>Asymmetry argument</h2>
+<p>以現股計算：進場中點 $1,615，停損 $1,548.88，每股風險約 $66（約 4.1%）。到 T2 $2,075 的每股獲利約 $460（約 28.5%）。B/A ≈ 7.0。即使把倉位由 0.5% 一次拉到 2.0%（放大 4 倍），絕對虧損也只是從「極小」變成「仍然可控的小」——以等比例換算，虧損金額只占 NAV 約 0.08%（2.0% × 4.1%），而潛在獲利占 NAV 約 0.57%。這個不對稱比例在 Q3 財報已驗證多頭論點的背景下，完全值得多承擔的那一點點絕對虧損。</p>
+<h2>What I'd push for</h2>
+<p>現在就用 1.0% NAV 市價建倉（不等回測），停損維持 $1,548.88 收盤確認制，待放量站回 MA200 $1,704 並站穩 $1,785 後加碼到 2.0%，同時用 $1,700/$2,075 的 call spread 複製一部分槓桿曝險以提高資本效率；這樣既不會錯過財報與營收催化劑可能帶來的跳空行情，最大絕對虧損也僅是 NAV 的個位數基點，相對於 7 倍的 R:R 完全合理。</p>
+<p>AGGRESSIVE VIEW COMPLETE</p></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-blue-700 mb-2">🛡️ 保守 (Conservative)</h4>
+          <div class="agent-prose text-sm bg-blue-50 p-3 rounded border border-blue-200"><h1>Conservative risk view — 6669.TW</h1>
+<h2>Where trader is too aggressive</h2>
+<ul>
+<li>停損距離（進場區中點 $1,615 至 $1,548.88 ＝ $66.12，約 4.1%）小於自己揭露的 ATR14（$105.96，約 6.3%），在年化波動率 64.1% 的個股上屬於偏緊而非偏寬的停損 — 單日噴出式波動即可在未破壞多空格局的情況下觸發出場，產生頻繁洗損成本，而非單筆巨虧。</li>
+<li>台股個股日漲跌幅限制 10%。若壞消息（出口管制清單、Q3 現金流惡化、Nvidia 財報不如預期）出現，股價可能直接跌停鎖死，停損單無法在 $1,548.88 附近成交，實際滑價出場價可能落在跌停區（現價 $1,680 的 -10% ≈ $1,512，連續兩日跌停約 $1,361），真實虧損遠大於 R:R 計算所假設的乾淨成交。</li>
+<li>進場邏輯建立在「Q3 完整資產負債表 / 現金流量表尚未公布」的前提下，等於在熊方核心論點（現金流、槓桿）仍無法證實或否證前就先行建倉，即便只是 Small 試單，也是在資訊不對稱下承擔方向性風險。</li>
+</ul>
+<h2>Tail scenarios</h2>
+<ul>
+<li>Scenario A（機率約 20%）：Nvidia 財報 guidance 不如預期 → AI 資本支出敘事降溫、板塊式賣壓 → 單日或連續跌停，實際出場價跌破 $1,512，$ 損失遠超過理論值。</li>
+<li>Scenario B（機率約 25%）：Q3 合併財報揭露營業現金流未轉正、淨負債繼續擴大 → 熊方論點證實 → 跳空測試或跌破 $1,548.88。</li>
+<li>Scenario C（機率約 10%）：出口管制清單確認衝擊主要客戶 → 單日跌停鎖死、數日無法出場。</li>
+<li>Scenario D（機率約 15%）：Fed 偏鷹或外資系統性撤出台股半導體權值股 → 高貝塔高波動個股跌幅放大，與同族群（TSMC、ASIC 供應鏈）同步下殺，形成隱性集中度風險。</li>
+</ul>
+<h2>Recommended adjustments</h2>
+<ul>
+<li>Size：維持 Small（0.5% NAV）即可；加碼到 Medium 的兩項門檻（技術突破 + 現金流轉正）須以「收盤確認」而非盤中觸及，避免假突破。</li>
+<li>Stop：$1,548.88 可保留為結構失效價，但應理解跌停情境下可能無法以該價成交，建議搭配「開盤跳空跌破 $1,640 逾 5% 且量縮」作為更早的風控退出點。</li>
+<li>Entry：不追現價 $1,680，等回測 $1,590–$1,640 縮量止跌；更保守做法是等 Q3 現金流數據公布後再進場，以確定性換取部分上漲空間。</li>
+<li>Consider：若帳上已有 TSMC 或其他 AI/ASIC 供應鏈長倉，應將 6669.TW 併入同一風險因子加總計算總曝險，必要時以半導體 ETF 或台指 put 做板塊對沖。</li>
+</ul>
+<h2>Position-level $ risk</h2>
+<p>以進場區中點 $1,615、停損 $1,548.88 計算，理論停損距離 $66.12（約 4.1%），搭配 Small（0.5% NAV），若乾淨成交 $ 損失 ≈ 0.02% NAV，可接受。但跌停/跳空情境下實際滑價可能放大至 10-20%，損失擴大 2.5-5 倍（仍約 0.05-0.1% NAV）；未來若加碼至 Medium（1.5% NAV），同樣跳空風險下潛在損失可達 0.3-0.75% NAV，屆時需重新檢視停損可執行性。</p>
+<h2>What I'd push for</h2>
+<p>目前 Small 試單搭配雙重加碼門檻，部位大小本身並不過度激進；真正要調整的是對「停損可執行性」的認知 — 台股跌停機制與 64% 年化波動率下，$1,548.88 在壞消息情境可能無法乾淨成交。建議加碼到 Medium 的時間點明確押後至 Q3 現金流與 Q4 毛利率輪廓都確認之後，且在此之前任何擴大曝險前都應先檢查帳上是否已有其他台灣半導體/AI 供應鏈長倉，避免板塊系統性風險發生時遭遇超出預期的集中虧損。</p>
+<p>CONSERVATIVE VIEW COMPLETE</p></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-slate-700 mb-2">⚖️ 中立 (Neutral)</h4>
+          <div class="agent-prose text-sm bg-slate-100 p-3 rounded border border-slate-300"><h1>Neutral risk view — 6669.TW</h1>
+<h2>Points of agreement (both沒方)</h2>
+<ul>
+<li>$1,548.88 作為結構失效價應保留，兩方都未質疑此停損位的技術合理性。</li>
+<li>加碼觸發須以「收盤確認」而非盤中觸價為準，避免假突破/假跌破洗損。</li>
+<li>現有 0.5% NAV 試單部位的「乾淨成交」$ 風險本身極小（約 0.02% NAV），爭點在於情境假設與時點，而非部位本身過度激進。</li>
+</ul>
+<h2>Aggressive overreach</h2>
+<ul>
+<li>Where：將 11-06 已公布的 Q3 損益（營收 +56%、單季純益 233.64 億）等同於「牛方論點已被驗證」，據此主張應立即以市價 1.0% 進場並快速加碼至 2.0%。</li>
+<li>Why：交易計畫的 Invalidation 條款明確指出，熊方核心論點（營業現金流未轉正、存貨惡化、淨負債擴大）仰賴的 Q3 完整資產負債表/現金流量表尚未公布。損益表轉強不等於現金流與槓桿風險已解除，這是把部分驗證誤認為全部驗證，屬於多頭偏誤的反射性樂觀。此外直接跳過回測/突破雙觸發、用市價搶進，等於放棄了原計畫刻意設計的紀律緩衝。</li>
+</ul>
+<h2>Conservative overreach</h2>
+<ul>
+<li>Where：主張停損距離（4.1%）相對 ATR14（6.3%）偏緊，並疊加四個跌停/系統性賣壓情境（合計機率估達 70%）建議把進場時點再押後到 Q3 現金流數據完全公布後。</li>
+<li>Why：由自己的計算可知，即便在跌停/跳空最壞情境下，實際 $ 損失也僅放大至約 0.05–0.1% NAV，仍屬可控小額；用疊加多個尾端情境機率來證成「再等等」，實質上是等到好消息全部落地、價格可能已反映大半，犧牲掉原計畫設計的不對稱 R:R（T2 約 7 倍）。這是防禦性偏誤放大尾端風險敘事，而非基於既有小額曝險的理性延遲。</li>
+</ul>
+<h2>Balanced adjustment proposal</h2>
+<ul>
+<li>Size：維持初始試單 0.5% NAV，不採納 aggressive 的立即 1.0% 市價單；加碼門檻改為「技術確認（收盤站回 $1,704 並站穩 $1,785）」與「Q3 現金流數據」任一項先行成立即可加碼至 1.0%（而非 1.5–2.0%），待兩項皆確認後再評估是否逐步逼近 1.5% 原案上限。</li>
+<li>Stop：$1,548.88 收盤確認制維持不變；額外加入 conservative 提出的「開盤跳空跌破 $1,640 逾 5% 且量縮」作為早期風控警示（非強制出場），因應台股跌停鎖死的流動性風險。</li>
+<li>Entry：維持原計畫雙觸發（回測 $1,590–1,640 量縮止跌，或放量收盤站回 $1,704）二擇一進場，不追現價、也不無限期等待全部數據。</li>
+<li>Hedge：若採用 call spread（$1,700/$2,075）作為加碼曝險的替代工具,須先確認該個股選擇權流動性足夠,否則以現股小額加碼為主;若帳上已有其他台灣半導體/AI供應鏈長倉,應依 conservative 建議併入同一風險因子評估。</li>
+<li>Time horizon：維持 1-3 個月,對齊 Nvidia 財報、11月營收、Q3現金流表、Q4財報四個催化點。</li>
+</ul>
+<h2>Net $ risk if stop hits</h2>
+<p>初始倉位 0.5% NAV：約 0.021% NAV；若觸發一次加碼至上限 1.0% NAV：約 0.041% NAV（以進場中點 $1,615、停損 $1,548.88 計算，距離約 4.1%）。</p>
+<h2>Net $ upside at T1 / T2</h2>
+<p>以 1.0% NAV（加碼後上限）計算：T1 $1,785（+10.5%）約 0.105% NAV；T2 $2,075（+28.5%）約 0.285% NAV。</p>
+<p>NEUTRAL VIEW COMPLETE</p></div>
+        </div>
+      </div>
+    </details>
+
+  </div>
+
+  <script>
+    (function() {
+      var d = {};
+      if (!d.dates) return;
+      var traces = [
+        {x: d.dates, y: d.close, name: 'Close',  line: {color: '#1f2937', width: 2}},
+        {x: d.dates, y: d.ma20,  name: 'MA20',   line: {color: '#0ea5e9', width: 1, dash: 'dot'}},
+        {x: d.dates, y: d.ma50,  name: 'MA50',   line: {color: '#f59e0b', width: 1, dash: 'dot'}},
+        {x: d.dates, y: d.ma200, name: 'MA200',  line: {color: '#ef4444', width: 1, dash: 'dash'}}
+      ];
+      var layout = {
+        margin: {l: 50, r: 20, t: 10, b: 40},
+        legend: {orientation: 'h', y: -0.15},
+        xaxis: {showgrid: false},
+        yaxis: {title: '價格 ($)'}
+      };
+      Plotly.newPlot('chart-6669_TW', traces, layout, {displayModeBar: false, responsive: true});
+    })();
+  </script>
+
+</section>
+
+
+<section id="ticker-3231_TW" class="mb-10 bg-white rounded-lg shadow overflow-hidden">
+
+  <div class="flex items-start justify-between p-6 border-b border-slate-200 verdict-HOLD">
+    <div>
+      <h2 class="text-3xl font-bold">3231.TW</h2>
+      <p class="text-sm mt-1 opacity-80">緯創 (3231) — AI server ODM</p>
+    </div>
+    <div class="text-right">
+      <div class="text-4xl font-bold">HOLD</div>
+      <div class="text-sm opacity-80 mt-1">REJECT</div>
+    </div>
+  </div>
+
+  <div class="p-6 grid grid-cols-1 lg:grid-cols-2 gap-6">
+
+    <div>
+      <h3 class="text-lg font-bold mb-2">價格 + 技術指標 (2 年)</h3>
+      <div id="chart-3231_TW" style="height: 380px;"></div>
+    </div>
+
+    <div>
+      <h3 class="text-lg font-bold mb-2">最終決策 (Final decision)</h3>
+      <div class="agent-prose text-sm bg-slate-50 p-4 rounded border border-slate-200">
+        <p>FINAL TRANSACTION PROPOSAL: <strong>HOLD</strong></p>
+<h1>Final decision — 3231.TW as of 2026-11-12</h1>
+<h2>FINAL TRANSACTION PROPOSAL: <strong>HOLD</strong></h2>
+<h2>Verdict</h2>
+<p>REJECT</p>
+<h2>部位性質</h2>
+<p>3231.TW 不在 <code>pipeline/tools/held_tickers.txt</code>，判定為<strong>新倉</strong>，走 A 框架：問題是「該不該進」。結論是現在不進，現股與選擇權皆 0% NAV。第一行的 HOLD 意思是「空手觀望」，不是續抱既有部位。</p>
+<h2>Final trade card</h2>
+<p>不適用（REJECT，不開倉）。</p>
+<h2>Dealbreaker</h2>
+<p>2026Q3 財報與法說在 11-14 前後公布，會同時裁決三個未解爭點。現在進場不是依證據下判斷，而是押注二元事件：<br />
+1. 多方 +58% 目標完全建立在 forward EPS 24.72 元上，但該數字是 FY2026 還是 FY2027 口徑無人釐清；H1 2026 diluted EPS 僅 7.27 元。<br />
+2. TTM FCF -2,707 億、AR YoY +81% 高於營收 +62.4%、一年內到期債務佔 81%。<br />
+3. 11-05 跌破 $173.50 後，11-06 直接探至 $152.00。固定價位停損在這檔股票上會被跳空穿透，$168 的停損只是帳面 3.7% 風險，實際尾部約 12.9%，R:R 無法誠實計算。</p>
+<h2>Risk debate adjudication</h2>
+<ul>
+<li>Aggressive 最強論點：需求是硬數據（10 月營收 YoY +117.6%、1–10 月 +99.5%，同業同步走強），等 MA50 放量確認會讓出約 5% 的漲幅。</li>
+<li>Conservative 最強論點：11-06 的跳空已實證盤中停損失效，財報前任何曝險的真實損失是停損假設的 3.4 倍。</li>
+<li>Net：我較偏重 <strong>conservative</strong>，並採用 neutral 的財報後進場框架。讓出 5% 確認成本，遠小於未設限的跳空風險。Aggressive 的價外 call 方案不採用：權利金 $3–5 是假設值，沒有報價與流動性依據，「8–15 倍」的不對稱性無從驗證。Conservative 的 30%/20%/15% 機率同樣沒有來源，$87 是壓力測試而非基準情境，我不以此為據，也因此不放空。</li>
+</ul>
+<h2>論點支柱</h2>
+<p>（若未來轉多，論點需要站得住的四根支柱）</p>
+<table>
+<thead>
+<tr>
+<th>支柱</th>
+<th>當初的預期</th>
+<th>現況</th>
+<th>判定</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AI 伺服器需求動能</td>
+<td>月營收 YoY 維持 &gt;60%，11、12 月優於 10 月</td>
+<td>10 月 +117.6%、1–10 月 +99.5%</td>
+<td>成立</td>
+</tr>
+<tr>
+<td>毛利率隨規模回升</td>
+<td>季毛利率 ≥ 6.5%</td>
+<td>在 4.4%–7.4% 間震盪，Q3 未公布</td>
+<td>觀察中</td>
+</tr>
+<tr>
+<td>現金流品質</td>
+<td>OCF 轉正，AR 增速低於營收增速</td>
+<td>TTM FCF -2,707 億，AR +81% 對營收 +62.4%</td>
+<td>觀察中</td>
+</tr>
+<tr>
+<td>獲利路徑與技術結構</td>
+<td>EPS 接上 forward 24.72 元路徑，股價站穩 MA50</td>
+<td>H1 EPS 7.27 元，口徑不明；MA20 &lt; MA50 死亡交叉，反彈量僅均量 0.66 倍</td>
+<td>觀察中</td>
+</tr>
+</tbody>
+</table>
+<p>四根只有一根成立，不足以支撐新倉。</p>
+<h2>論點失效條件</h2>
+<p>論點紀律，與價格無關；任一項發生即停止研究多方，不必等價格訊號。<br />
+- 若 Q3 毛利率 &lt; 5.5%，「規模效益」支柱失效 → 多方論點撤銷，至少等到下一季財報再看。<br />
+- 若 Q3 OCF 仍為負，且 AR YoY 增速繼續高於營收 YoY 增速 → 現金流支柱失效，不進場。<br />
+- 若法說或公告出現新增現金增資、可轉債，或短債展延受阻 → 直接排除多方。<br />
+- 若 11 月合併營收 MoM 為負（與管理層「優於 10 月」說法相反）→ 需求支柱失效，唯一成立的支柱倒下，整個論點結案。</p>
+<h2>Monitoring trigger</h2>
+<p>Q3 財報公布後首個交易日開盤前重新評估。只有在<strong>至少兩項</strong>同向轉正（毛利率 ≥ 6.5%，且 OCF 轉正或 AR 增速落到營收增速以下），才重新送案。屆時先以 1/3 正常倉位進場，收盤放量站上 MA50 $184.06 後再加碼，災難停損參考 $152.00。若收盤跌破 $168.00，短線結構續壞，延後評估，但不放空。</p>
+<h2>Catalyst calendar</h2>
+<ul>
+<li>2026-11-14 前後 — 2026Q3 財報與法說，裁決 EPS 口徑、現金流、毛利率。</li>
+<li>2026-12 上旬 — 11 月合併營收，驗證「優於 10 月」。</li>
+<li>2027Q1 — 2026Q4 財報與 2027 年指引。</li>
+</ul>
+<p>FINAL DECISION COMPLETE</p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="px-6 pb-6">
+
+    <details class="mb-4 border border-slate-200 rounded">
+      <summary class="bg-slate-50 px-4 py-2 font-semibold">投資計劃 (Research manager)</summary>
+      <div class="agent-prose p-4 text-sm"><h1>Investment plan — 3231.TW as of 2026-11-12</h1>
+<h2>Directional stance</h2>
+<p>NEUTRAL — conviction MEDIUM（中性立場本身有中等把握；方向性把握低，需等 Q3 財報裁決）</p>
+<h2>Crux of debate</h2>
+<ol>
+<li><strong>Crux 1：forward EPS 24.72 元能否兌現。</strong> 多方 +58% 目標價完全建立在這個數字上；空方指出 H1 2026 diluted EPS 僅 7.27 元，若此 forward EPS 指 FY2026，H2 需達 H1 的 2.4 倍。但 yfinance forward EPS 口徑可能是下一會計年度（FY2027），雙方都沒有釐清。2026Q3 EPS 與法說指引（申報期限 11-14）會直接解決這個問題。</li>
+<li><strong>Crux 2：負現金流屬於「成長期營運資金」還是「品質惡化」。</strong> TTM FCF -2,707 億、AR YoY +81% 高於營收 +62.4%、一年內到期債務佔 81%。Q3 的 OCF 方向、存貨與應收週轉天數，以及短債是否順利續貸，是可驗證的分水嶺。</li>
+<li><strong>Crux 3：毛利率能否隨規模回升。</strong> 季毛利率在 4.4%–7.4% 間震盪。Q3 若回到 6.5% 以上，代表規模效益成立；若停在 5% 左右，代表成長主要靠量，而且被利息（2026Q2 年化約 292 億）侵蝕。</li>
+</ol>
+<h2>Where the bull is right</h2>
+<ul>
+<li>營收動能有日期、有來源而且強勁：10 月 YoY +117.6%、1–10 月 +99.5%，管理層表示 11、12 月 AI 伺服器出貨會優於 10 月。</li>
+<li>同業數據（Gigabyte +136.7%、Wiwynn +80.9%、鴻海 Q3 +47%）佐證產業需求，不是單一公司現象。</li>
+<li>營業利益率大致持平（3.59% vs 3.71%），2026Q2 歸屬母公司淨利 YoY +128%，獲利絕對金額確實放大。</li>
+<li>中長期技術結構（MA50 &gt; MA200、12m +17.9%）仍完好，MACD 柱狀體負值正在收斂。</li>
+</ul>
+<h2>Where the bear is right</h2>
+<ul>
+<li>現金流、短債牆、稀釋（加權股數 +14.5%）、NCI 吸收 53% 合併淨利、股利由舉債支應，都是可追溯的 fundamentals.md 數據，而多方的反駁大多是解釋而非證據。</li>
+<li>多方的「低於同業中位數」用的是估計值，不是實際資料，安全邊際論述偏弱。</li>
+<li>分析師過去 8 季中有 5 季不及預期（平均 -1.6%），100% 買進的共識不足以作為支撐。</li>
+<li>短線結構偏空：MA20 &lt; MA50 死亡交叉已經成立，反彈量僅 10 日均量的 0.66 倍，價格仍在 MA20 下方。</li>
+<li>不過空方的 87 元極端情境假設 EBITDA 持平、EV/EBITDA 6x，與營收翻倍的事實不一致，屬於壓力測試，不是基準情境。</li>
+</ul>
+<h2>Net verdict (3-5 sentences)</h2>
+<p>多方掌握的是需求面的硬數據，空方掌握的是資產負債表與現金流的硬數據，兩邊的證據品質大致相當，差別在於多方的估值上檔高度依賴一個口徑未釐清的 forward EPS。2026Q3 財報會在數日內公布，這是會同時檢驗三個關鍵問題的二元事件，在財報前偏向任一方都等於押注結果，而不是根據證據下判斷。短線技術面偏弱、量縮反彈，也不支持在財報前提前布局。結論：維持 NEUTRAL，等 Q3 數據再決定方向；需求面的強度讓我們不建議放空，現金流風險則讓我們不建議追多。</p>
+<h2>What would change the verdict</h2>
+<ul>
+<li><strong>Upside trigger</strong>：Q3 毛利率 ≥ 6.5%、OCF 轉正或明顯收斂、AR 增速回落到營收增速以下，而且股價收盤站上 MA50 184.06 並伴隨放量，可轉為 LONG（MEDIUM）。</li>
+<li><strong>Downside trigger</strong>：Q3 EPS 明顯低於 forward 隱含路徑、OCF 再度大幅為負或傳出新增增資，或股價收盤跌破 168.00（下看 164 / 152），可轉為 SHORT_OR_AVOID。</li>
+<li><strong>Key data point to monitor</strong>：2026Q3 營業現金流與應收帳款週轉天數；其次是 12 月上旬公布的 11 月營收，用來驗證「優於 10 月」的說法。</li>
+</ul>
+<h2>Position-sizing guidance (qualitative, not advice)</h2>
+<p>中性立場：財報前不建議建立新的方向性部位；已持有者可以維持，但部位不宜超過正常的一半，並以 168 作為風險參考。財報確認多方條件後，可以先用約 1/2 部位進場，等技術面突破 MA50 再加碼。高波動（ATR 約 4.7%、年化波動 51%）本身就要求縮小每一筆部位的規模。</p>
+<h2>Time horizon</h2>
+<p>決策窗口為數日到 2 週（Q3 財報與法說）；方向確立後，論點適用期間為 1–2 季，以 Q4 營收與 2027 指引作為後續檢驗點。</p>
+<p>INVESTMENT PLAN COMPLETE</p></div>
+    </details>
+
+    <details class="mb-4 border border-slate-200 rounded">
+      <summary class="bg-slate-50 px-4 py-2 font-semibold">交易提案 (Trader)</summary>
+      <div class="agent-prose p-4 text-sm"><p>FINAL TRANSACTION PROPOSAL: <strong>HOLD</strong></p>
+<h1>Trade proposal — 3231.TW as of 2026-11-12</h1>
+<h2>Direction</h2>
+<p>AVOID（無既有部位者不建議新建方向性倉位；若已有既有部位，可降半倉持有，見下方說明）</p>
+<h2>Setup</h2>
+<p>不提供進場價位。research manager 的結論是 NEUTRAL（中性，conviction MEDIUM），而且明確指出方向性把握低，須等 2026Q3 財報與法說（申報期限 11-14，數日內公布）裁決三個關鍵爭點：<br />
+1. forward EPS 24.72 元的會計年度口徑未釐清。<br />
+2. TTM FCF -2,707 億、AR YoY +81%、一年內到期債務佔 81%，現金流品質待驗證。<br />
+3. 毛利率能否從 4.4%–7.4% 區間回升至 6.5% 以上。</p>
+<p>技術面本身也不支持任何方向：中長期仍多（MA50 $184.06 &gt; MA200 $157.78，12m +17.9%），但短線已死亡交叉（MA20 &lt; MA50）、股價在 MA20/MA50 下方，11-05 跌破 $173.50 支撐後 11-06 急跌探至 $152.00，近三日反彈至 $174.50 但量能僅 10 日均量 0.66 倍，屬量縮反彈，尚未確認止跌。多空訊號在財報前互相矛盾，任何方向的進場都是在押注財報結果，而非依據已驗證的證據。</p>
+<h2>Sizing</h2>
+<p>既有部位者：不超過正常滿倉的一半，以 $168.00（11-05/11-11 盤中低點、近期支撐）作為風險參考；跌破 $168 應優先減碼而非加碼。<br />
+無既有部位者：0%，財報前不建倉。<br />
+Rationale：conviction MEDIUM（僅對「維持中性」有把握，對方向本身把握低）；ATR14 = $8.19（約股價 4.7%）；20 日年化波動 51.3%，屬高波動股，財報前貿然建立方向性部位的風險報酬不對稱。</p>
+<h2>Time horizon</h2>
+<p>等待事件：數日至 2 週（2026Q3 財報與法說公布）。財報後方向確立，論點適用期間延伸至 1–2 季，以 Q4 營收與 2027 年指引作後續驗證。</p>
+<h2>Trigger</h2>
+<p>Wait for 2026Q3 財報與法說（申報期限 11-14）。<br />
+- 轉多觸發：Q3 毛利率 ≥ 6.5%、OCF 轉正或明顯收斂、AR 增速回落到營收增速以下，且收盤站上 MA50 $184.06 並伴隨放量 → 可轉 LONG（MEDIUM conviction），屆時再依 R:R 規則（多方 Target：股價上行至多方 +58% 情境之部分兌現）另行設定進場/停損/目標。<br />
+- 轉空觸發：Q3 EPS 明顯低於 forward 隱含路徑、OCF 再度大幅轉負或傳出新增增資，或收盤跌破 $168.00（下看 $164.00 / $152.00）→ 可轉 SHORT 或 AVOID（加碼觀望）。<br />
+- 財報公布前：維持 AVOID / 既有部位降半倉，不主動進出。</p>
+<h2>Invalidation</h2>
+<p>本提案的前提是「財報前證據不足、技術面矛盾」。若財報提前公布或股價在財報前出現決定性突破（站穩 MA50 放量，或跌破 $168 加速探底），應立即重新評估，不應固守 AVOID。</p>
+<h2>Catalyst calendar</h2>
+<ul>
+<li>2026-11-14（法定申報期限前後）— 2026Q3 財報與法說，裁決 forward EPS 口徑、現金流品質、毛利率三大爭點。</li>
+<li>2026-12 上旬 — 11 月合併營收公布，驗證「11、12 月出貨優於 10 月」之管理層說法。</li>
+<li>2026Q4 後 — 2027 年指引，作為方向確立後的後續檢驗點。</li>
+</ul>
+<p>TRADE PROPOSAL COMPLETE</p></div>
+    </details>
+
+    <details class="mb-4 border border-slate-200 rounded">
+      <summary class="bg-slate-50 px-4 py-2 font-semibold">Phase 1 — 四 Analyst 報告</summary>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+        <div>
+          <h4 class="font-bold text-slate-700 mb-2">基本面 (Fundamentals)</h4>
+          <div class="agent-prose text-sm bg-slate-50 p-3 rounded"><h1>Fundamentals — 3231.TW 緯創 (WISTRON) as of 2026-11-12</h1>
+<p>資料截至 2026-11-11 (cache 更新 14:01 UTC)。最新已申報季度為 2026Q2 (2026-06-30)；2026Q3 財報尚未出現在資料中。金額單位統一為 <strong>億 TWD</strong>（1 億 = 1e8 TWD），未使用 B。</p>
+<h2>Executive summary</h2>
+<p>緯創 2025 年營收爆發成長 (FY2025 營收 21,865 億 TWD，YoY +108.4%)，2026Q2 營收 8,954 億 TWD (YoY +62.4%)，獲利同步放大，但毛利率由 2024 年 8.01% 壓縮到 2025 年 6.13%。現金流為本報告最大紅旗：FY2025 FCF -1,469 億 TWD、TTM FCF -2,707 億 TWD，淨負債由 1,801 億升至 4,721 億 TWD (YoY +162%)，且約 81% 總債務為一年內到期；估值帳面便宜 (trailing P/E 15.0x、forward P/E 7.1x、EV/EBITDA 8.6x)，但 forward EPS 24.7 元遠高於 TTM 11.6 元，估值高度依賴 2026 下半年 ramp 能否兌現，且 2026Q3 財報即將公布。</p>
+<h2>Revenue &amp; profitability</h2>
+<p><strong>年度趨勢（億 TWD）</strong></p>
+<table>
+<thead>
+<tr>
+<th>年度</th>
+<th>營收</th>
+<th>YoY</th>
+<th>毛利率</th>
+<th>營業利益率</th>
+<th>歸屬母公司淨利率</th>
+<th>歸屬母公司淨利</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2022</td>
+<td>9,846.2</td>
+<td>n/a</td>
+<td>7.08%</td>
+<td>2.79%</td>
+<td>1.13%</td>
+<td>111.6</td>
+</tr>
+<tr>
+<td>2023</td>
+<td>8,670.6</td>
+<td>-11.9%</td>
+<td>7.96%</td>
+<td>3.16%</td>
+<td>1.32%</td>
+<td>114.7</td>
+</tr>
+<tr>
+<td>2024</td>
+<td>10,492.6</td>
+<td>+21.0%</td>
+<td>8.01%</td>
+<td>3.71%</td>
+<td>1.66%</td>
+<td>174.5</td>
+</tr>
+<tr>
+<td>2025</td>
+<td>21,865.2</td>
+<td>+108.4%</td>
+<td>6.13%</td>
+<td>3.59%</td>
+<td>1.25%</td>
+<td>274.1</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>3 年營收 CAGR (2022→2025): <strong>+30.5%</strong>。但 2023 年下滑後 2024 年才恢復，2025 年一次性跳升，屬 AI 伺服器需求爆發型成長，不是穩定的複合成長曲線。</li>
+<li>2025 毛利率 6.13%，較 2024 下降約 1.9 個百分點，顯示規模放大時 ODM 毛利率被壓縮（伺服器組裝比重上升）。營業利益率 3.59% 幾乎持平，因 R&amp;D 與 SG&amp;A 的費用率很低 (2025 合計約 2.5% 營收)，獲利主要受毛利率左右。</li>
+<li>2025 R&amp;D 313.7 億 (YoY +20.8%)，SG&amp;A 240.6 億。</li>
+</ul>
+<p><strong>季度趨勢（億 TWD）</strong></p>
+<table>
+<thead>
+<tr>
+<th>季度</th>
+<th>營收</th>
+<th>YoY</th>
+<th>毛利率</th>
+<th>營業利益率</th>
+<th>歸屬母公司淨利</th>
+<th>淨利 YoY</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2025Q2</td>
+<td>5,512.9</td>
+<td>n/a</td>
+<td>4.44%</td>
+<td>1.96%</td>
+<td>65.0</td>
+<td>n/a</td>
+</tr>
+<tr>
+<td>2025Q3</td>
+<td>5,678.1</td>
+<td>n/a</td>
+<td>7.39%</td>
+<td>4.78%</td>
+<td>74.1</td>
+<td>n/a</td>
+</tr>
+<tr>
+<td>2025Q4</td>
+<td>7,209.4</td>
+<td>n/a</td>
+<td>5.62%</td>
+<td>3.53%</td>
+<td>81.7</td>
+<td>n/a</td>
+</tr>
+<tr>
+<td>2026Q1</td>
+<td>8,463.0</td>
+<td>+144%*</td>
+<td>5.21%</td>
+<td>3.44%</td>
+<td>96.3</td>
+<td>n/a</td>
+</tr>
+<tr>
+<td>2026Q2</td>
+<td>8,954.4</td>
+<td>+62.4%</td>
+<td>5.66%</td>
+<td>3.74%</td>
+<td>148.3</td>
+<td>+128%</td>
+</tr>
+</tbody>
+</table>
+<p>* 2025Q1 營收由 FY2025 減去其餘三季推算 (約 3,465 億)，非直接數字。</p>
+<ul>
+<li>2026Q2 營收 YoY +62.4%、歸屬母公司淨利 YoY +128%，與 yfinance info 的 revenueGrowth 0.624、earningsQuarterlyGrowth 1.28 吻合。</li>
+<li>季毛利率在 4.4%–7.4% 之間震盪，無穩定上升趨勢；成長主要來自量，而非單位獲利改善。</li>
+<li><strong>非控制權益 (NCI) 吸收大量獲利</strong>: FY2025 合併淨利 577.7 億，其中 NCI 303.6 億 (約 53%)，歸屬母公司僅 274.1 億。TTM 歸屬母公司淨利 400.3 億。股東可實際享有的獲利需以歸屬母公司為準。</li>
+<li>業務分部: yfinance <code>longBusinessSummary</code> 為舊版泛用描述 (PC、消費電子、汽車電子、醫療器材)，<strong>未反映目前 AI 伺服器 ODM 的實際業務結構</strong>，分部營收比重資料缺口。本報告以 repo 內 universe 分類 (<code>tw_server</code>) 與 render 標籤「AI server ODM」作為業務定位參考。</li>
+</ul>
+<p><strong>ROE / ROIC（自行推算）</strong><br />
+- ROE (FY2025，歸屬母公司淨利 / 期初期末平均權益 1,636 億): <strong>約 16.8%</strong>。yfinance <code>returnOnEquity</code> 為 30.9%，口徑不同 (疑為 TTM 或含 NCI)，本報告採自行推算值。<br />
+- ROIC (FY2025 近似，EBIT 920.8 億 × (1 - 稅率 24.2%) = NOPAT 697.6 億 / 期末投入資本約 4,368 億 (總債務 + 權益含 NCI - 現金))：<strong>約 16%</strong>。</p>
+<h2>Cashflow &amp; balance sheet</h2>
+<p><strong>現金流（億 TWD）</strong></p>
+<table>
+<thead>
+<tr>
+<th>期間</th>
+<th>營業現金流 (OCF)</th>
+<th>資本支出 (Capex)</th>
+<th>FCF</th>
+<th>FCF / 淨利</th>
+<th>FCF 利潤率</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FY2022</td>
+<td>534.4</td>
+<td>-144.5</td>
+<td>389.9</td>
+<td>3.5x</td>
+<td>4.0%</td>
+</tr>
+<tr>
+<td>FY2023</td>
+<td>482.2</td>
+<td>-137.6</td>
+<td>344.5</td>
+<td>3.0x</td>
+<td>4.0%</td>
+</tr>
+<tr>
+<td>FY2024</td>
+<td>57.5</td>
+<td>-178.2</td>
+<td>-120.7</td>
+<td>-0.7x</td>
+<td>-1.2%</td>
+</tr>
+<tr>
+<td>FY2025</td>
+<td>-1,058.1</td>
+<td>-411.1</td>
+<td>-1,469.2</td>
+<td>-5.4x</td>
+<td>-6.7%</td>
+</tr>
+<tr>
+<td>TTM (2025Q3–2026Q2)</td>
+<td>-2,190.7</td>
+<td>-516.2</td>
+<td>-2,706.9</td>
+<td>不適用</td>
+<td>-8.9%</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>FCF / 淨利 在 2025 年為 -5.4x，遠低於健康門檻 0.9；TTM OCF 連續四季有三季為負 (2025Q3、2026Q1、2026Q2)。</li>
+<li>負現金流主因 <strong>營運資金大幅膨脹</strong>：2026Q2 存貨 5,329 億 (YoY +53%)、應收帳款 5,742 億 (YoY +81%)、應付帳款 4,347 億 (YoY +50%)。AR 增速高於營收增速，代表收款條件或客戶集中度壓力，需追蹤。</li>
+<li>資本支出 FY2025 411.1 億 (YoY +131%)，為 D&amp;A (129.4 億) 的 3.2 倍，屬擴產期；資本支出占營收仍僅約 1.9%，主因為 ODM 輕資產特性。</li>
+</ul>
+<p><strong>資產負債表（億 TWD，2026Q2 期末）</strong></p>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>2026Q2</th>
+<th>2025Q2</th>
+<th>變化</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>現金及短期投資</td>
+<td>2,749.2</td>
+<td>1,011.3</td>
+<td>+172%</td>
+</tr>
+<tr>
+<td>總債務</td>
+<td>6,059.4</td>
+<td>2,754.2</td>
+<td>+120%</td>
+</tr>
+<tr>
+<td>淨負債</td>
+<td>4,721.0</td>
+<td>1,800.7</td>
+<td>+162%</td>
+</tr>
+<tr>
+<td>一年內到期債務</td>
+<td>4,884.2</td>
+<td>2,159.9</td>
+<td>+126%</td>
+</tr>
+<tr>
+<td>總資產</td>
+<td>15,731.1</td>
+<td>8,898.1</td>
+<td>+77%</td>
+</tr>
+<tr>
+<td>歸屬母公司權益</td>
+<td>1,940.0</td>
+<td>1,495.9</td>
+<td>+30%</td>
+</tr>
+<tr>
+<td>含 NCI 總權益</td>
+<td>2,772.7</td>
+<td>2,052.0</td>
+<td>+35%</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>流動比率 1.18 (2025Q2 為 1.23)，速動比率 0.72 (yfinance)。</li>
+<li>總債務 / 含 NCI 權益 (D/E) 218.5%，對歸屬母公司權益為 312%。</li>
+<li>淨負債 / TTM EBITDA (1,383.7 億，為季度 EBITDA 加總) = <strong>約 3.4x</strong>；yfinance info 的 EBITDA 為 1,281 億，兩者差異未說明，以季度加總為準。</li>
+<li><strong>一年內到期債務佔總債務 81%</strong> (4,884 億)，短期再融資需求高，若 FCF 持續為負，流動性風險會被放大。</li>
+<li>利息負擔上升: FY2025 利息費用 158.2 億，EBIT / 利息 = 5.8x；2026Q2 淨利息支出 72.9 億，年化約 292 億，較 FY2025 淨利息 128.0 億明顯增加。</li>
+<li>現金 (1,232 億 cash) 與現金及短期投資 (2,749 億) 口徑有別，yfinance info <code>totalCash</code> 為 1,292 億，取用時需標明口徑。</li>
+</ul>
+<h2>Capital allocation &amp; insider signal</h2>
+<p><strong>資本配置</strong><br />
+- <strong>股利</strong>: 2025 年現金股利支付 110.0 億 (佔歸屬母公司淨利 40%)。yfinance 現行 dividendRate 5.5 元 / 殖利率 3.22%，除息日 2026-07-08，依 3.43B 股估算需支出約 189 億。<strong>2025 年股利由 FCF 支應不足 (FCF -1,469 億)，實際靠舉債融資</strong>，股利覆蓋率以 FCF 計為負。yfinance <code>payoutRatio</code> 顯示 0.0，與實際不符，不採用。<br />
+- <strong>買回</strong>: 無（FY2021–2025 repurchase 皆為 None 或 0）。<br />
+- <strong>增資 / 稀釋</strong>: 2025Q2 現金增資 271.3 億，股本由 314.4 億升至 318.0 億 (面額口徑)。稀釋加權股數 2025Q2 29.70 億股 → 2026Q2 34.01 億股，<strong>YoY +14.5%</strong>。info sharesOutstanding 為 34.30 億股，與資產負債表 2026Q2 普通股 31.8 億股不一致，推測為 2026 年中配股或增資後的股數，yfinance 未說明，需以公司公告確認。<br />
+- 資本支出擴大 (FY2025 +131%)，目前以負債與增資支應，而非內部現金流。</p>
+<p><strong>內部人與持股</strong><br />
+- yfinance <code>insider</code> (近 6 個月交易) 回傳空陣列：<strong>資料缺口，無法判讀淨買賣</strong>，不推定為「無交易」。<br />
+- 內部人持股 4.77%（<code>major_holders</code>）；機構持股 33.77%，機構數 250 家（<code>major_holders</code>），<code>inst_holders</code> 明細回傳空陣列，資料不完整。<br />
+- 內部人淨買賣金額 / 市值 比率：n/a (資料缺口)。</p>
+<h2>Valuation</h2>
+<p><strong>價格與估值（2026-11-11 cache）</strong><br />
+- 收盤價 174.5 元，前收 171.0 元，日變動約 +2.0%。<br />
+- 市值 5,985.1 億 TWD (price 174.5 × 股數 34.30 億)。EV 11,038 億 TWD (yfinance 口徑)。<br />
+- 52 週區間 122.5–206.0 元；50 日均線 184.63 元 (股價低於 5.5%)；200 日均線 158.06 元 (股價高於 10.4%)；52 週漲幅 +23.0%。<br />
+- 3 個月平均成交量 4,276 萬股，約 74.6 億 TWD/日，流動性充足。beta 0.745。</p>
+<p><strong>估值倍數</strong><br />
+- Trailing P/E 15.0x (TTM EPS 11.63 元)。Forward P/E 7.06x (forward EPS 24.72 元)。PEG 0.90。<br />
+- P/B 2.86x (info priceToBook；bookValue 61.0 元/股以 31.8 億股計，與市值股數口徑不同)。<br />
+- EV/EBITDA 8.6x。EV/Revenue 0.36x，P/S (TTM) 0.20x。<br />
+- P/FCF：FCF 為負，不適用 (n/a)。<br />
+- EPS 交叉驗證: TTM EPS 11.63 × 3.43 億股 ≈ 398.9 億，與 TTM 歸屬母公司淨利 400.3 億吻合。</p>
+<p><strong>分析師共識（16 位）</strong><br />
+- 目標價平均 276.3 元 (中位數 277.5、高 400、低 188)，相對現價 +58.3%。<br />
+- recommendationMean 1.31 (strong_buy)。<br />
+- 注意 forward EPS 24.72 元 vs H1 2026 實際 diluted EPS 7.27 元 (Q1 2.91 + Q2 4.36)，隱含 H2 需約 17.5 元，為 H1 的 2.4 倍。目標價隱含的成長假設極為積極。</p>
+<p><strong>與同業估計中位數比較</strong>：下表的 sector median 為本報告依台灣電子 ODM 族群之一般水準的估計值，<strong>非 yfinance 資料</strong>，僅供參考。</p>
+<h2>Key catalysts</h2>
+<ul>
+<li><strong>2026Q3 財報</strong>: 台灣 Q3 財報申報期限為 2026-11-14，資料截至 11/11 尚未出現 Q3 數字。Q3 為本次最關鍵的即時檢驗點：需檢視毛利率能否回到 7% 以上、OCF 是否轉正、存貨與應收是否回落、一年內到期債務是否續貸。</li>
+<li><strong>yfinance 歷史 EPS 驚喜</strong>: 近 8 季平均 -1.6%，8 季中 5 季低於預期。最近一季 2026Q2 超預期 +16.2%，前一季 2025Q4 不及預期 -19.0% (earnings_dates 口徑)。</li>
+<li><strong>EPS 口徑</strong>: earnings_dates 的 2026Q2 Reported EPS 4.72 元，為公司基本 EPS (148.3 / 31.4 億股)；quarterly 報表的 diluted EPS 為 4.36 元。預估與比較時需統一口徑。</li>
+<li><strong>管理層指引</strong>: yfinance 無資料 (n/a)。</li>
+<li><strong>下一個 earnings 日期</strong>: yfinance <code>earnings_dates</code> 最新一列為 2026-08-06 (已過)，下一季 (Q3'26) 日期未列，依台灣申報期限推估為 2026-11 中，需以 MOPS 公告為準。</li>
+<li><strong>股利</strong>: 除息日 2026-07-08 (已過)，下一次配息需待公告。</li>
+</ul>
+<h2>Metrics table</h2>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Latest</th>
+<th>YoY</th>
+<th>Sector median (estimate)</th>
+<th>Verdict</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>營收 (億 TWD, FY2025)</td>
+<td>21,865.2</td>
+<td>+108.4%</td>
+<td>n/a</td>
+<td>高成長，但集中於 AI 伺服器週期</td>
+</tr>
+<tr>
+<td>營收 (億 TWD, 2026Q2)</td>
+<td>8,954.4</td>
+<td>+62.4%</td>
+<td>n/a</td>
+<td>強</td>
+</tr>
+<tr>
+<td>毛利率 (FY2025)</td>
+<td>6.13%</td>
+<td>-1.9 pt</td>
+<td>約 5%–8%</td>
+<td>偏低，ODM 常態</td>
+</tr>
+<tr>
+<td>營業利益率 (FY2025)</td>
+<td>3.59%</td>
+<td>-0.1 pt</td>
+<td>約 3%–4%</td>
+<td>中性</td>
+</tr>
+<tr>
+<td>歸屬母公司淨利率 (FY2025)</td>
+<td>1.25%</td>
+<td>-0.4 pt</td>
+<td>約 2%–3%</td>
+<td>偏低，NCI 吸收約一半</td>
+</tr>
+<tr>
+<td>ROE (自行推算, FY2025)</td>
+<td>16.8%</td>
+<td>n/a</td>
+<td>約 12%–15%</td>
+<td>尚可</td>
+</tr>
+<tr>
+<td>ROIC (近似, FY2025)</td>
+<td>約 16%</td>
+<td>n/a</td>
+<td>約 10%</td>
+<td>尚可</td>
+</tr>
+<tr>
+<td>OCF (億 TWD, FY2025)</td>
+<td>-1,058.1</td>
+<td>n/a</td>
+<td>正值</td>
+<td>紅旗</td>
+</tr>
+<tr>
+<td>FCF (億 TWD, TTM)</td>
+<td>-2,706.9</td>
+<td>n/a</td>
+<td>正值</td>
+<td>紅旗</td>
+</tr>
+<tr>
+<td>FCF / 淨利 (FY2025)</td>
+<td>-5.4x</td>
+<td>n/a</td>
+<td>&gt;0.9</td>
+<td>紅旗</td>
+</tr>
+<tr>
+<td>淨負債 (億 TWD, 2026Q2)</td>
+<td>4,721.0</td>
+<td>+162%</td>
+<td>視情況</td>
+<td>紅旗</td>
+</tr>
+<tr>
+<td>淨負債 / TTM EBITDA</td>
+<td>3.4x</td>
+<td>n/a</td>
+<td>約 1.5x–2.5x</td>
+<td>偏高</td>
+</tr>
+<tr>
+<td>流動比率 (2026Q2)</td>
+<td>1.18</td>
+<td>-0.05</td>
+<td>約 1.3</td>
+<td>中性偏弱</td>
+</tr>
+<tr>
+<td>D/E (含 NCI, 2026Q2)</td>
+<td>218.5%</td>
+<td>+84 pt (2025Q2 為 134%)</td>
+<td>約 100%</td>
+<td>偏高</td>
+</tr>
+<tr>
+<td>一年內到期債務 / 總債務</td>
+<td>80.6%</td>
+<td>n/a</td>
+<td>約 30%–40%</td>
+<td>紅旗</td>
+</tr>
+<tr>
+<td>資本支出 (億 TWD, FY2025)</td>
+<td>411.1</td>
+<td>+131%</td>
+<td>不適用</td>
+<td>擴產期</td>
+</tr>
+<tr>
+<td>股利殖利率</td>
+<td>3.22%</td>
+<td>n/a</td>
+<td>約 3%</td>
+<td>中性，未由 FCF 支應</td>
+</tr>
+<tr>
+<td>稀釋加權股數 (億股, 2026Q2)</td>
+<td>34.01</td>
+<td>+14.5%</td>
+<td>不適用</td>
+<td>稀釋</td>
+</tr>
+<tr>
+<td>內部人淨買賣</td>
+<td>n/a (資料缺口)</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>無法判讀</td>
+</tr>
+<tr>
+<td>Trailing P/E</td>
+<td>15.0x</td>
+<td>n/a</td>
+<td>約 18x–22x</td>
+<td>偏低</td>
+</tr>
+<tr>
+<td>Forward P/E</td>
+<td>7.1x</td>
+<td>n/a</td>
+<td>約 15x–18x</td>
+<td>低，但依賴預估</td>
+</tr>
+<tr>
+<td>EV/EBITDA</td>
+<td>8.6x</td>
+<td>n/a</td>
+<td>約 10x–12x</td>
+<td>偏低</td>
+</tr>
+<tr>
+<td>P/B</td>
+<td>2.86x</td>
+<td>n/a</td>
+<td>約 2x–3x</td>
+<td>中性</td>
+</tr>
+<tr>
+<td>P/S (TTM)</td>
+<td>0.20x</td>
+<td>n/a</td>
+<td>約 0.4x</td>
+<td>低</td>
+</tr>
+<tr>
+<td>P/FCF</td>
+<td>n/a (FCF 為負)</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>n/a</td>
+</tr>
+<tr>
+<td>分析師目標價均值 (相對現價)</td>
+<td>276.3 元 (+58.3%)</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>分析師偏多，假設積極</td>
+</tr>
+</tbody>
+</table>
+<h2>Red flags</h2>
+<ul>
+<li><strong>現金流為負且惡化</strong>：FY2025 OCF -1,058 億、FCF -1,469 億；TTM FCF -2,707 億。FCF / 淨利 -5.4x，遠低於健康門檻。</li>
+<li><strong>短期債務集中</strong>：一年內到期債務 4,884 億，佔總債務 81%；總債務 YoY +120%，淨負債 YoY +162%。</li>
+<li><strong>營運資金膨脹</strong>：存貨 (YoY +53%)、應收 (YoY +81%)、應付 (YoY +50%) 同步擴張，AR 增速高於營收增速。</li>
+<li><strong>股利未由現金流支應</strong>：2025 年股利 110 億由舉債支應；2026 年預估現金股利約 189 億，FCF 無覆蓋能力。</li>
+<li><strong>股權稀釋</strong>：稀釋加權股數 YoY +14.5%，2025 年現金增資 271 億。</li>
+<li><strong>NCI 吸收近半獲利</strong>：FY2025 NCI 303.6 億 / 合併淨利 577.7 億 (53%)，歸屬母公司 EPS 只反映約一半的合併獲利。</li>
+<li><strong>毛利率壓縮</strong>：FY2025 毛利率 6.13%，較 2024 下降 1.9 pt；季毛利率在 4.4%–7.4% 之間，無穩定改善。</li>
+<li><strong>估值依賴預估</strong>：forward EPS 24.72 元遠高於 H1 實際 7.27 元，隱含 H2 2026 約 2.4 倍的 ramp，任何 Q3 或 Q4 不及預期都會直接衝擊 forward P/E 的可信度。</li>
+<li><strong>利息負擔上升</strong>：2026Q2 淨利息支出年化約 292 億，較 FY2025 的 128 億大增。</li>
+<li><strong>內部人與機構資料不完整</strong>：insider 與 inst_holders 皆為空陣列，無法判讀內部人買賣。</li>
+<li><strong>資料完整性提醒（數據品質）</strong>：</li>
+<li>本次首次抓取 <code>3231.TW info</code> 時，回傳的是 2356.TW (英業達) 的 payload (symbol、地址、市值均不同)，重抓後為正確的 3231.TW。本報告所有數字均已以 TTM 季度加總與 info 交叉核對 (營收 30,304.9 億、淨利 400.3 億吻合)。</li>
+<li>同日一次抓取的 <code>fast_info</code> 回傳 last_price 1,680 元，為 174.5 的 10 倍，疑為 cnyes 單位錯誤；重抓後為 174.5，與 info 一致。採用 174.5。</li>
+<li><code>payoutRatio</code> 0.0、<code>totalCash</code> 與 EBITDA 口徑與季度報表不一致，已於內文說明，未採用。</li>
+<li>2026Q3 財報尚未納入資料，本報告所有 "最新" 數字截至 2026Q2。</li>
+</ul>
+<p>FUNDAMENTALS REPORT COMPLETE</p></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-slate-700 mb-2">技術面 (Market / Technical)</h4>
+          <div class="agent-prose text-sm bg-slate-50 p-3 rounded"><h1>Technical — 3231.TW (緯創) as of 2026-11-12</h1>
+<blockquote>
+<p>資料注意事項：本次請求日期為 2026-11-12，但可用最新 bar 為 2026-11-11 收盤，無 11-12 資料。<code>yf</code> 工具對 Yahoo 回傳 403（CONNECT tunnel failed），fast_info 為 cache 資料（cached_at 2026-11-11T14:00 UTC）。<code>ta</code> 指標數值可正常輸出，但其底層資料來源與 yf 相同，請視為 2026-11-11 收盤版本。</p>
+</blockquote>
+<h2>Snapshot</h2>
+<p>Price $174.50, MA20 $181.15, MA50 $184.06, MA200 $157.78, RSI14=45.0, MACD hist=-1.67</p>
+<h2>Trend</h2>
+<p>中長期仍偏多：MA50 ($184.06) 位於 MA200 ($157.78) 之上，股價高於 MA200 達 +10.6%，6m +25.5%、12m +17.9%。</p>
+<p>短線轉弱：股價位於 MA20 與 MA50 之下（分別 -3.7%、-5.2%），MA20 已在 MA50 之下，短期均線死亡交叉已成立（非接近中，而是已發生）。自 2026-08-14 高點 $206.00 之後出現連續低點下移（09-07 $200.50、10-21 $199.50 為逐步降低的反彈高點），10-15 支撐 $173.50 於 11-05 跌破（低點 $168.00、收盤 $168.50），11-06 盤中探到 $152.00 後急跌，收盤 $160.00，為近期 bar 資料中最深回檔。11-09、11-10、11-11 三日自 $164.00 低點小幅反彈至 $174.50，但仍在 MA20 下方、趨勢強度判定為「中期上升趨勢中的短線下跌修正，尚未止跌確認」。</p>
+<h2>Momentum</h2>
+<ul>
+<li>MACD：線 -4.24 低於訊號線 -2.57，柱狀體 -1.67 為負。柱狀體自 11-06 低點 -2.94 連三日收斂（-2.75、-2.31、-1.67），屬負值收縮，動能下滑速度減緩，但尚未翻正。MACD 仍在零軸下方。</li>
+<li>RSI14 = 45.0，中性偏弱。11-06 曾觸及 29.55（超賣區），之後回升至 45 區間。</li>
+<li>報酬率：1m -7.9%、3m -9.6%、6m +25.5%、12m +17.9%。近一季為負，半年與一年為正，多空訊號分歧。</li>
+<li>BB %B = 0.33，位於中軌（181.15）與下軌（161.89）之間偏下半部，未達超賣（&lt;0）。</li>
+</ul>
+<h2>Key levels</h2>
+<ul>
+<li>Resistance:</li>
+<li>$178.00（2026-09-24 前支撐，已跌破，現為上方壓力）</li>
+<li>$181.15（MA20，動態壓力）</li>
+<li>$184.06（MA50，動態壓力）</li>
+<li>$199.50（2026-10-21 local high）</li>
+<li>$200.50（2026-09-07 local high）</li>
+<li>$201.00（2026-06-03 local high）</li>
+<li>$206.00（2026-08-14 local high，52w 高）</li>
+<li>Support:</li>
+<li>$173.50（2026-10-15 local low，11-05 已跌破，目前 $174.50 僅高出 $1.00，站回尚不穩）</li>
+<li>$172.50（2026-08-25 local low）</li>
+<li>$168.00（11-05 與 11-11 盤中低點，近期跌破後回測低點）</li>
+<li>$164.00（11-09 盤中低點）</li>
+<li>$152.00（11-06 盤中低點，近期最低）</li>
+<li>$139.00（2026-07-14 / 07-17 local low）</li>
+<li>Stop-loss suggestion (logical, not advice): below $168.00（最近一次跌破 $173.50 支撐後之回測低點；距現價約 $6.50，約 0.8 ATR）。較寬參考為 below $152.00（11-06 低點，距現價約 $22.50，約 2.7 ATR）。</li>
+</ul>
+<h2>Volatility profile</h2>
+<p>ATR14 = $8.19，約佔股價 4.7%，即日內預期波動約 ±$8.19。以 20d 年化波動 51.3% 換算，日標準差約 3.2%（約 $5.6），屬高波動股。部位規模建議：以 ATR 或年化波動換算停損距離，若採 $168 停損，每單位風險約 $6.50，倉位需相應縮小，避免以高波動股做重倉。</p>
+<h2>Setup</h2>
+<p><strong>偏空（短線）／中期多頭結構待修復</strong>。型態：自 08-14 高點 $206.00 後形成「低點下移」之反彈高點序列，10-15 支撐 $173.50 跌破後出現放量急跌（11-06 量 47.49M，為視窗內最大量），隨後 11-09 至 11-11 反彈。</p>
+<p>確認條件（可視為轉多的觀察條件，非建議）：<br />
+- 收盤站穩 $181.15（MA20）並向上穿越 $184.06（MA50）。<br />
+- MACD 柱狀體翻正，MACD 線上穿訊號線。<br />
+- 反彈伴隨量能放大（11-11 量僅 20.03M，為 10d 均量 30.30M 的 0.66 倍，反彈量能偏弱）。</p>
+<p>轉空條件：收盤跌破 $168.00，下一關注 $164.00、$152.00。</p>
+<h2>Volume</h2>
+<ul>
+<li>最新量 20.03M（11-11）vs 10d 均量 30.30M：0.66 倍，反彈量縮。</li>
+<li>11-06 單日量 47.49M 為近期最大，為急跌主力量能。</li>
+<li>近期 10 日內上漲日量能（11-11 $174.50 收高）並未同步放大，量價配合不足。</li>
+</ul>
+<h2>Indicators table</h2>
+<table>
+<thead>
+<tr>
+<th>Indicator</th>
+<th>Value</th>
+<th>Reading</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Price (2026-11-11 收)</td>
+<td>174.50</td>
+<td>中性偏弱</td>
+</tr>
+<tr>
+<td>MA20</td>
+<td>181.15</td>
+<td>價格在下方 (-3.7%)，短期壓力</td>
+</tr>
+<tr>
+<td>MA50</td>
+<td>184.06</td>
+<td>價格在下方 (-5.2%)，MA20 &lt; MA50 短期死叉已成立</td>
+</tr>
+<tr>
+<td>MA200</td>
+<td>157.78</td>
+<td>價格在上方 (+10.6%)，長期趨勢仍多</td>
+</tr>
+<tr>
+<td>MA50 vs MA200</td>
+<td>184.06 vs 157.78</td>
+<td>多頭排列（MA50 &gt; MA200）</td>
+</tr>
+<tr>
+<td>RSI14</td>
+<td>45.0</td>
+<td>中性偏弱（11-06 曾觸及 29.5 超賣）</td>
+</tr>
+<tr>
+<td>MACD</td>
+<td>-4.24</td>
+<td>零軸下方，弱勢</td>
+</tr>
+<tr>
+<td>MACD signal</td>
+<td>-2.57</td>
+<td>MACD 位於訊號線下方</td>
+</tr>
+<tr>
+<td>MACD hist</td>
+<td>-1.67</td>
+<td>負值收縮（自 -2.94 收斂），下跌動能減緩但未翻正</td>
+</tr>
+<tr>
+<td>BB %B</td>
+<td>0.33</td>
+<td>中軌與下軌之間，未超賣</td>
+</tr>
+<tr>
+<td>BB 上軌 / 下軌</td>
+<td>200.41 / 161.89</td>
+<td>上軌為遠端壓力</td>
+</tr>
+<tr>
+<td>ATR14</td>
+<td>8.19</td>
+<td>約 4.7% 股價，高波動</td>
+</tr>
+<tr>
+<td>20d 年化波動</td>
+<td>51.3%</td>
+<td>高波動，部位需縮小</td>
+</tr>
+<tr>
+<td>1m return</td>
+<td>-7.9%</td>
+<td>短線弱</td>
+</tr>
+<tr>
+<td>3m return</td>
+<td>-9.6%</td>
+<td>短線弱</td>
+</tr>
+<tr>
+<td>6m return</td>
+<td>+25.5%</td>
+<td>中期強</td>
+</tr>
+<tr>
+<td>12m return</td>
+<td>+17.9%</td>
+<td>中長期強</td>
+</tr>
+<tr>
+<td>52w 高 / 距離</td>
+<td>206.00 / -15.3%</td>
+<td>距高點仍有空間</td>
+</tr>
+<tr>
+<td>52w 低 / 距離</td>
+<td>122.50 / +42.4%</td>
+<td>距低點仍有距離</td>
+</tr>
+<tr>
+<td>量能 (11-11 vs 10d 均量)</td>
+<td>20.03M / 30.30M = 0.66x</td>
+<td>反彈量縮，確認度不足</td>
+</tr>
+</tbody>
+</table>
+<p>MARKET REPORT COMPLETE</p></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-slate-700 mb-2">新聞 (News)</h4>
+          <div class="agent-prose text-sm bg-slate-50 p-3 rounded"><h1>News — 3231.TW (緯創 Wistron) as of 2026-11-12</h1>
+<p>資料說明：yfinance news 端點本次回傳 proxy 403 (CONNECT tunnel failed)，無法取得原始新聞清單，本報告改以 WebSearch 補足。公司基本資料 (<code>info</code>) 可用，價格為延遲報價 (快取時間 2026-11-11)。搜尋結果未發現 2026-11-12 當日公告，故資訊截止於 2026-11-11。</p>
+<h2>Top company-specific headlines (last 14d)</h2>
+<ul>
+<li>2026-11-06 — 10 月營收 4,026.15 億元，月增 5.7%、年增 117.6%；前 10 月累計 32,900 億元，年增 99.5% (TechNews 2026-11-06；Digitimes 2026-11-09 轉述)。Impact: bullish。AI 伺服器需求強勁，營收動能延續，為本期最強正面訊號。</li>
+<li>2026-11-06 — 管理層表示 11、12 月 AI 伺服器出貨動能將優於 10 月；筆電 2026 Q4 預期季減兩位數 (uanalyze 電子五哥營收報導)。Impact: mixed。AI 伺服器展望正面，但 PC 業務持續下滑。</li>
+<li>2026-11-06 — 子公司緯創資通 (Wistron ITS) 公告第三季獲利、毛利、EPS 皆創歷史新高 (Digitimes 公司 tag 頁)。Impact: neutral。子公司層級訊號，對母公司影響有限。</li>
+<li>2026-09-07/08 — 緯創以 GDR 形式發行上限 2.5 億股普通股 (約 2,500 萬單位)，單位價 US$58.88 (單一部落格來源，數字待驗證)；股價隨即重挫，Invezz 報導當日下跌約 5%，並提及「折價售股、稀釋」。Impact: bearish (短期)。新增股本稀釋壓抑股價，但募資用於 AI 伺服器產能擴充。另有來源募資金額數字與 Invezz 不一致，須以公開資訊觀測站重大訊息為準。</li>
+<li>2026-08-04 — 2026 Q2 營收 8,954.43 億元，季增 5.8%、年增 62.4%；稅後純益 148.27 億元。管理層預期 PC 業務下半年雙位數衰退 (約 15%)，網通交換器全年成長超過 10 倍 (Mirror Media 2026-08-04；Digitimes)。Impact: bullish。整體成長強，但 PC 拖累與網通高成長為結構性變化。</li>
+<li>2026-05 — KGI 報告維持 Outperform，目標價 NT$225 (舊資料，僅供參考)。Impact: neutral。已過時，現價 NT$174.5 低於該目標。</li>
+</ul>
+<h2>Sector macro</h2>
+<ul>
+<li>2026-01-14 — 美國 Section 232 第一階段：先進 AI 晶片課徵 25% 關稅，範圍窄，不適用於美國資料中心用途；第二階段待貿易談判結束後可能加徵「顯著」關稅 (WebSearch: JDSupra / Mondaq 等，後續狀態未查到)。Impact on 電子代工 / AI 伺服器: 第二階段若落地，對台灣代工廠的成本與出貨地點有不確定性。目前屬於尾部風險。</li>
+<li>2026-02-20 — 美國最高法院以 6 比 3 裁定總統不得依 IEEPA 課徵關稅，Section 232 成為主要剩餘工具 (WebSearch 摘要)。Impact on 電子代工: 關稅路徑轉向 232，對 AI 伺服器的長期成本不確定性仍在。</li>
+<li>2026 年 (框架協議) — 台灣與美國就 Section 232 半導體關稅達成框架協議，赴美設廠者可享免稅進口額度 (WebSearch 摘要，細節未逐條驗證)。Impact on 緯創: 有利於美國與越南產能佈局，降低關稅衝擊。</li>
+<li>2026-09 — AI 資本支出是否持續的疑慮 (Invezz 2026-09-08 分析)。Impact on AI 伺服器 ODM: 若 hyperscaler CapEx 放緩，代工訂單會先受影響，是產業層面主要下行風險。</li>
+<li>利率環境 — 有來源指 Fed 目標區間 3.50%–3.75%，2026 年 12 月會議基準情境為維持不變 (單一預覽，非市場定價)。Impact: 低 beta 標的 (beta 0.745) 受影響有限。未查到 CME FedWatch 數據。</li>
+</ul>
+<h2>Peer signals</h2>
+<ul>
+<li>緯創 (本股) — 2026-10 年增 117.6%，為五大台廠 AI 伺服器 ODM 中第二高。</li>
+<li>Gigabyte (技嘉) — 2026-10 年增 136.7%，居五家之首 (MOPS 月報彙整，fourweekmba 轉述)。</li>
+<li>Wiwynn (緯穎 3711) — 2026-10 年增 80.9%；2026 Q3 營收年增 62.9%，預期 Q3 AI 伺服器出貨量首次追上一般伺服器，各約一半 (2026-11-09 公告，來源為 fourweekmba，數字需與公司公告交叉核對)。Impact on 緯創: 同業 AI 伺服器需求同步，正面。</li>
+<li>鴻海 (2317) — 2026 Q3 營收 3.03 兆元 (30,300 億元)，年增 47%，高於 LSEG 預估 (2026-10-05 公告)；預期 Q3 獲利與法說於 2026-11-12 召開 (單一來源 FourWeekMBA 轉述 Reuters，待驗證)。Impact on 緯創: 代工龍頭的 AI 機櫃出貨翻倍預期為產業正面訊號。</li>
+<li>廣達 (Quanta 2382) — 2026 Q3 營收與法說日期本次未查到，為資料缺口。PC 同業未取得可靠新聞。</li>
+</ul>
+<h2>Forward calendar (next 14d)</h2>
+<ul>
+<li>2026-11-12 — 鴻海 2026 Q3 財報與法說 (單一來源，待確認)。預期對 AI 伺服器同業情緒有正面或中性影響，需看 Q4 指引。</li>
+<li>2026-11 中下旬 (日期未查到) — 緯創 2026 Q3 法說會。2025 年同期為 11/12，今年日期待官方確認。預期重點：毛利率、AI 伺服器 2027 展望、網通成長、PC 下滑幅度、GDR 募資用途。影響: 高。</li>
+<li>2026-11 下旬 (日期未確認) — NVIDIA 財報，通常為 11 月下旬，是 AI 伺服器需求的重要先行指標。</li>
+<li>2026-12-09 — FOMC 利率決策 (會議日期 12/8–12/9，屬 14 日窗口外，列為參考)。</li>
+<li>2026-12 上旬 — 緯創 11 月營收公布 (依台灣規定於次月 10 日前)，窗口外。</li>
+<li>日期不明 — Section 232 第二階段關稅談判結果。</li>
+</ul>
+<h2>Net read</h2>
+<p>本期新聞整體偏多，淨傾向為 bullish，強度中等。最強的正面訊號是 10 月營收年增 117.6%、1–10 月累計年增 99.5%，以及管理層對 11–12 月 AI 伺服器動能優於 10 月的表態，同業 Gigabyte、Wiwynn、鴻海的數字也都印證 AI 伺服器需求仍在擴張。主要的負面因素有三項：9 月 GDR 增資帶來的股本稀釋 (股價因此承壓)、PC 業務預計下半年雙位數衰退，以及 Section 232 第二階段關稅與 AI CapEx 放緩的尾部風險。本期未取得 yfinance 原始新聞清單，且部分數字 (GDR 單位價、Wiwynn Q3 增幅、鴻海 11/12 法說) 來自單一來源，需於下一輪前交叉驗證。市場層面，股價 NT$174.5 落在 50 日均線 (184.6) 下方、200 日均線 (158.1) 上方；分析師平均目標價約 NT$276，評級 Strong Buy (16 位)，但 yfinance 財務數字顯示 TTM 營收 (約 3.03 兆元) 與官方累計數據不一致，判斷時應以公司公告為準。</p>
+<p>NEWS REPORT COMPLETE</p></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-slate-700 mb-2">情緒 (Sentiment)</h4>
+          <div class="agent-prose text-sm bg-slate-50 p-3 rounded"><h1>Sentiment — 3231.TW (緯創) as of 2026-11-12</h1>
+<h2>Analyst consensus</h2>
+<p>16 家: 5 strong buy / 11 buy / 0 hold / 0 sell (買方共識 100%)。<br />
+近 3 個月趨勢: 總家數由 17 降至 16, 強力買進由 6 降至 5, 買進維持 11, 無 hold / sell 出現。<br />
+Recent moves: yfinance 的 recommendations 工具只回傳彙總計數, 未回傳個別升降評等事件, 因此無法列出具體 upgrade / downgrade 單位。<br />
+目標價: 新聞中可見 Morgan Stanley Overweight, 目標價 NT$210 (來源為新聞搜尋, 非原始報告)。</p>
+<h2>Retail social</h2>
+<ul>
+<li>Reddit: 無法取得。r/wallstreetbets 與 r/stocks 的 JSON 端點被阻擋 (WebFetch 無法連線), 無法列出討論串或計算 tilt。</li>
+<li>StockTwits / X: StockTwits 因 api.stocktwits.com 無法解析而無法取得, 需於 session 網路設定中開放該網域。X 端僅有新聞搜尋結果, 無社群貼文樣本。</li>
+<li>新聞面語氣: 偏正面。10 月營收 NT$4,026.15 億, 年增 117.6%, 1–10 月累計 NT$3.29 兆, 年增 99.5% (來源: technews 2026/11/06)。</li>
+<li>聲量 (buzz volume): 無法量化, 無 Reddit / StockTwits 筆數可比對。</li>
+<li>Themes (僅依新聞搜尋歸納):</li>
+<li>AI 伺服器出貨季增, 支撐營收與獲利率改善。</li>
+<li>網通業務被視為隱藏成長點, 外資預估 2026 年增長約十倍。</li>
+<li>筆電 (NB) 市況偏弱, 為主要保留面向。</li>
+<li>毛利率不如預期的歷史事件仍被提及, 屬舊聞。</li>
+<li>單日籌碼快照 (2026/11/05 券商分點): 買超約 28,504 張、賣超約 36,708 張, 僅單日資料, 證據力弱。</li>
+</ul>
+<h2>Insider activity</h2>
+<p>Net 6mo: 無可用資料。yfinance insider 工具回傳空陣列, 無法判斷是「期間內無申報交易」或「資料缺漏」, 兩者皆未確認。<br />
+Notable: 無。<br />
+持股結構: 內部人持股 4.77%; 法人持股 33.77% (float 基礎 35.45%), 法人家數 250。<br />
+Ownership shifts: 本次工具僅回傳單一時點快照, 無歷史序列, 無法判斷法人集中度趨勢。</p>
+<h2>Net sentiment score</h2>
+<p>Composite: <strong>bullish</strong> (信心: 中低)。<br />
+- 分析師面: 強烈偏多 (16/16 買進, 無 hold / sell), 信心高。<br />
+- 散戶面: 無社群資料, 新聞語氣偏多, 信心低。<br />
+- 內部人面: 無資料, 不計入評分。<br />
+- 整體評分偏多主要來自分析師共識與基本面新聞, 社群面缺口使信心下調。</p>
+<p>Divergence flag: <strong>無法判定</strong> (no)。<br />
+- 散戶社群資料缺失, 無法與分析師傾向比對是否背離。<br />
+- 新聞面與分析師方向一致, 皆偏多, 因此目前沒有可見的背離訊號。<br />
+- 若之後補得 Reddit / StockTwits 資料, 應重新檢查。</p>
+<h2>Data gaps</h2>
+<ul>
+<li>Reddit (r/wallstreetbets, r/stocks): 403/連線被阻, 未取得。</li>
+<li>StockTwits: DNS 無法解析, 需網路白名單。</li>
+<li>yfinance insider: 空回應, 無法確認。</li>
+<li>yfinance recommendations: 僅彙總計數, 無個別評等事件。</li>
+</ul>
+<p>SENTIMENT REPORT COMPLETE</p></div>
+        </div>
+      </div>
+    </details>
+
+    <details class="mb-4 border border-slate-200 rounded">
+      <summary class="bg-slate-50 px-4 py-2 font-semibold">Phase 2 — Bull vs Bear 辯論</summary>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+        <div>
+          <h4 class="font-bold text-green-700 mb-2">🐂 多方 (Bull)</h4>
+          <div class="agent-prose text-sm bg-green-50 p-3 rounded border border-green-200"><h1>Bull case round 1 — 3231.TW</h1>
+<h2>Thesis（一句話）</h2>
+<p>緯創正處於 AI 伺服器 ODM 需求爆發的核心受益期，10 月營收年增 117.6%、1–10 月累計年增 99.5%，在 forward P/E 僅 7.1x、分析師一致目標價隱含 +58% 空間的估值下，短線技術修正提供了逢低布局中期多頭結構的機會。</p>
+<h2>成長動能</h2>
+<ul>
+<li>2026 年 10 月單月營收 4,026.15 億 TWD，月增 5.7%、年增 <strong>117.6%</strong>；1–10 月累計 32,900 億 TWD，年增 <strong>99.5%</strong>（news.md, TechNews 2026-11-06）。</li>
+<li>2026Q2 營收 8,954.4 億 TWD（YoY +62.4%），歸屬母公司淨利 148.3 億（YoY <strong>+128%</strong>），獲利成長速度快於營收，顯示規模放大後的槓桿效益開始顯現（fundamentals.md）。</li>
+<li>管理層明確表態 11、12 月 AI 伺服器出貨動能將<strong>優於 10 月</strong>（news.md），且網通交換器業務<strong>全年成長超過 10 倍</strong>，是市場尚未完全定價的隱藏成長引擎（sentiment.md themes）。</li>
+<li>FY2025 資本支出 411.1 億 TWD，YoY +131%，為 D&amp;A 的 3.2 倍，屬主動擴產期，為 2026–2027 的出貨能力提前鋪路（fundamentals.md）。</li>
+<li>同業佐證需求非單一公司現象：Gigabyte 10 月營收 YoY +136.7%、Wiwynn YoY +80.9%、鴻海 Q3 營收 YoY +47%，AI 伺服器 ODM 整體產業動能同步擴張（news.md）。</li>
+</ul>
+<h2>護城河</h2>
+<p>緯創是台灣五大 AI 伺服器 ODM 之一，與 hyperscaler 的長期供應鏈關係與規模化組裝能力形成進入門檻；資本支出大幅擴產（+131%）鎖定未來產能，疊加網通交換器的高速成長（+10x guidance）形成第二成長曲線，降低對單一 PC/伺服器業務的依賴。現金及短期投資 YoY +172% 至 2,749 億 TWD，顯示公司在擴張期仍維持充足的流動性緩衝以支撐營運資金需求。</p>
+<h2>上漲情境</h2>
+<ul>
+<li><strong>Base</strong>：採分析師目標價均值 276.3 元（16 位，100% buy/strong buy，recommendationMean 1.31），隱含 forward P/E 約 11.2x × forward EPS 24.72 元 = 276.3 元，相對現價 174.5 元 <strong>+58.3%</strong>（fundamentals.md）。</li>
+<li><strong>Bull</strong>：若 AI 伺服器 ramp 兌現，本益比向同業 ODM 正常區間（約 15x forward P/E）修復：15x × 24.72 = 約 <strong>370.8 元</strong>，較現價 <strong>+112.5%</strong>；對應分析師最高目標價 400 元（<strong>+129.2%</strong>）亦在合理區間內。</li>
+<li>下檔支撐：trailing P/E 僅 15.0x、EV/EBITDA 8.6x、P/S 0.20x，均低於 ODM 同業估計中位數，估值已反映部分悲觀情緒，提供安全邊際。</li>
+</ul>
+<h2>催化劑（附日期）</h2>
+<ul>
+<li><strong>2026-11-12</strong> — 鴻海 Q3 財報與法說，AI 機櫃出貨指標，將為同業情緒定調。</li>
+<li><strong>2026-11 中下旬</strong>（法定申報期限 11-14）— 緯創 Q3 財報與法說，檢驗毛利率回升、網通成長指引與 2027 展望。</li>
+<li><strong>2026-11 下旬</strong> — NVIDIA 財報，AI 伺服器需求的關鍵先行指標。</li>
+<li><strong>2026-12 上旬</strong> — 緯創 11 月營收公布，驗證管理層「11、12 月優於 10 月」的說法。</li>
+</ul>
+<h2>戰術面（技術）</h2>
+<p>中長期趨勢仍為多頭：MA50（184.06）位於 MA200（157.78）之上，股價高於 MA200 達 +10.6%，12m 報酬 +17.9%。短線自 08-14 高點 206 元修正後，11-06 觸及 RSI 29.5 超賣並於 152 元止跌，隨後三日反彈至 174.5 元，MACD 柱狀體自 -2.94 收斂至 -1.67，下跌動能已減緩。股價距 52 週高點仍有 -15.3% 空間，若收盤站穩 181.15（MA20）並放量突破 184.06（MA50），可視為中期多頭結構修復訊號；現價已貼近 173.50 支撐，風險報酬在目前位置偏向有利。</p>
+<h2>預先回應潛在空頭論點（本輪無前序 bear 報告，提前反駁基本面紅旗）</h2>
+<ul>
+<li>空方可能論點：「FCF 連續為負（TTM -2,707 億）、淨負債年增 162%」<br />
+  反駁：負現金流主因營運資金膨脹（存貨、應收同步成長），屬<strong>成長型 ODM 在出貨爆發期的典型現象</strong>，而非營運惡化；現金及短期投資同步年增 172% 至 2,749 億，流動性緩衝充足，且 2026Q3 財報將是檢驗存貨/應收是否回落的關鍵節點。</li>
+<li>空方可能論點：「一年內到期債務佔比 81%，再融資風險高」<br />
+  反駁：在營收年增近 100%、分析師一致看多、公司可透過 GDR 等資本市場工具募資（9 月已完成一輪）的背景下，再融資管道通暢，非流動性危機訊號。</li>
+<li>空方可能論點：「毛利率壓縮至 6.13%」<br />
+  反駁：毛利率壓縮反映伺服器組裝佔比上升（客戶量體效應），但營業利益率幾乎持平（3.59% vs 2024 3.71%），獲利絕對金額仍大幅成長，顯示規模效益正在抵銷毛利率稀釋。</li>
+</ul>
+<h2>信心</h2>
+<p>7/10。AI 伺服器需求與營收動能證據扎實、估值具安全邊際、技術面動能減緩顯示修正接近尾聲，但現金流與槓桿紅旗需待 Q3 財報（11 月中）驗證才能完全解除疑慮，故非滿分。</p>
+<p>BULL ROUND 1 COMPLETE</p></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-red-700 mb-2">🐻 空方 (Bear)</h4>
+          <div class="agent-prose text-sm bg-red-50 p-3 rounded border border-red-200"><h1>Bear case round 1 — 3231.TW</h1>
+<h2>Thesis（一句話）</h2>
+<p>緯創的營收爆發是用現金流燒出來的 AI 伺服器組裝量，毛利率不升反壓、短期債務牆高達總債務 81%、股權已被 GDR 稀釋 14.5%，而市場仍用「forward P/E 7.1x」的樂觀假設定價，一旦 Q3/Q4 未能兌現 H2 需 2.4 倍 H1 EPS 的激進假設，評價將重新貼近現金流與槓桿現實。</p>
+<h2>需求面風險</h2>
+<ul>
+<li>2025 營收 YoY +108.4%、2026Q2 +62.4%，屬 AI 伺服器需求爆發型跳升，非穩定複合成長；2023 年曾下滑 -11.9%，顯示這是高度週期性的 ODM 業務，而非結構性護城河。</li>
+<li>PC 業務管理層自承 2026 下半年將「雙位數衰退」(約 15%)，為既有現金牛業務萎縮。</li>
+<li>業務分部資料缺口（yfinance 未反映 AI server ODM 結構）本身就是風險訊號：市場無法驗證客戶集中度，而 AR YoY +81% 遠超營收成長 +62.4%，暗示對少數 hyperscaler 客戶的收款條件可能惡化或集中度上升。</li>
+<li>同業 Gigabyte 10 月營收 YoY +136.7% 高於緯創 +117.6%，顯示即使產業需求強，緯創在五大 ODM 中的相對份額並非最強，ODM 業務本質可被輕易取代。</li>
+</ul>
+<h2>毛利 / 現金流風險</h2>
+<ul>
+<li>毛利率 2024 年 8.01% → 2025 年 6.13%，壓縮 1.9 個百分點；季毛利率在 4.4%–7.4% 間震盪，無穩定上升軌跡，顯示規模放大並未帶來規模經濟。</li>
+<li>OCF、FCF 全面惡化：FY2025 OCF -1,058 億、FCF -1,469 億；TTM FCF -2,707 億，FCF/淨利 -5.4x，遠低於 0.9 健康門檻。近四季 OCF 三季為負。</li>
+<li>存貨 YoY +53%、應收 YoY +81%、應付 YoY +50% 同步膨脹，營運資金是現金流失血的主因，而非一次性資本支出。</li>
+<li>利息負擔快速上升：2026Q2 淨利息支出年化約 292 億，較 FY2025 全年 128 億大增逾倍，侵蝕 EBIT/利息覆蓋率。</li>
+</ul>
+<h2>資產負債表風險</h2>
+<ul>
+<li>淨負債 YoY +162% 至 4,721 億；<strong>一年內到期債務佔總債務 81%（4,884 億）</strong>，為典型短債集中的再融資牆，若 FCF 持續為負，續貸能力將被市場重新定價。</li>
+<li>D/E（含 NCI）218.5%、流動比率僅 1.18、速動比率 0.72，財務彈性薄弱。</li>
+<li>2026 年股利約需 189 億，但 FCF 為負，股利實質由舉債支應，非內生現金流，長期不可持續。</li>
+<li>2026 年 9 月 GDR 增資稀釋加權股數 YoY +14.5%，公告當日股價下跌約 5%；若 AI 伺服器 ramp 不如預期，資本支出 (FY2025 +131%) 可能迫使再次增資稀釋。</li>
+<li>NCI 吸收 FY2025 合併淨利的 53%，歸屬母公司股東僅分到一半獲利，forward EPS 24.72 元的基礎本身就疊加了對 NCI 比例穩定不變的假設風險。</li>
+</ul>
+<h2>估值風險</h2>
+<ul>
+<li>Forward EPS 24.72 元遠高於 H1 2026 實際 diluted EPS 7.27 元，隱含 H2 需達約 17.5 元 (H1 的 2.4 倍)，屬極度樂觀假設，任何 Q3 (11/14 申報期限) 或 Q4 不及預期都會直接戳破 forward P/E 7.1x 的「便宜」敘事。</li>
+<li>Bear：若 H2 僅溫和成長至全年 EPS 約 16 元 (而非隱含的 24.7 元)，以反映槓桿與稀釋風險而非分析師樂觀共識的 P/E 10x 計算，目標價 ≈ 160 元，較現價 174.5 元下跌約 <strong>-8%</strong>。</li>
+<li>Worst：若現金流危機持續、淨負債/EBITDA 繼續惡化，市場以 EV/EBITDA 6x（低於目前 8.6x，反映流動性折價）套用在 EBITDA 持平約 1,284 億之上，EV ≈ 7,700 億，扣除淨負債 4,721 億，股權價值 ≈ 2,980 億 ÷ 34.3 億股 ≈ <strong>87 元</strong>，較現價下跌約 <strong>-50%</strong>。</li>
+</ul>
+<h2>競爭 / 監管風險</h2>
+<ul>
+<li>ODM 伺服器組裝為低差異化業務，鴻海、廣達、Wiwynn、Gigabyte 同步擴產，定價權弱，毛利率長期受壓（同業中位數估計 5%–8%，緯創落在區間下緣）。</li>
+<li>Section 232 半導體 / AI 晶片關稅第二階段仍為尾部風險，若落地將直接提高代工成本與供應鏈不確定性。</li>
+<li>AI CapEx 放緩疑慮（Invezz 2026-09）若 hyperscaler 縮減資本支出，代工訂單將首先受衝擊，且緯創缺乏客戶集中度揭露，無法評估單一客戶減單的衝擊幅度。</li>
+</ul>
+<h2>技術面（Tactical）</h2>
+<p>短線死亡交叉已成立 (MA20 181.15 &lt; MA50 184.06)，股價同時跌破兩條均線，MACD 柱狀體 -1.67 仍在零軸下。自 08-14 高點 206 元後呈現低點下移的反彈結構，11-06 單日量 47.49M 為窗口最大量的放量急跌，隨後三日反彈僅靠 20.03M（10 日均量 0.66 倍）的量縮反彈，屬典型出貨 / 分配訊號，而非確認反轉。<strong>關鍵跌破位 $168.00</strong>，失守後下一關注 $164.00、$152.00；RSI14 僅 45，11-06 曾觸及 29.5 超賣後快速反彈，缺乏量能佐證的反彈持續性存疑。</p>
+<h2>對多方論點的預先反駁</h2>
+<p>本輪為第一輪，尚無既有多方報告可直接反駁，以下針對基本面與新聞中可見的多方論述預先回應：<br />
+- 多方可能主張："forward P/E 7.1x 便宜，分析師目標價 +58%。"<br />
+  反駁：forward EPS 建立在 H2 需達 H1 的 2.4 倍的激進假設上，且分析師過去 8 季平均 EPS 驚喜為 -1.6%（5 季不及預期），歷史紀錄不支持如此陡峭的下半年 ramp。<br />
+- 多方可能主張："10 月營收 YoY +117.6%，AI 伺服器需求強勁。"<br />
+  反駁：營收成長的同時 OCF/FCF 持續惡化、存貨與應收膨脹更快，這是低品質成長——營收堆高但現金未能回收，且毛利率未隨規模上升。<br />
+- 多方可能主張："網通業務全年成長逾十倍，為隱藏成長點。"<br />
+  反駁：基期極小，對整體毛利率與現金流影響有限，無法抵銷 PC 衰退與伺服器毛利壓縮的結構性拖累。<br />
+- 多方可能主張："中長期趨勢仍多（MA50&gt;MA200，12m +17.9%）。"<br />
+  反駁：短線死亡交叉已成立、放量下跌伴隨量縮反彈顯示分配跡象，對於以空方/避險為目的的操作，短期結構已轉弱，中長期多頭排列不改變近期下行風險。</p>
+<h2>Confidence</h2>
+<p>7/10。現金流、短期債務牆、稀釋與毛利壓縮等數據證據紮實且可追溯，技術面死亡交叉與量縮反彈亦明確；但分析師共識 100% 買進、同業需求數據仍強、11/14 Q3 財報為雙向催化劑，存在軋空風險，故不給更高分。</p>
+<p>BEAR ROUND 1 COMPLETE</p></div>
+        </div>
+      </div>
+    </details>
+
+    <details class="mb-4 border border-slate-200 rounded">
+      <summary class="bg-slate-50 px-4 py-2 font-semibold">Phase 4 — 風險辯論 (Risk debate)</summary>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 p-4">
+        <div>
+          <h4 class="font-bold text-red-700 mb-2">⚡ 進攻 (Aggressive)</h4>
+          <div class="agent-prose text-sm bg-red-50 p-3 rounded border border-red-200"><h1>Aggressive risk view — 3231.TW</h1>
+<h2>Where trader是過於保守之處</h2>
+<ul>
+<li>「無既有部位者 0%、財報前不建倉」等於放棄整個事件驅動的 alpha。需求面證據（10月營收 YoY +117.6%、1–10月 +99.5%、同業三家齊漲）已經是硬數據，不是臆測；真正未知的只是「口徑」與「現金流品質」的細節，而不是「有沒有需求」。等到財報公布、站上 MA50 $184.06 並放量才轉多，意味著至少要先放過股價從目前 $174.50 到 $184 這段 +5.4% 的確認漏斗，alpha 被確認流程吃掉大半。</li>
+<li>既有部位者「降半倉」是對的方向，但停損參考點 $168（僅較現價低 3.7%，不到 1 個 ATR14）在財報前的正常波動區間內很容易被雜訊打到，造成財報前就先出場、錯過財報後的方向確認。</li>
+<li>投資計畫本身也承認：多空雙方的證據品質「大致相當」，而且空方的 87 元極端情境是壓力測試、不是基準情境。這代表下檔有軟上限、上檔有未封頂的 +58% 目標，分佈本身就不對稱,不該用「中性=不動」一刀切。</li>
+</ul>
+<h2>Recommended adjustments</h2>
+<ul>
+<li>Size（既有部位者）：半倉 → 維持半倉但停損下移至 $164.00（略低於 11-06 急跌低點與 1 個 ATR 外），避免財報前雜訊震盪出場。</li>
+<li>Size（空手者）：0% → 以選擇權小額參與，用買進財報後到期的價外 call（履約價約 $184–190，到期日 11月底或 12月中），最大損失=權利金，不動用現股額度。</li>
+<li>Entry：不必等「站上 MA50 放量」才進場；財報公布當天／次日，若 Q3 數字落在三個 crux 任一項轉正（毛利率 ≥6.5% 或 OCF 收斂），即可用 1/3 正常倉位搶先進場，不必等技術面二次確認。</li>
+<li>Consider：call spread（買 $184 / 賣 $205），用賣出端權利金降低成本,鎖定財報後上行情境的槓桿參與。</li>
+</ul>
+<h2>Asymmetry argument</h2>
+<p>以選擇權方案為例：單口權利金假設約 $3–5（每股），1 口 1000 股即最大損失約 $3,000–5,000。若財報確認多方 crux（毛利率回升、OCF 轉正），股價依多方 +58% 情境看向約 $270+，call 內含價值可達數萬元。Ratio 粗估 B/A ≈ 8–15 倍,遠優於現股「等確認再進場」的風報比。</p>
+<h2>What I'd push for</h2>
+<p>既有部位者停損放寬到 $164 並保留半倉過財報，空手者用價外 call 小額卡位財報後的上行情境，財報公布次日若任一 crux 轉正即以 1/3 現股倉位跟進,不要等 MA50 放量這個遲到的確認訊號。</p>
+<p>AGGRESSIVE VIEW COMPLETE</p></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-blue-700 mb-2">🛡️ 保守 (Conservative)</h4>
+          <div class="agent-prose text-sm bg-blue-50 p-3 rounded border border-blue-200"><h1>Conservative risk view — 3231.TW</h1>
+<h2>Where trader is too aggressive</h2>
+<ul>
+<li>本提案已偏保守（無既有部位者 0% 建倉），但「既有部位降半倉持有」仍有風險：財報前持有任何方向性曝險，等於在二元事件（forward EPS 口徑、現金流品質、毛利率）上賭博，半倉並非零風險。</li>
+<li>以 $168.00 為風險參考，但 11-06 已示範過一次「跳空式」下殺：11-05 跌破 $173.50 支撐後，次日直接探至 $152.00，單日跌幅遠超 ATR14（$8.19，約 4.7%）。這證明用固定價位當停損在這檔股票上會被跳空穿透，真正的尾部損失可能是帳上停損假設的 3 倍以上。</li>
+<li>高波動（20 日年化 51.3%）疊加財報前的三大未釐清爭點（EPS 口徑、FCF -2,707 億、81% 一年內到期債務），任何「半倉持有」都是在為尚未驗證的多頭論點（+58% 目標完全依賴未釐清的 forward EPS）支付隱性保費。</li>
+</ul>
+<h2>Tail scenarios</h2>
+<ul>
+<li>Scenario A（機率約 30%）：Q3 EPS 遠低於隱含路徑、OCF 再度轉負 → 類比 11-06 跳空模式，股價直接由現價區 $174.50 跳空至 $152.00 甚至更低，單日損失達 12.9%，遠超 $168 停損假設的 3.7%。</li>
+<li>Scenario B（機率約 20%）：法說會傳出新增增資或短債展延不順 → 稀釋恐慌疊加現金流疑慮，股價可能進一步測試前低下方，技術面無明確支撐，下看空方壓力情境 $87（EV/EBITDA 6x）並非不可能，雖為極端尾部。</li>
+<li>Scenario C（機率約 15%）：財報結果中性但大盤/半導體族群因 Fed 利率預期或 AI 資本支出降溫出現系統性賣壓，與個股財報噪音疊加，放大波動，MA20/MA50 死亡交叉持續確認，技術面與基本面同時轉弱。</li>
+</ul>
+<h2>Recommended adjustments</h2>
+<ul>
+<li>Size：既有部位者「降半倉」建議再收緊至 1/4 正常倉位，或財報前全數出清後再依轉多/轉空觸發重新進場——半倉在跳空風險下仍過大。</li>
+<li>Stop：$168.00 的固定價位停損在此股不可靠（已有跳空先例），建議改為「財報公布後次日開盤即評估」，不依賴盤中價位，避免被跳空直接打穿。</li>
+<li>Entry：財報後等 MA50 $184.06 放量站上才轉多，不要在反彈初期（目前量縮至 10 日均量 0.66 倍）搶進。</li>
+<li>Consider：若持有同產業鏈相關倉位（Gigabyte、Wiwynn、鴻海等 AI 伺服器供應鏈），需合併計算曝險，三者同向波動相關性高，隱藏集中度風險。</li>
+</ul>
+<h2>Position-level $ risk</h2>
+<p>提案未提供既有部位股數與 NAV，無法算出絕對金額；以現價 $174.50、半倉為例，若用 $168 停損，每股損失 $6.50（3.7%）；但若重演 11-06 跳空至 $152，每股損失達 $22.50（12.9%），是停損假設的 3.4 倍。此落差不可接受——停損設計本身低估了這檔股票的跳空尾部風險。</p>
+<h2>What I'd push for</h2>
+<p>財報前應將既有部位進一步降至 1/4 正常倉位（而非半倉），並放棄依賴固定價位停損；改以「財報公布後首個交易日開盤即強制重新評估」作為風控機制，因為 11-06 已證明此股會跳空穿透任何盤中停損。轉多訊號出現前（MA50 放量站上、毛利率 ≥6.5%、OCF 轉正）不應提前加碼或維持超過 1/4 倉位的曝險。</p>
+<p>CONSERVATIVE VIEW COMPLETE</p></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-slate-700 mb-2">⚖️ 中立 (Neutral)</h4>
+          <div class="agent-prose text-sm bg-slate-100 p-3 rounded border border-slate-300"><h1>Neutral risk view — 3231.TW</h1>
+<h2>Points of agreement (both sides)</h2>
+<ul>
+<li>財報前（11-14 法說）不應新建方向性部位，三個 crux（EPS 口徑、現金流品質、毛利率）均未解決，任何方向進場都是押注二元事件。</li>
+<li>$168.00 作為「固定盤中停損」有缺陷：11-05→11-06 已實際發生跳空（$173.50 破位後直接探至 $152.00），固定價位停損在這檔高波動股（ATR14 4.7%、年化波動 51.3%）上不可靠。</li>
+<li>財報後轉多/轉空的觸發條件（毛利率 ≥6.5%、OCF 轉正/轉負、MA50 $184.06 突破或 $168 跌破）本身合理，雙方都未否定這套框架。</li>
+</ul>
+<h2>Aggressive overreach</h2>
+<ul>
+<li>Where：建議停損下移至 $164（比原 $168 更寬）、並建議財報公布次日即用選擇權 + 1/3 現股搶進單一 crux 轉正。</li>
+<li>Why：$164 仍在 11-06 跳空路徑（$152）之內，只是把「被雜訊打到」的風險換成「被跳空打穿」的風險更大的缺口，並未真正解決尾部問題。財報當天用 1/3 現股追單一 crux 轉正，忽略法說常常多項指標互相矛盾（例如毛利率回升但 OCF 仍負），容易被單一數據點誘多，等於把「等待確認」的風控直接繞過，與投資計畫「中長期上升趨勢待修復」的保留態度不一致。</li>
+</ul>
+<h2>Conservative overreach</h2>
+<ul>
+<li>Where：財報前應將既有部位降到 0（全數出清）或以「30%/20%/15%」精確機率列出跳空、增資、系統性賣壓三個尾部情境；並把 EV/EBITDA 87 元壓力測試情境放進 tail scenario B。</li>
+<li>Why：投資計畫與 market.md 已明言 87 元是壓力測試、非基準情境，用它支撐 20% 機率的敘述誇大了尾部厚度；中長期技術結構（MA50&gt;MA200、12m +17.9%）仍完整，全數出清放棄既有部位的長期多頭曝險，屬於過度反應單一次跳空事件，而非依證據按比例調整。機率數字本身也缺乏來源，屬敘事性包裝。</li>
+</ul>
+<h2>Balanced adjustment proposal</h2>
+<ul>
+<li>Size：既有部位降至 <strong>1/3 正常倉位</strong>（介於雙方的 1/2 與 1/4 之間，但更貼近保守方，因為跳空證據是雙方都承認的事實）；空手者維持 0% 現股，若要卡位上行情境，用不超過 NAV 0.3%–0.5% 的價外 call 權利金，純粹當作選擇性加分，不做現股替代。</li>
+<li>Stop：放棄盤中固定價停損，改採「財報公布後次日開盤即強制重新評估」機制；同時設一道硬性災難停損在 <strong>$152</strong>（11-06 低點，已驗證的跳空終點）作為停損保底，不要像激進方那樣把參考價上移到 $164 製造假性安全感。</li>
+<li>Entry：財報後需至少 <strong>兩項</strong> crux 同向轉正（例如毛利率 ≥6.5% 且 OCF 收斂/轉正），且避免僅憑單一數據點追價；確認後可用 1/3 部位先行，站上 MA50 放量再加碼至正常倉位。</li>
+<li>Hedge：若持有同產業鏈部位（Gigabyte、Wiwynn、鴻海），合併計算曝險上限。</li>
+<li>Time horizon：數日至 2 週等財報，方向確立後延伸 1–2 季。</li>
+</ul>
+<h2>Net $ risk if stop hits</h2>
+<p>原提案未提供既有持股股數與 NAV 絕對金額，以每股計：現價 $174.50、1/3 倉位、災難停損 $152 → 每股損失 $22.50（12.9%），換算為 NAV 曝險約為「正常滿倉風險 × 1/3」，顯著低於原半倉方案（約 half-position × 12.9%）。</p>
+<h2>Net $ upside at T1 / T2</h2>
+<p>MA50 $184.06（T1，+5.5%）／ 多方情境 $270+（T2，依 forward EPS 24.72 兌現為前提，+54%+），兩者皆需財報後至少兩項 crux 確認才可視為有效目標，財報前不應依此倉位。</p>
+<p>NEUTRAL VIEW COMPLETE</p></div>
+        </div>
+      </div>
+    </details>
+
+  </div>
+
+  <script>
+    (function() {
+      var d = {};
+      if (!d.dates) return;
+      var traces = [
+        {x: d.dates, y: d.close, name: 'Close',  line: {color: '#1f2937', width: 2}},
+        {x: d.dates, y: d.ma20,  name: 'MA20',   line: {color: '#0ea5e9', width: 1, dash: 'dot'}},
+        {x: d.dates, y: d.ma50,  name: 'MA50',   line: {color: '#f59e0b', width: 1, dash: 'dot'}},
+        {x: d.dates, y: d.ma200, name: 'MA200',  line: {color: '#ef4444', width: 1, dash: 'dash'}}
+      ];
+      var layout = {
+        margin: {l: 50, r: 20, t: 10, b: 40},
+        legend: {orientation: 'h', y: -0.15},
+        xaxis: {showgrid: false},
+        yaxis: {title: '價格 ($)'}
+      };
+      Plotly.newPlot('chart-3231_TW', traces, layout, {displayModeBar: false, responsive: true});
+    })();
+  </script>
+
+</section>
+
+
+<section id="ticker-2356_TW" class="mb-10 bg-white rounded-lg shadow overflow-hidden">
+
+  <div class="flex items-start justify-between p-6 border-b border-slate-200 verdict-HOLD">
+    <div>
+      <h2 class="text-3xl font-bold">2356.TW</h2>
+      <p class="text-sm mt-1 opacity-80">英業達 (2356) — AI server ODM</p>
+    </div>
+    <div class="text-right">
+      <div class="text-4xl font-bold">HOLD</div>
+      <div class="text-sm opacity-80 mt-1"></div>
+    </div>
+  </div>
+
+  <div class="p-6 grid grid-cols-1 lg:grid-cols-2 gap-6">
+
+    <div>
+      <h3 class="text-lg font-bold mb-2">價格 + 技術指標 (2 年)</h3>
+      <div id="chart-2356_TW" style="height: 380px;"></div>
+    </div>
+
+    <div>
+      <h3 class="text-lg font-bold mb-2">最終決策 (Final decision)</h3>
+      <div class="agent-prose text-sm bg-slate-50 p-4 rounded border border-slate-200">
+        <h1>Final decision — 2356.TW as of 2026-11-12</h1>
+<h2>FINAL TRANSACTION PROPOSAL: <strong>HOLD</strong></h2>
+<h2>Verdict</h2>
+<p>觀望</p>
+<h2>Status</h2>
+<p><strong>Phase-1-only stub（非正面標的，未進入 Phase 2-4 辯論）</strong></p>
+<p>Positive-pick scoring（5 項訊號，需 ≥3 項才進入全流程）：<br />
+| 訊號 | 判定 | 說明 |<br />
+|---|---|---|<br />
+| Fundamentals | FAIL | FY2025 營收 YoY 僅 +6.9%，遠低於 &gt;15% 門檻；FCF/NI 0.50 亦低於健康水準 |<br />
+| Market | FAIL | RSI14 31.51（接近超賣）、MACD hist -0.73 偏空，且價格 $51.20 低於 MA50 $60.38（需三項同時成立） |<br />
+| News | FAIL | 淨新聞傾向偏空，中到高強度（AI 資料中心政策衝擊、台股系統性賣壓、10 月營收月減 18.9%） |<br />
+| Sentiment | FAIL | 分析師 3 買 / 7 持有 / 0 賣（10 家），買進占比僅 30%，遠低於 60% 門檻 |<br />
+| Valuation | PASS | Forward P/E 12.0x（&lt;35x） |</p>
+<p>結果：僅 1 項通過（Valuation），未達 ≥3 門檻，不列入正面標的，不進入 Phase 2-4（bull/bear 辯論、trader、risk debate、portfolio manager）。</p>
+<p>本 ticker 無進出場價位建議（不適用 Phase-1-only 標的）。Phase 1 四份報告（fundamentals / market / news / sentiment）與 evidence_shadow.json 已完成，供 Phase 5 sector-comparator 參考。</p>
+<p>FINAL DECISION (STUB) COMPLETE</p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="px-6 pb-6">
+
+    <details class="mb-4 border border-slate-200 rounded">
+      <summary class="bg-slate-50 px-4 py-2 font-semibold">投資計劃 (Research manager)</summary>
+      <div class="agent-prose p-4 text-sm"><em>n/a</em></div>
+    </details>
+
+    <details class="mb-4 border border-slate-200 rounded">
+      <summary class="bg-slate-50 px-4 py-2 font-semibold">交易提案 (Trader)</summary>
+      <div class="agent-prose p-4 text-sm"><em>n/a</em></div>
+    </details>
+
+    <details class="mb-4 border border-slate-200 rounded">
+      <summary class="bg-slate-50 px-4 py-2 font-semibold">Phase 1 — 四 Analyst 報告</summary>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+        <div>
+          <h4 class="font-bold text-slate-700 mb-2">基本面 (Fundamentals)</h4>
+          <div class="agent-prose text-sm bg-slate-50 p-3 rounded"><h1>Fundamentals — 2356.TW (英業達) as of 2026-11-12</h1>
+<p>資料截止：2026-11-11 收盤（yfinance 快取時間 2026-11-11 14:00 UTC）。最新已公告季度為 2026-06-30（Q2'26）。金額單位：TWD，以 億 表示（1 億 = 100,000,000）。全文不使用 B。</p>
+<h2>Executive summary</h2>
+<p>英業達財務體質屬「低毛利、高週轉、現金流不穩」的 EMS/伺服器 ODM 型態：FY2025 淨利率僅 1.26%、FCF/NI 僅 0.50，且 2026 上半年季度資料顯示負債與營運現金流出現明顯惡化（數值待交叉驗證）。獲利動能仍強：TTM EPS 3.08 元，Q2'26 EPS 1.08 元（YoY +77%），目前股價 51.2 元對應 TTM P/E 16.6x、Forward P/E 12.0x，估值相對同業偏低，但估值便宜的前提是盈餘能轉換為現金，目前證據不足。整體結論：獲利成長訊號正面，現金流與槓桿為主要風險，估值吸引力屬有條件成立。</p>
+<h2>Revenue &amp; profitability</h2>
+<ul>
+<li>營收（FY，億 TWD）：2022 5,417.5 → 2023 5,147.5 → 2024 6,462.6 → 2025 6,911.9。2022–2025 年複合成長率（CAGR）約 8.5%。2025 年 YoY +6.9%。2021 年資料為 n/a。</li>
+<li>淨利（FY，億 TWD）：2022 61.3 → 2023 61.3 → 2024 72.7 → 2025 87.0。2022–2025 CAGR 約 12.4%，2025 年 YoY +19.7%。</li>
+<li>EPS（稀釋，TWD）：2022 1.70（yfinance 原值 1.70，2022 年 EPS 以 financials 欄位為準）、2023 1.70、2024 2.02、2025 2.41（YoY +19.3%）。</li>
+<li>季度 EPS（earnings_dates 原始公告值）：Q1'25 0.47、Q2'25 0.61、Q3'25 0.76、Q4'25 0.57（2026-03-10 公告）、Q2'26 1.08（EPS 預估 0.86，超預期 +25.9%）。Q1'26 EPS 0.67 來自季度損益表，未在 earnings_dates 中看到公告紀錄。四季合計 0.76 + 0.57 + 0.67 + 1.08 = 3.08 元，與 info 的 trailingEps 3.08 相符。</li>
+<li>季度營收（季度損益表）：Q2'25 2,207.4、Q3'25 2,668.2、Q4'25 2,924.4、Q1'26 2,765.1、Q2'26 2,781.5（億 TWD）。Q2'26 YoY 約 +26.0%。</li>
+<li>毛利率、營益率、淨利率（FY）：</li>
+<li>毛利率：2022 4.80%、2023 5.12%、2024 5.16%、2025 5.31%，呈緩慢上升。</li>
+<li>營業利益率：2022 1.23%、2023 1.45%、2024 1.83%、2025 1.84%。</li>
+<li>淨利率：2022 1.13%、2023 1.19%、2024 1.12%、2025 1.26%。</li>
+<li>研發費用（FY2025）143.0 億，YoY +13.5%；SG&amp;A 97.1 億。</li>
+<li>ROE（FY2025，以期初期末平均權益 743 億計）約 11.8%；以 TTM 淨利 109.3 億 / 2025 年底權益 761.8 億 估算約 14.3%。</li>
+<li>ROIC（FY2025 粗估）：NOPAT（營業利益 127.1 × (1 − 有效稅率 22.7%)）≈ 98.3 億，除以 yfinance Invested Capital 1,611.6 億，約 6.1%。偏低，需與資金成本比較。</li>
+<li>業務結構：yfinance 業務摘要列出 個人系統（筆電、桌機/AIO、Thin client）、企業與雲端資料中心（伺服器、刀鋒、網通交換器、儲存、機櫃）、環境能源與新興科技等。分部營收數字 n/a（yfinance 未提供），無法量化各業務占比。</li>
+<li>資料一致性警示：</li>
+<li>季度營收 2025 Q2–Q4 合計約 7,800 億，已高於 FY2025 營收 6,912 億，兩者無法同時正確。</li>
+<li>季度毛利率約 7–9%，高於 FY 毛利率 5.3%；季度營業利益與季度淨利之間差距過大（Q2'26 營業利益 202.2 億 vs 淨利 38.9 億 或 149.7 億，兩次查詢數值不同），無法調和。</li>
+<li>同一指令不同次查詢的季度 NI、稀釋股數與 EPS 不一致（稀釋股數曾出現 2.07 億股，與實際約 35.87 億股不符）。</li>
+<li>因此本報告以 FY 年度數據與 EPS（EPS 與 TTM 3.08 可交叉驗證）為主要依據；季度營收與季度損益僅作方向參考。</li>
+</ul>
+<h2>Cashflow &amp; balance sheet</h2>
+<ul>
+<li>營運現金流與資本支出（FY，億 TWD）：</li>
+<li>2022 營運現金流 222.3、FCF 171.9。</li>
+<li>2023 營運現金流 113.6、FCF 63.8。</li>
+<li>2024 營運現金流 −71.7、資本支出 59.3、FCF −131.0。</li>
+<li>2025 營運現金流 139.9、資本支出 96.2、FCF 43.7。</li>
+<li>FCF 利潤率（FY2025）約 0.63%；FCF / 淨利（FY2025）= 43.7 / 87.0 = 0.50，低於健康門檻 0.9。現金流量表中的「繼續營業部門淨利」為 120.1 億（與損益表 92.9 億 不同），本報告以損益表數值計算。</li>
+<li>季度現金流量表（未經交叉驗證）：Q2'26 營運現金流約 −218.2 億、FCF 約 −260.4 億；Q1'26 FCF 約 −68.8 億；Q4'25 FCF 約 +150.6 億。若屬實，2026 上半年現金流出現大幅轉負，需要以下一次財報確認。</li>
+<li>資產負債（FY2025，億 TWD）：</li>
+<li>總資產 3,316.7；總負債 2,552.2；股東權益 761.8。</li>
+<li>流動資產 2,714.5；流動負債 2,363.1；流動比率 1.08（info 值 1.083），速動比率 0.66（info 值）。</li>
+<li>存貨 769.1；應收帳款 1,196.6；應付帳款 1,260.4。</li>
+<li>現金及約當現金 543.2；現金與短期投資 565.8。</li>
+<li>總負債（含租賃）892.8；淨負債（yfinance Net Debt 欄位）306.7。</li>
+<li>負債權益比（D/E）：FY2025 約 117%（892.8 / 761.8）；info 值 191%。兩者差異源於債務定義與期間不同，需以下一次財報確認。</li>
+<li>2026 季度資產負債（未經交叉驗證）：Q2'26 總債務約 1,657 億（Q4'25 約 1,041 億），淨負債約 763 億（Q4'25 約 103 億）。另一次查詢顯示 Q2'26 總債務約 1,251 億。兩者均顯示 2026 年債務明顯上升，方向一致，金額不一致。</li>
+<li>流動性：流動比率 1.08 偏緊，對 EMS 業者的營運資金波動敏感。</li>
+<li>每股淨值（BVPS）21.23 元（info）。</li>
+</ul>
+<h2>Capital allocation &amp; insider signal</h2>
+<ul>
+<li>資本支出：FY2025 資本支出 96.2 億，YoY +62.2%，2024 為 59.3 億，2023 為 49.8 億，資本支出在 2025 明顯加速，與伺服器產能擴張相符。</li>
+<li>股利：info 顯示每股股利 2.0 元，殖利率 3.64%（以 51.2 元計），5 年平均殖利率 3.75%。2025 現金股利支付 61.0 億。</li>
+<li>股利覆蓋（淨利）：87.0 / 61.0 = 1.43 倍。</li>
+<li>股利覆蓋（FCF）：43.7 / 61.0 = 0.72 倍，即 2025 年 FCF 不足以支付股利，差額由舉債或現金支應。</li>
+<li>除息日 2026-07-15（已過）。</li>
+<li>股本：普通股 3,587,475,066 股（約 35.87 億股），2022 至 2025 年未變動，無買回註銷紀錄，也無增資稀釋。</li>
+<li>股東結構：內部人持股 28.54%，機構持股 25.42%，機構數 162 家（major_holders）。</li>
+<li>內部人交易（yfinance insider，近 6 個月）：0 筆（回傳空陣列）。無法判斷淨買賣方向，需以台灣公開資訊觀測站董監事持股異動交叉確認。此為資料缺口，不視為「無交易」結論。</li>
+<li>機構持股明細（inst_holders）回傳空陣列，n/a。</li>
+</ul>
+<h2>Valuation</h2>
+<ul>
+<li>市值：約 1,836.8 億 TWD（3,587,475,066 股 × 51.2 元）。</li>
+<li>企業價值（EV）：2,738.8 億 TWD（info）。</li>
+<li>本益比：TTM 16.6x（51.2 / 3.08）；Forward 12.0x（Forward EPS 4.26 元）。PEG 0.73。</li>
+<li>EV/EBITDA：13.6x（TTM EBITDA 200.8 億，info）。</li>
+<li>EV/Revenue（TTM）：0.30x（info）。P/S（TTM）0.20x（info）。</li>
+<li>P/B：2.41x（info）。</li>
+<li>P/FCF（FY2025）：約 42x（1,836.8 / 43.7）。以 FCF 計價明顯偏貴，但 FY2025 FCF 偏低且不穩定，參考性有限。</li>
+<li>股價位置：收盤 51.2 元，當日 −6.7%（前收 54.9）。低於 50 日均線 60.33（−15.1%）與 200 日均線 56.44（−9.3%）。52 週區間 38.55–88.6 元，距 52 週高點 −42%，距 52 週低點 +33%。52 週漲幅 +28.3%，同期 S&amp;P 500 約 +9.8%。Beta 0.927。</li>
+<li>分析師（9 位）：目標價均值 64.06 元、中位數 63 元、最高 77 元、最低 54 元。建議均值 2.6（介於 hold 區間）。</li>
+<li>同業中位數估計（以下為估計值，非 yfinance 資料，僅供參考）：台灣 EMS/伺服器 ODM 同業（如鴻海、廣達、緯創）的 P/E 約 15–25x、EV/EBITDA 約 10–15x、P/S 約 0.3–0.6x、毛利率約 5–7%、淨利率約 2–3%。</li>
+<li>估值判讀：以 Forward P/E 與 P/S 看，英業達相對同業偏低；以 P/FCF 與 FCF/NI 看，估值吸引力被現金轉換能力抵消。</li>
+</ul>
+<h2>Key catalysts</h2>
+<ul>
+<li>Q3'26 財報：yfinance earnings_dates 未列出 Q3'26 排程。依台灣法定公告期限（季報 11/14 前），Q3'26 財報預期在 11/12–11/14 前後公告，為本次分析日之後最近的重大事件。目前資料中無 Q3'26 EPS 預估值，n/a。</li>
+<li>全年度展望／法人說明會 guidance：資料中無，n/a。</li>
+<li>2026 上半年季度營收與獲利的加速（Q2'26 EPS 1.08 元，YoY +77%），是目前最主要的正面動能，但需以 Q3 財報確認可持續性。</li>
+<li>AI 伺服器與雲端資料中心需求（業務摘要中企業與雲端產品線）是成長驅動，分部營收比重 n/a。</li>
+<li>2026-07-15 除息已過，下次配息時點 n/a。</li>
+<li>分析師目標價下緣 54 元高於現價，上緣 77 元，若 Q3 財報出現現金流改善，可能推動評級調整。</li>
+</ul>
+<h2>Metrics table</h2>
+<p>單位：億 TWD（金額）；% 為百分比；x 為倍數。</p>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Latest</th>
+<th>YoY</th>
+<th>Sector median (estimate)</th>
+<th>Verdict</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>營收（億 TWD，FY2025）</td>
+<td>6,911.9</td>
+<td>+6.9%</td>
+<td>n/a</td>
+<td>成長穩健但偏慢</td>
+</tr>
+<tr>
+<td>營收（億 TWD，Q2'26，季度表）</td>
+<td>2,781.5</td>
+<td>+26.0%</td>
+<td>n/a</td>
+<td>加速，資料待驗證</td>
+</tr>
+<tr>
+<td>毛利率（FY2025）</td>
+<td>5.31%</td>
+<td>+0.15pp</td>
+<td>約 5–7%</td>
+<td>偏低</td>
+</tr>
+<tr>
+<td>營業利益率（FY2025）</td>
+<td>1.84%</td>
+<td>+0.01pp</td>
+<td>約 2–4%</td>
+<td>偏低</td>
+</tr>
+<tr>
+<td>淨利率（FY2025）</td>
+<td>1.26%</td>
+<td>+0.14pp</td>
+<td>約 2–3%</td>
+<td>偏低，但改善中</td>
+</tr>
+<tr>
+<td>淨利（億 TWD，FY2025）</td>
+<td>87.0</td>
+<td>+19.7%</td>
+<td>n/a</td>
+<td>正面</td>
+</tr>
+<tr>
+<td>EPS（TWD，FY2025）</td>
+<td>2.41</td>
+<td>+19.3%</td>
+<td>n/a</td>
+<td>正面</td>
+</tr>
+<tr>
+<td>EPS（TWD，Q2'26）</td>
+<td>1.08</td>
+<td>+77%</td>
+<td>n/a</td>
+<td>強勁，超預期 25.9%</td>
+</tr>
+<tr>
+<td>ROE（FY2025，平均權益）</td>
+<td>11.8%</td>
+<td>n/a</td>
+<td>約 10–15%</td>
+<td>中性</td>
+</tr>
+<tr>
+<td>ROIC（FY2025，粗估）</td>
+<td>6.1%</td>
+<td>n/a</td>
+<td>約 8–10%</td>
+<td>偏低</td>
+</tr>
+<tr>
+<td>FCF（億 TWD，FY2025）</td>
+<td>43.7</td>
+<td>2024 為 −131.0</td>
+<td>n/a</td>
+<td>轉正但微小</td>
+</tr>
+<tr>
+<td>FCF / NI（FY2025）</td>
+<td>0.50</td>
+<td>n/a</td>
+<td>&gt;0.9 健康</td>
+<td>不健康</td>
+</tr>
+<tr>
+<td>負債權益比 D/E（FY2025）</td>
+<td>117%（info 191%）</td>
+<td>n/a</td>
+<td>約 50–100%</td>
+<td>偏高</td>
+</tr>
+<tr>
+<td>流動比率</td>
+<td>1.08</td>
+<td>n/a</td>
+<td>約 1.2–1.5</td>
+<td>偏緊</td>
+</tr>
+<tr>
+<td>速動比率</td>
+<td>0.66</td>
+<td>n/a</td>
+<td>約 0.8–1.0</td>
+<td>偏緊</td>
+</tr>
+<tr>
+<td>淨負債（億 TWD，FY2025）</td>
+<td>306.7</td>
+<td>2024 為 422.2</td>
+<td>n/a</td>
+<td>同比改善，季度惡化</td>
+</tr>
+<tr>
+<td>資本支出（億 TWD，FY2025）</td>
+<td>96.2</td>
+<td>+62.2%</td>
+<td>n/a</td>
+<td>擴張中</td>
+</tr>
+<tr>
+<td>股利殖利率</td>
+<td>3.64%</td>
+<td>n/a</td>
+<td>約 2–4%</td>
+<td>中性偏高</td>
+</tr>
+<tr>
+<td>股利覆蓋（FCF，FY2025）</td>
+<td>0.72x</td>
+<td>n/a</td>
+<td>&gt;1.0</td>
+<td>不足</td>
+</tr>
+<tr>
+<td>股利覆蓋（淨利，FY2025）</td>
+<td>1.43x</td>
+<td>n/a</td>
+<td>&gt;1.5</td>
+<td>尚可</td>
+</tr>
+<tr>
+<td>內部人淨買賣（近 6 個月）</td>
+<td>0 筆（空資料）</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>無訊號／資料缺口</td>
+</tr>
+<tr>
+<td>市值（億 TWD）</td>
+<td>1,836.8</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>n/a</td>
+</tr>
+<tr>
+<td>P/E（TTM）</td>
+<td>16.6x</td>
+<td>n/a</td>
+<td>約 15–25x</td>
+<td>略低於同業</td>
+</tr>
+<tr>
+<td>P/E（Forward）</td>
+<td>12.0x</td>
+<td>n/a</td>
+<td>約 15–25x</td>
+<td>偏低</td>
+</tr>
+<tr>
+<td>EV/EBITDA（TTM）</td>
+<td>13.6x</td>
+<td>n/a</td>
+<td>約 10–15x</td>
+<td>中性</td>
+</tr>
+<tr>
+<td>P/S（TTM）</td>
+<td>0.20x</td>
+<td>n/a</td>
+<td>約 0.3–0.6x</td>
+<td>偏低</td>
+</tr>
+<tr>
+<td>P/B</td>
+<td>2.41x</td>
+<td>n/a</td>
+<td>約 1.5–3x</td>
+<td>中性</td>
+</tr>
+<tr>
+<td>P/FCF（FY2025）</td>
+<td>約 42x</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>偏貴（FCF 偏低）</td>
+</tr>
+<tr>
+<td>PEG</td>
+<td>0.73</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>便宜</td>
+</tr>
+<tr>
+<td>分析師目標價均值（元）</td>
+<td>64.06（上檔 +25.1%）</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>正面</td>
+</tr>
+</tbody>
+</table>
+<h2>Red flags</h2>
+<ul>
+<li>現金流不足：FY2025 FCF/NI 僅 0.50；FY2025 FCF 43.7 億 不足以覆蓋 61.0 億 股利（覆蓋 0.72 倍）。</li>
+<li>2026 上半年季度現金流量表顯示營運現金流與 FCF 大幅為負（Q2'26 FCF 約 −260 億，未經交叉驗證）。若確認，獲利轉現金能力明顯惡化。</li>
+<li>負債快速上升：季度總債務自 2025 年底約 1,041 億 升至 2026 Q2 約 1,251–1,657 億（兩次查詢數值不同），淨負債同步上升。</li>
+<li>利潤率薄：FY 毛利率 5.3%、淨利率 1.3%，對原料、匯率與價格戰的承受力有限。</li>
+<li>流動性偏緊：流動比率 1.08、速動比率 0.66。</li>
+<li>資料品質問題（需在下游引用前先確認）：季度與年度營收對不上；季度營業利益與淨利差距無法調和；同一查詢不同次回傳數值不一致；稀釋股數曾出現錯誤值。info 的 TTM 營收 9,135.5 億 亦與季度加總 11,139 億 不符。</li>
+<li>股價走弱：當日 −6.7%，低於 50 日與 200 日均線，距 52 週高點 −42%。</li>
+<li>內部人與機構明細缺漏（insider 與 inst_holders 皆空），無法判斷內部人是否有減持。</li>
+<li>下次財報（Q3'26）即將公告，目前無預估值，財報前的不確定性偏高。</li>
+<li>無分部營收數據，無法量化 AI 伺服器與傳統 PC 業務各自的成長與毛利貢獻。</li>
+</ul>
+<p>FUNDAMENTALS REPORT COMPLETE</p></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-slate-700 mb-2">技術面 (Market / Technical)</h4>
+          <div class="agent-prose text-sm bg-slate-50 p-3 rounded"><h1>Technical — 2356.TW as of 2026-11-12</h1>
+<blockquote>
+<p>資料說明：最新可用交易日為 2026-11-11 收盤，2026-11-12 尚無收盤資料，本報告所有數值皆以 2026-11-11 為準。</p>
+</blockquote>
+<h2>Snapshot</h2>
+<p>Price $51.20, MA20 $58.33, MA50 $60.38, MA200 $56.15, RSI14=31.51, MACD hist=-0.73</p>
+<h2>Trend</h2>
+<p>趨勢為明確空頭，且短線下跌加速。價格 $51.20 低於 MA20 (-12.2%)、MA50 (-15.2%)、MA200 (-8.8%)，三條均線全部位於價格之上。MA20 已於 2026-09-23 前後下穿 MA50，死亡交叉成立。MA50 ($60.38) 仍高於 MA200 ($56.15)，差距約 7.5%，尚未形成 MA50/MA200 死亡交叉；若目前走勢持續，數週內兩線可能接近，但此為以近期斜率的粗估，非工具輸出。價格於 2026-11-05 收盤 $55.00 跌破 MA200 ($55.94)，之後連續五個交易日收於 MA200 之下。</p>
+<p>結構上呈現連續降低的高點與低點。高點序列為 $68.40 (09-01) → $63.90 (10-27) → $57.20 (11-09) → $53.50 (11-11)，持續走低；低點序列為 $59.50 (09-24) → $57.50 (10-08) → $54.50 (11-04) → $49.50 (11-06) → $51.00 (11-11)。11-06 跳空低開於 $49.50（前收 $55.00，缺口 -10.0%），當日量 26.4M，盤中收回至 $52.60。11-11 再下跌 -6.7% 至 $51.20，量 28.0M，約為前十個交易日均量 (13.9M) 的 2.0 倍，屬放量下跌。11-06 的 $49.50 是目前最近的未破結構低點，11-11 盤中低點 $51.00 高於該低點，暫未形成新低。</p>
+<p>中長期背景仍有韌性：12 個月報酬 +8.9%，6 個月報酬 +2.0%，價格仍高於 52 週低點 $38.55 (+32.8%)，但距 52 週高點 $88.60 已回落 42.2%。強度判定為弱勢，短線偏空，中期結構尚未完全瓦解，但 MA200 已失守。</p>
+<h2>Momentum</h2>
+<p>MACD 位於零軸下方，MACD 線 -1.85 低於訊號線 -1.12，柱狀體 -0.73 且負值擴大（11-10 為 -0.55）。MACD 柱狀體於 2026-11-04 由正轉負，形成偏空交叉；10-27 柱狀體高點為 +0.64，至 11-11 已完全反轉，動能為負且加速。</p>
+<p>RSI14 為 31.51，接近但尚未進入超賣區 (&lt;30)。11-06 RSI 曾下探至 28.46 短暫超賣，11-10 反彈至 38.62 後再度回落，顯示反彈力道偏弱。</p>
+<p>多週期報酬：1 個月 -11.9%、3 個月 -22.4%、6 個月 +2.0%、12 個月 +8.9%。短中期（1-3 個月）大幅轉弱，6 個月以上仍為正，代表中期報酬尚未被完全抹平。</p>
+<h2>Key levels</h2>
+<p>價格已跌破工具列出的所有支撐位，原支撐轉為上方壓力。</p>
+<ul>
+<li>Resistance: $56.30 (2026-10-15 local low，已失守，轉壓力), $56.80 (2026-07-30 local low，轉壓力), $56.15 (MA200 動態), $58.33 (MA20 動態), $60.38 (MA50 動態), $63.10 (2026-06-26 local low), $63.30 (2026-08-19 local low), $63.90 (2026-10-27 local high), $68.40 (2026-09-01 / 09-02 local high), $72.80 (2026-07-09 local high), $73.50 (2026-08-14 local high)</li>
+<li>Support:    $51.00 (2026-11-11 盤中低，目前最近支撐), $49.50 (2026-11-06 盤中低，近期最低點), $51.74 (BB 下軌，動態), $38.55 (52 週低點，日期未於工具輸出中提供)</li>
+<li>Stop-loss suggestion (logical, not advice): below $49.50 (2026-11-06 低點，目前最近未破結構低點；前一支撐 $56.30 已於 11-05 失守). 若以波動度計，2×ATR14 約為 $45.78，可作為較寬的替代參考。</li>
+</ul>
+<h2>Volatility profile</h2>
+<p>ATR14 為 $2.71，約占價格 5.3%，即單日典型波動約 $2.7。20 日年化波動 48.7%，換算日標準差約 3.1%（約 $1.6）。ATR14 自 2026-10-22 的 $1.76 擴大至 $2.71，增幅約 54%，波動顯著放大。布林帶寬度（上軌 $64.91 與下軌 $51.74 之差除以中軌 $58.33）約 22.6%，同樣處於擴張狀態。在此波動水準下，以 ATR 計算的停損距離變大，若依固定風險比例配置部位，建議相應縮小部位規模。</p>
+<h2>Setup</h2>
+<p>偏空（bearish）。型態為連續低高點與低低點的下降結構，伴隨跌破 MA200 與 $56.30 支撐，且下跌日伴隨放量。RSI 接近 30、價格位於 BB 下軌之下，短線存在技術性反彈的可能，但在收復 MA20 ($58.33) 並使 MACD 柱狀體回到正值之前，偏空結構不改變。</p>
+<ul>
+<li>轉為中性的條件：收盤重回 $56.15–$58.33 區間（MA200 與 MA20 之上），且 MACD 柱狀體由負轉正。</li>
+<li>偏空延續的條件：收盤跌破 $49.50，前低點被破後下一個觀察區為 52 週低點 $38.55 之上方區間，但該區間無工具提供之支撐位。</li>
+</ul>
+<h2>Indicators table</h2>
+<table>
+<thead>
+<tr>
+<th>Indicator</th>
+<th>Value</th>
+<th>Reading</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Price</td>
+<td>51.20</td>
+<td>2026-11-11 收盤，較前收 -6.7%</td>
+</tr>
+<tr>
+<td>MA20</td>
+<td>58.33</td>
+<td>價格低 12.2%，MA20 位於 MA50 之下</td>
+</tr>
+<tr>
+<td>MA50</td>
+<td>60.38</td>
+<td>價格低 15.2%，尚高於 MA200</td>
+</tr>
+<tr>
+<td>MA200</td>
+<td>56.15</td>
+<td>價格低 8.8%，連續五日收於其下</td>
+</tr>
+<tr>
+<td>RSI14</td>
+<td>31.51</td>
+<td>接近超賣 (&lt;30 為 OS)，11-06 曾 28.46</td>
+</tr>
+<tr>
+<td>MACD</td>
+<td>-1.85</td>
+<td>位於零軸下方，偏空</td>
+</tr>
+<tr>
+<td>MACD signal</td>
+<td>-1.12</td>
+<td>MACD 位於訊號線之下</td>
+</tr>
+<tr>
+<td>MACD hist</td>
+<td>-0.73</td>
+<td>負值擴大，偏空加速</td>
+</tr>
+<tr>
+<td>BB %B</td>
+<td>-0.04</td>
+<td>略低於下軌 $51.74，短線超賣邊緣</td>
+</tr>
+<tr>
+<td>BB 帶寬</td>
+<td>約 22.6%</td>
+<td>擴張，波動增加（由上下軌與中軌計算）</td>
+</tr>
+<tr>
+<td>ATR14</td>
+<td>2.71</td>
+<td>約 5.3% 股價；較 10-22 的 1.76 增 54%</td>
+</tr>
+<tr>
+<td>20d 年化波動</td>
+<td>48.7%</td>
+<td>高波動</td>
+</tr>
+<tr>
+<td>1m 報酬</td>
+<td>-11.9%</td>
+<td>短期轉弱</td>
+</tr>
+<tr>
+<td>3m 報酬</td>
+<td>-22.4%</td>
+<td>中短期大幅下跌</td>
+</tr>
+<tr>
+<td>6m 報酬</td>
+<td>+2.0%</td>
+<td>接近持平</td>
+</tr>
+<tr>
+<td>12m 報酬</td>
+<td>+8.9%</td>
+<td>長期仍為正</td>
+</tr>
+<tr>
+<td>距 52w 高</td>
+<td>-42.2%</td>
+<td>52 週高點 $88.60</td>
+</tr>
+<tr>
+<td>距 52w 低</td>
+<td>+32.8%</td>
+<td>52 週低點 $38.55</td>
+</tr>
+<tr>
+<td>量比</td>
+<td>2.0x</td>
+<td>11-11 量 28.0M，對前十日均量 13.9M，放量下跌</td>
+</tr>
+<tr>
+<td>MA20 vs MA50</td>
+<td>死亡交叉</td>
+<td>2026-09-23 前後成立</td>
+</tr>
+<tr>
+<td>MA50 vs MA200</td>
+<td>尚未交叉</td>
+<td>差距約 7.5%，尚未形成死亡交叉</td>
+</tr>
+</tbody>
+</table>
+<h2>資料附註</h2>
+<ul>
+<li>Yahoo Finance 連線於本次執行中回傳 403，<code>yf fast_info</code> 的 MA 與 52 週欄位為 null / NaN；均線與 52 週高低點改採 <code>ta snapshot</code> 之數值。</li>
+<li>2026-10-23 的成交量為 0 且 O=H=L=C，疑為資料異常，對本次結論影響不大。</li>
+<li>52 週高點 $88.60 的發生日期未於工具輸出中提供，故未標註日期。</li>
+</ul>
+<p>MARKET REPORT COMPLETE</p></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-slate-700 mb-2">新聞 (News)</h4>
+          <div class="agent-prose text-sm bg-slate-50 p-3 rounded"><h1>News — 2356.TW (英業達) as of 2026-11-12</h1>
+<blockquote>
+<p>資料限制: yfinance 新聞端點 (Yahoo 網域) 遭代理政策 403 阻擋,本次未能取得 <code>yf 2356.TW news</code>,改以 WebSearch 補足。下列各條標註來源與日期;部分來源年份或日期不明已註記。股價與估值取自 <code>yf info</code> 快取 (2026-11-11 盤後)。金額: 台幣以億元計,美元以 M 計。</p>
+</blockquote>
+<h2>Top company-specific headlines (last 14d)</h2>
+<ul>
+<li>2026-11-04 — 10 月合併營收 799.66 億元,月減 18.9%、年增 46.0%;1-10 月累計 8,222.28 億元,年增 43.1% (technews 財經, finance.technews.tw). Impact: neutral。年增仍強,但月減幅度大,且年增率落後同期 Wistron (+117.6%)、Wiwynn (+80.9%)。</li>
+<li>2026-10 (日期待確認) — 第三季營收 2,720.94 億元,季增 0.83%、年增 54.35%,創單季新高;9 月單月 986.36 億元、年增 62.9% (uanalyze 電子五哥營收; technews 2026-10-08). Impact: bullish。營收動能仍在,但獲利端未見 2026 Q3 數字。</li>
+<li>2026-11-12 前 (未確認日期) — 查得一則路透式短訊,稱英業達否認媒體報導其 AI 伺服器業務明年將成長 60%。年份與日期無法確認,若屬 2026 年則為正面澄清 (去除過度樂觀預期),Impact: neutral 偏空。未納入權重。</li>
+<li>未找到 2026 年 Q3 稅後淨利與 EPS。搜尋到的「Q3 獲利年增三成、EPS 0.76 元」實為 2025 年 Q3 數據,已排除。Impact: 資訊缺口。</li>
+<li>股價 2026-11-11 收 51.2 元,單日 -6.74% (前收 54.9),為 52 週高點 88.6 元的 58%。來源: yf info 快取 (非新聞,僅作脈絡)。Impact: bearish 情緒面。</li>
+</ul>
+<h2>Sector macro</h2>
+<ul>
+<li>2026-11-03 — 美國中期選舉,民主黨據報取得國會兩院控制權;市場擔憂 AI 資料中心建置後續受限 (德州為資料中心重鎮)。來源: Focus Taiwan / 市場報導。Impact on 伺服器 ODM: bearish 估值與情緒,實際政策影響仍屬推測。</li>
+<li>2026-11-05 — PHLX 半導體指數 -3.2%,資料中心部署延遲疑慮壓抑情緒。Impact on AI 伺服器供應鏈: bearish。</li>
+<li>2026-11-06 — 台股加權指數 -4.5% 收 39,701.64 點 (Focus Taiwan);週跌幅超過 12%,據 Dow Jones 為 2001 年 9/11 週後最大週跌。Hon Hai 單日 -9.4% (單一來源)。Impact: bearish,系統性風險升高。</li>
+<li>2026-11-06 — 國家金融安定基金緊急會議,授權執行市場穩定措施;基金規模據報 5,000 億元 (新台幣)。Impact: 短期偏多 (政策托底)。另一來源稱 11/9 起借券賣出盤中限制大幅收緊 (次級來源,未核實)。</li>
+<li>2026-11-09 — 台股反彈約 +4.9%。收盤點位兩來源不一致 (42,060 vs 41,661.70),漲幅方向一致。Impact: 短線偏多,反映政策效果,但尚未化解資料中心情緒。</li>
+</ul>
+<h2>Peer signals</h2>
+<ul>
+<li>2317 Hon Hai (鴻海) — 10 月營收年增 45.7%;2026-11-06 單日 -9.4% (單一來源),為本週 AI 伺服器族群拋售主力之一。Bearish 族群情緒。</li>
+<li>6669 Wiwynn (緯穎) — 10 月營收年增 80.9%、月減 4.34%;2026-11-09 董事會通過發行最多 1,800 萬股 GDR,稀釋疑慮。Mixed。</li>
+<li>3231 Wistron (緯創) — 10 月營收年增 117.6%,月增約 5.7%;募資約 1,470M 美元,擴充 AI 伺服器產能,稀釋股東權益。Mixed 偏多基本面。</li>
+<li>2382 Quanta (廣達) — 未找到 2026 年股價變動;10 月營收於查詢時尚未公告。資訊不足。</li>
+<li>技嘉 (Gigabyte) — 10 月營收年增 136.7%,為同族群最強營收動能之一。Bullish 族群基本面。</li>
+</ul>
+<h2>Forward calendar (next 14d)</h2>
+<ul>
+<li>2026-11-14 (週六, 實務上前一工作日) — 台股上市公司第三季財報申報截止 (依一般 45 日規則),英業達 Q3 獲利與 EPS 應於此前公布。Impact: high,為本期最關鍵的公司面事件。來源有一頁股票資料稱 11/9 為財報日,未經核實。</li>
+<li>2026-11 中下旬 (日期待確認) — NVIDIA 季報 (通常 11 月下旬),AI 伺服器需求指標。Impact: high,可能改變族群情緒。</li>
+<li>2026-11 下旬 (日期估計) — 台灣 10 月外銷訂單,為總體景氣指標。Impact: medium。</li>
+<li>2026-12-08~09 — FOMC 會議 (不在 14 天窗口內,僅列入參考)。</li>
+<li>台灣央行本窗口內無例行理監事會議。</li>
+</ul>
+<h2>Net read</h2>
+<p>本期新聞與市場情緒偏空,強度中到高。基本面端仍有支撐: 10 月營收年增 46.0%、1-10 月年增 43.1%、Q3 營收創單季新高,且以 51.2 元計的 forward P/E 約 12.0 倍 (trailing P/E 約 16.6 倍,市值約 1,836.8 億元)。但基本面正面訊號被三個負面因素壓過:第一,11/3 至 11/6 AI 資料中心政策與情緒衝擊造成台股週跌超過 12%,英業達 11/11 單日再跌 6.74%;第二,10 月營收月減 18.9%,年增率明顯落後 Wistron、Wiwynn、技嘉,顯示成長動能分化;第三,同族群出現稀釋性募資 (Wiwynn、Wistron),市場對資金需求與現金流壓力敏感。Q3 財報 (11/14 前) 是下一個明確的基本面驗證點,但 2026 Q3 獲利數字尚未查得。國家金融安定基金的介入提供短線緩衝,11/9 反彈也顯示政策有效,但尚未修復資料中心情緒。分析師共識為 Hold (平均 2.6),平均目標價 64.06 元 (9 位分析師),高於現價,但需留意目標價可能滯後。整體新聞淨傾向: 偏空,中到高強度。</p></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-slate-700 mb-2">情緒 (Sentiment)</h4>
+          <div class="agent-prose text-sm bg-slate-50 p-3 rounded"><h1>Sentiment — 2356.TW (英業達) as of 2026-11-12</h1>
+<p>資料完整度提醒: 本次 Reddit 與 StockTwits 無法取得 (見下方), Yahoo 內部人資料為空陣列且 cookie/crumb 取得失敗, 整體置信度偏低。分析師數據與機構持股為 yfinance 回傳值, 時間戳不明。</p>
+<h2>Analyst consensus</h2>
+<p>目前 (period 0m) 共 10 家: Strong Buy 2 / Buy 1 / Hold 7 / Sell 0 / Strong Sell 0, 即約 3 買 / 7 持有 / 0 賣。</p>
+<table>
+<thead>
+<tr>
+<th>期間</th>
+<th>Strong Buy</th>
+<th>Buy</th>
+<th>Hold</th>
+<th>Sell</th>
+<th>Strong Sell</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0m (當期)</td>
+<td>2</td>
+<td>1</td>
+<td>7</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>-1m</td>
+<td>2</td>
+<td>1</td>
+<td>7</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>-2m</td>
+<td>2</td>
+<td>1</td>
+<td>7</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>-3m</td>
+<td>2</td>
+<td>1</td>
+<td>7</td>
+<td>0</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<p>Recent moves: 過去四個期間的評級分布完全相同, 代表近三個月無評級升降級被記錄; <code>recommendations</code> 工具也未回傳個別升降級事件或目標價變動, 因此無法確認近期 upgrade/downgrade 或 target price 調整。需注意: 四期完全一致可能是資料未更新, 不宜當作確定的「無變動」。</p>
+<p>法人觀點的文字面 (可得的最新一筆, 2026-05 前後, GS 報告): 維持中立, 理由為估值相對合理; 同時看好 AI 伺服器出貨成長, 但提醒記憶體與 CPU 供應短缺是出貨下行風險。此為 5 月資料, 距今已逾半年, 不代表 11 月時點的評級。</p>
+<h2>Retail social</h2>
+<ul>
+<li>Reddit: 無法取得。WebFetch 回報 "Claude Code is unable to fetch from www.reddit.com", r/wallstreetbets 與 r/stocks 的搜尋皆失敗, 本次無法評估散戶語氣與貼文數量。</li>
+<li>StockTwits / X: StockTwits 因 <code>api.stocktwits.com</code> DNS 解析失敗無法連線 (需於 session 網路設定允許該網域)。X 本次未額外搜尋 (WebSearch 回傳為新聞/法說類結果, 非社群貼文)。</li>
+<li>聲量 (Buzz volume): 無法量化, 無社群樣本可比對一般水準。</li>
+<li>散戶語氣: 無樣本, 無法判定 bullish / bearish / mixed。</li>
+<li>替代訊號 (非社群, 僅供參考): 搜尋結果中的公開新聞與法說報導聚焦於伺服器業務成長與獲利改善 (見下方 Themes), 屬媒體/法人語境, 不等同散戶情緒。</li>
+<li>Themes (從新聞與法說文字歸納, 非社群): (1) AI 伺服器佔比提升、為主要成長動能; (2) 2026 年 8 月營收年增約 35.8% 創十年同期新高 (營收 832.68億 TWD); (3) 獲利改善 (2026Q2 EPS 1.09 TWD, 年增約 78.7%); (4) 估值與記憶體/CPU 供應短缺為主要疑慮; (5) 管理層強調應看整體獲利金額而非僅毛利率。</li>
+</ul>
+<h2>Insider activity</h2>
+<p>Net 6mo: 資料不可得。<code>insider</code> 工具回傳空陣列 (且同時 cookie/crumb 取得失敗), 無法判定為「無交易」或「資料缺漏」, 因此不列出 $ 買賣金額, 亦不指定 CEO/CFO 交易。建議以台灣公開資訊觀測站 (MOPS) 的董監持股申報人工核對。</p>
+<h2>Ownership shifts</h2>
+<ul>
+<li>內部人持股 (insidersPercentHeld): 28.5%</li>
+<li>機構持股 (institutionsPercentHeld): 25.4%; 占流通股 (institutionsFloatPercentHeld): 35.6%</li>
+<li>機構家數 (institutionsCount): 162</li>
+<li>趨勢: 單一快照, 無歷史比較, 無法判斷機構集中度是上升或下降。</li>
+</ul>
+<h2>Net sentiment score</h2>
+<p>Composite: <strong>中性偏謹慎 (neutral, low confidence)</strong><br />
+- 分析師面: 偏中性 (3 買 / 7 持有 / 0 賣, 無賣方評級), 但 5 月的文字觀點對估值持保留態度。<br />
+- 散戶面: 無資料, 無法評分。<br />
+- 內部人面: 無資料, 無法評分。<br />
+- 整體信心: 低, 主要因社群與內部人資料缺漏, 分析師資料時效不明。</p>
+<p>Divergence flag: <strong>無法判定 (no)</strong>。因散戶端無樣本, 無法確認是否與分析師傾向相反。</p>
+<p>資料缺口 (待補):<br />
+1. Reddit (r/wallstreetbets, r/stocks) 本次無法連線。<br />
+2. StockTwits 因網域未允許無法連線。<br />
+3. Yahoo insider 資料為空且 cookie/crumb 失敗, 需確認是否真為零交易。<br />
+4. 分析師評級四期完全相同, 需確認資料是否過期; 目標價資料缺失。<br />
+5. 新聞搜尋未回傳 2026 年 10–11 月的報導, 最新資訊約停在 2026 年 9 月前後。</p>
+<p>SENTIMENT REPORT COMPLETE</p></div>
+        </div>
+      </div>
+    </details>
+
+    <details class="mb-4 border border-slate-200 rounded">
+      <summary class="bg-slate-50 px-4 py-2 font-semibold">Phase 2 — Bull vs Bear 辯論</summary>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+        <div>
+          <h4 class="font-bold text-green-700 mb-2">🐂 多方 (Bull)</h4>
+          <div class="agent-prose text-sm bg-green-50 p-3 rounded border border-green-200"><em>n/a</em></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-red-700 mb-2">🐻 空方 (Bear)</h4>
+          <div class="agent-prose text-sm bg-red-50 p-3 rounded border border-red-200"><em>n/a</em></div>
+        </div>
+      </div>
+    </details>
+
+    <details class="mb-4 border border-slate-200 rounded">
+      <summary class="bg-slate-50 px-4 py-2 font-semibold">Phase 4 — 風險辯論 (Risk debate)</summary>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 p-4">
+        <div>
+          <h4 class="font-bold text-red-700 mb-2">⚡ 進攻 (Aggressive)</h4>
+          <div class="agent-prose text-sm bg-red-50 p-3 rounded border border-red-200"><em>n/a</em></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-blue-700 mb-2">🛡️ 保守 (Conservative)</h4>
+          <div class="agent-prose text-sm bg-blue-50 p-3 rounded border border-blue-200"><em>n/a</em></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-slate-700 mb-2">⚖️ 中立 (Neutral)</h4>
+          <div class="agent-prose text-sm bg-slate-100 p-3 rounded border border-slate-300"><em>n/a</em></div>
+        </div>
+      </div>
+    </details>
+
+  </div>
+
+  <script>
+    (function() {
+      var d = {};
+      if (!d.dates) return;
+      var traces = [
+        {x: d.dates, y: d.close, name: 'Close',  line: {color: '#1f2937', width: 2}},
+        {x: d.dates, y: d.ma20,  name: 'MA20',   line: {color: '#0ea5e9', width: 1, dash: 'dot'}},
+        {x: d.dates, y: d.ma50,  name: 'MA50',   line: {color: '#f59e0b', width: 1, dash: 'dot'}},
+        {x: d.dates, y: d.ma200, name: 'MA200',  line: {color: '#ef4444', width: 1, dash: 'dash'}}
+      ];
+      var layout = {
+        margin: {l: 50, r: 20, t: 10, b: 40},
+        legend: {orientation: 'h', y: -0.15},
+        xaxis: {showgrid: false},
+        yaxis: {title: '價格 ($)'}
+      };
+      Plotly.newPlot('chart-2356_TW', traces, layout, {displayModeBar: false, responsive: true});
+    })();
+  </script>
+
+</section>
+
+
+<section id="ticker-2376_TW" class="mb-10 bg-white rounded-lg shadow overflow-hidden">
+
+  <div class="flex items-start justify-between p-6 border-b border-slate-200 verdict-HOLD">
+    <div>
+      <h2 class="text-3xl font-bold">2376.TW</h2>
+      <p class="text-sm mt-1 opacity-80">技嘉 (2376) — AI server ODM (Vera Rubin Rack)</p>
+    </div>
+    <div class="text-right">
+      <div class="text-4xl font-bold">HOLD</div>
+      <div class="text-sm opacity-80 mt-1">REJECT</div>
+    </div>
+  </div>
+
+  <div class="p-6 grid grid-cols-1 lg:grid-cols-2 gap-6">
+
+    <div>
+      <h3 class="text-lg font-bold mb-2">價格 + 技術指標 (2 年)</h3>
+      <div id="chart-2376_TW" style="height: 380px;"></div>
+    </div>
+
+    <div>
+      <h3 class="text-lg font-bold mb-2">最終決策 (Final decision)</h3>
+      <div class="agent-prose text-sm bg-slate-50 p-4 rounded border border-slate-200">
+        <p>FINAL TRANSACTION PROPOSAL: <strong>HOLD</strong></p>
+<h1>Final decision — 2376.TW as of 2026-11-12</h1>
+<h2>Verdict</h2>
+<p>REJECT</p>
+<h2>部位判定</h2>
+<p>2376.TW 不在 <code>pipeline/tools/held_tickers.txt</code> 內,屬新倉,適用 A 框架。問題是「該不該進」,答案是現在不進。第一行的 HOLD 代表「空手不動作」,不是續抱。</p>
+<h2>Final trade card</h2>
+<p>不適用(REJECT,不開倉)。</p>
+<h2>Dealbreaker</h2>
+<p>11/13 公布 Q3'26 財報,距今一個交易日,而決定方向的三個數字(存貨、OCF、毛利率)都還沒出來。ATR14 約 4.5%,11/6 曾單日跳空 -9.9%,財報前設的任何停損都可能被跳空穿透,R:R 算不出可信的數字。多空證據強度相當,現在進場是押一個賠率不明的二元事件。</p>
+<h2>Risk debate adjudication</h2>
+<ul>
+<li>Aggressive's strongest point: 財報若大幅優於預期,股價可能直接跳空開在 $319 以上,等技術確認會錯過第一段。這個成本是真的,但我接受它。</li>
+<li>Conservative's strongest point: 現金流與槓桿惡化是已申報數字(TTM OCF -790.0 億、淨負債約 3.6x EBITDA),證據品質高於「存貨是備料」的推論;淨負債若突破 1,000 億,低 P/E 就是價值陷阱。</li>
+<li>Net: I weight neutral more here because 存貨 +171% 兩種解讀都還沒被證偽,財報前建 starter position 或買 call spread(IV 已墊高)都是在未解的事件上再加曝險。Conservative 與 neutral 關於既有持股減碼的建議不適用,因為本帳戶沒有部位。</li>
+</ul>
+<h2>論點支柱</h2>
+<table>
+<thead>
+<tr>
+<th>支柱</th>
+<th>進場前需要看到</th>
+<th>現況</th>
+<th>判定</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>營收動能</td>
+<td>月營收 YoY 維持高成長,同業印證</td>
+<td>10 月 YoY +136.7%,1–10 月 +70.7%;緯創 +117.6%、緯穎 +80.9%</td>
+<td>成立</td>
+</tr>
+<tr>
+<td>營運資金回收</td>
+<td>Q3 OCF 轉正或明顯改善,存貨持平或下降</td>
+<td>H1'26 存貨 +171% 至 1,684.5 億,TTM OCF -790.0 億</td>
+<td>觀察中</td>
+</tr>
+<tr>
+<td>毛利率與獲利持續性</td>
+<td>毛利率 ≥9.5%,EPS ≥9.18 TWD</td>
+<td>Q2'26 毛利率 9.6%,自 FY22 的 15.5% 一路下滑</td>
+<td>觀察中</td>
+</tr>
+<tr>
+<td>槓桿可控</td>
+<td>淨負債不再攀升</td>
+<td>843.9 億,約 3.6x TTM EBITDA</td>
+<td>觀察中</td>
+</tr>
+</tbody>
+</table>
+<p>四根支柱只有一根成立,其餘三根都要等 11/13 才有答案,不足以支撐新倉。</p>
+<h2>論點失效條件</h2>
+<p>目前無部位,以下條件用來判定「多方論點是否值得再看」,與價格無關。<br />
+- 若 Q3'26 存貨餘額高於 1,684.5 億且單季 OCF 仍為負,營運資金支柱失效 → 維持不進場,不再列入多方候選。<br />
+- 若 Q3'26 毛利率低於 9.0%,或 EPS 低於 9.18 TWD 且毛利率低於 9.5%,獲利支柱失效 → 維持不進場。<br />
+- 若 Q3'26 淨負債超過 1,000 億,槓桿支柱失效 → 視為價值陷阱,至少等到 Q4 財報才重新評估。<br />
+- 若 11 月營收(12/10 前公告)YoY 低於 +50%,唯一成立的營收支柱鬆動 → 整個多方論點擱置。</p>
+<h2>重新評估的條件</h2>
+<p>以下全部命中才重啟評估,屆時依實際數字重算 Entry / Stop / Target:<br />
+1. Q3 OCF 轉正或明顯改善,存貨持平或下降。<br />
+2. 毛利率 ≥9.5%,EPS ≥9.18 TWD。<br />
+3. 法說會對 Q4 與 2027 的展望維持高能見度。<br />
+4. 收盤站回 MA200 $309.53 並突破 $319。</p>
+<p>即使全部命中,首批也只建半倉,停損放在 $282 以下並相應縮小部位;第二批等 11 月營收驗證存貨去化。</p>
+<h2>Monitoring trigger</h2>
+<p>If 11/13 財報的存貨、OCF、毛利率、淨負債四項數字公布,於次一交易日收盤後重新評估;若收盤跌破 $282(11/6 跳空低點),多方候選資格取消,不需等其他數據。</p>
+<h2>Catalyst calendar</h2>
+<ul>
+<li>2026-11-13 — Q3'26 財報(存貨、應收帳款、OCF、毛利率、EPS vs consensus 9.18 TWD)</li>
+<li>2026-11-17(美東時間)— NVIDIA FQ3 財報,影響 AI 伺服器供應鏈情緒</li>
+<li>2026-12-10 前 — 11 月營收公告,驗證動能與存貨去化</li>
+</ul>
+<p>FINAL DECISION COMPLETE</p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="px-6 pb-6">
+
+    <details class="mb-4 border border-slate-200 rounded">
+      <summary class="bg-slate-50 px-4 py-2 font-semibold">投資計劃 (Research manager)</summary>
+      <div class="agent-prose p-4 text-sm"><h1>Investment plan — 2376.TW as of 2026-11-12</h1>
+<h2>Directional stance</h2>
+<p>NEUTRAL — conviction MEDIUM（對「財報前不表態」的判斷有中等把握；對最終方向本身把握低）</p>
+<h2>Crux of debate</h2>
+<ol>
+<li>Crux 1：營運資金能否回收。H1'26 存貨由 621.9 億增至 1,684.5 億（+171%），TTM OCF -790.0 億。多方說這是 GB300 和 SP7 出貨前的備料，空方說這是盈餘品質折價。11/13 的 Q3'26 財報會揭露 9/30 的存貨、應收帳款與 OCF，可以直接驗證。</li>
+<li>Crux 2：毛利率與獲利持續性。毛利率從 FY22 的 15.5% 降到 Q2'26 的 9.6%；營益率回升到 5.7%，主要靠費用率下降。Q3 EPS 能否達到 consensus 9.18 TWD、毛利率能否守住約 9.5% 以上，決定 forward EPS 37.35 可不可信。</li>
+<li>Crux 3：槓桿走勢。淨負債 843.9 億，約 TTM EBITDA 的 3.6x。如果 Q3 淨負債繼續攀升（例如超過 1,000 億），低 P/E 是價值陷阱的論點就會成立。</li>
+</ol>
+<h2>Where the bull is right</h2>
+<ul>
+<li>營收動能是公司公告、可驗證的硬數據：10 月營收 670.36 億，YoY +136.7%；1–10 月 YoY +70.7%。同業（緯創 +117.6%、緯穎 +80.9%）也確認產業需求，不是單一公司現象。</li>
+<li>11/6 跳空主要來自 11/5 選後半導體族群系統性賣壓，不是公司基本面事件。</li>
+<li>近兩季 EPS 正向超預期（+42.4%、+11.9%），Q2'26 營益率與淨利率都有實質擴張。</li>
+<li>技術面有初步止跌跡象：RSI 從 26.60 回升到 33.02，MACD 柱狀連續四日收斂，$298 附近守住。</li>
+</ul>
+<h2>Where the bear is right</h2>
+<ul>
+<li>現金流和資產負債表惡化是已申報的財報數字，證據品質高於多方「存貨將快速轉化」的推論。多方的反駁目前無法證偽，要等財報驗證。</li>
+<li>多方引用的利息保障倍數 17.8x 是 FY25 數據；之後總負債已增加約 2.7 倍，這個數字已經過時。</li>
+<li>股利實際上沒有被現金流覆蓋（FY25 FCF 覆蓋 0.52x），稀釋股數比基本股數多約 9%，來源不明。</li>
+<li>技術結構仍偏空：價格低於 MA20、MA50、MA200，高點持續下移；11/10 爆量但收在當日區間偏下段。11/9 大盤大漲逾 6%，個股卻沒有明顯跟漲，相對走勢偏弱。</li>
+<li>目標價中位數由 350 下修到 315（日期未確認），和買進評級方向背離。</li>
+</ul>
+<h2>雙方估值的缺陷</h2>
+<ul>
+<li>多方用 forward EPS 37.35 乘以 12–15x，但同業 P/E 14–15x 是未經驗證的粗估，也沒有計入現金流折價。</li>
+<li>空方用 TTM EPS 乘以 8x，等於同時壓低 EPS 和倍數，有重複懲罰。合理區間應落在兩者之間，偏向哪一端取決於 Crux 1。</li>
+</ul>
+<h2>Net verdict</h2>
+<p>雙方信心都是 7/10，證據各有強項。多方握有營收成長的硬數據，空方握有現金流與槓桿的硬數據，兩邊都是已發生的事實，所以這場辯論無法用敘事分出勝負。決定性資訊（Q3 存貨、OCF、毛利率）會在 11/13 公布，距今只有一個交易日。ATR 約 4.5%，11/6 曾單日跳空 -9.9%，財報前建立方向性部位，等於押注一個二元事件，而且賠率不明。因此結論是 NEUTRAL：財報前不建議新建部位，等交易員依財報結果決定方向。</p>
+<h2>What would change the verdict</h2>
+<ul>
+<li>Upside trigger：Q3 OCF 轉正或明顯改善、存貨持平或下降、毛利率 ≥9.5%、EPS ≥ consensus 9.18，而且法說會對 Q4 與 2027 的展望維持高能見度。如果同時收盤站回 MA200 $309.53 並突破 $319，可轉為 LONG（MEDIUM）。</li>
+<li>Downside trigger：存貨再創新高、淨負債突破約 1,000 億、OCF 持續大幅為負，或毛利率跌破 9%。如果再加上收盤跌破 $298 或 $282，轉為 SHORT_OR_AVOID。</li>
+<li>Key data point to monitor：Q3'26 營業現金流與存貨餘額（11/13），其次是 NVIDIA FQ3 財報（11/17 美東時間）與 11 月營收（12/10 前）。</li>
+</ul>
+<h2>Position-sizing guidance (qualitative, not advice)</h2>
+<ul>
+<li>財報前：維持空手或觀察倉，既有持股可考慮減到核心部位。</li>
+<li>財報後如果觸發 upside trigger：先建半倉，等 11 月營收與現金流趨勢再確認後才加碼。</li>
+<li>因為 ATR 高、有跳空風險，停損距離要拉寬（$282 以下），部位相應縮小，不建議滿倉。</li>
+</ul>
+<h2>Time horizon</h2>
+<ul>
+<li>短期（數日）：以 11/13 財報和 11/17 NVIDIA 財報為事件窗口。</li>
+<li>中期（1–2 季）：論點核心是營運資金回收。要等 Q3 與 Q4 財報連續驗證現金流轉正，估值重新評級的邏輯才算成立。</li>
+</ul>
+<p>INVESTMENT PLAN COMPLETE</p></div>
+    </details>
+
+    <details class="mb-4 border border-slate-200 rounded">
+      <summary class="bg-slate-50 px-4 py-2 font-semibold">交易提案 (Trader)</summary>
+      <div class="agent-prose p-4 text-sm"><p>FINAL TRANSACTION PROPOSAL: <strong>HOLD</strong></p>
+<h1>Trade proposal — 2376.TW as of 2026-11-12</h1>
+<h2>Direction</h2>
+<p>AVOID（財報前不建新倉；若已持有核心倉位則維持 HOLD，不加碼）</p>
+<h2>為何沒有具體進場/停損價位</h2>
+<p>Research manager 的結論是 NEUTRAL，conviction MEDIUM，且明確指出「財報前不建議新建部位」。理由如下：</p>
+<ol>
+<li><strong>二元事件風險</strong>：11/13 公布 Q3'26 財報，是解開 Crux 1（營運資金能否回收）與 Crux 2（毛利率/獲利持續性）的關鍵資訊，距今僅一個交易日。財報前建立方向性部位，等於在賠率未知的情況下押注二元事件。</li>
+<li><strong>波動與跳空風險偏高</strong>：ATR14 約 $13.83（約 4.5%），20 日年化波動 40.75%；11/6 已發生單日跳空 -9.9%（開 $282，前收 $313）。這種波動結構下，任何在財報前設的停損都可能在跳空中被瞬間擊穿，R:R 計算會失真，不具參考意義。</li>
+<li><strong>多空雙方證據強度相當</strong>：多方握有營收硬數據（10 月營收 YoY +136.7%，同業印證產業需求），空方握有現金流與槓桿硬數據（存貨 H1'26 +171%、TTM OCF -790.0 億、淨負債 843.9 億≈3.6x EBITDA）。兩邊皆為已發生事實，無法用敘事分出勝負，必須等 11/13 財報數字驗證。</li>
+<li><strong>技術面本身也未給出明確訊號</strong>：價格 $305 仍在 11/6 跳空缺口（$282–$313）內整理，位於 MA200 $309.53 下方（壓力）、MA20/MA50 之下，空頭結構未反轉；但 RSI 從 26.6 回升到 33.02、MACD 柱狀連續四日收斂，屬於超賣後整理，尚非止跌確認。技術面與基本面都處於「尚未定案」狀態。</li>
+</ol>
+<p>因此目前不提供 Entry / Stop / Target / R:R 數字——任何財報前設定的價位都會被 11/13 的新資訊直接覆蓋，提前給出會造成誤導性的精確感。</p>
+<h2>既有持股建議</h2>
+<p>若已持有，可考慮將部位減至核心倉位以降低財報前跳空風險；不建議財報前加碼或新建空單。</p>
+<h2>Sizing</h2>
+<p>不適用（無新交易）。既有倉位建議：維持或減碼至核心持股，不加碼。</p>
+<h2>Time horizon</h2>
+<p>事件驅動：等待 11/13 Q3'26 財報（及隨後 11/17 NVIDIA FQ3 財報作為次要催化劑）後再評估方向。</p>
+<h2>Trigger（財報後轉為可交易的條件）</h2>
+<ul>
+<li><strong>轉 LONG（MEDIUM 倉位）觸發條件</strong>：Q3 OCF 轉正或明顯改善、存貨持平或下降、毛利率 ≥9.5%、EPS ≥ consensus 9.18 TWD，且法說會對 Q4/2027 展望維持高能見度；技術面同時收盤站回 MA200 $309.53 並突破 $319（11/9 高點）。</li>
+<li><strong>轉 SHORT 或維持 AVOID 觸發條件</strong>：存貨再創新高、淨負債突破約 1,000 億、OCF 持續大幅為負，或毛利率跌破 9%；技術面同時收盤跌破 $298 或進一步跌破 $282（跳空低點）。</li>
+<li>財報公布後將依實際數字重新計算 Entry / Stop / Target / R:R。</li>
+</ul>
+<h2>Invalidation</h2>
+<p>本提案的前提（「財報前資訊不足以分出勝負」）本身會被 11/13 財報結果直接解除；屆時需依上述 trigger 重新評估，不適用單一「失效價位」概念。</p>
+<h2>Catalyst calendar</h2>
+<ul>
+<li>2026-11-13 — Q3'26 財報公布（存貨、應收帳款、OCF、毛利率、EPS vs consensus 9.18 TWD）</li>
+<li>2026-11-17（美東時間）— NVIDIA FQ3 財報，間接影響 AI 伺服器供應鏈情緒</li>
+<li>2026-12-10 前 — 11 月營收公告，驗證 Q3 財報後動能是否延續</li>
+</ul>
+<p>TRADE PROPOSAL COMPLETE</p></div>
+    </details>
+
+    <details class="mb-4 border border-slate-200 rounded">
+      <summary class="bg-slate-50 px-4 py-2 font-semibold">Phase 1 — 四 Analyst 報告</summary>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+        <div>
+          <h4 class="font-bold text-slate-700 mb-2">基本面 (Fundamentals)</h4>
+          <div class="agent-prose text-sm bg-slate-50 p-3 rounded"><h1>Fundamentals — 2376.TW (技嘉 Giga-Byte Technology) as of 2026-11-12</h1>
+<h2>Executive summary</h2>
+<p>技嘉 Q1–Q2'26 獲利大幅跳升（Q2'26 營收 1,442.1億 TWD，YoY +41.0%；稅後淨利 66.1億 TWD，YoY +116.7%），以 TTM P/E 12.3x、forward P/E 8.2x 計算估值不貴。然而現金面與資產負債表顯著惡化：H1'26 營業現金流合計 -793.8億 TWD（TTM OCF -790.0億 TWD），存貨由 FY25 年底 621.9億 TWD 增至 Q2'26 1,684.5億 TWD，總負債由 437.2億 增至 1,179.8億 TWD，淨負債由 29.3億 升至 843.9億 TWD。結論：財務健康度（現金流與槓桿）轉弱，盈餘品質偏低，低估值的前提是存貨與應收帳款能回收，目前資料尚未證實。</p>
+<p>Data note: 所有 TWD 金額單位為 億 TWD（1 億 = 100,000,000 TWD）。Latest reported quarter 為 2026-06-30（Q2'26，財報日 2026-08-14）。下一次財報日 2026-11-13（Q3'26）為 as-of 日之後，屬 post-date 資訊，僅列 consensus 預估值。股價來自 cache 2026-11-11 14:00 UTC。</p>
+<h2>Revenue &amp; profitability</h2>
+<p><strong>營收趨勢（億 TWD）</strong></p>
+<table>
+<thead>
+<tr>
+<th>期間</th>
+<th>營收</th>
+<th>YoY</th>
+<th>毛利率</th>
+<th>營益率</th>
+<th>淨利率</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FY22</td>
+<td>1,072.6</td>
+<td>—</td>
+<td>15.5%</td>
+<td>5.7%</td>
+<td>6.1%</td>
+</tr>
+<tr>
+<td>FY23</td>
+<td>1,367.7</td>
+<td>+27.5%</td>
+<td>12.1%</td>
+<td>3.6%</td>
+<td>3.5%</td>
+</tr>
+<tr>
+<td>FY24</td>
+<td>2,651.5</td>
+<td>+93.9%</td>
+<td>10.6%</td>
+<td>4.9%</td>
+<td>3.7%</td>
+</tr>
+<tr>
+<td>FY25</td>
+<td>3,369.4</td>
+<td>+27.1%</td>
+<td>10.4%</td>
+<td>5.0%</td>
+<td>3.6%</td>
+</tr>
+<tr>
+<td>Q2'25</td>
+<td>1,022.6</td>
+<td>—</td>
+<td>9.4%</td>
+<td>5.0%</td>
+<td>3.0%</td>
+</tr>
+<tr>
+<td>Q2'26</td>
+<td>1,442.1</td>
+<td>+41.0%</td>
+<td>9.6%</td>
+<td>5.7%</td>
+<td>4.6%</td>
+</tr>
+<tr>
+<td>TTM (至 Q2'26)</td>
+<td>4,182.0</td>
+<td>+24.1% vs FY25</td>
+<td>10.4%</td>
+<td>5.6%（derived）</td>
+<td>4.3%</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>3 年 CAGR（FY22→FY25）：營收約 +46.4%；淨利 +23.0%（65.4 → 121.9億）；稀釋後 EPS +19.3%（10.12 → 17.18）。</li>
+<li>Q1'26 營收 1,050.6億 TWD，依 FY25 總額扣除 Q2–Q4'25 推算 Q1'25 約 657.5億（derived），YoY 約 +59.8%。</li>
+<li>段落：yfinance <code>info.longBusinessSummary</code> 僅列業務類別（Brand Business Group、Other Business Group；主機板、顯卡、筆電、伺服器/機架、液冷、儲存、電源、散熱等），未提供分部營收金額。segment mix 量化資料：n/a。</li>
+<li>毛利率 FY22 15.5% → Q2'26 9.6%，連續 3 年壓縮，營收成長伴隨毛利率下滑，代表高成長來自低毛利的組裝/伺服器相關產品比重提高（定性推論，分部資料未揭露）。</li>
+<li>營業費用佔營收：FY23 8.5% → FY24 5.7% → FY25 5.4%（182.3 / 3,369.4），費用率下降是營益率小幅回升的主因。</li>
+</ul>
+<p><strong>獲利指標</strong><br />
+- ROE：TTM 31.97%（info）；FY25 以年均權益計算約 21.6%（121.9 / 平均權益 563.9，derived）。TTM 數字高於 FY25 主要因 TTM 淨利大幅提升，權益基礎仍以 665.2億（Q2'26）為準。<br />
+- ROIC FY25 約 16.0%（NOPAT 140.8億 = EBIT 179.9 × (1 − 有效稅率 21.8%)；平均 Invested Capital 882.3億，derived）。<br />
+- EBITDA FY25 188.9億；TTM 235.8億（info）。</p>
+<h2>Cashflow &amp; balance sheet</h2>
+<p><strong>現金流（億 TWD）</strong></p>
+<table>
+<thead>
+<tr>
+<th>期間</th>
+<th>營業現金流</th>
+<th>資本支出</th>
+<th>FCF</th>
+<th>FCF/NI</th>
+<th>股利支付</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FY22</td>
+<td>58.2</td>
+<td>-12.9</td>
+<td>45.3</td>
+<td>0.69</td>
+<td>-76.2</td>
+</tr>
+<tr>
+<td>FY23</td>
+<td>22.6</td>
+<td>-5.8</td>
+<td>16.8</td>
+<td>0.35</td>
+<td>-39.4</td>
+</tr>
+<tr>
+<td>FY24</td>
+<td>-161.8</td>
+<td>-21.4</td>
+<td>-183.2</td>
+<td>負值</td>
+<td>-43.4</td>
+</tr>
+<tr>
+<td>FY25</td>
+<td>50.9</td>
+<td>-14.0</td>
+<td>36.9</td>
+<td>0.30</td>
+<td>-71.3</td>
+</tr>
+<tr>
+<td>Q1'26</td>
+<td>-206.5</td>
+<td>-1.8</td>
+<td>-208.4</td>
+<td>—</td>
+<td>n/a</td>
+</tr>
+<tr>
+<td>Q2'26</td>
+<td>-587.3</td>
+<td>-17.9</td>
+<td>-605.2</td>
+<td>—</td>
+<td>n/a</td>
+</tr>
+<tr>
+<td>TTM</td>
+<td>-790.0</td>
+<td>—</td>
+<td>-858.1（info）</td>
+<td>—</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>FCF/NI：FY25 為 0.30，遠低於 0.9 健康門檻；FY22–FY25 累計 FCF -84.2億 vs 累計淨利 332.6億，累計 FCF/NI 為負。</li>
+<li>FCF margin：FY25 1.1%；TTM -20.5%（-858.1 / 4,182.0）。</li>
+<li>營運現金流惡化原因（quarterly_cf）：Q1'26 營運資金變動 -280.1億，Q2'26 -649.7億；其中 Q2'26 存貨變動 -368.3億、應收帳款 -145.4億。</li>
+<li>資本支出強度極低：FY25 capex 14.0億，佔營收 0.4%。</li>
+</ul>
+<p><strong>資產負債表（億 TWD）</strong></p>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>FY25 (12/31)</th>
+<th>Q1'26 (3/31)</th>
+<th>Q2'26 (6/30)</th>
+<th>備註</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>存貨</td>
+<td>621.9</td>
+<td>1,316.3</td>
+<td>1,684.5</td>
+<td>較 FY25 +171%</td>
+</tr>
+<tr>
+<td>應收帳款</td>
+<td>338.0</td>
+<td>239.3</td>
+<td>374.9</td>
+<td></td>
+</tr>
+<tr>
+<td>流動資產</td>
+<td>1,442.6</td>
+<td>2,340.9</td>
+<td>2,539.3</td>
+<td></td>
+</tr>
+<tr>
+<td>流動負債</td>
+<td>844.8</td>
+<td>1,703.7</td>
+<td>1,757.7</td>
+<td>較 FY25 +108%</td>
+</tr>
+<tr>
+<td>總負債（Total Debt，含借款）</td>
+<td>437.2</td>
+<td>886.0</td>
+<td>1,179.8</td>
+<td>較 FY25 +170%</td>
+</tr>
+<tr>
+<td>現金及約當現金＋短期投資</td>
+<td>424.2</td>
+<td>652.1</td>
+<td>359.5</td>
+<td></td>
+</tr>
+<tr>
+<td>淨負債（yfinance）</td>
+<td>29.3</td>
+<td>248.3</td>
+<td>843.9</td>
+<td></td>
+</tr>
+<tr>
+<td>股東權益</td>
+<td>591.0</td>
+<td>645.7</td>
+<td>665.2</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>流動比率：FY25 1.71 → Q2'26 1.45（info 1.445）；速動比率 info 0.44。</li>
+<li>負債權益比：Q2'26 約 177%（1,179.8 / 665.2，derived），info 170.3%。FY25 為 74%。</li>
+<li>淨負債 / TTM EBITDA：約 3.6x（843.9 / 235.8，derived）。</li>
+<li>利息保障：FY25 利息費用 10.1億（FY24 5.2億，倍增），EBIT / 利息約 17.8x。2026 年利息費用未揭露，但總債務已增加約 2.7 倍，利息負擔預期上升（推論）。</li>
+<li>短期借款滾動：FY25 借款發行 1,253.9億、償還 1,030.7億，淨短期借款增加 223.2億。</li>
+</ul>
+<h2>Capital allocation &amp; insider signal</h2>
+<p><strong>資本配置</strong><br />
+- 股利：FY25 現金股利 71.3億（FY24 43.4億）。FY25 股利 / NI 約 58%；FCF 對股利覆蓋倍數 0.52x（36.9 / 71.3）；營業現金流覆蓋 0.71x（50.9 / 71.3）。TTM OCF 為負，股利目前由舉債或營運資金佔用支撐。info dividendYield 3.94%、payoutRatio 0.4026。<br />
+- 買回：FY22–FY25 無實際買回（FY21 買回 2.8億）。<br />
+- 股本擴張：FY24 現金增資/發行股票 98.5億；普通股股數由 FY23 635.7M 增至 FY24 669.9M（+5.4%）。info sharesOutstanding 為 689.7M，高於 FY25 年底 669.9M（約 +3.0%），原因未在資料中確認。<br />
+- 稀釋股數：FY25 稀釋加權股數 731.6M 高於基本股數 669.9M（約 9%），差異來源（可轉債、認股權等）資料中未揭露，需人工確認。</p>
+<p><strong>內部人交易（6 個月）</strong><br />
+- yfinance <code>insider</code> 回傳空陣列，無資料。內部人交易淨買賣金額：n/a。<br />
+- 主要股東：insidersPercentHeld 18.9%；institutionsPercentHeld 37.4%；機構家數 179（major_holders）。<code>inst_holders</code> 回傳空陣列，個別機構持股：n/a。<br />
+- 台灣市場董事持股申報（公開資訊觀測站）未納入本工具，建議人工補查。</p>
+<h2>Valuation</h2>
+<p><strong>價格與估值（TWD）</strong><br />
+- 現價 305.0（previous close 304.5；cache 2026-11-11）；52 週區間 206.5 – 402.0；50 日均線 351.89；200 日均線 311.03。現價較 50 日均線低約 13.3%，較 200 日均線低約 1.9%（derived）。<br />
+- 市值 2,103.6億 TWD；企業價值（EV）2,888.3億 TWD（info）。<br />
+- 市值核對：305.0 × 689.7M 股 ≈ 2,103.6億，與 info 一致。</p>
+<table>
+<thead>
+<tr>
+<th>估值指標</th>
+<th>數值</th>
+<th>計算基礎</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Trailing P/E</td>
+<td>12.3x</td>
+<td>EPS TTM 24.84</td>
+</tr>
+<tr>
+<td>Forward P/E</td>
+<td>8.2x</td>
+<td>forwardEps 37.35</td>
+</tr>
+<tr>
+<td>EV/EBITDA（TTM）</td>
+<td>12.2x</td>
+<td>EBITDA TTM 235.8億</td>
+</tr>
+<tr>
+<td>EV/EBITDA（FY25）</td>
+<td>約 15.3x</td>
+<td>EBITDA FY25 188.9億（derived）</td>
+</tr>
+<tr>
+<td>P/S（TTM）</td>
+<td>0.50x</td>
+<td>市值 / 營收 TTM 4,182.0億</td>
+</tr>
+<tr>
+<td>P/FCF</td>
+<td>n/a</td>
+<td>FCF 為負</td>
+</tr>
+<tr>
+<td>P/B</td>
+<td>3.07x</td>
+<td>bookValue 99.3 TWD</td>
+</tr>
+<tr>
+<td>股利殖利率</td>
+<td>3.94%</td>
+<td>info</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>盈餘品質：trailing EPS 24.84 與 earnings_dates 最近四季稀釋 EPS 加總（約 25.6）略有差異，來源口徑不同，以 info 為準。</li>
+<li>估值解讀：以盈餘計價便宜，但 P/FCF 無法計算，EV/EBITDA 以 TTM 計約 12x，並未明顯低估；盈餘轉換為現金的能力是估值折價的主要理由。</li>
+</ul>
+<h2>Key catalysts</h2>
+<ul>
+<li><strong>下次財報</strong>：2026-11-13（Q3'26），consensus EPS 估計 9.18 TWD（yfinance earnings_dates）。若以 Q3'25 實際 EPS 4.56 比較，估計 YoY 約 +101%（derived）。此為 as-of 日之後的事件。</li>
+<li><strong>歷史 EPS surprise（最近 6 季）</strong>：2025-05 Q1'25 +8.1%；2025-08 Q2'25 -7.7%；2025-11 Q3'25 -17.7%；2026-03 Q4'25 -15.0%；2026-05 Q1'26 +42.4%；2026-08 Q2'26 +11.9%。盈餘預估誤差大，波動高。</li>
+<li><strong>近期營運趨勢</strong>：Q2'26 營收 +41.0%、營益 +60.6%（81.6 vs 50.8，derived）；此為本報告中最主要的正向訊號，但未見管理層指引（guidance）資料。</li>
+<li><strong>營運資金</strong>：Q3'26 財報需觀察存貨週轉、應收帳款變化與短期借款是否回落；若存貨持續高位，現金流轉正時點將延後。</li>
+<li><strong>產品結構</strong>：業務描述提到 AI/rack server、direct liquid and immersion cooling 等項目，但量化貢獻資料未揭露，無法確認 Q2'26 成長來源。</li>
+<li><strong>公司治理/資本計畫</strong>：目前無公開現金增資或可轉債資料，需人工確認。</li>
+</ul>
+<h2>Metrics table</h2>
+<p>金額單位：億 TWD（營收、利潤、現金流、負債）；比率為 %、x。「Sector median (estimate)」為分析師依台灣主機板/PC 零組件同業的粗估值，未經資料源驗證，僅供相對比較。</p>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Latest</th>
+<th>YoY / 比較基準</th>
+<th>Sector median (estimate)</th>
+<th>Verdict</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>營收（億 TWD，Q2'26）</td>
+<td>1,442.1</td>
+<td>+41.0%（Q2'25 1,022.6）</td>
+<td>單季成長 n/a</td>
+<td>優</td>
+</tr>
+<tr>
+<td>營收（億 TWD，FY25）</td>
+<td>3,369.4</td>
+<td>+27.1%（FY24 2,651.5）</td>
+<td>—</td>
+<td>優</td>
+</tr>
+<tr>
+<td>毛利率（Q2'26）</td>
+<td>9.6%</td>
+<td>+0.2pt（Q2'25 9.4%）；FY22 15.5%</td>
+<td>約 12%</td>
+<td>劣</td>
+</tr>
+<tr>
+<td>營益率（Q2'26）</td>
+<td>5.7%</td>
+<td>+0.7pt（Q2'25 5.0%）</td>
+<td>約 4%</td>
+<td>中性偏優</td>
+</tr>
+<tr>
+<td>淨利率（TTM）</td>
+<td>4.3%</td>
+<td>FY25 3.6%</td>
+<td>約 3%</td>
+<td>持平</td>
+</tr>
+<tr>
+<td>ROE（TTM，info）</td>
+<td>32.0%</td>
+<td>FY25 約 21.6%（derived）</td>
+<td>約 12%</td>
+<td>優（槓桿推升，需留意）</td>
+</tr>
+<tr>
+<td>ROIC（FY25，derived）</td>
+<td>約 16.0%</td>
+<td>—</td>
+<td>約 10%</td>
+<td>優</td>
+</tr>
+<tr>
+<td>淨利（億 TWD，FY25）</td>
+<td>121.9</td>
+<td>+24.5%（FY24 97.9）</td>
+<td>—</td>
+<td>優</td>
+</tr>
+<tr>
+<td>FCF（億 TWD，FY25）</td>
+<td>36.9</td>
+<td>FY24 -183.2</td>
+<td>—</td>
+<td>中性</td>
+</tr>
+<tr>
+<td>FCF margin（TTM）</td>
+<td>-20.5%</td>
+<td>FY25 1.1%</td>
+<td>約 3%</td>
+<td>劣</td>
+</tr>
+<tr>
+<td>FCF / NI（FY25）</td>
+<td>0.30</td>
+<td>FY23 0.35；FY22 0.69</td>
+<td>&gt;0.9 健康</td>
+<td>劣</td>
+</tr>
+<tr>
+<td>營業現金流（億 TWD，TTM）</td>
+<td>-790.0</td>
+<td>H1'26 -793.8</td>
+<td>—</td>
+<td>劣</td>
+</tr>
+<tr>
+<td>流動比率（Q2'26）</td>
+<td>1.45</td>
+<td>FY25 1.71</td>
+<td>約 1.4</td>
+<td>中性</td>
+</tr>
+<tr>
+<td>負債權益比（Q2'26，derived）</td>
+<td>約 177%（info 170.3%）</td>
+<td>FY25 74%</td>
+<td>約 80%</td>
+<td>劣</td>
+</tr>
+<tr>
+<td>總負債（億 TWD，Q2'26）</td>
+<td>1,179.8</td>
+<td>FY25 437.2（+170%）</td>
+<td>—</td>
+<td>劣</td>
+</tr>
+<tr>
+<td>淨負債（億 TWD，Q2'26）</td>
+<td>843.9</td>
+<td>FY25 29.3</td>
+<td>—</td>
+<td>劣</td>
+</tr>
+<tr>
+<td>淨負債 / EBITDA（TTM，derived）</td>
+<td>約 3.6x</td>
+<td>—</td>
+<td>約 1.0x</td>
+<td>劣</td>
+</tr>
+<tr>
+<td>存貨（億 TWD，Q2'26）</td>
+<td>1,684.5</td>
+<td>FY25 621.9（+171%）</td>
+<td>—</td>
+<td>劣</td>
+</tr>
+<tr>
+<td>股利殖利率</td>
+<td>3.94%</td>
+<td>—</td>
+<td>約 3%</td>
+<td>優</td>
+</tr>
+<tr>
+<td>股利 FCF 覆蓋（FY25）</td>
+<td>0.52x</td>
+<td>—</td>
+<td>&gt;1.0x</td>
+<td>劣</td>
+</tr>
+<tr>
+<td>買回</td>
+<td>無（FY22–FY25）</td>
+<td>—</td>
+<td>—</td>
+<td>中性</td>
+</tr>
+<tr>
+<td>內部人淨買賣（6 個月）</td>
+<td>n/a</td>
+<td>—</td>
+<td>—</td>
+<td>無資料</td>
+</tr>
+<tr>
+<td>Trailing P/E</td>
+<td>12.3x</td>
+<td>—</td>
+<td>約 15x</td>
+<td>偏便宜</td>
+</tr>
+<tr>
+<td>Forward P/E</td>
+<td>8.2x</td>
+<td>—</td>
+<td>約 14x</td>
+<td>偏便宜</td>
+</tr>
+<tr>
+<td>EV/EBITDA（TTM）</td>
+<td>12.2x</td>
+<td>—</td>
+<td>約 10x</td>
+<td>中性</td>
+</tr>
+<tr>
+<td>P/S（TTM）</td>
+<td>0.50x</td>
+<td>—</td>
+<td>約 0.5x</td>
+<td>中性</td>
+</tr>
+<tr>
+<td>P/FCF</td>
+<td>n/a</td>
+<td>FCF 為負</td>
+<td>—</td>
+<td>無法評估</td>
+</tr>
+<tr>
+<td>P/B</td>
+<td>3.07x</td>
+<td>—</td>
+<td>約 2x</td>
+<td>偏貴</td>
+</tr>
+</tbody>
+</table>
+<h2>Red flags</h2>
+<ul>
+<li><strong>現金流嚴重背離盈餘</strong>：TTM 營業現金流 -790.0億 TWD 對應 TTM 淨利約 179.1億（Q3'25–Q2'26 加總，derived），OCF/NI 為大幅負值；H1'26 單季 Q2 OCF -587.3億。</li>
+<li><strong>存貨暴增</strong>：存貨 FY25 年底 621.9億 → Q2'26 1,684.5億（+171%），存貨 / 季度營收已超過 1 倍。若需求放緩或跌價，有減記風險。</li>
+<li><strong>槓桿快速上升</strong>：總負債 6 個月內由 437.2億 增至 1,179.8億；淨負債 843.9億，淨負債 / TTM EBITDA 約 3.6x；利息費用 FY25 已倍增。</li>
+<li><strong>毛利率持續壓縮</strong>：FY22 15.5% → Q2'26 9.6%，營收成長未帶動毛利率回升。</li>
+<li><strong>股利不被現金流覆蓋</strong>：FY25 FCF 對股利覆蓋 0.52x；TTM OCF 為負，股利為融資或營運資金支撐。</li>
+<li><strong>盈餘預估誤差大</strong>：最近 6 季 EPS surprise 介於 -17.7% 至 +42.4%，預測可靠度低。</li>
+<li><strong>稀釋與股本資料不一致</strong>：稀釋股數 731.6M vs 基本股數 669.9M（約 9%）；info sharesOutstanding 689.7M vs FY25 669.9M。需確認可轉債或認股權影響。</li>
+<li><strong>內部人與機構資料缺漏</strong>：insider 與 inst_holders 均回傳空值，無法驗證內部人交易方向。</li>
+<li><strong>股價結構偏弱</strong>：現價 305.0 低於 50 日均線 351.89（-13.3%）且低於 200 日均線（-1.9%），距 52 週高點 402.0 約 -24%。</li>
+<li><strong>資料缺口</strong>：無分部營收金額、無管理層指引、無 2026 年利息費用、無股利每股金額、無台灣董事持股申報資料；quarterly_fin 的 EPS 欄位與 earnings_dates 的報告 EPS 在部分季度不一致，本報告以 earnings_dates 為 surprise 依據、以 quarterly_fin 為營收/淨利依據。</li>
+</ul>
+<p>FUNDAMENTALS REPORT COMPLETE</p></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-slate-700 mb-2">技術面 (Market / Technical)</h4>
+          <div class="agent-prose text-sm bg-slate-50 p-3 rounded"><h1>Technical — 2376.TW (技嘉) as of 2026-11-12</h1>
+<blockquote>
+<p>資料說明：ta 與 yf 工具實際回傳的 as_of 為 2026-11-11（最新收盤）。報告日期 2026-11-12 的收盤資料尚未取得，本報告所有數字皆為 2026-11-11 收盤後的狀態。yfinance 直連於代理端被拒（403），fast_info 來自 cache（cached_at 2026-11-11T14:00 UTC），因此 fast_info 中 50d/200d MA、52w 欄位與 10d 均量為空值，改以 ta snapshot 與 ta series 的數值為準。</p>
+</blockquote>
+<h2>Snapshot</h2>
+<p>Price $305.00, MA20 $337.20, MA50 $350.69, MA200 $309.53, RSI14=33.02, MACD hist=-4.46</p>
+<h2>Trend</h2>
+<p>空頭結構，趨勢偏弱。價格自 2026-10-06 高點 $396.50 之後形成連續低點下移（lower highs）：10-27 高點 $367、10-29 高點 $352.5、11-02 高點 $342、11-05 高點 $325.5、11-09 高點 $319、11-10 高點 $316.5，11-11 收 $305。目前收盤低於 MA20（-9.5%）與 MA50（-13.0%），並已跌破 MA200 $309.53（-1.5%），MA200 由支撐轉為上方壓力。</p>
+<p>均線結構上 MA50（$350.69）仍高於 MA200（$309.53），相差約 13%，尚未接近 death cross，但 MA50 已開始由上行轉為收斂，且價格在 MA20 之下，短中期趨勢明確偏空。11-06 出現跳空下跌（開 $282.00，前收 $313.00，跳空約 -9.9%），盤中低點 $282.00，量能 9.02M，為近期最大單日事件；之後三個交易日（11-09 至 11-11）形成較高低點（$298.00 → $298.50 → $298.00 盤中低點），價格在 $298 至 $310 區間整理，尚未重新站回 MA200。</p>
+<p>趨勢強度：以 MA 排列與高低點結構判斷為中等偏強的空頭趨勢，但 52w 低點 $206.50 仍遠低於現價（+47.7%），12m 報酬為 +6.5%，長期仍非全面崩盤結構。</p>
+<h2>Momentum</h2>
+<ul>
+<li>MACD：線 -13.93、訊號線 -9.47、柱狀 -4.46，三者皆在零軸下方，MACD 處於空方姿態。柱狀由 11-06 低點 -5.51 連續四日收斂至 -4.46，屬於下跌動能減弱，但尚未出現翻正或黃金交叉跡象。</li>
+<li>RSI14：33.02，位於中性偏弱區，接近 30 的超賣門檻。11-06 RSI 曾觸及 26.60（超賣區），之後回升至 33 附近。</li>
+<li>多週期報酬：1m -14.33%、3m -12.73%、6m -6.01%、12m +6.46%。短中期（1m、3m）大幅落後，6m 仍為負值，僅 12m 維持正報酬。</li>
+<li>BB %B：0.119，價格位於布林下軌（$294.94）與中軌（$337.20）之間偏下段，接近下軌但未跌破。</li>
+</ul>
+<h2>Key levels</h2>
+<ul>
+<li>Resistance（上方壓力，依距離由近到遠）：</li>
+<li>$309.53（MA200，目前價格上方約 1.5%）</li>
+<li>$312.00（2026-07-30 local low，已成為上方壓力）</li>
+<li>$318.50（2026-06-26 local low，已成為上方壓力）</li>
+<li>$335.50（2026-08-25 local low，已成為上方壓力）</li>
+<li>$337.20（MA20）</li>
+<li>$341.00（2026-09-16 local low，已成為上方壓力）</li>
+<li>$350.69（MA50）</li>
+<li>$358.00（2026-07-24 local high）</li>
+<li>$367.00（2026-10-27 local high）</li>
+<li>$396.50（2026-10-06 local high）</li>
+<li>$402.00（2026-06-03 / 2026-08-14 local high，即 52w 高點）</li>
+<li>Support:    $298.00（2026-11-06 收盤與 2026-11-11 盤中低點，目前最近的下方支撐）、$294.94（布林下軌，動態支撐）、$282.00（2026-11-06 盤中低點，近期最低點）、$206.50（52w 低點，遠端參考）</li>
+</ul>
+<p>註：ta levels 所列的 support（$312.00、$318.50、$335.50、$341.00）皆已高於現價，已轉為上方壓力；目前下方可參考的實際支撐僅 $298 區與 $282 低點。</p>
+<ul>
+<li>Stop-loss suggestion (logical, not advice): below $282.00（2026-11-06 盤中低點，跳空後的最低點；跌破此位即代表近期低點結構失效）。較緊的參考為收盤跌破 $298.00。</li>
+</ul>
+<h2>Volatility profile</h2>
+<p>ATR-implied daily move ~$13.83（約 4.5% 股價），annualized vol 40.75%（20d）。以年化波動換算日標準差約 2.57%，即約 $7.8/日。</p>
+<p>部位規模含義：ATR 與 20d 年化波動均偏高，單日波動約為 4.5%，單筆部位若以 ATR 為停損距離，停損距離約 $14 至 $28（1 至 2 ATR），部位應相應縮小。11-06 跳空 -9.9% 顯示事件風險存在，跳空缺口之下的停損距離不應以 ATR 小幅設定。</p>
+<h2>Setup</h2>
+<p>偏空（bearish），但短線已出現超賣後的整理跡象。</p>
+<ul>
+<li>型態：自 10-06 高點起形成下降通道（lower highs），11-06 跳空下跌後未能回補缺口（缺口區間約 $282 至 $313 仍未填滿），目前收盤 $305 位於缺口區間內。</li>
+<li>已跌破：$335.50 與 $318.50 等前期支撐，並跌破 MA200 $309.53（目前為收盤下方）。</li>
+<li>整理跡象：11-09 至 11-11 形成較高低點（$298 區），RSI 自 26.6 回升至 33，MACD 柱狀連續四日收斂。若收盤能重新站回 MA200 $309.53 並突破 $319（11-09 高點），可視為短線止跌確認；反之，跌破 $298 則下探 $282 低點的風險仍在。</li>
+<li>量能：11-11 量 6.11M，對比 10d 均量約 6.16M（依 ta series 最近 10 根 K 線自行計算，fast_info 10d 均量為空值），量比約 0.99 倍，量能無明顯放大。11-06（9.02M）與 11-10（9.47M）為近期兩次較大量，11-10 以大量收在當日區間偏下段（區間 $298.50 至 $316.50，收 $304.50），屬於需留意的賣壓訊號。</li>
+</ul>
+<h2>Indicators table</h2>
+<table>
+<thead>
+<tr>
+<th>Indicator</th>
+<th>Value</th>
+<th>Reading</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Price</td>
+<td>305.00</td>
+<td>收盤 2026-11-11</td>
+</tr>
+<tr>
+<td>MA20</td>
+<td>337.20</td>
+<td>價格低於 MA20，-9.5%</td>
+</tr>
+<tr>
+<td>MA50</td>
+<td>350.69</td>
+<td>價格低於 MA50，-13.0%</td>
+</tr>
+<tr>
+<td>MA200</td>
+<td>309.53</td>
+<td>價格低於 MA200，-1.5%，MA200 由支撐轉壓力</td>
+</tr>
+<tr>
+<td>MA50 vs MA200</td>
+<td>350.69 vs 309.53</td>
+<td>尚未死亡交叉，差距約 13%，仍在多頭排列之上但收斂中</td>
+</tr>
+<tr>
+<td>RSI14</td>
+<td>33.02</td>
+<td>中性偏弱，接近超賣門檻 30；11-06 曾低至 26.60</td>
+</tr>
+<tr>
+<td>MACD</td>
+<td>-13.93</td>
+<td>零軸下方，空方</td>
+</tr>
+<tr>
+<td>MACD signal</td>
+<td>-9.47</td>
+<td>MACD 位於訊號線下方</td>
+</tr>
+<tr>
+<td>MACD hist</td>
+<td>-4.46</td>
+<td>負值，較 11-06 之 -5.51 收斂，動能減弱但未翻正</td>
+</tr>
+<tr>
+<td>BB %B</td>
+<td>0.119</td>
+<td>接近布林下軌，未跌破（下軌 $294.94）</td>
+</tr>
+<tr>
+<td>BB 上軌 / 中軌 / 下軌</td>
+<td>379.46 / 337.20 / 294.94</td>
+<td>價格位於中下段</td>
+</tr>
+<tr>
+<td>ATR14</td>
+<td>13.83</td>
+<td>約 4.5% 股價，波動偏大，停損距離需拉寬</td>
+</tr>
+<tr>
+<td>20d 年化波動</td>
+<td>40.75%</td>
+<td>高波動</td>
+</tr>
+<tr>
+<td>1m 報酬</td>
+<td>-14.33%</td>
+<td>短期明顯弱勢</td>
+</tr>
+<tr>
+<td>3m 報酬</td>
+<td>-12.73%</td>
+<td>中期偏弱</td>
+</tr>
+<tr>
+<td>6m 報酬</td>
+<td>-6.01%</td>
+<td>半年仍為負</td>
+</tr>
+<tr>
+<td>12m 報酬</td>
+<td>+6.46%</td>
+<td>年度仍為正，但低於 52w 高點</td>
+</tr>
+<tr>
+<td>距 52w 高點</td>
+<td>-24.13%（高點 $402.00）</td>
+<td>遠低於前高</td>
+</tr>
+<tr>
+<td>距 52w 低點</td>
+<td>+47.70%（低點 $206.50）</td>
+<td>遠離年度低點</td>
+</tr>
+<tr>
+<td>量比（現量 / 10d 均量）</td>
+<td>6.11M / 約 6.16M ≈ 0.99x</td>
+<td>量能持平，無明顯放大</td>
+</tr>
+<tr>
+<td>資料異常</td>
+<td>2026-10-23 量為 0、OHLC 皆為 349.00</td>
+<td>疑似停牌或資料缺漏，計算均量與型態時已留意</td>
+</tr>
+</tbody>
+</table>
+<p>MARKET REPORT COMPLETE</p></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-slate-700 mb-2">新聞 (News)</h4>
+          <div class="agent-prose text-sm bg-slate-50 p-3 rounded"><h1>News — 2376.TW (技嘉) as of 2026-11-12</h1>
+<p>資料截止說明: 系統當日為 2026-11-11, 2026-11-12 當日及之後的新聞視為未知, 未納入。<code>pipeline/tools/yf 2376.TW news</code> 因代理回傳 403 (guce / query2.finance / fc.yahoo 皆遭拒) 無法取得, 新聞以 WebSearch 補足, 多為轉載或聚合站來源, 低信心項目已標註。</p>
+<h2>Top company-specific headlines (last 14d)</h2>
+<ul>
+<li>2026-11-05 — 10 月合併營收 670.36 億 TWD, 月增 6.2%、年增 136.7%; 1–10 月累計 4,710.19 億 TWD, 年增 70.7% (科技新報 TechNews). Impact: 偏多。營收動能遠高於大盤 AI 伺服器同業平均, 且為 14 日內唯一可由公司公告直接驗證的硬消息。</li>
+<li>日期不明 — 法人指在手 AI 訂單已看到 2027 年上半年, 下半年營收與獲利有機會翻倍 (財經網站轉述, 日期未標示, 低信心). Impact: 偏多。無法確認時點, 不作為量化假設。</li>
+</ul>
+<p>Background (14d 以外, 僅供參考):<br />
+- 2026-07 (約 07/24) — SP7 伺服器平台 (AMD EPYC 9006) 預計 2026/11 出貨, SP8 排 2027/3 (自由財經經 LTN 轉述). Impact: 偏多。產品時程與本月重疊, 為近期潛在催化劑。<br />
+- 2026-10-06 — 第三季營收 1,547.1 億 TWD, 年增近一倍, 創歷史新高 (聚合站轉述). Impact: 偏多, 已反映於股價。</p>
+<p>Dropped (churn / 過期): 2026-05-20 子公司 Giga Computing 董事改選、2026-09-23 Giga Computing 台灣 AI 工廠報導 (超過 14d, 非市場驅動)。</p>
+<h2>Sector macro</h2>
+<ul>
+<li>2026-11-05 — 美國期中選舉結果後半導體族群大幅下跌, 報導指 TSMC 約 -10%、UMC 約 -16% (單一轉述來源, 低信心). Impact on 電腦硬體 / AI 伺服器: 情緒與估值面偏空, 台股高 beta 的 ODM 同步承壓。</li>
+<li>2026-11-09 — 政府啟動股市穩定基金後, 台股大漲逾 6%, 半導體領漲 (市場筆記轉述, 低信心). Impact: 短線情緒修復, 但 11/05 跌幅未完全回補。</li>
+<li>持續中 — AI 泡沫疑慮升溫, 投資人態度轉謹慎 (市場筆記). Impact: AI 伺服器 ODM 估值壓縮風險上升。</li>
+<li>日期未確認 — 美國 Section 232 半導體與電子產品關稅調查 (2025 AmCham 摘要); 2026 年結果未查到。Impact on 台灣 AI 伺服器出口: 若落地, 影響美國端成本與產能配置, 目前無法量化。</li>
+<li>日期未確認 — 記憶體短缺與漲價 (2025 年 11 月技嘉法說會提及記憶體漲價與庫存因應, 科技新報 2025/11/14). Impact: 板卡與消費端毛利壓力; AI 伺服器端 DRAM 成本同樣需關注。</li>
+<li>Fed 政策與 TWD 走勢: 未查到 2026/11 可靠資料, 列為待確認。</li>
+</ul>
+<h2>Peer signals</h2>
+<ul>
+<li>緯穎 Wiwynn (6669) — Q3 營收創歷史新高 (11/09 公布), 但示警原料供應偏緊將造成月營收短期波動; 10 月年增 +80.9%。偏多, 月度波動風險需留意。</li>
+<li>緯創 Wistron (3231) — 10 月年增 +117.6%, 同業增速最高之一。偏多。</li>
+<li>英業達 Inventec (2356) — 10 月年增 +46.0%, 低於技嘉。中性偏多。</li>
+<li>鴻海 Hon Hai (2317) — 10 月營收 13,100 億 TWD, 年增 45.7%; 1–10 月 89,800 億 TWD, 年增 40.4%。含消費性電子, 非純 AI 數據, 僅作方向參考。</li>
+<li>廣達 Quanta (2382) — 10 月營收於可查來源未確認; 9 月營收月減超過 20% (伺服器出貨下滑, 聚合站來源)。中性偏空, 待確認。</li>
+<li>NVIDIA (NVDA) — FQ3 FY27 財報 2026-11-17 (官方公告), 為 AI 伺服器需求的同業總指標。中性, 待觀察。</li>
+</ul>
+<h2>Forward calendar (next 14d)</h2>
+<ul>
+<li>2026-11-13 (估計, Yahoo earningsTimestampStart, isEarningsDateEstimate=true; 2025 年為 11/14) — 技嘉 2026 Q3 財報與法說會。預期影響: 高。關注 Q3 EPS、毛利率、Q4 與 2027 展望、GB 系列占比。</li>
+<li>2026-11-14 (依慣例的 Q3 財報申報截止附近) — 若 11/13 未公布, 留意公告時點。</li>
+<li>2026-11-17 美東 (2026-11-18 台北凌晨約 06:00) — NVIDIA FQ3 FY27 財報 (官方確認)。預期影響: 高, 為 AI 伺服器 read-through。</li>
+<li>2026-11-12 至 11-26 — Fed 與美國總體數據 (CPI 等): 日期未查證, 待確認。</li>
+<li>14d 以外: 技嘉 11 月營收 (預計 12 月 10 日前公布)、Quanta 10 月營收 (若尚未公布)。</li>
+</ul>
+<h2>Net read</h2>
+<p>近 14 日公司面可驗證的硬消息是 10 月營收強勁成長 (年增 136.7%, 1–10 月年增 70.7%), 且同業 AI 伺服器 ODM 10 月普遍高增 (緯創 +117.6%、緯穎 +80.9%、英業達 +46.0%、鴻海 +45.7%), 基本面新聞整體偏多, 強度中高。然而股價 305 TWD 仍低於 52 週高點 402 TWD 約 24%, 且位於 50 日均線 351.9 TWD 之下, 顯示市場情緒偏空, 半導體族群在 11/05 重挫後僅部分反彈。下一個重大變數是 11/13 前後的 Q3 財報與法說會: 若 AI 伺服器成長延續且 Q4 與 2027 展望維持高能見度, 正面標題可延續; 若毛利率受記憶體成本或原料緊縮壓縮, 營收數字的正面意義會被抵銷。Net headline tilt: 偏多, 強度中等 (營收數據強、宏觀情緒偏弱, 整體非一面倒)。</p>
+<p>資料品質註記: yfinance info 的 TTM 營收 (約 4,182 億 TWD) 與公司公告的 1–10 月累計 4,710.19 億 TWD 不一致, 判定為快取舊值, 本報告不採用其營收數字。</p>
+<p>來源:<br />
+- 科技新報 (TechNews) 10 月營收: https://finance.technews.tw/2026/11/05/gigabyte-2376-202610-financial-report/<br />
+- 科技新報 2025 Q3 法說會 (記憶體與庫存背景): https://finance.technews.tw/2025/11/14/gigabyte-2025-q3-earnings/<br />
+- 自由財經 / LTN SP7 出貨: https://ec.ltn.com.tw/article/breakingnews/5515972<br />
+- 同業 10 月 MOPS 營收彙整 (FourWeekMBA): https://fourweekmba.com/ai-taiwans-ai-server-makers-post-october-sales-up-to-137/<br />
+- 鴻海 10 月營收 (TVBS / NewsBytes 轉述): https://news.tvbs.com.tw/english/3203555<br />
+- 緯穎 Q3 與原料警示 (FourWeekMBA): https://fourweekmba.com/ai-wiwynn-sales-up-62-9-ai-server-maker-watches-us-midterms/<br />
+- NVIDIA FQ3 FY27 財報日期: https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Sets-Conference-Call-for-Third-Quarter-Financial-Results/<br />
+- 台股與半導體 11/05、11/09 市場筆記 (低信心): https://tw.linkedin.com/in/sean-chiu-47466491</p>
+<p>NEWS REPORT COMPLETE</p></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-slate-700 mb-2">情緒 (Sentiment)</h4>
+          <div class="agent-prose text-sm bg-slate-50 p-3 rounded"><h1>Sentiment — 2376.TW（技嘉）as of 2026-11-12</h1>
+<blockquote>
+<p>資料時效聲明：今日系統日期為 2026-11-11，報告日期為 2026-11-12。可取得的最新新聞約為 2026-11-05（10 月營收），下一次財報預定 2026-11-13，尚未公布。本報告的分析師與散戶資料皆為截至取得當下的快照，不包含財報後反應。</p>
+</blockquote>
+<h2>Analyst consensus</h2>
+<p>yfinance rec_summary（目前期）：12 位分析師中 3 位 Strong Buy、6 位 Buy、3 位 Hold、0 位 Sell、0 位 Strong Sell。換算買進評級約 75%（9/12），無賣出評級。</p>
+<p>評級分布在 0m、-1m、-2m 三個期間完全相同，過去兩個月沒有可見的升評或降評。</p>
+<p>目標價（來自網路搜尋，來源日期不一，需留意）：<br />
+- 某頁面平均 12 個月目標價 311.10 TWD，該頁面顯示股價 399 TWD，目標價低於股價。<br />
+- 某 FactSet 相關報導指中位數目標價由 350 元降至 315 元，降幅約 10%。報導日期未確認。<br />
+- 另一頁面列出 19 位分析師、STRONGBUY 共識，與 yfinance 的 12 位數字不一致，以 yfinance 為準。</p>
+<p>Recent moves：沒有明確的近期評級變動。目標價下修的方向與評級維持買進的狀態有落差，值得留意。</p>
+<h2>Retail social</h2>
+<ul>
+<li>Reddit：r/wallstreetbets 與 r/stocks 的搜尋端點被 proxy 拒絕（403），無法取得樣本。標記為資料缺漏。</li>
+<li>StockTwits：api.stocktwits.com 同樣被 proxy 拒絕（403），無法取得樣本。標記為資料缺漏。</li>
+<li>中文財經媒體（替代來源）：搜尋未找到 2026 年 11 月的散戶討論或情緒指標。最近可查到的評論多為 2026 年前幾個月的內容，包括理財周刊的「股價位階相對低、可分批布局」看法，屬媒體評論而非散戶樣本。</li>
+<li>X：未取得可用樣本。</li>
+<li>聲量：無法量化，無法與平常水準比較。</li>
+</ul>
+<p>Themes（依媒體與搜尋結果歸納，非散戶原文）：<br />
+- AI 伺服器（GB300 放量、伺服器營收占比逾八成、訂單能見度至 2026 年底）<br />
+- 本益比偏低（董事長曾表示 PE 掉到 13 倍以下，認為股價受委屈）<br />
+- Computex 題材帶動的量價表現（4 月股價一度攻上 291.5 元）<br />
+- 2025 年 12 月的營運目標傳聞，公司已在公開資訊觀測站澄清為媒體臆測，此點可視為對市場傳聞的風險提示</p>
+<p>Retail tilt：無法判定。現有可查資料偏向正面（AI 伺服器與低估值論點），但這些是媒體與法人觀點，不能代表散戶情緒。</p>
+<h2>Insider activity</h2>
+<p>Net 6mo：無法確認。yfinance insider 工具回傳空陣列，但同一批呼叫中 cookie/crumb 取得失敗，因此空陣列可能是資料缺漏，不能直接解讀為「六個月內無內部人交易」。需要重新抓取確認。</p>
+<p>Notable：無可驗證的交易紀錄。</p>
+<h2>Ownership shifts</h2>
+<ul>
+<li>內部人持股比例（insidersPercentHeld）：18.9%</li>
+<li>機構持股比例（institutionsPercentHeld）：37.4%，流通股口徑 46.1%</li>
+<li>機構家數：179</li>
+<li>只有單一時點快照，無法判斷機構集中度的變化趨勢。</li>
+</ul>
+<h2>Net sentiment score</h2>
+<p>Composite：<strong>偏多（neutral-to-bullish），信心低</strong></p>
+<p>依據：<br />
+- 分析師面：偏多。12 位中 9 位買進以上，無賣出評級，但目標價資料互相矛盾，且來源日期不一。<br />
+- 散戶面：無資料。Reddit、StockTwits 皆被擋，中文社群樣本缺乏。<br />
+- 內部人面：無法判定，資料可能不完整。<br />
+- 基本面背景：10 月合併營收 670.36 億 TWD，年增 136.7%；1–10 月累計營收 4,710.19 億 TWD，年增 70.7%。此為營運動能的正面訊號，但不屬於情緒資料，僅作背景參考。</p>
+<p>Confidence：低。主要因為散戶與內部人兩個來源缺失，且分析師目標價資料日期不明。</p>
+<p>Divergence flag：<strong>無法判定</strong>。散戶情緒缺乏樣本，無法與分析師傾向比較。若 11-13 財報後能取得 Reddit 或 StockTwits 的資料，應重新評估是否出現背離。</p>
+<h2>Data gaps（需補抓）</h2>
+<ol>
+<li>Reddit 與 StockTwits 端點需在 proxy 允許名單內，否則無法取得散戶樣本。</li>
+<li>yfinance insider 需重試（cookie/crumb 失敗導致資料可能不完整）。</li>
+<li>目標價來源需以同一日期的快照統一比對。</li>
+</ol>
+<p>SENTIMENT REPORT COMPLETE</p>
+<h2>Sources</h2>
+<ul>
+<li><a href="https://finance.technews.tw/2026/11/05/gigabyte-2376-202610-financial-report/">技嘉 10 月營收報導（technews，2026-11-05）</a></li>
+<li><a href="https://tw.stock.yahoo.com/news/%E6%8A%80%E5%98%89-%E7%BA%8C%E6%8B%9A%E9%9B%99%E4%BD%8D%E6%95%B8%E6%88%90%E9%95%B7-ai%E4%BC%BA%E6%9C%8D%E5%99%A8%E8%A8%82%E5%96%AE%E7%9C%8B%E5%88%B02026%E5%B9%B4%E5%BA%95-105314544.html">技嘉 AI 伺服器訂單能見度（Yahoo 股市）</a></li>
+<li><a href="https://tw.stock.yahoo.com/news/%E9%89%85%E4%BA%A8%E9%80%9F%E5%A0%B1-factset-%E6%9C%80%E6%96%B0%E8%AA%BF%E6%9F%A5-%E6%8A%80%E5%98%89-2376-041026658.html">FactSet 最新調查（Yahoo 股市）</a></li>
+<li><a href="https://ec.ltn.com.tw/article/breakingnews/5410593/print">焦點股：技嘉 Computex 激勵（自由時報）</a></li>
+<li><a href="https://www.moneyweekly.com.tw/_Article?AID=208433">理財周刊：技嘉股價與本益比</a></li>
+<li><a href="https://www.investing.com/equities/gigabyte-tech-consensus-estimates">Investing.com 技嘉共識預估</a></li>
+<li><a href="https://stockanalysis.com/quote/tpe/2376/forecast/">StockAnalysis 2376 預測</a></li>
+</ul></div>
+        </div>
+      </div>
+    </details>
+
+    <details class="mb-4 border border-slate-200 rounded">
+      <summary class="bg-slate-50 px-4 py-2 font-semibold">Phase 2 — Bull vs Bear 辯論</summary>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+        <div>
+          <h4 class="font-bold text-green-700 mb-2">🐂 多方 (Bull)</h4>
+          <div class="agent-prose text-sm bg-green-50 p-3 rounded border border-green-200"><h1>Bull case round 1 — 2376.TW</h1>
+<h2>Thesis（一句話）</h2>
+<p>技嘉在 AI 伺服器與液冷機架需求爆發下營收加速成長（10 月 YoY +136.7%），股價卻因 11/5 期中選舉後半導體族群系統性重挫而回落至 forward P/E 僅 8.2x，基本面與股價技術面明顯背離，提供逢低布局的不對稱機會。</p>
+<h2>Growth drivers</h2>
+<ul>
+<li>10 月合併營收 670.36 億 TWD，月增 6.2%、<strong>年增 136.7%</strong>；1–10 月累計 4,710.19 億 TWD，年增 70.7%（news.md，TechNews 公司公告）。</li>
+<li>Q2'26 營收 1,442.1 億 TWD，YoY +41.0%，營益率 5.7%（+0.7pt YoY），淨利率 4.6%（+1.6pt YoY），顯示規模經濟正在發揮（fundamentals.md）。</li>
+<li>SP7 伺服器平台（AMD EPYC 9006）預計 2026/11 出貨，SP8 排 2027/3，產品時程與本季重疊（news.md）。</li>
+<li>同業 AI 伺服器 ODM 10 月全面高增：緯創 +117.6%、緯穎 +80.9%、英業達 +46.0%、鴻海 +45.7%，產業級需求確認非單一公司現象（news.md）。</li>
+</ul>
+<h2>Moat</h2>
+<p>技嘉同時掌握板卡設計（主機板/顯卡）與機架級 AI 伺服器（rack server、direct liquid / immersion cooling）兩端，液冷散熱是 AI 機捧功率密度持續上升下的關鍵瓶頸技術，具備認證週期長、客戶轉換成本高的特性；與 NVIDIA/AMD 平台規格同步認證,形成先發設計優勢。消費端品牌業務提供現金流緩衝，伺服器業務貢獻成長引擎,雙軌模式分散週期風險。</p>
+<h2>Upside scenario</h2>
+<ul>
+<li>現價 305 TWD；TTM EPS 24.84（trailing P/E 12.3x）；forward EPS 37.35（forward P/E 8.2x，fundamentals.md）。</li>
+<li><strong>Base</strong>：P/E 回升至 12x（仍低於同業估計約 14–15x）× forward EPS 37.35 = <strong>448 TWD，+47% 空間</strong>。</li>
+<li><strong>Bull</strong>：P/E 回升至同業中位數 15x × forward EPS 37.35 = <strong>560 TWD，+84% 空間</strong>；疊加股利殖利率 3.94%，總報酬更高。</li>
+<li>下行有限：目前 EV/EBITDA（TTM）12.2x、P/S 0.5x 均非昂貴估值,重新評級的下檔風險相對有限。</li>
+</ul>
+<h2>Catalysts（dated）</h2>
+<ul>
+<li><strong>2026-11-13</strong> — Q3'26 財報與法說會，consensus EPS 9.18 TWD（對比 Q3'25 實際 4.56，YoY 約 +101%）；關注毛利率、Q4/2027 展望與 GB 系列佔比（news.md / fundamentals.md）。</li>
+<li><strong>2026-11-17（美東，台北約 11-18 凌晨）</strong> — NVIDIA FQ3 FY27 財報,為 AI 伺服器需求 read-through 指標（news.md）。</li>
+<li><strong>2026-12-10 前</strong> — 11 月合併營收公布,驗證 10 月高速成長是否延續。</li>
+</ul>
+<h2>Tactical（technical）</h2>
+<p>股價近期弱勢主因 11/5 期中選舉後半導體族群系統性重挫（TSMC 約 -10%、UMC 約 -16%），屬宏觀/情緒面衝擊,而非公司基本面惡化,10 月營收反而創下年增 136.7% 的強勁數字,基本面與股價出現背離。技術面已現止跌訊號：RSI14 從 11/6 低點 26.60（超賣）回升至 33.02；MACD 柱狀連續四日收斂（-5.51 → -4.46），下跌動能減弱；11/9–11/11 形成較高低點（$298 → $298.5 → $298），股價於缺口區間（$282–$313）內整理。若收盤重返 MA200（$309.53）並站上 $319（11/9 高點），可視為短線止跌確認,搭配 11/13 財報潛在正面意外,具備技術反彈條件。12m 報酬仍為正（+6.46%），顯示長期趨勢未破壞。</p>
+<h2>Rebuttal to anticipated bear points</h2>
+<p>（本輪無先前空方報告,以下針對 fundamentals.md 中可預期之空方論點預先反駁）</p>
+<ul>
+<li>
+<p>空方可能主張：「TTM 營業現金流 -790 億,盈餘品質低。」<br />
+  反駁：現金流惡化主因存貨與應收帳款激增,是為滿足 GB300/SP7 出貨前置期的供應鏈囤料,而非滯銷;10 月營收年增 136.7% 顯示存貨正快速轉化為營收,Q3/Q4 財報應可驗證存貨週轉回正。</p>
+</li>
+<li>
+<p>空方可能主張：「存貨 +171%、淨負債 / EBITDA 達 3.6x,槓桿風險高。」<br />
+  反駁：槓桿上升對應的是成長型營運資金擴張,而非資本結構惡化;FY25 利息保障倍數仍高達 17.8x,償債能力充足,且目前 forward P/E 僅 8.2x,市場已對此風險給予相當折價。</p>
+</li>
+<li>
+<p>空方可能主張：「毛利率從 15.5% 壓縮至 9.6%。」<br />
+  反駁：毛利率下滑反映產品組合轉向伺服器(本質正常),但營益率與淨利率同步擴張(Q2'26 淨利率 4.6% vs Q2'25 3.0%),費用控管與規模效益已抵銷毛利率壓力。</p>
+</li>
+<li>
+<p>空方可能主張：「EPS 預估誤差大,預測不可靠。」<br />
+  反駁：近兩季(2026-05、2026-08)盈餘超預期分別達 +42.4%、+11.9%,顯示近期趨勢已轉為持續正向超預期,先前大幅負向誤差集中於 2025 年較弱基期。</p>
+</li>
+</ul>
+<h2>Confidence</h2>
+<p>7/10。產業級需求確認(同業全面高增)與 10 月硬數據(年增 136.7%)是強力支撐,forward P/E 8.2x 提供安全邊際;扣分原因是現金流/存貨/槓桿的惡化尚未在財報中證實能順利回收,11/13 財報為關鍵驗證點,before that 不確定性仍存。</p>
+<p>BULL ROUND 1 COMPLETE</p></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-red-700 mb-2">🐻 空方 (Bear)</h4>
+          <div class="agent-prose text-sm bg-red-50 p-3 rounded border border-red-200"><h1>Bear case round 1 — 2376.TW</h1>
+<h2>Thesis（一句話）</h2>
+<p>技嘉營收與獲利表面亮眼，但 TTM 營業現金流 -790.0億 TWD、存貨半年暴增 171%、總負債半年增 170%，顯示盈餘品質惡化與槓桿快速上升，低 P/E 是現金流風險的折價而非便宜,股價在跌破 MA200 後呈空頭結構,下跌風險大於上漲空間。</p>
+<h2>需求 / 市場風險</h2>
+<ul>
+<li>無分部營收揭露,無法驗證 Q2'26 YoY +41.0% 的成長來源是否過度集中於單一客戶(如 GB300/rack server)或單一平台,客戶集中度屬未知風險(fundamentals.md 第 24 行)。</li>
+<li>同業訊號分化:緯創 10 月 YoY +117.6%、緯穎 +80.9%,但緯穎同時示警「原料供應偏緊將造成月營收短期波動」;廣達 9 月營收月減逾 20%(伺服器出貨下滑,待確認)。AI 伺服器 ODM 訂單能見度並非全面穩定,技嘉未來月度營收同樣可能出現波動。</li>
+<li>11/05 美國期中選舉後半導體族群重挫(TSMC 約 -10%、UMC 約 -16%),AI 泡沫疑慮升溫、投資人轉謹慎,屬估值壓縮的系統性風險,台股高 beta ODM 股同步承壓。</li>
+<li>EPS 預估誤差極大(近 6 季 surprise 介於 -17.7% 至 +42.4%),法人對技嘉需求能見度的掌握度低,11/13 財報前風險雙向放大。</li>
+</ul>
+<h2>毛利 / 現金流風險</h2>
+<ul>
+<li>毛利率連續 3 年壓縮:FY22 15.5% → Q2'26 9.6%,營收高速成長並未換回毛利率回升,隱含低毛利組裝/伺服器業務比重上升。</li>
+<li>TTM 營業現金流 -790.0億 TWD,FCF margin(TTM)-20.5%,P/FCF 無法計算。Q2'26 單季 OCF -587.3億,主因存貨變動 -368.3億、應收帳款 -145.4億。</li>
+<li>存貨由 FY25 年底 621.9億 暴增至 Q2'26 1,684.5億(+171%),已超過單季營收;若需求放緩或 AI 伺服器規格迭代(SP8 排 2027/3)造成庫存跌價,存貨減記風險高。</li>
+<li>記憶體/DRAM 漲價(news.md 提及 2025/11 法說會已示警)將進一步壓縮板卡與伺服器成本面,毛利率回升的催化劑尚未出現。</li>
+</ul>
+<h2>資產負債表風險</h2>
+<ul>
+<li>總負債半年由 437.2億 增至 1,179.8億(+170%),淨負債由 29.3億 升至 843.9億,淨負債/TTM EBITDA 約 3.6x(FY25 僅 0.16x 水準,速度驚人)。</li>
+<li>利息費用 FY25 已倍增(5.2億→10.1億),2026 年利息費用未揭露,但債務基礎已擴大 2.7 倍,利息負擔預期進一步上升。</li>
+<li>股利不被現金流覆蓋:FY25 FCF 對股利覆蓋僅 0.52x,TTM OCF 為負,股利實質由舉債或營運資金佔用支撐,不可持續。</li>
+<li>稀釋股數 731.6M 遠高於基本股數 669.9M(+9%),股本已有擴張歷史(FY24 增資 98.5億),若現金流持續失血,不排除再次增資稀釋。</li>
+</ul>
+<h2>估值風險</h2>
+<ul>
+<li>Bear:P/E 8x(相對 trailing 12.3x 的現金流風險折價)× TTM EPS 24.84 = <strong>198.7 TWD</strong>,較現價 305.0 下跌約 <strong>-34.9%</strong>。</li>
+<li>Worst:若 EV/EBITDA 回歸同業中位數約 10x(sector median estimate)套用 TTM EBITDA 235.8億 → EV ≈ 2,358億,扣除淨負債 843.9億 → 權益價值約 1,514.1億,/689.7M 股 ≈ <strong>219.5 TWD</strong>,較現價下跌約 <strong>-28.0%</strong>;若 Q3 財報顯示 OCF 持續失血、淨負債進一步攀升,此情境下跌幅度可再放大。</li>
+<li>P/B 3.07x 高於同業估計約 2x,顯示市場仍給予溢價,並非全面反映槓桿惡化。</li>
+</ul>
+<h2>競爭 / 法規</h2>
+<ul>
+<li>Section 232 半導體/電子產品關稅調查(美國,2026 結果未確認),若落地將衝擊美國端出貨成本與產能配置,屬未量化但不可忽視的尾部風險。</li>
+<li>AI 伺服器 ODM 為紅海競爭(緯創、緯穎、廣達、英業達同場競爭),技嘉缺乏分部揭露,無法證明其相對競爭優勢,毛利率數據(9.6%)反而低於多數同業估計水準。</li>
+</ul>
+<h2>戰術面(技術)</h2>
+<p>關鍵破位水準 <strong>$298.00</strong>(11-06 收盤與 11-11 盤中低點),跌破後下探 <strong>$282.00</strong>(11-06 跳空缺口低點、近期最低)。價格已跌破 MA200 $309.53(由支撐轉壓力),MA20 $337.20、MA50 $350.69 全數在上方形成壓力帶。RSI14 33.02 僅是「接近超賣」而非確認反轉,11-06 曾觸及 26.60。MACD 柱狀 -4.46 仍在零軸下方,空方姿態未變。11-10 出現放量(9.47M,近 10 日均量 6.16M 的 1.5 倍)卻收在當日區間偏下段($298.50–$316.50 收 $304.50),屬需留意的派發(distribution)訊號。1m 報酬 -14.33%、3m -12.73%,中短期趨勢偏弱。</p>
+<h2>Rebuttal to bull round 0</h2>
+<p>本輪尚無多方(round 0)文件可供逐點反駁。先行回應財報與情緒資料中隱含的多方論點:<br />
+- 預期論點:「10 月營收年增 136.7%,Q2'26 淨利 YoY +116.7%,P/E 僅 8.2x 便宜」。<br />
+  反駁:營收與淨利成長未轉換為現金,TTM OCF 為 -790.0億;低 P/E 的前提(存貨與應收帳款可回收)目前無資料證實,屬於「盈餘品質折價」而非單純低估。<br />
+- 預期論點:「分析師 9/12 買進評級,無賣出評級,偏多」。<br />
+  反駁:目標價資料互相矛盾(FactSet 中位數目標價由 350 下修至 315,降幅約 10%,與評級維持買進的方向背離),顯示法人對獲利能見度信心實際上在下降。</p>
+<h2>Confidence</h2>
+<p>7/10。現金流惡化、存貨暴增、槓桿上升為可直接追溯的財報數字,證據力強;但 11/13 財報為重大未知變數,且分析師評級仍偏多、12m 報酬仍為正,若 Q3 毛利率與現金流出現反轉,bear 論點將大幅削弱。</p>
+<p>BEAR ROUND 1 COMPLETE</p></div>
+        </div>
+      </div>
+    </details>
+
+    <details class="mb-4 border border-slate-200 rounded">
+      <summary class="bg-slate-50 px-4 py-2 font-semibold">Phase 4 — 風險辯論 (Risk debate)</summary>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 p-4">
+        <div>
+          <h4 class="font-bold text-red-700 mb-2">⚡ 進攻 (Aggressive)</h4>
+          <div class="agent-prose text-sm bg-red-50 p-3 rounded border border-red-200"><h1>Aggressive risk view — 2376.TW</h1>
+<h2>Where trader是過度保守之處</h2>
+<ul>
+<li>完全空手等財報，等於放棄財報後跳空向上的第一口氣。轉 LONG 的觸發條件要求「收盤站回 MA200 $309.53 並突破 $319」，但財報如果大幅超預期，股價很可能直接跳空開在 $319 以上，等 trigger 確認時，最肥的第一段漲幅已經錯過。</li>
+<li>「既有持股減至核心倉位」這個建議方向錯了。10 月營收 YoY +136.7%，同業緯創 +117.6%、緯穎 +80.9% 互相印證，存貨 +171% 更可能是 GB300/SP7 出貨前備料（多方論點尚未被證偽），在基本面動能轉強的訊號下主動減碼，是把確定的 beta 曝險讓給了未確定的下檔風險。</li>
+<li>完全不給 Entry/Stop/Target，等於把所有風險管理工作丟給財報後最混亂、跳空最劇烈的時刻去執行，反而比現在布局更難控制風險。</li>
+</ul>
+<h2>Recommended adjustments</h2>
+<ul>
+<li>Size：既有持股維持足額，不減碼至核心倉位（理由：方向性訊號偏多，減碼是在對的方向上降曝險）。</li>
+<li>Stop：若財報前要卡位，停損設在跳空缺口下緣 $282，而非 trader 隱含的 $298；ATR14 約 4.5%，$298 這麼近的停損在財報前後大概率被洗出。</li>
+<li>Entry：不要完全等待——現在用原計畫倉位的 20–30% 建立 starter position，財報後依 trigger 用剩餘額度加碼，而不是 all-or-nothing 等確認。</li>
+<li>Consider：用 call spread 捕捉這個二元事件的不對稱報酬，例如買 $310/$340 call spread，選涵蓋 11/13 財報的到期日（11 月或 12 月約），下檔鎖定在權利金，上檔吃到價差全額。</li>
+</ul>
+<h2>Asymmetry argument</h2>
+<p>股票部位（5 張＝5000 股）：進場 $305，停損 $282，最大損失 ≈ $23 × 5000 = 115,000 TWD。財報符合多項 upside trigger、技術面站回 MA200 挑戰前高 $350 附近，獲利 ≈ $45 × 5000 = 225,000 TWD。Ratio ≈ 2:1。<br />
+Call spread 變體：假設權利金約 $8/股，5000 股名義成本封頂約 40,000 TWD；若達 $30 價差寬度，上限約 150,000 TWD，ratio ≈ 3.75:1，且完全不暴露跳空缺口風險。</p>
+<h2>What I'd push for</h2>
+<p>財報前用 20–30% 倉位卡位多單（停損 $282）加上小額 call spread 作為不對稱加碼工具，既有持股維持足額不減碼；財報後若 upside trigger 全部命中，立即把剩餘額度補滿到原計畫倉位，不要再等二次技術確認——在這個產業需求數據已被同業交叉驗證的情況下，過度等待確認的成本是錯過整段重新評級行情，而不是避開了多少真實風險。</p>
+<p>AGGRESSIVE VIEW COMPLETE</p></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-blue-700 mb-2">🛡️ 保守 (Conservative)</h4>
+          <div class="agent-prose text-sm bg-blue-50 p-3 rounded border border-blue-200"><h1>Conservative risk view — 2376.TW</h1>
+<h2>Where trader is too aggressive</h2>
+<ul>
+<li>交易員結論是 AVOID／HOLD，方向上已經保守，但「既有持股可考慮減至核心倉位」仍留有彈性空間——在 ATR14 4.5%、20 日年化波動 40.75%、且 11/6 已出現單日 -9.9% 跳空的股票上，「核心倉位」本身就可能是過大曝險，尤其距財報僅剩 1 個交易日。</li>
+<li>「不建議財報前加碼或新建空單」只防右側風險，沒有同時限制左側：若持有者在財報前完全不減碼、也不買保護性賣權，等於全額承受二元事件的尾部風險，而且沒有任何停損能在跳空中生效。</li>
+<li>Trigger 條件寫「轉 LONG 先建半倉」，但財報公布到次日開盤之間仍有隔夜跳空，半倉的實際風險暴露可能等同全倉的 1.5–2 倍（以跳空幅度計），sizing 邏輯未完全扣除這段風險。</li>
+</ul>
+<h2>Tail scenarios</h2>
+<ul>
+<li>Scenario A（機率約 25–30%）：Q3 存貨再創新高、OCF 持續負值、毛利率跌破 9% → 價格重演 11/6 式跳空，開盤即跌破 $282 支撐，續探 $260 區間。若核心倉位以現價 $305 計算，每張損失約 $45，相當於倉位 14.8%。</li>
+<li>Scenario B（機率約 15%）：財報數字中性但法說會對 2027 展望保守，疊加 11/17 NVIDIA 財報疲弱拖累 AI 供應鏈情緒 → 兩次催化劑共振，跌破 MA200 下方的 $298，續跌至 $270–280，恢復空頭排列。</li>
+<li>Scenario C（機率約 10%）：淨負債確認突破 1,000 億（約 EBITDA 4x+），市場將重新定價為高槓桿信用風險而非單純估值折價，目標價中位數可能再下修至 280 以下，去槓桿敘事主導數週。</li>
+</ul>
+<h2>Recommended adjustments</h2>
+<ul>
+<li>Size：既有持股「核心倉位」→ 財報前應再降至「觀察倉／最小持股」，把二元事件曝險壓到可承受範圍（建議 ≤ 原倉位的 50%）。</li>
+<li>Stop：目前無停損價位本身就是風險——財報前應設定「若跌破 $282 跳空低點，無條件減碼」的機械式規則，不等待財報後重新評估。</li>
+<li>Entry：財報後轉 LONG 不建議立即半倉，改為分三批進場，首批不超過 1/3，待 11 月營收（12/10 前）驗證存貨去化後再加碼。</li>
+<li>Consider：若必須持有核心倉位過財報，可用台指期或半導體 ETF 空單做部分對沖，抵銷系統性賣壓部分（如 11/6 事件）。</li>
+</ul>
+<h2>Position-level $ risk</h2>
+<p>以現價 $305、假設持有 1 張（1,000 股）核心倉位計算：若 Scenario A 實現跌至 $260，$ 損失 = ($305 − $260) × 1,000 = $45,000（約倉位現值 14.8%）。對單一事件驅動、財報前無停損保護的持股而言，此曝險偏高，不可接受；應在財報前先減碼至可承受 5% NAV 損失以內的規模。</p>
+<h2>What I'd push for</h2>
+<p>財報前把既有倉位從「核心」降到「最小觀察倉」，並掛出跌破 $282 的機械停損而非等財報後裁量；財報後即使觸發 LONG trigger，也只建 1/3 倉位分批進場，保留現金等 11 月營收驗證存貨去化，避免在槓桿未確認改善前把資金壓在一個仍有 3.6x EBITDA 淨負債的二元事件結果上。</p>
+<p>CONSERVATIVE VIEW COMPLETE</p></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-slate-700 mb-2">⚖️ 中立 (Neutral)</h4>
+          <div class="agent-prose text-sm bg-slate-100 p-3 rounded border border-slate-300"><h1>Neutral risk view — 2376.TW</h1>
+<h2>Points of agreement (both sides)</h2>
+<ul>
+<li>都認為 trader 的「既有持股原封不動等財報」是風險管理上的空白，應在財報前先做某種程度的部位調整，而非完全被動等待。</li>
+<li>都把 $282（11/6 跳空缺口下緣）當作關鍵參考價位，無論是用作加碼停損（aggressive）或減碼觸發（conservative）。</li>
+<li>都認為財報後若轉 LONG，應分批進場而非單筆建滿倉——只是分批節奏不同。</li>
+</ul>
+<h2>Aggressive overreach</h2>
+<ul>
+<li>Where：把存貨 +171% 解讀為「尚未被證偽的多方論點」，並據此主張既有持股不減碼、甚至財報前加碼 20–30% starter position。</li>
+<li>Why：存貨大增同樣可以是去化不暢的訊號，與 OCF -790 億、淨負債 3.6x EBITDA 同一方向，證據強度並非如 aggressive 所稱偏多；research manager 已明確定調「雙方證據相當」，財報前新建方向性倉位（含 call spread）等於在二元事件未解前又加一層曝險，且財報前 IV 大概率已墊高，權利金不對稱優勢被稀釋。</li>
+</ul>
+<h2>Conservative overreach</h2>
+<ul>
+<li>Where：把既有核心倉位直接降到「最小觀察倉（≤50%）」，並列出三個 tail scenario（合計機率約50–55%）卻未同等量化 upside 情境。</li>
+<li>Why：這本身也是一個方向性賭注（押財報偏空），與其批評 trader「留有彈性空間」的邏輯不一致；財報前的「機械式停損 $282」在單日 -9.9% 跳空歷史下同樣可能被跳空穿透而失效，此風險與 aggressive 批評的「半倉觸發條件」本質相同,只是方向相反。</li>
+</ul>
+<h2>Balanced adjustment proposal</h2>
+<ul>
+<li>Size：既有核心持股減至約 60–70%（介於兩方之間，優先保留部分曝險但明顯降低尾部風險），財報前不建新倉（拒絕 aggressive 的 starter position 與財報前 call spread）。</li>
+<li>Stop：$282 僅作「次一交易日行動觸發」，非保證停損；財報後確認技術面（MA200 $309.5 / $298）再設正式停損。</li>
+<li>Entry：財報後轉 LONG 分兩批進場（各50%），首批待開盤後確認 trigger 全部命中,次批待 11 月營收驗證存貨去化。</li>
+<li>Hedge：若不願進一步減碼，可用半導體 ETF 小額空單做部分系統性對沖，不建議財報前買個股 call spread（IV 已墊高）。</li>
+<li>Time horizon：事件驅動,財報後 1–2 個交易日內重新評估,次要催化劑 11/17 NVIDIA 財報。</li>
+</ul>
+<h2>Net $ risk if stop hits</h2>
+<p>以 1 張（1,000 股）核心倉位、減碼至 65%（650 股）、現價 $305 計算：若 Scenario A 跳空至 $260,損失 = ($305−$260) × 650 ≈ 29,250 TWD（約該部位市值 14.8%，NAV 占比需依實際倉位規模換算）。</p>
+<h2>Net $ upside at T1 / T2</h2>
+<p>以 650 股計算：T1（突破 $319 確認）≈ ($319−$305) × 650 ≈ 9,100 TWD；T2（挑戰前高 $350）≈ ($350−$305) × 650 ≈ 29,250 TWD。</p>
+<p>NEUTRAL VIEW COMPLETE</p></div>
+        </div>
+      </div>
+    </details>
+
+  </div>
+
+  <script>
+    (function() {
+      var d = {};
+      if (!d.dates) return;
+      var traces = [
+        {x: d.dates, y: d.close, name: 'Close',  line: {color: '#1f2937', width: 2}},
+        {x: d.dates, y: d.ma20,  name: 'MA20',   line: {color: '#0ea5e9', width: 1, dash: 'dot'}},
+        {x: d.dates, y: d.ma50,  name: 'MA50',   line: {color: '#f59e0b', width: 1, dash: 'dot'}},
+        {x: d.dates, y: d.ma200, name: 'MA200',  line: {color: '#ef4444', width: 1, dash: 'dash'}}
+      ];
+      var layout = {
+        margin: {l: 50, r: 20, t: 10, b: 40},
+        legend: {orientation: 'h', y: -0.15},
+        xaxis: {showgrid: false},
+        yaxis: {title: '價格 ($)'}
+      };
+      Plotly.newPlot('chart-2376_TW', traces, layout, {displayModeBar: false, responsive: true});
+    })();
+  </script>
+
+</section>
+
+
+</main>
+
+<footer class="bg-slate-200 text-slate-600 text-xs p-4 text-center">
+  多 agent 交易研究 — 純研究 / 教學用途, 非投資建議。
+</footer>
+
+</body>
+</html>
