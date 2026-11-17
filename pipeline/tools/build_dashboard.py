@@ -1969,7 +1969,7 @@ def render_dca_panel() -> str:
          "<table class='text-xs'><thead><tr class='text-slate-500'><th class='px-2 text-left'>門檻</th><th class='px-2 text-right'>QQQ 觸發價</th>"
          "<th class='px-2 text-right'>投存量的</th><th class='px-2 text-right'>每 $1,000 存量</th><th class='px-2 text-right'>以目前存量 <span id='dca-reserve-now'></span></th></tr></thead>"
          + "".join(lad) + "</table>"
-         "<div class='text-[11px] text-slate-500 mt-1'>加碼金每月 +$1,000 存 BOXX；跨一檔就把那檔的金額按 B 的四檔比例買進（不是只買 QQQ）；回到高點 1% 內重置。"
+         "<div class='text-[11px] text-slate-500 mt-1'>加碼金每月 +$1,000 存 BOXX；跨一檔就把那檔的金額按 B 的四檔比例買進（不是只買 QQQ）。每檔的 % 以「這一輪開始時的存量」為基數（= 現在餘額 + 高點後已投），三檔合計剛好 100%。回到高點 1% 內重置：E 的「高點後已投」歸零。"
          "「以目前存量」= E 的 BOXX 存量欄位。</div></div>")
     # E. positions (localStorage) — the user edits shares + total cost (fees included) directly
     closes = json.dumps(d.get("closes", {}))
@@ -2017,9 +2017,10 @@ def render_dca_panel() -> str:
     document.querySelectorAll('.dp-del').forEach(function(b){ b.onclick=function(){ if(confirm('移除 '+b.getAttribute('data-t')+'？')){ delete P[b.getAttribute('data-t')]; save(K,P); recalc(); } }; });
     // ladder amounts from the BOXX balance; still-due = crossed share × reserve − already deployed since the high
     var dep=0; LAD.forEach(function(t){ if(t.crossed) dep+=t.share; });
-    document.querySelectorAll('.dca-tier-amt').forEach(function(td){ td.textContent=fmt(boxx*parseFloat(td.getAttribute('data-share'))/100); });
-    var done=parseFloat($('dp-boost').value)||0, due=boxx*dep/100-done;
-    $('dca-reserve-now').innerHTML=fmt(boxx)+(dep?'；已跨 '+dep+'%% → 應投 '+fmt(boxx*dep/100)+'，已投 '+fmt(done)+'，<b>待投 '+fmt(Math.max(due,0))+'</b>':'');
+    var done=parseFloat($('dp-boost').value)||0, base=boxx+done;   // 基數 = 這一輪開始時的存量（餘額 + 高點後已投）
+    document.querySelectorAll('.dca-tier-amt').forEach(function(td){ td.textContent=fmt(base*parseFloat(td.getAttribute('data-share'))/100); });
+    var due=base*dep/100-done;
+    $('dca-reserve-now').innerHTML=fmt(boxx)+'（基數 '+fmt(base)+'）'+(dep?'；已跨 '+dep+'%% → 累計應投 '+fmt(base*dep/100)+'，已投 '+fmt(done)+'，<b>待投 '+fmt(Math.max(due,0))+'</b>':'');
     // reminder
     var now=new Date(), wd=parseInt($('dp-wd').value), freq=$('dp-freq').value, target=parseFloat($('dp-target').value)||4000, last=$('dp-last').value;
     var today=new Date(now.getFullYear(),now.getMonth(),now.getDate()), next, per, gapMax, label;
