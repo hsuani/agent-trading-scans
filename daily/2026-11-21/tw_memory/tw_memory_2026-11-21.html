@@ -1,0 +1,4061 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Trading Scan — TW_MEMORY — 2026-11-21</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+  .verdict-BUY  { background: #dcfce7; color: #166534; }
+  .verdict-HOLD { background: #fef3c7; color: #92400e; }
+  .verdict-SELL { background: #fee2e2; color: #991b1b; }
+  .verdict-UNKNOWN { background: #f3f4f6; color: #374151; }
+  details > summary { cursor: pointer; }
+  details[open] > summary { margin-bottom: 0.5rem; }
+  .agent-prose h1, .agent-prose h2, .agent-prose h3 { font-weight: 600; margin-top: 1rem; margin-bottom: 0.5rem; }
+  .agent-prose h1 { font-size: 1.5rem; }
+  .agent-prose h2 { font-size: 1.25rem; }
+  .agent-prose h3 { font-size: 1.1rem; }
+  .agent-prose p { margin-bottom: 0.5rem; line-height: 1.5; }
+  .agent-prose ul { list-style-type: disc; margin-left: 1.5rem; margin-bottom: 0.5rem; }
+  .agent-prose ol { list-style-type: decimal; margin-left: 1.5rem; margin-bottom: 0.5rem; }
+  .agent-prose table { border-collapse: collapse; margin: 0.75rem 0; font-size: 0.875rem; }
+  .agent-prose th, .agent-prose td { border: 1px solid #d1d5db; padding: 0.375rem 0.75rem; text-align: left; }
+  .agent-prose th { background: #f9fafb; font-weight: 600; }
+  .agent-prose code { background: #f3f4f6; padding: 0.1rem 0.25rem; border-radius: 0.25rem; font-size: 0.875rem; }
+  .agent-prose pre { background: #1f2937; color: #f9fafb; padding: 0.75rem; border-radius: 0.375rem; overflow-x: auto; font-size: 0.85rem; margin: 0.5rem 0; }
+  .agent-prose strong { font-weight: 600; }
+  nav a { color: #2563eb; text-decoration: none; }
+  nav a:hover { text-decoration: underline; }
+</style>
+</head>
+<body class="bg-slate-50 text-slate-900">
+
+<header class="bg-slate-900 text-white p-6 shadow-md">
+  <div class="max-w-6xl mx-auto">
+    <h1 class="text-3xl font-bold">交易掃描 — TW_MEMORY</h1>
+    <p class="text-slate-300 text-sm mt-1">as of 2026-11-21 · 產生於 2026-11-21 15:31</p>
+  </div>
+</header>
+
+<nav class="bg-slate-100 border-b border-slate-300 p-3 sticky top-0 z-10">
+  <div class="max-w-6xl mx-auto flex flex-wrap gap-3 text-sm">
+    <a href="#sector-overview" class="font-semibold">族群總覽</a>
+    <a href="#ticker-2408_TW" class="px-2 py-1 rounded verdict-HOLD">2408.TW</a>
+<a href="#ticker-2344_TW" class="px-2 py-1 rounded verdict-HOLD">2344.TW</a>
+<a href="#ticker-8299_TWO" class="px-2 py-1 rounded verdict-HOLD">8299.TWO</a>
+<a href="#ticker-3260_TW" class="px-2 py-1 rounded verdict-HOLD">3260.TW</a>
+    <a href="../HOWTO_READ.html" class="ml-auto text-blue-700 hover:underline" target="_blank">📖 閱讀指南</a>
+  </div>
+</nav>
+
+<main class="max-w-6xl mx-auto p-6">
+
+  <section id="sector-overview" class="mb-10 bg-white rounded-lg shadow p-6">
+    <h2 class="text-2xl font-bold mb-4">族群總覽 (Sector overview)</h2>
+    <div class="agent-prose text-sm">
+      <h1>Sector report — tw_memory as of 2026-11-21</h1>
+<h2>Ranking table</h2>
+<table>
+<thead>
+<tr>
+<th>Rank</th>
+<th>Ticker</th>
+<th>Verdict</th>
+<th>Conviction</th>
+<th>R:R</th>
+<th>Size</th>
+<th>Horizon</th>
+<th>Trigger</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>2344.TW</td>
+<td>HOLD（無新倉，短線偏空不接刀也不追空）</td>
+<td>M</td>
+<td>未成立（無 trade card）</td>
+<td>0（既有持股者建議降至核心以下）</td>
+<td>2-3 週（12 月中數據），2027-02-11 財報</td>
+<td>上：站回 $98-108 且 RSI 底背離；下：跌破 $88.20/$86.16 並放量</td>
+</tr>
+<tr>
+<td>2</td>
+<td>2408.TW</td>
+<td>HOLD（無新倉）</td>
+<td>L</td>
+<td>1.8x（激進方提出，已被否決，無結構性停損）</td>
+<td>0</td>
+<td>2-4 週（11/30 報價、12/17 美光），2027-01-18 財報</td>
+<td>上：收盤站回 $322 以上且量能確認；下：反彈受阻後再破 $264.50</td>
+</tr>
+<tr>
+<td>3</td>
+<td>8299.TWO</td>
+<td>HOLD（無新倉，方向偏 SHORT_OR_AVOID）</td>
+<td>L</td>
+<td>未成立（ATR 9.2%，停損過寬）</td>
+<td>0</td>
+<td>數日至 3 週（12/5-12/17），2027 年 3 月年報</td>
+<td>上：站回 1,455 且 MACD 收斂、續站 1,535（三項缺一不可）；下：跌破 1,310</td>
+</tr>
+<tr>
+<td>4</td>
+<td>3260.TW</td>
+<td>HOLD（Phase-1 stub，未進入完整辯論）</td>
+<td>L（0/5）</td>
+<td>0</td>
+<td>0</td>
+<td>無明確窗口（待基本面資料恢復）</td>
+<td>基本面資料恢復（yfinance/MOPS）且收盤站回 $254 前收</td>
+</tr>
+</tbody>
+</table>
+<h2>資料完整性提醒</h2>
+<p>2408.TW、2344.TW、8299.TWO 皆完成 Phase 2-4 完整辯論；3260.TW 因 yfinance 基本面資料全數 DATA_UNAVAILABLE，僅完成 Phase-1 篩選（0/5 正向訊號），未進入完整辯論，數字可信度低於其他三者，排序主要依「技術面已死亡交叉、資料最不可靠」而列最後。</p>
+<h2>共識首選（Consensus top pick）</h2>
+<p>本板塊四檔今日皆無 BUY，無真正的「首選多單」。若僅比較「日後最有機會轉多」的候選，2344.TW 相對最佳：conviction MEDIUM（為四檔中唯一非 LOW），資產負債表最穩（淨現金 468.5 億 TWD、D/E 19.1%、利息保障約 62x），且有具體需求能見度來源（董事長 11/10 表示雲端業者 2027-2028 資料中心建置大致鎖定）。但目前仍是 REJECT，距轉多三項條件（合約價、營收、技術面）缺一不可，尚未可執行。</p>
+<h2>反向觀點（Contrarian pick）</h2>
+<p>四檔方向一致（皆為「不開新倉」），不存在「同業觀望、此檔逆勢 BUY」的典型反向格局。若硬要挑一個最具不對稱賠率的觀察名單候選，是 2408.TW：forward P/E 2.1x 為四檔中估值最低、淨現金占市值約 29% 為四檔中最高，RSI14 23.98 深度超賣，一旦 $322 收復確認，向上空間（+21.7%）在四檔中最大。但這個論點目前被技術面（位於所有均線下方、MACD 負向擴大、無有效支撐）否決，屬於「等驗證」而非「現在買」。</p>
+<h2>配對交易構想（Pairs trade idea，前瞻性、尚待觸發）</h2>
+<p>Long 2408.TW（DRAM）／ Short 8299.TWO（NAND）。理由：兩份報告的催化劑日曆顯示 DRAM 與 NAND 子週期已出現分歧 — DRAM 4Q26 合約價仍估 QoQ +10%~+18%（僅漲幅趨緩），而 NAND Q4 合約價季增已被 TrendForce 由 15-20% 下修至 8-13%，2027Q1 更轉為季減 0-5%。此配對隔離「記憶體板塊整體 beta」，單獨押注 DRAM 相對 NAND 的子週期強弱；但目前兩腿皆為 REJECT（無新倉），此為「若方向確立後」的觀察級構想，非立即可執行倉位。</p>
+<h2>板塊整體觀察</h2>
+<ul>
+<li><strong>共同催化劑</strong>：11/30 前後 TrendForce 12 月 DRAM 報價（含 1Q27 展望）；12/5-12/10 11 月營收（MOPS）；12/9 FOMC；12/17 美光財報與 2027 年供需指引（四檔均受影響，8299.TWO 尤其關注此日是否同時落在台股選擇權結算窗口內）。</li>
+<li><strong>共同風險</strong>：記憶體下行循環、CXMT 等中國產能追趕、現貨價格領先合約價下跌、2027 年正常化獲利水準未定。2408.TW 與 3260.TW 另有資料品質問題（價格與營收歷史矛盾、yfinance 連線失敗），降低論點可信度。</li>
+<li><strong>擁擠度</strong>：板塊已從高點重挫 53.5%~61.8%，外資對 2344.TW 持續賣超，2408.TW 大股東台塑三寶持續處分持股，8299.TWO 有 45.6 億庫藏股（至 2027-01-05）提供下檔支撐。市場情緒一致偏空，深度超賣但尚無投降式爆量確認止跌。</li>
+<li><strong>相關性群組</strong>：{2408.TW, 2344.TW, 8299.TWO, 3260.TW} 高度同向，皆追隨 Micron/SK hynix/Samsung 與 TrendForce 報價連動，20 日年化波動率普遍落在 84%-94%，屬同一記憶體 beta 下的集中暴露，不宜視為四個獨立分散倉位。</li>
+</ul>
+<h2>行動排序</h2>
+<p>目前四檔皆為 REJECT，無需立即執行任何新倉。若日後觸發條件陸續達成，建議驗證順序：<br />
+1. 2344.TW 先行 — conviction 相對最高、資產負債表最穩，且其轉多三項條件（合約價、營收、RSI 底背離/價位）與 11/30-12/10 的資料公布時程最先對齊。<br />
+2. 2408.TW 次之 — 需等 $322 收復與美光 12/17 指引，驗證窗口較長。<br />
+3. 8299.TWO 再次 — 轉多需三項同時成立（營收、毛利率展望、技術面雙重確認），門檻最高；若轉空需先確認個股選擇權掛牌與流動性。<br />
+4. 3260.TW 最後 — 必須先等基本面資料來源恢復，目前連篩選階段都無法通過，不具備可執行性。</p>
+<h2>板塊風險預算</h2>
+<p>四檔均為「不建新倉」且高度同向相關（單一記憶體週期因子），即使日後出現個別觸發，整體板塊曝險仍應嚴格控管。建議現階段記憶體板塊（tw_memory）整體曝險上限為 <strong>NAV 的 2%-3%</strong>，且以單一最高信心標的（目前為 2344.TW 候選）為主、不同時疊加四檔方向相同的倉位，避免以四筆「獨立」交易實際上集中押注同一記憶體下行週期。</p>
+<p>SECTOR REPORT COMPLETE</p>
+    </div>
+  </section>
+
+  
+<section id="ticker-2408_TW" class="mb-10 bg-white rounded-lg shadow overflow-hidden">
+
+  <div class="flex items-start justify-between p-6 border-b border-slate-200 verdict-HOLD">
+    <div>
+      <h2 class="text-3xl font-bold">2408.TW</h2>
+      <p class="text-sm mt-1 opacity-80">南亞科 (2408) — DRAM</p>
+    </div>
+    <div class="text-right">
+      <div class="text-4xl font-bold">HOLD</div>
+      <div class="text-sm opacity-80 mt-1">REJECT</div>
+    </div>
+  </div>
+
+  <div class="p-6 grid grid-cols-1 lg:grid-cols-2 gap-6">
+
+    <div>
+      <h3 class="text-lg font-bold mb-2">價格 + 技術指標 (2 年)</h3>
+      <div id="chart-2408_TW" style="height: 380px;"></div>
+    </div>
+
+    <div>
+      <h3 class="text-lg font-bold mb-2">最終決策 (Final decision)</h3>
+      <div class="agent-prose text-sm bg-slate-50 p-4 rounded border border-slate-200">
+        <p>FINAL TRANSACTION PROPOSAL: <strong>HOLD</strong></p>
+<h1>Final decision — 2408.TW as of 2026-11-21</h1>
+<h2>FINAL TRANSACTION PROPOSAL: <strong>HOLD</strong></h2>
+<h2>Verdict</h2>
+<p>REJECT</p>
+<p>部位性質：2408.TW 不在 <code>pipeline/tools/held_tickers.txt</code>，屬新倉，適用 A 框架。此處 REJECT 指「不開任何新倉（多、空、選擇權皆不做）」，與交易員的 AVOID 結論一致；第一行 HOLD 代表場外觀望，不是續抱。</p>
+<h2>Final trade card</h2>
+<p>不適用（REJECT，無新倉）。</p>
+<p><strong>Dealbreaker：</strong> 技術面與基本面方向相反，且沒有任何驗證訊號。現價 $264.50 低於 MA20 $384.48、MA200 $370.31、MA50 $449.77，MACD hist -9.51 連續三日負向擴大，下方沒有有效支撐，因此無法設定有結構依據的 stop。多方估值（forward P/E 2.1x）建立在尚未發生的 2027 年獲利上。再加上資料品質問題（-9.88% 跌幅原因不明、TTM 與 YTD 營收不一致、價格歷史矛盾），連 $322 這個關鍵價位本身的可靠度都要打折。</p>
+<p><strong>重新評估的條件：</strong> 收盤站回 $322 以上且量能確認、MACD hist 收斂，同時 12 月合約價續漲、Micron 12/17 指引 2027 年供需偏緊。四項齊備才以 Small 倉位重新提案。</p>
+<h2>Risk debate adjudication</h2>
+<ul>
+<li>Aggressive's strongest point: 等 $322 確認要先放棄約 +21.7% 的反彈空間；RSI14 23.98、BB %B -0.008，加上淨現金占市值約 29%，確實是賣壓延伸且財務無存活風險的組合。</li>
+<li>Conservative's strongest point: 20 日年化波動率 94.1%、ATR14 $31.47（現價的 11.9%），下方無支撐；四個尾部情境集中在未來四週，最差情境 P/B 1.0x 約 $119（再跌約 55%）；資料品質使技術價位不可盡信。</li>
+<li>Net: I weight conservative more here because 超賣只說明賣壓延伸，不等於止跌。Aggressive 的 R:R 1.8x（stop $233、目標 $322）用的是 1×ATR 停損，在日波動近 12% 的標的上被雜訊掃出的機率很高，實際期望值遠低於帳面數字。call 試倉也不採用：Aggressive 沒有提供權利金或隱含波動率數據，在此波動水準下權利金勢必昂貴，「實質 R:R 遠優於 1.8x」未經驗證。Neutral 的 0.15%–0.2% NAV 選擇權試倉同理否決。關鍵數據四週內全數公布，等待的機會成本低。Conservative 關於既有倉位出清與指數避險的建議，因無持倉而不適用。</li>
+</ul>
+<h2>論點支柱</h2>
+<p>以下為「日後若要做多」所需的支柱，目前不足以支持進場。</p>
+<table>
+<thead>
+<tr>
+<th>支柱</th>
+<th>當初的預期</th>
+<th>現況</th>
+<th>判定</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DRAM 合約價續漲</td>
+<td>2027 年價格維持上行</td>
+<td>4Q26 合約價仍估 QoQ +10%–18%，但漲幅逐季放緩、行動 DRAM 談判停滯、DDR4 現貨週跌 1.43%</td>
+<td>觀察中</td>
+</tr>
+<tr>
+<td>資產負債表提供下檔保護</td>
+<td>淨現金足以撐過景氣反轉</td>
+<td>淨現金 2673.6 億 TWD（約占市值 29%）、負債權益比 0.055x；但應付稅款 362.6 億將流出</td>
+<td>成立</td>
+</tr>
+<tr>
+<td>2027 年獲利延續</td>
+<td>forward P/E 2.1x 屬低估</td>
+<td>Q3 出貨量季減 4%–6%，成長只靠價格；CXMT 追趕、Fab 5A 於 2H27 投片</td>
+<td>觀察中</td>
+</tr>
+<tr>
+<td>價格結構止跌</td>
+<td>出現支撐並收復 $322</td>
+<td>位於所有均線之下，MACD 負向擴大，無有效支撐</td>
+<td>已失效</td>
+</tr>
+</tbody>
+</table>
+<h2>論點失效條件</h2>
+<p>與價格無關，任一發生即取消做多候選資格，不必等價格訊號。<br />
+- 若 TrendForce 12 月報價將 1Q27 DRAM 合約價展望下修為持平或下跌，合約價支柱失效 → 移出做多觀察名單。<br />
+- 若 12/3–12/10 公布的 11 月營收 MoM 為負，獲利延續支柱失效 → 維持 AVOID。<br />
+- 若 Micron 12/17 指引 2027 年位元供給成長高於需求成長，獲利延續支柱失效 → 維持 AVOID。<br />
+- 若 CXMT 同世代製程量產獲得確認，估值支柱失效 → 多方目標價需以 P/B 重估。</p>
+<h2>Monitoring trigger</h2>
+<p>If 收盤站回 $322 以上且成交量高於 20 日均量，或 11/30 前後 TrendForce 報價確認 1Q27 合約價續漲，re-evaluate 是否以 Small 倉位重新提案。反之，若反彈在 $322 受阻後再破 $264.50，延長 AVOID 至 2027-01-18 財報後。</p>
+<h2>Catalyst calendar</h2>
+<ul>
+<li>2026-11-30 前後 — TrendForce 12 月 DRAM 合約價報價（含 1Q27 展望）</li>
+<li>2026-12-03 至 2026-12-10 — 11 月營收（MoM 方向）</li>
+<li>2026-12-09 — FOMC 利率決議</li>
+<li>2026-12-17 — Micron 財報與 2027 年供需指引</li>
+<li>2027-01-18 — 2408.TW Q4 財報與 1Q27 合約價細節</li>
+</ul>
+<p>FINAL DECISION COMPLETE</p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="px-6 pb-6">
+
+    <details class="mb-4 border border-slate-200 rounded">
+      <summary class="bg-slate-50 px-4 py-2 font-semibold">投資計劃 (Research manager)</summary>
+      <div class="agent-prose p-4 text-sm"><h1>Investment plan — 2408.TW as of 2026-11-21</h1>
+<h2>Directional stance</h2>
+<p>NEUTRAL — conviction LOW</p>
+<h2>Crux of debate</h2>
+<ol>
+<li>Crux 1：DRAM 合約價是「漲幅放緩」還是「即將轉跌」？TrendForce 11/18 指出行動 DRAM 談判停滯、漲幅逐季放緩，DDR4 現貨週跌 1.43%，但 4Q26 合約價仍預估 QoQ +10%–18%。11/30 前後的 12 月報價與 12/17 美光財報指引，將決定 2027 年 EPS 是延續還是崩落。</li>
+<li>Crux 2：2027 年供給衝擊的規模。CXMT 技術與產能追趕，加上南亞科自身 Fab 5A 於 2H27 投片、2026 年資本支出 697 億 TWD，市場以 forward P/E 2.1x 定價，等於預期獲利將大幅回落。</li>
+<li>Crux 3：價格是否已經止跌。現價 264.5 在所有均線下方，MACD hist 負向擴大，下方沒有有效支撐，$322 已轉為壓力。</li>
+</ol>
+<h2>Where the bull is right</h2>
+<ul>
+<li>已實現的基本面是可查證的事實：Q3 毛利率 85.7%、連續四季 EPS 優於預期、10 月營收 YoY +487.7%、淨現金 2673.6 億 TWD（約占市值 29%）、負債權益比 0.055x。即使景氣反轉，財務上也不會有存活風險。</li>
+<li>RSI14 23.98、BB %B 低於 0、距 52 週高點 -53.5%，代表賣壓已經嚴重延伸，此時追空的 R:R 不佳。</li>
+<li>4Q26 合約價仍在上漲，這一點與「價格已經下跌」的說法不同。</li>
+</ul>
+<h2>Where the bear is right</h2>
+<ul>
+<li>低倍數是用景氣高點盈餘算出來的。FY2023 與 FY2024 都是淨損，兩年內毛利率波動超過 100pt。多方的 base case 用 6x 乘 FY2026E EPS，但 FY2026 的獲利大多已經實現，真正決定股價的是 2027 年。</li>
+<li>二階導數已經轉負：漲幅放緩、行動 DRAM 談判停滯、Q3 出貨量季減 4%–6%，獲利成長只靠價格撐。</li>
+<li>多方有幾個說法站不住：「TrendForce 連續上修」沒有資料支持（9/30 與 11/11 是不同產品的預估）；「不需稀釋性融資」與 2026 年 4 月約 787 億私募、股本稀釋約 11% 矛盾；外資 11/10–11/12 的買超之後股價仍續跌約 30%，不能當作「聰明資金承接」。</li>
+<li>大股東台塑三寶持續處分持股，與分析師的買進評等方向相反。應付稅款 362.6 億將會流出現金。</li>
+</ul>
+<h2>Where the bear overreaches</h2>
+<ul>
+<li>「缺乏 HBM 布局」與股東會已釋出 HBM 規劃的訊息不一致。P/B 1.0x（約 119 TWD）的目標價沒有考慮到帳面價值已經因為大量淨現金而墊高，屬於 worst case，不是 base case。</li>
+</ul>
+<h2>Net verdict</h2>
+<p>空方對趨勢與景氣二階導數的論證比較可追溯，多方對已實現基本面與資產負債表的論證也成立，但多方的估值推論依賴尚未發生的 2027 年獲利。技術面明確偏空且尚未止跌，不適合在下跌中途接多；不過深度超賣、forward P/E 2.1x、淨現金占市值近三成，也讓新空單的 R:R 偏差。關鍵數據（12 月合約價、11 月營收、美光指引）都會在 4 週內公布，等待驗證的機會成本低。另外，資料品質問題（-9.88% 的原因不明、TTM 營收與 YTD 營收不一致、價格歷史有矛盾）降低了雙方論點的可信度。因此結論是 NEUTRAL，conviction LOW。</p>
+<h2>What would change the verdict</h2>
+<ul>
+<li>Upside trigger：收盤站回 $322 以上且 MACD hist 收斂，同時 12 月合約價續漲、美光 12/17 指引 2027 年供需偏緊，可轉為 LONG（MEDIUM）。</li>
+<li>Downside trigger：TrendForce 下修 1Q27 合約價、出現合約價持平或下跌、11 月營收 MoM 轉負，或 CXMT 量產獲得確認，同時反彈在 $322 受阻，可轉為 SHORT_OR_AVOID。</li>
+<li>Key data point to monitor：11/30 前後 TrendForce 的 DRAM 合約價報價（尤其 1Q27 展望），以及 12 月初公布的 11 月營收 MoM。</li>
+</ul>
+<h2>Position-sizing guidance (qualitative, not advice)</h2>
+<p>NEUTRAL、LOW conviction：不建立新的方向性部位，或只保留觀察部位。已持有多單者，可以考慮降到半倉以下，並以 2×ATR（約 $63）衡量風險。20 日年化波動率 94%，任何部位都應該明顯小於一般標準。若之後出現 upside trigger，先從小倉位開始，確認後再加碼；不建議在超賣區新開空單。</p>
+<h2>Time horizon</h2>
+<p>未來 2–4 週是驗證窗口（11/30 報價、12/3–12/10 營收、12/9 FOMC、12/17 美光財報）。方向性論點本身是 1–2 季的週期判斷，要看 2027-01-18 的 Q4 財報與 1Q27 合約價。</p>
+<p>INVESTMENT PLAN COMPLETE</p></div>
+    </details>
+
+    <details class="mb-4 border border-slate-200 rounded">
+      <summary class="bg-slate-50 px-4 py-2 font-semibold">交易提案 (Trader)</summary>
+      <div class="agent-prose p-4 text-sm"><p>FINAL TRANSACTION PROPOSAL: <strong>HOLD</strong></p>
+<h1>Trade proposal — 2408.TW as of 2026-11-21</h1>
+<h2>Direction</h2>
+<p>AVOID（無新倉方向性交易）／已持有者則為 HOLD（降槓桿觀察）</p>
+<h2>為何不開新倉</h2>
+<p>研究經理的結論是 NEUTRAL、conviction LOW，technical setup 與 fundamental 論點方向相反，且尚未出現任何驗證訊號：</p>
+<ul>
+<li>技術面明確偏空：價格 $264.50 在 MA20 $384.48、MA50 $449.77、MA200 $370.31 之下，MACD hist -9.51 連續三日負向擴大，下方 <code>ta levels</code> 無有效支撐（所有已知 swing low 均高於現價），結構尚未止跌。</li>
+<li>但同時 RSI14 23.98、BB %B -0.008，屬弱勢超賣延伸，此時追空的 R:R 不佳；多方論點（forward P/E 2.1x、淨現金占市值約 29%）也使新空單風險不對稱。</li>
+<li>多方論點依賴尚未發生的 2027 年獲利假設，基本面與技術面在方向上互相矛盾，conviction 不足以支持任何新建倉位（多或空）。</li>
+</ul>
+<p>在型態尚未「收復 $322 以上」（多方確認）或「反彈至 $322 受阻後續跌」（空方確認）之前，無論多空都不具備足夠的 R:R 基礎去設定可驗證的 entry/stop/target，因此不提出新倉位的具體價位設定。</p>
+<h2>已持有部位的處置建議（非新倉）</h2>
+<p>若目前已持有多單：<br />
+- 建議降到半倉以下。<br />
+- 風險衡量以 2×ATR（ATR14 $31.47 → 約 $63）為準，即現價 $264.50 下方約 $201.5 視為結構性風險區間下緣，但這並非新進場的 stop 設計，僅供既有倉位風險控管參考。<br />
+- 20 日年化波動率 94.1%，任何保留倉位都應明顯小於一般標準規模。</p>
+<p>若目前無持倉：維持 AVOID，不建倉。</p>
+<h2>Sizing</h2>
+<p>不適用（無新倉）。既有倉位：若有，降至 Small 以下（&lt;0.5% NAV），理由為 conviction LOW、ATR $31.47（約現價 11.9%）、20 日年化波動率 94.1%，波動度過高不宜持有正常倉位規模。</p>
+<h2>Time horizon</h2>
+<p>2–4 週為驗證窗口，之後重新評估是否轉為方向性交易。</p>
+<h2>轉空為方向性交易的觸發條件</h2>
+<ul>
+<li>轉 LONG（MEDIUM）：收盤站回 $322 以上且 MACD hist 收斂轉正向，同時 12 月合約價續漲、12/17 美光財報指引偏向 2027 年供需偏緊。</li>
+<li>轉 SHORT_OR_AVOID（空方驗證）：TrendForce 下修 1Q27 合約價、合約價轉為持平或下跌、11 月營收 MoM 轉負，或 CXMT 量產獲得確認，且反彈於 $322 受阻後再度走弱。</li>
+</ul>
+<h2>Invalidation（維持 AVOID/HOLD 的前提被打破時）</h2>
+<ul>
+<li>若價格在觀察期內跌破 $264.50 新低且續創新低而無技術性反彈，顯示空方動能尚未衰竭，仍應迴避做多，既有多單應進一步降低風險。</li>
+<li>若出現站回 $322 以上且成交量確認，則現有「技術面偏空」前提失效，需重新評估是否轉 LONG。</li>
+</ul>
+<h2>Catalyst calendar</h2>
+<ul>
+<li>2026-11-30 前後 — TrendForce 12 月 DRAM 合約價報價（特別是 1Q27 展望）</li>
+<li>2026-12-03 至 2026-12-10 — 11 月營收公布（MoM 方向）</li>
+<li>2026-12-09 — FOMC 利率決議</li>
+<li>2026-12-17 — Micron 財報與 2027 年供需指引</li>
+<li>2027-01-18 — 2408.TW Q4 財報與 1Q27 合約價細節</li>
+</ul>
+<p>TRADE PROPOSAL COMPLETE</p></div>
+    </details>
+
+    <details class="mb-4 border border-slate-200 rounded">
+      <summary class="bg-slate-50 px-4 py-2 font-semibold">Phase 1 — 四 Analyst 報告</summary>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+        <div>
+          <h4 class="font-bold text-slate-700 mb-2">基本面 (Fundamentals)</h4>
+          <div class="agent-prose text-sm bg-slate-50 p-3 rounded"><h1>Fundamentals — 2408.TW 南亞科技 (Nanya Technology) as of 2026-11-21</h1>
+<p>資料來源: yfinance 快取 (source: cache, cached_at 2026-11-21)。金額單位統一為 <strong>億 TWD</strong> (1 億 = 100,000,000)，股數以 <strong>億股</strong> 表示。TTM 指最近四季 (2025Q4 至 2026Q3)。所有資料皆早於 2026-11-21，未使用 2026-11-21 之後的資料；2027-01-18 為 yfinance 預估的下次財報日，非已發生資料。</p>
+<h2>Executive summary</h2>
+<p>南亞科 (2408.TW) 財務健康度極佳: 2026-09-30 淨現金約 2673.6 億 TWD、流動比率 5.02、TTM 自由現金流約 1704 億 TWD (FCF/NI 約 97%)，償債與資本支出壓力都很低。估值表面上極度便宜 (trailing P/E 5.2x、EV/EBITDA 2.9x)，但這是 DRAM 景氣高點的爆發式獲利所推出的數字，屬於典型的週期股低估值陷阱，不能直接以歷史盈餘判斷合理價位。股價當日下跌 9.88% 至 264.5 TWD，需與景氣、擴產與增資稀釋一併判讀。</p>
+<h2>Revenue &amp; profitability</h2>
+<p><strong>營收與成長</strong><br />
+- 年度營收 (億 TWD): 2022 569.5 → 2023 298.9 → 2024 341.3 → 2025 665.9。<br />
+- 3 年 CAGR (2022→2025): 約 +5.3%，屬於週期的一個完整循環; 2 年 CAGR (2023→2025): 約 +49.3%。<br />
+- 季度營收 (億 TWD): 2025Q2 105.3、2025Q4 300.9、2026Q1 490.9、2026Q2 825.5、2026Q3 1336.5。環比分別為 +63%、+68%、+62%，成長速度極快。<br />
+- TTM 營收 2953.8 億 TWD，較 FY2025 (665.9 億) 放大約 4.4 倍。yfinance 回報 revenueGrowth = 6.117 (即 +611.7%，期間未標示，推估為最近季 YoY)。<br />
+- 營收組合: yfinance 未提供分部資料。業務摘要顯示產品為標準型 DRAM、低功耗 DRAM、MCP/eMCP、KGD 及模組，應用涵蓋消費、企業、行動、工業與汽車。</p>
+<p><strong>獲利能力</strong><br />
+| 期間 | 毛利率 | 營業利益率 | 淨利率 |<br />
+|---|---|---|---|<br />
+| FY2022 | 37.5% | 19.3% | 25.7% |<br />
+| FY2023 | -15.0% | -48.4% | -24.9% |<br />
+| FY2024 | -1.2% | -30.9% | -14.9% |<br />
+| FY2025 | 22.5% | 7.9% | 9.9% |<br />
+| 2026Q1 | 67.9% | 61.4% | 53.1% |<br />
+| 2026Q2 | 79.5% | 73.7% | 60.8% |<br />
+| 2026Q3 | 85.7% | 80.0% | 65.6% |<br />
+| TTM | 77.3% | 71.0% | 59.2% |</p>
+<ul>
+<li>毛利率由 2025Q2 的負值 (-20.6%) 快速拉升至 2026Q3 的 85.7%，為 DRAM 報價循環反轉的直接結果。</li>
+<li>ROE (yfinance): 61.6%; ROA: 36.8%。</li>
+<li>ROIC (估算): TTM 營業利益 2096.3 億 × (1 - 19.85% 稅率) ≈ NOPAT 1680 億，除以 2026-09-30 投入資本 4289.5 億，約 39%。注意投入資本為期末值，分母因期間增資而膨脹，此為估算值。</li>
+<li>EPS 趨勢 (稀釋, yfinance): 2025Q2 -1.32、2025Q3 0.50、2025Q4 3.58、2026Q1 8.00、2026Q2 14.66、2026Q3 25.40 (財報揭露值 basic 25.40; 稀釋 24.38)。最近四季 EPS 皆優於市場預期 (surprise +68.8%、+16.7%、+13.3%、+2.9%)。</li>
+</ul>
+<h2>Cashflow &amp; balance sheet</h2>
+<p><strong>現金流量 (TTM = 2025Q4 至 2026Q3)</strong><br />
+- 營業現金流 (OCF): 2003.4 億 TWD，OCF/NI 約 114%。<br />
+- 資本支出 (Purchase of PPE): 298.8 億 TWD (2025Q4 22.4、2026Q1 28.1、2026Q2 40.5、2026Q3 207.8)。<br />
+- 自由現金流 (OCF - 資本支出 - 無形資產): 約 1704 億 TWD，FCF margin 約 57.7%，FCF/NI 約 97.4% (&gt;0.9 健康門檻)。<br />
+- 2025 全年 FCF 僅 48.8 億 TWD (FCF/NI 約 74%)，FCF 能力在一年之內出現大幅躍升。<br />
+- yfinance 摘要欄位 freeCashflow = 1371.4 億 TWD，與季度加總 1704 億不一致，本報告以季度加總為準，差異需再確認。</p>
+<p><strong>資產負債表 (2026-09-30)</strong><br />
+- 現金及約當現金: 2899.3 億 TWD; 總負債 (含租賃) 225.7 億 TWD (長期負債 184.0 億，短期負債 0.0 億); 淨現金 約 2673.6 億 TWD，佔市值約 29%。<br />
+- 流動資產 3787.6 億 / 流動負債 754.0 億 = 流動比率 5.02; 速動比率 4.70 (yfinance)。<br />
+- 股東權益 4105.5 億 TWD (2025-12-31 為 1704.0 億)，權益比率約 81%。<br />
+- 負債權益比 = 225.7 / 4105.5 = 0.055x (yfinance 欄位 debtToEquity = 5.497 為百分比格式，不可解讀為 5.5x)。<br />
+- 利息覆蓋: TTM 營業利益 2096.3 億 / 利息支出 約 4.0 億，覆蓋倍數 &gt; 500x。<br />
+- 營運資金 3033.5 億 TWD。</p>
+<p><strong>營運資產變化 (2025-12-31 → 2026-09-30)</strong><br />
+- 應收帳款: 165.6 → 622.7 億 TWD (+276%)。以 Q3 營收估算 DSO 約 42 天 (YE25 約 51 天)，尚屬合理，但絕對金額增長極快。<br />
+- 存貨: 272.9 → 208.5 億 TWD (-24%)，存貨去化明顯。<br />
+- 應付帳款 (Accounts Payable): 64.8 → 177.9 億 TWD; 應付稅款: 6.4 → 362.6 億 TWD，顯示獲利已大幅推升稅負與待付稅款，為未來現金流出的時序風險。</p>
+<h2>Capital allocation &amp; insider signal</h2>
+<p><strong>資本配置</strong><br />
+- 資本支出: FY2022 207.1 億、FY2023 132.4 億、FY2024 161.4 億、FY2025 134.5 億 TWD。2026Q3 單季暴增至 207.8 億 (約為前一季 5.1 倍)，資本支出/折舊 (Q3 D&amp;A 31.1 億) 約 6.7x，顯示進入明確擴產期。TTM 資本支出/營收 約 10.1%，但 Q3 單季為 15.5%。<br />
+- 股本與增資: 股本由 309.9 億 TWD (30.99 億股) 增至 345.0 億 TWD (34.50 億股) 於 2026Q2 完成，增加約 3.5 億股，稀釋約 11%。同期 APIC 由 331.7 億增至 1084.6 億，2026Q2 融資現金流為 +794.1 億 TWD。推估為現金增資，但 yfinance 之 Issuance Of Capital Stock 欄位為 null，需以公開資訊確認。<br />
+- 稀釋股數 (2026Q3): 35.94 億股 vs 基本股數 34.50 億股，差距約 1.44 億股 (約 4%)，需確認是否含可轉債或員工認股權。<br />
+- 股利: 近期股利 1.35 TWD/股 (殖利率 0.51%，yfinance payoutRatio 2.65%)。以 34.5 億股計算，股利總額約 46.6 億 TWD，TTM FCF 覆蓋約 36x。yfinance 未提供 2024、2025 年現金股利實付金額 (null)，無法完整核對歷史政策。<br />
+- 2022、2023 現金股利實付: 114.7 億、66.0 億 TWD。<br />
+- 無買回股票紀錄。</p>
+<p><strong>內部人與股權結構</strong><br />
+- 內部人交易 (6 個月): yfinance insider 欄位為空陣列 <code>[]</code>，無資料。台灣董監持股申報不一定納入 yfinance，此項為資料缺口，<strong>淨買賣 n/a</strong>。<br />
+- insidersPercentHeld 51.66% (大股東集中度高，屬控制股東結構); institutionsPercentHeld 16.0% (241 家機構)。<br />
+- 流通股數約 16.8 億股 (約佔總股本 48.6%)。</p>
+<h2>Valuation</h2>
+<p>以 2026-11-21 收盤價 264.5 TWD 計算 (前收 293.5，單日 -9.88%，日內區間 264.5 - 279.5)。市值 9125.8 億 TWD (= 264.5 × 34.50 億股，手動驗證吻合)。</p>
+<ul>
+<li><strong>P/E (trailing)</strong>: 5.20x (EPS TTM 50.82)。</li>
+<li><strong>P/E (forward)</strong>: 2.10x (forward EPS 125.72)。yfinance 當年度 EPS 估計 75.79，即 P/E 3.49x。以季度實際值 8.00 + 14.66 + 25.40 加上 Q4 預估 27.0，合計約 75.1，與 75.79 相符。</li>
+<li><strong>EV/EBITDA</strong>: 2.92x (EV 6453.6 億，EBITDA TTM 2210.4 億; 以季度 EBITDA 加總 2290.8 億計算約 2.8x)。</li>
+<li><strong>P/FCF (TTM)</strong>: 約 5.4x (市值 9125.8 / FCF 1704)。</li>
+<li><strong>P/S (TTM)</strong>: 3.09x (營收 2953.8 億)。</li>
+<li><strong>P/B</strong>: 2.22x (BVPS 118.99 TWD)。</li>
+<li><strong>分析師目標價</strong> (13 位): 平均 654.9、中位數 660、最低 447、最高 850 TWD; recommendationMean 1.71 (buy 區間)。相對現價之平均目標價隱含上行空間 約 +148%，僅作為市場共識參考。</li>
+<li><strong>與 sector 中位數比較</strong>: 下列為估計值 (非工具回傳)。台股半導體整體 trailing P/E 約 20x、EV/EBITDA 約 12x、P/S 約 5x、P/B 約 3x。個股在景氣高點的獲利基數極高，trailing 倍數天生偏低，應以景氣循環 (DRAM 報價、產能利用率) 框架解讀，而非以平均倍數判定便宜與否。</li>
+<li>股價位置: 低於 50 日均線 446.8 (-40.8%) 與 200 日均線 373.6 (-29.2%)，52 週區間 133.0 - 569.0，52 週漲幅 +85%。Beta 2.08，波動度高。</li>
+</ul>
+<h2>Key catalysts</h2>
+<ul>
+<li><strong>下次財報</strong>: 2027-01-18 (yfinance 預估)，對應 2026Q4。Q4 EPS 共識 27.0 TWD (Q3 實際 25.40，環比約 +6%)。</li>
+<li><strong>最近已揭露財報</strong>: 2026-10-12 (Q3 EPS 25.40，優於估計 24.68)。</li>
+<li><strong>資本支出擴張</strong>: 2026Q3 資本支出 207.8 億 TWD，後續產能落地時程與折舊攀升將影響未來毛利率與 FCF。</li>
+<li><strong>股利除息</strong>: 2026 年 7 月附近 (exDividendDate 約 2026-07-08)，已過。</li>
+<li><strong>景氣面 (本報告無 DRAM 報價數據，需另由其他分析師補充)</strong>: 毛利率由負轉 85.7%，代表 DRAM 合約價循環仍處於上行段，循環反轉將是最大的獲利下行風險。</li>
+<li><strong>增資後籌碼</strong>: 股本擴大 11%，後續是否再有增資或可轉債轉換需追蹤。</li>
+</ul>
+<h2>Metrics table</h2>
+<p>金額單位: 億 TWD (除非另註)。YoY 欄位僅在可由資料直接推算時填寫，否則 n/a。Sector median 欄位均為估計值。</p>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Latest</th>
+<th>YoY</th>
+<th>Sector median (estimate)</th>
+<th>Verdict</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>營收 (TTM, 億 TWD)</td>
+<td>2953.8</td>
+<td>+343.6% (vs FY2025 665.9)；yfinance revenueGrowth +611.7%</td>
+<td>約 +10%</td>
+<td>極強，週期高點</td>
+</tr>
+<tr>
+<td>2026Q3 營收 (億 TWD)</td>
+<td>1336.5</td>
+<td>QoQ +61.9%；YoY 推估 約 +611%</td>
+<td>n/a</td>
+<td>強</td>
+</tr>
+<tr>
+<td>毛利率 (TTM)</td>
+<td>77.3%</td>
+<td>FY2025 22.5% (+54.8pt)</td>
+<td>約 40-50%</td>
+<td>極強，待觀察持續性</td>
+</tr>
+<tr>
+<td>營業利益率 (TTM)</td>
+<td>71.0%</td>
+<td>FY2025 7.9%</td>
+<td>約 15-25%</td>
+<td>極強，週期高點</td>
+</tr>
+<tr>
+<td>淨利率 (TTM)</td>
+<td>59.2%</td>
+<td>FY2025 9.9%</td>
+<td>約 10-15%</td>
+<td>極強</td>
+</tr>
+<tr>
+<td>ROE</td>
+<td>61.6%</td>
+<td>n/a</td>
+<td>約 15%</td>
+<td>強 (週期高點)</td>
+</tr>
+<tr>
+<td>ROIC (估算)</td>
+<td>約 39%</td>
+<td>n/a</td>
+<td>約 10-12%</td>
+<td>強</td>
+</tr>
+<tr>
+<td>淨利 (TTM, 億 TWD)</td>
+<td>1749.7</td>
+<td>由 FY2025 66.1 放大 約 26 倍</td>
+<td>n/a</td>
+<td>週期高點</td>
+</tr>
+<tr>
+<td>EPS (TTM, TWD)</td>
+<td>50.82</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>週期高點</td>
+</tr>
+<tr>
+<td>OCF (TTM, 億 TWD)</td>
+<td>2003.4</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>強</td>
+</tr>
+<tr>
+<td>FCF (TTM, 億 TWD)</td>
+<td>1704 (季度加總); 1371 (yfinance 摘要)</td>
+<td>FY2025 48.8</td>
+<td>n/a</td>
+<td>強 (兩者差異需核對)</td>
+</tr>
+<tr>
+<td>FCF margin (TTM)</td>
+<td>57.7%</td>
+<td>n/a</td>
+<td>約 10-15%</td>
+<td>極強</td>
+</tr>
+<tr>
+<td>FCF / NI (TTM)</td>
+<td>97.4%</td>
+<td>FY2025 約 74%</td>
+<td>&gt;0.9 健康</td>
+<td>健康</td>
+</tr>
+<tr>
+<td>資本支出 (TTM, 億 TWD)</td>
+<td>298.8</td>
+<td>FY2025 134.5</td>
+<td>n/a</td>
+<td>警示 (2026Q3 單季暴增)</td>
+</tr>
+<tr>
+<td>資本支出 / 營收 (TTM)</td>
+<td>10.1%</td>
+<td>FY2025 20.2%</td>
+<td>約 10-15%</td>
+<td>中性</td>
+</tr>
+<tr>
+<td>總負債 (億 TWD)</td>
+<td>225.7</td>
+<td>2025-12-31 236.2</td>
+<td>n/a</td>
+<td>極低</td>
+</tr>
+<tr>
+<td>淨現金 (億 TWD)</td>
+<td>+2673.6</td>
+<td>2025-12-31 +344.5 (580.7 - 236.2)，+676%</td>
+<td>約 0 - 中性</td>
+<td>極強</td>
+</tr>
+<tr>
+<td>流動比率</td>
+<td>5.02</td>
+<td>2025-12-31 約 5.7 (108.5/19.0)</td>
+<td>約 2.0</td>
+<td>極強</td>
+</tr>
+<tr>
+<td>負債權益比</td>
+<td>0.055x</td>
+<td>2025-12-31 約 0.14x</td>
+<td>約 0.4x</td>
+<td>極強</td>
+</tr>
+<tr>
+<td>股本 (億股)</td>
+<td>34.50</td>
+<td>2025-12-31 30.99 (+11.3%)</td>
+<td>n/a</td>
+<td>警示 (稀釋)</td>
+</tr>
+<tr>
+<td>Trailing P/E</td>
+<td>5.20x</td>
+<td>n/a</td>
+<td>約 20x</td>
+<td>極低 (週期高點陷阱)</td>
+</tr>
+<tr>
+<td>Forward P/E</td>
+<td>2.10x</td>
+<td>n/a</td>
+<td>約 18x</td>
+<td>極低</td>
+</tr>
+<tr>
+<td>EV/EBITDA (TTM)</td>
+<td>2.92x</td>
+<td>n/a</td>
+<td>約 12x</td>
+<td>極低</td>
+</tr>
+<tr>
+<td>P/FCF (TTM)</td>
+<td>約 5.4x</td>
+<td>n/a</td>
+<td>約 15x</td>
+<td>低</td>
+</tr>
+<tr>
+<td>P/S (TTM)</td>
+<td>3.09x</td>
+<td>n/a</td>
+<td>約 5x</td>
+<td>低</td>
+</tr>
+<tr>
+<td>P/B</td>
+<td>2.22x</td>
+<td>n/a</td>
+<td>約 3x</td>
+<td>中性偏低</td>
+</tr>
+<tr>
+<td>股利殖利率</td>
+<td>0.51%</td>
+<td>n/a</td>
+<td>約 2-3%</td>
+<td>偏低</td>
+</tr>
+<tr>
+<td>股利 / FCF 覆蓋</td>
+<td>約 36x</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>健康</td>
+</tr>
+<tr>
+<td>內部人交易 (6 個月)</td>
+<td>n/a (資料缺口)</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>n/a</td>
+</tr>
+<tr>
+<td>大股東持股 (insiders)</td>
+<td>51.66%</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>高度集中</td>
+</tr>
+<tr>
+<td>應收帳款 (億 TWD)</td>
+<td>622.7</td>
+<td>YE25 165.6 (+276%)</td>
+<td>n/a</td>
+<td>警示 (絕對值暴增)</td>
+</tr>
+<tr>
+<td>應付稅款 (億 TWD)</td>
+<td>362.6</td>
+<td>YE25 6.4</td>
+<td>n/a</td>
+<td>警示 (現金流出時序)</td>
+</tr>
+</tbody>
+</table>
+<h2>Red flags</h2>
+<ul>
+<li><strong>週期高點獲利</strong>: TTM 淨利 1749.7 億 TWD 相較 FY2024 淨損 50.8 億，FY2023 淨損 74.4 億。低估值 (P/E 5.2x、EV/EBITDA 2.9x) 是以景氣高點盈餘計算，盈餘一旦回落，倍數將大幅向上修正。</li>
+<li><strong>毛利率單季由 -20.6% 至 85.7%，兩年內波動幅度超過 100 pt</strong>: 獲利持續性對 DRAM 合約價高度敏感，缺乏價格數據時無法判斷哪一段為高點。</li>
+<li><strong>單日下跌 -9.88%</strong> (前收 293.5 → 264.5，成交量 60.1 百萬股，約為 10 日均量 51.3 百萬股之 1.17 倍): 工具資料未說明原因，需補充新聞與籌碼面。</li>
+<li><strong>資本支出爆發</strong>: 2026Q3 資本支出 207.8 億 TWD，為前一季 5.1 倍，FCF 在擴產期可能快速壓縮。</li>
+<li><strong>股本稀釋 約 11%，且 2026Q2 有約 752 億 TWD APIC 增加</strong>: 現金增資細節 (價格、用途、認購對象) 工具未提供。</li>
+<li><strong>應收帳款與應付稅款大幅上升</strong>: 應收 622.7 億 (YE25 的 3.8 倍)、應付稅款 362.6 億 (YE25 的 57 倍)，未來現金流有時序風險。</li>
+<li><strong>稀釋股數與基本股數差距 約 1.44 億股 (約 4%)</strong>: 需確認是否有可轉債或認股權。</li>
+<li><strong>大股東持股 51.66%</strong>: 自由流通股偏少 (流通股約 48.6%)，籌碼面集中度高。</li>
+<li><strong>內部人交易資料缺口</strong>: yfinance 無資料，無法判斷董監事是否在高點有減持或增持。</li>
+<li><strong>資料品質旗標</strong>:</li>
+<li>yfinance <code>freeCashflow</code> (1371 億) 與季度加總 (1704 億) 不一致。</li>
+<li>yfinance <code>debtToEquity</code> 為百分比格式 (5.497 = 0.055x)。</li>
+<li>yfinance <code>fast_info</code> 多項欄位為 null，本報告價格採用 info 之 currentPrice 與 fast_info last_price 一致 (264.5)。</li>
+<li>yfinance <code>allTimeHigh</code> (1687.3) 與 <code>allTimeLow</code> (11.69) 受 2014 年股票分割與歷史調整影響，不可作為參考。</li>
+<li>2024、2025 年現金股利實付為 null，股利政策無法完整核對。</li>
+<li>2026Q1 的 shares outstanding 欄位 (34.50 億股) 與資本額 (309.9 億 TWD = 30.99 億股) 不一致，推估為資料回填時序差，已以 2026Q2 的資本額為準。</li>
+<li>本報告 sector median 為估計值，非 yfinance 回傳資料。</li>
+</ul>
+<p>FUNDAMENTALS REPORT COMPLETE</p></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-slate-700 mb-2">技術面 (Market / Technical)</h4>
+          <div class="agent-prose text-sm bg-slate-50 p-3 rounded"><h1>Technical — 2408.TW (南亞科) as of 2026-11-21</h1>
+<p>資料說明：最新可用收盤為 2026-11-20（TWD）。價格來源為 yf fast_info（cnyes 快取，cached_at 2026-11-21T14:32 UTC），與 ta snapshot/series 的 2026-11-20 收盤一致。</p>
+<h2>Snapshot</h2>
+<p>Price $264.50, MA20 $384.48, MA50 $449.77, MA200 $370.31, RSI14=23.98, MACD hist=-9.51</p>
+<h2>Trend</h2>
+<p>趨勢明確向下。價格 $264.50 低於 MA20、MA50、MA200 三條均線，距 MA20 -31.2%、距 MA50 -41.2%、距 MA200 -28.6%。均線排列為 MA20 ($384.48) &lt; MA50 ($449.77)，短中期均線已呈空頭排列；MA50 仍高於 MA200 約 21%，長期 golden cross 結構尚未被破壞，但 MA50 近 3 個交易日由 $461.92 (11/17) 降至 $449.77，下降斜率仍在擴大，兩線差距持續收斂。</p>
+<p>結構面看，自 2026-10-08 高點 $537 起形成連續低點降低、高點降低的下跌序列：10/29 高 $497.5、11/12 高 $417、11/17 高 $344.5、11/20 高 $279.5；低點則依序為 10/22 $412、11/06 $324、11/18 $307、11/20 $264.5。11/20 單日跌 -9.9%（前收 $293.5），收盤 $264.50 為本輪下跌段的最低收盤（52 週低點 $133 遠在過去，非年度新低），下跌動能強。</p>
+<h2>Momentum</h2>
+<p>MACD 位於零軸下方：MACD -43.17、signal -33.66、histogram -9.51。histogram 自 11/17 的 -5.06 連續三日擴大至 -9.51，屬負向加速，尚未出現柱狀收斂的跡象。</p>
+<p>RSI14 為 23.98，已進入 OS（&lt;30）區間，但尚未跌破 20 的極端區。RSI 自 11/13 的 38.6 一路下滑，超賣未伴隨明顯反彈，屬弱勢超賣。</p>
+<p>多週期報酬：1 個月 -39.4%、3 個月 -45.0%、6 個月 -3.8%、12 個月 +78.7%。短中期報酬劇烈轉負，12 個月報酬仍為正，代表自 2026 年初至中段的漲幅已大部分回吐。</p>
+<h2>Key levels</h2>
+<ul>
+<li>Resistance:</li>
+<li>$322.00 (2026-07-30 local low，2026-11-17 盤中跌破，轉為上方壓力)</li>
+<li>$384.48 (MA20 / BB mid)</li>
+<li>$386.50 (2026-07-02 local low，失守後轉壓)</li>
+<li>$465.50 (2026-09-15 local low，前支撐轉壓)</li>
+<li>$489.50 (2026-07-15 local high)</li>
+<li>$497.50 (2026-10-29 local high)</li>
+<li>$505.00 (2026-06-22 local high)</li>
+<li>$537.00 (2026-10-08 local high)</li>
+<li>$569.00 (2026-08-28 local high，52 週高)</li>
+<li>Support:</li>
+<li>無 <code>ta levels</code> 列出的有效下方支撐；列表內所有 swing low 均高於現價</li>
+<li>$264.50 (2026-11-20 收盤與盤中新低，目前即為最近的實際承接位)</li>
+<li>$266.48 (BB lower，現價已在其下方，%B = -0.008)</li>
+<li>$133.00 (52 週低，工具未回傳日期，距現價 +98.9%，僅作遠端參考)</li>
+<li>Stop-loss suggestion (logical, not advice): 若以多方視角，最近一次支撐跌破為 $322.00 (2026-11-17 盤中)，該位已失守，多方結構需重新收復 $322 以上才算修復；若持有多單，結構性失效位在 $264.50 (2026-11-20 新低) 下方。若以空方視角，反彈失效參考為收復 $322 或 MA20 $384.48 上方。</li>
+</ul>
+<h2>Volatility profile</h2>
+<p>ATR14 $31.47（約佔現價 11.9%），ATR-implied daily move ~$31.47。20 日年化波動率 94.1%，換算日標準差約 5.9%（約 $15.7/日）。以此波動水準，部位規模應明顯縮小，停損距離需以 ATR 倍數（如 2×ATR ≈ $63）設定，否則正常日內震盪即可觸發。</p>
+<p>成交量：11/20 成交量 58.80M，為前 10 日均量 51.74M 的 1.14 倍，下跌日量能放大，屬賣壓確認。注意：2026-10-23 成交量記錄為 0 且 OHLC 皆為 414，疑為資料缺漏或停牌，不納入量能判讀。</p>
+<h2>Setup</h2>
+<p>偏空（bearish）。型態為高位區（$400–$530）經 10 月中起的破位後，形成連續下跌與降低高點/降低低點的結構，11/20 跌破 BB lower 並創本輪下跌新低，為空頭延續的條件。短線超賣（RSI 23.98、%B &lt; 0）存在技術性反彈的可能，但目前反彈壓力集中在 $322 與 $384，在收復 $322 之前，型態不構成底部反轉訊號。</p>
+<h2>Indicators table</h2>
+<table>
+<thead>
+<tr>
+<th>Indicator</th>
+<th>Value</th>
+<th>Reading</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Price</td>
+<td>$264.50</td>
+<td>2026-11-20 收盤，新低</td>
+</tr>
+<tr>
+<td>MA20</td>
+<td>$384.48</td>
+<td>價格低於 MA20 31.2%，短期空頭</td>
+</tr>
+<tr>
+<td>MA50</td>
+<td>$449.77</td>
+<td>價格低於 MA50 41.2%，MA50 仍下行</td>
+</tr>
+<tr>
+<td>MA200</td>
+<td>$370.31</td>
+<td>價格低於 MA200 28.6%，長期結構受損</td>
+</tr>
+<tr>
+<td>MA20 vs MA50</td>
+<td>MA20 &lt; MA50</td>
+<td>短中期空頭排列</td>
+</tr>
+<tr>
+<td>MA50 vs MA200</td>
+<td>+21% (MA50 在上)</td>
+<td>未出現 death cross，差距收斂中</td>
+</tr>
+<tr>
+<td>RSI14</td>
+<td>23.98</td>
+<td>Oversold（&lt;30），未達 &lt;20 極端值</td>
+</tr>
+<tr>
+<td>MACD</td>
+<td>-43.17</td>
+<td>零軸下方，弱勢</td>
+</tr>
+<tr>
+<td>MACD signal</td>
+<td>-33.66</td>
+<td>MACD 低於 signal</td>
+</tr>
+<tr>
+<td>MACD hist</td>
+<td>-9.51</td>
+<td>負向擴大，下跌動能加速</td>
+</tr>
+<tr>
+<td>BB %B</td>
+<td>-0.008</td>
+<td>略跌破 lower band，延伸</td>
+</tr>
+<tr>
+<td>BB width</td>
+<td>upper $502.47 / lower $266.48</td>
+<td>帶寬大，波動擴張</td>
+</tr>
+<tr>
+<td>ATR14</td>
+<td>$31.47</td>
+<td>約 11.9% 價格，高波動</td>
+</tr>
+<tr>
+<td>20d vol (annualized)</td>
+<td>94.1%</td>
+<td>極高波動，部位宜縮</td>
+</tr>
+<tr>
+<td>1m return</td>
+<td>-39.4%</td>
+<td>極弱</td>
+</tr>
+<tr>
+<td>3m return</td>
+<td>-45.0%</td>
+<td>極弱</td>
+</tr>
+<tr>
+<td>6m return</td>
+<td>-3.8%</td>
+<td>近半年幾乎持平後才急跌</td>
+</tr>
+<tr>
+<td>12m return</td>
+<td>+78.7%</td>
+<td>年度仍為正報酬</td>
+</tr>
+<tr>
+<td>From 52w high ($569)</td>
+<td>-53.5%</td>
+<td>深度回檔</td>
+</tr>
+<tr>
+<td>From 52w low ($133)</td>
+<td>+98.9%</td>
+<td>距低點仍遠</td>
+</tr>
+<tr>
+<td>Volume (11/20 vs 10d avg)</td>
+<td>1.14x</td>
+<td>下跌放量，賣壓確認</td>
+</tr>
+</tbody>
+</table>
+<p>MARKET REPORT COMPLETE</p></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-slate-700 mb-2">新聞 (News)</h4>
+          <div class="agent-prose text-sm bg-slate-50 p-3 rounded"><h1>News — 2408.TW (南亞科) as of 2026-11-21</h1>
+<p>資料說明: <code>pipeline/tools/yf 2408.TW news</code> 因代理伺服器回傳 403 失敗，本報告改以 WebSearch 補足。部分來源日期不明或彼此矛盾，已在各條目標註。所有資訊截止 2026-11-21，之後的消息一律視為未知。</p>
+<h2>行情快照 (yfinance info, 快取於 2026-11-21 收盤後)</h2>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>數值</th>
+<th>備註</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>收盤價</td>
+<td>264.5 TWD</td>
+<td>前收 293.5, 單日 -9.88%</td>
+</tr>
+<tr>
+<td>當日區間</td>
+<td>264.5 - 279.5 TWD</td>
+<td>開 276.5</td>
+</tr>
+<tr>
+<td>成交量</td>
+<td>約 6,006 萬股</td>
+<td>10 日均量約 5,129 萬股</td>
+</tr>
+<tr>
+<td>市值</td>
+<td>9,126 億 TWD</td>
+<td>流通股本 3.45B 股, 以收盤價換算</td>
+</tr>
+<tr>
+<td>企業價值 (EV)</td>
+<td>6,454 億 TWD</td>
+<td></td>
+</tr>
+<tr>
+<td>TTM 淨利</td>
+<td>1,750 億 TWD</td>
+<td>EPS 50.82 TWD × 3.45B 股 ≈ 1,753 億, 一致</td>
+</tr>
+<tr>
+<td>TTM 營收</td>
+<td>2,954 億 TWD</td>
+<td>與 10 月累計營收 3,118 億 TWD 不一致, TTM 不應低於 YTD, 視為資料過期</td>
+</tr>
+<tr>
+<td>52 週區間</td>
+<td>133.0 - 569.0 TWD</td>
+<td>52 週高點與多處來源 (LinkedIn 指 11/4 最高 145.5) 不一致, 不採信</td>
+</tr>
+<tr>
+<td>分析師</td>
+<td>13 家, 平均 "Buy" (1.71)</td>
+<td>目標價 平均 654.9 / 中位 660 / 高 850 / 低 447 TWD</td>
+</tr>
+</tbody>
+</table>
+<p>注意: 11/21 單日 -9.88% 的直接原因，本次 WebSearch 未找到 2026-11-21 當日的報導，見下方「需要查證」。</p>
+<h2>Top company-specific headlines (last 14d)</h2>
+<ul>
+<li>2026-11-10 / 11-12 — 外資買超南亞科 7,281 張 / 2,870 張 (經濟日報 / 工商時報 轉載, wantrich.chinatimes.com). Impact: bullish (短線). 同期外資在華邦電 (2344) 連賣 3 日合計 44,113 張, 南亞科則相對受回補, 族群內出現分化。</li>
+<li>2026-11 中 (確切日期未確認) — 摩根士丹利調降 6 檔台灣記憶體股目標價 48%–59%, 理由為消費型 NAND 現貨 2 週內下跌約 20% (wantrich.chinatimes.com, 2026-11 報導). Impact: bearish. 外資目標價下修直接衝擊估值預期, 但屬非南亞科專屬的 NAND 現貨訊號。</li>
+<li>2026-11 中 (日期未確認) — 富邦投顧維持買進, 目標價 660 TWD, 但認為未來四季營收與 EPS 上升空間有限; 群益將評等降為區間操作; 其他券商維持中性 (businesstoday.com.tw, 2026-11-04 / 11-06 報導). Impact: mixed. 評等分歧反映多方與空方對景氣高點判斷不同。</li>
+<li>2026-10-12 法說 (近 14d 外, 作為基準) — Q3 合併營收約 1,336.5 億 TWD (QoQ +61.9%), 毛利率 85.7%, 出貨量季減 4%–6%, 管理層預期 Q4 DRAM 價格與毛利續升, 並認為 2027 年供需仍緊 (Focus Taiwan, Futurum). Impact: bullish 基本面, 但屬於舊消息。</li>
+<li>10 月合併營收 464.76 億 TWD, MoM +3.1%, YoY +487.7%; 1–10 月累計 3,117.61 億 TWD, YoY +602.2% (finance.technews.tw, 2026-11-03). Impact: bullish, 基本面訊號已反映於股價, 11 月營收要到 12 月初才公布。</li>
+<li>2026-08-05 董事會 — Fab 5A 投資上限 3,466 億 TWD (約 US$10.7B) 至 2029 年, 2026 年資本支出上修 34% 至 697 億 TWD, 2H27 開始投片 (TechPowerUp, TrendForce). Impact: 中性偏多, 長期產能供給增加是跌價風險。近 14d 外。</li>
+</ul>
+<h2>Sector macro</h2>
+<ul>
+<li>2026-11-18 — TrendForce DRAM 週報: 行動 DRAM 合約談判停滯, 品牌商持續觀望; 短缺缺口收斂, 合約價漲幅將逐季放緩. Impact on 記憶體: bearish 二階導數 (漲幅放緩, 非價格下跌)。</li>
+<li>2026-11-17 週 — 主流 DDR4 1Gx8 3200 現貨均價 下跌約 1.43% 至 US$44.25, 買方觀望、賣方願意降價. Impact: bearish 短線情緒。現貨弱於合約是 DRAM 價格高點的早期訊號。</li>
+<li>2026-11-11 — TrendForce 預估 4Q26 PC DRAM 合約價 QoQ +13%–18%, 部分 PC 廠修正 4Q26 / 1Q27 採購計畫. Impact: 中性偏多 (價格仍升), 但需求端有修正風險。</li>
+<li>2026-09-30 — TrendForce 預估 4Q26 一般 DRAM 合約價 QoQ +10%–15%, 主要由 AI 與雲端需求驅動. Impact: bullish 基本面, 但與 11/11 PC DRAM 預估來源不同, 數字不可直接相加。</li>
+<li>2026-10-30 — TrendForce 預估 4Q26 行動 DRAM 合約價 持平至小幅上漲. Impact: 中性, 價格高檔盤整。</li>
+<li>2026-11-03 — 中國長鑫 (CXMT) 新一代 DRAM 技術與 HBM3E 小量生產傳聞 (10/28 起) 引發記憶體族群全面重挫; 南亞科當日跌停 (411 TWD, 來源單一). Impact: bearish 競爭與供給擔憂。CXMT 自身股價 11/3 -7% 至 RMB 38.80, 較 8 月高點回落約 37%.</li>
+<li>2026-10-19 — 長鑫宣布獲利轉正 (前 9 個月淨利轉虧為盈), 但股價當日仍跌 6.5%, 市場反應偏負面 (finance.technews.tw). Impact: bearish 情緒, 中國供給擴張敘事持續。</li>
+<li>地緣與關稅 / 匯率 / 台股大盤 — 本次搜尋未取得 2026-11 可確認的新政策事件, 本欄未補充, 不可視為無事件。</li>
+</ul>
+<h2>Peer signals</h2>
+<ul>
+<li>華邦電 (2344) — 11/6 跌停 (115 TWD, 單一來源); 外資近 20 日累計賣超逾 3.2 萬張, 連 3 日賣超 44,113 張. 族群中最弱, 與南亞科同步走弱.</li>
+<li>美光 (MU) — 2026-11-03 下跌 5.78% (隨 CXMT 消息). FQ4 財報 (2026-10-01) 為營收創高, 但公司擴大資本支出, 市場對資本支出與需求減量疑慮升溫. 12/17 財報為下一個關鍵事件.</li>
+<li>SK hynix / 三星 — 有報導指 SK hynix 5 日內下跌 26%, 三星下跌 22%, 美光下跌約 11% (日期不明, 屬於某段時間的累計數字, 不可視為 11/21 單日). 韓股 DRAM 族群拋售被視為 AI 資本支出疑慮. 方向: bearish 情緒。</li>
+<li>長鑫 (CXMT, 中國) — 11/3 股價 -7%, 市場將其視為最大競爭威脅. Impact: 供給端 bearish 敘事核心。</li>
+<li>旺宏 (2337) — 有報導指某大型外資將旺宏列為首選, 同步調降南亞科、華邦電評等 (日期不明). Impact: 族群內部評等輪動, 南亞科相對受壓。</li>
+</ul>
+<h2>Forward calendar (next 14d)</h2>
+<ul>
+<li>2026-11-30 (前後) — TrendForce 12 月 DRAM 合約價預估 / 月底報價, 將決定 4Q26 價格是否符合 10%–15% 或 13%–18% 的預期. 預期影響: 高, 方向取決於價格是否續漲。</li>
+<li>2026-12-01 至 12-10 — 台股上市公司 11 月營收公告 (南亞科通常於 12/3–12/10 前公布). 預期影響: 中高, 11 月為 4Q26 第一個月, 需看 MoM 是否續增; 市場已預期 YoY 數字極高, 重點在 MoM.</li>
+<li>2026-12-08 至 12-09 — FOMC 會議, 12/9 公布利率決議. 預期影響: 中, 高 beta 成長股 (beta 約 2.08) 對利率敏感。</li>
+<li>2026-12-17 (公司公告) — 美光 FQ1 2027 財報電話會議 (其他來源列 12/15 或 12/16, 以美光公告為準). 預期影響: 高, 為全球 DRAM 價格與資本支出的同業指引。</li>
+<li>近 14d 內無南亞科法說或財報 (Q4 財報預計 2027 年初, 依 yfinance earningsTimestamp 推算為 Q3 已於 10/12 公布).</li>
+</ul>
+<h2>需要查證</h2>
+<ul>
+<li>2026-11-21 當日 -9.88% 的直接原因: 本次 WebSearch 未找到當日報導。候選原因 (均未確認日期): 記憶體族群二次殺盤、旺宏評等輪動、資本支出與 HBM 擴產疑慮、CXMT 技術消息。必須以當日盤後新聞或 TWSE 重大訊息核實後才能歸因。</li>
+<li>11/3 跌停價 411 TWD 與 11/6 跌停價 324 TWD 皆為單一來源, 與 yfinance 之 11/4 收盤 131.5 TWD (LinkedIn 來源) 數值不一致, 價格歷史不做精確引用。</li>
+<li>TTM 營收 (2,954 億 TWD) 與 YTD 累計營收 (3,118 億 TWD) 矛盾, 估值比率 (EV/Sales 2.19, P/S 3.09) 需以官方財報核對。</li>
+</ul>
+<h2>Net read</h2>
+<p>近 14 天的公司基本面消息仍偏多: Q3 營收 +61.9% QoQ、毛利率 85.7%、10 月營收 YoY +487.7%、外資在 11/10–11/12 有買超回補, 分析師平均目標價 (654.9 TWD) 遠高於收盤價 264.5 TWD. 但價格面在 11 月連續承壓: 11/3 因中國長鑫技術消息跌停, 11/6 再度跌停, MS 調降 6 檔台灣記憶體股目標價 48%–59%, 11/21 單日 -9.88%. 產業面訊號同樣分化: 4Q26 合約價仍預估上漲 10%–18%, 但 TrendForce 已明確指出 漲幅逐季放緩、行動端談判停滯、DDR4 現貨下跌、消費型 NAND 現貨 2 週跌約 20%. 綜合判斷: 新聞面 mixed-to-bearish, 短期 (2 週) 強度中等偏弱, 主要壓力來自「價格動能見頂」與「中國供給擴張」兩個敘事, 基本面利多則為已發生事實而非新增催化。本報告不提出交易建議。</p>
+<p>NEWS REPORT COMPLETE</p></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-slate-700 mb-2">情緒 (Sentiment)</h4>
+          <div class="agent-prose text-sm bg-slate-50 p-3 rounded"><h1>Sentiment — 2408.TW (南亞科) as of 2026-11-21</h1>
+<h2>Analyst consensus</h2>
+<p>yfinance rec_summary（14 家）：4 Strong Buy / 8 Buy / 1 Hold / 1 Sell / 0 Strong Sell，買進側 12 家（約 86%）。近四個月結構穩定，Hold 由 0 升到 1，Sell 維持 1 家，評等未見大幅變動。</p>
+<p>資料衝突：Investing.com 另一頁顯示 11 Buy / 0 Hold / 1 Sell，另一頁為 9 Buy / 2 Hold / 1 Sell（時間不明）。以 yfinance 為主，其餘僅供參考。</p>
+<p>目標價（個別券商，2026-11 前後報導）：<br />
+- 富邦投顧：買進，目標價 660 元（2026-11-09 報導）<br />
+- 一家投顧：增加持股，目標價 652 元，預估 2026 / 2027 稅後 EPS 分別 74.51 元與 108.72 元（2026-11-11 報導）<br />
+- 群益：區間操作（2026-11-09 報導，評等偏保守）<br />
+- 美系外資：認為利基型 DDR4 定價優勢不足，轉向下行風險防禦（2026-11-11 報導）<br />
+- 較早目標價（非 11 月）：摩根士丹利 580 元、高盛 555 元、美銀 660 元</p>
+<p>近期動向：11 月未找到外資明確調升目標價的報導，主流為目標價維持、評等偏保守。Investing 估值頁列出的目標價區間為 447 至 850 元，離散度大，不宜直接取平均。</p>
+<h2>Retail social</h2>
+<ul>
+<li>Reddit：WebFetch 被擋（"Claude Code is unable to fetch from www.reddit.com"），無資料。</li>
+<li>StockTwits / X：StockTwits API DNS 無法解析（api.stocktwits.com 不在允許網域），無資料。需在 session 網路設定中允許該網域後才能重試。</li>
+<li>PTT / 論壇（WebSearch 代理，未找到 11 月的直接討論串）：</li>
+<li>7 月 PTT Stock 板有多方文章，認為上游記憶體的南亞科值得看好，反方質疑其 1B 製程水準與中國 DUV 限制下長鑫擴產的威脅。</li>
+<li>10/12 Q3 財報後隔日股價重挫逾 7%，市場擔心長鑫擴產與技術追趕。</li>
+<li>股東會釋出擴產與 HBM 布局消息後，網友意見兩極：一派認為 AI 需求可能讓南亞科擺脫景氣循環股宿命，另一派擔心新廠投產後兩年內再度供過於求。</li>
+<li>聲量：無法量化（Reddit、StockTwits 皆無法取得）。以新聞報導量觀察，10 月財報與 11 月目標價討論密度高於平常，屬定性判斷，信心低。</li>
+<li>主要議題：</li>
+<li>記憶體景氣循環是否改變（AI 需求 vs. 供過於求）</li>
+<li>中國長鑫擴產與技術追趕</li>
+<li>股價已大漲後的估值（近一年漲幅高，評價被稱偏低的看法與「動能收斂」看法並存）</li>
+<li>1B 製程與 HBM 布局是否成立</li>
+<li>散戶傾向：混合偏多。多頭論點以 AI 長期需求與價格高檔為主，空頭論點以擴產、中國競爭與景氣反轉為主。</li>
+</ul>
+<h2>Insider activity</h2>
+<ul>
+<li>yfinance insider 工具回傳空陣列，無法取得董監個人交易明細。WebSearch 也未找到 2026 年董監個人增減持申報資料（最近可查的董監持股頁面為 2023 年 8 月舊資料，不足採信）。</li>
+<li>最重要的大股東動向為台塑三寶（台塑、台化、台塑化）分批出售南亞科股份，自 2025 年 9 月底起分三波處分，第 3 波合計 5.69 萬張，套現約 96.52 億元（NT$ 億）。以 1 張 = 1,000 股換算，約 5,690 萬股，平均單價約 170 元（由金額回推，僅供量級檢查）。</li>
+<li>2026 年 4 月完成私募，股款約 787 億元（NT$ 億）。這是公司增資，不是內部人交易。</li>
+<li>2026 年 2 月與 5 月的重大資產交易公告（80,000 股平均 287 元；1,150,000 股平均 322.12 元）屬於公司名義的有價證券取得或處分，不是董監個人持股變動，不計入內部人淨買賣。</li>
+<li>6 個月淨額：無法精確計算。依現有資料，大股東（台塑三寶）為淨賣出方，個人董監資料缺漏。</li>
+<li>注意：yfinance 的 insidersPercentHeld 為 51.66%，主要反映台塑系等大股東持股比例（而非日常交易）。</li>
+</ul>
+<h2>Ownership shifts</h2>
+<ul>
+<li>內部人（含大股東）持股約 51.66%。</li>
+<li>機構持股約 16.0%，占流通股約 33.1%，機構數 241 家。</li>
+<li>趨勢：無歷史對照數據，無法判斷增減。台塑三寶持續讓售，流通股比例因此上升。</li>
+</ul>
+<h2>Net sentiment score</h2>
+<p>Composite：<strong>neutral-to-bullish（中性偏多），信心低至中</strong>。<br />
+- 分析師側：偏多（買進 86%，目標價多在 550 至 660 元區間），但 11 月的最新報導已轉保守，美系外資看空理由明確。<br />
+- 散戶側：混合，無法以量化數據確認，多空論點並存。<br />
+- 內部人與大股東：大股東分批出售（約 96.52 億元 NT$ 億），董監個人資料缺漏。<br />
+- 扣分因素：大股東出售、估值分歧、評等上修動能減弱。<br />
+- 加分因素：分析師買進比例高、Q3 獲利與毛利率創紀錄（稅後淨利 876.3 億元 NT$ 億，毛利率 85.7%）。</p>
+<p>Divergence flag：<strong>部分是</strong>。分析師整體偏多，但 11 月的新增報導偏保守，且大股東持續減持，與多數分析師評等方向不一致。散戶的多空分歧也與分析師立場不完全相反，因此屬有限的背離，不屬於明確的反向訊號。</p>
+<h2>資料與單位檢查</h2>
+<ul>
+<li>單位：淨利與套現金額以 NT$ 億元表示，未使用 B 單位，全文不混用。</li>
+<li>數字對帳：Q3 稅後淨利 876.3 億元 NT$ 億，毛利率 85.7%（technews 2026-10-25）。TipRanks 報的 EPS 25.4 元若為同一季，與淨利不一致（需約 34.5 億股才吻合，與南亞科股本規模不符）。兩者中至少一個有誤或期間不同，請下游在使用前核對。EPS 25.4 僅列為待核對項目。</li>
+<li>股價：Investing 約 383 元（2026-11-11 頁面），52 週區間 133 至 569 元，但來源日期與數字不完全一致，僅供參考。</li>
+<li>來源（僅列 WebSearch 直接引用的 URL）：</li>
+<li>https://udn.com/news/story/7253/9624296</li>
+<li>https://wantrich.chinatimes.com/news/20261111900384-420101</li>
+<li>https://wantrich.chinatimes.com/news/20261109900002-420101</li>
+<li>https://wantrich.chinatimes.com/news/20261013900320-420101</li>
+<li>https://money.udn.com/money/amp/story/5607/9237732</li>
+<li>https://technews.tw/2026/10/25/nanya-2028/</li>
+<li>https://www.cna.com.tw/news/afe/202509260347.aspx</li>
+<li>https://goodinfo.tw/tw/StockDirectorSharehold.asp?STOCK_ID=2408</li>
+</ul>
+<h2>資料限制摘要</h2>
+<ul>
+<li>無法取得：Reddit（403 類阻擋）、StockTwits（DNS 阻擋）、yfinance insider 明細、11 月 PTT/Dcard 直接討論。</li>
+<li>可取得：yfinance 評等與持股、WebSearch 新聞與券商目標價（時間集中於 10 月下旬至 11 月中旬）。</li>
+</ul>
+<p>SENTIMENT REPORT COMPLETE</p></div>
+        </div>
+      </div>
+    </details>
+
+    <details class="mb-4 border border-slate-200 rounded">
+      <summary class="bg-slate-50 px-4 py-2 font-semibold">Phase 2 — Bull vs Bear 辯論</summary>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+        <div>
+          <h4 class="font-bold text-green-700 mb-2">🐂 多方 (Bull)</h4>
+          <div class="agent-prose text-sm bg-green-50 p-3 rounded border border-green-200"><h1>Bull case round 1 — 2408.TW</h1>
+<h2>Thesis (1 句話)</h2>
+<p>南亞科正處於 AI/雲端驅動的 DRAM 結構性漲價週期中段，獲利與現金流已創歷史新高，但股價因情緒性拋售（CXMT 消息、MS 調降目標價、技術性破底）跌至 trailing P/E 5.2x、EV/EBITDA 2.9x 的極度低估區，提供風險報酬不對稱的進場機會。</p>
+<h2>成長動能</h2>
+<ul>
+<li><strong>營收爆發且持續加速</strong>：2026Q3 單季營收 1336.5 億 TWD，QoQ +61.9%，連續三季 QoQ 皆逾 60%（fundamentals.md）；10 月合併營收 YoY +487.7%，1–10 月累計 YoY +602.2%（news.md）。</li>
+<li><strong>獲利結構性躍升</strong>：TTM 毛利率 77.3%、營益率 71.0%、淨利率 59.2%，Q3 單季毛利率 85.7%，EPS 連續四季優於市場預期（surprise +68.8%、+16.7%、+13.3%、+2.9%），非一次性，是連續的正向驚喜趨勢。</li>
+<li><strong>產業面支撐價格持續上行</strong>：TrendForce 預估 4Q26 一般 DRAM 合約價 QoQ +10%–15%（AI/雲端驅動）、PC DRAM 合約價 QoQ +13%–18%；管理層於 10/12 法說明確表示 2027 年供需仍緊（news.md）。</li>
+<li><strong>產能擴張鎖定未來成長</strong>：Fab 5A 投資上限 3,466 億 TWD (~US$10.7B) 至 2029 年，2026 年資本支出上修 34% 至 697 億 TWD，2H27 投片；股東會釋出 HBM 布局訊息（news.md、sentiment.md），代表南亞科不只是純景氣循環股，正切入更高價值的產品線。</li>
+</ul>
+<h2>護城河</h2>
+<p>淨現金 2673.6 億 TWD（占市值約 29%）、流動比率 5.02、負債權益比僅 0.055x，提供在資本密集的擴產期中極強的財務韌性，可用自有現金流支應 Fab 5A 擴產，不需稀釋性融資或承擔利率風險（利息覆蓋倍數 &gt;500x）。相較同業（如華邦電、長鑫）財務結構明顯更穩健，是南亞科能在下一輪資本競賽中存活並擴大市占的關鍵。</p>
+<h2>上漲情境</h2>
+<ul>
+<li><strong>Base</strong>：以保守循環本益比 6x（遠低於台股半導體 sector 中位數 20x）× FY2026E EPS 75.79 TWD（yfinance 共識）= 454.7 TWD，較現價 264.5 +72%。</li>
+<li><strong>Bull</strong>：分析師目標價中位數 660 TWD（13 家，recommendationMean 1.71）隱含 FY2026E P/E 約 8.7x；若以同一本益比套用一家投顧 FY2027E EPS 108.72 TWD 估計（sentiment.md），理論價值逾 900 TWD。取分析師最高目標價 850 TWD 作為務實 Bull 情境，較現價 +221%。</li>
+</ul>
+<h2>催化劑（已排定）</h2>
+<ul>
+<li>2026-11-30 前後 — TrendForce 12 月 DRAM 合約價預估，驗證 4Q26 漲幅是否落在 10%–18% 區間。</li>
+<li>2026-12-01~12-10 — 公司公告 11 月合併營收，檢驗 MoM 是否延續強勢。</li>
+<li>2026-12-08~09 — FOMC 利率決議，高 beta (2.08) 成長股對降息預期敏感。</li>
+<li>2026-12-17 — 美光 FQ1 2027 財報電話會議，為 DRAM 價格與資本支出的全球指引。</li>
+<li>2027-01-18 — 南亞科 2026Q4 財報（市場預估 EPS 27.0，QoQ +6%）。</li>
+</ul>
+<h2>技術面</h2>
+<p>RSI14 已達 23.98 的超賣區，BB %B 為 -0.008（跌破下軌），顯示拋售已過度延伸；11/10–11/12 外資逆勢買超 7,281 張 + 2,870 張，與同業華邦電遭連續拋售形成族群內分化，顯示聰明資金在超賣區進場承接。儘管短中期均線呈空頭排列，12 個月報酬仍達 +78.7%，顯示本輪急跌屬於情緒性去槓桿而非基本面反轉，為波段交易者提供在 $264.5–$280 區間分批布局、待收復 $322 確認反彈結構的機會。</p>
+<h2>針對空方觀點的反駁</h2>
+<ul>
+<li>空方：「獲利是週期高點，倍數將大幅向上修正。」<br />
+  反駁：TrendForce 連續三個月上修 4Q26 合約價預估（9/30、11/11 均預估雙位數上漲），且管理層明確預期 2027 年供需仍緊，顯示這是多年結構性上行週期的中段，而非單季高點；即便獲利回落一半，目前估值仍遠低於歷史均值。</li>
+<li>空方：「技術面全面空頭排列，MA20/50/200 全數跌破。」<br />
+  反駁：RSI 已進入超賣、BB 下軌被跌破，為技術性反彈前兆；且 11 月急跌的驅動因素是 CXMT 消息與外資評等輪動等情緒性利空，而非 Q3 財報（Q3 EPS 仍優於預期 +2.9%）。</li>
+<li>空方：「資本支出暴增 5.1 倍，稀釋股本 11%，FCF 將被壓縮。」<br />
+  反駁：淨現金 2673.6 億覆蓋資本支出綽綽有餘，TTM FCF 仍達 1704 億（FCF/NI 97%），擴產是為搶占 HBM/先進製程成長機會，屬於進攻性資本配置而非財務壓力下的防禦性融資。</li>
+<li>空方：「中國長鑫 (CXMT) 技術追趕為結構性威脅。」<br />
+  反駁：CXMT 股價自 8 月高點已回落逾 37%，市場對其量產能見度仍存疑；南亞科仍有 86% 分析師維持買進評等，目標價中位數 660 元遠高於現價，顯示長期基本面信心未被動搖。</li>
+</ul>
+<h2>信心</h2>
+<p>6/10。基本面與估值的不對稱性極強（trailing P/E 5.2x、淨現金占市值 29%），但技術面動能與中國供給敘事帶來真實的短期下行風險，建議分批布局並以 $264.5 新低與 2×ATR（約 $63）設定停損。</p>
+<p>BULL ROUND 1 COMPLETE</p></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-red-700 mb-2">🐻 空方 (Bear)</h4>
+          <div class="agent-prose text-sm bg-red-50 p-3 rounded border border-red-200"><h1>Bear case round 1 — 2408.TW</h1>
+<h2>Thesis (1 句)</h2>
+<p>南亞科目前的「低估值」是 DRAM 景氣高點的獲利陷阱，技術面已確認破位下殺，中國長鑫擴產、現貨價走弱與巨額資本支出三重壓力下，股價存在重返淨損或淨利大幅萎縮情境的實質下行風險。</p>
+<h2>Demand / market risks</h2>
+<ul>
+<li>毛利率在兩年內由 -20.6%（2025Q2）衝到 85.7%（2026Q3），波動幅度逾 100pt，顯示獲利完全依賴 DRAM 合約價位置，而非結構性護城河。</li>
+<li>產業訊號已轉弱: TrendForce 指出行動 DRAM 談判停滯、合約價漲幅逐季放緩；DDR4 現貨價一週內跌 1.43%；消費型 NAND 現貨兩週內跌約 20%，促使摩根士丹利調降 6 檔台灣記憶體股目標價 48%–59%。這是價格動能見頂的早期訊號，而非單純雜訊。</li>
+<li>中國長鑫 (CXMT) HBM3E 小量生產傳聞已造成 11/3 全族群重挫、南亞科跌停；PTT 散戶多空分歧的核心正是「1B 製程落後 + 長鑫技術追趕」。南亞科缺乏 HBM 布局的競爭劣勢，一旦長鑫產能開出，公司在利基型 DDR4 的定價權將被侵蝕 (美系外資已明確表態「利基型 DDR4 定價優勢不足，轉向下行風險防禦」)。</li>
+<li>2026Q3 出貨量實際季減 4%–6%，獲利成長已經是「價格」單一驅動，一旦合約價轉弱，出貨量無法對沖。</li>
+</ul>
+<h2>Margin / cashflow risks</h2>
+<ul>
+<li>資本支出在 Q3 暴增至 207.8 億 TWD，為前一季 5.1 倍；Fab 5A 總投資上限達 3,466 億 TWD (~US$10.7B)，2026 年資本支出上修 34% 至 697 億，2H27 投片。擴產期的折舊攀升與資本支出排擠，將直接壓縮 FCF（FY2025 FCF 僅 48.8 億，TTM 的 1,704 億是景氣高點的暫時現象）。</li>
+<li>應收帳款暴增 276% 至 622.7 億，應付稅款由 6.4 億飆升至 362.6 億，顯示鉅額所得稅即將實際流出，現金流時序風險被低估。</li>
+<li>公司獲利基礎建立在單一商品 (DRAM) 的合約價位置，歷史上 FY2023 淨損 74.4 億、FY2024 淨損 50.8 億，證明景氣反轉時獲利可以直接轉負，毛利率/EPS 的「均值回歸」風險是結構性的，不是假設性的。</li>
+</ul>
+<h2>Valuation risk</h2>
+<ul>
+<li>多頭引用的 Trailing P/E 5.2x、EV/EBITDA 2.9x 是週期高點盈餘陷阱，不能外推。公司兩年內曾經是淨損狀態 (FY2023/2024)，一旦 2027 年 Fab 5A 與長鑫新產能同步開出、合約價轉弱，EPS 可能快速向過去的中樞或負值回歸，此時 P/E 失效。</li>
+<li>Bear 情境以 P/B 錨定: 現價 P/B 2.22x (BVPS 118.99)。過去淨損循環中，股價多次向帳面價值附近修正；若下一輪循環重演，股價回測 P/B 約 1.0x 的情境下，目標價約 <strong>$119 TWD，較現價 $264.5 下跌約 -55%</strong>。</li>
+<li>Worst case: 若長鑫擴產速度快於預期且合約價提前轉弱 (TrendForce 已示警漲幅逐季放緩)，疊加 Fab 5A 折舊壓力，公司可能重現 FY2024 式的營業虧損，此時股價可能跌破 52 週低點 $133 (-49.7% 自現價)，技術面與基本面同步破底。</li>
+</ul>
+<h2>Competitive / regulatory</h2>
+<ul>
+<li>CXMT 技術追趕與產能擴張是最大結構性威脅，市場已用股價行動 (11/3 全族群重挫) 表態；南亞科在 HBM 布局落後於美光/SK hynix/三星，若 AI 記憶體敘事轉向 HBM 而非傳統 DDR4，南亞科將被邊緣化。</li>
+<li>大股東台塑三寶自 2025 年 9 月起分三波出售持股 (第 3 波 5.69 萬張、套現約 96.52 億)，控股股東在高檔減碼的訊號值得警惕，即使公司名義為增資非內部人交易，但「核心股東淨賣出」與「分析師買進評等」方向不一致，構成訊號背離。</li>
+<li>2026Q2 現金增資稀釋股本約 11%，稀釋股數與基本股數仍有約 4% 落差，可轉債/認股權的潛在稀釋尚未完全釐清。</li>
+</ul>
+<h2>Tactical (technical)</h2>
+<p>關鍵破位位 $322.00 (已於 11/17 失守，轉為上方壓力)；11/20 單日 -9.88% 並放量 (1.14x 10 日均量) 跌破 BB lower ($266.48)，收在 $264.50 創本輪新低。MACD histogram 連續三日負向擴大 (-9.51)，RSI14 達 23.98 弱勢超賣、未現止跌。下方無任何有效 swing low 支撐，技術結構指向進一步探底，收復 $322 前不構成底部訊號。股價距 52 週高點 $569 已跌 -53.5%，典型出貨/派發後的加速下跌型態。</p>
+<h2>Rebuttal to bull round 0</h2>
+<p>(本輪無先前多方報告可直接反駁，以下針對四份 Phase-1 報告中可預期的多頭論點預先反擊。)<br />
+- 預期多頭論點: "Trailing P/E 5.2x、EV/EBITDA 2.9x 極度便宜，analyst 平均目標價 654.9 隱含 +148% 上行空間。"<br />
+  反駁: 低倍數是景氣高點盈餘除出來的結果，公司兩年前還在淨損；13 位分析師目標價是落後指標，11 月最新報導已轉保守 (群益降為區間操作、美系外資示警 DDR4 定價劣勢)，動能已在轉弱。<br />
+- 預期多頭論點: "淨現金 2,673.6 億、流動比率 5.02，財務極度健康，無倒閉風險。"<br />
+  反駁: 資產負債表健康不等於股價無下行風險，週期股的風險在於獲利與估值倍數同步崩塌，而非違約風險；且鉅額現金部分來自 2026Q2 增資 (稀釋 11%)，非全為自身獲利留存。<br />
+- 預期多頭論點: "AI 需求帶動 DRAM/HBM 長期缺貨，2027 年供需仍緊。"<br />
+  反駁: 管理層 10/12 法說的樂觀展望與 TrendForce 11/18 最新報告 (漲幅逐季放緩、行動 DRAM 談判停滯) 已出現分歧；CXMT 產能與技術追趕是尚未被市場充分定價的供給端風險。</p>
+<h2>Confidence</h2>
+<p>6/10。基本面數據 (資本支出暴增、應收應付稅款異常、毛利率波動、CXMT 消息面) 與技術面 (破位、量增、超賣未止跌) 方向一致且可追溯；主要不確定性在於缺乏即時 DRAM 現貨/合約價第一手數據、11/21 當日 -9.88% 確切原因未經證實，以及長鑫實際產能時程仍為傳聞層級。</p>
+<p>BEAR ROUND 1 COMPLETE</p></div>
+        </div>
+      </div>
+    </details>
+
+    <details class="mb-4 border border-slate-200 rounded">
+      <summary class="bg-slate-50 px-4 py-2 font-semibold">Phase 4 — 風險辯論 (Risk debate)</summary>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 p-4">
+        <div>
+          <h4 class="font-bold text-red-700 mb-2">⚡ 進攻 (Aggressive)</h4>
+          <div class="agent-prose text-sm bg-red-50 p-3 rounded border border-red-200"><h1>Aggressive risk view — 2408.TW</h1>
+<h2>Where trader is too cautious</h2>
+<ul>
+<li>交易員選擇完全不開新倉,等「收復 $322 以上」才轉 LONG。但 $322 距現價 $264.50 已經是 +21.7%,等到收盤確認時,均值回歸的第一段漲幅早就被吃掉——這是典型「等訊號確認,alpha 已跑掉」的機會成本。</li>
+<li>RSI14 23.98、BB %B -0.008 代表賣壓已極度延伸,forward P/E 2.1x、淨現金占市值近 29%,下檔有硬資產保護;這種「技術極端 + 資產負債表堅實」組合,正是該用小額、風險已知的工具先卡位的情境,而不是完全站在場外。</li>
+<li>既有倉位的處置只講「降到半倉以下」「&lt;0.5% NAV」,沒有給出任何重新建倉的具體路徑,等於把整個驗證窗口(11/30 報價、12/17 美光)都浪費在純觀望上。</li>
+</ul>
+<h2>Recommended adjustments</h2>
+<ul>
+<li>Size: 既有倉位可留在 0.5%–0.8% NAV(而非硬性降到 &lt;0.5%),新倉可用「觀察性試倉」0.3% NAV 先卡位,而非完全 AVOID。</li>
+<li>Stop: 不是把 stop 收緊,而是把新試倉的 stop 放在 $233(約現價下 -11.9%,對齊 1×ATR)而非更貼近現價的區間,避免 94% 年化波動率在短線洗出假訊號。</li>
+<li>Entry: 現在分批小量進場優於等 $322 確認——用「3 等分」方式,首筆現價試倉,其餘等 12/17 美光指引與 11 月營收驗證後加碼。</li>
+<li>Consider:買進價平偏價外的 call(對應 2027-01-18 財報前到期),用權利金取代現股做方向性賭注,最大損失鎖定在權利金金額,若反彈至 $322 則隱含標的漲幅 +22%,槓桿放大報酬但不動用額度較大的現股曝險。</li>
+</ul>
+<h2>Asymmetry argument</h2>
+<p>現股試倉情境:假設每股風險 $31.5(現價 $264.50 → stop $233),目標看 $322,上行每股 $57.5。Ratio ≈ 1.8x。若改用 call 選擇權做同樣方向性曝險,最大損失 = 權利金(可控制在倉位的極小比例,例如整體曝險的 10%–15% 現股等值),上行捕捉同樣的 +22% 反彈但不承擔現股全額下檔,實質 B/A 遠優於 1.8x。</p>
+<h2>What I'd push for</h2>
+<p>與其把整個驗證窗口定義成「無倉位、純等待」,我會主張用小額試倉(0.3% NAV 現股或等值 call)先卡位 2408.TW 的超賣反彈,stop 放在 $233 而非更緊的區間以避免高波動洗出,並把既有倉位從「降到 &lt;0.5% NAV」放寬到 0.5%–0.8% NAV,保留足夠曝險在 11/30 TrendForce 報價與 12/17 美光指引轉為正面時,不必從零開始追價。</p>
+<p>AGGRESSIVE VIEW COMPLETE</p></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-blue-700 mb-2">🛡️ 保守 (Conservative)</h4>
+          <div class="agent-prose text-sm bg-blue-50 p-3 rounded border border-blue-200"><h1>Conservative risk view — 2408.TW</h1>
+<h2>Where trader is too aggressive</h2>
+<ul>
+<li>交易建議雖已是 AVOID/HOLD，但對既有多單只要求「降到半倉以下」，以 20 日年化波動率 94.1%、ATR14 $31.47（現價的 11.9%）衡量，半倉仍可能過大，應考慮降到 1/4 倉或直接出清，而非停在半倉。</li>
+<li>2×ATR（約 $63，現價 23.8%）被當作「風險區間參考」，但這個金額對任何保留的倉位而言都是巨大的 $ 損失幅度，不應被視為可容忍的停損設計。</li>
+<li>若既有倉位是在趨勢反轉前（例如接近 MA50 $449.77）建立，現價 $264.50 已代表帳面虧損約 41%，這是已經發生的尾部風險，不是假設性情境；「半倉」只管未來，沒處理「是否該先認賠」這個更優先的問題。</li>
+<li>報告自承資料品質有問題（-9.88% 原因不明、TTM 與 YTD 營收不一致、價格歷史矛盾），連 $322 壓力位、52 週高低點這些技術依據本身都可能不可靠。</li>
+<li>轉空觸發需等反彈至 $322 受阻才確認，對既有持倉者意味著還要在無支撐、高波動環境中再裸露 2–4 週。</li>
+</ul>
+<h2>Tail scenarios</h2>
+<ul>
+<li>A（機率約 30%）：TrendForce 於 11/30 前後下修 1Q27 合約價或轉持平／下跌 → 反彈於 $322 受阻後破底，價格可能探至 2×ATR 下緣 $201.5 甚至更低（下方無有效支撐）。</li>
+<li>B（機率約 20%）：12/9 FOMC 偏鷹，美元走強、資金從高波動電子股撤出，疊加本身弱勢動能加速探底。</li>
+<li>C（機率約 25%）：12/17 美光財報指引偏保守 → 二階導數轉負坐實，DRAM 同業估值重挫並連動南亞科。</li>
+<li>D（機率約 15%）：CXMT 量產確認 → 估值倍數進一步下修，情境接近淨現金保護的 P/B 1.0x（約 $119），相對現價再跌約 55%。</li>
+</ul>
+<h2>Recommended adjustments</h2>
+<ul>
+<li>Size：既有多單 → 降至 Small（&lt;0.5% NAV）甚至全數出清；不建議維持半倉等待驗證。</li>
+<li>Stop：不以 2×ATR $63（23.8%）作為容忍上限；改以 1×ATR $31.5（11.9%）作更緊的風險警戒，觸及即再砍一半。</li>
+<li>Entry：新倉等待收盤站回 $322 以上且量能確認，不在未止跌、無支撐結構下加碼。</li>
+<li>Consider：若需保留曝險，可用台灣半導體/電子 ETF 或指數期貨做部分避險，抵銷 FOMC、記憶體產業系統性風險。</li>
+</ul>
+<h2>Position-level $ risk</h2>
+<p>以 NAV $1,000,000、半倉 0.5% NAV（$5,000 notional，約 18.9 股）、2×ATR $63 停損估算：損失 ≈ $1,191，約 NAV 的 0.12%，單筆看似可接受。但若原始進場在更高價位（如 MA50 附近），現價已隱含約 41% 未實現虧損，實際風險遠高於上述假設——這才是該優先處理的問題，而非僅討論「再減到多少倉位」。</p>
+<h2>What I'd push for</h2>
+<p>既有持倉應直接降到遠低於半倉（建議 Small 以下或出清），不要用 2×ATR 當作可接受的風險容忍；在 $322 未收復、資料品質存疑、FOMC 與美光財報皆未公布之前，任何保留部位都該用 1×ATR 作緊停損，並考慮以半導體指數工具對沖系統性下行，而非單純「等驗證」。</p>
+<p>CONSERVATIVE VIEW COMPLETE</p></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-slate-700 mb-2">⚖️ 中立 (Neutral)</h4>
+          <div class="agent-prose text-sm bg-slate-100 p-3 rounded border border-slate-300"><h1>Neutral risk view — 2408.TW</h1>
+<h2>Points of agreement (both sides)</h2>
+<ul>
+<li>2×ATR（$63，-23.8%）不應被當作可容忍的停損設計，雙方都主張改用更緊的 1×ATR（約 $233，-11.9%）作風險警戒線。</li>
+<li>既有多單目前規模過大，應下修；20 日年化波動率 94.1% 下，任何保留曝險都該遠小於常規倉位。</li>
+<li>在 TrendForce（11/30）與美光財報（12/17）公布前，資料品質與結構支撐都不可靠，不宜貿然加碼現股。</li>
+</ul>
+<h2>Aggressive overreach</h2>
+<ul>
+<li>Where：主張用 0.3% NAV 現股或等值 call「先卡位」超賣反彈，並把既有倉位上限放寬到 0.5%–0.8% NAV。</li>
+<li>Why：這與研究經理「conviction LOW、方向矛盾、尚無驗證訊號」的核心結論直接牴觸。RSI/BB %B 超賣只代表賣壓延伸，不代表止跌，技術面 MACD 仍擴大向下、下方無有效支撐；在無訊號確認前開新倉是把「均值回歸機率」誤當成「已驗證訊號」，屬於反射性偏多。</li>
+</ul>
+<h2>Conservative overreach</h2>
+<ul>
+<li>Where：建議既有倉位直接出清或降到 &lt;0.5% NAV，並加系統性避險。</li>
+<li>Why：忽略 forward P/E 2.1x、淨現金占市值 29% 帶來的下檔資產保護，及 15% 機率的 CXMT 尾部情境被放大為主導全倉決策的理由；對於已縮到極小倉位的部位，再疊加 ETF/期貨避險的成本與複雜度並不划算。全數出清也放棄了驗證窗口內參與反彈的最低限度曝險。</li>
+</ul>
+<h2>Balanced adjustment proposal</h2>
+<ul>
+<li>Size：既有多單降至 0.3%–0.4% NAV（介於雙方之間，偏保守但不出清）；新倉僅限小額定義風險工具（如價平偏價外 call），≤0.15%–0.2% NAV 等值，不建新現股倉。</li>
+<li>Stop：既有倉位與試倉皆以 1×ATR（$233，-11.9%）為警戒線，觸及即再減半，而非 2×ATR 容忍或立即出清。</li>
+<li>Entry：現股加碼仍需等收盤站回 $322 且量能確認；選擇權試倉可提前布局，但僅作為有限損失的戰術工具。</li>
+<li>Hedge：若保留倉位 &gt;0.3% NAV 才考慮半導體指數期貨/ETF 部分避險；低於此門檻則略過避險，成本不划算。</li>
+<li>Time horizon：維持原提案 2–4 週驗證窗口，於 11/30、12/17 重新評估。</li>
+</ul>
+<h2>Net $ risk if stop hits</h2>
+<p>以 NAV $1,000,000 估算：現股 0.4%（約 15.1 股）× 1×ATR $31.5 ≈ $476；加試倉 call 權利金上限 0.15% NAV ≈ $1,500。合計 ≈ $1,976（約 NAV 的 0.20%）。</p>
+<h2>Net $ upside at T1 / T2</h2>
+<p>T1（$322）：現股部分 15.1 股 × $57.5 ≈ $869；T2（MA20 $384.48）：約 $1,814（不含選擇權槓桿放大部分）。</p>
+<p>NEUTRAL VIEW COMPLETE</p></div>
+        </div>
+      </div>
+    </details>
+
+  </div>
+
+  <script>
+    (function() {
+      var d = {};
+      if (!d.dates) return;
+      var traces = [
+        {x: d.dates, y: d.close, name: 'Close',  line: {color: '#1f2937', width: 2}},
+        {x: d.dates, y: d.ma20,  name: 'MA20',   line: {color: '#0ea5e9', width: 1, dash: 'dot'}},
+        {x: d.dates, y: d.ma50,  name: 'MA50',   line: {color: '#f59e0b', width: 1, dash: 'dot'}},
+        {x: d.dates, y: d.ma200, name: 'MA200',  line: {color: '#ef4444', width: 1, dash: 'dash'}}
+      ];
+      var layout = {
+        margin: {l: 50, r: 20, t: 10, b: 40},
+        legend: {orientation: 'h', y: -0.15},
+        xaxis: {showgrid: false},
+        yaxis: {title: '價格 ($)'}
+      };
+      Plotly.newPlot('chart-2408_TW', traces, layout, {displayModeBar: false, responsive: true});
+    })();
+  </script>
+
+</section>
+
+
+<section id="ticker-2344_TW" class="mb-10 bg-white rounded-lg shadow overflow-hidden">
+
+  <div class="flex items-start justify-between p-6 border-b border-slate-200 verdict-HOLD">
+    <div>
+      <h2 class="text-3xl font-bold">2344.TW</h2>
+      <p class="text-sm mt-1 opacity-80">華邦電 (2344) — DRAM/Flash</p>
+    </div>
+    <div class="text-right">
+      <div class="text-4xl font-bold">HOLD</div>
+      <div class="text-sm opacity-80 mt-1">REJECT</div>
+    </div>
+  </div>
+
+  <div class="p-6 grid grid-cols-1 lg:grid-cols-2 gap-6">
+
+    <div>
+      <h3 class="text-lg font-bold mb-2">價格 + 技術指標 (2 年)</h3>
+      <div id="chart-2344_TW" style="height: 380px;"></div>
+    </div>
+
+    <div>
+      <h3 class="text-lg font-bold mb-2">最終決策 (Final decision)</h3>
+      <div class="agent-prose text-sm bg-slate-50 p-4 rounded border border-slate-200">
+        <p>FINAL TRANSACTION PROPOSAL: <strong>HOLD</strong></p>
+<h1>Final decision — 2344.TW as of 2026-11-21</h1>
+<h2>FINAL TRANSACTION PROPOSAL: <strong>HOLD</strong></h2>
+<h2>Verdict</h2>
+<p>REJECT</p>
+<h2>部位判定與否決理由</h2>
+<p>2344.TW 不在 <code>pipeline/tools/held_tickers.txt</code>,屬新倉,走 A 框架。第一行的 HOLD 意思是「空手觀望」,不是續抱。提案與風險辯論中「既有持股者減碼至 1/3、硬停損 $85.50」的段落對本帳戶不適用,不列入執行。</p>
+<p>Dealbreaker:沒有任何跌勢止穩的證據。收盤 $89.20 低於 MA20 / MA200 / MA50,MACD 柱狀體連 6 日擴大,RSI14=22.13 連 5 日超賣卻無底背離,11/20 成交量僅 10 日均量 1.26 倍,不是投降式爆量。ATR14 佔股價 11.8%、20 日年化波動 89.2%,任何合理停損都落在單日雜訊範圍內,無法定出可執行的 R:R。做空同樣否決:股價已自高點跌 61.8%,淨現金 468.5 億 TWD,深度超賣區追空的報酬風險比不佳。</p>
+<p>因為是 REJECT,不出 trade card。</p>
+<h2>Risk debate adjudication</h2>
+<ul>
+<li>Aggressive's strongest point: $88.20 距現價僅 1.1%,在 ATR 11.8% 的股票上不構成有效風控線;若要用有限風險參與反彈,買權多頭價差比現股合理。</li>
+<li>Conservative's strongest point: 單一指標在加速空頭排列中的假訊號率高,轉多必須雙重確認;記憶體下行循環有前例(FY2023 淨損 11.5 億 TWD、2025H1 淨損),下檔可以比技術面外推更深。</li>
+<li>Net: I weight neutral more here because 它同時否決了 aggressive 的 1/8 搶反彈(B/A≈15 建立在未經驗證的 $134.86 目標上,且未做機率加權)與 conservative 的過度防禦(無方法論的情境機率、對縮小部位再疊期貨對沖)。轉多採「基本面 + 技術面」雙條件,我予以採納。</li>
+</ul>
+<h2>論點支柱</h2>
+<p>這是未來轉多所需的支柱,不是現有部位的支柱。</p>
+<table>
+<thead>
+<tr>
+<th>支柱</th>
+<th>轉多所需的預期</th>
+<th>現況</th>
+<th>判定</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2027 記憶體合約價</td>
+<td>2027Q1 合約價預測仍為正成長</td>
+<td>漲幅遞減;消費型 NAND 現貨兩週約 -20%,DRAM 現貨 -2.1~-4.1%</td>
+<td>觀察中</td>
+</tr>
+<tr>
+<td>營收動能</td>
+<td>月增為正、年增維持三位數</td>
+<td>10 月年增 257%,月增僅 3.9%;Q3 EPS 7.49 低於預期 7.74</td>
+<td>觀察中</td>
+</tr>
+<tr>
+<td>資產負債表</td>
+<td>下行循環無財務風險</td>
+<td>淨現金 468.5 億 TWD、D/E 19.1%、利息保障約 62x</td>
+<td>成立</td>
+</tr>
+<tr>
+<td>賣壓耗盡</td>
+<td>RSI 底背離或投降式爆量</td>
+<td>兩者皆無,外資持續賣超</td>
+<td>已失效</td>
+</tr>
+</tbody>
+</table>
+<h2>論點失效條件</h2>
+<p>與價格紀律分開;以下是「觀望立場」被證明錯誤、需改變方向的條件。<br />
+- 若 TrendForce 2027Q1 合約價預測為正成長,且 11 月營收月增為正、年增 &gt;100%,且技術面出現 RSI 底背離或連續 2 日收盤站穩 $98.00 以上 → 觀望論點失效,重啟評估,以 1/4 試單為上限。三項缺一不可。<br />
+- 若 11 月營收月減,或 2027Q1 合約價預測持平或轉負 → 合約價與營收兩根支柱失效,從觀察名單降級為 AVOID,至 2027-02-11 財報前不再評估多單。<br />
+- 若 2026Q4 財報顯示毛利率季減且 2027 資本支出指引未下修 → 峰值盈餘論點確認,中期多方論點作廢。</p>
+<h2>Monitoring trigger</h2>
+<p>若收盤放量跌破 $86.16(BB 下軌),或 MA50(156.25)下穿 MA200(143.48)形成死亡交叉,下檔參考移至 2×ATR 的 $68.20,轉多門檻中的 $98.00 需依新結構重訂。反之,若單日成交量達 10 日均量 2.5 倍以上且收長下影線,即使數據未公布也提前重新評估。</p>
+<h2>Catalyst calendar</h2>
+<ul>
+<li>2026-12-01 ~ 12-05 — TrendForce 2027Q1 DRAM/NAND 合約價預測</li>
+<li>約 2026-12-10 前 — 11 月月營收(MOPS)</li>
+<li>每週 — NAND/DRAM 現貨週報、外資買賣超</li>
+<li>2027-02-11 — 2026Q4 財報</li>
+</ul>
+<p>FINAL DECISION COMPLETE</p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="px-6 pb-6">
+
+    <details class="mb-4 border border-slate-200 rounded">
+      <summary class="bg-slate-50 px-4 py-2 font-semibold">投資計劃 (Research manager)</summary>
+      <div class="agent-prose p-4 text-sm"><h1>Investment plan — 2344.TW as of 2026-11-21</h1>
+<h2>Directional stance</h2>
+<p>NEUTRAL — conviction MEDIUM（短線偏空，不接刀也不追空）</p>
+<h2>Crux of debate</h2>
+<ol>
+<li>Crux 1：2027 年記憶體報價路徑。合約價「漲幅遞減但仍為正」（TrendForce 11/18）還是被領先的現貨跌勢（消費型 NAND 兩週約 -20%、DRAM 現貨 -2.1~-4.1%）拖成負成長？TrendForce 2027Q1 合約價預測（約 12/01–12/05）與 11 月月營收（約 12/10 前）會直接驗證。</li>
+<li>Crux 2：正常化盈餘水準。股價 89.2 TWD 已較高點跌 61.8%，市場是否已充分折現 2027 年盈餘回落？多方用 2026E EPS 25.2（其中約 15.3 已實現）與 forwardEps 50.2 計價；空方用 FY2022–2025 平均 EPS 約 1 TWD 計價。兩端都不可信，真正關鍵在 2027 年 EPS 會落在 10 還是 30 附近。</li>
+<li>Crux 3：賣壓是否已耗盡。RSI14 22.13 超賣，但沒有底背離，MACD 柱狀體連 6 日擴大，外資持續賣超，11/20 成交量只有 1.26 倍，看不到投降式爆量。</li>
+</ol>
+<h2>Where the bull is right</h2>
+<ul>
+<li>資產負債表扎實：淨現金 468.5 億 TWD、負債權益比 19.1%、利息保障倍數約 62x。下行時財務風險有限，空方 8–40 TWD 的目標價情境過度極端。</li>
+<li>應收帳款 +207% 與季營收 266.3→823.3 億（約 +209%）同步。空方說「遠超營收成長」與數據不符。</li>
+<li>需求能見度有具體來源：董事長 11/10 表示雲端業者 2027–2028 年 AI 資料中心建置大致鎖定；10 月營收年增仍達 257%。</li>
+<li>在 beta 2.11、深度超賣的狀態下做空，R:R 不佳。</li>
+</ul>
+<h2>Where the bear is right</h2>
+<ul>
+<li>二階導數已經轉負：董事長 11/5、11/7 兩度暗示價格見頂；合約價漲幅遞減；現貨領先下跌；10 月營收月增只剩 3.9%。</li>
+<li>低 P/E 是峰值盈餘的典型表象。多方說「就算利潤率回到 FY2022 水準，5.6x 仍有安全邊際」是邏輯錯誤：利潤率回落後 EPS 會同步縮水，P/E 不會停在 5.6x。</li>
+<li>擴產週期已啟動：Module B 投資 731.63 億、2026Q3 CapEx 160.7 億、FCF/NI 0.82。同業 Micron、SK hynix、Samsung 同步大幅回檔，說明這是整個板塊的重新定價。</li>
+<li>技術面是加速破底的空頭排列，沒有任何反轉確認。另外，多方稱 Q3「優於預期」與事實不符（EPS 7.49 vs 7.74，低於預期）。</li>
+</ul>
+<h2>Net verdict (3-5 sentences)</h2>
+<p>空方的證據較即時、較高頻，也有日期與來源（現貨價、管理層發言、同業股價、技術結構）。不過它的估值下檔推算過度依賴谷底年度，忽略了已大幅提升的產能與淨現金。多方的財務強度論點成立，但估值論述建立在峰值盈餘與可信度低的 forwardEps 上，且有事實錯誤。股價已跌 60% 以上，相當程度折現了見頂；目前缺的是「跌勢止穩」的證據，而不是「便宜」的證據。結論是 NEUTRAL：等 Crux 1 的數據落地，不在下跌動能加速時進場，也不在超賣區追空。</p>
+<h2>What would change the verdict</h2>
+<ul>
+<li>Upside trigger：TrendForce 2027Q1 合約價預測仍為正成長，且 11 月月營收月增為正、年增維持三位數；技術面出現 RSI 底背離或站回 98–108 TWD 區間 → 轉為 LONG（LOW→MEDIUM）。</li>
+<li>Downside trigger：收盤跌破 88.20 / 86.16 並持續放量；11 月營收月減或 2027Q1 合約價預測持平轉跌；MA50 下穿 MA200 → 轉為 SHORT_OR_AVOID。</li>
+<li>Key data point to monitor：約 12/10 前公布的 11 月月營收（MOPS）、TrendForce 2027Q1 合約價預測、NAND/DRAM 現貨週報、外資買賣超。</li>
+</ul>
+<h2>Position-sizing guidance (qualitative, not advice)</h2>
+<p>NEUTRAL → 目前不建立新部位。已有持股者建議降到核心以下的水位，並以 88.20 結構低點作為風險控管參考。若 Upside trigger 成立，最多以試單（約四分之一）切入，再分批加碼。ATR 約佔價格 11.8%、20 日年化波動 89.2%，任何部位的名目金額都應大幅縮小。</p>
+<h2>Time horizon</h2>
+<p>短線以 2–3 週（至 12 月中旬數據公布）為決策窗口；論點本身屬於 1–2 季的週期判斷，下一個主要驗證點是 2027-02-11 的 2026Q4 財報。</p>
+<p>INVESTMENT PLAN COMPLETE</p></div>
+    </details>
+
+    <details class="mb-4 border border-slate-200 rounded">
+      <summary class="bg-slate-50 px-4 py-2 font-semibold">交易提案 (Trader)</summary>
+      <div class="agent-prose p-4 text-sm"><p>FINAL TRANSACTION PROPOSAL: <strong>HOLD</strong></p>
+<h1>Trade proposal — 2344.TW as of 2026-11-21</h1>
+<h2>Direction</h2>
+<p>AVOID（研究經理判定 NEUTRAL / MEDIUM conviction，短線偏空但不建新倉；若目前已持有核心倉位以上者，則適用下方 HOLD-降倉 邏輯，不視為新倉）</p>
+<h2>Setup</h2>
+<p>不提供新倉進場價位。理由如下：</p>
+<ul>
+<li>技術結構為加速破底：價格 89.20（2026-11-20 收盤）低於 MA20 134.86、MA200 143.48、MA50 156.25，呈連續 lower highs + lower lows，MACD 柱狀體連 6 日擴大（-4.04），空方動能仍在加速。</li>
+<li>RSI14=22.13 已連續 5 日超賣，但無底背離，11/20 成交量僅為 10 日均量 1.26 倍，並非投降式爆量 → 沒有「跌勢止穩」的確認訊號，不符合進場條件。</li>
+<li>做空同樣不建議：股價已距 52 週高點 233.50 下跌 61.8%，beta 2.11、20 日年化波動 89.2%，在深度超賣區追空的風險報酬比差，且空方論述的下檔推算（8–40 TWD 情境）依賴谷底年度盈餘，可信度不足，技術面 R:R 不佳。</li>
+</ul>
+<h2>Sizing</h2>
+<p>0%（新倉）。<br />
+若為既有持股者：降到核心持股以下水位，並以 $88.20（2026-11-20 結構低點）作為風險控管參考線，非進場建議的停損。ATR14=10.49（約價格 11.8%），20 日年化波動 89.2% 屬極高，任何部位名目金額都應大幅縮小。</p>
+<h2>Time horizon</h2>
+<p>短線決策窗口 2–3 週（至 12 月中旬數據公布）；論點本身屬 1–2 季週期判斷，下一個主要驗證點為 2027-02-11 的 2026Q4 財報。</p>
+<h2>Trigger</h2>
+<p>Wait — 等待下列任一數據組合落地後再評估轉向：</p>
+<ul>
+<li><strong>轉 LONG 條件</strong>（LOW→MEDIUM conviction，可試單約 1/4 倉位起）：TrendForce 2027Q1 合約價預測（約 12/01–12/05）仍為正成長，且 11 月月營收（約 12/10 前公布於 MOPS）月增為正、年增維持三位數；技術面出現 RSI 底背離，或收盤站回 $98.00–$108.00 區間。</li>
+<li><strong>轉 SHORT_OR_AVOID 加強確認條件</strong>：收盤跌破 $88.20 / $86.16（BB 下軌）並伴隨放量；11 月月營收月減，或 2027Q1 合約價預測轉為持平/下跌；MA50（156.25）下穿 MA200（143.48）死亡交叉成形。</li>
+</ul>
+<p>目前兩組條件皆未成立，維持 AVOID，不在下跌動能加速時進場，也不在超賣區追空。</p>
+<h2>Invalidation</h2>
+<p>本提案的前提是「尚無跌勢止穩證據，也尚無空頭加速確認」。若上方轉 LONG 或轉 SHORT 條件任一組提前成立，應立即重新評估（見 Trigger 一節），不等待本次窗口結束。</p>
+<h2>Catalyst calendar</h2>
+<ul>
+<li>2026-12-01 ~ 12-05 — TrendForce 2027Q1 DRAM/NAND 合約價預測公布</li>
+<li>約 2026-12-10 前 — 2344.TW 11 月月營收（MOPS 公告）</li>
+<li>持續追蹤 — NAND/DRAM 現貨週報、外資買賣超（目前持續賣超）</li>
+<li>2027-02-11 — 2026Q4 財報（下一個主要驗證點）</li>
+</ul>
+<p>TRADE PROPOSAL COMPLETE</p></div>
+    </details>
+
+    <details class="mb-4 border border-slate-200 rounded">
+      <summary class="bg-slate-50 px-4 py-2 font-semibold">Phase 1 — 四 Analyst 報告</summary>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+        <div>
+          <h4 class="font-bold text-slate-700 mb-2">基本面 (Fundamentals)</h4>
+          <div class="agent-prose text-sm bg-slate-50 p-3 rounded"><h1>Fundamentals — 2344.TW (華邦電 Winbond) as of 2026-11-21</h1>
+<h2>Executive summary</h2>
+<p>華邦電 (2344.TW) 的財務體質在 2026 年明顯轉強: 2026Q3 單季營收 823.3億 TWD、毛利率 70.6%、營業利益率 53.5%，淨現金約 468.5億 TWD，流動比率 2.50。以 TTM EPS 16.0 TWD 計算，trailing P/E 僅 5.6x，表面估值極低；但盈餘來自記憶體景氣上行的單一循環，2023 年及 2025 上半年仍為虧損，且股價已從 52 週高點 233.5 TWD 回落 61.8%，市場明顯不以表面盈餘定價。結論: 財務健康度佳、估值表面便宜，但盈餘可持續性與週期高點風險是核心爭議點。</p>
+<p>資料說明: 所有金額來自 yfinance 工具輸出，已換算為億 TWD (1 億 = 100,000,000 TWD)，本報告全文不使用 B 單位。資料截止於 2026-11-21 收盤附近 (regularMarketTime 換算約台北 13:30)，未見分析日之後的資料。</p>
+<h2>Revenue &amp; profitability</h2>
+<p><strong>營收 (億 TWD)</strong><br />
+- FY2022 945.3 → FY2023 750.1 → FY2024 816.1 → FY2025 894.1<br />
+- 2022–2025 三年 CAGR 約 -1.8%；FY2025 YoY +9.6%。2021 年資料為 null，無法計算五年 CAGR。<br />
+- 季度營收急升: 2025Q4 266.3 → 2026Q1 382.5 → 2026Q2 598.4 → 2026Q3 823.3。2026Q3 季增 +37.6%；2026Q2 對 2025Q2 (210.2) 年增約 +184.7%。2025Q3 與 2026Q1 年比資料缺漏。<br />
+- TTM 營收 (2025Q4–2026Q3 加總) 2070.5億 TWD，與 info.totalRevenue 2,070.5億 一致。info.revenueGrowth 為 2.782 (即 278.2%)，口徑未在資料中說明，僅供參考。<br />
+- 營收分部: yfinance 未提供分部拆分。依 longBusinessSummary，產品線包含 DRAM (DDR/LPDDR/SDR)、NOR Flash (serial/octal)、NAND (SLC/QspiNAND/NAND-based MCP)、TrustME 安全快閃記憶體及 KGD 晶圓等，但各線營收占比 n/a。</p>
+<p><strong>獲利能力</strong><br />
+| 期間 | 毛利率 | 營業利益率 | 淨利率 | 營業利益 (億 TWD) | 淨利 (億 TWD) |<br />
+|---|---|---|---|---|---|<br />
+| FY2022 | 45.5% | 17.3% | 13.7% | 163.8 | 129.3 |<br />
+| FY2023 | 29.9% | -2.1% | -1.5% | -16.1 | -11.5 |<br />
+| FY2024 | 29.4% | 0.6% | 0.7% | 5.2 | 6.0 |<br />
+| FY2025 | 34.9% | 6.3% | 4.4% | 56.6 | 39.6 |<br />
+| 2026Q1 | 53.4% | 33.1% | 26.4% | 126.7 | 101.1 |<br />
+| 2026Q2 | 66.3% | 49.0% | 40.6% | 293.1 | 243.2 |<br />
+| 2026Q3 | 70.6% | 53.5% | 43.0% | 440.2 | 354.2 |<br />
+| TTM | 62.5% | 43.5% | 35.4% | 901.5 | 732.7 |</p>
+<ul>
+<li>毛利率由 2025Q4 41.9% 連續三季拉升至 2026Q3 70.6%，營業費用 (R&amp;D 84.5 億、SG&amp;A 56.4 億) 的增速遠低於營收增速，產生明顯營運槓桿。</li>
+<li>ROE: info.returnOnEquity 44.4%。ROIC 估計約 42% (TTM EBIT 901.5 × (1 − 19.9% 稅率) ÷ 2026Q3 投入資本 1704.7，投入資本 = 總債務 414.9 + 股東權益 2173.2 − 現金及短期投資 883.4)。</li>
+<li>驗算: TTM 淨利 732.7 億 ÷ 股數 45.0 億 ≈ 16.3 TWD，與 trailingEps 16.0 相符。</li>
+</ul>
+<h2>Cashflow &amp; balance sheet</h2>
+<p><strong>現金流 (億 TWD)</strong><br />
+| 期間 | 營業現金流 | 資本支出 | FCF (OCF − CapEx) | FCF margin | FCF/NI |<br />
+|---|---|---|---|---|---|<br />
+| FY2022 | 157.5 | 425.5 | -267.9 | n/a | n/a |<br />
+| FY2023 | 36.0 | 141.2 | -105.2 | -14.0% | n/a (NI 為負) |<br />
+| FY2024 | 111.3 | 175.3 | -64.1 | -7.9% | n/a (NI 6.0) |<br />
+| FY2025 | 111.8 | 68.7 | 43.1 | 4.8% | 1.09 |<br />
+| 2026Q2 | 233.1 | 53.6 | 179.5 | 30.0% | 0.74 |<br />
+| 2026Q3 | 458.7 | 160.7 | 298.0 | 36.2% | 0.84 |<br />
+| TTM | 870.7 | 266.7 | 604.0 | 29.2% | 0.82 |</p>
+<ul>
+<li>FCF/NI TTM 0.82，低於 0.9 健康門檻；主因 2026Q3 資本支出單季飆升至 160.7 億 (前四季合計僅 106.0 億)。OCF/NI TTM 為 1.19，營運現金轉換良好。</li>
+<li>注意: info.freeCashflow 為 374.1 億 (raw 37,413,142,528)，與季度 OCF − CapEx 推算的 604.0 億不一致，原因未知。本報告以季度現金流推算為主，info 值列為下限參考，FCF/NI 在 0.51–0.82 之間。</li>
+<li>info.operatingCashflow 870.6 億與季度加總 870.7 億一致。</li>
+</ul>
+<p><strong>資產負債表 (億 TWD)</strong><br />
+| 項目 | FY2025 (12/31) | 2026Q3 (9/30) |<br />
+|---|---|---|<br />
+| 現金及短期投資 | 290.8 | 883.4 |<br />
+| 總債務 (含租賃) | 542.4 | 414.9 |<br />
+| 淨負債 (總債務 − 現金及STI) | 364.0 (淨負債) | -468.5 (淨現金) |<br />
+| 流動比率 | 1.57 | 2.50 |<br />
+| 負債權益比 (總債務 ÷ 股東權益) | 50.2% | 19.1% (info 18.4%) |<br />
+| 股東權益 | 1079.4 | 2173.2 |<br />
+| 總資產 | 1921.9 | 3363.0 |<br />
+| 存貨 | 257.6 | 293.8 |<br />
+| 應收帳款 | 160.7 | 493.1 |<br />
+| 長期股權投資 | 160.3 | 291.7 |</p>
+<ul>
+<li>2026Q2 至 Q3 總債務由 705.3 降至 414.9 (流動債務由 461.1 降至 72.8)，短期償還力度明顯。</li>
+<li>利息保障倍數: TTM EBIT 901.5 ÷ TTM 利息費用 14.4 ≈ 62x。</li>
+<li>股東權益 2026Q2→Q3 增加 523.1 億，其中保留盈餘增加 351.9 億；其餘約 171.2 億來源 (如 OCI、資本公積) 資料未揭示，需查證。股數期間維持 45.0 億股，故非增資所致。</li>
+<li>應收帳款由 2025 年底 160.7 億增至 2026Q3 493.1 億 (+207%)，與營收成長同步，但需留意回收。</li>
+<li>Net PPE 2026Q3 為 1153.2 億，2025 年底為 958.0 億，產能擴張已反映於固定資產。</li>
+</ul>
+<h2>Capital allocation &amp; insider signal</h2>
+<p><strong>資本配置</strong><br />
+- CapEx: FY2022 425.5 → FY2023 141.2 → FY2024 175.3 → FY2025 68.7 → TTM 266.7 億，2026 年起明顯回升，2026Q3 單季 160.7 億為近年高點。TTM CapEx / 營收 約 12.9% (FY2025 為 7.7%)。<br />
+- 股利: info.dividendRate 2.5 TWD/股，lastDividendValue 2.0 TWD，殖利率 2.8% (2.5 ÷ 89.2)，5 年平均殖利率 0.97%。yfinance 的 payoutRatio 3.13% 與 2.5 ÷ TTM EPS 16.0 = 15.6% 不一致，本報告採後者。<br />
+- 股利覆蓋: 以 dividendRate 2.5 × 45.0 億股 ≈ 112.5 億估算現金股利，TTM FCF 604.0 億覆蓋約 5.4x，TTM 淨利覆蓋約 6.5x。yfinance 歷史 cash dividends 僅見 2021–2023 (FY2023 39.8 億)，FY2024–2025 為 null。<br />
+- 買回: 現金流量表無 repurchase 科目，未見買回記錄。<br />
+- 增資稀釋: 股數由 FY2022 40.6 億增至 FY2024 45.0 億，FY2023 發行股票 43.9 億、FY2024 發行 67.0 億，2025 年後股數穩定。</p>
+<p><strong>內部人交易 (last 6 mo)</strong><br />
+- yfinance insider 工具回傳空陣列，無法判定淨買賣。此為工具資料缺漏，不代表無交易。買賣金額與市值比: n/a。<br />
+- 持股結構 (major_holders): insidersPercentHeld 28.85%，institutionsPercentHeld 26.37%，institutionsFloatPercentHeld 37.06%，機構數 221。內部人持股占比高，但屬於結構性大股東持股，不能直接視為近期買賣訊號。<br />
+- companyOfficers 的 exercisedValue / unexercisedValue 均為 0，無法判斷選擇權行使情況。</p>
+<h2>Valuation</h2>
+<table>
+<thead>
+<tr>
+<th>指標</th>
+<th>數值</th>
+<th>計算/來源</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>股價 (收盤)</td>
+<td>89.2 TWD</td>
+<td>info.currentPrice，較前收 98.0 下跌 8.98%</td>
+</tr>
+<tr>
+<td>市值</td>
+<td>4014.0 億 TWD</td>
+<td>info.marketCap 401,400,004,608；89.2 × 45.0 億股 ≈ 4014 億 驗算一致</td>
+</tr>
+<tr>
+<td>企業價值 EV</td>
+<td>3545.5 億 TWD (計算)</td>
+<td>市值 4014.0 + 總債務 414.9 − 現金及STI 883.4；info.enterpriseValue 為 3826.7 億，口徑差異未明</td>
+</tr>
+<tr>
+<td>Trailing P/E</td>
+<td>5.6x</td>
+<td>89.2 ÷ TTM EPS 16.0</td>
+</tr>
+<tr>
+<td>Forward P/E</td>
+<td>1.8x</td>
+<td>89.2 ÷ forwardEps 50.2</td>
+</tr>
+<tr>
+<td>2026E P/E</td>
+<td>3.5x</td>
+<td>89.2 ÷ epsCurrentYear 25.2</td>
+</tr>
+<tr>
+<td>EV/EBITDA</td>
+<td>3.6x (info) / 3.3x (計算)</td>
+<td>計算 EBITDA 採季度加總 1090.1 億；info.ebitda 為 1056.5 億</td>
+</tr>
+<tr>
+<td>P/S (TTM)</td>
+<td>1.94x</td>
+<td>4014.0 ÷ 2070.5</td>
+</tr>
+<tr>
+<td>P/B</td>
+<td>1.94x (info, bookValue 46.04) / 1.85x (2026Q3 股東權益)</td>
+<td></td>
+</tr>
+<tr>
+<td>P/FCF</td>
+<td>6.6x (TTM 604.0) / 10.7x (info FCF 374.1)</td>
+<td></td>
+</tr>
+<tr>
+<td>Beta</td>
+<td>2.107</td>
+<td>info.beta</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>股價相對均線: 50 日均線 155.2 (股價低 42.5%)，200 日均線 144.4 (股價低 38.2%)。52 週區間 52.3–233.5，現價距高點 -61.8%、距低點 +70.6%。</li>
+<li>分析師: 8 位，recommendationMean 1.625 (buy)，目標價 mean 219.6 / median 221.5 / 高 360.0 / 低 120.0。目標價中位數較現價高約 148%，顯示分析師預估盈餘遠高於 TTM，但目標價分歧大 (低點 120 仍高於現價 35%)，時效性需確認。</li>
+<li>forwardEps 50.2 與 epsCurrentYear 25.2 的差距暗示 2027 年盈餘預估再翻倍，屬高度假設性的預估。</li>
+<li>同業中位數 (估計，非工具資料): 半導體/記憶體同業 trailing P/E 約 15–25x、EV/EBITDA 約 8–12x、P/FCF 約 15–20x、P/S 約 2–4x。以上為估計值，供比較參考。</li>
+</ul>
+<h2>Key catalysts</h2>
+<ul>
+<li>下次財報: 2027-02-11 (yfinance earnings_dates 最新一筆，EPS 預估 10.1 TWD，屬 2026Q4 季報；isEarningsDateEstimate = false)。</li>
+<li>近期財報表現: 2026Q2 EPS 5.40 vs 預估 4.62 (+16.9% 超預期)；2026Q3 EPS 7.49 vs 預估 7.74 (-3.2% 略低於預期，發布日 2026-11-03)。Q3 營收與毛利率創新高，但 EPS 未達預期，可能與費用或稅率有關 (2026Q3 稅率 19.9%，稅費 87.2 億)，資料未明確揭示原因。</li>
+<li>2026 全年 EPS 預估 25.2 TWD (已含 Q4 預估 10.1)。</li>
+<li>資本支出: 2026Q3 CapEx 160.7 億，產能擴充若持續，將影響後續 FCF。</li>
+<li>長期股權投資由 2025 年底 160.3 億增至 2026Q3 291.7 億，為資產配置變動，性質資料未揭示。</li>
+<li>2026-11-21 單日 -8.98%，觸發原因資料未揭示，不做推測。</li>
+</ul>
+<h2>Metrics table</h2>
+<p>單位: 營收/利潤/現金流/資產負債 為億 TWD；股價為 TWD；倍數為 x；比率為 %。「Sector median」為估計值，非工具資料。</p>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Latest</th>
+<th>YoY</th>
+<th>Sector median (estimate)</th>
+<th>Verdict</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>營收 TTM (億 TWD)</td>
+<td>2070.5</td>
+<td>FY25 +9.6%</td>
+<td>n/a</td>
+<td>高成長 (季度)，年度循環</td>
+</tr>
+<tr>
+<td>毛利率 (2026Q3)</td>
+<td>70.6%</td>
+<td>FY25 34.9% (較 FY25 高 35.7pp)</td>
+<td>約 35–45% (估計)</td>
+<td>顯著高於同業，偏週期高點</td>
+</tr>
+<tr>
+<td>營業利益率 (2026Q3)</td>
+<td>53.5%</td>
+<td>FY25 6.3%</td>
+<td>約 10–20% (估計)</td>
+<td>極端高位，可持續性待觀察</td>
+</tr>
+<tr>
+<td>淨利率 TTM</td>
+<td>35.4%</td>
+<td>FY25 4.4%</td>
+<td>約 10% (估計)</td>
+<td>強</td>
+</tr>
+<tr>
+<td>ROE (info)</td>
+<td>44.4%</td>
+<td>n/a</td>
+<td>約 10–15% (估計)</td>
+<td>強，受高利潤率推升</td>
+</tr>
+<tr>
+<td>ROIC (估計)</td>
+<td>約 42%</td>
+<td>n/a</td>
+<td>約 10% (估計)</td>
+<td>強</td>
+</tr>
+<tr>
+<td>FCF TTM (億 TWD)</td>
+<td>604.0</td>
+<td>FY25 43.1 (FY24 -64.1)</td>
+<td>n/a</td>
+<td>強，但 info 值 374.1 有差異</td>
+</tr>
+<tr>
+<td>FCF margin TTM</td>
+<td>29.2%</td>
+<td>FY25 4.8%</td>
+<td>約 10% (估計)</td>
+<td>強</td>
+</tr>
+<tr>
+<td>FCF / NI TTM</td>
+<td>0.82</td>
+<td>FY25 1.09</td>
+<td>&gt;0.9</td>
+<td>略低於健康門檻，CapEx 擴張所致</td>
+</tr>
+<tr>
+<td>流動比率 (2026Q3)</td>
+<td>2.50</td>
+<td>FY25 1.57</td>
+<td>約 1.5–2.0 (估計)</td>
+<td>健康</td>
+</tr>
+<tr>
+<td>淨負債 (億 TWD)</td>
+<td>-468.5 (淨現金)</td>
+<td>FY25 +364.0</td>
+<td>n/a</td>
+<td>健康，已轉淨現金</td>
+</tr>
+<tr>
+<td>負債權益比 (2026Q3)</td>
+<td>19.1%</td>
+<td>FY25 50.2%</td>
+<td>約 30–50% (估計)</td>
+<td>健康</td>
+</tr>
+<tr>
+<td>利息保障倍數 (TTM)</td>
+<td>約 62x</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>極健康</td>
+</tr>
+<tr>
+<td>CapEx TTM (億 TWD)</td>
+<td>266.7</td>
+<td>FY25 68.7 (FY24 175.3)</td>
+<td>n/a</td>
+<td>擴張中，需追蹤</td>
+</tr>
+<tr>
+<td>股息殖利率</td>
+<td>2.8%</td>
+<td>5 年平均 0.97%</td>
+<td>約 2–4% (估計)</td>
+<td>偏高，覆蓋充足</td>
+</tr>
+<tr>
+<td>股利 / TTM EPS</td>
+<td>15.6%</td>
+<td>n/a</td>
+<td>約 30–50% (估計)</td>
+<td>低派息率</td>
+</tr>
+<tr>
+<td>Trailing P/E</td>
+<td>5.6x</td>
+<td>n/a</td>
+<td>約 15–25x (估計)</td>
+<td>表面極度便宜，反映循環高點折價</td>
+</tr>
+<tr>
+<td>Forward P/E (2027E EPS 50.2)</td>
+<td>1.8x</td>
+<td>n/a</td>
+<td>約 15–25x (估計)</td>
+<td>依賴預估，可信度低</td>
+</tr>
+<tr>
+<td>EV/EBITDA</td>
+<td>3.6x (info)</td>
+<td>n/a</td>
+<td>約 8–12x (估計)</td>
+<td>低估表象，需扣除週期因素</td>
+</tr>
+<tr>
+<td>P/S (TTM)</td>
+<td>1.94x</td>
+<td>n/a</td>
+<td>約 2–4x (估計)</td>
+<td>略低於同業</td>
+</tr>
+<tr>
+<td>P/FCF (TTM)</td>
+<td>6.6x</td>
+<td>n/a</td>
+<td>約 15–20x (估計)</td>
+<td>低</td>
+</tr>
+<tr>
+<td>內部人交易 (6 mo)</td>
+<td>n/a (工具回傳空)</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>資料缺漏，無法判斷</td>
+</tr>
+<tr>
+<td>內部人持股</td>
+<td>28.85%</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>高度集中，非近期買賣訊號</td>
+</tr>
+<tr>
+<td>Beta</td>
+<td>2.11</td>
+<td>n/a</td>
+<td>約 1.2–1.5 (估計)</td>
+<td>波動極高</td>
+</tr>
+</tbody>
+</table>
+<h2>Red flags</h2>
+<ul>
+<li><strong>週期高點風險</strong>: 毛利率由 2022 年 45.5%、2023 年 29.9% 跳升至 2026Q3 70.6%，營業利益率由 FY2024 0.6% 升至 2026Q3 53.5%。記憶體景氣 (DRAM/NAND/NOR) 的價格循環，歷史上曾多次快速反轉，2023 年虧損即為前例。</li>
+<li><strong>盈餘品質與預估風險</strong>: TTM 盈餘高度集中於 2026Q2–Q3。forwardEps 50.2 與 2026E 25.2 的差距顯示未來盈餘假設高度依賴分析師預估。</li>
+<li><strong>股價與基本面背離</strong>: 股價較 52 週高點回落 61.8%，現價 89.2 低於 50 日與 200 日均線；Q3 EPS 略低於預期後，市場可能已在定價盈餘見頂。</li>
+<li><strong>FCF/NI 低於 0.9</strong>: TTM 0.82，資本支出自 FY2025 的 68.7 億跳升至 TTM 266.7 億，且 2026Q3 單季 160.7 億，若景氣轉弱，固定成本與擴產承諾會放大壓力。</li>
+<li><strong>應收帳款快速增加</strong>: 2025 年底 160.7 億 → 2026Q3 493.1 億 (+207%)，應收帳款占營收比需後續追蹤回收狀況。</li>
+<li><strong>權益變動未解釋</strong>: 2026Q2→Q3 股東權益增加 523.1 億，其中約 171.2 億來源未揭示，且股數無變化，需查證 (OCI 或其他權益科目)。</li>
+<li><strong>歷史獲利不穩</strong>: FY2023 淨損 11.5 億，2025 上半年淨損 (2025Q2 淨損 13.1 億)，EPS 盈虧波動大，三年營收 CAGR 為負。</li>
+<li><strong>內部人持股集中</strong>: insidersPercentHeld 28.85%，流通股 (floatShares 33.6 億) 相對有限，股價波動性 (beta 2.11) 高。</li>
+<li><strong>資料缺漏與不一致</strong>:</li>
+<li>info.freeCashflow (374.1 億) 與季度 OCF − CapEx (604.0 億) 不一致。</li>
+<li>info.ebitda (1056.5 億) 與季度 EBITDA 加總 (1090.1 億) 不一致；info.enterpriseValue (3826.7 億) 與計算值 (3545.5 億) 不一致。</li>
+<li>info.payoutRatio (3.13%) 與 2.5 ÷ 16.0 (15.6%) 不一致。</li>
+<li>內部人交易工具回傳空陣列，無法判定。</li>
+<li>2025Q3、2026Q1 季度年比缺漏；FY2024–2025 現金股利為 null；FY2021 資料大多為 null。</li>
+<li>分部營收 n/a；同業中位數為估計值。</li>
+<li>部分 yfinance 欄位 (如 sharesOutstanding、marketCap) 有快取來源 (source: cache)，數值已以季度資料交叉驗證。</li>
+</ul>
+<p>FUNDAMENTALS REPORT COMPLETE</p></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-slate-700 mb-2">技術面 (Market / Technical)</h4>
+          <div class="agent-prose text-sm bg-slate-50 p-3 rounded"><h1>Technical — 2344.TW (華邦電) as of 2026-11-21</h1>
+<p>註: 價格為 2026-11-20 收盤 TWD 89.20 (pricefeed cache, feed=cnyes, cached_at 2026-11-21T14:32Z)。yf 直連 Yahoo 回 403, 因此沒有即時盤中價。</p>
+<h2>Snapshot</h2>
+<p>價格 TWD 89.20 (2026-11-20 收盤, 前收 98.00, 單日 -9.0%), MA20 134.86, MA50 156.25, MA200 143.48, RSI14=22.13, MACD hist=-4.04。</p>
+<h2>Trend</h2>
+<p>明確下跌趨勢, 強度高。價格低於 MA20、MA50、MA200 三條均線, 距離分別為 -33.9%、-42.9%、-37.8%。近 60 根 K 線的高點依序下移: 09-08 高點 192 → 10-28 高點 172 → 11-09 高點 132.5 → 11-16 高點 123.5 → 11-18 高點 115 → 11-20 高點 93.3。低點同步下移: 11-03 146.0 → 11-06 115.0 → 11-16 112.5 → 11-18 102.5 → 11-19 97.3 → 11-20 88.2。屬於連續 lower highs + lower lows 結構。</p>
+<p>均線關係: MA20 已在 2026-11-17 下穿 MA200 (MA20 143.43 對 MA200 143.68), 短均線已跌破長均線。MA50 仍高於 MA200 (156.25 對 143.48), 但 50/200 差距由 11-13 的 19.85 收斂到 11-20 的 12.77, MA50 過去一週約每日下滑 1.4 元。MA200 本身幾乎持平於 143.5。死亡交叉 (MA50 下穿 MA200) 尚未發生, 但接近度正在上升。</p>
+<h2>Momentum</h2>
+<p>MACD 線 -16.70、訊號線 -12.66、柱狀體 -4.04, 三者皆在零軸下方, 且柱狀體自 11-13 的 -2.20 連續 6 個交易日擴大, 目前為空方動能加速。</p>
+<p>RSI14 = 22.13, 進入超賣區 (&lt;30), 自 11-16 起連續 5 個交易日低於 30。RSI 隨價格同步創新低 (11-16 29.5 → 11-20 22.1), 目前沒有 RSI 底背離訊號。</p>
+<p>多週期報酬: 1 個月 -44.1%、3 個月 -46.9%、6 個月 -22.8%、12 個月 +51.2%。12 個月報酬仍為正, 但短中期跌幅已很大。</p>
+<h2>Key levels</h2>
+<ul>
+<li>上方壓力 (現價之上):</li>
+<li>$98.00 (2026-11-19 收盤, 近期跌破後的第一個反彈參考)</li>
+<li>$108.00 (2026-11-18 收盤)</li>
+<li>$134.86 (MA20 / BB 中軌)</li>
+<li>$143.48 (MA200)</li>
+<li>$156.25 (MA50)</li>
+<li>$158.50 (2026-09-15 局部低點, ta levels 原標為 support, 現已位於價格上方)</li>
+<li>$178.50 (2026-10-29 局部高點, ta levels resistance)</li>
+<li>$184.00 (2026-10-02 局部高點, ta levels resistance)</li>
+<li>$192.00 - $193.00 (2026-08-12 / 08-28 / 09-08 局部高點, ta levels resistance)</li>
+<li>下方支撐 (現價之下):</li>
+<li>$88.20 (2026-11-20 盤中低點, 近期最低結構點)</li>
+<li>$86.16 (BB 下軌)</li>
+<li>$52.20 (52 週低點, 但 ta levels 未列出, 日期無法從現有資料確認)</li>
+<li>ta levels 1 年窗口內沒有回傳位於現價之下的局部低點, 因此下方支撐僅能以近期 K 線低點與 BB 下軌代替。</li>
+<li>距離 52 週高點 $233.50: -61.8%。距離 52 週低點 $52.20: +70.9%。52 週高點的發生日期不在現有資料窗口內。</li>
+<li>停損參考 (邏輯位置, 非投資建議): 跌破 $88.20 (2026-11-20 低點) 時, 可視為最近結構低點失守。若改用 2 倍 ATR 距離, 約為 89.20 - 2×10.49 ≈ $68.2, 但該位置距離現價偏遠, 需依部位大小自行換算風險。</li>
+</ul>
+<h2>Volatility profile</h2>
+<p>ATR14 = 10.49 元, 相當於現價的 11.8%。一日 ATR 隱含波動約 TWD 10.5。20 日年化波動率 89.2%, 換算日標準差約 5.6% (約 TWD 5.0)。</p>
+<p>部位大小的含義: 此波動水準屬於極高。同樣的部位金額, 停損距離若取 1 ATR 即佔 12%, 需大幅縮小名目部位或拉寬停損, 單次損失才會落在可控範圍內。</p>
+<h2>Setup</h2>
+<p>偏空, 且處於超賣延伸狀態。型態為下跌趨勢中的連續破底, 形成 lower highs + lower lows, 均線由多頭排列轉為空頭排列 (價格 &lt; MA20 &lt; MA200 &lt; MA50)。</p>
+<p>目前沒有可辨識的底部反轉條件: RSI 未出現背離, MACD 柱狀體仍在擴大, 價格仍在 BB 下軌附近運行 (BB %B = 0.03)。最後一根 K 線 (11-20) 的成交量為 83.08M, 相較 10 日均量約 65.95M 為 1.26 倍, 屬溫和放量, 並非極端爆量。</p>
+<h2>Indicators table</h2>
+<table>
+<thead>
+<tr>
+<th>Indicator</th>
+<th>Value</th>
+<th>Reading</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Price (2026-11-20 收盤)</td>
+<td>89.20</td>
+<td>下跌趨勢, 價格低於所有主要均線</td>
+</tr>
+<tr>
+<td>MA20</td>
+<td>134.86</td>
+<td>價格 -33.9%, 短期均線向下</td>
+</tr>
+<tr>
+<td>MA50</td>
+<td>156.25</td>
+<td>價格 -42.9%, MA50 每日約下滑 1.4 元</td>
+</tr>
+<tr>
+<td>MA200</td>
+<td>143.48</td>
+<td>價格 -37.8%, MA20 已於 11-17 下穿</td>
+</tr>
+<tr>
+<td>MA50 - MA200 差距</td>
+<td>12.77</td>
+<td>由 11-13 的 19.85 收斂中, 死亡交叉尚未發生</td>
+</tr>
+<tr>
+<td>RSI14</td>
+<td>22.13</td>
+<td>超賣, 連續 5 日 &lt;30, 無底背離</td>
+</tr>
+<tr>
+<td>MACD</td>
+<td>-16.70</td>
+<td>零軸下方, 空方</td>
+</tr>
+<tr>
+<td>MACD signal</td>
+<td>-12.66</td>
+<td>MACD 低於訊號線</td>
+</tr>
+<tr>
+<td>MACD hist</td>
+<td>-4.04</td>
+<td>負值, 連續 6 日擴大, 空方加速</td>
+</tr>
+<tr>
+<td>BB %B</td>
+<td>0.03</td>
+<td>接近下軌 (86.16), 未跌破</td>
+</tr>
+<tr>
+<td>ATR14</td>
+<td>10.49</td>
+<td>約 11.8% 價格, 高波動</td>
+</tr>
+<tr>
+<td>20d 年化波動率</td>
+<td>89.2%</td>
+<td>極高, 部位需大幅縮小</td>
+</tr>
+<tr>
+<td>1 個月報酬</td>
+<td>-44.1%</td>
+<td>短期急跌</td>
+</tr>
+<tr>
+<td>3 個月報酬</td>
+<td>-46.9%</td>
+<td>中期急跌</td>
+</tr>
+<tr>
+<td>6 個月報酬</td>
+<td>-22.8%</td>
+<td>半年跌幅</td>
+</tr>
+<tr>
+<td>12 個月報酬</td>
+<td>+51.2%</td>
+<td>長期仍為正, 但已大幅回吐</td>
+</tr>
+<tr>
+<td>距 52 週高點</td>
+<td>-61.8%</td>
+<td>大幅低於 233.50</td>
+</tr>
+<tr>
+<td>距 52 週低點</td>
+<td>+70.9%</td>
+<td>52.20 仍遠低於現價</td>
+</tr>
+<tr>
+<td>成交量 (11-20)</td>
+<td>83.08M</td>
+<td>約為 10 日均量 65.95M 的 1.26 倍, 溫和放量</td>
+</tr>
+<tr>
+<td>資料注意</td>
+<td>10-23 成交量 0, OHLC 皆為 154.5</td>
+<td>疑似停牌或資料缺漏, 不影響最新價格判讀</td>
+</tr>
+</tbody>
+</table>
+<p>MARKET REPORT COMPLETE</p></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-slate-700 mb-2">新聞 (News)</h4>
+          <div class="agent-prose text-sm bg-slate-50 p-3 rounded"><h1>News — 2344.TW (華邦電) as of 2026-11-21</h1>
+<p>資料說明: 本次 <code>pipeline/tools/yf 2344.TW news</code> 因代理伺服器對 Yahoo 端點回傳 403 而失敗，新聞以 WebSearch 補足，多數為次級媒體轉述，個別數字日期不一致已在文末標註。<code>info</code> 指令可用，價格與估值取自該結果 (cache 時間 2026-11-21)。金額單位: TWD 以億計 (1 億 = 1e8)，USD 以 B 計，報告內未混用。</p>
+<h2>市場數據快照 (yfinance info)</h2>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>數值</th>
+<th>備註</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>最新價 (TWD)</td>
+<td>89.2</td>
+<td>前收 98.0，單日 -8.98%</td>
+</tr>
+<tr>
+<td>52 週高 / 低 (TWD)</td>
+<td>233.5 / 52.3</td>
+<td>現價距高點約 -62%</td>
+</tr>
+<tr>
+<td>6/22 收盤高點 (TWD)</td>
+<td>222</td>
+<td>來源: 新聞報導 (未還原股利)</td>
+</tr>
+<tr>
+<td>50 日 / 200 日均線 (TWD)</td>
+<td>155.2 / 144.4</td>
+<td>現價均在兩線之下</td>
+</tr>
+<tr>
+<td>市值</td>
+<td>約 4,014 億 TWD</td>
+<td>4.5B 股 × 89.2</td>
+</tr>
+<tr>
+<td>TTM 營收</td>
+<td>約 2,070.5 億 TWD</td>
+<td>yfinance</td>
+</tr>
+<tr>
+<td>TTM 淨利</td>
+<td>約 732.8 億 TWD</td>
+<td>對照 TTM EPS 16.0 × 4.5B 股 ≈ 720 億，量級吻合</td>
+</tr>
+<tr>
+<td>毛利率 / 營業利益率</td>
+<td>62.5% / 43.2%</td>
+<td>yfinance TTM</td>
+</tr>
+<tr>
+<td>FCF</td>
+<td>約 374 億 TWD</td>
+<td>yfinance TTM</td>
+</tr>
+<tr>
+<td>分析師目標價均值 / 區間 (TWD)</td>
+<td>219.6 / 120–360</td>
+<td>8 位，推薦均值 1.6 (Buy)；目標價明顯落後現價</td>
+</tr>
+</tbody>
+</table>
+<h2>Top company-specific headlines (last 14d)</h2>
+<ul>
+<li>2026-11-03 — 第三季合併營收 823.31 億 TWD，季增 37.6%、年增 278.2%，毛利率 70.6%，單季 EPS 7.58 TWD，前三季 EPS 累計 15.32 TWD (法說會，technews / statementdog / chinatimes)。Impact: bullish (基本面)。獲利創高，但同日股價跌停收 146 TWD，市場顯然在折現景氣高點。</li>
+<li>2026-11-03 — 管理層表示高容量 NOR Flash 與客製化記憶體供不應求的態勢預期延續至 2027 年 (法說會，businesstoday / bnext)。Impact: bullish。供需判斷是多方核心論點。</li>
+<li>2026-11-03 — 董事會通過高雄 12 吋廠 Module B 擴建資本支出約 731.63 億 TWD；2026 全年資本支出約 395 億 TWD，前三季已支出約 234 億 TWD (technews)。Impact: neutral 偏空。新增產能是未來價格下行的遠期風險，且資本支出規模顯示公司對景氣有信心。</li>
+<li>2026-11-04 — 外資連續 3 個交易日賣超，合計約 44,113 張；部分本土投顧因估值調整下修目標價 (businesstoday / wantrich)。Impact: bearish (籌碼)。賣壓集中在法說後，與股價單邊下跌同步。</li>
+<li>2026-11-05 — 董事長表示記憶體價格與獲利不應再以此速度上升 (Digitimes，經 WebSearch 摘要)。Impact: bearish。由公司自身提出「價格見頂」的警告，對市場情緒衝擊大於一般分析師看法。</li>
+<li>2026-11-06 — 10 月營收 293.61 億 TWD，月增 3.9%、年增 257.0%；前 10 月累計 2,097.88 億 TWD，年增 195.4% (technews)。Impact: bullish (基本面)。但月增率已降至個位數，成長動能較第三季放緩。</li>
+<li>2026-11-07 — 董事長表示期望記憶體價格已經見頂 (wantrich / chinatimes 摘要)。Impact: bearish。與 11/5 的警告相互印證，市場解讀為管理層也認為週期接近尾聲。</li>
+<li>2026-11-10 — 董事長表示主要雲端服務商於 2027–2028 年規劃的 AI 資料中心建置大致已鎖定 (Digitimes)。Impact: bullish。直接支持 2027 年需求能見度，是本期最強的正面需求訊號。</li>
+<li>2026-11 (近期) — 收購英飛凌 NOR Flash 與 F-RAM 事業，將以 Spansion 品牌運作，定位為無晶圓廠 (fabless) 獨立公司；交割預計 2027 年下半年 (Digitimes / technews)。Impact: neutral。長期擴大產品線，短期無獲利貢獻，且交割時程仍有不確定性。</li>
+<li>2026-11-03 起 — 董事會通過 2026 年上半年每股現金股利 2 TWD (technews)。Impact: neutral。殖利率約 2.8%，yfinance 顯示除息日約為 11/19，已過除息，單日股價跌幅不含股利因素 (日期來源未經官方公告核對)。</li>
+<li>2026-11-19 — 股價連續 5 個交易日收跌，盤中最低 99.9 TWD，一度跌破 100 整數關卡 (WebSearch 摘要，經業者轉述)。Impact: bearish (價格面)。純價格行為，僅作為背景，不列為基本面訊號。</li>
+</ul>
+<h2>Sector macro</h2>
+<ul>
+<li>2026-11-18 — TrendForce DRAM 市場週報: 合約價仍在上漲，但每季漲幅遞減；關鍵變數為長期協議價格條款、產能擴充時點與 2028 年需求。Impact on 記憶體: mixed。合約價仍支撐營收，但二階導數轉負是市場定價重點。</li>
+<li>2026-11-11 前八日 — 三大主流 DRAM 現貨均價下跌 2.1%–4.1% (TrendForce 摘要)；512Gb TLC NAND 晶圓現貨價於 10/5 至 11/2 期間下跌 14.2%。Impact on NAND/DRAM: bearish。現貨是合約價的領先指標，現貨下跌直接影響市場對 2027 年報價的預期。</li>
+<li>2026-10 (報導) — 商品級 NAND 價格在 21 個月上漲後首度停止攀升 (fourweekmba 摘要，引用 10 月資料)。Impact: bearish。價格見頂的定性訊號，與 11/5、11/7 公司警告一致。</li>
+<li>2026-11-15 週 — 摩根士丹利 (經 statementdog / wantrich 轉述) 警示消費型 NAND 現貨近兩週下跌約 20%，並調降多檔台廠目標價。Impact: bearish。消費端需求是華邦電 (NOR、利基型 DRAM) 的重要收入來源。</li>
+<li>2026-11 (報導) — SanDisk 據報對 11 月 NAND 合約價調漲約 50%，並預期供給緊張延續至 2027 年 (fourweekmba 摘要，未核對原始來源)。Impact: bullish。企業端報價仍強，與消費端走弱形成分化。</li>
+<li>2026-11 (報導) — 行動 DRAM 合約談判停滯，品牌商採取觀望；PC DRAM 供給可能於 2027 年因產能轉向伺服器而減少 (WebSearch 摘要)。Impact: mixed。消費端偏弱，但供給結構變化對 2027 年有利。</li>
+<li>2026-09-30 (舊預測) — TrendForce 預估 2026 Q4 傳統 DRAM 合約價 +10–15% QoQ、含 HBM 的 DRAM +15–20%、NAND +15–20% (預測日期早於近期現貨回落，僅供參考)。Impact: bullish (已部分被現貨修正)。</li>
+<li>中國長鑫存儲 (CXMT) 新一代 DRAM 技術進展 (statementdog 2026-11-03 報導，為當日股價下跌的導火線之一)。Impact: bearish。中國產能與技術追趕是中長期供給風險，需與 2027 年供需判斷併看。</li>
+<li>美國 Section 232 半導體關稅 (25%，2026-01-15 生效) 為既有政策，本週期內未搜尋到新的異動。Impact: neutral。</li>
+<li>利率 / 聯準會: 搜尋只確認到 2025-12 會議降息 25 bp 至 3.50%–3.75%，未確認 2026 年排程與 11 月後最新立場。Impact: 無法評估，列為待補資料。</li>
+</ul>
+<h2>Peer signals</h2>
+<ul>
+<li>Micron (MU) — 2026-11-05 單日下跌 17.5%；Bloomberg 報導 Micron 暫停台灣 45 億美元 (USD 4.5B) 記憶體廠計畫，並被解讀為 AI 資本支出放緩的疑慮 (經 WebSearch 摘要)。10/29 至 11/6 期間約跌 26% (fourweekmba 試算)。Bearish 情緒。台灣新增產能暫緩對供給偏多的記憶體定價有利，但市場短期以估值修正為主。</li>
+<li>SK hynix / Samsung — 10/29 至 11/6 分別下跌約 25.8% / 18.7% (fourweekmba 試算)。Bernstein 同期上修三星與 SK hynix 獲利預估至共識之上，顯示是產業級的重新定價，而非單一公司問題。Mixed。</li>
+<li>南亞科 (2408.TW) — 11/3 跌停至 411 TWD；10 月營收年增 487.7%，11/10 記憶體股多數跳空開高 (chinatimes / udn)。Mixed。基本面強、股價跟隨板塊波動。</li>
+<li>旺宏 (2337.TW) — 11/3 盤中跌破 90 TWD；連續三個月月營收站上 80 億 TWD；11/15 週報收 79.6 TWD，支撐 77.6–78.3，壓力 85.2–88.2 (chinatimes / 週報摘要)。Bearish (股價)。與華邦電同屬利基型 NOR Flash，走勢高度連動。</li>
+<li>群聯 (8299.TW) — 11/3 跌停，與南亞科、華邦電同日重挫 (statementdog)。Bearish (股價)。</li>
+<li>十銓 — 預估 2026 Q4 至 2027 Q2 底供給最吃緊，Q4 至 2027 Q1 報價仍有上漲空間 (chinatimes 摘要)。Bullish。屬於供應鏈側的正面估計，但來源為單一券商。</li>
+</ul>
+<h2>Forward calendar (next 14d, 2026-11-21 至 2026-12-05)</h2>
+<ul>
+<li>11/21–12/05 — 記憶體族群股價持續受 TrendForce 合約價、現貨價與 Micron 相關事件影響；無已排定之公司 earnings 事件。Expected impact: 高波動，方向取決於現貨是否續跌。</li>
+<li>約 12/01–12/05 — TrendForce 可能釋出 2027 Q1 合約價預測 (依往年慣例，未確認具體日期)。Expected impact: 若預測 QoQ 增幅明顯縮小，將強化「見頂」敘事。</li>
+<li>約 12/05–12/10 — 華邦電 11 月月營收公告 (台股規定每月 10 日前公告)。Expected impact: 關鍵檢驗點。若月增率仍為個位數正成長，支持基本面；若月減，會放大見頂擔憂。</li>
+<li>約 12/05–12/10 — 南亞科、旺宏 11 月營收公告 (同上規則)。Expected impact: 板塊同步驗證。</li>
+<li>參考 (14d 窗口外) — Micron 2026 FQ1 財報通常在 12 月下旬，屬於窗口外但會影響市場預期；聯準會 12 月會議 (依慣例約 12/8–12/9，未經官方確認)。</li>
+</ul>
+<h2>Net read</h2>
+<p>本期新聞的基本面面向偏多: 第三季營收與毛利率創高，10 月營收仍年增 257%，管理層對 2027 至 2028 年 AI 資料中心需求與 NOR Flash 供需表達正面看法，並已通過大規模擴產與海外併購案。然而，市場對記憶體週期的定價已明顯轉向「見頂」: 公司董事長於 11/5 與 11/7 兩度表態價格與獲利不宜再以此速度上升，TrendForce 指出合約價漲幅遞減、現貨連續下跌，摩根士丹利調降台廠目標價，外資連續賣超，同業 Micron、SK hynix、三星在 10 月底至 11/6 間遭遇大幅回檔。股價由 6/22 高點 222 TWD 回落至 89.2 TWD (-60%)，已跌破 50 日與 200 日均線，分析師目標價均值 (219.6 TWD) 與現價之間的落差也說明估值正在重新校準。綜合判斷，新聞面的訊號 <strong>混合偏空，強度中高</strong>: 基本面正面訊號強但已被市場定價在過去，而價格面與情緒面的負面訊號持續累積。主要不確定性在於 11 月月營收與 TrendForce 2027 Q1 報價能否確認「漲幅遞減但仍為正」的路徑。</p>
+<p><strong>資料缺口與可信度提示</strong><br />
+- yfinance 新聞端點 403，無法取得原始新聞列表；本報告 company-specific 條目多為 WebSearch 次級報導，需以公司公告與交易所資訊 (MOPS) 再核對。<br />
+- 股價序列存在不一致: 11/3 跌停收 146 TWD (ltn/businesstoday) 與另一筆未標日期之 132.5 TWD 快照並存；yfinance <code>regularMarketTime</code> 指向 11/21 盤中時間戳，89.2 TWD 可能非最終收盤價。<br />
+- yfinance 之 forwardPE (1.78) 與 forwardEps (50.2 TWD) 與現價嚴重不一致，估值指標不可直接引用。<br />
+- 南亞科與旺宏的部分數字 (如 "連三個月站上 80 億") 來源為週報或摘要，未與原始月報核對。<br />
+- 未取得 2026 年 FOMC 正式排程與 11 月後的聯準會最新表態。</p>
+<p>NEWS REPORT COMPLETE</p></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-slate-700 mb-2">情緒 (Sentiment)</h4>
+          <div class="agent-prose text-sm bg-slate-50 p-3 rounded"><h1>Sentiment — 2344.TW (華邦電) as of 2026-11-21</h1>
+<p>資料可靠度提醒: Reddit (r/stocks、r/wallstreetbets) 無法存取，StockTwits (api.stocktwits.com) 因網域未允許而無法解析，散戶社群面只能用 WebSearch 的新聞與投資網站快照替代，樣本少，置信度低。另外，搜尋結果中的股價快照互相矛盾 (108 / 125 / 143 TWD)，文中引用的價格以新聞明確標示的日期為準。</p>
+<h2>Analyst consensus</h2>
+<p>目前 (yfinance rec_summary，0m) 共 8 家: strongBuy 3 / buy 4 / hold 1 / sell 0 / strongSell 0，換算為 <strong>7 buy / 1 hold / 0 sell</strong>。</p>
+<table>
+<thead>
+<tr>
+<th>期間</th>
+<th>strongBuy</th>
+<th>buy</th>
+<th>hold</th>
+<th>sell</th>
+<th>合計</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0m (當前)</td>
+<td>3</td>
+<td>4</td>
+<td>1</td>
+<td>0</td>
+<td>8</td>
+</tr>
+<tr>
+<td>-1m</td>
+<td>4</td>
+<td>4</td>
+<td>0</td>
+<td>0</td>
+<td>8</td>
+</tr>
+<tr>
+<td>-2m</td>
+<td>4</td>
+<td>4</td>
+<td>0</td>
+<td>0</td>
+<td>8</td>
+</tr>
+<tr>
+<td>-3m</td>
+<td>4</td>
+<td>3</td>
+<td>0</td>
+<td>0</td>
+<td>7</td>
+</tr>
+</tbody>
+</table>
+<p>近期動向: 買方評等由滿檔轉為 1 家 hold，共識仍偏多但出現第一個降評訊號，與法說後股價走弱同步。</p>
+<p>目標價與評等變動 (新聞來源，日期多數不明確):<br />
+- 中信投顧因估值調整下修目標價，預估今、明兩年 EPS 分別為 23.85 元與 50.08 元。<br />
+- 國票投顧同步下修目標價。<br />
+- 法人多數維持買進。<br />
+- Investing.com 快照列 Morgan Stanley 為 Hold，並註明 2026-03-19 降評；另一快照列 JPMorgan Buy，目標價 360 TWD，但該數字與 125-140 TWD 的股價區間明顯不符，判定為資料異常，不採信。<br />
+- Nasdaq 相關標題 (目標價上調 73.14% 至 51.51、上調 41.40% 至 97.54) 單位與日期皆不明，無法對應到當前價格，僅列為無法確認。</p>
+<h2>Retail social</h2>
+<ul>
+<li>Reddit: 無法存取 (r/stocks、r/wallstreetbets 皆失敗)。無法判斷散戶討論量與傾向。</li>
+<li>StockTwits / X: StockTwits 網域無法解析。X 無直接資料。以 WebSearch 替代:</li>
+<li>Investing.com 散戶情緒表: 2026-06 與 2026-07 的用戶看法偏多、也有偏空，2026-11-16 一則用戶在 116 TWD 的看法標示為 -13.88%，近期偏空。</li>
+<li>中文財經媒體 (工商時報、經濟日報等) 以法說後股價反應與外資賣超為主軸，語氣偏謹慎。</li>
+<li>聲量: 無可靠的提及次數數據，無法與常態比較。以新聞數量判斷，法說會後 (11/03 至 11/13 前後) 報導密集，屬於事件驅動的中等聲量。</li>
+<li>散戶傾向: 偏空至中性 (低置信度)。</li>
+<li>主要主題 (由新聞與論壇摘要歸納):</li>
+<li>記憶體供給吃緊能持續到 2028 年，明年供給可能比今年更緊 (多頭論點)。</li>
+<li>第四季非 AI 需求疲弱，營運成長力道減弱，消費性電子需求與報價高點反轉風險 (空頭論點)。</li>
+<li>法說會前跌停、法說後利多不漲，籌碼面 (外資賣超) 被解讀為偏空訊號。</li>
+<li>高雄 Module B 擴建 (投資約 731 億元) 2029 下半年開始小量出貨、2030 年全面開出，屬長期題材。</li>
+</ul>
+<h2>Insider activity</h2>
+<ul>
+<li>yfinance insider 回傳空值，無法取得董監事個別交易的淨買賣金額。6 個月淨額: 無法計算 (資料缺失)。</li>
+<li>新聞補充 (非 MOPS 原始申報):</li>
+<li>大股東華新 (1605，法人董事) 2026 年陸續申讓華邦電股票: 2/26 申讓 3 萬張、4/2 處分 1 萬 4145 張、5/25 再申讓 1 萬 4145 張 (預計 5/28 至 6/27 交易，以當時收盤價 128.5 TWD 估算約 18.18 億 TWD)。轉讓後華新仍持有約 96.5 萬張。</li>
+<li>此為法人大股東持續減碼，屬於偏空的籌碼訊號，但屬於 2026 上半年資料，11 月以後的最新申報無法確認。</li>
+<li>自然人 CEO/CFO 個別交易: 無資料。</li>
+</ul>
+<h2>Ownership shifts</h2>
+<p>依 yfinance major_holders:<br />
+- 內部人持股 (insidersPercentHeld): 28.85%<br />
+- 機構持股 (institutionsPercentHeld): 26.37%<br />
+- 機構持股占流通股 (institutionsFloatPercentHeld): 37.06%<br />
+- 機構家數: 221</p>
+<p>趨勢 (時間序列): 單一快照，無法判斷機構持股變化方向。新聞顯示 9 月以來三大法人合計賣超約 91,849 張，其中外資賣超約 59,761 張 (與持股比例的下降方向一致)，但 5 月仍有外資買超的日子，因此屬於波動而非單向。</p>
+<h2>Net sentiment score</h2>
+<ul>
+<li>分析師面: <strong>偏多</strong> (7 buy / 1 hold / 0 sell，但近三個月出現首次 hold，共識仍強，動能略弱)。</li>
+<li>散戶面: <strong>偏空至中性</strong> (有 Investing.com 快照與新聞佐證，但樣本少、無 Reddit/StockTwits 資料)。</li>
+<li>內部人與大股東: <strong>偏空</strong> (大股東華新持續申讓，2026 上半年可見的減碼；11 月資料缺失)。</li>
+<li>價格與籌碼: <strong>偏空</strong> (法說後股價走弱，外資累計賣超，技術指標 RSI 偏弱的快照，但快照價格互相矛盾，僅供參考)。</li>
+</ul>
+<p>綜合: <strong>中性偏空 (置信度: 低)</strong>。分析師仍多為買進，但籌碼與股價反應偏弱，散戶與大股東行為偏空，樣本限制使結論不穩定。</p>
+<p>Divergence flag: <strong>是 (低置信度)</strong>。分析師偏多與價格、籌碼及可得的散戶訊號偏空方向不一致。此分歧在記憶體景氣循環股中常見，但本次因 Reddit 與 StockTwits 無法取得，散戶面的判斷僅依賴少數新聞與單一快照，不足以確認背離。</p>
+<h2>資料限制</h2>
+<ol>
+<li>Reddit、StockTwits 無法存取，散戶聲量與傾向無法量化。</li>
+<li>yfinance insider 無資料，無法計算 6 個月淨買賣金額。</li>
+<li>股價快照互相矛盾 (108 / 125 / 143 TWD)，分析師目標價的部分數字也與股價不符 (例如 360 TWD)。</li>
+<li>目標價變動的日期與幣別多數不明，僅能當作方向性參考。</li>
+<li>大股東申讓資料來自新聞，未對照 MOPS 原始申報。</li>
+</ol>
+<p>SENTIMENT REPORT COMPLETE</p></div>
+        </div>
+      </div>
+    </details>
+
+    <details class="mb-4 border border-slate-200 rounded">
+      <summary class="bg-slate-50 px-4 py-2 font-semibold">Phase 2 — Bull vs Bear 辯論</summary>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+        <div>
+          <h4 class="font-bold text-green-700 mb-2">🐂 多方 (Bull)</h4>
+          <div class="agent-prose text-sm bg-green-50 p-3 rounded border border-green-200"><h1>Bull case round 1 — 2344.TW</h1>
+<h2>Thesis（一句話）</h2>
+<p>華邦電正處於記憶體供需結構性反轉的早期階段，2026Q3 已創造 70.6% 毛利率與淨現金 468.5 億 TWD 的財務實力，而股價因短線恐慌已回落至 Trailing P/E 5.6x、2026E P/E 3.5x，提供極佳的風險報酬比進場點。</p>
+<h2>Growth drivers</h2>
+<ul>
+<li>2026Q3 營收 823.3 億 TWD，QoQ +37.6%、YoY +278.2%；10 月單月營收 293.6 億，YoY +257%，前 10 月累計年增 195.4%，成長動能並未中斷（news.md）。</li>
+<li>管理層於法說會明確表示高容量 NOR Flash 與客製化記憶體供不應求態勢將延續至 2027 年；11/10 董事長再表示主要雲端服務商 2027–2028 年 AI 資料中心建置「大致已鎖定」，是本期最強的需求能見度訊號（news.md）。</li>
+<li>十銓預估 2026Q4 至 2027Q1 供給最吃緊；SanDisk 11 月 NAND 合約價調漲約 50%，顯示企業端報價續強（news.md Peer signals）。</li>
+<li>董事會通過高雄 12 吋廠 Module B 擴建，資本支出約 731.63 億 TWD，加上收購英飛凌 NOR Flash/F-RAM 事業（Spansion 品牌），是公司在景氣上行期主動擴大產品線與產能的信心表態（news.md）。</li>
+</ul>
+<h2>Moat</h2>
+<p>華邦電在利基型 DRAM 與 NOR Flash（工控、車用、安控）有長期認證與高轉換成本客戶基礎，非單純商規記憶體競爭。財務面的護城河更明確：2026Q3 淨現金 468.5 億 TWD、負債權益比僅 19.1%、利息保障倍數約 62x（fundamentals.md），使公司能在景氣上行期持續投資擴產，而資本結構較弱的同業難以同步擴產，形成供給端的相對優勢。ROE 44.4%、ROIC 約 42%，顯示現階段的高利潤率並非單純一次性，而是營運槓桿疊加產能利用率回升所致。</p>
+<h2>Upside scenario</h2>
+<ul>
+<li>Base：以 2026E EPS 25.2 TWD（yfinance epsCurrentYear）× 保守循環折價 P/E 8x（遠低於同業估計 15–25x）= 201.6 TWD，較現價 89.2 TWD 有 +126% 上行空間。</li>
+<li>分析師共識：8 位分析師目標價中位數 221.5 TWD（均值 219.6 TWD），較現價 +148%，且 7 buy / 1 hold / 0 sell（sentiment.md），無任何賣出評等。</li>
+<li>Bull：若 2027 年盈餘接近 forwardEps 50.2 TWD（yfinance），即使給予保守 6x P/E（反映循環股折價），目標價約 301 TWD，+238%；對照分析師目標價區間上緣 360 TWD，隱含 +304%。</li>
+<li>相對估值：EV/EBITDA 3.3–3.6x、P/FCF 6.6x、P/B 1.85–1.94x，均顯著低於估計同業區間（8–12x／15–20x），即使僅回歸至同業下緣，亦有倍數重估空間。</li>
+</ul>
+<h2>Catalysts（dated）</h2>
+<ul>
+<li>約 12/05–12/10：11 月月營收公告——檢驗 YoY 是否維持三位數成長。</li>
+<li>約 12/01–12/05：TrendForce 公布 2027Q1 合約價預測，若仍維持正成長即駁斥「急速反轉」敘事。</li>
+<li>2027-02-11：2026Q4 財報公布（EPS 預估 10.1 TWD）。</li>
+<li>2027 下半年：英飛凌 NOR Flash/F-RAM 併購案交割，擴大 Spansion 品牌產品線。</li>
+<li>2029 下半年起：高雄 Module B 小量出貨，2030 年全面開出，長期產能題材。</li>
+</ul>
+<h2>Tactical（technical）</h2>
+<p>RSI14 已達 22.13 並連續 5 日低於 30，屬深度超賣；BB %B 僅 0.03，股價貼近下軌，歷史上循環股在此區間常見技術性反彈。11/20 成交量為 10 日均量 1.26 倍，屬溫和放量而非恐慌性爆量出清，顯示賣壓尚未達極端耗盡但也未再惡化。12 個月報酬仍 +51.2%，長線趨勢未破壞。可將 11/20 低點 88.2 作為結構性停損參考，若守住該位置，超賣反彈搭配基本面催化劑（12 月營收、TrendForce 報價）具備技術與基本面同步改善的條件。</p>
+<h2>Rebuttal to bear（無既有 round 0 bear 報告，針對四份 Phase-1 報告中隱含的空方論點逐一反駁）</h2>
+<ul>
+<li>空方論點：「毛利率 70.6%、營益率 53.5% 是循環高點，2023 年曾虧損，不可持續。」<br />
+  反駁：即便獲利回落至 FY2022 高峰水準（毛利率 45.5%、營益率 17.3%），現價對應的 TTM P/E 5.6x、2026E P/E 3.5x 仍提供巨大安全邊際；且 TrendForce、SanDisk、十銓等多方資料顯示供給吃緊延續至 2027，非單純單季異常。</li>
+<li>空方論點：「技術面空頭排列，跌破所有均線，動能持續惡化。」<br />
+  反駁：RSI 已進入極端超賣且 BB %B 貼近下軌，12 個月報酬仍為正，屬於循環股恐慌拋售後的經典反彈前兆，而非結構性基本面惡化。</li>
+<li>空方論點：「董事長親口說價格不該再以此速度上升，是見頂訊號。」<br />
+  反駁：該發言是對漲幅節奏的提醒，而非反轉宣告；公司同期通過 731.63 億元擴產案與跨國併購，行動與財務承諾顯示管理層對中長期需求仍有信心。</li>
+<li>空方論點：「外資連續賣超、大股東華新上半年申讓減碼，籌碼偏空。」<br />
+  反駁：華新申讓數據為 2026 上半年、早於 Q3 財報優於預期前；機構評等仍維持 7 buy/1 hold/0 sell，無一家下修至賣出，籌碼面雜訊不改變基本面趨勢。</li>
+<li>空方論點：「應收帳款暴增 207%、股東權益變動 171 億來源不明，盈餘品質存疑。」<br />
+  反駁：應收帳款成長幅度與營收成長（QoQ +37.6%）大致同步，非異常脫鉤；股東權益增加中 351.9 億來自保留盈餘，即真實獲利累積，而非會計操作。</li>
+</ul>
+<h2>Confidence</h2>
+<p>7/10。基本面與供需催化劑證據扎實（管理層指引、TrendForce、同業報價），估值安全邊際極大；主要風險在於技術面與籌碼面短期仍偏空，需 12 月營收與合約價數據確認趨勢未反轉。</p>
+<p>BULL ROUND 1 COMPLETE</p></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-red-700 mb-2">🐻 空方 (Bear)</h4>
+          <div class="agent-prose text-sm bg-red-50 p-3 rounded border border-red-200"><h1>Bear case round 1 — 2344.TW</h1>
+<h2>Thesis (1 句)</h2>
+<p>華邦電目前的「超低本益比」是記憶體循環獲利見頂的典型價值陷阱，現貨價已轉弱、公司自己的董事長兩度公開示警價格見頂、技術面呈現加速破底的空頭排列，風險報酬明顯偏向避開或做空，而非逢低買進。</p>
+<h2>需求 / 市場風險</h2>
+<ul>
+<li><strong>現貨價領先轉弱</strong>: 消費型 NAND 現貨近兩週下跌約 20% (Morgan Stanley)，商品級 NAND 在 21 個月上漲後於 10 月首度停止攀升，三大 DRAM 現貨均價下跌 2.1–4.1%，512Gb TLC NAND 晶圓現貨 10/5–11/2 下跌 14.2%。現貨是合約價的領先指標，趨勢已轉向。</li>
+<li><strong>管理層自曝風險</strong>: 董事長本人於 11/5、11/7 兩度公開表示「記憶體價格與獲利不應再以此速度上升」、「期望價格已經見頂」。由公司內部主動發出的見頂訊號，比任何外部分析更具說服力。</li>
+<li><strong>行動 DRAM 談判停滯</strong>，消費端需求疲弱；TrendForce 11/18 週報雖稱合約價仍漲，但漲幅遞減 (二階導數轉負)，市場定價重點已轉向。</li>
+<li><strong>中國供給追趕</strong>: CXMT 新一代 DRAM 技術進展，是 11/3 股價重挫的導火線之一，中長期是利基型 DRAM/NOR 的結構性供給威脅。</li>
+<li><strong>歷史先例</strong>: FY2023 公司即因循環反轉而虧損 (淨損 11.5 億)，三年營收 CAGR 為 -1.8%，證明獲利高度循環、不具穩定性。</li>
+</ul>
+<h2>利潤率 / 現金流風險</h2>
+<ul>
+<li>毛利率由 FY2023 的 29.9% 飆升至 2026Q3 的 70.6%，營業利益率由 FY2024 的 0.6% 衝到 53.5%，屬極端週期高點，均值回歸風險高。</li>
+<li>CapEx 急速擴張: TTM 266.7 億，其中 2026Q3 單季即達 160.7 億 (遠超前四季合計 106.0 億)；董事會另核准高雄 12 吋廠 Module B 擴建 731.63 億，2026 全年資本支出預算約 395 億。擴產本身會在未來加劇供給，壓縮公司自己日後的定價能力，形成「用擴產自我摧毀景氣」的風險。</li>
+<li>FCF/NI (TTM) 僅 0.82，低於 0.9 健康門檻，一旦景氣轉弱而擴產承諾持續，固定成本與資本支出壓力將放大。</li>
+<li>應收帳款由 160.7 億暴增至 493.1 億 (+207%)，遠超營收成長幅度，收款品質待驗證。</li>
+<li>2026Q3 EPS 7.49 低於預期 7.74 (-3.2%)，在營收與毛利率雙創新高之下仍未達預期，暗示費用或稅負壓力已侵蝕部分營運槓桿紅利。</li>
+<li>股東權益單季增加 523.1 億中，約 171.2 億來源未揭示 (非股數增加)，獲利品質存疑。</li>
+</ul>
+<h2>估值風險</h2>
+<ul>
+<li>現價 89.2 TWD，Trailing P/E 僅 5.6x，但這是「峰值盈餘」除出來的假象。以循環內較正常化的獲利水準衡量 (FY2022–2025 四年平均 EPS 約 0.9 TWD)，即使給予 10x 的週期性可比估值，理論公允價僅約 9 TWD，較現價下跌 90% — 此為極端情境，用以說明目前估值完全依賴「盈餘維持在歷史最高速」的假設。</li>
+<li>較合理的中性熊市情境: 若 2027 年獲利隨現貨價轉弱而回落至接近 FY2025 水準 (EPS 約 1–5 TWD)，以景氣股谷底常見的 8x P/E 計算，目標價約 8–40 TWD，較現價下跌 55–91%。</li>
+<li>forwardEps (50.2) 與 epsCurrentYear (25.2) 兩者落差近一倍，連 fundamentals 報告本身都標註「高度依賴分析師預估、可信度低」，不應作為支撐現價的依據。</li>
+</ul>
+<h2>競爭 / 監管</h2>
+<ul>
+<li>收購英飛凌 NOR/F-RAM 事業 (Spansion 品牌) 預計 2027 下半年交割，屬長期題材但短期無獲利貢獻，且有整合與時程不確定性。</li>
+<li>Section 232 半導體關稅 25% (2026-01-15 生效) 為既有成本負擔。</li>
+<li>同業齊跌驗證非單一公司問題: Micron 11/5 單日 -17.5% 並暫停台灣 45 億美元擴廠計畫 (AI 資本支出放緩疑慮)，SK hynix、Samsung 同期各跌 25.8%/18.7%，顯示整個記憶體板塊正在重新定價，而非華邦電個別超跌。</li>
+</ul>
+<h2>戰術面 (技術)</h2>
+<p>關鍵破底位 <strong>$88.20</strong> (11/20 盤中低點)；跌破後下一支撐僅剩 BB 下軌 $86.16，再下即無明確結構支撐，理論上看至 52 週低點 $52.20。價格已低於 MA20/50/200 三線 (-33.9%/-42.9%/-37.8%)，MA20 已於 11/17 下穿 MA200，MA50 與 MA200 差距由 19.85 收斂至 12.77，死亡交叉風險上升。RSI14=22.1 連續 5 日超賣但無底背離，MACD 柱狀體連續 6 日擴大，空方動能仍在加速，非反轉訊號。ATR14=10.49 (11.8% of price)，波動極高，部位需嚴控。</p>
+<h2>反駁多方論點</h2>
+<p>回合 1 無先前多方報告，以下反駁基礎資料中隱含的多頭論點:<br />
+- 多方可能稱: 「Trailing P/E 5.6x、forward P/E 1.8x 極度便宜」<br />
+  反駁: 這正是循環股的典型價值陷阱 — 本益比在獲利高峰時最低，因為市場已預期獲利將回落；forwardEps 與 2026E 估計之間本身矛盾，不可信。<br />
+- 多方可能稱: 「淨現金 468.5 億、流動比率 2.50，資產負債表極健康」<br />
+  反駁: 資產負債表健康不等於股價不會修正，beta 2.11 代表下行同樣劇烈；且 171.2 億股東權益變動未解釋，獲利品質有疑點。<br />
+- 多方可能稱: 「管理層看好 NOR/客製記憶體供需緊俏至 2027，雲端 AI 資料中心需求已鎖定」<br />
+  反駁: 同一位董事長在 11/5、11/7 兩度公開警告價格不應再漲、價格已見頂，與其樂觀長期敘事自相矛盾；消費型 NAND 現貨兩週跌 20% 是更即時、更高頻的反向證據。<br />
+- 多方可能稱: 「分析師共識 7 buy/1 hold，目標價均值 219.6」<br />
+  反駁: 目標價明顯滯後於法說後賣壓與現貨轉弱的最新現實，已出現首次降評，中信、國票投顧同步下修目標價，外資連續 3 日賣超合計 44,113 張，籌碼面與分析師樂觀背離。</p>
+<h2>Confidence</h2>
+<p>7/10。技術面 (空頭排列加速、動能擴大)、現貨價轉弱、管理層自曝見頂、同業齊跌四項獨立證據方向一致，具說服力。扣分項: RSI 深度超賣加上 beta 2.11 可能引發劇烈反彈，淨現金資產負債表限制極端下行，且分析師共識仍強，構成反向敘事風險。</p>
+<p>BEAR ROUND 1 COMPLETE</p></div>
+        </div>
+      </div>
+    </details>
+
+    <details class="mb-4 border border-slate-200 rounded">
+      <summary class="bg-slate-50 px-4 py-2 font-semibold">Phase 4 — 風險辯論 (Risk debate)</summary>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 p-4">
+        <div>
+          <h4 class="font-bold text-red-700 mb-2">⚡ 進攻 (Aggressive)</h4>
+          <div class="agent-prose text-sm bg-red-50 p-3 rounded border border-red-200"><h1>Aggressive risk view — 2344.TW</h1>
+<h2>Where trader is too cautious</h2>
+<ul>
+<li>0% 新倉是把整個反轉段的 alpha 讓給別人。RSI14=22.13 已連續 5 日超賣、股價較高點跌 61.8%，淨現金 468.5 億、D/E 19.1%，資產面幾乎沒有破產風險——這正是「深度錯殺」的教科書設定，不是等反彈確認後才進場的時機。</li>
+<li>進場條件設在「收盤站回 98–108」或「RSI 底背離」才試單 1/4 倉，等於要求股價先漲 10–20% 才准買，alpha 最肥的那一段已經被規則排除在外。</li>
+<li>既有持股者的風控線 88.20 距現價僅 1.1%，在 ATR14=10.49（11.8% of price）、20 日年化波動 89.2% 的股票上，這個距離連一次正常日內波動都扛不住，真正風險是「太緊」而非「太鬆」。</li>
+</ul>
+<h2>Recommended adjustments</h2>
+<ul>
+<li>Size：0% → 以核心倉位的 1/8（約試單等級）先行建立 tracking long，而非等兩組觸發條件同時成立。</li>
+<li>Stop：既有持股者的 88.20 太近；若要抱住這個 beta 2.11 的高波動名稱，應以 86.16（BB 下軌）甚至更低作為真正停損，給波動呼吸空間，1.1% 的緩衝只會被雜訊洗出去。</li>
+<li>Entry：現在分批小額布局優於乾等；等 TrendForce 數據（12/1–12/5）公布後市場早已反應，進場價會貴 10% 以上。</li>
+<li>Consider：若 TAIFEX 個股選擇權流動性足夠，用買權多頭價差（例如 2027/01 到期、95/115 strike）取代現股，用固定小額權利金去博非對稱反彈，完全避開 89% 年化波動帶來的尾部風險。</li>
+</ul>
+<h2>Asymmetry argument</h2>
+<p>Worst case max loss（1/8 倉現股，停損 86.16）：約為該倉位名目金額的 3.4%，以 100 萬倉位計僅虧約 3.4 萬。Realistic upside（反彈至 MA20 134.86 區間）：約 +51%，以同倉位計約賺 51 萬。Ratio：B/A ≈ 15。即使打折以保守目標 108（+21%）計算，B/A 仍約 6，遠優於多方論述中的風險報酬比。</p>
+<h2>What I'd push for</h2>
+<p>在嚴守小額試單與明確停損（86.16，非 88.20）的前提下，現在就用 1/8 倉位切入，而不是等兩組觸發條件都到齊才行動；若流動性允許，優先用買權價差把最大損失鎖定在權利金，用最小的絕對金額曝險去換取反轉段最肥的那一截報酬，這比「完全空手等確認」在風險報酬上明顯更優。</p>
+<p>AGGRESSIVE VIEW COMPLETE</p></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-blue-700 mb-2">🛡️ 保守 (Conservative)</h4>
+          <div class="agent-prose text-sm bg-blue-50 p-3 rounded border border-blue-200"><h1>Conservative risk view — 2344.TW</h1>
+<h2>Where trader is too aggressive</h2>
+<ul>
+<li>交易提案已是 AVOID + 0% 新倉，方向上不算激進，但「既有持股者」段落仍有缺口：僅說「降到核心持股以下水位」，沒有量化上限（不超過原倉位幾分之幾？分幾批減碼？），執行時容易拖延。</li>
+<li>文件把 $88.20 稱為「風險控管參考線」而非停損，但 2×ATR 真實下檔在 $68.2，兩者相差 $21（23.5%）。若持有者把 $88.20 誤讀為停損價，實際承受的波動遠大於感知。</li>
+<li>轉 LONG 觸發條件（月營收月增轉正 + RSI 底背離 或 站回 $98–108）允許單一條件即可用約 1/4 倉位試單，但在 MACD 柱狀體連 6 日擴大、死亡交叉接近成形的加速空頭排列下，單一指標假訊號率偏高，容易在反彈初期被騙進場。</li>
+<li>Beta 2.11、20 日年化波動 89.2% 屬系統中最高波動族群之一，任何「試單」規模都需再對齊帳戶整體波動預算，文件未給出具體換算。</li>
+</ul>
+<h2>Tail scenarios</h2>
+<ul>
+<li>Scenario A（機率約 35%）：死亡交叉確認（MA50 156.25 下穿 MA200 143.48）+ 11 月營收月減 → 價格測試 2×ATR 支撐 $68.2，較現價再跌 23.5%。</li>
+<li>Scenario B（機率約 30%）：TrendForce 2027Q1 合約價轉負、現貨跌勢蔓延，重演 FY2023 虧損循環（FY2023 淨損 11.5 億、2025H1 淨損），EPS 轉負使 P/E 失去估值支撐 → 股價下探 52 週低點附近 $52.20，較現價再跌 41.5%。</li>
+<li>Scenario C（機率約 20%）：Micron/SK hynix/Samsung 同步下修財測，或聯準會鷹派引發美股科技股系統性去槓桿 → beta 2.11 放大系統性賣壓，與費半/台股同步破底，與個股基本面無關的連動下殺。</li>
+</ul>
+<h2>Recommended adjustments</h2>
+<ul>
+<li>Size：既有持股「降到核心以下」改為明確上限：不超過原倉位 1/3，分兩批執行（跌破 $88.20 執行第一批，跌破 $86.16 執行第二批）。</li>
+<li>Stop：$88.20「參考線」改為真實硬停損 $85.50（$86.16 BB 下軌之下留跳空緩衝），避免與 2×ATR 下檔混淆。</li>
+<li>Entry：轉 LONG 1/4 倉需同時滿足「月營收轉正」與「RSI 底背離或連續 2 日站穩 $98 以上」兩項，不接受單一條件觸發。</li>
+<li>Consider：若同時持有其他記憶體/半導體曝險（Micron、SK hynix、台灣半導體 ETF），用費半期貨或台灣 50 期貨空頭做部分對沖，降低 beta 2.11 帶來的系統性集中度。</li>
+</ul>
+<h2>Position-level $ risk</h2>
+<p>以現價 $89.20 到「參考線」$88.20 計算，每股僅 $1（1.1%）— 此數字會低估真實風險。若用 2×ATR 真實下檔 $68.2 計算，每股潛在損失 $21（23.5%）；在 beta 2.11、年化波動 89.2% 下，此跌幅在 2–3 週決策窗口內並非極端情境。對於核心持股以下的縮小倉位，此風險尚可接受；但若仍維持原倉位不降，則不可接受。</p>
+<h2>What I'd push for</h2>
+<p>既有持股者應立即將倉位降到不超過原倉位 1/3，並把 $88.20 從「參考線」升級為可執行的量化減碼觸發點，同時把真正停損設在 $85.50 以涵蓋跳空風險；轉 LONG 的 1/4 倉試單需雙重確認才可執行，不要在單一指標轉強時就重新加碼，因為死亡交叉與記憶體下行循環的歷史先例（FY2023、2025H1 虧損）顯示下檔可以比技術面線性外推更深更快。</p>
+<p>CONSERVATIVE VIEW COMPLETE</p></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-slate-700 mb-2">⚖️ 中立 (Neutral)</h4>
+          <div class="agent-prose text-sm bg-slate-100 p-3 rounded border border-slate-300"><h1>Neutral risk view — 2344.TW</h1>
+<h2>Points of agreement（雙方)</h2>
+<ul>
+<li>$88.20 不該被當作可執行停損：aggressive 認為太近（1.1% 緩衝扛不住 ATR14=11.8%、年化波動89.2%），conservative 認為標籤誤導（真實2×ATR下檔在$68.2，差23.5%）。結論一致：需要一個明確、可執行的數字，而非模糊「參考線」。</li>
+<li>既有持股的減碼規則需要量化，不能只寫「降到核心以下」。</li>
+<li>雙方都傾向用「有限風險工具」處理高波動曝險（call spread 或期貨對沖)，而非放大裸曝險。</li>
+</ul>
+<h2>Aggressive overreach</h2>
+<ul>
+<li>Where：主張現在就用1/8倉位做新倉 tracking long，停損86.16。</li>
+<li>Why：技術面仍是加速破底（MACD柱狀體連6日擴大、RSI超賣無底背離、量能非投降式），研究經理AVOID的前提——「尚無止穩證據」——並未改變。用「深度錯殺」敘事去搶在確認訊號前進場，屬於逆勢偏誤；51%反彈至MA20的「realistic upside」缺乏支撐，只是樂觀假設，B/A=15的比例建立在未驗證的目標價上，高估了機率加權後的真實期望值。</li>
+</ul>
+<h2>Conservative overreach</h2>
+<ul>
+<li>Where：35%/30%/20%的情境機率、以及要求轉LONG雙重確認同時加上另外建議用費半/台灣50期貨做系統性對沖。</li>
+<li>Why：情境機率精確到個位數卻無方法論支撐，製造假精確感；對一個「降到核心以下」的縮小持股，額外要求期貨對沖層，操作複雜度與原提案的保守定位不成比例，屬於過度防禦。</li>
+</ul>
+<h2>Balanced adjustment proposal</h2>
+<ul>
+<li>Size：既有持股降至不超過原倉位1/3，分兩批（跌破$88.20第一批、跌破$86.16第二批)；不新開倉（拒絕aggressive的1/8 tracking long，確認訊號未到)。</li>
+<li>Stop：真實硬停損設在$85.50（BB下軌$86.16再留跳空緩衝)。</li>
+<li>Entry（轉LONG)：維持原提案「月營收轉正」+「RSI底背離或連續2日站穩$98」雙條件，不接受單一指標觸發，但不加碼為更嚴格的雙技術指標。</li>
+<li>Hedge：非強制；若持股超過1/3上限或流動性許可，可用小額買權價差（95/115, 2027/01）鎖定反彈曝險，不建議另開期貨空頭對沖一個本已在縮小的倉位。</li>
+<li>Time horizon：維持2–3週決策窗，關鍵驗證點12/1–12/5 TrendForce、12/10前月營收、2027-02-11財報。</li>
+</ul>
+<h2>Net $ risk if stop hits</h2>
+<p>以NAV 100萬為例，減碼後持股≈33.3萬名目，現價$89.20至$85.50停損約-4.1% → 約虧1.37萬（≈NAV的1.4%)。</p>
+<h2>Net $ upside at T1 / T2</h2>
+<p>轉LONG確認後以1/4倉位（≈25萬）計算：T1=$98（+9.9%）≈+2.5萬；T2=MA20 $134.86（+51.3%）≈+12.8萬。</p>
+<p>NEUTRAL VIEW COMPLETE</p></div>
+        </div>
+      </div>
+    </details>
+
+  </div>
+
+  <script>
+    (function() {
+      var d = {};
+      if (!d.dates) return;
+      var traces = [
+        {x: d.dates, y: d.close, name: 'Close',  line: {color: '#1f2937', width: 2}},
+        {x: d.dates, y: d.ma20,  name: 'MA20',   line: {color: '#0ea5e9', width: 1, dash: 'dot'}},
+        {x: d.dates, y: d.ma50,  name: 'MA50',   line: {color: '#f59e0b', width: 1, dash: 'dot'}},
+        {x: d.dates, y: d.ma200, name: 'MA200',  line: {color: '#ef4444', width: 1, dash: 'dash'}}
+      ];
+      var layout = {
+        margin: {l: 50, r: 20, t: 10, b: 40},
+        legend: {orientation: 'h', y: -0.15},
+        xaxis: {showgrid: false},
+        yaxis: {title: '價格 ($)'}
+      };
+      Plotly.newPlot('chart-2344_TW', traces, layout, {displayModeBar: false, responsive: true});
+    })();
+  </script>
+
+</section>
+
+
+<section id="ticker-8299_TWO" class="mb-10 bg-white rounded-lg shadow overflow-hidden">
+
+  <div class="flex items-start justify-between p-6 border-b border-slate-200 verdict-HOLD">
+    <div>
+      <h2 class="text-3xl font-bold">8299.TWO</h2>
+      <p class="text-sm mt-1 opacity-80">群聯 (8299) — NAND 控制晶片</p>
+    </div>
+    <div class="text-right">
+      <div class="text-4xl font-bold">HOLD</div>
+      <div class="text-sm opacity-80 mt-1">REJECT</div>
+    </div>
+  </div>
+
+  <div class="p-6 grid grid-cols-1 lg:grid-cols-2 gap-6">
+
+    <div>
+      <h3 class="text-lg font-bold mb-2">價格 + 技術指標 (2 年)</h3>
+      <div id="chart-8299_TWO" style="height: 380px;"></div>
+    </div>
+
+    <div>
+      <h3 class="text-lg font-bold mb-2">最終決策 (Final decision)</h3>
+      <div class="agent-prose text-sm bg-slate-50 p-4 rounded border border-slate-200">
+        <p>FINAL TRANSACTION PROPOSAL: <strong>HOLD</strong></p>
+<h1>Final decision — 8299.TWO as of 2026-11-21</h1>
+<h2>FINAL TRANSACTION PROPOSAL: <strong>HOLD</strong></h2>
+<h2>Verdict</h2>
+<p>REJECT</p>
+<h2>部位判定與否決理由</h2>
+<p>8299.TWO 不在 <code>held_tickers.txt</code>,屬新倉,走 A 框架。問題是「該不該進」,答案是不進:多、空、選擇權戰術倉一律不開。這等於採納交易員的 AVOID 結論,並否決激進方與中立方提出的 call spread。</p>
+<p>否決的關鍵有三點:<br />
+1. <strong>基本面核心矛盾未解。</strong> 2027 正常化 EPS 是 150 還是 250、存貨 1117.7億 與應收 607.8億 是資產還是跌價負擔,都要等 11 月營收與合約價才有答案。TTM OCF -79.4億 對比淨利 765.7億,盈餘品質尚未驗證。<br />
+2. <strong>多空 R:R 都不成立。</strong> 做多是在空頭排列、死亡交叉、放量破底中接刀;放空則面對 RSI14 27.58 超賣、45.6億 庫藏股與約 15% 急彈前例。ATR14 約 9.2%,任何合理停損都太寬。<br />
+3. <strong>call spread 的執行前提未經查證。</strong> 激進方指定 2026-12-19 到期,但該日是週六;台股個股選擇權通常在當月第三個週三結算(12/16),會落在 12/17 Micron 財報之前,「雙催化劑窗口」可能只涵蓋一個。8299 個股選擇權是否掛牌、流動性與價差如何,三份報告都沒有數據;「放大 3–5 倍」是假設,不是報價。</p>
+<h2>Final trade card</h2>
+<p>不適用(REJECT,無新倉)。</p>
+<h2>Risk debate adjudication</h2>
+<ul>
+<li>Aggressive's strongest point: 轉多條件要求站穩 1,535 才進場,屆時反彈空間已被吃掉大半;超賣均值回歸本來不需要等基本面落地。</li>
+<li>Conservative's strongest point: ±10% 漲跌幅限制加上 9.2% 的 ATR,使 1,310 停損只是名義保護;11/06 跳空 -9.9% 即為前例,實際滑價可達名義損失的數倍。</li>
+<li>Net: I weight conservative more here because 空方證據有日期、有出處且方向一致,多方關鍵論點(AI 占比逾 50%、2027 鎖量 70%)仍是媒體轉述。激進方的不對稱性論證建立在未經查證的工具上。中立方 0.3–0.5% NAV 的折衷雖然風險小,但同樣依賴該工具,且期望值沒有數據支撐,不採納。保守方把跌停滑價當成預設結果是高估,但對新倉而言不影響結論。</li>
+</ul>
+<h2>論點支柱</h2>
+<p>此處為「迴避」論點的支柱。</p>
+<table>
+<thead>
+<tr>
+<th>支柱</th>
+<th>當初的預期</th>
+<th>現況</th>
+<th>判定</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>NAND 價格週期見頂</td>
+<td>合約價動能轉弱</td>
+<td>TrendForce 將 Q4 季增由 15–20% 砍至 8–13%,2027 Q1 轉季減 0–5%</td>
+<td>成立</td>
+</tr>
+<tr>
+<td>盈餘品質存疑</td>
+<td>現金流與淨利背離</td>
+<td>TTM OCF -79.4億、FCF -123.3億;DIO 約 294 天</td>
+<td>成立</td>
+</tr>
+<tr>
+<td>技術結構偏空</td>
+<td>空頭排列延續</td>
+<td>MA20&lt;MA50&lt;MA200,11/20 放量收低;但 RSI14 27.58 已超賣</td>
+<td>觀察中</td>
+</tr>
+<tr>
+<td>放空 R:R 不佳</td>
+<td>下檔有估值與庫藏股支撐</td>
+<td>現價 P/E 低、庫藏股執行至 2027-01-05</td>
+<td>成立</td>
+</tr>
+</tbody>
+</table>
+<h2>論點失效條件</h2>
+<p>與價格紀律分開;以下任一成立,就不必等價位訊號,直接重新評估。<br />
+- 若 11 月營收 MoM 持平或轉正,且管理層毛利率展望維持 55% 以上,「週期見頂」支柱失效 → 重啟做多評估。<br />
+- 若 Q4 財報 OCF 轉正且存貨金額季減,「盈餘品質」支柱失效 → 重啟做多評估。<br />
+- 若法說會正式證實 2027 年 NAND 鎖量約 70%、AI 營收占比逾 50%,多方論點由轉述升級為已驗證 → 重啟做多評估。<br />
+- 若 TrendForce 11 月合約價實質下調且 eSSD 預估跟進下修,同時收盤跌破 1,310 → 轉為評估小部位放空。</p>
+<h2>Monitoring trigger</h2>
+<p>If 收盤站回 1,455 且 MACD histogram 收斂,或收盤跌破 1,310,任一發生即重跑完整流程。若屆時考慮選擇權,須先取得實際掛牌、到期日與報價。</p>
+<h2>Catalyst calendar</h2>
+<ul>
+<li>2026-12-05 至 2026-12-10 — 11 月營收公布</li>
+<li>2026-12-17 — Micron 財報</li>
+<li>2027-01-05 — 庫藏股執行期限屆滿</li>
+<li>2027 年 3 月前後 — Q4/年報(OCF、存貨、應收)</li>
+<li>持續追蹤 — TrendForce NAND 合約價修正</li>
+</ul>
+<p>FINAL DECISION COMPLETE</p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="px-6 pb-6">
+
+    <details class="mb-4 border border-slate-200 rounded">
+      <summary class="bg-slate-50 px-4 py-2 font-semibold">投資計劃 (Research manager)</summary>
+      <div class="agent-prose p-4 text-sm"><h1>Investment plan — 8299.TWO as of 2026-11-21</h1>
+<h2>Directional stance</h2>
+<p>SHORT_OR_AVOID — conviction LOW（以「迴避新多單」為主，不建議積極放空）</p>
+<h2>Crux of debate</h2>
+<ol>
+<li>Crux 1：2027 年正常化 EPS 落在哪裡。TrendForce 已將 Q4 NAND 合約價季增預估由 15–20% 砍至 8–13%，2027 Q1 轉為季減 0–5%，2027 Q2 起全面下行；管理層自己也表示毛利率守住 50% 以上即可。市場給的 forward EPS 295.2 很可能是降評前的舊數字，到底是 150 還是 250，直接決定 P/E 4x 算不算便宜。</li>
+<li>Crux 2：存貨 1117.7億（DIO 約 294 天）與應收 607.8億 是低成本、已鎖量的資產，還是會被提列跌價的負擔。TTM OCF -79.4億、FCF -123.3億，與淨利 765.7億 嚴重背離；Q4 營運資金能否回收，是盈餘品質的試金石。</li>
+<li>Crux 3：板塊性去庫存要多久，會不會延伸到 AI/eSSD 端。「AI 占比逾 50%」「2027 年 NAND 已鎖約 70%」都只是 Digitimes 轉述，eSSD Q4 +15–20% 的預估則是「尚未看到修正」，不等於「已確認」。</li>
+</ol>
+<h2>Where the bull is right</h2>
+<ul>
+<li>即使用偏保守的正常化 EPS 計算（毛利率 50%、淨利率 25% 上下），現價隱含的 P/E 仍只有個位數高段，下檔並不是無底。</li>
+<li>公司仍有淨現金 19.9億、流動比率 2.29，負債權益比 21.6%，短期沒有償債危機。</li>
+<li>RSI14 27.58、BB %B 0.04，屬超賣；11/06 前例顯示可能出現約 15% 的急彈。另有 45.6億 庫藏股（至 2027-01-05）與除息事件提供支撐。</li>
+<li>Q4 合約價預估下修後仍是季增，真正的價格反轉要等到 2027 年。</li>
+</ul>
+<h2>Where the bear is right</h2>
+<ul>
+<li>這是週期峰值的盈餘：毛利率已從 65.3% 掉到 59.9%，公司自承低成本庫存效益正在淡化。營收 QoQ 由 +65.7% 降至 +26.8%，Q3 EPS 也首度未達預期。</li>
+<li>現金轉換失靈，加上 2026 年舉債約 582億、稀釋股數連續上升，都是有日期、有出處的硬數據。</li>
+<li>技術面全數偏空：空頭排列、11/03 死亡交叉、lower highs/lows、11/20 放量收在低點、MACD histogram 擴大。11/06 那次超賣反彈也沒能收復跌破的區間。</li>
+<li>多方的下檔參照有誤。1,357 是一份「減碼」報告的目標價，不是估值底線；forward EPS 295.2 也可能還沒反映這波下修。</li>
+</ul>
+<h2>Net verdict (3-5 sentences)</h2>
+<p>空方的證據大多有日期、有出處，方向也一致（TrendForce 下修、現貨價跌 23%、毛利率出現拐點、現金流背離、技術面放量破底）。多方最關鍵的論點（AI 占比、供給鎖定、eSSD 不受影響）則多為媒體轉述，尚未驗證。不過空方估值有內部矛盾：毛利率 50% 卻配上淨利率 12%，848 的目標價過度悲觀。再加上現價 P/E 已低、有庫藏股、日波動約 9%，放空的 R:R 並不吸引人。結論是現在不該接刀，等 11 月合約價與 11 月營收落地，讓 Crux 1 與 Crux 2 有答案再說。</p>
+<h2>What would change the verdict</h2>
+<ul>
+<li>Upside trigger：11 月營收（約 12/05–12/10）MoM 持平或轉正、毛利率展望維持 55% 以上，而且收盤站回 1,455、再站穩 1,535，同時 MACD histogram 收斂。三者都成立，才轉為 NEUTRAL 或低信心 LONG。</li>
+<li>Downside trigger：收盤跌破 1,310，或 TrendForce 11 月合約價出現實質下調、eSSD 預估跟著下修。這會讓 1,000–1,100 區間的風險升高，空方信心可上調到 MEDIUM。</li>
+<li>Key data point to monitor：Q4 營業現金流與存貨變化（2027 年 3 月前後的年報），以及法說會是否正式證實 2027 年 NAND 鎖量約 70%、AI 營收占比逾 50%。</li>
+</ul>
+<h2>Position-sizing guidance (qualitative, not advice)</h2>
+<p>低信心迴避：不建立新多單，既有多單建議減碼至輕倉，並以 1,310 作為結構失效參考。不建議積極放空；若真要放空，只宜極小部位，並嚴設停損於 1,535 之上。ATR 約 9.2%、年化波動 84.5%、Beta 1.86，同樣風險預算下的部位要比一般個股小得多。超賣反彈只適合極短線、小部位操作，不改變中期判斷。</p>
+<h2>Time horizon</h2>
+<p>戰術面以數日至 3 週為主，等 11 月合約價、11 月營收與 12/17 Micron 財報。週期判斷看 1–2 季，以 2027 Q1 合約價與 Q4 財報的現金流為準。</p>
+<p>INVESTMENT PLAN COMPLETE</p></div>
+    </details>
+
+    <details class="mb-4 border border-slate-200 rounded">
+      <summary class="bg-slate-50 px-4 py-2 font-semibold">交易提案 (Trader)</summary>
+      <div class="agent-prose p-4 text-sm"><p>FINAL TRANSACTION PROPOSAL: <strong>HOLD</strong></p>
+<h1>Trade proposal — 8299.TWO as of 2026-11-21</h1>
+<h2>Direction</h2>
+<p>AVOID（不建立新多單，不建議積極放空；對應動作標記為 HOLD/觀望）</p>
+<h2>Setup</h2>
+<p>不提供進場價位。研究經理的結論是 SHORT_OR_AVOID、但信心 LOW，核心矛盾尚未解決：<br />
+- Crux 1（2027 正常化 EPS 落在 150 還是 250）與 Crux 2（存貨 1117.7億／應收 607.8億 是鎖量資產還是跌價負擔）都要等 11 月合約價、11 月營收（約 12/05–12/10）才有答案。<br />
+- 技術面全數偏空（MA20&lt;MA50&lt;MA200 空頭排列、11/03 死亡交叉、lower highs/lows、11/20 放量收在日內低檔），但現價 RSI14 27.58、BB %B 0.04 已達超賣，11/06 前例顯示可能出現約 15% 的急彈，這段期間放空的時機風險偏高。<br />
+- 空方估值本身有內部矛盾（毛利率假設 50% 卻配淨利率 12%，848 目標價過度悲觀），加上現價 P/E 已低、有 45.6億 庫藏股支撐，放空的 R:R 並不吸引人，故不接刀。</p>
+<p>若既有多單：建議減碼至輕倉，以收盤跌破 $1,310（2026-11-20 擺動低點，market.md 列為結構失效參考）作為出清訊號；1,310 之上的反彈不構成加碼理由。<br />
+若無持股：維持觀望，不新開倉（多或空皆不建議）。</p>
+<h2>Sizing</h2>
+<p>不適用（無新倉）。既有多單若未減碼，應以遠低於一般個股的風險預算執行，因 ATR14 約 NT$121（約價格 9.2%）、20 日年化波動 84.5%、Beta 1.86，日內波動 ±5% 以上為常態。</p>
+<h2>Time horizon</h2>
+<p>戰術觀察窗：數日至 3 週（等 11 月合約價、11 月營收、12/17 Micron 財報）。<br />
+週期判斷窗：1–2 季（2027 Q1 合約價與 Q4 財報現金流確認）。</p>
+<h2>Trigger</h2>
+<p>Wait for 以下任一組觀察條件成立後再評估轉為 LONG 或 SHORT：<br />
+- 轉多（NEUTRAL 或低信心 LONG）條件：11 月營收 MoM 持平或轉正、毛利率展望維持 55% 以上，且收盤站回 $1,455 並站穩 $1,535 以上，同時 MACD histogram 收斂——三者需同時成立。<br />
+- 轉空（信心上調至 MEDIUM）條件：收盤跌破 $1,310，或 TrendForce 11 月合約價出現實質下調、eSSD 預估跟進下修。<br />
+目前兩組條件皆未成立，維持觀望，不主動進場。</p>
+<h2>Invalidation</h2>
+<p>AVOID 判斷本身的失效條件：若 Q4 營運現金流轉正且存貨/應收加速去化（盈餘品質疑慮解除），或法說會證實 2027 年 NAND 鎖量約 70%、AI 營收占比逾 50%，多方論點由「媒體轉述」升級為「已驗證」，則應重新評估轉多。反之，若合約價與營收雙雙確認下行、現金流持續背離淨利，空方信心可上調，但仍須配合技術面跌破 $1,310 才具備進場條件。</p>
+<h2>Catalyst calendar</h2>
+<ul>
+<li>2026-12-05 至 2026-12-10 — 11 月營收公布（Crux 1、2 關鍵數據點）</li>
+<li>2026-12-17 — Micron 財報（NAND 產業需求/訂價訊號）</li>
+<li>2027-01-05 — 庫藏股執行期限屆滿</li>
+<li>2027 年 3 月前後 — Q4／年報，檢視 OCF、存貨、應收變化</li>
+<li>持續追蹤 — TrendForce 11 月及後續 NAND 合約價修正</li>
+</ul>
+<p>TRADE PROPOSAL COMPLETE</p></div>
+    </details>
+
+    <details class="mb-4 border border-slate-200 rounded">
+      <summary class="bg-slate-50 px-4 py-2 font-semibold">Phase 1 — 四 Analyst 報告</summary>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+        <div>
+          <h4 class="font-bold text-slate-700 mb-2">基本面 (Fundamentals)</h4>
+          <div class="agent-prose text-sm bg-slate-50 p-3 rounded"><h1>Fundamentals — 8299.TWO（群聯 Phison Electronics）as of 2026-11-21</h1>
+<p>資料來源為 yfinance 工具（info、financials、quarterly_fin、balance_sheet、quarterly_bs、cashflow、quarterly_cf、earnings_dates、insider、major_holders）。fast_info 因 Yahoo CONNECT 403 失敗，價格改用 info 內 currentPrice 1320 與 cnyes 快取（cached_at 2026-11-21 14:32 UTC）。金額單位：TWD 以 億 表示，全文不使用 B。</p>
+<h2>Executive summary</h2>
+<p>群聯 TTM 營收 2177.4億 TWD、TTM 淨利 765.7億 TWD（淨利率 35.2%），2026 Q1 至 Q3 獲利出現極端擴張，淨現金約 19.9億 TWD、流動比率 2.29，資產負債表表面穩健。但 TTM 營業現金流為 -79.4億、自由現金流為 -123.3億，2026 年 9 月底存貨 1117.7億（較 2025 年底 +214%）、應收 607.8億（+344%）、有息負債 257.8億（2025 年底僅 35.8億），盈餘品質與現金轉換明顯轉弱。估值表面極低（trailing P/E 4.1x、EV/EBITDA 3.7x），反映市場對週期高點盈餘可持續性的質疑，股價較 52 週高點 2880 下跌 54%，當日 -9.3%。</p>
+<h2>Revenue &amp; profitability</h2>
+<p><strong>營收趨勢（年度，億 TWD）</strong>：2022 年 602.6、2023 年 482.2（-20.0%）、2024 年 589.4（+22.2%）、2025 年 726.6（+23.3%）。2022 至 2025 年 3 年 CAGR 約 6.4%，2023 至 2025 年 2 年 CAGR 約 22.8%。</p>
+<p><strong>季度營收（億 TWD）</strong>：2025 Q3 181.4、Q4 228.0、2026 Q1 409.7、Q2 678.9、Q3 860.8。Q3 YoY +374.5%，Q3 QoQ +26.8%，但 Q2 QoQ 為 +65.7%，動能明顯放緩。TTM 營收約為 FY2025 的 3.0 倍，屬極端跳升，需以 MOPS 公告交叉驗證。</p>
+<p><strong>業務組成</strong>：yfinance 僅提供 longBusinessSummary（SSD 控制晶片、eMMC/UFS、USB 與記憶卡模組、工控與車用解決方案），無分部營收數據，segment mix 為 n/a。</p>
+<p><strong>獲利率趨勢</strong></p>
+<table>
+<thead>
+<tr>
+<th>期間</th>
+<th>毛利率</th>
+<th>營益率</th>
+<th>淨利率</th>
+<th>有效稅率</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FY2022</td>
+<td>28.8%</td>
+<td>11.4%</td>
+<td>9.0%</td>
+<td>14.2%</td>
+</tr>
+<tr>
+<td>FY2023</td>
+<td>33.5%</td>
+<td>7.5%</td>
+<td>7.5%</td>
+<td>11.6%</td>
+</tr>
+<tr>
+<td>FY2024</td>
+<td>32.4%</td>
+<td>6.0%</td>
+<td>13.5%</td>
+<td>18.4%</td>
+</tr>
+<tr>
+<td>FY2025</td>
+<td>34.4%</td>
+<td>11.5%</td>
+<td>12.0%</td>
+<td>14.4%</td>
+</tr>
+<tr>
+<td>2025 Q3</td>
+<td>32.6%</td>
+<td>8.4%</td>
+<td>12.3%</td>
+<td>16.2%</td>
+</tr>
+<tr>
+<td>2025 Q4</td>
+<td>41.9%</td>
+<td>14.5%</td>
+<td>20.3%</td>
+<td>11.0%</td>
+</tr>
+<tr>
+<td>2026 Q1</td>
+<td>61.8%</td>
+<td>36.7%</td>
+<td>37.0%</td>
+<td>15.2%</td>
+</tr>
+<tr>
+<td>2026 Q2</td>
+<td>65.3%</td>
+<td>38.9%</td>
+<td>38.6%</td>
+<td>15.6%</td>
+</tr>
+<tr>
+<td>2026 Q3</td>
+<td>59.9%</td>
+<td>38.5%</td>
+<td>35.5%</td>
+<td>15.1%</td>
+</tr>
+</tbody>
+</table>
+<p>營益率採 yfinance Operating Income 口徑（不含非營業收入）。yfinance EBIT 口徑 2024 為 100.2億，因含 50.7億 其他非營業收益，與本表不同。毛利率與淨利率自 Q2 高點開始回落，Q3 毛利率較 Q2 下降 5.4 個百分點，屬峰值訊號。</p>
+<p><strong>ROE / ROIC</strong>：yfinance ROE 90.3%（以平均權益計，TTM 淨利 765.7億 / 平均權益約 847.8億）。FY2025 以相同口徑推算約 16.0%（淨利 87.4億 / 平均權益 545.8億）。ROIC 為估算值：TTM 營業利益 779.2億 × (1 - 約 15% 稅率) / 期末投入資本 1196.2億（有息負債 + 權益 - 現金）約 55%。投入資本於 9 個月內擴大約 2.6 倍，期末口徑偏高，平均口徑約 80% 以上，數值僅供量級參考。</p>
+<h2>Cashflow &amp; balance sheet</h2>
+<p><strong>現金流品質（億 TWD）</strong></p>
+<table>
+<thead>
+<tr>
+<th>期間</th>
+<th>營業現金流</th>
+<th>資本支出</th>
+<th>自由現金流</th>
+<th>FCF / NI</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FY2022</td>
+<td>35.9</td>
+<td>-19.8</td>
+<td>16.1</td>
+<td>0.30</td>
+</tr>
+<tr>
+<td>FY2023</td>
+<td>-17.0</td>
+<td>-7.7</td>
+<td>-24.6</td>
+<td>-0.68</td>
+</tr>
+<tr>
+<td>FY2024</td>
+<td>20.9</td>
+<td>-16.7</td>
+<td>4.2</td>
+<td>0.05</td>
+</tr>
+<tr>
+<td>FY2025</td>
+<td>16.0</td>
+<td>-19.3</td>
+<td>-3.3</td>
+<td>-0.04</td>
+</tr>
+<tr>
+<td>TTM（2025Q4–2026Q3）</td>
+<td>-79.4</td>
+<td>-43.9</td>
+<td>-123.3</td>
+<td>-0.16</td>
+</tr>
+</tbody>
+</table>
+<p>TTM FCF margin 為 -5.7%，遠低於健康水準。2026 Q1 營業現金流 -138.5、Q2 -10.2，Q3 雖轉正至 33.9，但當季營運資金變動即達 -317.6（存貨 -202.7、應收 -238.2）。TTM OCF / NI 為 -0.10，FCF / NI 遠低於 0.9 健康標準。yfinance info 的 freeCashflow 為 -151.4億，與季度加總 -123.3億 不一致，本報告採季度加總值。</p>
+<p><strong>資產負債表（億 TWD）</strong></p>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>2025-12-31</th>
+<th>2026-09-30</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>總資產</td>
+<td>857.6</td>
+<td>2372.4</td>
+</tr>
+<tr>
+<td>現金及約當現金</td>
+<td>162.8</td>
+<td>256.5</td>
+</tr>
+<tr>
+<td>現金及短期投資</td>
+<td>177.5</td>
+<td>277.7</td>
+</tr>
+<tr>
+<td>存貨</td>
+<td>356.1</td>
+<td>1117.7</td>
+</tr>
+<tr>
+<td>應收帳款</td>
+<td>136.9</td>
+<td>607.8</td>
+</tr>
+<tr>
+<td>流動資產</td>
+<td>684.8</td>
+<td>2076.2</td>
+</tr>
+<tr>
+<td>流動負債</td>
+<td>253.0</td>
+<td>907.3</td>
+</tr>
+<tr>
+<td>有息負債（total debt）</td>
+<td>35.8</td>
+<td>257.8（長期 256.5、短期 0.0）</td>
+</tr>
+<tr>
+<td>股東權益</td>
+<td>601.0</td>
+<td>1194.9</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>淨現金：2026 Q3 為 277.7 - 257.8 = 約 19.9億，較 2025 年底淨現金約 141.7億 明顯縮小。</li>
+<li>流動比率 2.29（2026 Q3）、2.71（2025 年底），仍高於 1 但趨勢下滑。</li>
+<li>負債權益比 21.6%（2025 年底約 6.0%）。</li>
+<li>有息負債 9 個月內增至 7.2 倍，2026 Q1 至 Q2 舉債流入合計約 582.3億（現金流量表 gross 口徑），用途未在 yfinance 揭露。</li>
+<li>存貨週轉：DIO（以季度銷貨成本估算）2026 Q3 約 294 天，2026 Q1 高達約 420 天，2025 Q4 約 245 天，庫存累積明顯。</li>
+<li>應收：DSO 2026 Q3 約 64 天，2025 Q4 約 55 天，回升但未極端。</li>
+<li>應付帳款（Payables）2026 Q3 為 829.8億，部分緩衝營運資金，但應付增幅不足以抵銷存貨與應收的增幅。</li>
+</ul>
+<h2>Capital allocation &amp; insider signal</h2>
+<p><strong>資本支出</strong>：FY2025 資本支出 19.3億，佔營收 2.7%，為 D&amp;A 13.6億 的 1.42 倍。TTM 資本支出 43.9億，2026 Q3 單季 24.3億（2025 Q3 為 6.4億），擴張速度明顯加快。</p>
+<p><strong>股利</strong>：FY2025 現金股利 51.7億，佔 FY2025 淨利 59%。TTM 現金股利支付約 50.9億（2026 Q1 13.4、Q3 37.5），佔 TTM 淨利約 6.6%，但 TTM 營業現金流為負，股利在現金基礎上未被 OCF 覆蓋，僅由帳面獲利覆蓋。yfinance 股利欄位內部不一致：dividendRate 23.19（殖利率 1.76%，payoutRatio 7.3%）、trailingAnnualDividendRate 77.0（殖利率約 5.8%）、lastDividendValue 60.0。另 exDividendDate 為 2026-12-16，晚於 as-of 日期，屬未來日期，視為 unknown，需以公開資訊觀測站確認。</p>
+<p><strong>買回與增資</strong>：FY2022 買回 20.6億，FY2023 至 FY2025 無買回。FY2025 股票發行收入 8.8億，為員工或增資性質，需確認。</p>
+<p><strong>股數稀釋</strong>：yfinance sharesOutstanding 為 2.198 億股，但 impliedSharesOutstanding 與 nonDilutedMarketCap（3198.6億）推得約 2.42 億股。以 Q1 至 Q3 淨利除以稀釋 EPS 推得稀釋股數：Q1 約 2.31 億、Q2 約 2.37 億、Q3 約 2.47 億，QoQ 持續增加，與 2026 年大量舉債並存，可能涉及可轉債或其他稀釋工具，需以 MOPS 公告確認。</p>
+<p><strong>內部人交易</strong>：yfinance insider 回傳為空，最近 6 個月內部人買賣為 n/a。yfinance heldPercentInsiders 為 15.85%（內部人持股比例）。機構持股比例 20.75%，183 家機構。major_holders 與 inst_holders 無個別大戶明細，持股集中度為 n/a。內部人淨買賣金額與市值比例無法計算。</p>
+<h2>Valuation</h2>
+<p>以 TWSE/TPEx 股價 1320 TWD、流通市值 2901.8億 TWD（yfinance marketCap，採 2.198 億股）計算。</p>
+<ul>
+<li>Trailing P/E 4.1x（EPS 318.22）、forward P/E 4.5x（forwardEps 295.2，低於 trailing，代表市場預期盈餘將回落）。</li>
+<li>EV/EBITDA 3.7x（EV 2904.3億，EBITDA 782.8億）。</li>
+<li>P/S 1.33x（TTM 營收 2177.4億）。</li>
+<li>P/B 2.45x（每股淨值 539.6 TWD）。</li>
+<li>P/FCF：TTM FCF 為負，n/a。</li>
+<li>分析師 13 家，recommendationMean 1.92（偏買進），目標價均值 2252.8、中位數 2240、最高 3300、最低 1357。最低目標價高於現價 1320。目前價格相對均值目標價有 70.7% 上行空間差距，但低於最低目標的情況表示分析師群體內分歧極大。</li>
+<li>股價位置：較 52 週高 2880 下跌 54.2%，較 50 日均線 1891 低 30.2%，較 200 日均線 2009.65 低 34.3%。52 週漲幅 +25.1%，52 週低點 1000，Beta 1.859。</li>
+<li>同業中位數為估計值（非資料來源）：半導體同業 trailing P/E 約 20x、EV/EBITDA 約 12x、P/S 約 3x、P/B 約 3x、毛利率約 40–50%、ROE 約 15%。本公司 P/E 與 EV/EBITDA 明顯折價，但折價幅度與週期高點盈餘密切相關，不宜直接視為低估。</li>
+</ul>
+<h2>Key catalysts</h2>
+<ul>
+<li><strong>已發生 — 2026 Q3 財報（2026-11-06）</strong>：EPS 123.51，預估 126.64，差異 -2.47%。前兩季為 Q1 +41.6%、Q2 +9.4% 的大幅超預期，Q3 首次未達預期，為盈餘動能轉弱的初步訊號。</li>
+<li><strong>下次財報</strong>：yfinance 無 2026 Q4 或 2027 年報日期，n/a。台股年報過去發布日為 2024-03-12、2025-03-07、2026-03-06，推估 2027 年 3 月前後（估計）。</li>
+<li><strong>股利除息</strong>：exDividendDate 2026-12-16（未來日期，待確認）。</li>
+<li><strong>融資與稀釋</strong>：2026 Q1 至 Q2 舉債流入約 582.3億，稀釋股數增加。可轉債發行、償還時程與轉換價格未在 yfinance 揭露，需查 MOPS。</li>
+<li><strong>指引與營運展望</strong>：yfinance 無管理層財測或產品指引資料，n/a。</li>
+<li><strong>存貨去化與應收回收</strong>：存貨 1117.7億 與應收 607.8億 的變現速度，將決定 2027 年自由現金流能否轉正，為最重要的觀察點。</li>
+</ul>
+<h2>Metrics table</h2>
+<p>金額單位：億 TWD（除非標示）</p>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Latest</th>
+<th>YoY / 前期</th>
+<th>同業中位數（估計）</th>
+<th>判讀</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>營收 TTM（億 TWD）</td>
+<td>2177.4</td>
+<td>FY2025 726.6；Q3 YoY +374.5%</td>
+<td>約 10–20% 成長（估計）</td>
+<td>極端跳升，待驗證</td>
+</tr>
+<tr>
+<td>毛利率（2026 Q3）</td>
+<td>59.9%</td>
+<td>2025 Q3 32.6%（+27.3 pt）</td>
+<td>約 40–50%（估計）</td>
+<td>高於同業，自 Q2 高點回落</td>
+</tr>
+<tr>
+<td>營益率（2026 Q3）</td>
+<td>38.5%</td>
+<td>2025 Q3 8.4%</td>
+<td>約 10–15%（估計）</td>
+<td>高，峰值訊號</td>
+</tr>
+<tr>
+<td>淨利率 TTM</td>
+<td>35.2%</td>
+<td>FY2025 12.0%</td>
+<td>約 10%（估計）</td>
+<td>偏高</td>
+</tr>
+<tr>
+<td>ROE（平均權益）</td>
+<td>90.3%</td>
+<td>FY2025 約 16.0%（推算）</td>
+<td>約 15%（估計）</td>
+<td>週期高點，不宜外推</td>
+</tr>
+<tr>
+<td>ROIC（估算，期末口徑）</td>
+<td>約 55%</td>
+<td>無</td>
+<td>約 10–15%（估計）</td>
+<td>偏高，投入資本擴張快</td>
+</tr>
+<tr>
+<td>FCF margin TTM</td>
+<td>-5.7%</td>
+<td>FY2025 -0.45%</td>
+<td>約 5–10%（估計）</td>
+<td>負，警示</td>
+</tr>
+<tr>
+<td>FCF / NI TTM</td>
+<td>-0.16</td>
+<td>FY2025 -0.04</td>
+<td>&gt;0.9 健康</td>
+<td>不健康</td>
+</tr>
+<tr>
+<td>OCF / NI TTM</td>
+<td>-0.10</td>
+<td>FY2025 0.18</td>
+<td>&gt;0.9 健康</td>
+<td>不健康</td>
+</tr>
+<tr>
+<td>淨現金（億 TWD）</td>
+<td>19.9</td>
+<td>2025 年底約 141.7</td>
+<td>約 0 至淨現金（估計）</td>
+<td>縮小，舉債增加</td>
+</tr>
+<tr>
+<td>流動比率</td>
+<td>2.29</td>
+<td>2025 年底 2.71</td>
+<td>約 1.5–2.0（估計）</td>
+<td>尚可，下滑</td>
+</tr>
+<tr>
+<td>負債權益比</td>
+<td>21.6%</td>
+<td>2025 年底 6.0%</td>
+<td>約 20–40%（估計）</td>
+<td>上升</td>
+</tr>
+<tr>
+<td>DIO（天，估算）</td>
+<td>約 294</td>
+<td>2025 Q4 約 245</td>
+<td>約 60–90 天（估計）</td>
+<td>警示</td>
+</tr>
+<tr>
+<td>DSO（天，估算）</td>
+<td>約 64</td>
+<td>2025 Q4 約 55</td>
+<td>約 40–60 天（估計）</td>
+<td>略升</td>
+</tr>
+<tr>
+<td>資本支出 TTM（億 TWD）</td>
+<td>43.9</td>
+<td>FY2025 19.3</td>
+<td>無</td>
+<td>擴張中</td>
+</tr>
+<tr>
+<td>股利支付 TTM（億 TWD）</td>
+<td>50.9</td>
+<td>FY2025 51.7</td>
+<td>無</td>
+<td>未被 OCF 覆蓋</td>
+</tr>
+<tr>
+<td>P/E（trailing）</td>
+<td>4.1x</td>
+<td>無</td>
+<td>約 20x（估計）</td>
+<td>大幅折價，週期高點</td>
+</tr>
+<tr>
+<td>P/E（forward）</td>
+<td>4.5x</td>
+<td>無</td>
+<td>約 18x（估計）</td>
+<td>盈餘預估回落</td>
+</tr>
+<tr>
+<td>EV/EBITDA</td>
+<td>3.7x</td>
+<td>無</td>
+<td>約 12x（估計）</td>
+<td>大幅折價</td>
+</tr>
+<tr>
+<td>P/S</td>
+<td>1.33x</td>
+<td>無</td>
+<td>約 3x（估計）</td>
+<td>折價</td>
+</tr>
+<tr>
+<td>P/B</td>
+<td>2.45x</td>
+<td>無</td>
+<td>約 3x（估計）</td>
+<td>略低於估計同業</td>
+</tr>
+<tr>
+<td>P/FCF</td>
+<td>n/a（FCF 為負）</td>
+<td>無</td>
+<td>無</td>
+<td>n/a</td>
+</tr>
+<tr>
+<td>分析師目標價均值（TWD）</td>
+<td>2252.8</td>
+<td>現價 1320，上行差 70.7%</td>
+<td>無</td>
+<td>分歧大，最低目標 1357 高於現價</td>
+</tr>
+<tr>
+<td>內部人淨買賣（6 個月）</td>
+<td>n/a</td>
+<td>無</td>
+<td>無</td>
+<td>資料缺失</td>
+</tr>
+<tr>
+<td>Beta</td>
+<td>1.859</td>
+<td>無</td>
+<td>約 1.0–1.3（估計）</td>
+<td>高波動</td>
+</tr>
+</tbody>
+</table>
+<h2>Red flags</h2>
+<ul>
+<li>存貨 1117.7億，較 2025 年底 +214%，為季銷貨成本的約 3.2 倍，DIO 約 294 天，存貨跌價風險高。</li>
+<li>應收 607.8億，較 2025 年底 +344%，若客戶付款或產品價格回落，回收風險高。</li>
+<li>TTM 營業現金流 -79.4億、自由現金流 -123.3億，與 TTM 淨利 765.7億 顯著背離，盈餘現金化程度低。</li>
+<li>有息負債由 35.8億 增至 257.8億（7.2 倍），2026 年舉債流入約 582.3億，淨現金由約 141.7億 縮至 19.9億。</li>
+<li>稀釋股數由 Q1 約 2.31 億增至 Q3 約 2.47 億，流通股數 2.198 億 與 nonDilutedMarketCap 推得股數 2.42 億 不一致，市值口徑有 10% 上下差異。</li>
+<li>毛利率與淨利率自 Q2 高點回落，Q3 營收 QoQ 成長由 +65.7% 降至 +26.8%，EPS 首次未達預期（-2.47%）。</li>
+<li>股價較 52 週高點下跌 54%，當日 -9.3%，成交量 886.8萬股，為 10 日均量 452.5萬股的約 2.0 倍，市場信心明顯轉弱；但分析師最低目標 1357 高於現價，預期分歧極大。</li>
+<li>歷史盈餘波動劇烈：FY2023 淨利 36.2億，FY2025 為 87.4億，2026 年 TTM 為 765.7億，週期性極強，目前 P/E 4.1x 不宜以歷史平均外推。</li>
+<li>資料品質：(1) yfinance fast_info 因 Yahoo 403 失敗，價格來自 cnyes 快取，未與 TWSE 收盤價交叉驗證；(2) 股利欄位三者不一致；(3) freeCashflow 與季度加總不一致；(4) 內部人交易與分部營收為空；(5) ex-dividend 日期晚於 as-of，需視為 unknown。建議以 MOPS 公告與 TWSE 資料交叉確認 Q3 財報與股本變動。</li>
+</ul>
+<p>FUNDAMENTALS REPORT COMPLETE</p></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-slate-700 mb-2">技術面 (Market / Technical)</h4>
+          <div class="agent-prose text-sm bg-slate-50 p-3 rounded"><h1>Technical — 8299.TWO 群聯 as of 2026-11-21</h1>
+<p>資料說明: 最新可用 bar 為 2026-11-20 收盤，11-21 bar 不在本次資料集中。價格來源為快取 (fast_info feed=cnyes, source=cache)，yfinance 直連回 403，但 fast_info 最新價 1320.00 與 ta snapshot 一致。ta 工具 <code>snapshot</code> 的 52w 高低點 (2880 / 1000) 無法被 <code>levels</code> 與 <code>series</code> 輸出驗證，見文末備註。</p>
+<h2>Snapshot</h2>
+<p>Price NT$1,320.00 (2026-11-20 收盤), MA20 NT$1,691.00, MA50 NT$1,893.10, MA200 NT$2,020.15, RSI14=27.58, MACD hist=-24.84</p>
+<h2>Trend</h2>
+<p>明確下降趨勢，趨勢強度高。價格位於 MA20、MA50、MA200 全部之下，距離分別為 -21.9%、-30.3%、-34.7%。均線呈空頭排列 (MA20 &lt; MA50 &lt; MA200)，MA50 於 2026-11-03 下穿 MA200 形成死亡交叉 (11-02 MA50 2033.40 高於 MA200 2031.63；11-03 MA50 2027.90 低於 MA200 2032.85)。MA200 自 11-04 高點 2034.05 已開始下彎至 2020.15，長期均線由支撐轉為壓力的條件正在形成。</p>
+<p>價格結構上，2026-09-23 盤中高 2350 後形成連續的 lower highs: 10-29 高 2090 → 11-02 高 1905 → 11-10 高 1760 → 11-17 高 1560。lower lows 同步出現: 10-15 低 1800 → 11-04 低 1590 → 11-06 低 1405 → 11-16 低 1515 → 11-19 低 1425 → 11-20 低 1310。近期多次跳空下殺 (11-03 開 1830 收 1690；11-06 開 1405，前收 1560；11-20 開 1380，前收 1455)，每次反彈都未能收復前一個跌破的區間。</p>
+<h2>Momentum</h2>
+<p>MACD 線 -133.69 低於 signal -108.85，兩者皆位於零軸下方，屬空方主導。histogram 為 -24.84，較 11-19 的 -16.78 再度擴大，顯示空方動能仍在加速。histogram 於 11-06 觸及 -41.28 後曾收斂至 11-13 的 -10.95，之後再次擴張。</p>
+<p>RSI14 為 27.58，已進入 OS 區 (&lt;30)。前一次低點 11-06 RSI 為 26.71，隨後反彈至 11-11 收盤 1730，約 +15%，顯示超賣區可出現急速反彈，但反彈後未能站穩於跌破的區間之上。</p>
+<p>多週期報酬: 1 個月 -31.6%、3 個月 -32.8%、6 個月 -41.7%、12 個月 +13.8%。12 個月數字受 2026 年中以前高基期影響，不代表近期趨勢。</p>
+<p>成交量: 2026-11-20 成交量 8,514,957，為前 10 個交易日 (11-06 至 11-19) 平均 4,251,869 的約 2.0 倍，亦為本次 60 根 bar 樣本中最高量。當日收盤 1320.00 位於日內區間 1310–1435 的底部附近 (約 8% 位置)，屬放量收低。</p>
+<h2>Key levels</h2>
+<ul>
+<li>Resistance:</li>
+<li>$1,455.00 (2026-11-19 收盤，亦為 11-20 跳空前收)</li>
+<li>$1,535.00 (2026-11-17 收盤)</li>
+<li>$1,650.00 (2026-11-09 收盤)</li>
+<li>$1,730.00 (2026-11-11 收盤，11-06 反彈高點區)</li>
+<li>$1,900.00 (2026-09-15 local min，ta levels 列為 support，已轉為遠端壓力)</li>
+<li>$2,090.00 (2026-10-29 local max, ta levels)</li>
+<li>$2,350.00 (2026-09-23 local max, ta levels)</li>
+<li>$2,670.00 (2026-06-22 local max, ta levels)</li>
+<li>Support:</li>
+<li>$1,310.00 (2026-11-20 盤中低，目前最近的擺動低點)</li>
+<li>$1,405.00 (2026-11-06 盤中低)</li>
+<li>$1,425.00 (2026-11-19 盤中低；11-17 低點 1430)</li>
+<li>$1,445.00 (2026-07-30 local min, ta levels；已於 11-06 至 11-20 跌破)</li>
+<li>BB 下軌 $1,289.31 (指標值，非歷史支撐)</li>
+<li>Stop-loss suggestion (logical, not advice): below $1,310.00 (2026-11-20 低點，目前最近擺動低點)。前一個結構支撐 $1,425–1,445 已失守，故以 1,310 作為結構失效參考。</li>
+</ul>
+<h2>Volatility profile</h2>
+<p>ATR14 = 120.97，ATR-implied 單日波動約 NT$121 (約為價格的 9.2%)。20 日年化波動 84.5%，依 84.5% / √252 推算日標準差約 5.3%，約 NT$70。此波動水準遠高於一般大型股，同樣風險預算下部位應相應縮小，並預期單日出現 ±5% 以上波動屬常態。</p>
+<h2>Setup</h2>
+<p>偏空 (bearish)。型態為空頭排列 + lower highs / lower lows + 死亡交叉已成立 + 放量收低。</p>
+<p>觀察條件 (非交易建議):<br />
+- 偏空延續條件: 收盤續破 $1,310 (新低)，histogram 持續擴大，或 RSI 維持在 30 以下而無法收復 MA20 之前不易改善結構。<br />
+- 偏多修正條件: 收盤收復 $1,455 並站穩 $1,535 以上，histogram 轉為收斂，可視為短線反彈訊號；但 MA50 (1893) 與 MA200 (2020) 仍遠高於現價，中期結構需要更長時間才能修復。<br />
+- 目前 RSI 接近超賣、BB %B 接近下軌，屬超賣反彈的可能條件，但均線與動能仍全部指向空方。</p>
+<h2>Indicators table</h2>
+<table>
+<thead>
+<tr>
+<th>Indicator</th>
+<th>Value</th>
+<th>Reading</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Price (11-20 收盤)</td>
+<td>1,320.00</td>
+<td>較前收 1,455 下跌 -9.3%，收於日內低檔</td>
+</tr>
+<tr>
+<td>MA20</td>
+<td>1,691.00</td>
+<td>價格 -21.9%，短期均線下彎</td>
+</tr>
+<tr>
+<td>MA50</td>
+<td>1,893.10</td>
+<td>價格 -30.3%，MA50 位於 MA200 之下</td>
+</tr>
+<tr>
+<td>MA200</td>
+<td>2,020.15</td>
+<td>價格 -34.7%，MA200 自 11-04 起下彎</td>
+</tr>
+<tr>
+<td>MA 排列</td>
+<td>MA20 &lt; MA50 &lt; MA200</td>
+<td>空頭排列</td>
+</tr>
+<tr>
+<td>死亡交叉 (MA50/MA200)</td>
+<td>2026-11-03 形成</td>
+<td>已成立，非接近狀態</td>
+</tr>
+<tr>
+<td>MACD</td>
+<td>-133.69</td>
+<td>零軸下方，空方主導</td>
+</tr>
+<tr>
+<td>MACD signal</td>
+<td>-108.85</td>
+<td>MACD 位於 signal 之下</td>
+</tr>
+<tr>
+<td>MACD hist</td>
+<td>-24.84</td>
+<td>空方，較前日 -16.78 擴大，動能加速</td>
+</tr>
+<tr>
+<td>RSI14</td>
+<td>27.58</td>
+<td>接近 OS (&lt;30)，前低 26.71 (11-06)</td>
+</tr>
+<tr>
+<td>BB %B</td>
+<td>0.04</td>
+<td>接近下軌 (1,289.31)，貼近 lower band</td>
+</tr>
+<tr>
+<td>BB 上軌 / 中軌 / 下軌</td>
+<td>2,092.69 / 1,691.00 / 1,289.31</td>
+<td>帶寬極寬，波動擴大</td>
+</tr>
+<tr>
+<td>ATR14</td>
+<td>120.97</td>
+<td>約 9.2% 價格，單日波動預期大</td>
+</tr>
+<tr>
+<td>20d 年化波動</td>
+<td>84.5%</td>
+<td>高波動，部位應縮小</td>
+</tr>
+<tr>
+<td>1m 報酬</td>
+<td>-31.6%</td>
+<td>明顯下跌</td>
+</tr>
+<tr>
+<td>3m 報酬</td>
+<td>-32.8%</td>
+<td>明顯下跌</td>
+</tr>
+<tr>
+<td>6m 報酬</td>
+<td>-41.7%</td>
+<td>明顯下跌</td>
+</tr>
+<tr>
+<td>12m 報酬</td>
+<td>+13.8%</td>
+<td>長期仍為正報酬，但已不代表近期趨勢</td>
+</tr>
+<tr>
+<td>距 52w 高 (2,880)</td>
+<td>-54.2%</td>
+<td>遠低於年內高點</td>
+</tr>
+<tr>
+<td>距 52w 低 (1,000)</td>
+<td>+32.0%</td>
+<td>52w 低點尚未被 levels 輸出驗證，見備註</td>
+</tr>
+<tr>
+<td>成交量 (11-20)</td>
+<td>8,514,957</td>
+<td>約為 10 日平均 (4,251,869) 的 2.0 倍，樣本內最高量</td>
+</tr>
+</tbody>
+</table>
+<p>備註: ta snapshot 回傳之 52w 高 2,880 與 52w 低 1,000，與 ta levels (1 年窗口) 所列最高 2,670、最低支撐 1,445 不一致。推測 snapshot 的 52w 數值採用較長的 2y 資料窗口，本報告未能獨立驗證其日期，請謹慎引用。</p>
+<p>MARKET REPORT COMPLETE</p></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-slate-700 mb-2">新聞 (News)</h4>
+          <div class="agent-prose text-sm bg-slate-50 p-3 rounded"><h1>News — 8299.TWO (群聯 Phison Electronics) as of 2026-11-21</h1>
+<p>資料品質說明: yfinance news 端點因代理伺服器拒絕 Yahoo 連線 (HTTP 403) 無法取得,本報告改以 WebSearch 為主。info 欄位來自 2026-11-21 14:34 UTC 的快取,最新價 1,320 TWD (前收 1,455, -9.3%),實際交易日推估為 11/20 收盤,未經官方來源確認。快取內 TTM 營收 (約 2,177 億) 低於 2026 年前 10 月累計營收 (2,264.62 億),數字彼此不一致,本報告不採用該欄位。11/19–11/20 大跌原因未能找到可靠來源,下列「跌幅歸因」僅為間接推論。</p>
+<h2>Top company-specific headlines (last 14d)</h2>
+<ul>
+<li>2026-11-06 — 10 月合併營收 315.30 億 TWD,月增 2.9%、年增 346.3%;前 10 月累計 2,264.62 億 TWD,年增 297.8% (technews 財經)。Impact: bullish。基本面動能仍強,但月增已放緩。</li>
+<li>2026-11-06 — 董事會通過買回 2,000 張庫藏股,期間 11/6–2027/1/5,上限 45.6 億 TWD,股份將轉讓予員工 (technews / 媒體彙整)。Impact: bullish。提供股價支撐,規模約佔市值 1.6%。</li>
+<li>2026-11-09 — 公告買回後股價一度漲停至 1,650 TWD (wantrich 媒體彙整)。Impact: neutral。短線情緒反應,後續已大幅回吐。</li>
+<li>2026-11-09 — 多家券商同步下修目標價: 統一投顧由買進降為中立;凱基 2,900→2,700 TWD;永豐 2,998→2,070 TWD;群益 1,710→1,635 TWD;中信 2,785→1,800 TWD (wantrich 媒體彙整)。Impact: bearish。估值中樞明顯下移。</li>
+<li>2026-11 (日期未確認) — 一家外資將評等降至「減碼」,目標價由 2,588 降至 1,357 TWD (約 -48%);理由為模組業務毛利率承壓、第三季毛利率不如預期,並承認先前估值模型有計算錯誤 (wantrich 11/18 報導)。Impact: bearish。權重高,但單一券商且存在模型修正。</li>
+<li>2026-11 (第三季財報) — Q3 合併營收 860.76 億 TWD (季增 26.8%、年增 374.6%),稅後純益 305.48 億 TWD,EPS 138 元創歷史新高;毛利率 59.7%,較第二季 65.3% 歷史高點回落,公司表示低成本庫存效益將淡化 (媒體彙整)。Impact: mixed。獲利創高,但毛利率拐點已現。</li>
+<li>2026-11-17~19 — SC26 超級電腦大會展示 PCIe Gen6、運算式儲存、混合式儲存架構;發表 Pascari Space 太空級 SSD 及 AI Data Platform (AIDP) (Business Wire 新聞稿 / phison.com)。Impact: neutral。產品佈局延伸,短期營收貢獻有限。</li>
+<li>2026-11 (日期未確認) — 榮獲 Micron Supplier Day 2026 半導體類傑出供應商績效獎,為連續第三年 (Business Wire / ITHome)。Impact: neutral to bullish。顯示與主要 DRAM/NAND 客戶關係穩定,無直接財務量化。</li>
+<li>2026-11 (Digitimes 報導) — 公司已鎖定 2027 年 NAND 供給約 70%;第三季 AI 相關業務占營收超過 50%;CEO 預期 AI 需求於農曆年後再度回升 (Digitimes 彙整)。Impact: bullish。長約鎖定降低供給風險,但來源為媒體轉述,需與公司正式法說核對。</li>
+<li>2026-11-18~20 — 股價走弱,11/18 記憶體族群指數下跌 3.89%,法人將獲利了結歸因於消費型 NAND 轉弱 (wantrich 11/18 報導);快取顯示 11/20 單日 -9.3%。Impact: bearish。主要為板塊性下殺,公司專屬利空未找到確認。</li>
+</ul>
+<h2>Sector macro</h2>
+<ul>
+<li>2026-11-19 — TrendForce 將 2026 Q4 NAND 合約價季增預估由 15–20% 下修至 8–13%;預估 2027 Q1 總體合約價季減 0–5%,2027 Q2 起所有產品類別進入下行,且跌幅可能於 2027 下半年擴大 (TrendForce NAND Flash Market Bulletin 11/18 及 11/19 更新)。Impact on 半導體記憶體 (NAND controller/模組): 偏空。合約價由升轉降,模組與控制晶片的庫存評價與毛利率都會受壓。</li>
+<li>2026-10-19 至 11-09 — 512Gb TLC 晶圓現貨均價由 18.592 美元跌至 14.267 美元,約 -23.3% (TrendForce);另有報導約 -20% 至 -32% 區間不一。Impact: 偏空。現貨與合約價差拉大,渠道去庫、買盤疲弱,合約談判承壓。</li>
+<li>2026-11 — 美銀預估 2027 Q1 IT 用 NAND 合約價季減 5%–10%;摩根士丹利指出消費型 NAND 率先轉弱 (wantrich 11/18 引述)。Impact: 偏空,消費型 SSD 與 AI PC 相關出貨 (約佔群聯營收 40%) 首當其衝。</li>
+<li>2026-11 — 2027 年 NAND bit 供給成長預估 25%–30% (TrendForce),且中國雲端客戶的庫存去化速度是關鍵變數。Impact: 偏空。供給增幅若超過需求,2027 年跌價期可能延長。</li>
+<li>2026-11 — 企業級 eSSD 合約價仍被部分研究看好 (TrendForce 先前預估 Q4 eSSD 合約價季增 15–20%,未見新版修正)。Impact: 偏多。若 AI 伺服器 SSD 維持強勢,可部分抵消消費型下行。</li>
+<li>利率/總經: Fed 12/8–9 FOMC (含 SEP 點陣圖);央行 (中華民國) 季會約 12/17,基準利率 2% 已連續多季持平,市場多數預期維持不變 (Finimize / 第三方彙整,需與官方日程核對)。Impact: 中性偏緊。台股高估值與高 beta (1.86) 對利率預期敏感。</li>
+</ul>
+<h2>Peer signals</h2>
+<ul>
+<li>Micron (MU) — 2026-10-06 至 11-11 股價約 -22.4%;2026-11-19 公告 FQ1 2027 財報於 12/17 召開 (GlobeNewswire 公告)。記憶體股同步修正,財報是下一個板塊重要節點。</li>
+<li>SanDisk (SNDK) — 同期股價約 -41.1%,跌幅大於 DRAM 現貨,顯示 NAND 市場情緒先行轉弱 (媒體彙整)。</li>
+<li>Kioxia (285A) — 11/1 有報導指其因謹慎的記憶體展望股價重挫,內容未能完整確認。另有 Kioxia 規劃中新廠可能增加供給風險 (TrendForce 8 月報導)。</li>
+<li>Samsung / SK hynix — 三星證券認為兩家股價已分別反映約 46%、36% 的記憶體價格跌幅 (eToday 引述),顯示市場預期循環下行。</li>
+<li>台股記憶體族群 — 2026-11-18 族群指數 -3.89%;華邦電等同步走弱。</li>
+</ul>
+<h2>Forward calendar (next 14d, 至 2026-12-05)</h2>
+<ul>
+<li>2026-11-21 ~ 11-30 — TrendForce 每月 NAND 合約價更新 (11 月合約價格,通常於月底發布),可驗證 Q4 下修幅度是否落實。Expected impact: 高。若出現實質合約價下調,將強化跌價敘事。</li>
+<li>2026-11-下旬 — 外資與本土券商目標價持續調整,市場焦點轉向 2027 年獲利預估。Expected impact: 中性偏空。</li>
+<li>2026-11-06 ~ 2027-01-05 — 庫藏股買回期間,需觀察實際執行進度。Expected impact: 支撐性,規模有限。</li>
+<li>2026-12-05 前後 — 群聯 11 月營收 (台股月營收通常於次月 10 日前公布,實際日期可能落於窗口外)。Expected impact: 高。月增率若明顯轉負,將被視為跌價落地的第一個訊號。</li>
+<li>窗口外重要節點 (供參考): 12/8–9 FOMC;12/17 Micron FQ1 2027 財報;約 12/17 央行季會;約 12/15 除息 (每股現金股利 60 TWD,來源為快取公告,需核對)。</li>
+</ul>
+<h2>Net read</h2>
+<p>本週新聞的淨面為偏空、幅度中到大。基本面端仍有硬數據支撐: 10 月營收年增 346%、Q3 EPS 138 元創高、AI 業務占比超過 50%、2027 年 NAND 供給已鎖定約 70%,且公司持續買回庫藏股。但前瞻面的訊號明顯轉弱: TrendForce 將 Q4 合約價預估砍半、2027 Q1 轉為負成長、現貨價在三週內下跌約 23%,且多家券商與外資同步下修目標價,毛利率已由 65.3% 回落至 59.7%。短期股價的主要驅動因子是板塊性的 NAND 價格循環下行,而非公司專屬的基本面突發事件;公司專屬的負面新聞 (外資減碼) 也多半以模型與毛利率為理由。未能查證 11/20 單日 -9.3% 的確切觸發原因,需以交易所資料與盤後公告補強。</p>
+<p>NEWS REPORT COMPLETE</p></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-slate-700 mb-2">情緒 (Sentiment)</h4>
+          <div class="agent-prose text-sm bg-slate-50 p-3 rounded"><h1>Sentiment — 8299.TWO (群聯 Phison) as of 2026-11-21</h1>
+<p>資料可靠度: 低至中。Reddit、StockTwits 無法存取 (proxy 封鎖 / DNS 無法解析); Yahoo 相關端點部分失敗; 散戶面主要依賴 PTT 舊文 (2026 年 8 月) 與新聞摘要。以下結論需與其他分析師報告交叉檢核。</p>
+<h2>Analyst consensus</h2>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>數值</th>
+<th>備註</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>目前評等分布 (yf rec_summary, 0m)</td>
+<td>4 Strong Buy / 7 Buy / 0 Hold / 2 Sell / 0 Strong Sell</td>
+<td>共 13 家</td>
+</tr>
+<tr>
+<td>前一期 (-1m)</td>
+<td>4 SB / 7 B / 1 Hold / 1 Sell</td>
+<td>近一期 Hold 減 1、Sell 加 1</td>
+</tr>
+<tr>
+<td>-2m, -3m</td>
+<td>4 SB / 7 B / 1 Hold / 1 Sell</td>
+<td>期間內無變化</td>
+</tr>
+</tbody>
+</table>
+<p>近期評等與目標價變動 (來源: 新聞報導 + yf 歷史計數):<br />
+- 外資: 評等由原本偏多降至「減碼」(Sell); 目標價由 2,588 元大砍至 1,357 元, 降幅約 48%; 外資自承先前估值模型有計算錯誤。<br />
+- 統一投顧: 由「買進」降為「中立」 (Hold)。<br />
+- 凱基: 維持「增加持股」, 目標價 2,700 元。<br />
+- 永豐: 維持「買進」, 目標價 2,070 元。<br />
+- Macquarie: 目標價 3,000 元 (2026-10-13, 來源為 Investing.com 頁面, 未逐一核實)。<br />
+- 報導指出 7 家本土投顧下修評價 (數字來源為單篇報導, 無法逐家驗證)。</p>
+<p>判讀: yf 計數顯示最近一期僅有 1 家 Hold 轉為 Sell, Buy 數未變, 與外資降評時點吻合, 但 yf 的 Sell 總數 (2 家) 與報導中的調評內容未必完全對應。整體共識仍偏多 (11 Buy / 13), 但「近期調整方向」偏空: 評等與目標價均有下修。</p>
+<h2>Retail social</h2>
+<ul>
+<li>Reddit (r/wallstreetbets, r/stocks): 無法存取 (WebFetch 被拒)。無資料。</li>
+<li>StockTwits: api.stocktwits.com 無法解析, 無資料。需在 session 網路設定中放行後才能再取。</li>
+<li>X / 新聞討論: 本次搜尋未找到 2026 年 11 月的獨立散戶貼文或 X 討論串。</li>
+<li>PTT Stock 板 (最新可見討論為 2026 年 8 月):</li>
+<li>多方論點: 執行長潘健成 7 月於集中市場買進 40 張, 有人引用為「高層挺自家股票」; 一篇 8 月文章主張 2026 年 EPS 可達約 400 元、本益比約 5 倍 (推文多為調侃, 說服力有限)。</li>
+<li>空方 / 觀望論點: 股價落後同業 (有留言稱為今年記憶體族群表現最差); 三大法人自 4 月起持續賣超; 融資餘額居高。</li>
+<li>8 月當時股價自高點 2,880 元回落至約 1,965 元 (約 -32%), 散戶情緒偏分歧。</li>
+<li>聲量 (buzz volume): 無法量化。11 月新聞量明顯增加 (法說、買回、外資降評), 但散戶端聲量無可靠數據, 不能判斷是否高於平常。</li>
+<li>主要論點 (依可見資料):</li>
+<li>營收爆發: 10 月營收 315.30 億元, 年增 346.3%; 前 10 月累計 2,264.62 億元, 年增 297.8%。</li>
+<li>毛利率回落: Q2 毛利率 65.3% 為高點, Q3 回落; 執行長認為長期維持 60% 以上不合理, 守住 50% 以上即不錯。</li>
+<li>股價與獲利脫鉤: 低本益比 vs. 籌碼面與毛利率疑慮。</li>
+<li>資本動作: 董事會通過買回庫藏股, 期間 2026-11-06 至 2027-01-05。</li>
+</ul>
+<h2>Insider activity</h2>
+<ul>
+<li>yf insider 回傳空陣列, 無結構化內部人交易資料。</li>
+<li>可見的新聞 / PTT 資訊: 執行長潘健成 2026 年 7 月於集中市場買進 40 張 (約 0.8 億元, 以約 2,000 元估, 為粗估)。</li>
+<li>公司層級: 董事會通過買回 2,000 張庫藏股 (報導內文); 同一新聞標題稱董事會「砸 45.6 億元」買庫藏股, 兩者數字不一致 (2,000 張以 1,650 元估約 33 億元), 需以公開資訊觀測站公告為準。</li>
+<li>6 個月淨額: 無法精確計算。已知可見的內部人交易為淨買進 (約 0.8 億元, 單筆), 但未取得完整申報資料, 不可視為完整結論。</li>
+</ul>
+<h2>Ownership shifts</h2>
+<ul>
+<li>內部人持股 (yf major_holders): 15.85%。</li>
+<li>機構持股 (佔總股本): 20.75%; 佔流通股: 24.66%; 機構數量: 183 家。</li>
+<li>趨勢: 僅有單一時點快照, 無法判斷集中度變化方向。</li>
+<li>籌碼面 (PTT 與報導): 外資與投信自 4 月起賣超, 與低機構持股比例及獲利兌現疑慮相符, 但無法以本次資料量化。</li>
+</ul>
+<h2>Net sentiment score</h2>
+<p>Composite: <strong>中性 (neutral)</strong>, 信心度 <strong>低</strong>。</p>
+<ul>
+<li>分析師面: 偏多的計數 (11 / 13 Buy) 但近期調整偏空 (外資降評與目標價大幅下修、統一降為中立)。評分: 中性偏多 (計數) / 中性偏空 (趨勢)。</li>
+<li>散戶面: 資料不足。最後可見的 PTT 討論 (8 月) 呈分歧, 無 11 月資料。評分: 無法判定。</li>
+<li>內部人面: 有單筆小額淨買進 (CEO 7 月), 公司買回進行中, 偏多但規模小、資料不完整。</li>
+<li>整體: 基本面數據強勁, 市場情緒被毛利率回落與評價下修所壓制, 多空拉鋸。</li>
+</ul>
+<p>Divergence flag: <strong>無法判定 (資料不足)</strong>。分析師面 (計數) 偏多、趨勢偏空; 散戶端無可靠 11 月資料, 無法確認是否與分析師方向相反。若取得 Reddit / StockTwits 資料後, 可再檢查是否出現「散戶偏多、分析師轉空」的背離。</p>
+<h2>資料限制</h2>
+<ul>
+<li>Reddit / StockTwits 無法存取 (proxy 或 DNS 限制); 需放行網域後重試。</li>
+<li>yf recommendations 只回傳期間計數, 無逐筆評等變動明細; 與新聞報導的評等變化僅能部分對應。</li>
+<li>yf insider 為空, 內部人交易僅能由新聞與 PTT 推估。</li>
+<li>股價快照來源不一 (例: Investing.com 1,500 元於 11-07; 其他頁面 1,875 元與 2,010 元), 未採用; 最近可確認的價位為 11-09 漲停至 1,650 元 (報導)。</li>
+<li>新聞與 Investing.com 數字為第三方轉述, 未逐一核對原始公告。</li>
+</ul>
+<h2>來源</h2>
+<ul>
+<li>群聯法說 / 買回 / 外資降評 (中文新聞彙整): https://uanalyze.com.tw/articles/1094458598</li>
+<li>群聯 Q3 獲利與買回 (statementdog): https://statementdog.com/news/18015</li>
+<li>群聯 10 月營收 (TechNews): https://finance.technews.tw/2026/11/06/phison-8299-202610-financial-report/</li>
+<li>PTT Stock 板 (2026-08): https://www.ptt.cc/bbs/Stock/M.1785923178.A.652.html</li>
+<li>Investing.com 分析師共識: https://www.investing.com/equities/phison-electronics-consensus-estimates</li>
+</ul>
+<p>SENTIMENT REPORT COMPLETE</p></div>
+        </div>
+      </div>
+    </details>
+
+    <details class="mb-4 border border-slate-200 rounded">
+      <summary class="bg-slate-50 px-4 py-2 font-semibold">Phase 2 — Bull vs Bear 辯論</summary>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+        <div>
+          <h4 class="font-bold text-green-700 mb-2">🐂 多方 (Bull)</h4>
+          <div class="agent-prose text-sm bg-green-50 p-3 rounded border border-green-200"><h1>Bull case round 1 — 8299.TWO</h1>
+<h2>Thesis（一句話）</h2>
+<p>群聯的獲利結構已因 AI 儲存需求永久上修（毛利率由 28.8% 躍升至近 60%），股價卻因板塊性 NAND 價格循環雜訊崩跌 54%，在 trailing P/E 4.1x、EV/EBITDA 3.7x 的極端折價下，提供風險報酬極佳的均值回歸機會。</p>
+<h2>Growth drivers</h2>
+<ul>
+<li>10 月合併營收 315.30 億 TWD，年增 346.3%；前 10 月累計 2,264.62 億 TWD，年增 297.8%（news.md），動能遠高於歷史常態。</li>
+<li>Q3 AI 相關業務占營收逾 50%（Digitimes），公司結構已從消費型記憶體轉型為 AI 儲存供應商。</li>
+<li>已鎖定 2027 年 NAND 供給約 70%（Digitimes），降低原料斷鏈與價格暴衝風險，為少數同業具備的長約優勢。</li>
+<li>企業級 eSSD 合約價 TrendForce 仍預估 Q4 季增 15–20%（未下修），可對沖消費型 NAND 降價。</li>
+<li>SC26 展示 PCIe Gen6、Pascari Space 太空級 SSD、AI Data Platform，產品線持續向高毛利企業/AI 端延伸。</li>
+</ul>
+<h2>Moat</h2>
+<p>控制晶片設計能力使群聯連續三年獲 Micron Supplier Day 傑出供應商獎，證明與主要 NAND 原廠（Micron、SK hynix 等）的深度合作與議價地位；2027 年供給鎖定進一步墊高切換成本與稀缺性。Q3 毛利率 59.9% 遠高於同業估計 40–50%（fundamentals.md），顯示其控制晶片方案具備真正的產品差異化溢價，而非單純受惠於現貨價格。</p>
+<h2>Upside scenario</h2>
+<ul>
+<li>Base：forward EPS 295.2 TWD × P/E 7.6x ≈ 2,244 TWD（貼近分析師目標價均值 2,252.8），較現價 1,320 上行 +70%。</li>
+<li>Bull：forward EPS 295.2 TWD × P/E 11.2x ≈ 3,306 TWD（貼近分析師最高目標價 3,300），較現價上行 +150%。</li>
+<li>下檔參照：13 家分析師中最低目標價 1,357 TWD 仍高於現價 1,320（fundamentals.md），意味即使最保守的賣方觀點，現價亦已低於其估值底線。</li>
+</ul>
+<h2>Catalysts（dated）</h2>
+<ul>
+<li>2026-11-21~11-30 — TrendForce 11 月 NAND 合約價公布，驗證企業級 eSSD +15–20% 是否落實。</li>
+<li>2026-12-05 前後 — 群聯 11 月營收公告，驗證 10 月 YoY +346% 動能延續性。</li>
+<li>2026-11-06~2027-01-05 — 庫藏股買回執行期（上限 45.6 億 TWD，約占市值 1.6%），提供持續性買盤。</li>
+<li>約 2026-12-15 — 除息（每股現金股利 60 TWD，待公告確認）。</li>
+<li>2026-12-17 — Micron FQ1 2027 財報，作為記憶體板塊情緒轉折指標。</li>
+</ul>
+<h2>Tactical（technical）</h2>
+<p>RSI14 已達 27.58 的超賣區，BB %B 僅 0.04 貼近下軌；前一次 RSI 觸及 26.71（11/06）後股價 5 個交易日反彈約 +15%（market.md），顯示超賣區出現急速反彈的歷史先例。12 個月報酬仍為 +13.8%，顯示長期趨勢未破。目前的空頭排列與死亡交叉已充分反映在股價中，任何止穩訊號（收復 1,455→1,535）即可觸發短線超賣反彈交易。</p>
+<h2>Rebuttal to anticipated bear claims</h2>
+<p>（本輪無 round_0_bear.md，以下針對 fundamentals/news/market 報告中的紅旗逐一反駁）</p>
+<ul>
+<li>
+<p>Bear claim：TTM 營業現金流 -79.4億、自由現金流 -123.3億，獲利未能現金化。<br />
+  Counter：這是營收 3 個月內跳升至歷史新高下的正常營運資金擴張（存貨 +214%、應收 +344%），用以支應 2027 年 NAND 供給鎖定與出貨放量，而非營運惡化；DSO 僅 64 天，仍屬正常收款週期，非呆帳風險。</p>
+</li>
+<li>
+<p>Bear claim：有息負債 9 個月增至 7.2 倍，稀釋股數上升。<br />
+  Counter：負債權益比僅 21.6%，仍在同業估計 20–40% 區間內且公司仍為淨現金（19.9億），舉債用於擴產與營運資金而非彌補虧損；稀釋幅度（2.31→2.47 億股，約 +7%）遠小於同期淨利暴增幅度。</p>
+</li>
+<li>
+<p>Bear claim：Q3 毛利率自 65.3% 回落至 59.9%，EPS 首次未達預期。<br />
+  Counter：59.9% 仍是同業估計 40–50% 的 1.2–1.5 倍，CEO 已主動引導「守住 50% 以上即不錯」的合理預期，-2.47% 的小幅不如預期遠不及前兩季 +41.6%／+9.4% 的大幅超預期，屬高基期下的正常修正而非趨勢反轉。</p>
+</li>
+<li>
+<p>Bear claim：NAND 現貨價 3 週內跌 23%，TrendForce 下修 Q4 合約價預估。<br />
+  Counter：下修後的 Q4 合約價預估仍是季增 8–13%（非下跌），真正的價格由升轉降要等到 2027 Q2 之後，公司有近兩季的緩衝期；且企業級 eSSD 預估未被下修，AI 業務占比已逾 50% 的產品組合可部分對沖消費型 NAND 疲弱。</p>
+</li>
+<li>
+<p>Bear claim：外資大砍目標價至 1,357（-48%），股價跌破多項均線形成死亡交叉。<br />
+  Counter：該外資自承「先前估值模型有計算錯誤」，單一機構的劇烈修正可信度有限，且其下修後的目標價仍高於現價 1,320；技術面的空頭訊號已被 54% 的跌幅大量消化,與超賣背離同時出現,是逆向布局的典型訊號組合。</p>
+</li>
+</ul>
+<h2>Confidence</h2>
+<p>6/10。基本面轉型（AI 化、毛利結構性上移）與極端低估值提供紮實的多頭論據,分析師目標價底線亦高於現價,但 TTM 現金流轉負與 NAND 價格循環確實構成真實風險,需以 12/5 營收與 11 月底 TrendForce 合約價作為驗證點。</p>
+<p>BULL ROUND 1 COMPLETE</p></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-red-700 mb-2">🐻 空方 (Bear)</h4>
+          <div class="agent-prose text-sm bg-red-50 p-3 rounded border border-red-200"><h1>Bear case round 1 — 8299.TWO</h1>
+<h2>Thesis（一句話）</h2>
+<p>群聯 2026 年獲利是 NAND 價格與庫存低成本效益共同撐起的週期高點,盈餘現金化能力同步惡化、NAND 合約價已開始反轉下修,股價雖已跌 54% 但本益比仍是用「峰值 EPS」計算,真正下行風險尚未反映完畢。</p>
+<h2>Demand / market risks</h2>
+<p>TrendForce 已將 2026 Q4 NAND 合約價季增預估由 15–20% 砍至 8–13%,並預期 2027 Q1 季減 0–5%、2027 Q2 起所有產品類別轉入下行,跌幅可能於 2027 下半年擴大。512Gb TLC 晶圓現貨價三週內重挫 23.3%。消費型 NAND/AI PC 相關出貨約佔群聯營收 40%,為最先轉弱的區塊。公司季營收 QoQ 成長已由 Q2 的 +65.7% 急降至 Q3 的 +26.8%,2026 Q3 EPS 123.51 首次未達市場預估(-2.47%),動能拐點訊號明確。SanDisk、Micron 同期股價分別下跌約 -41.1%、-22.4%,台股記憶體族群單日下跌 3.89%,屬板塊性去庫存循環,非單一公司可免。</p>
+<h2>Margin / cashflow risks</h2>
+<p>毛利率自 Q2 高點 65.3% 已回落至 Q3 59.9%(-5.4pt),公司自承低成本庫存效益正在淡化,CEO 亦表示長期維持 60% 以上不合理,目標僅守住 50% 以上——換言之管理層自己定義了未來毛利率將明顯低於現在。更關鍵的是盈餘品質:TTM 淨利 765.7億,但 TTM 營業現金流 -79.4億、自由現金流 -123.3億,FCF/NI 為 -0.16,OCF/NI 為 -0.10,帳面獲利完全沒有轉換成現金。存貨 9 個月內暴增 214% 至 1117.7億(DIO 約 294 天),應收暴增 344% 至 607.8億,在 NAND 現貨價已跌 23% 的環境下,存貨跌價與應收減損風險同步升高。股利(TTM 50.9億)在 OCF 為負的情況下只靠帳面獲利撐住,非現金基礎的健康配息。</p>
+<h2>Valuation risk</h2>
+<ul>
+<li>Bear:假設毛利率回歸管理層自訂的 50% 區間、淨利率回落至接近 FY2025 的 12% 水準(即便營收持平於 TTM 2177.4億),淨利約 261億,以稀釋股數約 2.47億估算 EPS 約 106 TWD;套用反映週期性折價的 P/E 8x(低於同業估計中位數 20x,反映市場對峰值盈餘的不信任),目標價約 848 TWD,較現價 1320 下跌約 36%。</li>
+<li>Worst:若 NAND 價格循環跌至接近 FY2023 水準(淨利率探底約 7.5%),加上存貨跌價損失認列,EPS 可能探低至 60–70 TWD,搭配危機式 P/E 6x,目標價約 400–450 TWD,較現價下跌約 66–70%。此情境與外資已將評等砍至「減碼」、目標價腰斬 48% 至 1357 的方向一致,但本情境假設更悲觀的庫存減損衝擊。</li>
+</ul>
+<h2>Competitive / regulatory</h2>
+<p>NAND bit 供給 2027 年預估成長 25–30%(TrendForce),若中國雲端客戶去庫存速度不如預期,跌價期可能延長。三星證券估 Samsung、SK hynix 股價已分別反映 46%、36% 的記憶體價格跌幅,顯示同業股價定價權重已轉向悲觀,群聯作為控制晶片/模組廠商,議價力弱於原廠,毛利率對現貨價波動更敏感。公司並無分部營收揭露,AI 業務佔比超過 50% 的說法僅為媒體彙整,無法獨立驗證真實的客戶集中度與議價結構風險。</p>
+<h2>Tactical（technical）</h2>
+<p>均線呈空頭排列(MA20 1691 &lt; MA50 1893 &lt; MA200 2020),MA50 已於 11/3 死亡交叉下穿 MA200。價格呈現連續 lower highs/lower lows,11/20 收 1320,較前收 1455 重挫 -9.3%,成交量為 10 日均量的 2.0 倍,屬放量收低。關鍵支撐 1310(11/20 盤中低)已接近失守,前一結構支撐 1425–1445 已跌破。RSI14 為 27.58 進入超賣區,但前次超賣(11/6 RSI 26.71)反彈後仍未收復跌破區間,顯示超賣不代表反轉。MACD histogram 持續擴大(-24.84,較前日 -16.78 擴大),空方動能仍在加速。ATR14 約 120.97(9.2% 日波動),續破 1310 將確認新一輪下跌結構。</p>
+<h2>Rebuttal to bull round 0</h2>
+<ul>
+<li>Bull claim:「trailing P/E 4.1x、EV/EBITDA 3.7x 極度便宜」<br />
+  Counter:此本益比是用週期峰值 TTM EPS(318 元)計算,forward P/E(4.5x)反而高於 trailing,代表市場已預期盈餘將回落;以管理層自訂的正常化毛利率推算,真實本益比遠高於 4x。</li>
+<li>Bull claim:「10 月營收年增 346%、AI 業務佔比超過 50%、NAND 70% 供給已鎖定,基本面強勁」<br />
+  Counter:QoQ 成長已從 +65.7% 降至 +26.8%,TrendForce 已下修 Q4 與 2027 Q1 合約價預估,2027 Q2 起全產品類別轉入下行;「鎖定 70% 供給」為媒體轉述,未經法說會正式核對。</li>
+<li>Bull claim:「庫藏股買回與 CEO 買進顯示內部人信心」<br />
+  Counter:買回規模僅約市值的 1.6%,CEO 買進僅 40 張(約 0.8億),相對於三大法人自 4 月起持續賣超,訊號強度有限;TTM 股利未被營運現金流覆蓋,買回與配息的現金來源品質存疑。</li>
+</ul>
+<h2>Confidence</h2>
+<p>7/10。NAND 價格循環下修、毛利率拐點、現金流與淨利背離、存貨應收暴增、技術面死亡交叉與放量破底多項證據方向一致;信心未達滿分因部分數字(TTM 營收與月營收口徑不一致、股利欄位矛盾、52 週高低點未能交叉驗證)存在資料品質瑕疵,需以 MOPS 公告進一步確認。</p>
+<p>BEAR ROUND 1 COMPLETE</p></div>
+        </div>
+      </div>
+    </details>
+
+    <details class="mb-4 border border-slate-200 rounded">
+      <summary class="bg-slate-50 px-4 py-2 font-semibold">Phase 4 — 風險辯論 (Risk debate)</summary>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 p-4">
+        <div>
+          <h4 class="font-bold text-red-700 mb-2">⚡ 進攻 (Aggressive)</h4>
+          <div class="agent-prose text-sm bg-red-50 p-3 rounded border border-red-200"><h1>Aggressive risk view — 8299.TWO</h1>
+<h2>Where trader is too cautious</h2>
+<ul>
+<li>完全迴避新倉等於放棄一個風險可定義的超賣反彈機會:RSI14 27.58、BB %B 0.04 已達極端超賣,且 11/06 前例顯示可能出現約 15% 急彈。要求「11 月營收轉正 + 毛利率展望 55% + 站回 1,455 再站穩 1,535 + MACD histogram 收斂」四條件同時成立才轉多,門檻過高——等到 1,455 站穩,反彈大部分空間已被吃掉,alpha 所剩無幾。</li>
+<li>既有多單的出清訊號(收盤跌破 1,310)對比 ATR14 約 NT$121(9.2%),距離明顯偏窄。若現價已貼近 1,310,等於用不到一個 ATR 的緩衝設停損,容易被正常日內波動掃出場,而非被趨勢真正證偽。</li>
+<li>完全空手等待 12/05–12/10 營收與 12/17 Micron 財報落地,是把「Crux 未解」等同於「沒有機會」。超賣均值回歸的交易邏輯本來不需要等基本面 crux 解決,只需抓技術面極端值。</li>
+</ul>
+<h2>Recommended adjustments</h2>
+<ul>
+<li>Size: 無倉 → 小型戰術多單(帳戶風險預算 1–2%,而非一般持股比例),以定義風險工具執行,而非放大裸股曝險。</li>
+<li>Stop: 1,310 收盤價 → 若用股票,停損放寬至約 1,280(約一個 ATR 緩衝);若用選擇權,最大虧損即為權利金,天然比裸股寬容,不受單日噴出噴落掃損。</li>
+<li>Entry: 現在即可用小倉位分批試探超賣反彈,而非等三項條件全數成立才進場——那時反彈多半已走完大半。</li>
+<li>Consider: 買進短天期價平/價外 call spread(現價附近 strike 到高一檔 strike,2026-12-19 到期),涵蓋 11 月營收與 Micron 財報雙催化劑窗口,用固定權利金鎖住最大虧損,換取反彈 + 消息面雙重槓桿。</li>
+</ul>
+<h2>Asymmetry argument</h2>
+<p>以 NT$50 萬權利金的 call spread 為例:最大虧損 = 權利金 NT$50 萬(A,帳戶層級風險完全鎖定)。若出現類似 11/06 的 15% 急彈,並伴隨 12 月營收/Micron 財報正面確認,價差部位可望放大 3–5 倍,實際獲利約 NT$150–250 萬(B)。B/A ≈ 3–5 倍,相較於裸股「下檔接近無上限 vs 上檔僅 15%」的結構,風報比明顯更優,且完全不需動用一般持股比例的資本。</p>
+<h2>What I'd push for</h2>
+<p>在嚴格風控的選擇權結構下(固定權利金損失、不追加、不裸股曝險),應在現價附近建立小型(1–2% 風險預算)看漲價差,賭超賣技術反彈疊加 12/05–12/10 營收與 12/17 Micron 財報的雙催化劑窗口,而非完全空手等待四條件全數確認。若反彈未現,權利金歸零損失可承受;若反彈成立,捕捉的是一般「等確認再進場」策略注定錯過的那一段 alpha。既有多單則不建議用緊貼現價的 1,310 硬停損,應給足 ATR 緩衝,避免被噴出噴落的正常波動錯殺在趨勢真正翻空之前。</p>
+<p>AGGRESSIVE VIEW COMPLETE</p></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-blue-700 mb-2">🛡️ 保守 (Conservative)</h4>
+          <div class="agent-prose text-sm bg-blue-50 p-3 rounded border border-blue-200"><h1>Conservative risk view — 8299.TWO</h1>
+<h2>Where trader is too aggressive</h2>
+<ul>
+<li>整體建議雖已是 HOLD/AVOID，但「既有多單減碼至輕倉」仍隱含繼續持有曝險，而非直接出清；在 MA20&lt;MA50&lt;MA200 空頭排列、死亡交叉已成立、11/20 放量收低的狀況下，任何保留曝險都是在等待確認訊號前先承受下檔。</li>
+<li>1,310 停損僅是「結構失效參考」，不是可靠的執行價。台股/上柜個股日漲跌限制 ±10%，而 ATR14 已達 9.2%（約 NT$121）；11/06 曾跳空 -9.9%、11/20 開盤已較前收低 5.2%。一旦跌破 1,310 伴隨恐慌性賣壓，實際成交價極可能直接跳空至跌停附近，停損形同「名義保護」，實際滑價遠大於 (1320−1310)=NT$10/股 的帳面設定。</li>
+<li>轉空觀察條件把 invalidation 設在 1,535，若真要據此回補停損，距可能的進場價 1,310 高達 225 元（17.2%），遠寬於 1.5×ATR（≈182 元，對應約 1,492），對波動已達 84.5% 年化、Beta 1.86 的標的而言，這個停損寬度足以放大單筆損失至不成比例。</li>
+</ul>
+<h2>Tail scenarios</h2>
+<ul>
+<li>Scenario A（機率約 25%）：12/05–12/10 11 月營收／合約價不如預期、12/17 Micron 財報證實 NAND 需求疲弱 → 跌破 1,310 後加速探底至 1,100–1,000 區間，每股帳面損失可達 NT$220–320。</li>
+<li>Scenario B（機率約 15%）：Fed 鷹派／美債殖利率彈升引發 AI 供應鏈系統性賣壓，記憶體三雄（Micron／SK Hynix／群聯）同步重挫；Beta 1.86 下，大盤跌 5% 可能對應 8299 跌 9% 以上，與個股利空疊加形成雙重打擊。</li>
+<li>Scenario C（機率約 10%）：複製 11/06 式的 15% 超賣反彈後再度破底，任何趁反彈小額試多或回補空單者，先高買後再被套，兩面受傷。</li>
+</ul>
+<h2>Recommended adjustments</h2>
+<ul>
+<li>Size：既有多單直接降到「可承受全損也不影響決策」的極小倉位，而非僅「輕倉」；新倉（多或空）維持零曝險，不建議提前佈局轉空。</li>
+<li>Stop：若仍持有多單，應以收盤（非盤中）跌破 1,310 立即市價出清，不要用限價停損，以降低跳空滑價風險；未來若轉空，停損應收斂至約 1,480（≈1.5×ATR），而非 1,535。</li>
+<li>Entry：任何新倉都應等待 11 月營收與合約價「雙確認」後才分批進場，不接超賣反彈的刀。</li>
+<li>Consider：若持有相關記憶體供應鏈曝險（美光、SK Hynix ADR 或台股記憶體 ETF），應視為同一風險因子，避免重複計入分散效果；可用台指期或半導體 ETF 空單作簡易對沖。</li>
+</ul>
+<h2>Position-level $ risk</h2>
+<p>以 1,000 股輕倉估算：若停損確實在 1,310 執行，帳面損失 = (1,320−1,310) × 1,000 = NT$10,000，看似極小；但考慮跳空滑價，實際出清價可能落在跌停附近（約 -5~9%），真實損失可達 NT$66,000–120,000，是名義停損的 6–9 倍。這在高波動、空頭排列已確立的標的上並不可接受，除非帳戶 NAV 極大、此倉位占比可忽略不計。</p>
+<h2>What I'd push for</h2>
+<p>在 Crux 1（2027 EPS 150 或 250）與 Crux 2（存貨/應收是否為負擔）尚未由 11 月營收與合約價證實前，既有多單應直接出清而非「減碼」，因為台股跳空機制已讓 1,310 的名義停損失去保護效力；任何新倉（多或空）都應等待雙重確認訊號齊備後才分批進場，且屆時空單停損須以 ATR 為基準收斂，不宜沿用 1,535 這種偏寬的 invalidation 水位作為實際執行停損。</p>
+<p>CONSERVATIVE VIEW COMPLETE</p></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-slate-700 mb-2">⚖️ 中立 (Neutral)</h4>
+          <div class="agent-prose text-sm bg-slate-100 p-3 rounded border border-slate-300"><h1>Neutral risk view — 8299.TWO</h1>
+<h2>Points of agreement (both sides)</h2>
+<ul>
+<li>都認同不應維持大額裸股曝險：既有多單應減碼至極小倉位，新倉不論多空都不該全倉壓注。</li>
+<li>都以 ATR14（約 NT$121，9.2%）作為停損/進場緩衝的基準，而非沿用過窄的名義價位。</li>
+<li>都認可 1,310 收盤價是關鍵技術觀察線，跌破後應觸發行動（出清或轉空評估），而非盤中雜訊。</li>
+<li>都承認 Crux 1（EPS 150/250）、Crux 2（存貨/應收品質）尚未由 11 月營收/合約價證實。</li>
+</ul>
+<h2>Aggressive overreach</h2>
+<ul>
+<li>Where：主張「現在即可用小倉位分批試探超賣反彈」，並把裸股多單出清訊號批評為「過窄」。</li>
+<li>Why：research 經理與 trade proposal 的 AVOID 結論核心是 Crux 未解、四項轉多條件皆未成立；在此之前進場等於把技術面超賣訊號凌駕於尚未驗證的基本面矛盾之上。即使用選擇權定義風險，提前建倉仍是搶跑確認訊號，而非風控調整。放寬既有多單停損至 1,280（反而拉大持倉風險）也與「出清訊號」的用途矛盾——那是出場價，不是用來加大容忍度的進場緩衝。</li>
+</ul>
+<h2>Conservative overreach</h2>
+<ul>
+<li>Where：以 11/06、11/20 跳空為基礎，直接假設跌破 1,310 會「極可能」滑價至跌停附近，並將 1.5×ATR 的空單停損（1,480）取代研究端既定的 1,535 轉多失效位。</li>
+<li>Why：把尾部情境（Scenario A/B，機率合計僅約 35–40%）當作預設結果，誇大滑價幅度；且 1,535 是跨季度的「轉多判斷失效位」，與短線停損執行價本屬不同用途，不應直接收斂取代。</li>
+</ul>
+<h2>Balanced adjustment proposal</h2>
+<ul>
+<li>Size：不新建裸股多/空倉；若要博技術反彈，僅限小額定義風險工具（如短天期 call spread），風險預算控制在 NAV 的 0.3–0.5%（低於激進方 1–2%，但保留保守方未允許的戰術彈性）。</li>
+<li>Stop：既有多單以收盤（非盤中）跌破 1,310 為出清訊號，用市價單執行以降低跳空滑價（採保守方執行方式），不採激進方放寬至 1,280。</li>
+<li>Entry：裸股新倉仍待 11 月營收/合約價至少出現部分確認訊號；選擇權戰術倉可提前小額布局，但權利金即為最大損失上限。</li>
+<li>Hedge：若有記憶體供應鏈重疊曝險（美光、SK Hynix、台股記憶體 ETF），應視為同一風險因子，可用半導體 ETF 或台指期小額對沖。</li>
+<li>Time horizon：維持數日至 3 週戰術觀察窗，等待 12/05–12/10 營收、12/17 Micron 財報。</li>
+</ul>
+<h2>Net $ risk if stop hits</h2>
+<p>以 1,000 股極小倉位估算：帳面停損損失約 NT$10,000（約 NAV 0.02–0.05%，視帳戶規模）；計入中度跳空滑價（假設 3–5%，非保守方假設之全額跌停），實際風險約 NT$40,000–65,000，建議控制在 NAV 0.3–0.5% 以內。</p>
+<h2>Net $ upside at T1 / T2</h2>
+<p>同等 1,000 股規模：反彈至 T1=1,455 獲利約 NT$135,000；延伸至 T2=1,535（轉多確認位）獲利約 NT$215,000。實際建議以選擇權價差執行，最大損失鎖定於權利金，上行捕捉同等比例反彈空間。</p>
+<p>NEUTRAL VIEW COMPLETE</p></div>
+        </div>
+      </div>
+    </details>
+
+  </div>
+
+  <script>
+    (function() {
+      var d = {};
+      if (!d.dates) return;
+      var traces = [
+        {x: d.dates, y: d.close, name: 'Close',  line: {color: '#1f2937', width: 2}},
+        {x: d.dates, y: d.ma20,  name: 'MA20',   line: {color: '#0ea5e9', width: 1, dash: 'dot'}},
+        {x: d.dates, y: d.ma50,  name: 'MA50',   line: {color: '#f59e0b', width: 1, dash: 'dot'}},
+        {x: d.dates, y: d.ma200, name: 'MA200',  line: {color: '#ef4444', width: 1, dash: 'dash'}}
+      ];
+      var layout = {
+        margin: {l: 50, r: 20, t: 10, b: 40},
+        legend: {orientation: 'h', y: -0.15},
+        xaxis: {showgrid: false},
+        yaxis: {title: '價格 ($)'}
+      };
+      Plotly.newPlot('chart-8299_TWO', traces, layout, {displayModeBar: false, responsive: true});
+    })();
+  </script>
+
+</section>
+
+
+<section id="ticker-3260_TW" class="mb-10 bg-white rounded-lg shadow overflow-hidden">
+
+  <div class="flex items-start justify-between p-6 border-b border-slate-200 verdict-HOLD">
+    <div>
+      <h2 class="text-3xl font-bold">3260.TW</h2>
+      <p class="text-sm mt-1 opacity-80">威剛 (3260) — 記憶體模組</p>
+    </div>
+    <div class="text-right">
+      <div class="text-4xl font-bold">HOLD</div>
+      <div class="text-sm opacity-80 mt-1"></div>
+    </div>
+  </div>
+
+  <div class="p-6 grid grid-cols-1 lg:grid-cols-2 gap-6">
+
+    <div>
+      <h3 class="text-lg font-bold mb-2">價格 + 技術指標 (2 年)</h3>
+      <div id="chart-3260_TW" style="height: 380px;"></div>
+    </div>
+
+    <div>
+      <h3 class="text-lg font-bold mb-2">最終決策 (Final decision)</h3>
+      <div class="agent-prose text-sm bg-slate-50 p-4 rounded border border-slate-200">
+        <h1>Final Decision — 3260.TW (威剛 ADATA Technology) as of 2026-11-21</h1>
+<p>FINAL TRANSACTION PROPOSAL: <strong>HOLD</strong></p>
+<hr />
+<h2>Phase-1-only Stub</h2>
+<p><strong>訊號評分：0/5 — 不符合正向選股門檻（≥3/5），不進入 Phase 2-4 完整辯論。</strong></p>
+<table>
+<thead>
+<tr>
+<th>訊號</th>
+<th>結果</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>基本面</td>
+<td>FAIL</td>
+<td>DATA_UNAVAILABLE — yfinance financials/balance_sheet/cashflow/insider/holders 全數回傳空值或連線失敗 (403)，無法評估營收成長與 FCF</td>
+</tr>
+<tr>
+<td>市場技術</td>
+<td>FAIL</td>
+<td>RSI14=18.88 (OK) 但 MACD hist -5.12 深度負值且擴大、價格 $235.50 遠低於 MA50 $349.94 與 MA200 $379.84，死亡交叉已成立 (11-05)</td>
+</tr>
+<tr>
+<td>新聞</td>
+<td>FAIL</td>
+<td>Net read: mixed，偏空情緒、偏多基本面敘事；公司面消息 (10 月營收 +282.3% YoY、DRAM 缺貨看法) 正向，但 Q4 季減指引、族群重挫與 NAND 現貨急跌等偏空因子並存，不構成淨正向</td>
+</tr>
+<tr>
+<td>情緒</td>
+<td>FAIL</td>
+<td>yfinance rec_summary 回傳空值，分析師共識不可得；僅有 1-2 家零散目標價 (420-556 元)，樣本過小且信心度低，無法確認 ≥60% BUY；機構/內部人資料亦缺失</td>
+</tr>
+<tr>
+<td>估值</td>
+<td>FAIL</td>
+<td>基本面資料不可得，無法計算 forward P/E；EPS 成長催化劑 (2027 EPS 預估 84.15 元) 來自單一二手報導，未經驗證，不視為「已確認」catalyst</td>
+</tr>
+</tbody>
+</table>
+<p><strong>訊號合計：0/5 PASS</strong></p>
+<h2>結論</h2>
+<p>威剛基本面資料因 Yahoo 代理連線失敗全面不可得 (DATA_UNAVAILABLE)，技術面呈現明確空頭排列與深度超賣延伸，新聞面多空訊息並存（公司營收與產業缺貨敘事偏多，但 Q4 指引、族群重挫與 NAND 現貨急跌偏空），情緒面無可靠分析師共識樣本。五項訊號全數未達標準，不符合正向選股門檻。</p>
+<p><strong>建議：不進場。待基本面資料恢復 (yfinance 或 MOPS 公開資訊觀測站) 後重新評估，並觀察股價是否站回 $254 (前收) 以上作為止跌訊號。</strong></p>
+<h2>Conviction</h2>
+<p><strong>LOW</strong> (0/5 signals)</p>
+<p>Score: <strong>2/100</strong><br />
+Score formula: verdict_weight(HOLD=0.3) × conviction_pct(0.05) × (1 + min(R:R=0,5)/5) × phase_modifier(Phase 1 = 0.35) ≈ 0.0053 → 2 (scaled)</p>
+<hr />
+<p>FINAL DECISION COMPLETE (Phase-1-only)</p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="px-6 pb-6">
+
+    <details class="mb-4 border border-slate-200 rounded">
+      <summary class="bg-slate-50 px-4 py-2 font-semibold">投資計劃 (Research manager)</summary>
+      <div class="agent-prose p-4 text-sm"><em>n/a</em></div>
+    </details>
+
+    <details class="mb-4 border border-slate-200 rounded">
+      <summary class="bg-slate-50 px-4 py-2 font-semibold">交易提案 (Trader)</summary>
+      <div class="agent-prose p-4 text-sm"><em>n/a</em></div>
+    </details>
+
+    <details class="mb-4 border border-slate-200 rounded">
+      <summary class="bg-slate-50 px-4 py-2 font-semibold">Phase 1 — 四 Analyst 報告</summary>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+        <div>
+          <h4 class="font-bold text-slate-700 mb-2">基本面 (Fundamentals)</h4>
+          <div class="agent-prose text-sm bg-slate-50 p-3 rounded"><h2>3260.TW 威剛 基本面報告 (as of 2026-11-21) — DATA_UNAVAILABLE</h2>
+<p>狀態: DATA_UNAVAILABLE。基本面資料無法取得，本報告不含任何估值或財務比率數字。</p>
+<h3>查詢紀錄</h3>
+<ul>
+<li>執行過的工具: <code>pipeline/tools/yf 3260.TW</code> 的 info, fast_info, financials, quarterly_fin, balance_sheet, quarterly_bs, cashflow, quarterly_cf, earnings_dates, insider, major_holders, inst_holders，共 12 項，並於 20 秒後重試 info, financials, earnings_dates。</li>
+<li>結果:</li>
+<li>info: 只回傳 <code>trailingPegRatio: null</code>，其餘欄位皆缺。</li>
+<li>financials, quarterly_fin, balance_sheet, quarterly_bs, cashflow, quarterly_cf, insider, major_holders, inst_holders: 回傳空陣列 <code>[]</code>。</li>
+<li>earnings_dates: 回傳 <code>ConnectionError</code>，原因是 <code>CONNECT tunnel failed, response 403</code>。</li>
+<li>Yahoo cookie/crumb 取得失敗 (ConnectionError)，屬於代理層 403 拒絕。</li>
+<li>工具輸出中有 "possibly delisted; no price data found" 字樣，但這是抓取失敗的連帶訊息，並非確認下市，不應作為下市判斷依據。</li>
+</ul>
+<h3>唯一可用資料 (fast_info, feed: cnyes, source: cache, cached_at 2026-11-21T14:32:37Z)</h3>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>數值</th>
+<th>單位</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>最新價 (last_price)</td>
+<td>235.5</td>
+<td>TWD</td>
+</tr>
+<tr>
+<td>前收 (previous_close)</td>
+<td>254.0</td>
+<td>TWD</td>
+</tr>
+<tr>
+<td>日高 / 日低</td>
+<td>250.0 / 232.5</td>
+<td>TWD</td>
+</tr>
+<tr>
+<td>當日漲跌幅 (由上述兩價計算)</td>
+<td>約 -7.3%</td>
+<td>%</td>
+</tr>
+<tr>
+<td>50日 / 200日均線</td>
+<td>n/a</td>
+<td>TWD</td>
+</tr>
+<tr>
+<td>52週高 / 低</td>
+<td>n/a (NaN)</td>
+<td>TWD</td>
+</tr>
+<tr>
+<td>市值, 股數, 成交量</td>
+<td>n/a</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<p>此價格資料為 cache，時間戳與分析日同為 2026-11-21，未發現晚於 2026-11-21 的資料。</p>
+<h3>缺漏項目 (全部 n/a，未推算)</h3>
+<ul>
+<li>營收與 3-5 年 CAGR、毛利 / 營業利益 / 淨利率趨勢、ROE、ROIC</li>
+<li>FCF、FCF/NI、經營現金流、資本支出、庫藏股與股利</li>
+<li>淨負債、流動比率、負債權益比、現金部位</li>
+<li>內部人交易 (近 6 個月)、大股東與法人持股</li>
+<li>P/E、forward P/E、EV/EBITDA、P/FCF、P/S 及產業中位數比較</li>
+<li>下次財報日、EPS 驚喜歷史、近期法說指引</li>
+</ul>
+<h3>對下游的提示</h3>
+<ul>
+<li>基本面無法評估財務健全度與估值吸引力，不應以本報告推論基本面方向。</li>
+<li>交易員若需要基本面依據，請等 yfinance 恢復後重跑本分析，或改用 TWSE / MOPS 公開資訊觀測站資料 (本次未查詢)。</li>
+<li>價格面僅見單日 -7.3% 的急跌 (前收 254.0 → 235.5)，其成因 (財報、產業、指數或其他) 本報告無法判定。</li>
+</ul>
+<p>FUNDAMENTALS REPORT COMPLETE (DATA_UNAVAILABLE)</p></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-slate-700 mb-2">技術面 (Market / Technical)</h4>
+          <div class="agent-prose text-sm bg-slate-50 p-3 rounded"><h1>Technical — 3260.TW as of 2026-11-21</h1>
+<blockquote>
+<p><strong>資料狀態</strong>: 即時報價不可得 (2026-11-21 live: PRICE_DATA_UNAVAILABLE)。本次重試 Yahoo、cnyes 即時、TWSE 皆失敗 (proxy CONNECT 403)，<code>pricefeed</code> 全數回退至 <code>cache</code>；<code>probe</code> 亦顯示所有 feed 為 <code>cache</code>，與「feed 已恢復」的前提不符。本報告價格為快取中的 <strong>2026-11-20 收盤 $235.50</strong> (cached_at 2026-11-21T14:32 UTC)，非 2026-11-21 即時價，未做任何估計。<code>ta</code> 序列的 2026-11-20 bar 與快取價吻合，但兩者同源，並非獨立驗證。</p>
+</blockquote>
+<h2>Snapshot</h2>
+<p>Price $235.50 (2026-11-20 收盤，快取), MA20 $306.63, MA50 $349.94, MA200 $379.84, RSI14=18.88, MACD hist=-5.12</p>
+<h2>Trend</h2>
+<p>空頭趨勢，強度高。價格低於 MA20、MA50、MA200，且呈 MA20 &lt; MA50 &lt; MA200 的完整空頭排列。死亡交叉已於 2026-11-05 形成 (MA50 378.55 跌破 MA200 379.86；11-04 時 MA50 仍高於 MA200)。價格距 MA20 -23.2%、距 MA50 -32.7%、距 MA200 -38.0%。MA20 自 11-16 的 322.80 續降，MA50 仍在下彎。</p>
+<p>結構上，自 2026-10-29 的局部高點 378.5 起，高點逐步下移 (357 → 346 → 338 → 324 → 315 → 304.5，11-09 小幅反彈至 320 後再下移至 300、282、275、250)，低點同步創新低 (11-05 296、11-06 270、11-16 277、11-17 263、11-19 252、11-20 232.5)。近 5 個交易日收盤 278.0 → 275.0 → 275.0 → 254.0 → 235.5，11-20 跳空低開 242.0 (較 11-19 收盤低 4.7%)，收盤較前日 -7.3%，為序列內最低收盤。<code>ta levels</code> 列出的前期支撐 334.0 (2026-07-20)、375.0 (2026-08-19)、378.0 (2026-06-11) 全數位於現價上方，已轉為上方壓力。</p>
+<h2>Momentum</h2>
+<p>MACD 偏空：MACD line -26.79 低於 signal -21.67，histogram -5.12 為負值，且自 11-16 的 -2.38 持續擴大 (-2.79、-2.72、-3.70、-5.12)，空方動能加速。MACD line 自 11-19 的 -24.09 續降。</p>
+<p>RSI14 18.88，位於深度超賣區 (&lt;20)，且自 11-16 的 27.28 起連續下行。在下跌趨勢中超賣讀數可持續，本身不構成反轉訊號。</p>
+<p>多期間報酬：1m -29.8%、3m -39.1%、6m -39.6%、12m +25.9%。中短期持續弱勢，12m 仍為正值，但 52 週高點 525.00 已下跌 55.1%。</p>
+<h2>Key levels</h2>
+<ul>
+<li>Resistance:</li>
+<li>$254.00 (2026-11-19 收盤，前一交易日收盤)</li>
+<li>$275.00 (2026-11-17 / 11-18 收盤)</li>
+<li>$278.00 (2026-11-16 收盤)</li>
+<li>$306.63 (MA20，動態)</li>
+<li>$349.94 (MA50，動態)</li>
+<li>$373.56 (BB upper，動態)</li>
+<li>$378.50 (2026-10-29 local high)</li>
+<li>$437.00 (2026-08-07 local high)，$459.50 (2026-08-24 local high)</li>
+<li>Support:</li>
+<li>$232.50 (2026-11-20 盤中最低，序列內最低價)</li>
+<li>$239.69 (BB lower，動態；現價已在其下方)</li>
+<li>$171.50 (52w low，日期未於本次資料中取得)</li>
+<li>註：<code>ta levels</code> 的 334.0 / 375.0 / 378.0 均在現價上方，不計入有效支撐。</li>
+<li>Stop-loss suggestion (logical, not advice): below $232.50 (2026-11-20 盤中低點，目前為最近的結構性參考位)。若以 2×ATR 計，距現價約 $38.9 (約 -16.5%)。</li>
+</ul>
+<h2>Volatility profile</h2>
+<p>ATR-implied daily move ~$19.44 (約現價的 8.3%)，20 日年化波動率 67.9%，換算日標準差約 4.3% (約 $10.1)。ATR 大於由年化波動換算的日波動，原因之一是 11-06 與 11-20 的跳空。</p>
+<p>部位規模含意：在此波動水準下，以 1 ATR ($19.4) 或 2 ATR ($38.9) 為停損距離時，單筆部位的風險金額需相應縮小，否則同樣的部位權重會承受數倍於低波動標的的回撤。</p>
+<p>成交量：2026-11-20 成交量 11,290，為近 10 日均量 (11-09 至 11-20，約 7,144，由序列計算) 的 1.58 倍，呈量增下跌。</p>
+<h2>Setup</h2>
+<p>偏空 (bearish)。型態：高點與低點同步下移 (lower highs / lower lows)，死亡交叉已成立 (2026-11-05)，價格跌破 BB 下軌，RSI 極端超賣。目前資料中未見收復前一日高點的反轉 K 線，亦未見動能背離的反彈確認。11-20 為寬幅量增的下跌 bar，但尚未有次日確認。</p>
+<p>觀察條件 (僅描述，非建議)：<br />
+- 站回 BB lower $239.69 並收於 $254 (前收) 以上，可視為短線止跌的初步條件。<br />
+- 收盤跌破 $232.50，則空方延續的條件成立，下一個可見結構位為 $171.50 (52w low)。<br />
+- MACD histogram 由負轉正或收斂，才會是動能面的改善訊號。</p>
+<h2>Indicators table</h2>
+<table>
+<thead>
+<tr>
+<th>Indicator</th>
+<th>Value</th>
+<th>Reading</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Price (2026-11-20 收盤，快取)</td>
+<td>235.50</td>
+<td>快取價，非 2026-11-21 即時價</td>
+</tr>
+<tr>
+<td>MA20</td>
+<td>306.63</td>
+<td>價格 -23.2%，明顯在下方</td>
+</tr>
+<tr>
+<td>MA50</td>
+<td>349.94</td>
+<td>價格 -32.7%，下彎中</td>
+</tr>
+<tr>
+<td>MA200</td>
+<td>379.84</td>
+<td>價格 -38.0%，走平</td>
+</tr>
+<tr>
+<td>MA50 vs MA200</td>
+<td>死亡交叉 (2026-11-05 起)</td>
+<td>長期空頭結構</td>
+</tr>
+<tr>
+<td>RSI14</td>
+<td>18.88</td>
+<td>深度超賣 (&lt;20)，連續下行</td>
+</tr>
+<tr>
+<td>MACD / signal / hist</td>
+<td>-26.79 / -21.67 / -5.12</td>
+<td>空方，histogram 擴大</td>
+</tr>
+<tr>
+<td>BB %B</td>
+<td>-0.031</td>
+<td>略低於下軌 (下軌 239.69)</td>
+</tr>
+<tr>
+<td>ATR14</td>
+<td>19.44</td>
+<td>約現價 8.3%，波動大</td>
+</tr>
+<tr>
+<td>Vol 20d annualized</td>
+<td>67.9%</td>
+<td>高波動</td>
+</tr>
+<tr>
+<td>Return 1m / 3m / 6m / 12m</td>
+<td>-29.8% / -39.1% / -39.6% / +25.9%</td>
+<td>中短期弱勢，12m 仍正</td>
+</tr>
+<tr>
+<td>52w high / low</td>
+<td>525.00 / 171.50</td>
+<td>距高點 -55.1%，距低點 +37.3%</td>
+</tr>
+<tr>
+<td>Volume (11-20 vs 10d avg)</td>
+<td>11,290 vs ~7,144</td>
+<td>1.58 倍，量增下跌</td>
+</tr>
+<tr>
+<td>Pct from 52w high</td>
+<td>-55.1%</td>
+<td>深度回檔</td>
+</tr>
+</tbody>
+</table>
+<p>資料注意事項：序列中 11-03 與 11-04 的 RSI14 皆為 32.988；11-05 與 11-06 的 RSI14 皆為 28.238，且 11-05 與 11-06 收盤皆為 299.5；11-17 與 11-18 的 RSI14 皆為 26.581。上述重複值可能為未更新或重複的 bar，判讀時需留意。</p>
+<p>MARKET REPORT COMPLETE</p></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-slate-700 mb-2">新聞 (News)</h4>
+          <div class="agent-prose text-sm bg-slate-50 p-3 rounded"><h1>News — 3260.TW (威剛 ADATA Technology) as of 2026-11-21</h1>
+<p>資料說明: <code>pipeline/tools/yf 3260.TW news</code> 因代理 403 無法取得 (CONNECT tunnel failed)，<code>info</code> 僅回傳快取的無關欄位，無 sector 資料。本報告以 WebSearch 為主要來源，產業歸類依公司業務推定為「記憶體模組 / 儲存 (DRAM 模組 + NAND 快閃記憶體 SSD)」。個股股價未能驗證。大部分來源為媒體轉載與券商觀點，未對照公開資訊觀測站原文。</p>
+<h2>Top company-specific headlines (last 14d)</h2>
+<ul>
+<li>2026-11-06 — 威剛法說會: 第四季營收預估較第三季略減，主因年底客戶庫存結算、備貨態度保守；公司認為 DRAM 2026 全年仍缺貨、2027 缺口將比今年更大，DRAM/NAND 價格可望維持高檔 (uanalyze、wantrich、富果研究). Impact: neutral (偏多產業面、偏空 Q4 季節性). 1-line why: 價格看法偏多，但 Q4 營收季減確認短期動能放緩。</li>
+<li>2026-11-06 — 10 月合併營收 170.63 億 TWD，月增 8.5%、年增 282.3%；1-10 月累計 1,343.69 億 TWD，年增 222.7% (technews 財報整理). Impact: bullish (已在市場預期中). 1-line why: 營收動能延續，但 Q4 指引偏保守，已部分反映。</li>
+<li>2026-11-06 前後 — 2026 Q3 合併營收約 530 億 TWD，季增近 40%；營業利益約 153 億 TWD，季增 20%；稅後淨利約 129 億 TWD (富果研究). Impact: bullish. 1-line why: 獲利大幅成長。註: 129 億 TWD 與華南投顧「前三季 EPS 101.47 元」換算 (約 1.27 億股 × 101 ≈ 129 億) 較像前三季淨利口徑，Q3 單季口徑需再核實。</li>
+<li>2026-11-10 (約) — 市場評論指出威剛與宜鼎毛利率下降，模組廠低價庫存利益逐漸消失；但仍看好 DRAM 缺貨延續到 2027 年底 (wantrich 11/10). Impact: bearish (獲利品質)。1-line why: 進貨成本上升壓縮毛利率空間，與 Q4 季減疊加。</li>
+<li>2026-11 初 (日期未確認) — 華南投顧維持「增持」，目標價 420 元；估 2027 EPS 約 84 元，認為進貨成本上升、毛利空間有限 (wantrich/華南報告摘要). Impact: neutral. 1-line why: 目標價低於 2026 年 5 月的 556 元目標，反映獲利高點論。</li>
+<li>2026 Q4 起 — 企業級品牌 Trustar 小量出貨，多家大型客戶送樣認證；目標 2027 年營收占比達高個位數 (法說會). Impact: bullish (中期)。1-line why: 向企業級 SSD / AI 推論儲存延伸，結構性故事。</li>
+<li>2026-11-18 至 11-20 — 參展 EdgeTech+ 2026 (日本)、SC26 (美國)，展示工業與企業級產品 (官方新聞稿 / 媒體). Impact: neutral. 1-line why: 展會曝光，無財務影響，屬雜訊。</li>
+</ul>
+<p>未發現: 10-31 以後的 M&amp;A、高階人事異動、監管或訴訟事件 (威剛本身)。</p>
+<h2>Sector macro</h2>
+<ul>
+<li>2026-11-18 — TrendForce DRAM Market Bulletin: 傳統 DRAM 2026 Q4 合約價預估季增 10-15%，缺口收斂、漲幅逐季放緩；行動 DRAM 談判停滯，多數品牌觀望。DDR4 8Gb 現貨 10 月月增 5.77% 創高 (TrendForce 研究/WebSearch 摘要). Impact on 記憶體模組: 偏多 (DRAM 模組報價支撐)，但漲幅收斂是二階導數轉弱訊號。</li>
+<li>2026-11-19 — TrendForce NAND 更新: 2026 Q4 NAND 合約價預估由 15-20% 下修為 8-13%；預期 2027 Q1 NAND 合約價季增 0-5% 區間內下跌；512Gb TLC 晶圓現貨價 3 週內下跌 23.3%。Impact on 威剛: bearish (NAND 為 SSD 與 USB/ 模組的成本與售價基礎；現貨下跌對持有高價庫存的模組廠有跌價風險；但對成本端亦有緩解，需看庫存結構)。</li>
+<li>2026-11-03 至 11-18 — 美股與台股記憶體族群大幅修正: SK hynix 10/29 至 11/06 收盤跌約 25.8%、Micron 跌約 26.1%、三星約 18.7% (FourWeekMBA 引用 Counterpoint 計算)；台股 11/3 華邦電、南亞科、群聯跌停；南亞科 18 日最低 307 元，自高點 569 元回檔逾 4 成。Impact on 威剛: bearish (情緒與估值面)。</li>
+<li>2026-11-03 (約) — 中國長鑫存儲新一代 DRAM 技術進展引發競爭疑慮，成為族群賣壓誘因 (wantrich/財經媒體). Impact: bearish 情緒面，中期供給增加風險待觀察。</li>
+<li>2026 H2 — Micron 暫停台灣桃園 Fab 11E 新潔淨室興建 (自 10 月中起，Digitimes 引用供應鏈消息，未獨立驗證). Impact: bullish (供給擴充放緩) — 待確認。</li>
+<li>2026-11 — DRAM 價格壟斷集體訴訟 (三星、SK hynix、Micron): 法院拒絕駁回起訴動議，答辯期限 12/7，初步案件管理會議 2027-01-12 (聚合來源，未核對法院公告). Impact: neutral (對 威剛 無直接影響，屬行業風險)。</li>
+<li>關稅: 2026-01 美國 Section 232 半導體關稅公告主要針對邏輯晶片 (HTS 8471.50 / 8471.80 / 8473.30)，記憶體非主要對象；台美貿易協議已約定對台商在美投資之優惠待遇。未找到 2026-11 的 memory 關稅更新。Impact: neutral (低)。</li>
+<li>利率 (Fed): 搜尋結果顯示 2026 年 10 月會議有兩名委員主張升息 25bp，市場對 12 月升息機率有報導指出約 71% (CME FedWatch 快照，日期不明)；另有 2025 年 12 月降息的舊資料，已排除。此資訊來源互相衝突且時效不明，僅列為低可信度背景。Impact: 若升息，對高估值記憶體族群與台幣融資成本偏空，需進一步確認。</li>
+</ul>
+<h2>Peer signals</h2>
+<ul>
+<li>南亞科 (2408.TW) — 11/18 前連續 5 根黑 K，自 569 元回檔至 307 元 (逾 4 成)；富邦維持買進、目標價 660 元，但認為未來四季營收與 EPS 上升空間有限。Bearish 情緒，估值仍具爭議。</li>
+<li>群聯 (8299.TW) — 目標價由 2,000 元下修至 1,870 元 (約 11/9)，較 8 月高點 2,450 元累計降幅約 23.7%。NAND 控制 IC 與 SSD 相關，對 NAND 現貨下跌敏感。Bearish。</li>
+<li>華邦電 (2344.TW) / 旺宏 (2337.TW) — 11/3 跌停；國票將旺宏評等由「強力買進」降為「買進」，目標價 160 元下修至 140 元，因營收與獲利預估下修。Bearish 族群評價。</li>
+<li>宜鼎 (3693.TW) — 毛利率下降被市場點名，與威剛同屬模組廠，同樣面臨低價庫存利益消失的問題 (11/10 評論). Bearish 同業訊號。</li>
+<li>SK hynix / Samsung / Micron — 10 月底至 11 月初股價大跌；三大廠據報已售罄 2027 年供給並簽長期協議 (未獨立驗證). 基本面偏多、股價偏空，分歧明顯。Micron 為 DRAM 價格與 2027 供給的關鍵指標。</li>
+</ul>
+<h2>Forward calendar (next 14d)</h2>
+<ul>
+<li>2026-12-07 — DRAM 價格壟斷集體訴訟答辯截止 (三大 DRAM 廠)，對威剛無直接影響，列為行業風險事件。</li>
+<li>約 2026-12-08 至 12-09 — FOMC 會議 (日期來自 EY 頁面標題 "FOMC meeting, December 9-10"，年份與日期未完全確認，需核實)。利率路徑分歧大，為估值敏感事件。</li>
+<li>約 2026-12-10 — 台灣上市櫃公司 11 月營收公告截止 (威剛 11 月營收為 Q4 指引驗證點，指引為 Q4 營收較 Q3 略減)。</li>
+<li>2026-12 — TrendForce 12 月份 DRAM / NAND 合約價月度報告與 Q1 2027 議價進展 (預期方向: DRAM 漲幅續放緩、NAND 季持平至下跌)。</li>
+<li>2026 年 12 月中下旬 (推估) — Micron 2026 財年 Q1 財報 (日期未確認)，為 DRAM 供需與 2027 展望的重要指引。</li>
+<li>2027-01-12 — DRAM 集體訴訟初步案件管理會議。</li>
+</ul>
+<h2>Net read</h2>
+<p>近 14 日威剛的公司層面消息偏多，但以「已知數據」為主: 10 月營收 170.63 億 TWD 創高、1-10 月年增 222.7%，法人與媒體普遍認為 DRAM 2026 全年與 2027 年仍缺貨，這是支撐估值的主軸。反面訊號同樣明確: 法說會指引 Q4 營收季減，市場評論指模組廠毛利率下降、低價庫存利益消失，同時 2026-11-19 TrendForce 大幅下修 Q4 NAND 合約漲幅 (由 15-20% 降至 8-13%)，並預期 2027 Q1 NAND 合約價持平至下跌，現貨 3 週內跌 23.3%。DRAM 端仍為 Q4 季增 10-15%，但漲幅逐季收斂，二階導數轉弱。族群層面，南亞科、群聯、華邦電、旺宏等同業在 11/3 至 11/18 出現跌停與大幅修正，目標價普遍下修，市場情緒明顯轉弱。綜合來看，新聞面淨傾向為 <strong>mixed，偏空情緒、偏多基本面，中等幅度</strong> (基本面語氣仍強，但 Q4 季減、NAND 價格轉弱與毛利壓力使短線 headline 偏負向)。未驗證 11/21 股價，無法判斷市場是否已反映上述消息。本報告不含交易建議。</p>
+<h2>Data gaps</h2>
+<ul>
+<li>yfinance news / info 工具因代理 403 無法取得，新聞來源僅 WebSearch。</li>
+<li>威剛 11/21 股價與成交量未驗證。</li>
+<li>Q3 單季 NI 129 億 TWD 與前三季 EPS 101.47 元的口徑需核對。</li>
+<li>Fed 12 月機率來源互相矛盾且日期不明；FOMC 日期需核實。</li>
+<li>台灣 Section 232 與 memory 關稅 11 月無新進展。</li>
+<li>Micron Fab 11E 暫停與訴訟日期均來自聚合媒體，未獨立驗證。</li>
+</ul>
+<p>NEWS REPORT COMPLETE</p></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-slate-700 mb-2">情緒 (Sentiment)</h4>
+          <div class="agent-prose text-sm bg-slate-50 p-3 rounded"><h1>Sentiment — 3260.TW (威剛 ADATA Technology) as of 2026-11-21</h1>
+<h2>資料可用性與限制</h2>
+<table>
+<thead>
+<tr>
+<th>來源</th>
+<th>狀態</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>yf rec_summary / recommendations / insider / major_holders</td>
+<td>四項皆回傳空清單（Yahoo cookie/crumb 取得失敗），無法取得結構化分析師分布、內部人交易與股權結構</td>
+</tr>
+<tr>
+<td>Reddit r/stocks、r/wallstreetbets</td>
+<td>WebFetch 無法連線，未取得資料</td>
+</tr>
+<tr>
+<td>StockTwits</td>
+<td>api.stocktwits.com DNS 解析失敗，未取得資料（需在 session 網路設定中允許該網域）</td>
+</tr>
+<tr>
+<td>uanalyze.com.tw</td>
+<td>DNS 解析失敗，無法讀取全文</td>
+</tr>
+<tr>
+<td>PTT / Dcard</td>
+<td>WebSearch 未找到網友討論串</td>
+</tr>
+<tr>
+<td>X / 新聞</td>
+<td>有搜尋結果，但多為媒體與公司公告，非散戶情緒</td>
+</tr>
+</tbody>
+</table>
+<p>以下結論主要依賴 WebSearch 摘要與二手報導，部分數字未經原始來源驗證。</p>
+<h2>Analyst consensus</h2>
+<p>結構化評等分布 <strong>不可得</strong>（yf rec_summary 空值）。可辨識的零散評等如下：</p>
+<table>
+<thead>
+<tr>
+<th>日期（約）</th>
+<th>機構</th>
+<th>評等</th>
+<th>目標價 (TWD)</th>
+<th>備註</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2026-05（法說後）</td>
+<td>金控旗下投顧</td>
+<td>買進</td>
+<td>556</td>
+<td>報導來源為二手摘要</td>
+</tr>
+<tr>
+<td>不明（近期）</td>
+<td>某券商</td>
+<td>增持</td>
+<td>420</td>
+<td>摘要稱預估 2027 EPS 84.15 元，並提示毛利率可能回落</td>
+</tr>
+<tr>
+<td>2026-07 快照</td>
+<td>Investing.com 彙整</td>
+<td>Buy（僅 1 位分析師）</td>
+<td>平均 455</td>
+<td>樣本數過少，參考價值低</td>
+</tr>
+<tr>
+<td>2025-11</td>
+<td>某法人</td>
+<td>BUY 下調至 Trading BUY</td>
+<td>297.5 → 200</td>
+<td>舊資料，已明顯落後股價</td>
+</tr>
+</tbody>
+</table>
+<p>Recent moves：近期可見的目標價調整方向偏向上修（2026 年中多見 420 至 556 區間），但未能取得 2026-11 當月的完整調整清單。Investing.com 技術面快照曾同時出現 Strong Sell 與 Neutral，訊號不一致，不宜單獨引用。</p>
+<h2>基本面背景（影響情緒的事實面）</h2>
+<ul>
+<li>10 月營收 170.63 億 TWD，月增 8.5%，年增 282.3%；前 10 月累計 1,343.69 億 TWD，年增 222.7%。</li>
+<li>換算檢查：9 月營收約為 170.63 ÷ 1.085 ≈ 157.3 億 TWD；前 10 月平均約 134.4 億 TWD/月，與 10 月為高點的敘述一致。</li>
+<li>11/06 法說：預估第四季營收較第三季略減（年底客戶庫存結算），但看好 DRAM 價格，並認為 2026 年 DRAM 仍缺貨、2027 年缺口可能擴大。</li>
+<li>2026 年上半年稅後純益逾 200 億 TWD，第 2 季單季稅後淨利約 107.7 億 TWD。</li>
+<li>「前三季每股純益 101.47 元」出自單一二手報導，未經原始財報驗證，請勿當作確定值使用。</li>
+<li>11/13 收盤約 302 TWD（二手報導）。</li>
+<li>11/09 董事會決議買回庫藏股 600 萬股供轉讓給員工，買回期間 115/11/10 至 116/01/08，價格區間 213.50 至 532.20 TWD。</li>
+</ul>
+<h2>Retail social</h2>
+<ul>
+<li><strong>Reddit</strong>：無法取得（連線被擋）。</li>
+<li><strong>StockTwits</strong>：無法取得（DNS 失敗）。</li>
+<li><strong>PTT / Dcard</strong>：搜尋未找到相關討論串，無法判斷散戶情緒。</li>
+<li><strong>Retail buzz volume</strong>：無法量化。僅能確認 11 月有密集的媒體報導（法說、營收、買回公告），但這屬於新聞流量，不等於散戶討論量。</li>
+<li><strong>Retail tilt</strong>：無法判斷（bullish / bearish / mixed 皆無可靠樣本）。</li>
+<li><strong>Themes（僅從新聞與公司敘事推論，非散戶原話）</strong>：DRAM 漲價與缺貨週期、營收高成長、年底庫存調整是否影響 Q4、獲利能否在毛利率回落下維持。</li>
+<li>未擷取任何網友原文引句。</li>
+</ul>
+<h2>Insider activity</h2>
+<ul>
+<li>yf insider 回傳空值，<strong>無法計算 6 個月淨買賣金額</strong>。</li>
+<li>未找到董監事個人持股申報的新聞報導。已知的唯一相關資訊是公司層級的庫藏股買回（11/09 公告，目標 600 萬股，持有 996 萬股）。</li>
+<li>前一波 115/05/07 至 115/07/03 的買回計畫原定 400 萬股，實際買回 219.7 萬股（約 55%）。</li>
+<li>公司買回用於員工轉讓，屬公司行為，不應直接解讀為內部人買進訊號。</li>
+<li>建議直接查詢公開資訊觀測站（MOPS）的董監事持股轉讓申報。</li>
+</ul>
+<h2>Ownership shifts</h2>
+<ul>
+<li>yf major_holders 回傳空值，無法評估機構持股集中度趨勢。</li>
+<li>無可靠的機構持股變化資料可引用。</li>
+</ul>
+<h2>Net sentiment score</h2>
+<p><strong>Composite：neutral，信心度低。</strong></p>
+<p>依據：<br />
+- 分析師端（有限樣本）偏多，目標價區間多在 420 至 556 TWD，遠高於 11/13 約 302 TWD 的股價，但樣本只有 1 至 2 家，且日期分散。<br />
+- 公司端偏多（看好 DRAM 價格、2027 年缺貨），並以買回庫藏股給員工，屬正面訊號。<br />
+- 基本面數字強勁，但 Q4 營收預估略減，且有毛利率回落的疑慮。<br />
+- 散戶端完全無資料，無法與分析師端比較。</p>
+<p><strong>Divergence flag：無法判定（no）</strong>。缺乏散戶樣本，無法確認散戶傾向是否與分析師相反。</p>
+<p><strong>資料限制導致信心度低</strong>：結構化分析師、內部人、持股與散戶四大類來源皆缺失或不可靠。若要提高信心度，需先取得：(1) 允許 stocktwits 與 uanalyze 網域後重試；(2) 以 yf 或其他來源重新取得 rec_summary；(3) 查 MOPS 董監持股申報；(4) 以 PTT 股票板關鍵字「威剛」「3260」人工抽樣。</p>
+<p>SENTIMENT REPORT COMPLETE</p></div>
+        </div>
+      </div>
+    </details>
+
+    <details class="mb-4 border border-slate-200 rounded">
+      <summary class="bg-slate-50 px-4 py-2 font-semibold">Phase 2 — Bull vs Bear 辯論</summary>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+        <div>
+          <h4 class="font-bold text-green-700 mb-2">🐂 多方 (Bull)</h4>
+          <div class="agent-prose text-sm bg-green-50 p-3 rounded border border-green-200"><em>n/a</em></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-red-700 mb-2">🐻 空方 (Bear)</h4>
+          <div class="agent-prose text-sm bg-red-50 p-3 rounded border border-red-200"><em>n/a</em></div>
+        </div>
+      </div>
+    </details>
+
+    <details class="mb-4 border border-slate-200 rounded">
+      <summary class="bg-slate-50 px-4 py-2 font-semibold">Phase 4 — 風險辯論 (Risk debate)</summary>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 p-4">
+        <div>
+          <h4 class="font-bold text-red-700 mb-2">⚡ 進攻 (Aggressive)</h4>
+          <div class="agent-prose text-sm bg-red-50 p-3 rounded border border-red-200"><em>n/a</em></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-blue-700 mb-2">🛡️ 保守 (Conservative)</h4>
+          <div class="agent-prose text-sm bg-blue-50 p-3 rounded border border-blue-200"><em>n/a</em></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-slate-700 mb-2">⚖️ 中立 (Neutral)</h4>
+          <div class="agent-prose text-sm bg-slate-100 p-3 rounded border border-slate-300"><em>n/a</em></div>
+        </div>
+      </div>
+    </details>
+
+  </div>
+
+  <script>
+    (function() {
+      var d = {};
+      if (!d.dates) return;
+      var traces = [
+        {x: d.dates, y: d.close, name: 'Close',  line: {color: '#1f2937', width: 2}},
+        {x: d.dates, y: d.ma20,  name: 'MA20',   line: {color: '#0ea5e9', width: 1, dash: 'dot'}},
+        {x: d.dates, y: d.ma50,  name: 'MA50',   line: {color: '#f59e0b', width: 1, dash: 'dot'}},
+        {x: d.dates, y: d.ma200, name: 'MA200',  line: {color: '#ef4444', width: 1, dash: 'dash'}}
+      ];
+      var layout = {
+        margin: {l: 50, r: 20, t: 10, b: 40},
+        legend: {orientation: 'h', y: -0.15},
+        xaxis: {showgrid: false},
+        yaxis: {title: '價格 ($)'}
+      };
+      Plotly.newPlot('chart-3260_TW', traces, layout, {displayModeBar: false, responsive: true});
+    })();
+  </script>
+
+</section>
+
+
+</main>
+
+<footer class="bg-slate-200 text-slate-600 text-xs p-4 text-center">
+  多 agent 交易研究 — 純研究 / 教學用途, 非投資建議。
+</footer>
+
+</body>
+</html>
