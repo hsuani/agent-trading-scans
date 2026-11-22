@@ -1,17 +1,17 @@
 # Fundamentals — GOOGL as of 2026-11-23
 
 ## Executive summary
-Alphabet 的營運面仍強: FY2025 營收 402.8B USD (YoY +15.1%)、營業利益率約 32%、2026Q3 營收 127.6B USD (YoY +24.7%)、營業利益 YoY +29.9%，資產負債表仍有 2.79x 流動比率與約 677.5B USD 股東權益。但現金轉換已明顯惡化: 2026 年資本支出急升 (2026Q3 CapEx 51.4B USD, YoY +114%)，TTM FCF 僅約 19.7B USD、2026Q2 與 Q3 皆為負 FCF，總負債自 2025 年底 59.3B 升至 2026Q3 141.9B USD，且 2026Q3 EPS 2.12 較分析師預估 3.01 低 29.5%。估值以 normalized 口徑約 24.9x trailing P/E、約 16.5x EV/normalized EBITDA，相對大型網路股屬中段水準 (sector median 為模型估計，非工具資料)；reported TTM EPS 19.16 受非營業證券評價利益大幅膨脹，不宜直接用於估值。
+Alphabet 的營運面仍強: FY2025 營收 402.8B USD (YoY +15.1%)、營業利益率約 32%、2026Q3 營收 127.6B USD (YoY +24.7%)、營業利益 YoY +29.9%，資產負債表仍有 2.79x 流動比率與約 677.5B USD 股東權益。但現金轉換已明顯惡化: 2026 年資本支出急升 (2026Q3 CapEx 51.4B USD, YoY +114%)，TTM FCF 僅約 19.7B USD、2026Q2 與 Q3 皆為負 FCF，總債務 (Total Debt) 自 2025 年底 59.3B 升至 2026Q3 141.9B USD，且 2026Q3 EPS 2.12 較分析師預估 3.01 低 29.5%。估值以 normalized 口徑約 24.9x trailing P/E、約 16.5x EV/normalized EBITDA，相對大型網路股屬中段水準 (sector median 為模型估計，非工具資料)；reported TTM EPS 19.16 受非營業證券評價利益大幅膨脹，不宜直接用於估值。
 
 資料說明: yf 工具皆為 `source: cache` (info cached_at 2026-11-21，fast_info cached_at 2026-11-22)，屬預期行為。最新季報為 2026Q3 (期末 2026-09-30)，對應 earnings 日期 2026-10-28，已早於 as-of 2026-11-23，無 post-date 財報資料。下次 earnings 日期 2027-02-03 (EPS 預估 3.19)。
 
 ## Revenue & profitability
 
-**營收 (以 B USD)**
+**營收 (B USD)**
 - FY2022 282.8B / FY2023 307.4B / FY2024 350.0B / FY2025 402.8B
 - 3 年 CAGR (2022→2025): 12.5%。tool 僅提供 4 年財報，無法計算 4-5 年 CAGR (2021 欄位為 null)。
 - YoY: FY2024 +13.9%、FY2025 +15.1%，成長加速。
-- 季度: 2025Q3 102.3B → 2025Q4 113.8B → 2026Q1 109.9B → 2026Q2 120.0B → 2026Q3 127.6B。2025Q1、Q2 季度資料為 null，無法計算前季 YoY；僅 2026Q3 有 YoY (+24.7%)。
+- 季度: 2025Q3 102.3B → 2025Q4 113.8B → 2026Q1 109.9B → 2026Q2 119.8B → 2026Q3 127.6B。2025Q1、Q2 季度資料為 null，無法計算前季 YoY；僅 2026Q3 有 YoY (+24.7%)。
 - 分部營收 (Search / YouTube / Cloud 等): info 無 longBusinessSummary，segment mix 為 DATA_UNAVAILABLE。
 
 **獲利能力**
@@ -19,10 +19,10 @@ Alphabet 的營運面仍強: FY2025 營收 402.8B USD (YoY +15.1%)、營業利�
 - 營業利益率: FY2022 26.5% → FY2023 27.4% → FY2024 32.1% → FY2025 32.0%。2026Q3 31.8%，較 2025Q3 30.5% 高 1.3 pp。
 - 營業利益 (B USD): FY2025 129.0B (YoY +14.8%)；2026Q3 40.6B (YoY +29.9%)。
 - 淨利率: FY2025 reported 32.8%、normalized 27.8%。FY2025 reported NI 132.2B 內含 24.2B 非經常利益 (Total Unusual Items)。
-- 2026 年季度淨利被非營業項目大幅影響: Other Income/Expense 2026Q1 +36.9B、2026Q2 +97.8B、2026Q3 -9.0B (2025Q3 為 +11.8B)。因此 2026Q2 reported NI 112.2B、EPS 9.11 不代表營運表現。
+- 2026 年季度淨利被非營業項目大幅影響: Other Income/Expense 2026Q1 +36.9B、2026Q2 +97.8B、2026Q3 −9.0B (2025Q3 為 +11.8B)。因此 2026Q2 reported NI 112.2B、EPS 9.11 不代表營運表現。
 - ROE: FY2025 reported 31.8% (期末權益)、35.7% (平均權益)；normalized 平均 30.3%。
 - ROIC: FY2025 約 23.2% (期末 invested capital 461.8B) / 26.9% (平均)，採營業利益 × (1 − 稅率 16.8%) 估算。
-- R&D: FY2025 61.1B (佔營收 15.2%)；2026Q3 206.4B 百萬級？ → 更正: 2026Q3 R&D 20.6B (佔營收 16.2%)。
+- R&D: FY2025 61.1B (佔營收 15.2%)；2026Q3 20.6B (佔營收 16.2%)，較 2025Q3 15.2B 增加。
 - 利息費用: 2026Q3 9.7B，較 2025Q3 1.4B 大增 (約 6.8x)；FY2025 7.4B (FY2024 2.7B)。
 
 ## Cashflow & balance sheet
@@ -33,13 +33,13 @@ Alphabet 的營運面仍強: FY2025 營收 402.8B USD (YoY +15.1%)、營業利�
 - FCF (B USD): FY2022 60.0 / FY2023 69.5 / FY2024 72.8 / FY2025 73.3。2026Q1 +10.1、Q2 −5.9、Q3 −9.1；TTM 僅 19.7。
 - FCF / NI (FY2025): 0.55 (低於 0.9 健康門檻)；以 normalized NI 計約 0.65。FY2022–2024 分別為 1.00 / 0.94 / 0.73，呈下降趨勢。
 - FCF margin (FY2025): 18.2%；TTM 約 4.2% (19.7 / 471.1)。
-- 2026Q3 OCF 42.3B，支撐 CapEx 51.4B 仍有缺口。
+- 2026Q3 OCF 42.3B，仍不足以覆蓋 CapEx 51.4B。
 
 **資產負債表 (2026Q3, 期末 2026-09-30, B USD)**
 - 總資產 1,003.3B (2025 年底 595.3B)；股東權益 677.5B (2025 年底 415.3B)；總負債 325.8B。
 - 現金及約當現金 56.3B；現金及短期投資 (Cash, Cash Equivalents & STI) 265.1B。
 - 總債務 (Total Debt, 含 capital lease) 141.9B，其中 capital lease 16.8B。2025 年底總債務 59.3B，9 個月增加 82.6B。
-- 淨負債: tool 回傳 Net Debt 68.8B；此值等於 Total Debt 扣除現金及約當現金與 capital lease，未計入其他短期投資 (208.7B)。若以 Cash+STI 計算，淨現金約 123.1B (Total Debt 扣 Cash+STI)。兩種定義結果方向相反，需以 Net Debt 定義說明為準。
+- 淨負債: tool 回傳 Net Debt 68.8B；此值等於 Total Debt 扣除現金及約當現金與 capital lease，未計入其他短期投資 (208.7B)。若以 Cash+STI 計算，淨現金約 123.1B (Total Debt 扣 Cash+STI)。兩種定義結果方向相反，引用時需註明定義。
 - 流動比率 2.79x (流動資產 3,746.7B / 流動負債 1,345.0B)；2025 年底 2.01x。
 - Debt/Equity 0.21x (2025 年底 0.14x)；Total Liabilities/Equity 0.48x。
 - 利息保障倍數 (2026Q3 EBIT / 利息費用) 約 42x。
@@ -50,7 +50,7 @@ Alphabet 的營運面仍強: FY2025 營收 402.8B USD (YoY +15.1%)、營業利�
 - 股票回購 (B USD): FY2022 59.3 / FY2023 61.5 / FY2024 62.2 / FY2025 45.7；2026Q1–Q3 皆為 0。2026 年回購暫停。
 - 股利 (B USD): FY2024 7.4、FY2025 10.0；2026Q3 單季 2.9。TTM 股利約 10.7，TTM FCF 19.7，FCF 股利覆蓋約 1.8x (FY2025 為 7.3x)。
 - 股本: 普通股流通數 2025 年底 12.088B 股，2026Q3 12.294B 股 (+1.7%)。
-- 併購: 2026Q1 Purchase of Business 33.6B USD。tool 未說明標的，DATA_UNAVAILABLE (交易名稱與內容)。
+- 併購: 2026Q1 Purchase of Business 33.6B USD。tool 未說明標的，交易名稱與內容為 DATA_UNAVAILABLE。
 - 權益類現金流異常: Capital Stock 與 Common Stock 科目 2025 年底 93.1B → 2026Q2 131.4B → 2026Q3 147.1B；2026Q2 Net Common Stock Issuance +30.5B、2026Q3 Issuance of Capital Stock +12.4B。tool 未說明來源，需核實 (可能為股權發行、股權交易或資料分類問題)。
 - 優先股: 2026Q2 與 Q3 BS 出現 Preferred Stock 18.0B，2026Q3 Preferred Stock Dividends 0.3B。與 Alphabet 過去資本結構不符，需核實。
 
@@ -80,7 +80,7 @@ Alphabet 的營運面仍強: FY2025 營收 402.8B USD (YoY +15.1%)、營業利�
 
 ## Key catalysts
 - **下次財報**: 2027-02-03 (tool earnings_dates)，EPS 預估 3.19。上一季 2026-10-28 已公布 (EPS 2.12，miss −29.5%)。
-- **EPS 歷史**: 近 9 季中 6 季為正向 surprise；但 2026Q1 (+91.6%) 與 2026Q2 (+214.2%) 的超額來自非營業證券評價利益，非營運驅動。2026Q3 為 9 季中罕見的大幅 miss。
+- **EPS 歷史**: 近 9 季中 8 季為正向 surprise (僅 2026Q3 為 miss)；但 2026Q1 (+91.6%) 與 2026Q2 (+214.2%) 的超額來自非營業證券評價利益，非營運驅動。
 - **資本支出**: 2026 年 CapEx 季度加速 (35.7 → 44.9 → 51.4B)，後續 AI 基礎建設規模與折舊 (2026Q3 D&A 8.4B，2025Q3 5.6B) 將持續壓縮 FCF 與營業利益率。
 - **資本結構**: 2026 年新增大量負債 (9 個月淨增約 76B)、暫停回購，後續利息支出與再融資需求上升。
 - **併購與權益**: 2026Q1 併購 33.6B USD、權益科目大幅增加，標的與原因 DATA_UNAVAILABLE，需補充。
@@ -94,7 +94,7 @@ Alphabet 的營運面仍強: FY2025 營收 402.8B USD (YoY +15.1%)、營業利�
 | 營收 (B USD, FY2025) | 402.8 | +15.1% | n/a (模型估計) | 強 |
 | 營收 (B USD, 2026Q3) | 127.6 | +24.7% | n/a | 強 |
 | 營收 3Y CAGR (2022–2025) | 12.5% | n/a | 約 10%–12% (估計) | 中上 |
-| 毛利率 (FY2025) | 59.7% | +1.5 pp | 約 55%–60% (估計) | 中上 |
+| 毛利率 (FY2025) | 59.7% | +1.4 pp | 約 55%–60% (估計) | 中上 |
 | 營業利益率 (FY2025) | 32.0% | −0.1 pp | 約 20%–25% (估計) | 強 |
 | 營業利益率 (2026Q3) | 31.8% | +1.3 pp | 約 20%–25% (估計) | 強 |
 | 淨利率 (FY2025, reported / normalized) | 32.8% / 27.8% | n/a | 約 15%–20% (估計) | 強 (但含非營業) |
@@ -110,7 +110,7 @@ Alphabet 的營運面仍強: FY2025 營收 402.8B USD (YoY +15.1%)、營業利�
 | Debt / Equity (2026Q3) | 0.21x | 由 0.14x 升 | 約 0.1x–0.3x (估計) | 中 |
 | 總債務 (B USD, 2026Q3) | 141.9 | 較 2025 年底 +82.6 | n/a | 弱 |
 | Net Debt (B USD, tool 定義) | 68.8 | 由 15.8 升 | n/a | 注意定義 |
-| 現金 + 短期投資 (B USD, 2026Q3) | 265.1 | 由 1,268 億 (2025 年底 126.8B) 升 | n/a | 強 |
+| 現金 + 短期投資 (B USD, 2026Q3) | 265.1 | 由 126.8 (2025 年底) 升 | n/a | 強 |
 | 利息費用 (B USD, 2026Q3) | 9.7 | 由 1.4 (2025Q3) 升 | n/a | 注意 |
 | 股票回購 (B USD, FY2025) | 45.7 | −26.5% | n/a | 2026 年暫停 |
 | 股利 (B USD, FY2025) | 10.0 | +36.5% | n/a | 覆蓋充足 (FY) |
