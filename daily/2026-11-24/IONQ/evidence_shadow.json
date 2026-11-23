@@ -1,0 +1,3085 @@
+{
+ "ticker": "IONQ",
+ "analysis_date": "2026-11-24",
+ "data_as_of": "2026-11-23",
+ "persona": "evidence-shadow",
+ "sources_read": [
+  "daily/2026-11-24/IONQ/fundamentals.md",
+  "daily/2026-11-24/IONQ/market.md",
+  "daily/2026-11-24/IONQ/news.md",
+  "daily/2026-11-24/IONQ/sentiment.md"
+ ],
+ "method_note": "Claims extracted from the four Phase-1 reports only. No external re-verification was performed. Arithmetic was recomputed from figures inside the reports. The reports were not modified.",
+ "status_legend": {
+  "reported": "Stated as data by the report, citing a named tool (yf.py, ta.py, fast_info) or web source. Not re-fetched in this step.",
+  "derived_verified": "Recomputed here from figures in the reports. Matches the stated value within rounding.",
+  "derived_mismatch": "Recomputed here from figures in the reports. Does not match the stated value.",
+  "inferred": "Analyst interpretation or judgment, not directly sourced.",
+  "unverified": "The report itself flags the claim as needing verification, or it rests on a single unconfirmed source.",
+  "conflicting": "Contradicted by another claim in the four reports. See cross_report_conflicts.",
+  "unavailable": "The report states the data is missing or was not obtained."
+ },
+ "reports": {
+  "fundamentals": {
+   "path": "daily/2026-11-24/IONQ/fundamentals.md",
+   "claims": [
+    {
+     "id": "F-001",
+     "ref": "fundamentals.md:3",
+     "claim": "Snapshot is 2026-11-23 close, cached_at 2026-11-23 17:58 UTC",
+     "source": "yf.py",
+     "status": "reported"
+    },
+    {
+     "id": "F-002",
+     "ref": "fundamentals.md:4",
+     "claim": "Latest reported period is FY26 Q3 (ended 2026-09-30); earnings released 2026-11-05",
+     "source": "yf.py earnings_dates",
+     "status": "reported"
+    },
+    {
+     "id": "F-003",
+     "ref": "fundamentals.md:5",
+     "claim": "Next earnings 2027-02-24; consensus GAAP EPS -0.82",
+     "source": "yf.py earnings_dates",
+     "status": "reported"
+    },
+    {
+     "id": "F-004",
+     "ref": "fundamentals.md:10",
+     "claim": "Q3 2026 revenue grew 117% QoQ and 336% YoY",
+     "source": "yf.py quarterly_fin",
+     "status": "derived_verified",
+     "note": "173.8/80.0 = +117%; 173.8/39.9 = +336%"
+    },
+    {
+     "id": "F-005",
+     "ref": "fundamentals.md:12",
+     "claim": "Q3 2026 operating loss -433.1M, operating margin about -249%",
+     "source": "yf.py quarterly_fin",
+     "status": "derived_verified",
+     "note": "-433.1/173.8 = -249%"
+    },
+    {
+     "id": "F-006",
+     "ref": "fundamentals.md:12",
+     "claim": "TTM operating loss about -1.27B",
+     "source": "yf.py quarterly_fin",
+     "status": "derived_verified",
+     "note": "Sum of Q4'25 to Q3'26 = -1,270.4M"
+    },
+    {
+     "id": "F-007",
+     "ref": "fundamentals.md:13",
+     "claim": "TTM net income about +255M, driven by unusual items of about +1.26B",
+     "source": "yf.py quarterly_fin",
+     "status": "derived_verified",
+     "note": "Net income sum = +255.4M. Unusual items sum = +1,254.3M, a rounding gap to the stated 1.26B."
+    },
+    {
+     "id": "F-008",
+     "ref": "fundamentals.md:13",
+     "claim": "trailingPE 13.5x and profitMargins 67% are not meaningful for valuation",
+     "source": "yf.py info",
+     "status": "inferred",
+     "note": "Analyst judgment on the reported info fields"
+    },
+    {
+     "id": "F-009",
+     "ref": "fundamentals.md:14",
+     "claim": "Q3 FCF -332M, the largest burn of 2026",
+     "source": "yf.py cashflow",
+     "status": "derived_verified",
+     "note": "OCF -315.5 + capex -16.3 = -331.8M"
+    },
+    {
+     "id": "F-010",
+     "ref": "fundamentals.md:14,89",
+     "claim": "Cash plus short-term investments of 1.07B covers about 9 to 10 months at the Q3 burn pace",
+     "source": "balance_sheet + cashflow",
+     "status": "derived_verified",
+     "note": "1.07B / 1.33B annualized = 0.80 year"
+    },
+    {
+     "id": "F-011",
+     "ref": "fundamentals.md:90",
+     "claim": "Runway is about 19 months at the TTM FCF burn rate",
+     "source": "derived",
+     "status": "derived_verified",
+     "note": "1.07B / 0.686B = 1.56 year"
+    },
+    {
+     "id": "F-012",
+     "ref": "fundamentals.md:14,93",
+     "claim": "Total debt rose from 30.0M (YE25) to 154.3M (Q3'26)",
+     "source": "balance_sheet",
+     "status": "reported"
+    },
+    {
+     "id": "F-013",
+     "ref": "fundamentals.md:100-103",
+     "claim": "Shares outstanding: YE24 221.9M, YE25 362.6M, Q2'26 381.0M, Q3'26 408.9M (+12.8% YTD)",
+     "source": "balance_sheet / shares data",
+     "status": "reported"
+    },
+    {
+     "id": "F-014",
+     "ref": "fundamentals.md:104,108",
+     "claim": "Latest sharesOutstanding is 462.9M, about +28% vs YE25",
+     "source": "yf.py info",
+     "status": "unverified",
+     "note": "Report says 'need to verify'. It exceeds Q3 408.9M, and the gap is not explained."
+    },
+    {
+     "id": "F-015",
+     "ref": "fundamentals.md:15 vs 106",
+     "claim": "Equity raising of about 3.3B happened in H2 2025 (line 15) and in full-year 2025 (line 106)",
+     "source": "cashflow",
+     "status": "conflicting",
+     "note": "Quarterly Common Stock Issuance sums to 1,000.0 (Q3'25) + 1,954.3 (Q4'25) = 2,954.3M for H2 2025. The 3.3B figure is the full-year total."
+    },
+    {
+     "id": "F-016",
+     "ref": "fundamentals.md:24-32",
+     "claim": "Revenue by period: FY24 43.1M, FY25 130.0M, Q3'25 39.9M, Q4'25 61.9M, Q1'26 64.7M, Q2'26 80.0M, Q3'26 173.8M",
+     "source": "yf.py financials / quarterly_fin",
+     "status": "reported"
+    },
+    {
+     "id": "F-017",
+     "ref": "fundamentals.md:26-32",
+     "claim": "Gross margin: FY24 52.2%, FY25 40.4%, Q3'26 21.9%",
+     "source": "yf.py financials / quarterly_fin",
+     "status": "derived_verified",
+     "note": "FY25 52.5/130.0 = 40.4%; Q3'26 38.0/173.8 = 21.9%"
+    },
+    {
+     "id": "F-018",
+     "ref": "fundamentals.md:36",
+     "claim": "Q3 revenue jump is consistent with an acquisition consolidated in Q3, which is not identified in tool data",
+     "source": "inferred from cost of revenue, investing CF and share count",
+     "status": "conflicting",
+     "note": "News says Elisity closed 2026-11-04, after the Q3 period end. The consolidation timing does not fit."
+    },
+    {
+     "id": "F-019",
+     "ref": "fundamentals.md:36",
+     "claim": "Yahoo officer list includes a senior SkyWater Technology executive",
+     "source": "yf.py info",
+     "status": "reported",
+     "note": "Link to the Q3 acquisition is an inference, not confirmed"
+    },
+    {
+     "id": "F-020",
+     "ref": "fundamentals.md:38",
+     "claim": "Operating expense: FY25 686.2M (FY24 254.9M); Q2'26 357.2M; Q3'26 471.1M",
+     "source": "yf.py financials / quarterly_fin",
+     "status": "reported"
+    },
+    {
+     "id": "F-021",
+     "ref": "fundamentals.md:38",
+     "claim": "R&D: Q3'26 141.7M (Q2 160.6M); FY25 305.7M",
+     "source": "yf.py financials",
+     "status": "reported"
+    },
+    {
+     "id": "F-022",
+     "ref": "fundamentals.md:44-50",
+     "claim": "GAAP net income and diluted EPS: Q3'25 -1,055.0M / -3.58; Q4'25 +753.7M / +1.93; Q1'26 +805.4M / +2.07; Q2'26 -1,867.7M / -5.08; Q3'26 +564.0M / +1.35",
+     "source": "yf.py financials / quarterly_fin",
+     "status": "reported"
+    },
+    {
+     "id": "F-023",
+     "ref": "fundamentals.md:53",
+     "claim": "Quarterly net income sign is driven by unusual items whose source (fair value, investments or tax) is not disclosed",
+     "source": "yf.py",
+     "status": "inferred",
+     "note": "Report itself says the source is unclear"
+    },
+    {
+     "id": "F-024",
+     "ref": "fundamentals.md:54,150",
+     "claim": "Q3 EPS +1.35 vs consensus -0.77; Q2 EPS -5.08 vs -0.60; Q1 EPS +2.07 vs -0.52",
+     "source": "yf.py earnings_dates",
+     "status": "reported"
+    },
+    {
+     "id": "F-025",
+     "ref": "fundamentals.md:16",
+     "claim": "trailingEps is 1.73",
+     "source": "yf.py info",
+     "status": "conflicting",
+     "note": "Sum of the last four quarterly diluted EPS values (1.93 + 2.07 - 5.08 + 1.35) = 0.27. Not reconciled."
+    },
+    {
+     "id": "F-026",
+     "ref": "fundamentals.md:69",
+     "claim": "TTM FCF -686M and TTM OCF -645M (matches info operatingCashflow -644.8M)",
+     "source": "yf.py cashflow / info",
+     "status": "derived_verified",
+     "note": "FCF sum = -685.7M"
+    },
+    {
+     "id": "F-027",
+     "ref": "fundamentals.md:59-67",
+     "claim": "OCF and capex by period: FY24 OCF -105.7M, FY25 OCF -283.2M, Q3'26 OCF -315.5M, capex Q3'26 -16.3M",
+     "source": "yf.py cashflow",
+     "status": "reported"
+    },
+    {
+     "id": "F-028",
+     "ref": "fundamentals.md:70",
+     "claim": "2026 nine-month FCF is about -605M, with Q3 more than half",
+     "source": "yf.py cashflow",
+     "status": "derived_verified",
+     "note": "-159.4 - 114.0 - 331.9 = -605.3M"
+    },
+    {
+     "id": "F-029",
+     "ref": "fundamentals.md:71",
+     "claim": "Investing cash flow: Q1'26 -392M, Q2'26 +834M, Q3'26 -719M",
+     "source": "yf.py cashflow",
+     "status": "reported"
+    },
+    {
+     "id": "F-030",
+     "ref": "fundamentals.md:72",
+     "claim": "2026 nine-month SBC is about 417M, more than 60% of FCF burn",
+     "source": "yf.py cashflow",
+     "status": "derived_verified",
+     "note": "128.5 + 141.8 + 146.9 = 417.2M; 417/605 = 69%"
+    },
+    {
+     "id": "F-031",
+     "ref": "fundamentals.md:61-67",
+     "claim": "SBC: FY24 106.9M, FY25 312.0M, Q3'26 146.9M",
+     "source": "yf.py cashflow",
+     "status": "reported"
+    },
+    {
+     "id": "F-032",
+     "ref": "fundamentals.md:78-85",
+     "claim": "Cash plus short-term investments: YE25 2,392.2M, Q2'26 2,119.0M, Q3'26 1,069.5M; cash only: 1,030.9M / 1,235.7M / 209.5M",
+     "source": "balance_sheet",
+     "status": "reported"
+    },
+    {
+     "id": "F-033",
+     "ref": "fundamentals.md:87",
+     "claim": "Net cash (cash plus ST investments minus total debt): Q3 about 915M, Q2 about 2,065M, YE25 about 2,362M",
+     "source": "balance_sheet",
+     "status": "derived_verified",
+     "note": "1,069.5 - 154.3 = 915.2; 2,119.0 - 54.5 = 2,064.5; 2,392.2 - 30.0 = 2,362.2"
+    },
+    {
+     "id": "F-034",
+     "ref": "fundamentals.md:92",
+     "claim": "Current ratio 4.2x and quick ratio 3.6x",
+     "source": "yf.py info",
+     "status": "reported",
+     "note": "Current ratio recomputes as 1,538.1 / 363.0 = 4.24x. Quick ratio is not recomputable from the report."
+    },
+    {
+     "id": "F-035",
+     "ref": "fundamentals.md:92",
+     "claim": "Current assets fell about 36% QoQ",
+     "source": "balance_sheet",
+     "status": "derived_verified",
+     "note": "1,538.1 / 2,409.8 - 1 = -36.2%"
+    },
+    {
+     "id": "F-036",
+     "ref": "fundamentals.md:82,94",
+     "claim": "Stockholders equity 4,990.4M and total assets 7,853.0M at Q3'26 (equity about 64% of assets)",
+     "source": "balance_sheet",
+     "status": "derived_verified",
+     "note": "4,990.4 / 7,853.0 = 63.5%"
+    },
+    {
+     "id": "F-037",
+     "ref": "fundamentals.md:93",
+     "claim": "debtToEquity 3.07 (percent), about 3.1% leverage",
+     "source": "yf.py info",
+     "status": "derived_verified",
+     "note": "154.3 / 4,990.4 = 3.1%"
+    },
+    {
+     "id": "F-038",
+     "ref": "fundamentals.md:94",
+     "claim": "Non-current assets likely include goodwill and intangibles",
+     "source": "inferred",
+     "status": "unverified",
+     "note": "Report says the breakdown is not in the tool data"
+    },
+    {
+     "id": "F-039",
+     "ref": "fundamentals.md:113-117",
+     "claim": "Market cap 10.84B (info), based on 462.9M shares at price 23.41",
+     "source": "yf.py info",
+     "status": "derived_verified",
+     "note": "462.9M x 23.41 = 10.84B"
+    },
+    {
+     "id": "F-040",
+     "ref": "fundamentals.md:180",
+     "claim": "Non-diluted market cap 9.59B, based on about 410M shares",
+     "source": "yf.py info",
+     "status": "derived_verified",
+     "note": "410M x 23.41 = 9.60B"
+    },
+    {
+     "id": "F-041",
+     "ref": "fundamentals.md:118",
+     "claim": "P/S on TTM revenue 380.4M is 28.5x (Yahoo priceToSalesTrailing12Months)",
+     "source": "yf.py info",
+     "status": "derived_verified",
+     "note": "10.84B / 380.4M = 28.5x"
+    },
+    {
+     "id": "F-042",
+     "ref": "fundamentals.md:119",
+     "claim": "P/S on Q3 annualized revenue 695M is about 15.6x",
+     "source": "derived",
+     "status": "derived_verified",
+     "note": "173.8 x 4 = 695.2M; 10.84B / 0.695B = 15.6x"
+    },
+    {
+     "id": "F-043",
+     "ref": "fundamentals.md:120",
+     "claim": "EV/Sales about 21.2x with Yahoo EV 8.08B; self-computed EV about 9.9B gives about 26x",
+     "source": "yf.py info / derived",
+     "status": "derived_verified",
+     "note": "8.08B / 380.4M = 21.2x; 9.9B / 380.4M = 26.0x. The EV basis differs and is flagged as unverified in the report."
+    },
+    {
+     "id": "F-044",
+     "ref": "fundamentals.md:121",
+     "claim": "P/B about 1.9x using book value per share about 12.2",
+     "source": "derived",
+     "status": "derived_mismatch",
+     "note": "BVPS 12.2 = 4,990.4 / 408.9M shares. Market cap uses 462.9M shares. On 462.9M, BVPS is 10.78 and P/B is 2.2x."
+    },
+    {
+     "id": "F-045",
+     "ref": "fundamentals.md:123",
+     "claim": "Forward EPS -1.42; forward P/E is negative",
+     "source": "yf.py info",
+     "status": "reported"
+    },
+    {
+     "id": "F-046",
+     "ref": "fundamentals.md:125",
+     "claim": "14 analysts, mean recommendation strong_buy, mean target 54.3 (implied about +132% upside)",
+     "source": "yf.py info",
+     "status": "derived_verified",
+     "note": "54.3 / 23.41 - 1 = +132%. Report says target timeliness is unknown."
+    },
+    {
+     "id": "F-047",
+     "ref": "fundamentals.md:113,130",
+     "claim": "Price 23.41 at 2026-11-23 close, +13.0% on the day",
+     "source": "yf.py info",
+     "status": "conflicting",
+     "note": "market.md gives 23.47 (snapshot) and 23.45 (fast_info) for the same date. See C-01."
+    },
+    {
+     "id": "F-048",
+     "ref": "fundamentals.md:130",
+     "claim": "52-week range 20.51 to 73.65; price about 68% below the high",
+     "source": "yf.py info",
+     "status": "derived_verified",
+     "note": "23.41 / 73.65 - 1 = -68%"
+    },
+    {
+     "id": "F-049",
+     "ref": "fundamentals.md:130",
+     "claim": "50-day MA 34.9 and 200-day MA 40.9, with a bearish alignment",
+     "source": "yf.py info",
+     "status": "conflicting",
+     "note": "MA50 is 34.60 in market.md. MA200 40.85 rounds to 40.9. See C-02."
+    },
+    {
+     "id": "F-050",
+     "ref": "fundamentals.md:131",
+     "claim": "Beta 3.41",
+     "source": "yf.py info",
+     "status": "reported"
+    },
+    {
+     "id": "F-051",
+     "ref": "fundamentals.md:132",
+     "claim": "Short interest 50.6M shares, about 11.8% of floatShares 429.5M; up about 25% vs last month; short ratio 2.28 days",
+     "source": "yf.py info",
+     "status": "derived_verified",
+     "note": "50.6 / 429.5 = 11.8%. Conflicts with sentiment.md's 22.4% figure. See C-03."
+    },
+    {
+     "id": "F-052",
+     "ref": "fundamentals.md:133",
+     "claim": "Institutional ownership 41.4% (about 1,009 institutions); insider ownership 0.6%",
+     "source": "yf.py major_holders",
+     "status": "reported"
+    },
+    {
+     "id": "F-053",
+     "ref": "fundamentals.md:137",
+     "claim": "Insider sales over 12 months: 11 sales, about 51.6K shares, about 2.52M USD; latest 2026-09-10 at 37.21",
+     "source": "yf.py insider",
+     "status": "derived_verified",
+     "note": "Share sum = 51,590; USD sum = 2.525M"
+    },
+    {
+     "id": "F-054",
+     "ref": "fundamentals.md:138",
+     "claim": "One insider open-market purchase in the 12-month window: 3,000 shares, about 115K USD",
+     "source": "yf.py insider",
+     "status": "reported",
+     "note": "Matches the 2026-02-27 purchase only. Conflicts with sentiment.md's count of 2 purchases. See C-06."
+    },
+    {
+     "id": "F-055",
+     "ref": "fundamentals.md:139",
+     "claim": "Director RSU and stock awards about 85K shares; option exercises about 33.8K shares",
+     "source": "yf.py insider",
+     "status": "reported"
+    },
+    {
+     "id": "F-056",
+     "ref": "fundamentals.md:144",
+     "claim": "Yahoo governance risk: Overall 10/10, Compensation 10/10, Board 8/10, Shareholder Rights 8/10, Audit 1/10",
+     "source": "yf.py info",
+     "status": "reported"
+    },
+    {
+     "id": "F-057",
+     "ref": "fundamentals.md:146",
+     "claim": "Employees about 1,132",
+     "source": "yf.py info",
+     "status": "reported"
+    },
+    {
+     "id": "F-058",
+     "ref": "fundamentals.md:158,170",
+     "claim": "Acquisition terms (price, consideration, revenue contribution, goodwill) are inferred from statements and are not confirmed",
+     "source": "inferred",
+     "status": "unverified",
+     "note": "No announcement text was obtained"
+    },
+    {
+     "id": "F-059",
+     "ref": "fundamentals.md:152,160",
+     "claim": "Cash runway is about 9 to 12 months; financing announcement (ATM, convertible, equity or debt) is likely",
+     "source": "inferred",
+     "status": "inferred"
+    },
+    {
+     "id": "F-060",
+     "ref": "fundamentals.md:18",
+     "claim": "Fundamental rating: high risk, bearish-leaning",
+     "source": "analyst judgment",
+     "status": "inferred"
+    },
+    {
+     "id": "F-061",
+     "ref": "fundamentals.md:166,169",
+     "claim": "Data is a cache snapshot, not intraday. statements and holders subcommands are invalid and were replaced",
+     "source": "tool notes",
+     "status": "reported"
+    }
+   ]
+  },
+  "market": {
+   "path": "daily/2026-11-24/IONQ/market.md",
+   "claims": [
+    {
+     "id": "M-001",
+     "ref": "market.md:5-6",
+     "claim": "Data basis is 2026-11-23 (latest close or snapshot). Price is available and PRICE_DATA_UNAVAILABLE was not triggered",
+     "source": "ta.py / yf.py",
+     "status": "reported"
+    },
+    {
+     "id": "M-002",
+     "ref": "market.md:18-19",
+     "claim": "Latest price: 23.47 (snapshot, as_of 2026-11-23); 23.45 (fast_info, cache)",
+     "source": "ta.py snapshot / yf.py fast_info",
+     "status": "conflicting",
+     "note": "fundamentals.md uses 23.41 for the same close. See C-01."
+    },
+    {
+     "id": "M-003",
+     "ref": "market.md:20-21",
+     "claim": "Previous close 20.72; day high 24.86; day low 23.14",
+     "source": "yf.py fast_info",
+     "status": "reported"
+    },
+    {
+     "id": "M-004",
+     "ref": "market.md:22",
+     "claim": "52-week high 73.65; 52-week low 20.51",
+     "source": "yf.py fast_info",
+     "status": "reported"
+    },
+    {
+     "id": "M-005",
+     "ref": "market.md:30-32",
+     "claim": "MA20 28.98, MA50 34.60, MA200 40.85; price below all three; bearish alignment",
+     "source": "ta.py snapshot",
+     "status": "reported"
+    },
+    {
+     "id": "M-006",
+     "ref": "market.md:30-32",
+     "claim": "Price is 19.0%, 32.2% and 42.6% below MA20, MA50 and MA200",
+     "source": "derived",
+     "status": "derived_verified",
+     "note": "23.47 / 28.98 - 1 = -19.0%; / 34.60 - 1 = -32.2%; / 40.85 - 1 = -42.6%"
+    },
+    {
+     "id": "M-007",
+     "ref": "market.md:40-42",
+     "claim": "MACD -3.13, signal -2.44, histogram -0.69 (bearish momentum)",
+     "source": "ta.py snapshot",
+     "status": "reported"
+    },
+    {
+     "id": "M-008",
+     "ref": "market.md:47",
+     "claim": "RSI14 is 36.9, not oversold (above 30)",
+     "source": "ta.py snapshot",
+     "status": "reported"
+    },
+    {
+     "id": "M-009",
+     "ref": "market.md:52-55",
+     "claim": "Rate of change: 1M -24.9%, 3M -44.2%, 6M -63.1%, 12M -42.8%",
+     "source": "ta.py snapshot",
+     "status": "reported"
+    },
+    {
+     "id": "M-010",
+     "ref": "market.md:61-64",
+     "claim": "Bollinger: upper 37.64, mid 28.98, lower 20.33, %B 0.18",
+     "source": "ta.py snapshot",
+     "status": "derived_verified",
+     "note": "%B = (23.47 - 20.33) / (37.64 - 20.33) = 0.18 (upper and lower are reported)"
+    },
+    {
+     "id": "M-011",
+     "ref": "market.md:70-71",
+     "claim": "ATR14 2.86 (about 12% of price); 20-day annualized volatility 137%",
+     "source": "ta.py snapshot",
+     "status": "derived_verified",
+     "note": "2.86 / 23.47 = 12.2%. The 137% figure is reported only."
+    },
+    {
+     "id": "M-012",
+     "ref": "market.md:79-84",
+     "claim": "Resistance 24.86, 28.98, 34.60, 37.64; support 23.14 and 20.3 to 20.5 (52-week low overlaps BB lower)",
+     "source": "analyst reading of levels",
+     "status": "inferred"
+    },
+    {
+     "id": "M-013",
+     "ref": "market.md:92",
+     "claim": "Volume data is unavailable (null in snapshot and fast_info); volume analysis not performed",
+     "source": "ta.py / yf.py",
+     "status": "unavailable"
+    },
+    {
+     "id": "M-014",
+     "ref": "market.md:10,12",
+     "claim": "Technical bias is bearish; the +13% one-day rebound does not change the medium-term downtrend",
+     "source": "analyst judgment",
+     "status": "inferred"
+    },
+    {
+     "id": "M-015",
+     "ref": "market.md:10",
+     "claim": "One-day rebound of about +13%",
+     "source": "yf.py fast_info",
+     "status": "derived_verified",
+     "note": "23.47 / 20.72 - 1 = +13.3%"
+    },
+    {
+     "id": "M-016",
+     "ref": "market.md:107-108",
+     "claim": "Sandbox could not reach live Yahoo data (403 / ConnectionError). Market cap, shares, 50/200-day averages in fast_info, and volume are empty",
+     "source": "tool log",
+     "status": "unavailable",
+     "note": "Conflicts with fundamentals.md, which pulled full info and financials the same day. See C-14."
+    },
+    {
+     "id": "M-017",
+     "ref": "market.md:107",
+     "claim": "fast_info source is cache (feed cnyes), cached_at 2026-11-23 17:54 UTC",
+     "source": "yf.py fast_info",
+     "status": "reported",
+     "note": "fundamentals.md cached_at is 17:58 UTC. Different calls, minor."
+    },
+    {
+     "id": "M-018",
+     "ref": "market.md:109",
+     "claim": "No 2026-11-24 data included; no 2026-11-24 price estimated",
+     "source": "analyst note",
+     "status": "reported"
+    }
+   ]
+  },
+  "news": {
+   "path": "daily/2026-11-24/IONQ/news.md",
+   "claims": [
+    {
+     "id": "N-001",
+     "ref": "news.md:3-6",
+     "claim": "News window is roughly 2026-10-24 to 2026-11-23; sourced from WebSearch (financial media and company releases); 9 searches",
+     "source": "WebSearch",
+     "status": "reported"
+    },
+    {
+     "id": "N-002",
+     "ref": "news.md:10",
+     "claim": "Net news sentiment is neutral-to-positive: fundamentals positive, equity and share price negative",
+     "source": "analyst judgment",
+     "status": "inferred"
+    },
+    {
+     "id": "N-003",
+     "ref": "news.md:20",
+     "claim": "Feb 2026: IonQ joined the Missile Defense Agency SHIELD IDIQ; ceiling 151B USD; 2,400+ competitors. Framework, not guaranteed revenue",
+     "source": "investors.ionq.com SHIELD IDIQ release (news.md:84)",
+     "status": "reported"
+    },
+    {
+     "id": "N-004",
+     "ref": "news.md:21",
+     "claim": "2026-04-14: selected for DARPA HARQ program (quantum memory direction)",
+     "source": "Nasdaq press release (news.md:85)",
+     "status": "reported"
+    },
+    {
+     "id": "N-005",
+     "ref": "news.md:21,47",
+     "claim": "2026-04-14: photonic interconnect milestone with AFRL, connecting two independent ion-trap systems",
+     "source": "Nasdaq press release (news.md:86)",
+     "status": "reported"
+    },
+    {
+     "id": "N-006",
+     "ref": "news.md:21",
+     "claim": "Stock rose 20.2% on 2026-04-14",
+     "source": "WebSearch",
+     "status": "unverified",
+     "note": "Single news source. Not checked against price data."
+    },
+    {
+     "id": "N-007",
+     "ref": "news.md:22",
+     "claim": "2026-10-14: priced 2.0B equity offering: 20.5M common plus 29.5M pre-funded warrants at 40 USD; 100M seven-year warrants at strike 69.46",
+     "source": "The Quantum Insider / Fool (news.md:88-89)",
+     "status": "derived_verified",
+     "note": "(20.5M + 29.5M) x 40 USD = 2.0B"
+    },
+    {
+     "id": "N-008",
+     "ref": "news.md:22",
+     "claim": "Same week: all-stock Elisity acquisition, up to 1.15 to 1.3B USD",
+     "source": "WebSearch",
+     "status": "reported"
+    },
+    {
+     "id": "N-009",
+     "ref": "news.md:22",
+     "claim": "Stock fell about 6% on 2026-10-14",
+     "source": "WebSearch (Fool)",
+     "status": "reported"
+    },
+    {
+     "id": "N-010",
+     "ref": "news.md:23,54",
+     "claim": "2026-10-16: offering settled with about 1.99B net proceeds; pro-forma cash and investments about 3.7B USD",
+     "source": "WebSearch",
+     "status": "reported",
+     "note": "Q3 cash and ST investments 1.07B + net proceeds 1.99B = about 3.06B. The 3.7B figure is not reconciled. See C-11."
+    },
+    {
+     "id": "N-011",
+     "ref": "news.md:24",
+     "claim": "2026-11-04: Elisity acquisition completed",
+     "source": "WebSearch",
+     "status": "reported",
+     "note": "Post-Q3 date. See F-018 and C-05."
+    },
+    {
+     "id": "N-012",
+     "ref": "news.md:24",
+     "claim": "2026-11-04: QuantumCT partnership in Connecticut, providing 150+ cloud compute hours",
+     "source": "ionq.com QuantumCT release (news.md:87)",
+     "status": "reported"
+    },
+    {
+     "id": "N-013",
+     "ref": "news.md:25",
+     "claim": "2026-11-05: Q3 2026 revenue 173.8M vs consensus about 141.6M; sixth consecutive record quarter; backlog 1.2B; FY2026 guidance raised to 505 to 515M USD",
+     "source": "IonQ IR release (news.md:82)",
+     "status": "reported",
+     "note": "Revenue 173.8M matches F-016. Guidance is not in the fundamentals report."
+    },
+    {
+     "id": "N-014",
+     "ref": "news.md:13,26,72",
+     "claim": "2026-11-06: stock rose about 23% to close at 32.62",
+     "source": "Fool (news.md:94)",
+     "status": "conflicting",
+     "note": "The news report itself says sources disagree: one says -10%, one says +4% after hours, one says +23%. Not verified."
+    },
+    {
+     "id": "N-015",
+     "ref": "news.md:27",
+     "claim": "2026-11-09: Carahsoft sells IonQ quantum technology to the public sector through its reseller network",
+     "source": "GovConWire (news.md:97)",
+     "status": "reported"
+    },
+    {
+     "id": "N-016",
+     "ref": "news.md:28",
+     "claim": "2026-11-13: CFO Inder Singh departed (some sources say effective immediately)",
+     "source": "The Quantum Insider / TIKR (news.md:95-96)",
+     "status": "conflicting",
+     "note": "Date given as 11-13 in one source and 11-16 in another. Role and name also conflict with sentiment.md. See C-04."
+    },
+    {
+     "id": "N-017",
+     "ref": "news.md:28,53",
+     "claim": "2026-11-13: resale registration statement for about 34.58M shares; company says it receives no proceeds",
+     "source": "ad-hoc-news (news.md:92)",
+     "status": "reported"
+    },
+    {
+     "id": "N-018",
+     "ref": "news.md:29",
+     "claim": "2026-11-16: Gary Merrill (former Commvault CFO) named CFO, starting around 2026-12-03 (dates disputed); Thomas Austin named Chief Accounting Officer; CEO de Masi acting PFO",
+     "source": "The Quantum Insider (news.md:95)",
+     "status": "conflicting",
+     "note": "Start date disputed: 12-03 vs 'December'"
+    },
+    {
+     "id": "N-019",
+     "ref": "news.md:30",
+     "claim": "2026-11-17: stock closed at 24.84, described as a one-year low",
+     "source": "WebSearch",
+     "status": "conflicting",
+     "note": "The 52-week low is 20.51 in market.md and fundamentals.md. The 24.84 'one-year low' label is superseded by a later low. See C-13."
+    },
+    {
+     "id": "N-020",
+     "ref": "news.md:31",
+     "claim": "Mid-November (exact date not given): IonQ Federal formed an eight-member advisory committee",
+     "source": "ad-hoc-news (news.md:92)",
+     "status": "reported"
+    },
+    {
+     "id": "N-021",
+     "ref": "news.md:32,71",
+     "claim": "2026-11-23: intraday rebound of about 15%, attributed to sector-wide quantum and tech strength, not a company announcement; not confirmed at close",
+     "source": "WebSearch",
+     "status": "unverified",
+     "note": "Intraday figure. fundamentals and market use +13% on a close basis. See C-16."
+    },
+    {
+     "id": "N-022",
+     "ref": "news.md:40",
+     "claim": "Other government and partner items: Heven AeroTech (GPS-denied quantum integration), DOE space quantum MOU, QuantumCT, Carahsoft channel",
+     "source": "WebSearch",
+     "status": "reported",
+     "note": "No dates given for most items"
+    },
+    {
+     "id": "N-023",
+     "ref": "news.md:39",
+     "claim": "One source says AFRL has awarded about four contracts of about 100M USD each over several years",
+     "source": "WebSearch (single source)",
+     "status": "unverified",
+     "note": "Report says the amounts cannot be confirmed"
+    },
+    {
+     "id": "N-024",
+     "ref": "news.md:44",
+     "claim": "#AQ 64 achieved 2025-09 on the Tempo system, three months ahead of schedule; no new 2026 AQ announcement found",
+     "source": "WebSearch",
+     "status": "reported",
+     "note": "Historical. No 2026 AQ disclosure found."
+    },
+    {
+     "id": "N-025",
+     "ref": "news.md:45",
+     "claim": "2025-10: two-qubit fidelity above 99.99%, above Oxford Ionics 99.97%",
+     "source": "WebSearch",
+     "status": "reported"
+    },
+    {
+     "id": "N-026",
+     "ref": "news.md:46,77",
+     "claim": "Company plans a 256-qubit system demonstration in 2026; no such announcement seen",
+     "source": "WebSearch",
+     "status": "unverified",
+     "note": "Forward-looking company claim. Flagged as a pending catalyst."
+    },
+    {
+     "id": "N-027",
+     "ref": "news.md:46",
+     "claim": "Company target of 2 million qubits by 2030",
+     "source": "WebSearch",
+     "status": "reported",
+     "note": "Company target"
+    },
+    {
+     "id": "N-028",
+     "ref": "news.md:51",
+     "claim": "Dilution estimate: Trefis says about 14% of market cap; Panabee says about 24%",
+     "source": "Trefis / Panabee (news.md:90-91)",
+     "status": "conflicting",
+     "note": "Two estimates differ widely. Report says to check against 8-K and 10-Q"
+    },
+    {
+     "id": "N-029",
+     "ref": "news.md:52",
+     "claim": "Share count up about 82.5% over the past three years",
+     "source": "Trefis (news.md:90)",
+     "status": "reported"
+    },
+    {
+     "id": "N-030",
+     "ref": "news.md:51",
+     "claim": "Warrant overhang of 100M at strike 69.46 is a medium- to long-term dilution risk",
+     "source": "analyst judgment on N-007",
+     "status": "inferred"
+    },
+    {
+     "id": "N-031",
+     "ref": "news.md:53",
+     "claim": "34.6M share resale registration may create selling pressure",
+     "source": "analyst judgment",
+     "status": "inferred"
+    },
+    {
+     "id": "N-032",
+     "ref": "news.md:54",
+     "claim": "Use of proceeds: accelerate commercialization; no near-term liquidity pressure",
+     "source": "WebSearch",
+     "status": "reported"
+    },
+    {
+     "id": "N-033",
+     "ref": "news.md:58",
+     "claim": "IBM and Oak Ridge National Laboratory launched a quantum error-correction platform, seen as long-term pressure on D-Wave",
+     "source": "TIKR / Webull (news.md:98-99)",
+     "status": "inferred",
+     "note": "Competitor event reported; competitive impact is an analyst view"
+    },
+    {
+     "id": "N-034",
+     "ref": "news.md:57",
+     "claim": "Early November: quantum stocks fell together (RGTI, QBTS, IONQ); one source says IONQ fell about 15% that day",
+     "source": "WebSearch",
+     "status": "conflicting",
+     "note": "TIKR headline (news.md:98) puts IONQ at about -8% on 11-05. See C-08."
+    },
+    {
+     "id": "N-035",
+     "ref": "news.md:59",
+     "claim": "Rigetti and D-Wave Q3 2026 results (due 11-10) could not be confirmed",
+     "source": "WebSearch",
+     "status": "unverified"
+    },
+    {
+     "id": "N-036",
+     "ref": "news.md:60",
+     "claim": "Four pure-play quantum stocks fell about 41% to 65% over one year (source through 11-10)",
+     "source": "WebSearch",
+     "status": "reported"
+    },
+    {
+     "id": "N-037",
+     "ref": "news.md:63",
+     "claim": "2026 hyperscaler capex estimated above 700B USD (S&P Global, cited by Nasdaq)",
+     "source": "Nasdaq (news.md:100)",
+     "status": "reported"
+    },
+    {
+     "id": "N-038",
+     "ref": "news.md:64",
+     "claim": "A Bank of America survey finds 54% of global fund managers see AI as a bubble risk",
+     "source": "WebSearch",
+     "status": "reported"
+    },
+    {
+     "id": "N-039",
+     "ref": "news.md:65-66",
+     "claim": "Quantum stocks are high-beta; AI infrastructure slowdown narrative spills over to quantum sentiment; rebound thesis is that the pullback is sentiment-driven",
+     "source": "analyst synthesis of WebSearch",
+     "status": "inferred"
+    },
+    {
+     "id": "N-040",
+     "ref": "news.md:67",
+     "claim": "Several November crash articles refer to 2025 data and were excluded",
+     "source": "analyst note",
+     "status": "reported"
+    },
+    {
+     "id": "N-041",
+     "ref": "news.md:71",
+     "claim": "Task date 2026-11-24 differs from run date 2026-11-23; intraday 11-23 data is not closed",
+     "source": "analyst note",
+     "status": "reported"
+    },
+    {
+     "id": "N-042",
+     "ref": "news.md:78",
+     "claim": "Coverage gap: no full SEC filing text or Q3 10-Q detail; conclusions are news-based",
+     "source": "analyst note",
+     "status": "unavailable"
+    }
+   ]
+  },
+  "sentiment": {
+   "path": "daily/2026-11-24/IONQ/sentiment.md",
+   "claims": [
+    {
+     "id": "S-001",
+     "ref": "sentiment.md:5-6",
+     "claim": "yfinance returned a Cookie/crumb fetch warning; some data may come from cache, but the content is complete",
+     "source": "yf.py",
+     "status": "reported",
+     "note": "Market.md says Yahoo was unreachable. See C-14."
+    },
+    {
+     "id": "S-002",
+     "ref": "sentiment.md:14-16",
+     "claim": "Current ratings: 1 strongBuy, 11 buy, 2 hold, 0 sell, 0 strongSell; 14 total; buy share 85.7%",
+     "source": "yf.py rec_summary",
+     "status": "derived_verified",
+     "note": "12 / 14 = 85.7%"
+    },
+    {
+     "id": "S-003",
+     "ref": "sentiment.md:17-19",
+     "claim": "Three months earlier: 13 analysts, 10 buy; one buy added over the period",
+     "source": "yf.py recommendations",
+     "status": "derived_verified",
+     "note": "-3m total = 1 + 10 + 2 = 13"
+    },
+    {
+     "id": "S-004",
+     "ref": "sentiment.md:33-38",
+     "claim": "Institutions hold 41.42% (41.68% of float); insiders hold 0.62%; 1,009 institutions",
+     "source": "yf.py major_holders",
+     "status": "reported"
+    },
+    {
+     "id": "S-005",
+     "ref": "sentiment.md:44-53",
+     "claim": "Top institutional holders: Morgan Stanley 5.98%, BlackRock 4.39%, Vanguard CM 4.15%, Vanguard PM 3.58%, State Street 2.04%, BofA 1.95%, Geode 1.54%, UBS 1.38%, Norges 1.20%, Goldman 0.75%",
+     "source": "yf.py inst_holders",
+     "status": "reported",
+     "note": "Most filings dated 2026-09-30. Norges is dated 2026-06-30."
+    },
+    {
+     "id": "S-006",
+     "ref": "sentiment.md:57",
+     "claim": "Of the top 10 holders, 7 increased and 3 decreased (BlackRock -9.22%, UBS -24.36%, Morgan Stanley -1.57%)",
+     "source": "yf.py inst_holders",
+     "status": "derived_verified"
+    },
+    {
+     "id": "S-007",
+     "ref": "sentiment.md:58",
+     "claim": "Goldman Sachs +82.11% and BofA +30.02% in shares held",
+     "source": "yf.py inst_holders",
+     "status": "reported",
+     "note": "pctChange is quarter-over-quarter share count change, not dollar value"
+    },
+    {
+     "id": "S-008",
+     "ref": "sentiment.md:70",
+     "claim": "2025-11-11: director Teuber open-market purchase of 2,000 shares at about 54.82 (110K USD)",
+     "source": "yf.py insider",
+     "status": "conflicting",
+     "note": "This date is outside the 12-month window (2025-11-24 to 2026-11-23). See C-06."
+    },
+    {
+     "id": "S-009",
+     "ref": "sentiment.md:88-90",
+     "claim": "12-month open-market sales: 11 transactions, about 2.52M USD",
+     "source": "yf.py insider",
+     "status": "derived_verified",
+     "note": "Sum of listed sales = 2.525M USD"
+    },
+    {
+     "id": "S-010",
+     "ref": "sentiment.md:91-92",
+     "claim": "12-month open-market purchases: 2 transactions, about 225K USD; net about -2.30M USD",
+     "source": "yf.py insider",
+     "status": "derived_mismatch",
+     "note": "Only the 2026-02-27 purchase (115K) falls in the window. Net should be about -2.41M. See C-06."
+    },
+    {
+     "id": "S-011",
+     "ref": "sentiment.md:96",
+     "claim": "2026-06-18: several directors (Toledano, Chou, Raymond) sold at about 55 USD on the same day",
+     "source": "yf.py insider",
+     "status": "reported"
+    },
+    {
+     "id": "S-012",
+     "ref": "sentiment.md:98",
+     "claim": "CEO De Masi and CFO Kramer had no open-market sales in the last 12 months",
+     "source": "yf.py insider",
+     "status": "conflicting",
+     "note": "News says the CFO was Inder Singh, who left 11-13. Sentiment also lists Singh Inder M. as COO. See C-04."
+    },
+    {
+     "id": "S-013",
+     "ref": "sentiment.md:84",
+     "claim": "2026-02-20: stock awards to CEO De Masi and COO Singh Inder M.; 2026-06-17 and 2026-08-24 director annual awards",
+     "source": "yf.py insider",
+     "status": "reported"
+    },
+    {
+     "id": "S-014",
+     "ref": "sentiment.md:108",
+     "claim": "AltIndex: Stocktwits mentions about 379 per day, down 53% vs three months earlier (date not given)",
+     "source": "AltIndex",
+     "status": "unverified",
+     "note": "Undated; rated medium confidence in the report"
+    },
+    {
+     "id": "S-015",
+     "ref": "sentiment.md:109-110",
+     "claim": "AltIndex sentiment scores: Stocktwits 88/100 (bullish); X cashtag 91/100 (bullish)",
+     "source": "AltIndex",
+     "status": "unverified",
+     "note": "Undated; rated low confidence"
+    },
+    {
+     "id": "S-016",
+     "ref": "sentiment.md:111",
+     "claim": "X cashtag monthly mentions 2026: Jan 152, Feb 336, Mar 71, Apr 77, May 219",
+     "source": "AltIndex",
+     "status": "reported"
+    },
+    {
+     "id": "S-017",
+     "ref": "sentiment.md:112",
+     "claim": "Stocktwits sentiment turned bearish after the 1.3B all-stock Elisity deal (about 6 weeks earlier, relative date)",
+     "source": "Stocktwits report",
+     "status": "unverified",
+     "note": "Relative date only"
+    },
+    {
+     "id": "S-018",
+     "ref": "sentiment.md:115",
+     "claim": "2026-11-19: stock jumped on an IonQ X post during SC26 (Chicago)",
+     "source": "Motley Fool (sentiment.md:167)",
+     "status": "reported"
+    },
+    {
+     "id": "S-019",
+     "ref": "sentiment.md:116",
+     "claim": "Late Feb 2026: a Reddit post briefly made sentiment very bullish, then faded",
+     "source": "Yahoo Finance",
+     "status": "reported"
+    },
+    {
+     "id": "S-020",
+     "ref": "sentiment.md:117",
+     "claim": "Short interest about 22.4% of float; commentators argue for a short squeeze",
+     "source": "Yahoo Finance / Barchart (promotional tone)",
+     "status": "conflicting",
+     "note": "fundamentals.md gives 11.8% of floatShares from yf.py info. See C-03."
+    },
+    {
+     "id": "S-021",
+     "ref": "sentiment.md:133-140",
+     "claim": "Composite score about +0.4 from weighted components (analyst +1.5 at 30%, institutional +0.5 at 20%, insider -1.0 at 20%, retail +0.5 at 20%, catalyst +0.5 at 10%)",
+     "source": "analyst scoring",
+     "status": "derived_mismatch",
+     "note": "0.30x1.5 + 0.20x0.5 + 0.20x(-1.0) + 0.20x0.5 + 0.10x0.5 = +0.50, not +0.4. See A-01."
+    },
+    {
+     "id": "S-022",
+     "ref": "sentiment.md:144",
+     "claim": "Overall sentiment is mildly bullish with low confidence",
+     "source": "analyst judgment",
+     "status": "inferred"
+    },
+    {
+     "id": "S-023",
+     "ref": "sentiment.md:156",
+     "claim": "No sentiment data for 2026-11-20 to 2026-11-24 and no current price obtained, so current valuation position is unconfirmed",
+     "source": "analyst note",
+     "status": "unavailable"
+    },
+    {
+     "id": "S-024",
+     "ref": "sentiment.md:153-155",
+     "claim": "Several social metrics are undated or relative-dated and should be treated as trend reference only",
+     "source": "analyst note",
+     "status": "reported"
+    }
+   ]
+  }
+ },
+ "cross_report_conflicts": [
+  {
+   "id": "C-01",
+   "topic": "Price on 2026-11-23",
+   "values": {
+    "fundamentals": "23.41 (close)",
+    "market": "23.47 snapshot; 23.45 fast_info"
+   },
+   "severity": "low",
+   "note": "Same date, different source snapshots. Reconcile to one close before use."
+  },
+  {
+   "id": "C-02",
+   "topic": "50-day moving average",
+   "values": {
+    "fundamentals": "34.9",
+    "market": "34.60"
+   },
+   "severity": "low",
+   "note": "The 200-day averages agree (40.9 vs 40.85)."
+  },
+  {
+   "id": "C-03",
+   "topic": "Short interest",
+   "values": {
+    "fundamentals": "about 11.8% of floatShares (50.6M shares), yf.py info",
+    "sentiment": "about 22.4% of float, Yahoo / Barchart"
+   },
+   "severity": "high",
+   "note": "The 22.4% figure comes from a promotional source. fundamentals.md uses a primary field and recomputes correctly. Prefer the primary field."
+  },
+  {
+   "id": "C-04",
+   "topic": "CFO identity and departure",
+   "values": {
+    "news": "CFO Inder Singh left 2026-11-13; Gary Merrill named CFO 11-16",
+    "sentiment": "CFO Kramer, no sales; COO Singh Inder M. received stock award 2026-02-20"
+   },
+   "severity": "high",
+   "note": "Role and name for Singh and the CFO differ between reports. Verify against the 8-K / IR."
+  },
+  {
+   "id": "C-05",
+   "topic": "Cause of Q3 revenue jump",
+   "values": {
+    "fundamentals": "likely acquisition consolidated in Q3 (target unidentified)",
+    "news": "Elisity acquisition completed 2026-11-04, after Q3 end"
+   },
+   "severity": "high",
+   "note": "Timing does not fit the Elisity deal. The Q3 acquisition, if any, is unidentified. Affects the organic growth claim."
+  },
+  {
+   "id": "C-06",
+   "topic": "Insider purchases in the 12-month window",
+   "values": {
+    "fundamentals": "1 purchase, 3,000 shares, about 115K USD",
+    "sentiment": "2 purchases, about 225K USD, including 2025-11-11 (outside window)"
+   },
+   "severity": "medium",
+   "note": "Sentiment net figure (-2.30M) should be about -2.41M."
+  },
+  {
+   "id": "C-07",
+   "topic": "2026-11-06 share move after Q3 report",
+   "values": {
+    "news": "+23% to 32.62 (chosen); other sources say -10% and +4% after hours"
+   },
+   "severity": "medium",
+   "note": "The news report itself flags this. Not resolved."
+  },
+  {
+   "id": "C-08",
+   "topic": "Early November quantum selloff",
+   "values": {
+    "news": "IONQ fell about 15% on the day (one source)",
+    "news_source_title": "TIKR headline implies about -8% on 11-05"
+   },
+   "severity": "low",
+   "note": "Same news file contains both figures."
+  },
+  {
+   "id": "C-09",
+   "topic": "H2 2025 equity raising",
+   "values": {
+    "fundamentals_line_15": "about 3.3B in H2 2025",
+    "fundamentals_line_106": "about 3.3B in full-year 2025",
+    "quarterly_sum_H2": "2,954.3M"
+   },
+   "severity": "low",
+   "note": "The 3.3B figure is the full-year total."
+  },
+  {
+   "id": "C-10",
+   "topic": "trailing EPS",
+   "values": {
+    "fundamentals_info": "trailingEps 1.73",
+    "fundamentals_quarterly_sum": "0.27"
+   },
+   "severity": "medium",
+   "note": "The info value does not match the sum of the four reported quarterly diluted EPS values. Trailing P/E 13.5x depends on it. Report already says P/E is not meaningful."
+  },
+  {
+   "id": "C-11",
+   "topic": "Pro-forma cash after offering",
+   "values": {
+    "news": "pro-forma cash and investments about 3.7B",
+    "fundamentals_plus_news": "Q3 1.07B + net proceeds 1.99B = about 3.06B"
+   },
+   "severity": "medium",
+   "note": "The gap of about 0.6B is not explained in the reports. It may reflect Elisity cash acquired or post-Q3 cash flow, but neither is shown."
+  },
+  {
+   "id": "C-12",
+   "topic": "Composite sentiment score",
+   "values": {
+    "stated": "+0.4",
+    "recomputed": "+0.50"
+   },
+   "severity": "low",
+   "note": "Arithmetic in sentiment.md:133-140. See A-01."
+  },
+  {
+   "id": "C-13",
+   "topic": "One-year low label",
+   "values": {
+    "news": "24.84 on 11-17 labelled 'one-year low'",
+    "fundamentals_market": "52-week low 20.51"
+   },
+   "severity": "low",
+   "note": "Not a true contradiction if the 20.51 low occurred after 11-17. The label is out of date."
+  },
+  {
+   "id": "C-14",
+   "topic": "Data access on 2026-11-23",
+   "values": {
+    "market": "Yahoo unreachable (403/ConnectionError); fast_info market cap, shares, volume empty",
+    "fundamentals": "full yf.py info, financials and holder data returned from cache",
+    "sentiment": "Cookie/crumb warning, content complete"
+   },
+   "severity": "medium",
+   "note": "Tool-access state differs between steps. Field-level availability should be checked before relying on any single field."
+  },
+  {
+   "id": "C-15",
+   "topic": "Share count basis for per-share metrics",
+   "values": {
+    "market_cap": "462.9M shares (10.84B)",
+    "book_value_per_share": "12.2 uses 408.9M shares"
+   },
+   "severity": "medium",
+   "note": "On 462.9M shares, BVPS is 10.78 and P/B about 2.2x, not 1.9x."
+  },
+  {
+   "id": "C-16",
+   "topic": "23 Nov move",
+   "values": {
+    "news": "intraday +15%, sector driven, not closed",
+    "fundamentals_market": "+13% on close basis (23.41 or 23.47 vs 20.72)"
+   },
+   "severity": "low",
+   "note": "Different bases (intraday vs close). Not a substantive conflict."
+  },
+  {
+   "id": "C-17",
+   "topic": "Dilution estimate",
+   "values": {
+    "trefis": "about 14% of market cap",
+    "panabee": "about 24%"
+   },
+   "severity": "medium",
+   "note": "Both are third-party. Use filings instead."
+  }
+ ],
+ "arithmetic_checks": [
+  {
+   "id": "A-01",
+   "item": "Composite sentiment weighted score (sentiment.md:133-140)",
+   "stated": 0.4,
+   "recomputed": 0.5,
+   "result": "derived_mismatch"
+  },
+  {
+   "id": "A-02",
+   "item": "Insider 12-month net (sentiment.md:92)",
+   "stated": -2.3,
+   "recomputed": -2.41,
+   "unit": "M USD",
+   "result": "derived_mismatch",
+   "note": "Uses the 2026-02-27 purchase only (115K), per C-06"
+  },
+  {
+   "id": "A-03",
+   "item": "P/B using BVPS 12.2 (fundamentals.md:121)",
+   "stated": 1.9,
+   "recomputed": 2.2,
+   "result": "derived_mismatch",
+   "note": "Recomputed on 462.9M shares"
+  },
+  {
+   "id": "A-04",
+   "item": "Market cap 10.84B (fundamentals.md:117)",
+   "stated": 10.84,
+   "recomputed": 10.84,
+   "result": "derived_verified"
+  },
+  {
+   "id": "A-05",
+   "item": "TTM net income sum (fundamentals.md:13)",
+   "stated": 255,
+   "recomputed": 255.4,
+   "result": "derived_verified"
+  },
+  {
+   "id": "A-06",
+   "item": "TTM unusual items sum (fundamentals.md:13)",
+   "stated": 1260,
+   "recomputed": 1254.3,
+   "result": "derived_verified",
+   "note": "About 6M rounding gap"
+  },
+  {
+   "id": "A-07",
+   "item": "Nine-month 2026 FCF (fundamentals.md:70)",
+   "stated": -605,
+   "recomputed": -605.3,
+   "result": "derived_verified"
+  },
+  {
+   "id": "A-08",
+   "item": "Net cash Q3 (fundamentals.md:87)",
+   "stated": 915,
+   "recomputed": 915.2,
+   "result": "derived_verified"
+  },
+  {
+   "id": "A-09",
+   "item": "Equity raise 2.0B pricing (news.md:22)",
+   "stated": 2.0,
+   "recomputed": 2.0,
+   "unit": "B USD",
+   "result": "derived_verified"
+  },
+  {
+   "id": "A-10",
+   "item": "Bollinger %B (market.md:64)",
+   "stated": 0.18,
+   "recomputed": 0.18,
+   "result": "derived_verified"
+  },
+  {
+   "id": "A-11",
+   "item": "Insider 12-month sales total (sentiment.md:90)",
+   "stated": 2.52,
+   "recomputed": 2.525,
+   "unit": "M USD",
+   "result": "derived_verified"
+  },
+  {
+   "id": "A-12",
+   "item": "Trailing EPS from quarterly diluted EPS (fundamentals.md:16)",
+   "stated": 1.73,
+   "recomputed": 0.27,
+   "result": "derived_mismatch",
+   "note": "See C-10"
+  }
+ ],
+ "counts": {
+  "fundamentals_claims": 61,
+  "market_claims": 18,
+  "news_claims": 42,
+  "sentiment_claims": 24,
+  "cross_report_conflicts": 17,
+  "arithmetic_checks": 12
+ },
+ "claims": [
+  {
+   "id": "F-001",
+   "ref": "fundamentals.md:3",
+   "claim": "Snapshot is 2026-11-23 close, cached_at 2026-11-23 17:58 UTC",
+   "status": "reported",
+   "report": "fundamentals",
+   "source_name": "yf.py",
+   "source_domain": "",
+   "source_grade": "UNKNOWN",
+   "grade_basis": "none"
+  },
+  {
+   "id": "F-002",
+   "ref": "fundamentals.md:4",
+   "claim": "Latest reported period is FY26 Q3 (ended 2026-09-30); earnings released 2026-11-05",
+   "status": "reported",
+   "report": "fundamentals",
+   "source_name": "yf.py earnings_dates",
+   "source_domain": "",
+   "source_grade": "A",
+   "grade_basis": "name"
+  },
+  {
+   "id": "F-003",
+   "ref": "fundamentals.md:5",
+   "claim": "Next earnings 2027-02-24; consensus GAAP EPS -0.82",
+   "status": "reported",
+   "report": "fundamentals",
+   "source_name": "yf.py earnings_dates",
+   "source_domain": "",
+   "source_grade": "A",
+   "grade_basis": "name"
+  },
+  {
+   "id": "F-004",
+   "ref": "fundamentals.md:10",
+   "claim": "Q3 2026 revenue grew 117% QoQ and 336% YoY",
+   "status": "derived_verified",
+   "note": "173.8/80.0 = +117%; 173.8/39.9 = +336%",
+   "report": "fundamentals",
+   "source_name": "yf.py quarterly_fin",
+   "source_domain": "",
+   "source_grade": "UNKNOWN",
+   "grade_basis": "none"
+  },
+  {
+   "id": "F-005",
+   "ref": "fundamentals.md:12",
+   "claim": "Q3 2026 operating loss -433.1M, operating margin about -249%",
+   "status": "derived_verified",
+   "note": "-433.1/173.8 = -249%",
+   "report": "fundamentals",
+   "source_name": "yf.py quarterly_fin",
+   "source_domain": "",
+   "source_grade": "UNKNOWN",
+   "grade_basis": "none"
+  },
+  {
+   "id": "F-006",
+   "ref": "fundamentals.md:12",
+   "claim": "TTM operating loss about -1.27B",
+   "status": "derived_verified",
+   "note": "Sum of Q4'25 to Q3'26 = -1,270.4M",
+   "report": "fundamentals",
+   "source_name": "yf.py quarterly_fin",
+   "source_domain": "",
+   "source_grade": "UNKNOWN",
+   "grade_basis": "none"
+  },
+  {
+   "id": "F-007",
+   "ref": "fundamentals.md:13",
+   "claim": "TTM net income about +255M, driven by unusual items of about +1.26B",
+   "status": "derived_verified",
+   "note": "Net income sum = +255.4M. Unusual items sum = +1,254.3M, a rounding gap to the stated 1.26B.",
+   "report": "fundamentals",
+   "source_name": "yf.py quarterly_fin",
+   "source_domain": "",
+   "source_grade": "UNKNOWN",
+   "grade_basis": "none"
+  },
+  {
+   "id": "F-008",
+   "ref": "fundamentals.md:13",
+   "claim": "trailingPE 13.5x and profitMargins 67% are not meaningful for valuation",
+   "status": "inferred",
+   "note": "Analyst judgment on the reported info fields",
+   "report": "fundamentals",
+   "source_name": "yf.py info",
+   "source_domain": "",
+   "source_grade": "UNKNOWN",
+   "grade_basis": "none"
+  },
+  {
+   "id": "F-009",
+   "ref": "fundamentals.md:14",
+   "claim": "Q3 FCF -332M, the largest burn of 2026",
+   "status": "derived_verified",
+   "note": "OCF -315.5 + capex -16.3 = -331.8M",
+   "report": "fundamentals",
+   "source_name": "yf.py cashflow",
+   "source_domain": "",
+   "source_grade": "UNKNOWN",
+   "grade_basis": "none"
+  },
+  {
+   "id": "F-010",
+   "ref": "fundamentals.md:14,89",
+   "claim": "Cash plus short-term investments of 1.07B covers about 9 to 10 months at the Q3 burn pace",
+   "status": "derived_verified",
+   "note": "1.07B / 1.33B annualized = 0.80 year",
+   "report": "fundamentals",
+   "source_name": "balance_sheet + cashflow",
+   "source_domain": "",
+   "source_grade": "UNKNOWN",
+   "grade_basis": "none"
+  },
+  {
+   "id": "F-011",
+   "ref": "fundamentals.md:90",
+   "claim": "Runway is about 19 months at the TTM FCF burn rate",
+   "status": "derived_verified",
+   "note": "1.07B / 0.686B = 1.56 year",
+   "report": "fundamentals",
+   "source_name": "derived",
+   "source_domain": "",
+   "source_grade": "UNKNOWN",
+   "grade_basis": "none"
+  },
+  {
+   "id": "F-012",
+   "ref": "fundamentals.md:14,93",
+   "claim": "Total debt rose from 30.0M (YE25) to 154.3M (Q3'26)",
+   "status": "reported",
+   "report": "fundamentals",
+   "source_name": "balance_sheet",
+   "source_domain": "",
+   "source_grade": "UNKNOWN",
+   "grade_basis": "none"
+  },
+  {
+   "id": "F-013",
+   "ref": "fundamentals.md:100-103",
+   "claim": "Shares outstanding: YE24 221.9M, YE25 362.6M, Q2'26 381.0M, Q3'26 408.9M (+12.8% YTD)",
+   "status": "reported",
+   "report": "fundamentals",
+   "source_name": "balance_sheet / shares data",
+   "source_domain": "",
+   "source_grade": "UNKNOWN",
+   "grade_basis": "none"
+  },
+  {
+   "id": "F-014",
+   "ref": "fundamentals.md:104,108",
+   "claim": "Latest sharesOutstanding is 462.9M, about +28% vs YE25",
+   "status": "unverified",
+   "note": "Report says 'need to verify'. It exceeds Q3 408.9M, and the gap is not explained.",
+   "report": "fundamentals",
+   "source_name": "yf.py info",
+   "source_domain": "",
+   "source_grade": "UNKNOWN",
+   "grade_basis": "none"
+  },
+  {
+   "id": "F-015",
+   "ref": "fundamentals.md:15 vs 106",
+   "claim": "Equity raising of about 3.3B happened in H2 2025 (line 15) and in full-year 2025 (line 106)",
+   "status": "conflicting",
+   "note": "Quarterly Common Stock Issuance sums to 1,000.0 (Q3'25) + 1,954.3 (Q4'25) = 2,954.3M for H2 2025. The 3.3B figure is the full-year total.",
+   "report": "fundamentals",
+   "source_name": "cashflow",
+   "source_domain": "",
+   "source_grade": "UNKNOWN",
+   "grade_basis": "none"
+  },
+  {
+   "id": "F-016",
+   "ref": "fundamentals.md:24-32",
+   "claim": "Revenue by period: FY24 43.1M, FY25 130.0M, Q3'25 39.9M, Q4'25 61.9M, Q1'26 64.7M, Q2'26 80.0M, Q3'26 173.8M",
+   "status": "reported",
+   "report": "fundamentals",
+   "source_name": "yf.py financials / quarterly_fin",
+   "source_domain": "",
+   "source_grade": "UNKNOWN",
+   "grade_basis": "none"
+  },
+  {
+   "id": "F-017",
+   "ref": "fundamentals.md:26-32",
+   "claim": "Gross margin: FY24 52.2%, FY25 40.4%, Q3'26 21.9%",
+   "status": "derived_verified",
+   "note": "FY25 52.5/130.0 = 40.4%; Q3'26 38.0/173.8 = 21.9%",
+   "report": "fundamentals",
+   "source_name": "yf.py financials / quarterly_fin",
+   "source_domain": "",
+   "source_grade": "UNKNOWN",
+   "grade_basis": "none"
+  },
+  {
+   "id": "F-018",
+   "ref": "fundamentals.md:36",
+   "claim": "Q3 revenue jump is consistent with an acquisition consolidated in Q3, which is not identified in tool data",
+   "status": "conflicting",
+   "note": "News says Elisity closed 2026-11-04, after the Q3 period end. The consolidation timing does not fit.",
+   "report": "fundamentals",
+   "source_name": "inferred from cost of revenue, investing CF and share count",
+   "source_domain": "",
+   "source_grade": "UNKNOWN",
+   "grade_basis": "none"
+  },
+  {
+   "id": "F-019",
+   "ref": "fundamentals.md:36",
+   "claim": "Yahoo officer list includes a senior SkyWater Technology executive",
+   "status": "reported",
+   "note": "Link to the Q3 acquisition is an inference, not confirmed",
+   "report": "fundamentals",
+   "source_name": "yf.py info",
+   "source_domain": "",
+   "source_grade": "UNKNOWN",
+   "grade_basis": "none"
+  },
+  {
+   "id": "F-020",
+   "ref": "fundamentals.md:38",
+   "claim": "Operating expense: FY25 686.2M (FY24 254.9M); Q2'26 357.2M; Q3'26 471.1M",
+   "status": "reported",
+   "report": "fundamentals",
+   "source_name": "yf.py financials / quarterly_fin",
+   "source_domain": "",
+   "source_grade": "UNKNOWN",
+   "grade_basis": "none"
+  },
+  {
+   "id": "F-021",
+   "ref": "fundamentals.md:38",
+   "claim": "R&D: Q3'26 141.7M (Q2 160.6M); FY25 305.7M",
+   "status": "reported",
+   "report": "fundamentals",
+   "source_name": "yf.py financials",
+   "source_domain": "",
+   "source_grade": "UNKNOWN",
+   "grade_basis": "none"
+  },
+  {
+   "id": "F-022",
+   "ref": "fundamentals.md:44-50",
+   "claim": "GAAP net income and diluted EPS: Q3'25 -1,055.0M / -3.58; Q4'25 +753.7M / +1.93; Q1'26 +805.4M / +2.07; Q2'26 -1,867.7M / -5.08; Q3'26 +564.0M / +1.35",
+   "status": "reported",
+   "report": "fundamentals",
+   "source_name": "yf.py financials / quarterly_fin",
+   "source_domain": "",
+   "source_grade": "UNKNOWN",
+   "grade_basis": "none"
+  },
+  {
+   "id": "F-023",
+   "ref": "fundamentals.md:53",
+   "claim": "Quarterly net income sign is driven by unusual items whose source (fair value, investments or tax) is not disclosed",
+   "status": "inferred",
+   "note": "Report itself says the source is unclear",
+   "report": "fundamentals",
+   "source_name": "yf.py",
+   "source_domain": "",
+   "source_grade": "UNKNOWN",
+   "grade_basis": "none"
+  },
+  {
+   "id": "F-024",
+   "ref": "fundamentals.md:54,150",
+   "claim": "Q3 EPS +1.35 vs consensus -0.77; Q2 EPS -5.08 vs -0.60; Q1 EPS +2.07 vs -0.52",
+   "status": "reported",
+   "report": "fundamentals",
+   "source_name": "yf.py earnings_dates",
+   "source_domain": "",
+   "source_grade": "A",
+   "grade_basis": "name"
+  },
+  {
+   "id": "F-025",
+   "ref": "fundamentals.md:16",
+   "claim": "trailingEps is 1.73",
+   "status": "conflicting",
+   "note": "Sum of the last four quarterly diluted EPS values (1.93 + 2.07 - 5.08 + 1.35) = 0.27. Not reconciled.",
+   "report": "fundamentals",
+   "source_name": "yf.py info",
+   "source_domain": "",
+   "source_grade": "UNKNOWN",
+   "grade_basis": "none"
+  },
+  {
+   "id": "F-026",
+   "ref": "fundamentals.md:69",
+   "claim": "TTM FCF -686M and TTM OCF -645M (matches info operatingCashflow -644.8M)",
+   "status": "derived_verified",
+   "note": "FCF sum = -685.7M",
+   "report": "fundamentals",
+   "source_name": "yf.py cashflow / info",
+   "source_domain": "",
+   "source_grade": "UNKNOWN",
+   "grade_basis": "none"
+  },
+  {
+   "id": "F-027",
+   "ref": "fundamentals.md:59-67",
+   "claim": "OCF and capex by period: FY24 OCF -105.7M, FY25 OCF -283.2M, Q3'26 OCF -315.5M, capex Q3'26 -16.3M",
+   "status": "reported",
+   "report": "fundamentals",
+   "source_name": "yf.py cashflow",
+   "source_domain": "",
+   "source_grade": "UNKNOWN",
+   "grade_basis": "none"
+  },
+  {
+   "id": "F-028",
+   "ref": "fundamentals.md:70",
+   "claim": "2026 nine-month FCF is about -605M, with Q3 more than half",
+   "status": "derived_verified",
+   "note": "-159.4 - 114.0 - 331.9 = -605.3M",
+   "report": "fundamentals",
+   "source_name": "yf.py cashflow",
+   "source_domain": "",
+   "source_grade": "UNKNOWN",
+   "grade_basis": "none"
+  },
+  {
+   "id": "F-029",
+   "ref": "fundamentals.md:71",
+   "claim": "Investing cash flow: Q1'26 -392M, Q2'26 +834M, Q3'26 -719M",
+   "status": "reported",
+   "report": "fundamentals",
+   "source_name": "yf.py cashflow",
+   "source_domain": "",
+   "source_grade": "UNKNOWN",
+   "grade_basis": "none"
+  },
+  {
+   "id": "F-030",
+   "ref": "fundamentals.md:72",
+   "claim": "2026 nine-month SBC is about 417M, more than 60% of FCF burn",
+   "status": "derived_verified",
+   "note": "128.5 + 141.8 + 146.9 = 417.2M; 417/605 = 69%",
+   "report": "fundamentals",
+   "source_name": "yf.py cashflow",
+   "source_domain": "",
+   "source_grade": "UNKNOWN",
+   "grade_basis": "none"
+  },
+  {
+   "id": "F-031",
+   "ref": "fundamentals.md:61-67",
+   "claim": "SBC: FY24 106.9M, FY25 312.0M, Q3'26 146.9M",
+   "status": "reported",
+   "report": "fundamentals",
+   "source_name": "yf.py cashflow",
+   "source_domain": "",
+   "source_grade": "UNKNOWN",
+   "grade_basis": "none"
+  },
+  {
+   "id": "F-032",
+   "ref": "fundamentals.md:78-85",
+   "claim": "Cash plus short-term investments: YE25 2,392.2M, Q2'26 2,119.0M, Q3'26 1,069.5M; cash only: 1,030.9M / 1,235.7M / 209.5M",
+   "status": "reported",
+   "report": "fundamentals",
+   "source_name": "balance_sheet",
+   "source_domain": "",
+   "source_grade": "UNKNOWN",
+   "grade_basis": "none"
+  },
+  {
+   "id": "F-033",
+   "ref": "fundamentals.md:87",
+   "claim": "Net cash (cash plus ST investments minus total debt): Q3 about 915M, Q2 about 2,065M, YE25 about 2,362M",
+   "status": "derived_verified",
+   "note": "1,069.5 - 154.3 = 915.2; 2,119.0 - 54.5 = 2,064.5; 2,392.2 - 30.0 = 2,362.2",
+   "report": "fundamentals",
+   "source_name": "balance_sheet",
+   "source_domain": "",
+   "source_grade": "UNKNOWN",
+   "grade_basis": "none"
+  },
+  {
+   "id": "F-034",
+   "ref": "fundamentals.md:92",
+   "claim": "Current ratio 4.2x and quick ratio 3.6x",
+   "status": "reported",
+   "note": "Current ratio recomputes as 1,538.1 / 363.0 = 4.24x. Quick ratio is not recomputable from the report.",
+   "report": "fundamentals",
+   "source_name": "yf.py info",
+   "source_domain": "",
+   "source_grade": "UNKNOWN",
+   "grade_basis": "none"
+  },
+  {
+   "id": "F-035",
+   "ref": "fundamentals.md:92",
+   "claim": "Current assets fell about 36% QoQ",
+   "status": "derived_verified",
+   "note": "1,538.1 / 2,409.8 - 1 = -36.2%",
+   "report": "fundamentals",
+   "source_name": "balance_sheet",
+   "source_domain": "",
+   "source_grade": "UNKNOWN",
+   "grade_basis": "none"
+  },
+  {
+   "id": "F-036",
+   "ref": "fundamentals.md:82,94",
+   "claim": "Stockholders equity 4,990.4M and total assets 7,853.0M at Q3'26 (equity about 64% of assets)",
+   "status": "derived_verified",
+   "note": "4,990.4 / 7,853.0 = 63.5%",
+   "report": "fundamentals",
+   "source_name": "balance_sheet",
+   "source_domain": "",
+   "source_grade": "UNKNOWN",
+   "grade_basis": "none"
+  },
+  {
+   "id": "F-037",
+   "ref": "fundamentals.md:93",
+   "claim": "debtToEquity 3.07 (percent), about 3.1% leverage",
+   "status": "derived_verified",
+   "note": "154.3 / 4,990.4 = 3.1%",
+   "report": "fundamentals",
+   "source_name": "yf.py info",
+   "source_domain": "",
+   "source_grade": "UNKNOWN",
+   "grade_basis": "none"
+  },
+  {
+   "id": "F-038",
+   "ref": "fundamentals.md:94",
+   "claim": "Non-current assets likely include goodwill and intangibles",
+   "status": "unverified",
+   "note": "Report says the breakdown is not in the tool data",
+   "report": "fundamentals",
+   "source_name": "inferred",
+   "source_domain": "",
+   "source_grade": "UNKNOWN",
+   "grade_basis": "none"
+  },
+  {
+   "id": "F-039",
+   "ref": "fundamentals.md:113-117",
+   "claim": "Market cap 10.84B (info), based on 462.9M shares at price 23.41",
+   "status": "derived_verified",
+   "note": "462.9M x 23.41 = 10.84B",
+   "report": "fundamentals",
+   "source_name": "yf.py info",
+   "source_domain": "",
+   "source_grade": "UNKNOWN",
+   "grade_basis": "none"
+  },
+  {
+   "id": "F-040",
+   "ref": "fundamentals.md:180",
+   "claim": "Non-diluted market cap 9.59B, based on about 410M shares",
+   "status": "derived_verified",
+   "note": "410M x 23.41 = 9.60B",
+   "report": "fundamentals",
+   "source_name": "yf.py info",
+   "source_domain": "",
+   "source_grade": "UNKNOWN",
+   "grade_basis": "none"
+  },
+  {
+   "id": "F-041",
+   "ref": "fundamentals.md:118",
+   "claim": "P/S on TTM revenue 380.4M is 28.5x (Yahoo priceToSalesTrailing12Months)",
+   "status": "derived_verified",
+   "note": "10.84B / 380.4M = 28.5x",
+   "report": "fundamentals",
+   "source_name": "yf.py info",
+   "source_domain": "",
+   "source_grade": "UNKNOWN",
+   "grade_basis": "none"
+  },
+  {
+   "id": "F-042",
+   "ref": "fundamentals.md:119",
+   "claim": "P/S on Q3 annualized revenue 695M is about 15.6x",
+   "status": "derived_verified",
+   "note": "173.8 x 4 = 695.2M; 10.84B / 0.695B = 15.6x",
+   "report": "fundamentals",
+   "source_name": "derived",
+   "source_domain": "",
+   "source_grade": "UNKNOWN",
+   "grade_basis": "none"
+  },
+  {
+   "id": "F-043",
+   "ref": "fundamentals.md:120",
+   "claim": "EV/Sales about 21.2x with Yahoo EV 8.08B; self-computed EV about 9.9B gives about 26x",
+   "status": "derived_verified",
+   "note": "8.08B / 380.4M = 21.2x; 9.9B / 380.4M = 26.0x. The EV basis differs and is flagged as unverified in the report.",
+   "report": "fundamentals",
+   "source_name": "yf.py info / derived",
+   "source_domain": "",
+   "source_grade": "UNKNOWN",
+   "grade_basis": "none"
+  },
+  {
+   "id": "F-044",
+   "ref": "fundamentals.md:121",
+   "claim": "P/B about 1.9x using book value per share about 12.2",
+   "status": "derived_mismatch",
+   "note": "BVPS 12.2 = 4,990.4 / 408.9M shares. Market cap uses 462.9M shares. On 462.9M, BVPS is 10.78 and P/B is 2.2x.",
+   "report": "fundamentals",
+   "source_name": "derived",
+   "source_domain": "",
+   "source_grade": "UNKNOWN",
+   "grade_basis": "none"
+  },
+  {
+   "id": "F-045",
+   "ref": "fundamentals.md:123",
+   "claim": "Forward EPS -1.42; forward P/E is negative",
+   "status": "reported",
+   "report": "fundamentals",
+   "source_name": "yf.py info",
+   "source_domain": "",
+   "source_grade": "UNKNOWN",
+   "grade_basis": "none"
+  },
+  {
+   "id": "F-046",
+   "ref": "fundamentals.md:125",
+   "claim": "14 analysts, mean recommendation strong_buy, mean target 54.3 (implied about +132% upside)",
+   "status": "derived_verified",
+   "note": "54.3 / 23.41 - 1 = +132%. Report says target timeliness is unknown.",
+   "report": "fundamentals",
+   "source_name": "yf.py info",
+   "source_domain": "",
+   "source_grade": "UNKNOWN",
+   "grade_basis": "none"
+  },
+  {
+   "id": "F-047",
+   "ref": "fundamentals.md:113,130",
+   "claim": "Price 23.41 at 2026-11-23 close, +13.0% on the day",
+   "status": "conflicting",
+   "note": "market.md gives 23.47 (snapshot) and 23.45 (fast_info) for the same date. See C-01.",
+   "report": "fundamentals",
+   "source_name": "yf.py info",
+   "source_domain": "",
+   "source_grade": "UNKNOWN",
+   "grade_basis": "none"
+  },
+  {
+   "id": "F-048",
+   "ref": "fundamentals.md:130",
+   "claim": "52-week range 20.51 to 73.65; price about 68% below the high",
+   "status": "derived_verified",
+   "note": "23.41 / 73.65 - 1 = -68%",
+   "report": "fundamentals",
+   "source_name": "yf.py info",
+   "source_domain": "",
+   "source_grade": "UNKNOWN",
+   "grade_basis": "none"
+  },
+  {
+   "id": "F-049",
+   "ref": "fundamentals.md:130",
+   "claim": "50-day MA 34.9 and 200-day MA 40.9, with a bearish alignment",
+   "status": "conflicting",
+   "note": "MA50 is 34.60 in market.md. MA200 40.85 rounds to 40.9. See C-02.",
+   "report": "fundamentals",
+   "source_name": "yf.py info",
+   "source_domain": "",
+   "source_grade": "UNKNOWN",
+   "grade_basis": "none"
+  },
+  {
+   "id": "F-050",
+   "ref": "fundamentals.md:131",
+   "claim": "Beta 3.41",
+   "status": "reported",
+   "report": "fundamentals",
+   "source_name": "yf.py info",
+   "source_domain": "",
+   "source_grade": "UNKNOWN",
+   "grade_basis": "none"
+  },
+  {
+   "id": "F-051",
+   "ref": "fundamentals.md:132",
+   "claim": "Short interest 50.6M shares, about 11.8% of floatShares 429.5M; up about 25% vs last month; short ratio 2.28 days",
+   "status": "derived_verified",
+   "note": "50.6 / 429.5 = 11.8%. Conflicts with sentiment.md's 22.4% figure. See C-03.",
+   "report": "fundamentals",
+   "source_name": "yf.py info",
+   "source_domain": "",
+   "source_grade": "UNKNOWN",
+   "grade_basis": "none"
+  },
+  {
+   "id": "F-052",
+   "ref": "fundamentals.md:133",
+   "claim": "Institutional ownership 41.4% (about 1,009 institutions); insider ownership 0.6%",
+   "status": "reported",
+   "report": "fundamentals",
+   "source_name": "yf.py major_holders",
+   "source_domain": "",
+   "source_grade": "UNKNOWN",
+   "grade_basis": "none"
+  },
+  {
+   "id": "F-053",
+   "ref": "fundamentals.md:137",
+   "claim": "Insider sales over 12 months: 11 sales, about 51.6K shares, about 2.52M USD; latest 2026-09-10 at 37.21",
+   "status": "derived_verified",
+   "note": "Share sum = 51,590; USD sum = 2.525M",
+   "report": "fundamentals",
+   "source_name": "yf.py insider",
+   "source_domain": "",
+   "source_grade": "UNKNOWN",
+   "grade_basis": "none"
+  },
+  {
+   "id": "F-054",
+   "ref": "fundamentals.md:138",
+   "claim": "One insider open-market purchase in the 12-month window: 3,000 shares, about 115K USD",
+   "status": "reported",
+   "note": "Matches the 2026-02-27 purchase only. Conflicts with sentiment.md's count of 2 purchases. See C-06.",
+   "report": "fundamentals",
+   "source_name": "yf.py insider",
+   "source_domain": "",
+   "source_grade": "UNKNOWN",
+   "grade_basis": "none"
+  },
+  {
+   "id": "F-055",
+   "ref": "fundamentals.md:139",
+   "claim": "Director RSU and stock awards about 85K shares; option exercises about 33.8K shares",
+   "status": "reported",
+   "report": "fundamentals",
+   "source_name": "yf.py insider",
+   "source_domain": "",
+   "source_grade": "UNKNOWN",
+   "grade_basis": "none"
+  },
+  {
+   "id": "F-056",
+   "ref": "fundamentals.md:144",
+   "claim": "Yahoo governance risk: Overall 10/10, Compensation 10/10, Board 8/10, Shareholder Rights 8/10, Audit 1/10",
+   "status": "reported",
+   "report": "fundamentals",
+   "source_name": "yf.py info",
+   "source_domain": "",
+   "source_grade": "UNKNOWN",
+   "grade_basis": "none"
+  },
+  {
+   "id": "F-057",
+   "ref": "fundamentals.md:146",
+   "claim": "Employees about 1,132",
+   "status": "reported",
+   "report": "fundamentals",
+   "source_name": "yf.py info",
+   "source_domain": "",
+   "source_grade": "UNKNOWN",
+   "grade_basis": "none"
+  },
+  {
+   "id": "F-058",
+   "ref": "fundamentals.md:158,170",
+   "claim": "Acquisition terms (price, consideration, revenue contribution, goodwill) are inferred from statements and are not confirmed",
+   "status": "unverified",
+   "note": "No announcement text was obtained",
+   "report": "fundamentals",
+   "source_name": "inferred",
+   "source_domain": "",
+   "source_grade": "UNKNOWN",
+   "grade_basis": "none"
+  },
+  {
+   "id": "F-059",
+   "ref": "fundamentals.md:152,160",
+   "claim": "Cash runway is about 9 to 12 months; financing announcement (ATM, convertible, equity or debt) is likely",
+   "status": "inferred",
+   "report": "fundamentals",
+   "source_name": "inferred",
+   "source_domain": "",
+   "source_grade": "UNKNOWN",
+   "grade_basis": "none"
+  },
+  {
+   "id": "F-060",
+   "ref": "fundamentals.md:18",
+   "claim": "Fundamental rating: high risk, bearish-leaning",
+   "status": "inferred",
+   "report": "fundamentals",
+   "source_name": "analyst judgment",
+   "source_domain": "",
+   "source_grade": "C",
+   "grade_basis": "name"
+  },
+  {
+   "id": "F-061",
+   "ref": "fundamentals.md:166,169",
+   "claim": "Data is a cache snapshot, not intraday. statements and holders subcommands are invalid and were replaced",
+   "status": "reported",
+   "report": "fundamentals",
+   "source_name": "tool notes",
+   "source_domain": "",
+   "source_grade": "UNKNOWN",
+   "grade_basis": "none"
+  },
+  {
+   "id": "M-001",
+   "ref": "market.md:5-6",
+   "claim": "Data basis is 2026-11-23 (latest close or snapshot). Price is available and PRICE_DATA_UNAVAILABLE was not triggered",
+   "status": "reported",
+   "report": "market",
+   "source_name": "ta.py / yf.py",
+   "source_domain": "",
+   "source_grade": "UNKNOWN",
+   "grade_basis": "none"
+  },
+  {
+   "id": "M-002",
+   "ref": "market.md:18-19",
+   "claim": "Latest price: 23.47 (snapshot, as_of 2026-11-23); 23.45 (fast_info, cache)",
+   "status": "conflicting",
+   "note": "fundamentals.md uses 23.41 for the same close. See C-01.",
+   "report": "market",
+   "source_name": "ta.py snapshot / yf.py fast_info",
+   "source_domain": "",
+   "source_grade": "UNKNOWN",
+   "grade_basis": "none"
+  },
+  {
+   "id": "M-003",
+   "ref": "market.md:20-21",
+   "claim": "Previous close 20.72; day high 24.86; day low 23.14",
+   "status": "reported",
+   "report": "market",
+   "source_name": "yf.py fast_info",
+   "source_domain": "",
+   "source_grade": "UNKNOWN",
+   "grade_basis": "none"
+  },
+  {
+   "id": "M-004",
+   "ref": "market.md:22",
+   "claim": "52-week high 73.65; 52-week low 20.51",
+   "status": "reported",
+   "report": "market",
+   "source_name": "yf.py fast_info",
+   "source_domain": "",
+   "source_grade": "UNKNOWN",
+   "grade_basis": "none"
+  },
+  {
+   "id": "M-005",
+   "ref": "market.md:30-32",
+   "claim": "MA20 28.98, MA50 34.60, MA200 40.85; price below all three; bearish alignment",
+   "status": "reported",
+   "report": "market",
+   "source_name": "ta.py snapshot",
+   "source_domain": "",
+   "source_grade": "UNKNOWN",
+   "grade_basis": "none"
+  },
+  {
+   "id": "M-006",
+   "ref": "market.md:30-32",
+   "claim": "Price is 19.0%, 32.2% and 42.6% below MA20, MA50 and MA200",
+   "status": "derived_verified",
+   "note": "23.47 / 28.98 - 1 = -19.0%; / 34.60 - 1 = -32.2%; / 40.85 - 1 = -42.6%",
+   "report": "market",
+   "source_name": "derived",
+   "source_domain": "",
+   "source_grade": "UNKNOWN",
+   "grade_basis": "none"
+  },
+  {
+   "id": "M-007",
+   "ref": "market.md:40-42",
+   "claim": "MACD -3.13, signal -2.44, histogram -0.69 (bearish momentum)",
+   "status": "reported",
+   "report": "market",
+   "source_name": "ta.py snapshot",
+   "source_domain": "",
+   "source_grade": "UNKNOWN",
+   "grade_basis": "none"
+  },
+  {
+   "id": "M-008",
+   "ref": "market.md:47",
+   "claim": "RSI14 is 36.9, not oversold (above 30)",
+   "status": "reported",
+   "report": "market",
+   "source_name": "ta.py snapshot",
+   "source_domain": "",
+   "source_grade": "UNKNOWN",
+   "grade_basis": "none"
+  },
+  {
+   "id": "M-009",
+   "ref": "market.md:52-55",
+   "claim": "Rate of change: 1M -24.9%, 3M -44.2%, 6M -63.1%, 12M -42.8%",
+   "status": "reported",
+   "report": "market",
+   "source_name": "ta.py snapshot",
+   "source_domain": "",
+   "source_grade": "UNKNOWN",
+   "grade_basis": "none"
+  },
+  {
+   "id": "M-010",
+   "ref": "market.md:61-64",
+   "claim": "Bollinger: upper 37.64, mid 28.98, lower 20.33, %B 0.18",
+   "status": "derived_verified",
+   "note": "%B = (23.47 - 20.33) / (37.64 - 20.33) = 0.18 (upper and lower are reported)",
+   "report": "market",
+   "source_name": "ta.py snapshot",
+   "source_domain": "",
+   "source_grade": "UNKNOWN",
+   "grade_basis": "none"
+  },
+  {
+   "id": "M-011",
+   "ref": "market.md:70-71",
+   "claim": "ATR14 2.86 (about 12% of price); 20-day annualized volatility 137%",
+   "status": "derived_verified",
+   "note": "2.86 / 23.47 = 12.2%. The 137% figure is reported only.",
+   "report": "market",
+   "source_name": "ta.py snapshot",
+   "source_domain": "",
+   "source_grade": "UNKNOWN",
+   "grade_basis": "none"
+  },
+  {
+   "id": "M-012",
+   "ref": "market.md:79-84",
+   "claim": "Resistance 24.86, 28.98, 34.60, 37.64; support 23.14 and 20.3 to 20.5 (52-week low overlaps BB lower)",
+   "status": "inferred",
+   "report": "market",
+   "source_name": "analyst reading of levels",
+   "source_domain": "",
+   "source_grade": "C",
+   "grade_basis": "name"
+  },
+  {
+   "id": "M-013",
+   "ref": "market.md:92",
+   "claim": "Volume data is unavailable (null in snapshot and fast_info); volume analysis not performed",
+   "status": "unavailable",
+   "report": "market",
+   "source_name": "ta.py / yf.py",
+   "source_domain": "",
+   "source_grade": "UNKNOWN",
+   "grade_basis": "none"
+  },
+  {
+   "id": "M-014",
+   "ref": "market.md:10,12",
+   "claim": "Technical bias is bearish; the +13% one-day rebound does not change the medium-term downtrend",
+   "status": "inferred",
+   "report": "market",
+   "source_name": "analyst judgment",
+   "source_domain": "",
+   "source_grade": "C",
+   "grade_basis": "name"
+  },
+  {
+   "id": "M-015",
+   "ref": "market.md:10",
+   "claim": "One-day rebound of about +13%",
+   "status": "derived_verified",
+   "note": "23.47 / 20.72 - 1 = +13.3%",
+   "report": "market",
+   "source_name": "yf.py fast_info",
+   "source_domain": "",
+   "source_grade": "UNKNOWN",
+   "grade_basis": "none"
+  },
+  {
+   "id": "M-016",
+   "ref": "market.md:107-108",
+   "claim": "Sandbox could not reach live Yahoo data (403 / ConnectionError). Market cap, shares, 50/200-day averages in fast_info, and volume are empty",
+   "status": "unavailable",
+   "note": "Conflicts with fundamentals.md, which pulled full info and financials the same day. See C-14.",
+   "report": "market",
+   "source_name": "tool log",
+   "source_domain": "",
+   "source_grade": "UNKNOWN",
+   "grade_basis": "none"
+  },
+  {
+   "id": "M-017",
+   "ref": "market.md:107",
+   "claim": "fast_info source is cache (feed cnyes), cached_at 2026-11-23 17:54 UTC",
+   "status": "reported",
+   "note": "fundamentals.md cached_at is 17:58 UTC. Different calls, minor.",
+   "report": "market",
+   "source_name": "yf.py fast_info",
+   "source_domain": "",
+   "source_grade": "UNKNOWN",
+   "grade_basis": "none"
+  },
+  {
+   "id": "M-018",
+   "ref": "market.md:109",
+   "claim": "No 2026-11-24 data included; no 2026-11-24 price estimated",
+   "status": "reported",
+   "report": "market",
+   "source_name": "analyst note",
+   "source_domain": "",
+   "source_grade": "C",
+   "grade_basis": "name"
+  },
+  {
+   "id": "N-001",
+   "ref": "news.md:3-6",
+   "claim": "News window is roughly 2026-10-24 to 2026-11-23; sourced from WebSearch (financial media and company releases); 9 searches",
+   "status": "reported",
+   "report": "news",
+   "source_name": "WebSearch",
+   "source_domain": "",
+   "source_grade": "UNKNOWN",
+   "grade_basis": "none"
+  },
+  {
+   "id": "N-002",
+   "ref": "news.md:10",
+   "claim": "Net news sentiment is neutral-to-positive: fundamentals positive, equity and share price negative",
+   "status": "inferred",
+   "report": "news",
+   "source_name": "analyst judgment",
+   "source_domain": "",
+   "source_grade": "C",
+   "grade_basis": "name"
+  },
+  {
+   "id": "N-003",
+   "ref": "news.md:20",
+   "claim": "Feb 2026: IonQ joined the Missile Defense Agency SHIELD IDIQ; ceiling 151B USD; 2,400+ competitors. Framework, not guaranteed revenue",
+   "status": "reported",
+   "report": "news",
+   "source_name": "investors.ionq.com SHIELD IDIQ release (news.md:84)",
+   "source_domain": "",
+   "source_grade": "UNKNOWN",
+   "grade_basis": "none"
+  },
+  {
+   "id": "N-004",
+   "ref": "news.md:21",
+   "claim": "2026-04-14: selected for DARPA HARQ program (quantum memory direction)",
+   "status": "reported",
+   "report": "news",
+   "source_name": "Nasdaq press release (news.md:85)",
+   "source_domain": "",
+   "source_grade": "A",
+   "grade_basis": "name"
+  },
+  {
+   "id": "N-005",
+   "ref": "news.md:21,47",
+   "claim": "2026-04-14: photonic interconnect milestone with AFRL, connecting two independent ion-trap systems",
+   "status": "reported",
+   "report": "news",
+   "source_name": "Nasdaq press release (news.md:86)",
+   "source_domain": "",
+   "source_grade": "A",
+   "grade_basis": "name"
+  },
+  {
+   "id": "N-006",
+   "ref": "news.md:21",
+   "claim": "Stock rose 20.2% on 2026-04-14",
+   "status": "unverified",
+   "note": "Single news source. Not checked against price data.",
+   "report": "news",
+   "source_name": "WebSearch",
+   "source_domain": "",
+   "source_grade": "UNKNOWN",
+   "grade_basis": "none"
+  },
+  {
+   "id": "N-007",
+   "ref": "news.md:22",
+   "claim": "2026-10-14: priced 2.0B equity offering: 20.5M common plus 29.5M pre-funded warrants at 40 USD; 100M seven-year warrants at strike 69.46",
+   "status": "derived_verified",
+   "note": "(20.5M + 29.5M) x 40 USD = 2.0B",
+   "report": "news",
+   "source_name": "The Quantum Insider / Fool (news.md:88-89)",
+   "source_domain": "",
+   "source_grade": "UNKNOWN",
+   "grade_basis": "none"
+  },
+  {
+   "id": "N-008",
+   "ref": "news.md:22",
+   "claim": "Same week: all-stock Elisity acquisition, up to 1.15 to 1.3B USD",
+   "status": "reported",
+   "report": "news",
+   "source_name": "WebSearch",
+   "source_domain": "",
+   "source_grade": "UNKNOWN",
+   "grade_basis": "none"
+  },
+  {
+   "id": "N-009",
+   "ref": "news.md:22",
+   "claim": "Stock fell about 6% on 2026-10-14",
+   "status": "reported",
+   "report": "news",
+   "source_name": "WebSearch (Fool)",
+   "source_domain": "",
+   "source_grade": "UNKNOWN",
+   "grade_basis": "none"
+  },
+  {
+   "id": "N-010",
+   "ref": "news.md:23,54",
+   "claim": "2026-10-16: offering settled with about 1.99B net proceeds; pro-forma cash and investments about 3.7B USD",
+   "status": "reported",
+   "note": "Q3 cash and ST investments 1.07B + net proceeds 1.99B = about 3.06B. The 3.7B figure is not reconciled. See C-11.",
+   "report": "news",
+   "source_name": "WebSearch",
+   "source_domain": "",
+   "source_grade": "UNKNOWN",
+   "grade_basis": "none"
+  },
+  {
+   "id": "N-011",
+   "ref": "news.md:24",
+   "claim": "2026-11-04: Elisity acquisition completed",
+   "status": "reported",
+   "note": "Post-Q3 date. See F-018 and C-05.",
+   "report": "news",
+   "source_name": "WebSearch",
+   "source_domain": "",
+   "source_grade": "UNKNOWN",
+   "grade_basis": "none"
+  },
+  {
+   "id": "N-012",
+   "ref": "news.md:24",
+   "claim": "2026-11-04: QuantumCT partnership in Connecticut, providing 150+ cloud compute hours",
+   "status": "reported",
+   "report": "news",
+   "source_name": "ionq.com QuantumCT release (news.md:87)",
+   "source_domain": "",
+   "source_grade": "UNKNOWN",
+   "grade_basis": "none"
+  },
+  {
+   "id": "N-013",
+   "ref": "news.md:25",
+   "claim": "2026-11-05: Q3 2026 revenue 173.8M vs consensus about 141.6M; sixth consecutive record quarter; backlog 1.2B; FY2026 guidance raised to 505 to 515M USD",
+   "status": "reported",
+   "note": "Revenue 173.8M matches F-016. Guidance is not in the fundamentals report.",
+   "report": "news",
+   "source_name": "IonQ IR release (news.md:82)",
+   "source_domain": "",
+   "source_grade": "A",
+   "grade_basis": "name"
+  },
+  {
+   "id": "N-014",
+   "ref": "news.md:13,26,72",
+   "claim": "2026-11-06: stock rose about 23% to close at 32.62",
+   "status": "conflicting",
+   "note": "The news report itself says sources disagree: one says -10%, one says +4% after hours, one says +23%. Not verified.",
+   "report": "news",
+   "source_name": "Fool (news.md:94)",
+   "source_domain": "",
+   "source_grade": "UNKNOWN",
+   "grade_basis": "none"
+  },
+  {
+   "id": "N-015",
+   "ref": "news.md:27",
+   "claim": "2026-11-09: Carahsoft sells IonQ quantum technology to the public sector through its reseller network",
+   "status": "reported",
+   "report": "news",
+   "source_name": "GovConWire (news.md:97)",
+   "source_domain": "",
+   "source_grade": "UNKNOWN",
+   "grade_basis": "none"
+  },
+  {
+   "id": "N-016",
+   "ref": "news.md:28",
+   "claim": "2026-11-13: CFO Inder Singh departed (some sources say effective immediately)",
+   "status": "conflicting",
+   "note": "Date given as 11-13 in one source and 11-16 in another. Role and name also conflict with sentiment.md. See C-04.",
+   "report": "news",
+   "source_name": "The Quantum Insider / TIKR (news.md:95-96)",
+   "source_domain": "",
+   "source_grade": "UNKNOWN",
+   "grade_basis": "none"
+  },
+  {
+   "id": "N-017",
+   "ref": "news.md:28,53",
+   "claim": "2026-11-13: resale registration statement for about 34.58M shares; company says it receives no proceeds",
+   "status": "reported",
+   "report": "news",
+   "source_name": "ad-hoc-news (news.md:92)",
+   "source_domain": "",
+   "source_grade": "UNKNOWN",
+   "grade_basis": "none"
+  },
+  {
+   "id": "N-018",
+   "ref": "news.md:29",
+   "claim": "2026-11-16: Gary Merrill (former Commvault CFO) named CFO, starting around 2026-12-03 (dates disputed); Thomas Austin named Chief Accounting Officer; CEO de Masi acting PFO",
+   "status": "conflicting",
+   "note": "Start date disputed: 12-03 vs 'December'",
+   "report": "news",
+   "source_name": "The Quantum Insider (news.md:95)",
+   "source_domain": "",
+   "source_grade": "UNKNOWN",
+   "grade_basis": "none"
+  },
+  {
+   "id": "N-019",
+   "ref": "news.md:30",
+   "claim": "2026-11-17: stock closed at 24.84, described as a one-year low",
+   "status": "conflicting",
+   "note": "The 52-week low is 20.51 in market.md and fundamentals.md. The 24.84 'one-year low' label is superseded by a later low. See C-13.",
+   "report": "news",
+   "source_name": "WebSearch",
+   "source_domain": "",
+   "source_grade": "UNKNOWN",
+   "grade_basis": "none"
+  },
+  {
+   "id": "N-020",
+   "ref": "news.md:31",
+   "claim": "Mid-November (exact date not given): IonQ Federal formed an eight-member advisory committee",
+   "status": "reported",
+   "report": "news",
+   "source_name": "ad-hoc-news (news.md:92)",
+   "source_domain": "",
+   "source_grade": "UNKNOWN",
+   "grade_basis": "none"
+  },
+  {
+   "id": "N-021",
+   "ref": "news.md:32,71",
+   "claim": "2026-11-23: intraday rebound of about 15%, attributed to sector-wide quantum and tech strength, not a company announcement; not confirmed at close",
+   "status": "unverified",
+   "note": "Intraday figure. fundamentals and market use +13% on a close basis. See C-16.",
+   "report": "news",
+   "source_name": "WebSearch",
+   "source_domain": "",
+   "source_grade": "UNKNOWN",
+   "grade_basis": "none"
+  },
+  {
+   "id": "N-022",
+   "ref": "news.md:40",
+   "claim": "Other government and partner items: Heven AeroTech (GPS-denied quantum integration), DOE space quantum MOU, QuantumCT, Carahsoft channel",
+   "status": "reported",
+   "note": "No dates given for most items",
+   "report": "news",
+   "source_name": "WebSearch",
+   "source_domain": "",
+   "source_grade": "UNKNOWN",
+   "grade_basis": "none"
+  },
+  {
+   "id": "N-023",
+   "ref": "news.md:39",
+   "claim": "One source says AFRL has awarded about four contracts of about 100M USD each over several years",
+   "status": "unverified",
+   "note": "Report says the amounts cannot be confirmed",
+   "report": "news",
+   "source_name": "WebSearch (single source)",
+   "source_domain": "",
+   "source_grade": "UNKNOWN",
+   "grade_basis": "none"
+  },
+  {
+   "id": "N-024",
+   "ref": "news.md:44",
+   "claim": "#AQ 64 achieved 2025-09 on the Tempo system, three months ahead of schedule; no new 2026 AQ announcement found",
+   "status": "reported",
+   "note": "Historical. No 2026 AQ disclosure found.",
+   "report": "news",
+   "source_name": "WebSearch",
+   "source_domain": "",
+   "source_grade": "UNKNOWN",
+   "grade_basis": "none"
+  },
+  {
+   "id": "N-025",
+   "ref": "news.md:45",
+   "claim": "2025-10: two-qubit fidelity above 99.99%, above Oxford Ionics 99.97%",
+   "status": "reported",
+   "report": "news",
+   "source_name": "WebSearch",
+   "source_domain": "",
+   "source_grade": "UNKNOWN",
+   "grade_basis": "none"
+  },
+  {
+   "id": "N-026",
+   "ref": "news.md:46,77",
+   "claim": "Company plans a 256-qubit system demonstration in 2026; no such announcement seen",
+   "status": "unverified",
+   "note": "Forward-looking company claim. Flagged as a pending catalyst.",
+   "report": "news",
+   "source_name": "WebSearch",
+   "source_domain": "",
+   "source_grade": "UNKNOWN",
+   "grade_basis": "none"
+  },
+  {
+   "id": "N-027",
+   "ref": "news.md:46",
+   "claim": "Company target of 2 million qubits by 2030",
+   "status": "reported",
+   "note": "Company target",
+   "report": "news",
+   "source_name": "WebSearch",
+   "source_domain": "",
+   "source_grade": "UNKNOWN",
+   "grade_basis": "none"
+  },
+  {
+   "id": "N-028",
+   "ref": "news.md:51",
+   "claim": "Dilution estimate: Trefis says about 14% of market cap; Panabee says about 24%",
+   "status": "conflicting",
+   "note": "Two estimates differ widely. Report says to check against 8-K and 10-Q",
+   "report": "news",
+   "source_name": "Trefis / Panabee (news.md:90-91)",
+   "source_domain": "",
+   "source_grade": "UNKNOWN",
+   "grade_basis": "none"
+  },
+  {
+   "id": "N-029",
+   "ref": "news.md:52",
+   "claim": "Share count up about 82.5% over the past three years",
+   "status": "reported",
+   "report": "news",
+   "source_name": "Trefis (news.md:90)",
+   "source_domain": "",
+   "source_grade": "UNKNOWN",
+   "grade_basis": "none"
+  },
+  {
+   "id": "N-030",
+   "ref": "news.md:51",
+   "claim": "Warrant overhang of 100M at strike 69.46 is a medium- to long-term dilution risk",
+   "status": "inferred",
+   "report": "news",
+   "source_name": "analyst judgment on N-007",
+   "source_domain": "",
+   "source_grade": "C",
+   "grade_basis": "name"
+  },
+  {
+   "id": "N-031",
+   "ref": "news.md:53",
+   "claim": "34.6M share resale registration may create selling pressure",
+   "status": "inferred",
+   "report": "news",
+   "source_name": "analyst judgment",
+   "source_domain": "",
+   "source_grade": "C",
+   "grade_basis": "name"
+  },
+  {
+   "id": "N-032",
+   "ref": "news.md:54",
+   "claim": "Use of proceeds: accelerate commercialization; no near-term liquidity pressure",
+   "status": "reported",
+   "report": "news",
+   "source_name": "WebSearch",
+   "source_domain": "",
+   "source_grade": "UNKNOWN",
+   "grade_basis": "none"
+  },
+  {
+   "id": "N-033",
+   "ref": "news.md:58",
+   "claim": "IBM and Oak Ridge National Laboratory launched a quantum error-correction platform, seen as long-term pressure on D-Wave",
+   "status": "inferred",
+   "note": "Competitor event reported; competitive impact is an analyst view",
+   "report": "news",
+   "source_name": "TIKR / Webull (news.md:98-99)",
+   "source_domain": "",
+   "source_grade": "UNKNOWN",
+   "grade_basis": "none"
+  },
+  {
+   "id": "N-034",
+   "ref": "news.md:57",
+   "claim": "Early November: quantum stocks fell together (RGTI, QBTS, IONQ); one source says IONQ fell about 15% that day",
+   "status": "conflicting",
+   "note": "TIKR headline (news.md:98) puts IONQ at about -8% on 11-05. See C-08.",
+   "report": "news",
+   "source_name": "WebSearch",
+   "source_domain": "",
+   "source_grade": "UNKNOWN",
+   "grade_basis": "none"
+  },
+  {
+   "id": "N-035",
+   "ref": "news.md:59",
+   "claim": "Rigetti and D-Wave Q3 2026 results (due 11-10) could not be confirmed",
+   "status": "unverified",
+   "report": "news",
+   "source_name": "WebSearch",
+   "source_domain": "",
+   "source_grade": "UNKNOWN",
+   "grade_basis": "none"
+  },
+  {
+   "id": "N-036",
+   "ref": "news.md:60",
+   "claim": "Four pure-play quantum stocks fell about 41% to 65% over one year (source through 11-10)",
+   "status": "reported",
+   "report": "news",
+   "source_name": "WebSearch",
+   "source_domain": "",
+   "source_grade": "UNKNOWN",
+   "grade_basis": "none"
+  },
+  {
+   "id": "N-037",
+   "ref": "news.md:63",
+   "claim": "2026 hyperscaler capex estimated above 700B USD (S&P Global, cited by Nasdaq)",
+   "status": "reported",
+   "report": "news",
+   "source_name": "Nasdaq (news.md:100)",
+   "source_domain": "",
+   "source_grade": "UNKNOWN",
+   "grade_basis": "none"
+  },
+  {
+   "id": "N-038",
+   "ref": "news.md:64",
+   "claim": "A Bank of America survey finds 54% of global fund managers see AI as a bubble risk",
+   "status": "reported",
+   "report": "news",
+   "source_name": "WebSearch",
+   "source_domain": "",
+   "source_grade": "UNKNOWN",
+   "grade_basis": "none"
+  },
+  {
+   "id": "N-039",
+   "ref": "news.md:65-66",
+   "claim": "Quantum stocks are high-beta; AI infrastructure slowdown narrative spills over to quantum sentiment; rebound thesis is that the pullback is sentiment-driven",
+   "status": "inferred",
+   "report": "news",
+   "source_name": "analyst synthesis of WebSearch",
+   "source_domain": "",
+   "source_grade": "C",
+   "grade_basis": "name"
+  },
+  {
+   "id": "N-040",
+   "ref": "news.md:67",
+   "claim": "Several November crash articles refer to 2025 data and were excluded",
+   "status": "reported",
+   "report": "news",
+   "source_name": "analyst note",
+   "source_domain": "",
+   "source_grade": "C",
+   "grade_basis": "name"
+  },
+  {
+   "id": "N-041",
+   "ref": "news.md:71",
+   "claim": "Task date 2026-11-24 differs from run date 2026-11-23; intraday 11-23 data is not closed",
+   "status": "reported",
+   "report": "news",
+   "source_name": "analyst note",
+   "source_domain": "",
+   "source_grade": "C",
+   "grade_basis": "name"
+  },
+  {
+   "id": "N-042",
+   "ref": "news.md:78",
+   "claim": "Coverage gap: no full SEC filing text or Q3 10-Q detail; conclusions are news-based",
+   "status": "unavailable",
+   "report": "news",
+   "source_name": "analyst note",
+   "source_domain": "",
+   "source_grade": "C",
+   "grade_basis": "name"
+  },
+  {
+   "id": "S-001",
+   "ref": "sentiment.md:5-6",
+   "claim": "yfinance returned a Cookie/crumb fetch warning; some data may come from cache, but the content is complete",
+   "status": "reported",
+   "note": "Market.md says Yahoo was unreachable. See C-14.",
+   "report": "sentiment",
+   "source_name": "yf.py",
+   "source_domain": "",
+   "source_grade": "UNKNOWN",
+   "grade_basis": "none"
+  },
+  {
+   "id": "S-002",
+   "ref": "sentiment.md:14-16",
+   "claim": "Current ratings: 1 strongBuy, 11 buy, 2 hold, 0 sell, 0 strongSell; 14 total; buy share 85.7%",
+   "status": "derived_verified",
+   "note": "12 / 14 = 85.7%",
+   "report": "sentiment",
+   "source_name": "yf.py rec_summary",
+   "source_domain": "",
+   "source_grade": "UNKNOWN",
+   "grade_basis": "none"
+  },
+  {
+   "id": "S-003",
+   "ref": "sentiment.md:17-19",
+   "claim": "Three months earlier: 13 analysts, 10 buy; one buy added over the period",
+   "status": "derived_verified",
+   "note": "-3m total = 1 + 10 + 2 = 13",
+   "report": "sentiment",
+   "source_name": "yf.py recommendations",
+   "source_domain": "",
+   "source_grade": "UNKNOWN",
+   "grade_basis": "none"
+  },
+  {
+   "id": "S-004",
+   "ref": "sentiment.md:33-38",
+   "claim": "Institutions hold 41.42% (41.68% of float); insiders hold 0.62%; 1,009 institutions",
+   "status": "reported",
+   "report": "sentiment",
+   "source_name": "yf.py major_holders",
+   "source_domain": "",
+   "source_grade": "UNKNOWN",
+   "grade_basis": "none"
+  },
+  {
+   "id": "S-005",
+   "ref": "sentiment.md:44-53",
+   "claim": "Top institutional holders: Morgan Stanley 5.98%, BlackRock 4.39%, Vanguard CM 4.15%, Vanguard PM 3.58%, State Street 2.04%, BofA 1.95%, Geode 1.54%, UBS 1.38%, Norges 1.20%, Goldman 0.75%",
+   "status": "reported",
+   "note": "Most filings dated 2026-09-30. Norges is dated 2026-06-30.",
+   "report": "sentiment",
+   "source_name": "yf.py inst_holders",
+   "source_domain": "",
+   "source_grade": "UNKNOWN",
+   "grade_basis": "none"
+  },
+  {
+   "id": "S-006",
+   "ref": "sentiment.md:57",
+   "claim": "Of the top 10 holders, 7 increased and 3 decreased (BlackRock -9.22%, UBS -24.36%, Morgan Stanley -1.57%)",
+   "status": "derived_verified",
+   "report": "sentiment",
+   "source_name": "yf.py inst_holders",
+   "source_domain": "",
+   "source_grade": "UNKNOWN",
+   "grade_basis": "none"
+  },
+  {
+   "id": "S-007",
+   "ref": "sentiment.md:58",
+   "claim": "Goldman Sachs +82.11% and BofA +30.02% in shares held",
+   "status": "reported",
+   "note": "pctChange is quarter-over-quarter share count change, not dollar value",
+   "report": "sentiment",
+   "source_name": "yf.py inst_holders",
+   "source_domain": "",
+   "source_grade": "UNKNOWN",
+   "grade_basis": "none"
+  },
+  {
+   "id": "S-008",
+   "ref": "sentiment.md:70",
+   "claim": "2025-11-11: director Teuber open-market purchase of 2,000 shares at about 54.82 (110K USD)",
+   "status": "conflicting",
+   "note": "This date is outside the 12-month window (2025-11-24 to 2026-11-23). See C-06.",
+   "report": "sentiment",
+   "source_name": "yf.py insider",
+   "source_domain": "",
+   "source_grade": "UNKNOWN",
+   "grade_basis": "none"
+  },
+  {
+   "id": "S-009",
+   "ref": "sentiment.md:88-90",
+   "claim": "12-month open-market sales: 11 transactions, about 2.52M USD",
+   "status": "derived_verified",
+   "note": "Sum of listed sales = 2.525M USD",
+   "report": "sentiment",
+   "source_name": "yf.py insider",
+   "source_domain": "",
+   "source_grade": "UNKNOWN",
+   "grade_basis": "none"
+  },
+  {
+   "id": "S-010",
+   "ref": "sentiment.md:91-92",
+   "claim": "12-month open-market purchases: 2 transactions, about 225K USD; net about -2.30M USD",
+   "status": "derived_mismatch",
+   "note": "Only the 2026-02-27 purchase (115K) falls in the window. Net should be about -2.41M. See C-06.",
+   "report": "sentiment",
+   "source_name": "yf.py insider",
+   "source_domain": "",
+   "source_grade": "UNKNOWN",
+   "grade_basis": "none"
+  },
+  {
+   "id": "S-011",
+   "ref": "sentiment.md:96",
+   "claim": "2026-06-18: several directors (Toledano, Chou, Raymond) sold at about 55 USD on the same day",
+   "status": "reported",
+   "report": "sentiment",
+   "source_name": "yf.py insider",
+   "source_domain": "",
+   "source_grade": "UNKNOWN",
+   "grade_basis": "none"
+  },
+  {
+   "id": "S-012",
+   "ref": "sentiment.md:98",
+   "claim": "CEO De Masi and CFO Kramer had no open-market sales in the last 12 months",
+   "status": "conflicting",
+   "note": "News says the CFO was Inder Singh, who left 11-13. Sentiment also lists Singh Inder M. as COO. See C-04.",
+   "report": "sentiment",
+   "source_name": "yf.py insider",
+   "source_domain": "",
+   "source_grade": "UNKNOWN",
+   "grade_basis": "none"
+  },
+  {
+   "id": "S-013",
+   "ref": "sentiment.md:84",
+   "claim": "2026-02-20: stock awards to CEO De Masi and COO Singh Inder M.; 2026-06-17 and 2026-08-24 director annual awards",
+   "status": "reported",
+   "report": "sentiment",
+   "source_name": "yf.py insider",
+   "source_domain": "",
+   "source_grade": "UNKNOWN",
+   "grade_basis": "none"
+  },
+  {
+   "id": "S-014",
+   "ref": "sentiment.md:108",
+   "claim": "AltIndex: Stocktwits mentions about 379 per day, down 53% vs three months earlier (date not given)",
+   "status": "unverified",
+   "note": "Undated; rated medium confidence in the report",
+   "report": "sentiment",
+   "source_name": "AltIndex",
+   "source_domain": "",
+   "source_grade": "UNKNOWN",
+   "grade_basis": "none"
+  },
+  {
+   "id": "S-015",
+   "ref": "sentiment.md:109-110",
+   "claim": "AltIndex sentiment scores: Stocktwits 88/100 (bullish); X cashtag 91/100 (bullish)",
+   "status": "unverified",
+   "note": "Undated; rated low confidence",
+   "report": "sentiment",
+   "source_name": "AltIndex",
+   "source_domain": "",
+   "source_grade": "UNKNOWN",
+   "grade_basis": "none"
+  },
+  {
+   "id": "S-016",
+   "ref": "sentiment.md:111",
+   "claim": "X cashtag monthly mentions 2026: Jan 152, Feb 336, Mar 71, Apr 77, May 219",
+   "status": "reported",
+   "report": "sentiment",
+   "source_name": "AltIndex",
+   "source_domain": "",
+   "source_grade": "UNKNOWN",
+   "grade_basis": "none"
+  },
+  {
+   "id": "S-017",
+   "ref": "sentiment.md:112",
+   "claim": "Stocktwits sentiment turned bearish after the 1.3B all-stock Elisity deal (about 6 weeks earlier, relative date)",
+   "status": "unverified",
+   "note": "Relative date only",
+   "report": "sentiment",
+   "source_name": "Stocktwits report",
+   "source_domain": "",
+   "source_grade": "D",
+   "grade_basis": "name"
+  },
+  {
+   "id": "S-018",
+   "ref": "sentiment.md:115",
+   "claim": "2026-11-19: stock jumped on an IonQ X post during SC26 (Chicago)",
+   "status": "reported",
+   "report": "sentiment",
+   "source_name": "Motley Fool (sentiment.md:167)",
+   "source_domain": "",
+   "source_grade": "C",
+   "grade_basis": "name"
+  },
+  {
+   "id": "S-019",
+   "ref": "sentiment.md:116",
+   "claim": "Late Feb 2026: a Reddit post briefly made sentiment very bullish, then faded",
+   "status": "reported",
+   "report": "sentiment",
+   "source_name": "Yahoo Finance",
+   "source_domain": "",
+   "source_grade": "C",
+   "grade_basis": "name"
+  },
+  {
+   "id": "S-020",
+   "ref": "sentiment.md:117",
+   "claim": "Short interest about 22.4% of float; commentators argue for a short squeeze",
+   "status": "conflicting",
+   "note": "fundamentals.md gives 11.8% of floatShares from yf.py info. See C-03.",
+   "report": "sentiment",
+   "source_name": "Yahoo Finance / Barchart (promotional tone)",
+   "source_domain": "",
+   "source_grade": "C",
+   "grade_basis": "name"
+  },
+  {
+   "id": "S-021",
+   "ref": "sentiment.md:133-140",
+   "claim": "Composite score about +0.4 from weighted components (analyst +1.5 at 30%, institutional +0.5 at 20%, insider -1.0 at 20%, retail +0.5 at 20%, catalyst +0.5 at 10%)",
+   "status": "derived_mismatch",
+   "note": "0.30x1.5 + 0.20x0.5 + 0.20x(-1.0) + 0.20x0.5 + 0.10x0.5 = +0.50, not +0.4. See A-01.",
+   "report": "sentiment",
+   "source_name": "analyst scoring",
+   "source_domain": "",
+   "source_grade": "C",
+   "grade_basis": "name"
+  },
+  {
+   "id": "S-022",
+   "ref": "sentiment.md:144",
+   "claim": "Overall sentiment is mildly bullish with low confidence",
+   "status": "inferred",
+   "report": "sentiment",
+   "source_name": "analyst judgment",
+   "source_domain": "",
+   "source_grade": "C",
+   "grade_basis": "name"
+  },
+  {
+   "id": "S-023",
+   "ref": "sentiment.md:156",
+   "claim": "No sentiment data for 2026-11-20 to 2026-11-24 and no current price obtained, so current valuation position is unconfirmed",
+   "status": "unavailable",
+   "report": "sentiment",
+   "source_name": "analyst note",
+   "source_domain": "",
+   "source_grade": "C",
+   "grade_basis": "name"
+  },
+  {
+   "id": "S-024",
+   "ref": "sentiment.md:153-155",
+   "claim": "Several social metrics are undated or relative-dated and should be treated as trend reference only",
+   "status": "reported",
+   "report": "sentiment",
+   "source_name": "analyst note",
+   "source_domain": "",
+   "source_grade": "C",
+   "grade_basis": "name"
+  }
+ ],
+ "graded_by": "source_grades.py"
+}
