@@ -1,0 +1,4849 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Trading Scan — HEDGE — 2026-11-28</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+  .verdict-BUY  { background: #dcfce7; color: #166534; }
+  .verdict-HOLD { background: #fef3c7; color: #92400e; }
+  .verdict-SELL { background: #fee2e2; color: #991b1b; }
+  .verdict-UNKNOWN { background: #f3f4f6; color: #374151; }
+  details > summary { cursor: pointer; }
+  details[open] > summary { margin-bottom: 0.5rem; }
+  .agent-prose h1, .agent-prose h2, .agent-prose h3 { font-weight: 600; margin-top: 1rem; margin-bottom: 0.5rem; }
+  .agent-prose h1 { font-size: 1.5rem; }
+  .agent-prose h2 { font-size: 1.25rem; }
+  .agent-prose h3 { font-size: 1.1rem; }
+  .agent-prose p { margin-bottom: 0.5rem; line-height: 1.5; }
+  .agent-prose ul { list-style-type: disc; margin-left: 1.5rem; margin-bottom: 0.5rem; }
+  .agent-prose ol { list-style-type: decimal; margin-left: 1.5rem; margin-bottom: 0.5rem; }
+  .agent-prose table { border-collapse: collapse; margin: 0.75rem 0; font-size: 0.875rem; }
+  .agent-prose th, .agent-prose td { border: 1px solid #d1d5db; padding: 0.375rem 0.75rem; text-align: left; }
+  .agent-prose th { background: #f9fafb; font-weight: 600; }
+  .agent-prose code { background: #f3f4f6; padding: 0.1rem 0.25rem; border-radius: 0.25rem; font-size: 0.875rem; }
+  .agent-prose pre { background: #1f2937; color: #f9fafb; padding: 0.75rem; border-radius: 0.375rem; overflow-x: auto; font-size: 0.85rem; margin: 0.5rem 0; }
+  .agent-prose strong { font-weight: 600; }
+  nav a { color: #2563eb; text-decoration: none; }
+  nav a:hover { text-decoration: underline; }
+</style>
+</head>
+<body class="bg-slate-50 text-slate-900">
+
+<header class="bg-slate-900 text-white p-6 shadow-md">
+  <div class="max-w-6xl mx-auto">
+    <h1 class="text-3xl font-bold">交易掃描 — HEDGE</h1>
+    <p class="text-slate-300 text-sm mt-1">as of 2026-11-28 · 產生於 2026-11-27 20:37</p>
+  </div>
+</header>
+
+<nav class="bg-slate-100 border-b border-slate-300 p-3 sticky top-0 z-10">
+  <div class="max-w-6xl mx-auto flex flex-wrap gap-3 text-sm">
+    <a href="#sector-overview" class="font-semibold">族群總覽</a>
+    <a href="#ticker-GLD" class="px-2 py-1 rounded verdict-HOLD">GLD</a>
+<a href="#ticker-TLT" class="px-2 py-1 rounded verdict-HOLD">TLT</a>
+<a href="#ticker-UUP" class="px-2 py-1 rounded verdict-HOLD">UUP</a>
+<a href="#ticker-SH" class="px-2 py-1 rounded verdict-HOLD">SH</a>
+    <a href="../HOWTO_READ.html" class="ml-auto text-blue-700 hover:underline" target="_blank">📖 閱讀指南</a>
+  </div>
+</nav>
+
+<main class="max-w-6xl mx-auto p-6">
+
+  <section id="sector-overview" class="mb-10 bg-white rounded-lg shadow p-6">
+    <h2 class="text-2xl font-bold mb-4">族群總覽 (Sector overview)</h2>
+    <div class="agent-prose text-sm">
+      <h1>Sector report — hedge as of 2026-11-28</h1>
+<h2>Ranking table</h2>
+<table>
+<thead>
+<tr>
+<th>Rank</th>
+<th>Ticker</th>
+<th>Verdict</th>
+<th>Conviction</th>
+<th>R:R</th>
+<th>Size</th>
+<th>Horizon</th>
+<th>Trigger</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>TLT</td>
+<td>HOLD (REJECT)</td>
+<td>M（略偏空，但屬「事件前無優勢」的中等把握）</td>
+<td>多 0.98（對稱 ±35bp 無不對稱優勢）</td>
+<td>0（空手）</td>
+<td>數日至數週，12-04→12-10 事件窗</td>
+<td>收盤站上 $82.81 轉多重審；跌破 $79.11 支柱失效</td>
+</tr>
+<tr>
+<td>2</td>
+<td>GLD</td>
+<td>HOLD (REJECT)</td>
+<td>L（SHORT_OR_AVOID）</td>
+<td>空 0.9／多 1.82（四者中最佳多單 R:R，仍未達 2.0 門檻）</td>
+<td>0（空手）</td>
+<td>數日至數週，同一事件窗</td>
+<td>收盤站回 $352.21 轉多；跌破 $313.96 轉空重算</td>
+</tr>
+<tr>
+<td>3</td>
+<td>UUP</td>
+<td>HOLD (REJECT)</td>
+<td>L（趨勢偏多，待確認）</td>
+<td>多 1.2</td>
+<td>0（空手）</td>
+<td>12-04 非農＋12-09 FOMC 落地後</td>
+<td>FedWatch 補數據＋帶量收盤站上 $29.84</td>
+</tr>
+<tr>
+<td>4</td>
+<td>SH</td>
+<td>HOLD (REJECT)</td>
+<td>L（僅戰術性對沖選項）</td>
+<td>觸發價 0.23–0.28；現價 2.2–3.9（但觸發不成立）</td>
+<td>0（空手）</td>
+<td>12-01→12-10 事件窗，窗口後關閉</td>
+<td>回測 $33.64–$34.15 守穩且 FedWatch≥90%</td>
+</tr>
+</tbody>
+</table>
+<p>四檔皆為 REJECT／HOLD，今日避險組合整體零曝險，排名反映「若情境轉變，哪一檔最先具備可重審的條件」，而非既有倉位優劣。</p>
+<h2>共識優先標的</h2>
+<p>無。四檔皆未通過各自的 R:R 門檻，沒有任何一檔今日構成 BUY。若必須在「最先可能轉為可交易」中選一檔，<strong>TLT</strong> 排第一：證據品質最高（FOMC 10–2 投票、Waller 50bp 門檻、核心 CPI、非農皆有日期與來源，彼此同向），且已有中等把握的中性偏空判斷與明確的雙向觸發價（$79.11／$82.81）。</p>
+<h2>逆向觀點標的</h2>
+<p><strong>GLD</strong>。多數論述聚焦於均線空頭排列與實質利率上升，但 11-25 的長下影線、RSI14 由 23.7 回升至 35.6、MACD histogram 連三日收斂等止跌訊號確實存在；且空方常引用的「GLD 資金流出」其實是轉往 GLDM 的輪動，不代表黃金需求消失，全球 ETF 持倉仍創新高。若 12-10 CPI 偏冷、實質利率回落，GLD 轉為低信心 LONG 的速度可能快於市場預期，而其潛在多單 R:R（1.82）也是四檔中最高者，是今日最接近「非主流但可能有不對稱回報」的標的。</p>
+<h2>配對交易構想</h2>
+<p>Long UUP／Short GLD（或反向）：兩者同受「實質利率與美元」同一軸驅動，方向天生相反——FOMC 偏鷹、實質利率上行對 UUP 是多方論點、對 GLD 是空方論點；偏鴿情境則相反。此配對可用來隔離「利率路徑意外」這單一變數,降低對個別資產特異性噪音（如 GLD 的 ETF 輪動雜訊、UUP 的 FedWatch 資料缺口）的依賴。但須注意：兩腳目前各自的 R:R 皆未達標（UUP 1.2、GLD 多單 1.82／空單 0.9），本配對目前僅屬監控清單上的概念性組合，待 12-09 FOMC 與 12-10 CPI 落地、資料缺口補齊後方可用實際報價重新計算是否值得建立。</p>
+<h2>產業層觀察</h2>
+<ul>
+<li><strong>共同催化劑</strong>：12-04 非農、12-08/09 FOMC、12-10 CPI 三個事件集中在同一兩週窗口內，四檔標的的重新評估時點幾乎完全重疊——代表目前整個避險組合對同一組宏觀變數零分散，而非彼此獨立的保護層。</li>
+<li><strong>共同風險</strong>：四份報告皆指出近期資料缺漏（CFTC 部位、VIX、S&amp;P 500 收盤、FedWatch 最新機率、情緒指標），屬掃描管線在 11-19 至 11-28 區間的資料斷點，而非個別市場訊號,解讀時應留意是資料問題而非基本面轉弱。</li>
+<li><strong>擁擠度</strong>：四檔皆為「等資料、等事件」的空手觀望狀態,顯示避險類別整體缺乏進場優勢，非個股特例。</li>
+<li><strong>相關性群組</strong>：GLD 與 TLT 在「鴿派意外、實質利率回落」情境下傾向同向上漲（久期與無息資產同時受益），兩者同時加碼屬方向重疊而非分散；UUP 與 GLD 則因美元/實質利率軸呈反向關係；SH 屬純股市避險，與前三者驅動因子不同，是四者中對「純粹股市下跌」最直接但耗損成本（3 年年化 -10.19%）最高的工具。</li>
+</ul>
+<h2>行動順序</h2>
+<p>若未來情境轉變,建議重審／行動順序如下：<br />
+1. <strong>TLT 優先</strong>——證據品質最佳、觸發價最明確，12-10 CPI 後若符合降溫條件可最快具備重審基礎。<br />
+2. <strong>GLD 次之</strong>——緊盯 $313.96 支撐與 $352.21 壓力,一旦技術確認,其潛在多單 R:R 為四者最佳。<br />
+3. <strong>UUP 第三</strong>——須先等 CME FedWatch 最新升息機率補齊，資料缺口是主要障礙,非價格本身。<br />
+4. <strong>SH 最後</strong>——結構性耗損（費用率 0.88%、長期年化報酬為負）使其作為避險工具的持有成本最高，僅在 FOMC 超預期鷹派且 VIX／SPX 資料補齊後才值得重審，且須設定 12-10 後強制平倉。</p>
+<h2>產業風險預算</h2>
+<p>四檔目前建議新倉曝險皆為 0% NAV。若未來觸發條件分別成立,因 GLD／TLT 在鴿派情境下同向，避免同時全倉疊加,建議避險類別整體曝險上限訂在合計 ≤4% NAV,且單一標的不超過約 1.5% NAV,直到 12-09 FOMC 與 12-10 CPI 落地並補齊缺漏資料後再重新評估規模。</p>
+<p>SECTOR REPORT COMPLETE</p>
+    </div>
+  </section>
+
+  
+<section id="ticker-GLD" class="mb-10 bg-white rounded-lg shadow overflow-hidden">
+
+  <div class="flex items-start justify-between p-6 border-b border-slate-200 verdict-HOLD">
+    <div>
+      <h2 class="text-3xl font-bold">GLD</h2>
+      <p class="text-sm mt-1 opacity-80">SPDR Gold Shares ETF</p>
+    </div>
+    <div class="text-right">
+      <div class="text-4xl font-bold">HOLD</div>
+      <div class="text-sm opacity-80 mt-1">REJECT</div>
+    </div>
+  </div>
+
+  <div class="p-6 grid grid-cols-1 lg:grid-cols-2 gap-6">
+
+    <div>
+      <h3 class="text-lg font-bold mb-2">價格 + 技術指標 (2 年)</h3>
+      <div id="chart-GLD" style="height: 380px;"></div>
+    </div>
+
+    <div>
+      <h3 class="text-lg font-bold mb-2">最終決策 (Final decision)</h3>
+      <div class="agent-prose text-sm bg-slate-50 p-4 rounded border border-slate-200">
+        <p>FINAL TRANSACTION PROPOSAL: <strong>HOLD</strong></p>
+<h1>Final decision — GLD as of 2026-11-28</h1>
+<h2>FINAL TRANSACTION PROPOSAL: <strong>HOLD</strong></h2>
+<h2>Verdict</h2>
+<p>REJECT</p>
+<h2>部位判定</h2>
+<p>GLD 不在 <code>pipeline/tools/held_tickers.txt</code> 內,屬新倉,走 A 框架。結論:不建立任何新倉(多、空皆不做)。第一行的 HOLD 代表「空手觀望」,不是續抱既有部位。</p>
+<h2>Final trade card</h2>
+<p>不適用(REJECT,無交易)。</p>
+<h2>Dealbreaker</h2>
+<ul>
+<li>現價 $332.05 放空:停損 $352.21、目標 $313.96,R:R 約 0.9,遠低於 2.0 門檻。</li>
+<li>現價做多:即使採 aggressive 的 $320.95 停損、目標 MA20 $352.21,R:R 僅 1.82,仍未達門檻,且趨勢反轉未確認。</li>
+<li>12-04 NFP、12-09 FOMC、12-10 CPI 三個二元事件密集,ATR14 $8.32(現價 2.5%)、20 日年化波動率 34.5%,跳空可直接穿越任何合理停損。</li>
+<li>研究結論信心度 LOW,且 11-19 至 11-28 的新聞、利率、情緒資料缺漏。</li>
+</ul>
+<h2>Risk debate adjudication</h2>
+<ul>
+<li>Aggressive's strongest point: 確認條件(站回 MA20 且 MACD histogram 翻正)本身滯後,等到確認時反彈可能已走完大半;三項止跌訊號(11-25 長下影放量、RSI14 23.7→35.6、MACD histogram 連三日收斂)確實同時出現。</li>
+<li>Conservative's strongest point: 三個二元事件疊加下,單日跳空可達 1.5–2 倍 ATR($12–17),「小規模」倉位的停損紀律在事件窗內實際上無法保證執行。</li>
+<li>Net: I weight neutral more here because 它指出 aggressive 對多單放寬了自己認可的 R:R 標準(1.82 &lt; 2.0),且 call spread 無實際報價,風險並未真正鎖定;同時也指出 conservative 的成本基礎與尾部機率皆為示意數字,不能當作依據。Aggressive 的「錯過初段」成本是真的,但我接受這個代價:事件後若確認,仍有重新計算 R:R 的機會。$320.95 是三方共同認可的結構性參考位,未來若重啟多方評估,以它取代 $313.96 作為停損基準。</li>
+</ul>
+<h2>論點支柱</h2>
+<p>(以「未來可能的多方進場」為評估對象)</p>
+<table>
+<thead>
+<tr>
+<th>支柱</th>
+<th>進場所需的預期</th>
+<th>現況</th>
+<th>判定</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>實質利率回落</td>
+<td>10 年 TIPS 實質利率自高點明顯回落</td>
+<td>11-06 至 11-16 由 2.63% 升至 2.92%,之後資料缺漏</td>
+<td>已失效(待 12-10 重驗)</td>
+</tr>
+<tr>
+<td>技術面止跌</td>
+<td>收盤站回 MA20 $352.21,MACD histogram 翻正</td>
+<td>現價低於 MA20/MA50/MA200;histogram -2.32 仍為負,僅收斂</td>
+<td>觀察中</td>
+</tr>
+<tr>
+<td>關鍵支撐守穩</td>
+<td>收盤不破 $313.96(52 週低點)</td>
+<td>11-25 盤中觸及後收長下影,尚未收破</td>
+<td>成立</td>
+</tr>
+<tr>
+<td>結構性買盤</td>
+<td>央行與全球 ETF 持續淨買</td>
+<td>全球 ETF 持倉 4,275 公噸新高;北美流出、波蘭央行可能暫停購金</td>
+<td>觀察中</td>
+</tr>
+</tbody>
+</table>
+<p>四根支柱僅一根成立,不足以支撐新倉。</p>
+<h2>論點失效條件</h2>
+<p>與價格停損分開,這裡是論點紀律。<br />
+- 若 12-10 CPI 公布後 10 年 TIPS 實質利率收在 3.0% 以上,實質利率支柱確定失效 → 多方評估取消,不進場。<br />
+- 若 GLD 收盤(非盤中)跌破 $313.96,支撐支柱失效 → 多方評估取消;空方需另行重算 R:R,不得於跌破當日追空。<br />
+- 若 WGC 11 月報告顯示全球黃金 ETF 轉為淨流出,或央行購金量較前月下滑,結構性買盤支柱失效 → 多方評估取消。<br />
+- 反向:若事件後 GLD 收盤跌破 $313.96 且實質利率 &gt;3.0%,「不追空」的理由減弱 → 重新評估 SHORT,參考位約 $297(待新資料核實)。</p>
+<h2>未來重新評估所需條件</h2>
+<p>全部成立才重啟多方提案:收盤站回 $352.21、MACD histogram 翻正、12-10 後實質利率回落,且重算後 R:R ≥ 2.0。</p>
+<h2>Monitoring trigger</h2>
+<p>If GLD 收盤站回 $352.21 或收盤跌破 $313.96,或 12-10 CPI 後 10 年 TIPS 實質利率離開 2.8%–3.0% 區間,即重新評估,不必等到下一次例行掃描。</p>
+<h2>Catalyst calendar</h2>
+<ul>
+<li>2026-12-04 — 11 月 NFP</li>
+<li>12 月初 — WGC 11 月全球 ETF 流量報告</li>
+<li>2026-12-09 — FOMC 決議與點陣圖</li>
+<li>2026-12-10 08:30 ET — 11 月 CPI</li>
+</ul>
+<p>FINAL DECISION COMPLETE</p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="px-6 pb-6">
+
+    <details class="mb-4 border border-slate-200 rounded">
+      <summary class="bg-slate-50 px-4 py-2 font-semibold">投資計劃 (Research manager)</summary>
+      <div class="agent-prose p-4 text-sm"><h1>Investment plan — GLD as of 2026-11-28</h1>
+<h2>Directional stance</h2>
+<p>SHORT_OR_AVOID — conviction LOW</p>
+<p>（實質意涵：避免新建多單；空方證據較完整，但現價距 52 週低點僅約 +5.8%，且未來兩週有三個二元事件，不支持積極放空。）</p>
+<h2>Crux of debate</h2>
+<ol>
+<li>Crux 1：12-10 公布的 11 月 CPI 與 12-09 FOMC 點陣圖，能否讓 10 年 TIPS 實質利率從約 2.92% 回落。實質利率是雙方都承認的主導變數；多方的「利空已計價」論點能否成立，完全取決於此。</li>
+<li>Crux 2：$313.96（52 週低點，鄰近 BB 下軌 $316.32）能否守住。11-25 的長下影線是築底，還是下跌途中的中繼，以收盤價判定。</li>
+<li>Crux 3：央行與歐亞 ETF 的結構性買盤，能否在美國實質利率上升期間撐住金價。WGC 12 月初的 11 月流量報告與央行購金數據將給出答案。</li>
+</ol>
+<h2>Where the bull is right</h2>
+<ul>
+<li>動能減速有據可查：MACD histogram 連三日收斂（-3.42 → -3.08 → -2.32），RSI14 由 23.7 回升至 35.6，11-25 放量收長下影。</li>
+<li>GLD 流出主要是轉往 GLDM 的輪動（GLD YTD 約 -17 億 USD，GLDM 約 +41 億 USD），全球 ETF 持倉 4,275 公噸創新高，不代表黃金需求消失。</li>
+<li>12 月升息機率約 95–96%，大部分鷹派預期已反映在價格中，數據若轉冷，反彈空間大於數據偏熱時的追加跌幅。</li>
+<li>空方以 +4.59% 溢價「收斂」推估額外下跌並不可信；fundamentals.md 已指出 NAV 時點與股數數據互相矛盾，應視為資料瑕疵。</li>
+</ul>
+<h2>Where the bear is right</h2>
+<ul>
+<li>趨勢結構明確：均線空頭排列（MA20 $352.21 &lt; MA50 $369.72 &lt; MA200 $403.16），現價低於三線，原支撐 $363 已轉為壓力，各週期報酬皆為負。</li>
+<li>宏觀三項逆風方向一致且有日期：實質利率 2.63% → 2.92%（11-06 至 11-16）、升息押注上升、美元走強。</li>
+<li>2026 年黃金的避險屬性弱化，削弱「亂世買金」敘事；波蘭央行可能暫停購金，官方買盤增速有放緩風險。</li>
+<li>多方的樂觀目標（DB/JPM 6,000–6,300 USD）屬二手、未核實的舊資料；Goldman 已下修至 4,150，最新修正方向是往下。</li>
+</ul>
+<h2>Net verdict (3-5 sentences)</h2>
+<p>空方的論據較具體、有日期，且與價格行為一致，多方的核心論點則仰賴尚未發生的催化劑翻轉。不過空方部分論點有瑕疵：GLD 對 GLDM 的資金輪動不影響 GLD 的 NAV 追蹤，溢價收斂說法建立在可疑數據上。多方的技術面止跌訊號真實存在，但市場報告本身也說明「尚未確認為趨勢反轉」。加上 11-19 至 11-28 的新聞、利率與情緒資料全部缺漏，且 12 月初連續三個高影響事件，判斷結論是「不做多、不追空」，等待 Crux 1 與 Crux 2 確認。</p>
+<h2>What would change the verdict</h2>
+<ul>
+<li>Upside trigger：收盤站回 MA20 $352.21 且 MACD histogram 翻正，同時 11 月 CPI 偏冷或 FOMC 點陣圖偏鴿，使 TIPS 實質利率明顯回落 → 可轉為 NEUTRAL，甚至低信心 LONG。</li>
+<li>Downside trigger：收盤跌破 $313.96，且 CPI/NFP 偏熱、實質利率突破 3% → 可升為中等信心 SHORT_OR_AVOID，ATR 延伸參考位約 $297。</li>
+<li>Key data point to monitor：12-10 08:30 ET 的 11 月 CPI，以及 10 年 TIPS 殖利率；其次為 WGC 11 月 ETF 流量報告中北美是否持續流出。</li>
+</ul>
+<h2>Position-sizing guidance (qualitative, not advice)</h2>
+<p>低信心 → 不建立新多單；既有多單可考慮減碼，或以 $313.96 下方作為邏輯停損。若要表達空方觀點，僅限小規模試探（明顯低於半倉），因為現價貼近支撐，且 20 日年化波動率 34.5%、ATR 約 2.5%，R:R 不佳。事件前（12-04 至 12-10）應進一步降低曝險。長期策略性配置屬另一議題，不在本戰術計畫範圍內。</p>
+<h2>Time horizon</h2>
+<p>數日至數週：以 12-04 NFP 到 12-10 CPI 這段事件窗口為主要重新評估時點，事件後依 Crux 1、Crux 2 的結果更新立場。</p>
+<p>INVESTMENT PLAN COMPLETE</p></div>
+    </details>
+
+    <details class="mb-4 border border-slate-200 rounded">
+      <summary class="bg-slate-50 px-4 py-2 font-semibold">交易提案 (Trader)</summary>
+      <div class="agent-prose p-4 text-sm"><p>FINAL TRANSACTION PROPOSAL: <strong>HOLD</strong></p>
+<h1>Trade proposal — GLD as of 2026-11-28</h1>
+<h2>Direction</h2>
+<p>AVOID（不建立新倉；若已持有多單，建議檢視減碼，非本次新交易範圍）</p>
+<h2>為何不做：</h2>
+<ol>
+<li>
+<p><strong>方向證據不對稱但結論仍偏弱</strong>：research manager 的淨結論為 SHORT_OR_AVOID，信心度 LOW。空方論據（均線空頭排列 MA20 $352.21 &lt; MA50 $369.72 &lt; MA200 $403.16、各週期報酬皆負、實質利率上升路徑明確）具體且有日期，但多方止跌訊號（11-25 長下影放量反彈、RSI14 自 23.7 回升至 35.6、MACD histogram 連三日收斂）同樣真實，market.md 本身亦註明「尚未確認為趨勢反轉」。兩方論點皆未決定性勝出，故不具備足夠信心建新倉。</p>
+</li>
+<li>
+<p><strong>R:R 不足，無法滿足空方門檻（≥2.0）</strong>：若以現價 $332.05 附近放空，邏輯停損需設於上方壓力 $352.21（MA20，前支撐失守後轉壓力），風險約 $20.16；而下方第一目標僅能看 $313.96（52 週低點 / 11-25 盤中低點），報酬約 $18.09。R:R ≈ 0.9，遠低於放空所需的 2.0 門檻，直接否決現價放空的操作性。</p>
+</li>
+<li>
+<p><strong>現價貼近關鍵支撐，追空風險/報酬差</strong>：現價 $332.05 距 52 週低點 $313.96 僅 +5.8%，距 BB 下軌 $316.32 亦相近，屬承接區，追空容易在支撐反彈時被軋。</p>
+</li>
+<li>
+<p><strong>事件風險集中、波動偏高</strong>：20 日年化波動率 34.5%，ATR14 約 $8.32（現價 2.5%），且 12-04 NFP 至 12-10 CPI/FOMC 事件窗密集，二元結果會大幅改變實質利率路徑（Crux 1），事件前不適合新建方向性倉位。</p>
+</li>
+</ol>
+<h2>既有倉位建議</h2>
+<p>若持有既有多單：可考慮減碼，或以 $313.96（52 週低點）下方作為邏輯停損參考點（market.md 明確列為 stop-loss suggestion），非本次新交易建議。</p>
+<h2>觀察清單（非進場指令，僅供未來重新評估）</h2>
+<ul>
+<li><strong>轉偏多觸發</strong>：收盤站回 MA20 $352.21 且 MACD histogram 翻正，同時 CPI/點陣圖偏鴿使 10 年 TIPS 實質利率回落 → 可重新評估 NEUTRAL 或低信心 LONG。</li>
+<li><strong>轉偏空觸發</strong>：收盤跌破 $313.96，且 CPI/NFP 偏熱、實質利率升破 3% → 可重新評估中等信心 SHORT，屆時 ATR 延伸參考位約 $297（market.md 未直接提供，待新資料確認後補列）。</li>
+<li>以上僅為監控條件，待觸發後需重新計算 entry/stop/target 與 R:R，非本報告提前核定之進場價位。</li>
+</ul>
+<h2>Time horizon</h2>
+<p>數日至數週；以 12-04 NFP 至 12-10 CPI/FOMC 事件窗為主要重新評估時點。</p>
+<h2>Catalyst calendar</h2>
+<ul>
+<li>2026-12-04 — NFP（11 月非農就業）</li>
+<li>2026-12-10 08:30 ET — 11 月 CPI</li>
+<li>2026-12-09 — FOMC 點陣圖</li>
+<li>12 月初 — WGC 11 月全球 ETF 流量報告（北美流出是否持續）</li>
+</ul>
+<p>TRADE PROPOSAL COMPLETE</p></div>
+    </details>
+
+    <details class="mb-4 border border-slate-200 rounded">
+      <summary class="bg-slate-50 px-4 py-2 font-semibold">Phase 1 — 四 Analyst 報告</summary>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+        <div>
+          <h4 class="font-bold text-slate-700 mb-2">基本面 (Fundamentals)</h4>
+          <div class="agent-prose text-sm bg-slate-50 p-3 rounded"><h1>Fundamentals — GLD as of 2026-11-28</h1>
+<p>註：本報告依 2026-11-28 為分析基準日。工具取得的資料均為 2026-11-27 盤中快取（info 的 regularMarketTime 對應 2026-11-27 約 16:35 UTC，即美東 11:35 左右），屬於基準日之前的資料，未見 2026-11-28 之後的資料。yfinance 多個端點因連線被擋（403 CONNECT tunnel failed）而回傳空值或快取，下文以 DATA_UNAVAILABLE 標示。</p>
+<h2>Executive summary</h2>
+<p>GLD 為 SPDR Gold Shares 實物黃金信託（ETF，非公司），費用率 0.40%、無負債、無股息、無盈餘可分析，基本面評估以淨資產規模、折溢價與費用為主。以 2026-11-27 盤中價 332.16 USD 計，價格較 52 週高點 509.70 USD 低 34.8%，且位於 MA20 / MA50 / MA200 之下，MACD 為負、RSI14 為 35.6，技術面偏弱。報價相對資訊快取內 navPrice 317.58 USD 呈 +4.6% 溢價，與 GLD 通常緊貼 NAV 的特性不符，此差異需先行核實，不能直接當作真實折溢價。</p>
+<h2>Revenue &amp; profitability（ETF 不適用）</h2>
+<ul>
+<li>本信託無營收、毛利或營業利益概念。yfinance 的 financials 端點回傳空陣列，故營收 CAGR、利潤率趨勢均為 DATA_UNAVAILABLE。</li>
+<li>info 的 epsTrailingTwelveMonths 為 -9.394 USD，此數字對 grantor trust 無經濟意義（信託不課稅前盈餘，淨值變動不經損益表認列），不納入判斷。</li>
+<li>報酬率（info）：YTD -9.46%、近 3 月 -2.91%、近 1 年 -15.58%、3 年平均年化 20.85%、5 年平均年化 14.40%。注意：ta 工具算出的 3 個月動能為 -18.79%，與 info 的 trailingThreeMonthReturns 不一致（計算窗口或價格基準不同），兩者並列供參考，不擇一。</li>
+</ul>
+<h2>Cashflow &amp; balance sheet（信託結構）</h2>
+<ul>
+<li>現金流量表、資產負債表端點皆回傳空陣列，DATA_UNAVAILABLE。</li>
+<li>信託本身無舉債（info 未見 debt 欄位，且結構上為實物黃金持有）；無經營現金流，FCF 不適用。</li>
+<li>淨資產（netAssets / totalAssets）：約 131.01B USD（131,009,642,000 USD）。</li>
+</ul>
+<h2>Capital allocation &amp; insider signal</h2>
+<ul>
+<li>股息：trailingAnnualDividendRate 0.0、yield 0.0，信託不派息，不適用股息覆蓋率。</li>
+<li>買回：信託不買回股份，申購與贖回以實物黃金（Baskets）進行，故無 buyback 概念。</li>
+<li>內部人交易：insider 端點回傳空陣列，ETF 無內部人申報，不適用。</li>
+<li>機構持股：major_holders、inst_holders 皆為空，持股集中度 DATA_UNAVAILABLE。</li>
+<li>資金流（fund flow / 申贖淨額）：工具未提供，DATA_UNAVAILABLE。</li>
+<li>黃金持有量（噸 / 盎司）：工具未提供，且無即時金價可換算，DATA_UNAVAILABLE。</li>
+<li>規模趨勢（AUM 歷史序列）：僅有單一時點快照，無法計算 AUM 趨勢，DATA_UNAVAILABLE。</li>
+<li>成交量：盤中 3.87M 股（不完整日）、10 日均量 13.05M、3 個月均量 9.77M、近期交易量相對偏高，但盤中量尚未完整。</li>
+</ul>
+<h2>Valuation（ETF 估值方式）</h2>
+<ul>
+<li>本信託不適用 P/E、EV/EBITDA、P/FCF、P/S；info 的 priceToBook 1.95 係以 bookValue 170.017 計算，但 bookValue 與 navPrice 317.58 明顯不一致，P/B 不採信。</li>
+<li>費用率 netExpenseRatio 0.40%（即年化費用 0.40%，對 131B 規模相當於每年約 0.52B USD 費用，屬估算，非 yfinance 直接欄位）。</li>
+<li>折溢價（以 info 數字計算）：</li>
+<li>市價 332.16 相對 navPrice 317.58 為 +4.59% 溢價。</li>
+<li>買賣價差：bid 331.63 / ask 331.66，價差約 0.03 USD（約 0.01%），流動性極佳。</li>
+<li>但 GLD 一般折溢價趨近於 0，4.6% 異常。可能性：(a) navPrice 為較早時點之舊值；(b) 盤中 NAV 未同步更新；(c) 快取時間差。需以官方 NAV 核實後才能採信。</li>
+<li>價格基準不一：info regularMarketPrice 332.16、fast_info last_price 331.64（cnyes 來源）、ta 最新收盤 332.05。三者差距約 0.5 USD，屬不同來源與時點，以 info 332.16 為盤中參考價。</li>
+<li>數值一致性：sharesOutstanding 260.3M，但 netAssets 131.01B 除以 260.3M 得 503.3 USD/股，與 navPrice 317.58 不符；反推 131.01B / 317.58 約 4.125 億股（412.5M）。兩者相差約 58%，sharesOutstanding 可能過時或口徑不同，本報告不採用此股數做市值推算。</li>
+</ul>
+<h2>Key catalysts</h2>
+<ul>
+<li>下次財報：ETF 無財報，earnings_dates 端點回傳錯誤（CONNECT 403），DATA_UNAVAILABLE，且不適用。</li>
+<li>影響價格的主要變數在於黃金現貨價格與美元、實質利率、央行購金等宏觀因素，工具未提供這些數據，不作量化。</li>
+<li>技術位（ta levels）：</li>
+<li>壓力：380.18（2026-11-09 高點）、429.42（2026-08-24 高點）。</li>
+<li>支撐：363.32（2026-06-24）、363.60（2026-07-17）。</li>
+<li>現價 332 已跌破前述兩個支撐，原支撐轉為上方壓力區。</li>
+<li>布林通道：%B = 0.219，中軌 352.21、上軌 388.11、下軌 316.32。</li>
+<li>ATR14 = 8.32 USD（約 2.5% 價格），20 日年化波動率 34.5%。</li>
+</ul>
+<h2>Metrics table</h2>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Latest</th>
+<th>YoY</th>
+<th>Sector median (estimate)</th>
+<th>Verdict</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>市價 (USD, info 盤中)</td>
+<td>332.16</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>參考價</td>
+</tr>
+<tr>
+<td>淨資產 netAssets (USD B)</td>
+<td>131.01B</td>
+<td>n/a（僅單點）</td>
+<td>n/a</td>
+<td>規模大、流動性佳</td>
+</tr>
+<tr>
+<td>費用率 netExpenseRatio</td>
+<td>0.40%</td>
+<td>n/a</td>
+<td>n/a（同類 n/a）</td>
+<td>中等偏低，實物金 ETF 常見水準</td>
+</tr>
+<tr>
+<td>官方 NAV navPrice (USD)</td>
+<td>317.58（時點未確定）</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>需核實</td>
+</tr>
+<tr>
+<td>折溢價 (市價 vs navPrice)</td>
+<td>+4.59%</td>
+<td>n/a</td>
+<td>約 0%</td>
+<td>異常，待核實</td>
+</tr>
+<tr>
+<td>買賣價差</td>
+<td>約 0.01%</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>流動性佳</td>
+</tr>
+<tr>
+<td>52 週區間 (USD)</td>
+<td>313.96 – 509.70</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>距高點 -34.8%，距低點 +5.8%</td>
+</tr>
+<tr>
+<td>YTD 報酬</td>
+<td>-9.46%</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>弱勢</td>
+</tr>
+<tr>
+<td>1 年報酬</td>
+<td>-15.58%</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>弱勢</td>
+</tr>
+<tr>
+<td>3 年平均年化報酬</td>
+<td>20.85%</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>長期正報酬，波動大</td>
+</tr>
+<tr>
+<td>5 年平均年化報酬</td>
+<td>14.40%</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>長期正報酬</td>
+</tr>
+<tr>
+<td>股息殖利率</td>
+<td>0.0%</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>不適用</td>
+</tr>
+<tr>
+<td>Beta (3Y)</td>
+<td>0.47</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>與股市相關性偏低</td>
+</tr>
+<tr>
+<td>RSI14</td>
+<td>35.6</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>偏弱，未達超賣 30</td>
+</tr>
+<tr>
+<td>MACD / signal / hist</td>
+<td>-12.61 / -10.30 / -2.32</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>空方動能</td>
+</tr>
+<tr>
+<td>MA20 / MA50 / MA200 (USD)</td>
+<td>352.21 / 369.72 / 403.16</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>價格低於三條均線</td>
+</tr>
+<tr>
+<td>BB %B</td>
+<td>0.219</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>位於下半部</td>
+</tr>
+<tr>
+<td>ATR14 (USD)</td>
+<td>8.32</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>約 2.5% 價格</td>
+</tr>
+<tr>
+<td>20 日年化波動率</td>
+<td>34.5%</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>高波動</td>
+</tr>
+<tr>
+<td>成交量（盤中 / 10 日均 / 3 月均）</td>
+<td>3.87M / 13.05M / 9.77M</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>盤中量未完整</td>
+</tr>
+<tr>
+<td>持股集中度 / 機構持股</td>
+<td>DATA_UNAVAILABLE</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>n/a</td>
+</tr>
+<tr>
+<td>申贖資金流</td>
+<td>DATA_UNAVAILABLE</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>n/a</td>
+</tr>
+<tr>
+<td>黃金持有量（噸/盎司）</td>
+<td>DATA_UNAVAILABLE</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>n/a</td>
+</tr>
+<tr>
+<td>AUM 歷史趨勢</td>
+<td>DATA_UNAVAILABLE（僅單點）</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>n/a</td>
+</tr>
+<tr>
+<td>營收 / 利潤率 / FCF / 負債</td>
+<td>不適用（信託）</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>不適用</td>
+</tr>
+<tr>
+<td>內部人交易</td>
+<td>不適用（無申報）</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>不適用</td>
+</tr>
+<tr>
+<td>下次財報</td>
+<td>不適用</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>不適用</td>
+</tr>
+</tbody>
+</table>
+<h2>Red flags</h2>
+<ul>
+<li>折溢價異常：市價對 navPrice 溢價 4.59%，與 GLD 正常應貼近 NAV 的特性不符，需核實 NAV 時點與來源。</li>
+<li>股數與淨值不一致：sharesOutstanding 260.3M 與 netAssets 131.01B、navPrice 317.58 無法同時成立（隱含股數約 412.5M），bookValue 170.017 亦與 NAV 不符，相關估值指標不採信。</li>
+<li>技術面全面轉弱：價格低於 MA20 / MA50 / MA200，MACD 空方，已跌破 363 附近支撐。</li>
+<li>持股、資金流、黃金實物量、AUM 歷史皆 DATA_UNAVAILABLE，無法驗證申贖趨勢或持有量變化，判斷能力受限。</li>
+<li>資料來源為快取（多數端點 CONNECT 403 後回退 cache），三個價格來源有約 0.5 USD 差異，需以下游交易平台即時報價為準。</li>
+<li>尚未取得官方 2026-11-28 之後資料，本報告僅以 2026-11-27 盤中快照為依據。</li>
+</ul>
+<p>FUNDAMENTALS REPORT COMPLETE</p></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-slate-700 mb-2">技術面 (Market / Technical)</h4>
+          <div class="agent-prose text-sm bg-slate-50 p-3 rounded"><h1>Technical — GLD as of 2026-11-28</h1>
+<blockquote>
+<p>資料說明：Yahoo 來源被封鎖，所有報價皆為 repo cache（<code>quote_source</code> / <code>history_source</code> = cache，屬正常情況）。<code>ta</code> 指標最新一根 K 線日期為 2026-11-27（週五）；2026-11-28 為週六，非交易日，本報告以 2026-11-27 收盤前後資料為準。2026-11-27 那根 K 線的成交量僅 3.79M，明顯為盤中快照（cache 時間 16:31 UTC），成交量比較需保留此註記。</p>
+</blockquote>
+<h2>Snapshot</h2>
+<p>Price $332.05, MA20 $352.21, MA50 $369.72, MA200 $403.16, RSI14=35.6, MACD hist=-2.32</p>
+<p>（<code>fast_info</code> 另回報 last_price $331.64、前收 $327.45，來源為 cnyes cache；本報告指標一律採用 <code>ta snapshot</code> 之 $332.05 以保持一致。<code>fast_info</code> 的 50d/200d MA 與 52w 欄位為 null/NaN，未採用。）</p>
+<h2>Trend</h2>
+<p>趨勢偏空，屬於明確下跌結構。價格位於 MA20（-5.7%）、MA50（-10.2%）、MA200（-17.6%）之下，三條均線已呈空頭排列（MA20 &lt; MA50 &lt; MA200），MA50 仍低於 MA200，死亡交叉結構已成立，未見交叉修復跡象。</p>
+<p>近期走勢：2026-11-12 起由 $369 附近一路下殺，11-18 跌破 $350 後加速，11-20 盤中低點 $320.95、成交量 23.6M 為近一個月最大量，當日收 $322.87。11-25 盤中觸及 $313.96（即 52 週低點）後收 $327.45，收盤回升約 4.3%。11-27 盤中交易於 $331–334 區間。下跌動能強，但 11-25 的長下影與放量反彈顯示 $314–321 區間已出現承接，尚未確認為趨勢反轉。</p>
+<h2>Momentum</h2>
+<ul>
+<li>MACD：line -12.61、signal -10.30、histogram -2.32，仍為空方排列（MACD 位於 signal 之下）。histogram 由 11-24 的 -3.42 連續三日收斂至 -2.32，屬「負值縮小」，空方動能減速但尚未翻正。</li>
+<li>RSI14 = 35.6：處於弱勢區（低於 50），未進入超賣（&lt;30）。RSI 自 11-20 的 23.7 回升至 35.6，屬於超賣後的反彈，但仍偏弱。</li>
+<li>報酬率：1m -11.1%、3m -18.8%、6m -20.4%、12m -12.6%。各週期皆為負報酬，中期動能明顯轉弱。</li>
+</ul>
+<h2>Key levels</h2>
+<ul>
+<li>Resistance: $352.21（MA20，動態壓力）、$369.72（MA50）、$380.18（2026-11-09 local high）、$388.11（BB 上軌）、$403.16（MA200）、$429.42（2026-08-24 local high）</li>
+<li>Support:    $320.95（2026-11-20 盤中低點）、$313.96（2026-11-25 盤中低點，亦為 52 週低點）</li>
+<li>註記：<code>ta levels</code> 回傳之 support 兩點（$363.32 於 2026-06-24、$363.60 於 2026-07-17）皆高於現價，已轉為上方壓力（前支撐跌破）。現價下方並無 <code>ta levels</code> 所列之 pivot support，下方支撐係依近期 K 線高低點補充。</li>
+<li>52w 高點 $509.70（距現價 -34.9%）、52w 低點 $313.96（距現價 +5.8%）。</li>
+<li>Stop-loss suggestion (logical, not advice): below $313.96（52 週低點 / 11-25 盤中低點，即最近一次支撐失守點）。</li>
+</ul>
+<h2>Volatility profile</h2>
+<p>ATR-implied daily move ~$8.32（約 2.5% 現價），年化波動率 34.5%（20 日）。</p>
+<p>部位大小含義：ATR 與年化波動率均屬偏高水準，同樣風險預算下建議部位需縮小；以 ATR 作停損距離時，$8.32 的一倍 ATR 距離約對應 $323.7，與 11-20 低點區域相近。</p>
+<h2>Setup</h2>
+<p>偏空（bearish），處於超跌後的潛在築底觀察期。<br />
+- 結構：lower highs（$369 → $352 區間反彈高點逐步下移）、跌破 $350 後加速、低點 $313.96 未再破底。<br />
+- 型態：11-25 長下影放量反彈，為短線止跌跡象；但 MA20 / MA50 仍在上方，且 MACD 仍為負。<br />
+- 條件面：若收盤重新站上 $352.21（MA20）且 MACD histogram 翻正，短線結構才可能轉為中性偏多；若再跌破 $313.96，前低結構失效，偏空格局延續。</p>
+<h2>Indicators table</h2>
+<table>
+<thead>
+<tr>
+<th>Indicator</th>
+<th>Value</th>
+<th>Reading</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Price（snapshot）</td>
+<td>$332.05</td>
+<td>2026-11-27 cache，盤中快照</td>
+</tr>
+<tr>
+<td>MA20</td>
+<td>$352.21</td>
+<td>現價低於 MA20 -5.7%</td>
+</tr>
+<tr>
+<td>MA50</td>
+<td>$369.72</td>
+<td>現價低於 MA50 -10.2%</td>
+</tr>
+<tr>
+<td>MA200</td>
+<td>$403.16</td>
+<td>現價低於 MA200 -17.6%，長線偏弱</td>
+</tr>
+<tr>
+<td>MA 排列</td>
+<td>MA20 &lt; MA50 &lt; MA200</td>
+<td>空頭排列，死亡交叉結構成立</td>
+</tr>
+<tr>
+<td>RSI14</td>
+<td>35.6</td>
+<td>弱勢，未進入超賣（&lt;30）；由 11-20 的 23.7 回升</td>
+</tr>
+<tr>
+<td>MACD</td>
+<td>-12.61</td>
+<td>空方</td>
+</tr>
+<tr>
+<td>MACD signal</td>
+<td>-10.30</td>
+<td>—</td>
+</tr>
+<tr>
+<td>MACD hist</td>
+<td>-2.32</td>
+<td>負值收斂（前一日 -3.08、三日前 -3.42），空方動能減速，未翻正</td>
+</tr>
+<tr>
+<td>BB %B</td>
+<td>0.22</td>
+<td>位於中軌與下軌之間偏下，未觸及下軌</td>
+</tr>
+<tr>
+<td>BB 上軌 / 中軌 / 下軌</td>
+<td>$388.11 / $352.21 / $316.32</td>
+<td>價格靠近下軌，下軌 $316.32 接近 52w 低點</td>
+</tr>
+<tr>
+<td>ATR14</td>
+<td>$8.32</td>
+<td>約現價 2.5%，波動偏高</td>
+</tr>
+<tr>
+<td>20d 年化波動率</td>
+<td>34.5%</td>
+<td>偏高</td>
+</tr>
+<tr>
+<td>1m return</td>
+<td>-11.1%</td>
+<td>明顯下跌</td>
+</tr>
+<tr>
+<td>3m return</td>
+<td>-18.8%</td>
+<td>明顯下跌</td>
+</tr>
+<tr>
+<td>6m return</td>
+<td>-20.4%</td>
+<td>明顯下跌</td>
+</tr>
+<tr>
+<td>12m return</td>
+<td>-12.6%</td>
+<td>負報酬</td>
+</tr>
+<tr>
+<td>52w 高點</td>
+<td>$509.70</td>
+<td>現價距高點 -34.9%</td>
+</tr>
+<tr>
+<td>52w 低點</td>
+<td>$313.96</td>
+<td>現價距低點 +5.8%，接近年內低點</td>
+</tr>
+<tr>
+<td>成交量（最新）</td>
+<td>3.79M</td>
+<td>盤中快照，不具完整比較意義</td>
+</tr>
+<tr>
+<td>成交量（前 9 個完整交易日均量，推算）</td>
+<td>約 13.0M</td>
+<td>由 ta series 數值計算（11-13 至 11-25，不含 11-26 休市與 11-27 盤中）</td>
+</tr>
+<tr>
+<td>成交量（20 日高點）</td>
+<td>23.6M（2026-11-20）</td>
+<td>下殺日大量，最高量</td>
+</tr>
+<tr>
+<td>10d 平均量（ta series 原始）</td>
+<td>12.06M</td>
+<td>包含 11-27 盤中不完整量，僅供參考</td>
+</tr>
+<tr>
+<td>50 / 200 日均線交叉</td>
+<td>MA50 低於 MA200</td>
+<td>死亡交叉狀態，未見修復</td>
+</tr>
+</tbody>
+</table>
+<p>MARKET REPORT COMPLETE</p></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-slate-700 mb-2">新聞 (News)</h4>
+          <div class="agent-prose text-sm bg-slate-50 p-3 rounded"><h1>News — GLD as of 2026-11-28</h1>
+<p><strong>注意事項</strong><br />
+- 無法取得結構化新聞清單與 sector 資訊。本報告全部依賴 WebSearch，來源多為二手或聚合網站，部分為 AI 摘要或推廣性質。<br />
+- 最新可取得的市場報導約到 2026-11-19 為止。2026-11-19 至 2026-11-28 之間的價格、利率、ETF 數據一律 DATA_UNAVAILABLE。<br />
+- 依規定未引用任何既有 daily/ 報告的數字。</p>
+<h2>Top company-specific headlines (last 14d)</h2>
+<ul>
+<li>2026-11-xx — GLD 本身 (SPDR Gold Shares) 未找到公司層面新聞 (無費用、經理人、結構變動或法律事件的報導)。Impact: neutral。原因: GLD 為被動追蹤 ETF，主要受現貨金價驅動。</li>
+<li>2026-10 月資料 (WGC 2026-11 月報告) — GLD 單月流出約 18 億 USD (1.8B)，為 6 月以來最大月流出；此數字僅見單一來源，未經交叉驗證。Impact: bearish。原因: 資金撤出代表實物需求面轉弱，且與金價下跌同步。</li>
+<li>2026-10 月 — 全球金 ETF 淨流入約 27 億 USD，持倉達月末紀錄 4,275 公噸，但 AUM 因金價下跌減少 6% 至 5,420 億 USD。Impact: neutral to bullish (全球層面)。原因: 流入集中於歐洲與亞洲，美國為流出端。</li>
+<li>2026 年迄今 — 美國掛牌金 ETF 淨流出約 17 億 USD；GLDM 同期淨流入約 41 億 USD。Impact: bearish for GLD 相對於 GLDM。原因: 資金在 GLD 與 GLDM 之間輪動，GLD 相對弱勢。</li>
+<li>2026-11-12 — 現貨金單日跌約 3%，至約 3,880 USD/oz，為 2025-10 以來最低。Impact: bearish。原因: 油價回升推高通膨預期，美國通膨數據偏熱與 Fed 鷹派言論加劇加息押注。</li>
+<li>2026-11-16 — 現貨金觸及約 3,830.74 USD/oz 低點。Impact: bearish。原因: 美債殖利率上升、美元走強、加息預期升溫。</li>
+<li>2026-11-17/18 — 現貨金盤中跌至約 3,777.83 USD/oz，為 2025-09 以來最低。Impact: bearish。原因: 同上，加上實質利率續升。</li>
+</ul>
+<h2>Sector macro</h2>
+<ul>
+<li>2026-11 上旬至中旬 — 美國 CPI 與 Fed 鷹派言論。來源報導互相矛盾: 部分稱 10 月 CPI 偏熱，部分稱 10 月 CPI 較冷。11-12 前後市場解讀為偏熱。Impact on 黃金: 偏空。原因: 通膨高 → Fed 加息 → 實質利率升 → 持有無息資產的機會成本上升。</li>
+<li>2026-11 — 聯準會加息押注。來源數字不一: CME FedWatch 12 月加息機率於 10-28 Fed 維持利率後約 85–86%；11 月中旬報導稱 95–96%。Impact on 黃金: 偏空。</li>
+<li>2026-11 — 實質利率 (10 年 TIPS 殖利率) 上升: 約 2.63% (11-06) → 2.86% (11-12) → 2.92% (11-16)。來源為二手引述，未經原始 Treasury 頁面驗證。Impact on 黃金: 偏空。原因: 實質利率是黃金最直接的負相關變數。</li>
+<li>2026-11 — 美元強勢。來源 A 稱 DXY 接近 19 個月高點；來源 B 稱接近 2025-04 以來最高。數字不一致。10 月底 DXY 曾回落至約 101.5 (10-30)。Impact on 黃金: 偏空。原因: 強美元壓低以美元計價的黃金。</li>
+<li>2026 年中以來 — 伊朗戰爭與 Hormuz 海峽風險。11-02 Brent 單日跌逾 7% 至約 104.77 USD/bbl，因卡達斡旋停火與和談希望。Impact on 黃金: 方向不一，取決於傳導路徑。</li>
+<li>2026 年 — 黃金的避險屬性失效或部分反轉。Axios (2026-06) 報導稱戰爭期間金價偏向隨和談希望上漲、隨衝突加劇下跌，表現更像風險資產。Impact on 黃金: 偏空 (避險邏輯弱化)。</li>
+<li>2026 Q3 — 實物支撐的 ETF 流入 211 公噸；波蘭央行達 700 噸儲備目標，11 月可能暫停採購。Impact on 黃金: 偏多 (長期結構面)。原因: 官方部門需求為金價提供底部。</li>
+</ul>
+<h2>Peer signals</h2>
+<ul>
+<li>GLDM (SPDR Gold MiniShares) — 2026 年迄今淨流入約 41 億 USD，與 GLD 流出形成對比。成本較低的同類產品吸金，顯示 GLD 內部資金輪動，非整體需求消失。</li>
+<li>IAU / 其他實物金 ETF — DATA_UNAVAILABLE。</li>
+<li>GDX / 金礦股 — DATA_UNAVAILABLE。</li>
+<li>央行 (波蘭) — 達 700 噸目標，11 月可能暫停買入。</li>
+</ul>
+<h2>Forward calendar (next 14d)</h2>
+<ul>
+<li>2026-11-28 (週五) — 美國感恩節假期後首個交易日，市場流動性偏低。</li>
+<li>2026-12-04 (週五前後) — 美國非農就業報告 (NFP)，日期未經驗證。Expected impact: 若就業強勁，加息押注升，金價承壓。</li>
+<li>2026-12-08 至 12-09 — FOMC 會議。一來源稱 12-09 14:00 ET 公布決策。Expected impact: 主要事件。市場已定價 12 月加息，重點在 2027 點陣圖與 SEP 指引。</li>
+<li>2026-12-10 08:30 ET — 美國 11 月 CPI (BLS 排程)。Expected impact: 高。CPI 熱度直接影響實質利率與加息押注。</li>
+<li>2026 年 12 月初 — WGC 發布 11 月 ETF 流量報告 (依往例)。Expected impact: 低至中。</li>
+</ul>
+<h2>Net read</h2>
+<p>11 月下旬的新聞面對 GLD 整體偏空，淨傾向為 bearish，強度中高。主導邏輯是 Fed 加息押注升溫、10 年實質利率由約 2.63% 升至約 2.92%、美元走強，三者同向壓低黃金。油價與伊朗戰爭帶來的通膨與和談不確定性，是驅動 Fed 路徑的上游變數，使黃金的避險角色在 2026 年明顯弱化。ETF 資金面也偏弱，GLD 單月與年初至今皆為淨流出，但全球實物 ETF 仍有淨流入，且央行買盤與 Q3 ETF 流入為結構性支撐，限制下跌空間。現貨金自 2026-01 歷史高點約 5,595 USD 回落超過三成，11-18 前後跌至約 3,780 USD，為 2025-09 以來最低。以上數字多來自二手來源且彼此不一致，11-19 至 11-28 的價格與利率變化完全缺漏，因此對 11-28 當下狀態的判斷信心有限。</p>
+<h2>Metrics / summary</h2>
+<table>
+<thead>
+<tr>
+<th>指標</th>
+<th>數值</th>
+<th>日期</th>
+<th>來源/備註</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>現貨金 (XAU/USD) 近期高點</td>
+<td>約 4,146.63 USD/oz</td>
+<td>2026-11-05</td>
+<td>二手來源</td>
+</tr>
+<tr>
+<td>現貨金 近期低點</td>
+<td>約 3,777.83 USD/oz</td>
+<td>2026-11-18 (盤中)</td>
+<td>二手來源</td>
+</tr>
+<tr>
+<td>現貨金 歷史高點</td>
+<td>約 5,594.82 USD/oz</td>
+<td>2026-01-29</td>
+<td>二手來源</td>
+</tr>
+<tr>
+<td>11 月第一週收盤 (一來源)</td>
+<td>4,070.93 USD/oz (+5.0% 週)</td>
+<td>2026-11-06</td>
+<td>來源數字與 4,044.65 有出入</td>
+</tr>
+<tr>
+<td>11 月中旬週跌幅</td>
+<td>約 -4.6%</td>
+<td>週至 2026-11-13</td>
+<td>單一來源</td>
+</tr>
+<tr>
+<td>10 年 TIPS 實質利率</td>
+<td>2.63% → 2.86% → 2.92%</td>
+<td>11-06 / 11-12 / 11-16</td>
+<td>二手引述</td>
+</tr>
+<tr>
+<td>12 月 FOMC 加息機率</td>
+<td>約 85–86% (10-28) ; 約 95–96% (11 中)</td>
+<td>不一致</td>
+<td>CME 原始頁未取得</td>
+</tr>
+<tr>
+<td>聯準會利率區間</td>
+<td>3.75%–4.00%</td>
+<td>一來源</td>
+<td>未驗證</td>
+</tr>
+<tr>
+<td>DXY</td>
+<td>約 101.5 (10-30) ; 11 月接近多月高點</td>
+<td>不一致</td>
+<td>11 月數字 DATA_UNAVAILABLE</td>
+</tr>
+<tr>
+<td>Brent 原油</td>
+<td>約 104.77 USD/bbl (11-02, 單日跌 &gt;7%)</td>
+<td>2026-11-02</td>
+<td>二手來源</td>
+</tr>
+<tr>
+<td>GLD 單月淨流出 (2026-10)</td>
+<td>約 -18 億 USD</td>
+<td>2026-10</td>
+<td>單一來源，未驗證</td>
+</tr>
+<tr>
+<td>全球金 ETF 淨流入 (2026-10)</td>
+<td>約 +27 億 USD；持倉 4,275 公噸</td>
+<td>2026-10</td>
+<td>WGC 引述</td>
+</tr>
+<tr>
+<td>美國掛牌金 ETF 年初至今</td>
+<td>約 -17 億 USD</td>
+<td>2026 YTD</td>
+<td>WGC 引述</td>
+</tr>
+<tr>
+<td>GLDM 年初至今</td>
+<td>約 +41 億 USD</td>
+<td>2026 YTD</td>
+<td>WGC 引述</td>
+</tr>
+<tr>
+<td>全球金 ETF AUM (2026-10)</td>
+<td>約 5,420 億 USD</td>
+<td>2026-10</td>
+<td>WGC 引述</td>
+</tr>
+<tr>
+<td>2026 Q3 ETF 流入</td>
+<td>211 公噸</td>
+<td>2026 Q3</td>
+<td>二手來源</td>
+</tr>
+<tr>
+<td>2026-11-19 至 11-28 金價/利率/DXY</td>
+<td>DATA_UNAVAILABLE</td>
+<td>—</td>
+<td>無來源</td>
+</tr>
+<tr>
+<td>下一次 FOMC</td>
+<td>2026-12-09 (14:00 ET 決策)</td>
+<td>日程</td>
+<td>一來源，需核對 Fed 官網</td>
+</tr>
+<tr>
+<td>下一次 CPI</td>
+<td>2026-12-10 08:30 ET (11 月參考月)</td>
+<td>日程</td>
+<td>BLS 排程引述</td>
+</tr>
+</tbody>
+</table>
+<h2>主要來源</h2>
+<ul>
+<li>https://www.nationthailand.com/business/trading-investment/40073439 (11-12 金價跌 3%)</li>
+<li>https://www.nationthailand.com/business/trading-investment/40073583 (11-16 金價 3,830.74)</li>
+<li>https://www.nationthailand.com/business/40073160 (11-05 兩週高點)</li>
+<li>https://www.khaleejtimes.com/gold-holds-near-14-month-low-as-fed-hike-bets-weigh (加息押注)</li>
+<li>https://www.fxstreet.com/news/gold-tumbles-to-its-lowest-in-over-a-year-as-fed-rate-hike-bets-build-202611181109 (11-18 跌幅)</li>
+<li>https://www.fxempire.com/forecasts/article/golds-3850-weekly-support-matters-as-real-yields-climb-to-2-86-1644571 (實質利率)</li>
+<li>https://www.euronews.com/2026/11/02/oil-slides-on-hormuz-deal-hopes-but-trump-keeps-iran-strikes-on-the-table (油價與 Hormuz)</li>
+<li>https://www.axios.com/2026/06/05/gold-dollar-central-banks-risk (避險屬性弱化，2026-06)</li>
+<li>https://www.gold.org/goldhub/research/gold-etfs-holdings-and-flows/2026/11 (WGC 10 月 ETF 流量)</li>
+<li>https://www.fxstreet.com/analysis/etf-gold-flows-slow-in-october-but-remain-positive-202611082140 (ETF 流量摘要)</li>
+<li>https://www.bls.gov/schedule/news_release/cpi.htm (CPI 排程，搜尋摘要引述)</li>
+</ul></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-slate-700 mb-2">情緒 (Sentiment)</h4>
+          <div class="agent-prose text-sm bg-slate-50 p-3 rounded"><h1>Sentiment — GLD as of 2026-11-28</h1>
+<blockquote>
+<p>ETF 標的：略過 insider 與 major_holders 分析（不適用）。改以黃金現貨情緒、retail 社群與策略師配置立場代替。<br />
+資料時效：本次搜尋可取得的最新日期約為 2026-11-18；11-19 至 11-28 之間幾乎沒有可確認的情緒資料。2026-11-28 之後的資料一律視為未知。<br />
+工具狀況：<code>pipeline/tools/yf GLD rec_summary</code> 回傳空值（連線 fc.yahoo.com 失敗），analyst 分佈記為 DATA_UNAVAILABLE。Reddit / StockTwits 直接抓取未執行（依指示僅用 WebSearch），以下為搜尋摘要所見的間接資訊。</p>
+</blockquote>
+<h2>Analyst consensus</h2>
+<ul>
+<li>GLD 本身的分析師評等：DATA_UNAVAILABLE（yf rec_summary 無資料）。</li>
+<li>第三方彙整（Stockchase，時間不明確）：過去 12 個月 5 則評等，2 Buy / 0 Hold / 3 Sell，最近一則為 2026-06-26 的 Sell。樣本少，僅供參考。</li>
+<li>技術型 AI 訊號（Tickeron，2026-11-10 至 11-12）：Aroon 轉向下降、MACD 轉負，模型給出續跌機率 68%–73%。此類為演算法輸出，非分析師意見。</li>
+<li>策略師對黃金價格的預測（時間各異，需注意）：</li>
+<li>Kitco 報導 Goldman Sachs 將 2026 年底目標由 $4,650 下調至 $4,150/oz（日期約 2026 年 11 月，與另一則較舊的 $4,900 目標有出入，以較新者為準）。</li>
+<li>Deutsche Bank、JPMorgan 據報仍看 $6,000–6,300（年底，來源為二手報導，未直接核實）。</li>
+<li>一位分析師將年底目標下修至 $3,500/oz（看空端，來源不明）。</li>
+<li>黃金歷史高點為 $5,405/oz（2026-01-29）。</li>
+<li>配置建議（黃金占組合比重）：</li>
+<li>State Street（Aakash Doshi，2026 年中展望）：3%–10%，新資金宜 3%–5%。</li>
+<li>Ned Davis Research（John LaForge，2026-05）：3%–8%。</li>
+<li>Société Générale（2025-12 前後）：多資產組合中 10%。</li>
+<li>Orion（Nolan Mauk）：0%–5%。</li>
+<li>策略師多半把黃金視為策略性分散工具，而非短線交易標的。</li>
+<li>近期變動：多數機構在 2026 年 11 月金價跌破 $4,000 後轉趨保守，但未見大規模評等調降的直接證據（DATA_UNAVAILABLE 等級）。</li>
+</ul>
+<h2>Retail social</h2>
+<ul>
+<li>Reddit（r/wallstreetbets、r/stocks）：未能取得 11 月的即時搜尋結果。WebSearch 找到的 WSB 相關資料集中在 2026 年初：</li>
+<li>一則 Sherwood 報導指出，2026 年初 WSB 談論白銀（SLV）的次數遠多於 GLD，貴金屬討論偏向白銀。</li>
+<li>Chart Exchange 快照顯示 GLD 留言兩極，例如「GLD is the only answer」與針對「SLV/GLD 套牢」的嘲諷。屬單次快照，不代表整體情緒。</li>
+<li>整體 tilt：無法判定 11 月情況（DATA_UNAVAILABLE）。早期（2026-03）偏多，後來隨金價回落轉弱。</li>
+<li>StockTwits：搜尋摘要顯示兩個快照，一為中性 50 分，一為 72 分看多（後者日期不明）。此數據可信度低，不可當作 11 月的代表值。</li>
+<li>X / 新聞 chatter：未取得 X 貼文。新聞面（Kitco 週報、Forex Peace Army 週更）的情緒以偏空為主，但這屬於專業或論壇評論，不等於 retail 社群。</li>
+<li>情緒動態（新聞敘事）：</li>
+<li>Kitco Wall Street 調查（2026-11-13 前後）轉為明顯看空，Main Street 也有轉空的報導（來自搜尋摘要的二手描述）。</li>
+<li>媒體出現「1980 年式崩跌」比較（2026-11-18 前後），把美元走強、殖利率上升、升息預期列為主因。</li>
+<li>主要主題（themes）：</li>
+<li>聯準會偏鷹與升息預期，實質利率與殖利率上升，形成機會成本壓力。</li>
+<li>金價跌破 $4,000 後的「是否崩盤」與「是否抄底」之爭。</li>
+<li>央行買盤仍是多方主要論點（Q2 2026 央行購金 288.9 噸，年增 62%；Q3 約 321 噸，年增 42%）。</li>
+<li>白銀與黃金的 meme 化討論，WSB 注意力偏向白銀。</li>
+<li>估計聲量：相對一般水準，無法量化（DATA_UNAVAILABLE）。</li>
+</ul>
+<h2>Fund flows（ETF 層級背景，非 GLD 單一標的）</h2>
+<ul>
+<li>全球黃金 ETF 2026-09 淨流入約 US$10B，2026-Q3 累計約 US$31B（創紀錄）。</li>
+<li>全球黃金 ETF 2026-10 淨流入約 US$2.7B，淨增持約 19 噸，總持有量達 4,275 噸（紀錄高）。北美基金出現流出，歐洲與亞洲為主要流入來源。</li>
+<li>GLD 單日流量（約 $550M、$950M 等）來自無日期的新聞頁，無法定位時間，不採用。</li>
+<li>2026-11 全月流量：DATA_UNAVAILABLE（WGC 11 月報告預計 12 月初才出）。</li>
+</ul>
+<h2>Insider activity</h2>
+<p>不適用（ETF 無內部人交易申報）。</p>
+<h2>Ownership shifts</h2>
+<p>不適用（ETF）。機構持倉變化僅有零星個案（Greenlight 於 Q1 2026 減持 GLD 至 99,611 股；Third Point 於同期新開 95,000 股），屬單一基金個案，不具趨勢意義。</p>
+<h2>Net sentiment score</h2>
+<ul>
+<li>綜合判斷：<strong>偏空（bearish），信心低至中</strong>。</li>
+<li>偏空依據：金價自 2026-01 高點 $5,405 大幅回落，11-16 至 11-18 創 14 個月新低（盤中低點約 $3,660–3,852，來源數字不一致）；技術指標轉弱；利率與美元走強；Wall Street 情緒轉空；2026-Q1 以來的 GLD 單一股票分析評等偏賣。</li>
+<li>偏多或抵銷因素：央行持續買入；全球黃金 ETF 持有量仍創紀錄（截至 2026-10）；長線策略師仍維持 3%–10% 配置建議，多數並未因短期下跌而撤回。</li>
+<li>信心低的原因：11-19 至 11-28 的資料缺失；retail 社群在 11 月無可用資料；分析師評等樣本少且時間不一。</li>
+<li>背離旗標（Divergence flag）：<strong>無法判定（DATA_UNAVAILABLE）</strong>。Retail 在 11 月的 tilt 無可靠資料，因此無法確認 retail 與分析師是否背離。若以新聞面的 Main Street vs Wall Street 描述來看，兩者都轉空，未見明顯背離。</li>
+</ul>
+<h2>資料缺口與可信度</h2>
+<ul>
+<li>11-19 至 11-28 的 Reddit、StockTwits、X 與 analyst rating 更新：DATA_UNAVAILABLE。</li>
+<li>金價水準來源不一致（$3,660–3,900 區間），本報告只用方向性描述，不採用單一價位。</li>
+<li>策略師目標價與配置建議多數為 2025-12 至 2026-05 的舊資料，已在條目中標註日期，應視為背景而非即時共識。</li>
+</ul>
+<h2>Metrics table</h2>
+<table>
+<thead>
+<tr>
+<th>指標</th>
+<th>數值</th>
+<th>日期 / 來源</th>
+<th>備註</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GLD 分析師評等（yf rec_summary）</td>
+<td>DATA_UNAVAILABLE</td>
+<td>yf 連線失敗</td>
+<td>無法取得</td>
+</tr>
+<tr>
+<td>第三方 GLD 評等（12 個月）</td>
+<td>2 Buy / 0 Hold / 3 Sell</td>
+<td>Stockchase，最近 2026-06-26</td>
+<td>樣本少</td>
+</tr>
+<tr>
+<td>Tickeron 技術訊號</td>
+<td>Aroon 下行，續跌機率 73%；MACD 轉負，續跌機率 68%</td>
+<td>2026-11-10 至 11-12</td>
+<td>演算法輸出</td>
+</tr>
+<tr>
+<td>Goldman Sachs 2026 年底金價目標</td>
+<td>$4,150/oz（由 $4,650 下調）</td>
+<td>Kitco，2026-11</td>
+<td>以較新者為準</td>
+</tr>
+<tr>
+<td>策略師配置建議（黃金占比）</td>
+<td>0%–10%（多數 3%–8%）</td>
+<td>State Street、NDR、SocGen、Orion</td>
+<td>日期 2025-12 至 2026-05</td>
+</tr>
+<tr>
+<td>金價區間（近期）</td>
+<td>盤中低點約 $3,660–3,852/oz</td>
+<td>2026-11-16 至 11-18</td>
+<td>來源數字不一，方向參考</td>
+</tr>
+<tr>
+<td>歷史高點</td>
+<td>$5,405/oz</td>
+<td>2026-01-29</td>
+<td>背景</td>
+</tr>
+<tr>
+<td>全球黃金 ETF 流入（Sep 2026）</td>
+<td>+US$10B</td>
+<td>WGC</td>
+<td>全球層級，非 GLD</td>
+</tr>
+<tr>
+<td>全球黃金 ETF 流入（Q3 2026）</td>
+<td>+US$31B（創紀錄）</td>
+<td>WGC</td>
+<td>全球層級</td>
+</tr>
+<tr>
+<td>全球黃金 ETF 流入（Oct 2026）</td>
+<td>+US$2.7B；持有 4,275 噸</td>
+<td>WGC</td>
+<td>北美流出</td>
+</tr>
+<tr>
+<td>央行購金（Q2 2026）</td>
+<td>288.9 噸（年增 62%）</td>
+<td>搜尋摘要</td>
+<td>二手來源</td>
+</tr>
+<tr>
+<td>央行購金（Q3 2026）</td>
+<td>約 321 噸（年增 42%）</td>
+<td>WGC 摘要</td>
+<td>二手來源</td>
+</tr>
+<tr>
+<td>Reddit 情緒</td>
+<td>DATA_UNAVAILABLE（11 月）</td>
+<td>WSB 最近可得資料為 2026 年初</td>
+<td>無即時樣本</td>
+</tr>
+<tr>
+<td>StockTwits 情緒</td>
+<td>50（中性）或 72（看多），日期不明</td>
+<td>搜尋快照</td>
+<td>低可信度</td>
+</tr>
+<tr>
+<td>Insider 淨買賣（6 個月）</td>
+<td>不適用</td>
+<td>ETF</td>
+<td>—</td>
+</tr>
+<tr>
+<td>機構持倉趨勢</td>
+<td>不適用（ETF）；個案 Greenlight 減、Third Point 增</td>
+<td>2026-Q1</td>
+<td>無趨勢意義</td>
+</tr>
+<tr>
+<td>綜合情緒</td>
+<td>偏空（信心低至中）</td>
+<td>本報告判斷</td>
+<td>—</td>
+</tr>
+<tr>
+<td>背離旗標</td>
+<td>DATA_UNAVAILABLE</td>
+<td>—</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<p>SENTIMENT REPORT COMPLETE</p></div>
+        </div>
+      </div>
+    </details>
+
+    <details class="mb-4 border border-slate-200 rounded">
+      <summary class="bg-slate-50 px-4 py-2 font-semibold">Phase 2 — Bull vs Bear 辯論</summary>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+        <div>
+          <h4 class="font-bold text-green-700 mb-2">🐂 多方 (Bull)</h4>
+          <div class="agent-prose text-sm bg-green-50 p-3 rounded border border-green-200"><h1>多方論點 第1輪 — GLD</h1>
+<h2>論點（一句話）</h2>
+<p>在 Fed 鷹派與美元強勢已被市場充分計價、技術面出現量能承接的超跌格局下，GLD 目前處於結構性買盤（央行、全球實物 ETF）支撐的底部區，具備不對稱的上行空間。</p>
+<h2>成長驅動（宏觀面）</h2>
+<ul>
+<li><strong>央行購金加速</strong>：Q2 2026 央行購金 288.9 公噸（年增 62%），Q3 2026 約 321 公噸（年增 42%）（sentiment.md）。這是官方部門的結構性買盤，不受短期利率波動左右，對金價提供長期底部支撐。</li>
+<li><strong>全球實物黃金 ETF 持倉創紀錄</strong>：2026-10 全球黃金 ETF 持倉達 4,275 公噸，為歷史新高；2026-Q3 單季淨流入約 310 億美元，創紀錄；9 月單月淨流入約 100 億美元（news.md / sentiment.md）。資金面並非全面撤出，而是北美流出、歐亞流入的區域輪動。</li>
+<li><strong>GLD 家族內部資金並未離開黃金</strong>：GLD 2026 年初至今淨流出約 17 億美元，但同集團低費率產品 GLDM 同期淨流入約 41 億美元（news.md）。這代表資金是從 GLD 轉往更便宜的 GLDM，而非投資人對黃金本身失去信心，GLD 的「流出」被誤讀為黃金需求消失。</li>
+</ul>
+<h2>宏觀「護城河」（結構性買盤 + 計價已充分反映鷹派預期）</h2>
+<ul>
+<li>Beta（3 年）僅 0.47（fundamentals.md），與股市相關性低，具備獨立於風險資產的分散價值，在股市波動放大時吸引配置性買盤。</li>
+<li>市場已將 12 月 FOMC 升息機率計價到 95–96%（sentiment.md），實質利率已從 2.63% 快速推升至 2.92%（news.md）。鷹派預期與強美元是「已知的壞消息」，若 12 月 CPI 或非農不如預期熱，將觸發實質利率回落與金價反彈的不對稱機會。</li>
+<li>買賣價差僅約 0.01%（fundamentals.md），流動性極佳，進出成本低，利於戰術性加碼。</li>
+</ul>
+<h2>上行情境試算（以金價目標推算 GLD）</h2>
+<ul>
+<li>現貨金近期已跌至約 3,780–3,900 美元/盎司區間（news.md），較 2026-01-29 歷史高點 5,405–5,595 美元已回落超過三成，跌幅已相當深。</li>
+<li><strong>基本情境</strong>：Goldman Sachs 年底目標下修至 4,150 美元/盎司（sentiment.md），較現貨中值約 3,840 美元仍有 +8% 空間，對應 GLD 現價 332.16 美元可望回到約 358–360 美元，恰好落在 MA20（352.21）與 MA50（369.72）壓力區，技術與基本面目標相互印證。</li>
+<li><strong>樂觀情境</strong>：Deutsche Bank、JPMorgan 據報仍看 6,000–6,300 美元/盎司年底目標（sentiment.md），較現貨中值 +56% 至 +64%，對應 GLD 約 518–545 美元，接近甚至略高於 52 週高點 509.70 美元（market.md），顯示若避險與降息敘事重新啟動，漲幅可觀。</li>
+</ul>
+<h2>催化劑（已有日期）</h2>
+<ul>
+<li>2026-12-04（約）— 美國非農就業報告：若數據轉弱，升息押注降溫，實質利率回落有利金價。</li>
+<li>2026-12-08/09 — FOMC 會議決策：升息已被高度計價，若點陣圖或指引不如預期鷹派，可能觸發空頭回補。</li>
+<li>2026-12-10 — 美國 11 月 CPI：通膨降溫將直接壓低實質利率，是黃金最直接的正面觸發。</li>
+<li>2026 年 12 月初 — WGC 11 月全球 ETF 流量報告：若顯示北美流出收斂或轉正，可修正市場對 GLD 資金面的悲觀解讀。</li>
+</ul>
+<h2>戰術面（技術面支撐轉強跡象）</h2>
+<ul>
+<li>RSI14 由 2026-11-20 的 23.7 回升至 35.6，屬超賣後反彈，動能修復中（market.md）。</li>
+<li>MACD histogram 連續三日收斂（-3.42 → -3.08 → -2.32），空方動能明顯減速（market.md）。</li>
+<li>2026-11-20 放量 2,360 萬股創近一個月最大量，2026-11-25 盤中觸及 313.96 美元（52 週低點）後收 327.45，長下影線顯示低點有承接（market.md）。</li>
+<li>BB %B 僅 0.219，貼近下軌 316.32，屬均值回歸候選區，第一目標為中軌 MA20 352.21，較現價有約 +6% 空間（fundamentals.md / market.md）。</li>
+</ul>
+<h2>對空方觀點的反駁（本輪尚無第0輪空方報告，先行回應可預期之空方論點）</h2>
+<ul>
+<li>空方可能稱：「價格跌破 MA20/50/200，死亡交叉成立，趨勢明確向下。」<br />
+  反駁：MA 排列確實偏空，但 RSI 與 MACD histogram 已出現動能減速與超賣反彈的領先訊號，且 11-25 的放量長下影是典型的築底訊號，技術面正處於「超跌後觀察期」而非持續加速下跌（market.md 原文亦稱「尚未確認為趨勢反轉」，但同樣未排除反轉）。</li>
+<li>空方可能稱：「GLD 資金淨流出，需求消失。」<br />
+  反駁：資金是流向同集團 GLDM，全球實物 ETF 持倉仍創紀錄新高，央行購金年增 42–62%，需求面並未消失，只是分散到更便宜的商品與區域（news.md、sentiment.md）。</li>
+<li>空方可能稱：「Fed 鷹派、美元強、實質利率升，黃金承壓。」<br />
+  反駁：此三項已高度計價（12 月升息機率 95–96%），屬於已知利空，下行空間有限；而 12 月 CPI、NFP、FOMC 三大事件若任一不如鷹派預期，將帶來不對稱的上行驚喜。</li>
+<li>空方可能稱：「折溢價異常 +4.59%，資料品質堪憂。」<br />
+  反駁：fundamentals.md 本身指出此為 NAV 時點或快取差異所致，買賣價差僅 0.01%，流動性與市場效率並未真正失衡，不影響中期方向判斷。</li>
+</ul>
+<h2>信心水準</h2>
+<p>6/10。結構性買盤（央行、全球 ETF）與超跌技術反彈訊號具體可查，上行試算有分析師目標價為依據；但扣分因素包括：新聞與情緒資料僅更新至 11-18/19、GLD 自身資金流偏弱、MA 排列仍全面偏空且尚未真正翻轉，須待 12 月 CPI/FOMC 驗證催化劑是否兌現。</p>
+<p>BULL ROUND 1 COMPLETE</p></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-red-700 mb-2">🐻 空方 (Bear)</h4>
+          <div class="agent-prose text-sm bg-red-50 p-3 rounded border border-red-200"><h1>Bear case round 1 — GLD</h1>
+<h2>Thesis（一句話）</h2>
+<p>在 Fed 鷹派加息押注升溫、10 年期實質利率由 2.63% 急升至 2.92%、美元走強、且 GLD 技術面全面轉空（價格跌破 MA20/MA50/MA200 並創 52 週新低）的宏觀與動能雙重逆風下，GLD 不具備進場理由，應避開或偏空操作。</p>
+<h2>需求 / 市場風險</h2>
+<ul>
+<li>黃金避險屬性在 2026 年明顯弱化：news.md 引用報導指出，黃金在戰爭與和談消息間的走勢更像風險資產而非傳統避險資產，削弱「亂世買金」的敘事基礎。</li>
+<li>資金面同樣偏空：GLD 單月（2026-10）淨流出約 18 億美元，為 6 月以來最大流出；2026 年迄今美國掛牌金 ETF 淨流出約 17 億美元，同期低費率競品 GLDM 卻淨流入約 41 億美元——資金正從 GLD 輪動至更便宜的替代品，顯示 GLD 本身的結構性相對弱勢，而非黃金需求全面消失。</li>
+<li>美國為全球流出端：全球黃金 ETF 2026-10 淨流入約 27 億美元，但流入集中於歐洲與亞洲，北美（含 GLD 所在市場）為流出來源，顯示美國投資者對黃金的邊際需求正在減弱。</li>
+</ul>
+<h2>宏觀 / 定價風險（取代傳統「利潤率」風險）</h2>
+<ul>
+<li>實質利率是黃金最直接的負相關變數：10 年 TIPS 殖利率由 11-06 的 2.63% 連續上升至 11-16 的 2.92%，為 2026-11 金價重挫的主因之一。</li>
+<li>Fed 12 月加息押注升至 95–96%（11 月中旬估計，CME FedWatch 二手引述），12-09 FOMC 與 12-10 CPI 為兩大近期催化劑，若數據偏熱，實質利率與加息預期可能進一步上升，持有無息資產的機會成本將再度上升。</li>
+<li>美元走強（DXY 傳接近 19 個月高點，惟數字來源不一）同步壓低以美元計價金價。</li>
+<li>現貨金已自 2026-01-29 歷史高點約 5,405–5,595 美元/oz 回落逾三成，11 月中旬跌至 2025-09 以來最低（約 3,780–3,852 美元區間，來源不一但方向一致）。</li>
+</ul>
+<h2>估值風險（以技術位與策略師目標類比）</h2>
+<ul>
+<li>Bear：若跌破 52 週低點 $313.96（同時貼近 BB 下軌 $316.32），以現價 $332 計算下跌約 -5.5% 至 -6%；再以 ATR14 $8.32 做二倍延伸，潛在目標約 $297，較現價下跌約 -10.5%。</li>
+<li>Worst：策略師端已有分歧且偏空，Goldman Sachs 將 2026 年底金價目標由 $4,650 下修至 $4,150，另有一則來源將目標下修至 $3,500/oz（看空端）。若現貨金真的向 $3,500 區間靠近（遠低於目前 3,780–3,900 美元區間），GLD 作為實物追蹤型 ETF 理應同向大幅下修，雖缺乏精確換算比例，但方向上隱含較現價顯著更大的下檔空間。</li>
+<li>另需注意：fundamentals.md 顯示市價 332.16 對 navPrice 317.58 溢價 4.59%，若此溢價為真實而非數據時點誤差，一旦收斂，單靠折溢價修正即有約 -4.6% 的額外下行壓力。</li>
+</ul>
+<h2>競爭 / 監管威脅</h2>
+<ul>
+<li>內部競爭：GLDM 等低費率實物金 ETF 持續分食 GLD 資金（YTD 流入 +41 億美元 vs GLD 流出 -17 億美元），長期可能侵蝕 GLD 的規模優勢與流動性溢價。</li>
+<li>央行購金雖為結構性支撐，但波蘭央行已達 700 噸目標、11 月可能暫停採購，顯示官方部門買盤增速可能邊際放緩。</li>
+</ul>
+<h2>Tactical（技術面）</h2>
+<ul>
+<li>關鍵跌破位：$313.96（52 週低點，11-25 盤中觸及，亦為下軌支撐 $316.32 鄰近區）。跌破此位，前低結構失效，偏空格局延續，ATR 延伸目標約 $297。</li>
+<li>均線死亡交叉已成立（MA20 $352.21 &lt; MA50 $369.72 &lt; MA200 $403.16），價格全面位於三條均線之下（-5.7% / -10.2% / -17.6%），原支撐 $363.32/$363.60 已轉為上方壓力。</li>
+<li>MACD 仍為負（-12.61 / signal -10.30 / hist -2.32），雖收斂但未翻正；RSI14 僅 35.6，未達超賣，反彈力道存疑。</li>
+<li>Tickeron 演算法訊號（2026-11-10~12）給出續跌機率 68%–73%，與技術結構一致。</li>
+<li>11-25 長下影放量反彈顯示短線承接，但在 MACD 翻正、收盤站上 MA20（$352.21）之前，任何反彈僅屬技術性修正，非趨勢反轉。</li>
+</ul>
+<h2>Rebuttal to bull round 0</h2>
+<p>目前尚無 round 0 的多方報告可供逐點反駁（debate/round_0_bull.md 不存在）。預先回應最可能的多方論點：<br />
+- 可能論點：「央行購金與全球 ETF 持倉創紀錄，長線結構仍多。」<br />
+  反駁：全球層級數據與 GLD 單一標的脫鉤——GLD 本身資金是淨流出且流向競品 GLDM，北美是全球流出端，結構性多方論點無法轉化為 GLD 的價格支撐，且央行買盤（如波蘭）已接近目標、增速可能放緩。<br />
+- 可能論點：「RSI 已從 23.7 反彈至 35.6，超賣後止跌。」<br />
+  反駁：35.6 仍遠低於 50 中性線，且未脫離空頭排列（MA20&lt;MA50&lt;MA200）與負值 MACD，技術性反彈不等於趨勢反轉，站上 MA20 $352.21 之前不應視為轉強訊號。</p>
+<h2>Confidence</h2>
+<p>6/10。宏觀邏輯（實質利率上升、美元走強、Fed 鷹派）與技術面（死亡交叉、創 52 週新低、資金淨流出）高度一致，方向性偏空證據充分；但多項數據源不一致（DXY、TIPS 殖利率、金價區間皆為二手且彼此矛盾）、11-19 至 11-28 資料完全缺失、且 GLD 市價對 NAV 溢價異常未經核實，使精確下檔目標與時點判斷的信心受限。</p>
+<p>BEAR ROUND 1 COMPLETE</p></div>
+        </div>
+      </div>
+    </details>
+
+    <details class="mb-4 border border-slate-200 rounded">
+      <summary class="bg-slate-50 px-4 py-2 font-semibold">Phase 4 — 風險辯論 (Risk debate)</summary>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 p-4">
+        <div>
+          <h4 class="font-bold text-red-700 mb-2">⚡ 進攻 (Aggressive)</h4>
+          <div class="agent-prose text-sm bg-red-50 p-3 rounded border border-red-200"><h1>Aggressive risk view — GLD</h1>
+<h2>Where trader is too cautious</h2>
+<ul>
+<li>完全 AVOID 新倉，連「小規模戰術性觀察倉」都不建立。但 11-25 長下影放量反彈、RSI14 由 23.7 回升至 35.6、MACD histogram 連三日收斂（-3.42 → -3.08 → -2.32）三項動能訊號同時出現且各有明確日期，這種多重止跌訊號共振在明確空頭趨勢中段並不常見，屬於有意義的轉折點，報告把它標記為「尚未確認反轉」後就整體放棄，等於主動放掉這個進場窗口。</li>
+<li>轉偏多的確認條件「收盤站回 MA20 $352.21 且 MACD histogram 翻正」本身滯後——等到真正確認時，從 $313.96 低點算起的反彈很可能已經走完大半，剩餘空間遠低於現在進場可拿到的 $20 區間，等待本身就是在吃掉 alpha。</li>
+<li>對既有多單只給「考慮減碼」這種模糊建議，沒有提出用選擇權同時保留曝險、限制下檔的替代方案，錯失「留在場內但把最大損失鎖死」的做法。</li>
+</ul>
+<h2>Recommended adjustments</h2>
+<ul>
+<li>Size：無倉 → 小型戰術性多單試探（明顯低於半倉，但非零）。理由：三項止跌訊號同時出現，且現價距 52 週低點僅 +5.8%，下檔空間本身有限，反彈的機率與空間相對不對稱。</li>
+<li>Stop：若做多，不必套用 $313.96（距現價 -5.4%，風險預算過大），改用更貼近的結構性低點 $320.95（11-20 盤中低點），距現價僅 $11.10，仍是真實支撐而非隨意設置，不會比用 52 週低點更容易被正常波動洗出。</li>
+<li>Entry：現在分批進場（例如一半倉位現價 $332 附近進，另一半待 MACD histogram 翻正後加碼），不要全部等待收盤確認，降低錯過初段反彈的風險。</li>
+<li>Consider：用選擇權表達同一個止跌多頭觀點，把最大損失鎖定在權利金，例如 GLD call spread $340/$355，到期選在 CPI/FOMC 之後（約 2026-12-19），可在事件窗期間維持曝險而不必承擔現貨全額下檔（本次無選擇權報價資料，權利金需以實際報價核實，此處僅為結構示意）。</li>
+</ul>
+<h2>Asymmetry argument</h2>
+<p>現貨多單情境（以 100 股為例）：進場 $332.05、停損 $320.95，最大損失 = 100×$11.10 = $1,110；目標看 MA20 $352.21，獲利 = 100×$20.16 = $2,016。B/A ≈ 1.82，雖未達報告要求的 2.0 門檻，但遠優於現價放空的 0.9，且下檔已貼近 52 週低點，結構性風險有限。選擇權替代方案可把最大損失壓到遠低於 $1,110（視實際權利金而定），在同一方向判斷下進一步縮小絕對虧損金額。</p>
+<h2>What I'd push for</h2>
+<p>在現價附近以明顯小於半倉的規模分批建立戰術性多單，停損設在 $320.95（非 $313.96，也非更緊的隨意價位），目標看 MA20 $352.21；若能核實選擇權報價，優先以 call spread 方式參與，將最大虧損鎖定在已知權利金內，讓倉位能安然度過 12-04 至 12-10 事件窗，而不必完全空手旁觀。同時我認同報告對「現價放空」的否決是正確的（R:R 僅 0.9，確實不足），這部分不需要調整。</p>
+<p>AGGRESSIVE VIEW COMPLETE</p></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-blue-700 mb-2">🛡️ 保守 (Conservative)</h4>
+          <div class="agent-prose text-sm bg-blue-50 p-3 rounded border border-blue-200"><h1>Conservative risk view — GLD</h1>
+<h2>Where trader is太過積極</h2>
+<ul>
+<li>trade_proposal 結論已是 AVOID，方向正確，但「觀察清單」與既有倉位建議仍留了一個危險後門：一旦收盤跌破 $313.96 就暗示可「重新評估中等信心 SHORT」。問題是，跌破 52 週低點當天往往伴隨最大恐慌性成交量與滑價，此時才追空等於在波動率最高、流動性最差的時刻進場，而非趨勢確立後進場，執行風險被低估。</li>
+<li>investment_plan 的 sizing guidance 寫「若要表達空方觀點，僅限小規模試探（明顯低於半倉）」——即使是「小規模」，在 20 日年化波動率 34.5%、ATR14 達現價 2.5%（$8.32）的環境下，任何新倉位（無論多空）在 12-04 NFP 到 12-10 CPI/FOMC 這段三個二元事件疊加的視窗內都應視為 0 倉位，而非「小規模」，因為單日跳空幅度可輕易達 1.5–2 倍 ATR（約 $12–17）。</li>
+<li>既有多單的停損建議「$313.96 下方」過於寬鬆：若多單成本在 $360–370 區間（MA50 附近，近三個月常見持倉成本），停在 $313.96 意味單筆虧損達 $46–56／股（約 13–15%），遠超一般 2× ATR（約 $16.6）風險預算，屬於停損過寬。</li>
+</ul>
+<h2>Tail scenarios</h2>
+<ul>
+<li>Scenario A（機率約 30%）：12-09 FOMC 點陣圖偏鷹、12-10 CPI 偏熱 → 10 年 TIPS 實質利率突破 3%，GLD 跌破 $313.96 並加速至 ATR 延伸位約 $297，單日跌幅可達 $15–20（對應既有多單每股虧損擴大至 $60+）。</li>
+<li>Scenario B（機率約 20%）：NFP/CPI 數據偏冷、Fed 轉鴿 → 實質利率回落，GLD 快速彈升站回 MA20 $352.21，若此時已持有空單試探倉，逆勢虧損約 $20／股（現價至 MA20 距離），觸及放空邏輯停損。</li>
+<li>Scenario C（機率約 15%）：地緣或信用事件觸發避險買盤，與實質利率上升同時發生（相關性斷裂），價格不理性跳空，任一方向倉位皆可能在無法即時出場的情況下虧損擴大。</li>
+</ul>
+<h2>Recommended adjustments</h2>
+<ul>
+<li>Size：維持 0 倉位（新倉）。既有多單：由「全倉持有」降至 Small（建議減碼至少 1/3 至 1/2），不要等到跌破 $313.96 才動作。</li>
+<li>Stop：既有多單邏輯停損由「$313.96 下方」收緊至 $320.95（11-20 盤中低點，一倍 ATR 距離內），避免把最後支撐跌破後的加速段也納入可承受範圍。</li>
+<li>Entry：任何新方向性倉位（多或空）等待 12-10 CPI/FOMC 後確認，且需收盤（非盤中）站回 $352.21 或跌破 $313.96 才可考慮，事件前不進場。</li>
+<li>Consider：若必須維持曝險，以縮小現貨部位 + 觀察 GLDM／實質利率代理指標對沖，而非直接開新方向性倉位。</li>
+</ul>
+<h2>Position-level $ 風險</h2>
+<p>以既有多單假設成本 $365、持股 100 股為例：若停損設於建議的 $320.95，虧損 = ($365 − $320.95) × 100 ≈ $4,405；若維持原建議 $313.96，虧損 ≈ ($365 − $313.96) × 100 ≈ $5,104，多出約 $700（+16%）。以 NAV $100,000 計算分別約 4.4% 與 5.1%——後者已偏高，不建議接受。</p>
+<h2>我會堅持的調整</h2>
+<p>在三個二元宏觀事件（NFP、FOMC、CPI）疊加且 R:R 僅 0.9 的條件下，新倉位應維持零曝險；既有多單應立即減碼至少三分之一並將邏輯停損收緊至 $320.95（約一倍 ATR），而非沿用寬鬆的 $313.96，以避免在流動性最差、滑價最大的跌破時刻才被迫承受最大單日虧損。</p>
+<p>CONSERVATIVE VIEW COMPLETE</p></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-slate-700 mb-2">⚖️ 中立 (Neutral)</h4>
+          <div class="agent-prose text-sm bg-slate-100 p-3 rounded border border-slate-300"><h1>Neutral risk view — GLD</h1>
+<h2>Points of agreement (both sides)</h2>
+<ul>
+<li>現價放空 R:R 僅 0.9，低於門檻，雙方都不反對放棄現價空單。</li>
+<li>兩方「各自獨立」都把停損從 trade_proposal 原建議的 $313.96（52 週低點）改成 $320.95（11-20 盤中低點，約 1 倍 ATR）。一邊是為了讓新多單 R:R 更合理，另一邊是為了收緊既有多單風險，但殊途同歸，這是本次辯論最值得採納的交集，說明 $313.96 作為停損確實偏寬、容易把跌破當日的恐慌加速段也納入可承受範圍。</li>
+</ul>
+<h2>Aggressive overreach</h2>
+<ul>
+<li>Where：主張現價分批建立小型戰術性多單，甚至用「等確認就錯過反彈」當理由跳過確認步驟。</li>
+<li>Why：market.md／investment_plan 都明確寫「尚未確認趨勢反轉」，且 12-04 至 12-10 三個二元事件密集，動能止跌訊號真實但不等於進場訊號。aggressive 自己算出的多單 R:R 僅 1.82，仍低於報告內部對放空要求的 2.0 門檻，卻在此選擇性放寬標準，標準不一致。選擇權結構未核實報價即當作風險已鎖定的替代方案,也屬於未經驗證的樂觀假設。</li>
+</ul>
+<h2>Conservative overreach</h2>
+<ul>
+<li>Where：假設既有多單成本 $365、要求「無論多空任何新倉位事件前都必須為零」，並賦予 tail scenario 具體機率（30%/20%/15%）。</li>
+<li>Why：成本基礎與機率數字皆為虛構示意，非報告實際資料，精確到百分位反而製造假確定性。把「小規模試探」直接等同「零」過於武斷,原始投資計畫本身已允許「明顯低於半倉」的空方試探倉位，只是尺度問題,不是方向錯誤。</li>
+</ul>
+<h2>Balanced adjustment proposal</h2>
+<ul>
+<li>Size：不建立任何新方向性倉位（多或空）直到 12-10 CPI/FOMC 後確認 Crux 1、2；既有多單（若有）溫和減碼約 30%，而非強制砍 1/3–1/2。</li>
+<li>Stop：既有多單邏輯停損收緊至 $320.95（取代 $313.96），事件前不放寬。</li>
+<li>Entry：新倉等收盤（非盤中）站回 $352.21 或跌破 $313.96 才考慮，不分批搶跑。</li>
+<li>Hedge：若要在事件窗維持曝險，優先核實 GLD $340/$355 call spread 真實報價後再評估，而非無報價假設；否則以縮小現貨部位為主。</li>
+<li>Time horizon：聚焦 12-04 至 12-10 事件窗，事件後依結果重新定案。</li>
+</ul>
+<h2>Net $ risk if stop hits</h2>
+<p>以既有多單假設成本 $365、100 股減碼 30% 至 70 股估算：($365−$320.95)×70 ≈ $3,082（約 NAV $100,000 的 3.1%）。</p>
+<h2>Net $ upside at T1 / T2</h2>
+<p>自現價 $332.05 回升至 T1＝MA20 $352.21：$20.16×70≈$1,411；T2＝前支撐轉壓力 $363：$30.95×70≈$2,167（皆為帳面虧損縮小，非新增多單之獲利）。</p>
+<p>NEUTRAL VIEW COMPLETE</p></div>
+        </div>
+      </div>
+    </details>
+
+  </div>
+
+  <script>
+    (function() {
+      var d = {};
+      if (!d.dates) return;
+      var traces = [
+        {x: d.dates, y: d.close, name: 'Close',  line: {color: '#1f2937', width: 2}},
+        {x: d.dates, y: d.ma20,  name: 'MA20',   line: {color: '#0ea5e9', width: 1, dash: 'dot'}},
+        {x: d.dates, y: d.ma50,  name: 'MA50',   line: {color: '#f59e0b', width: 1, dash: 'dot'}},
+        {x: d.dates, y: d.ma200, name: 'MA200',  line: {color: '#ef4444', width: 1, dash: 'dash'}}
+      ];
+      var layout = {
+        margin: {l: 50, r: 20, t: 10, b: 40},
+        legend: {orientation: 'h', y: -0.15},
+        xaxis: {showgrid: false},
+        yaxis: {title: '價格 ($)'}
+      };
+      Plotly.newPlot('chart-GLD', traces, layout, {displayModeBar: false, responsive: true});
+    })();
+  </script>
+
+</section>
+
+
+<section id="ticker-TLT" class="mb-10 bg-white rounded-lg shadow overflow-hidden">
+
+  <div class="flex items-start justify-between p-6 border-b border-slate-200 verdict-HOLD">
+    <div>
+      <h2 class="text-3xl font-bold">TLT</h2>
+      <p class="text-sm mt-1 opacity-80">iShares 20+ Year Treasury ETF</p>
+    </div>
+    <div class="text-right">
+      <div class="text-4xl font-bold">HOLD</div>
+      <div class="text-sm opacity-80 mt-1">REJECT</div>
+    </div>
+  </div>
+
+  <div class="p-6 grid grid-cols-1 lg:grid-cols-2 gap-6">
+
+    <div>
+      <h3 class="text-lg font-bold mb-2">價格 + 技術指標 (2 年)</h3>
+      <div id="chart-TLT" style="height: 380px;"></div>
+    </div>
+
+    <div>
+      <h3 class="text-lg font-bold mb-2">最終決策 (Final decision)</h3>
+      <div class="agent-prose text-sm bg-slate-50 p-4 rounded border border-slate-200">
+        <p>FINAL TRANSACTION PROPOSAL: <strong>HOLD</strong></p>
+<h1>Final decision — TLT as of 2026-11-28</h1>
+<h2>FINAL TRANSACTION PROPOSAL: <strong>HOLD</strong></h2>
+<h2>Verdict</h2>
+<p>REJECT</p>
+<h2>部位狀態與否決理由</h2>
+<p>TLT 不在 <code>held_tickers.txt</code>,屬新倉,走 A 框架。交易員提案本身是 AVOID(事件前不建倉),我同意這個結論:<strong>本次不建立任何 TLT 部位,現股與選擇權皆不做</strong>。第一行的 HOLD 代表「維持零部位觀望」,不是續抱。</p>
+<p>Dealbreaker 有三項:<br />
+1. <strong>R:R 不足。</strong> 以現價 $81.33 進場、停損 $78.60、T1 $84.00 計算,R:R 僅 0.98;對稱使用 ±35bp 情境時上下檔皆約 ±5.1%,沒有不對稱優勢。<br />
+2. <strong>方向證據偏空,但價格未確認。</strong> 空方宏觀證據(FOMC 10–2、Waller 50bp 門檻、核心 CPI 月增 0.3%、非農 +16.5 萬)品質與時效較佳,多方的更高低點結構($76.43 → $79.11)也未被破壞,價格位於 $79.11–$82.81 區間中段。<br />
+3. <strong>事件風險無法用現有 ATR 衡量。</strong> 12/04、12/09、12/10 三事件集中在六個交易日內,存續期間約 14.7 年,ATR14 $0.81 是平靜期數字,結構價位停損在跳空時會滑價。</p>
+<h2>Risk debate adjudication</h2>
+<ul>
+<li>Aggressive 最強的論點: 低實現波動加上確定的事件窗口,是便宜凸性;等收盤確認會讓出前段行情。停損設 $78.60 而非 $79.11,避開共識結構位,這點我採納作為日後進場的參考。</li>
+<li>Conservative 最強的論點: FOMC(12/09)看不到隔日的 CPI(12/10),兩日內可能雙向穿越 $79.11,造成連續停損;半倉是用平靜期的尺量事件週的風險。</li>
+<li>Net: 我較重視 <strong>conservative</strong>。Aggressive 自己算出的現股 R:R 約 1:1,且承認 call spread 未經實際報價覆核,不足以支持現在進場。Neutral 的 0.4% NAV 選擇權方案同樣沒有報價依據,我不批准。但 conservative 的 Scenario A 機率 5–10% 缺乏來源(投資計畫引用的單一來源估 50bp 機率約 1%),雙重停損也可能兩邊被洗,這兩點不採納。</li>
+</ul>
+<h2>論點支柱</h2>
+<p>此為日後轉多的前提條件,目前不足以支持進場。</p>
+<table>
+<thead>
+<tr>
+<th>支柱</th>
+<th>當初的預期</th>
+<th>現況</th>
+<th>判定</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Carry 緩衝</td>
+<td>SEC 殖利率處多年高位</td>
+<td>5.26%(iShares,11/23)</td>
+<td>成立</td>
+</tr>
+<tr>
+<td>長端需求</td>
+<td>拍賣不失敗</td>
+<td>30Y 尾差 0.4bp,Bid-to-cover 2.36(前次 2.54)</td>
+<td>觀察中</td>
+</tr>
+<tr>
+<td>通膨與就業降溫</td>
+<td>核心 CPI 月增 ≤0.2%、非農放緩</td>
+<td>10 月核心 CPI 月增 0.3%、非農 +16.5 萬</td>
+<td>已失效</td>
+</tr>
+<tr>
+<td>價格結構</td>
+<td>更高低點並突破 $82.81</td>
+<td>守住 $79.11,但低於下彎的 MA200 $84.00,未突破</td>
+<td>觀察中</td>
+</tr>
+</tbody>
+</table>
+<h2>論點失效條件</h2>
+<p>目前無部位,以下條件決定「轉多」這個選項是否從觀察名單移除。<br />
+- 若 11 月核心 CPI 月增 ≥0.3%(12/10 公布),通膨降溫支柱連續兩個月失效 → 放棄轉多,不再等突破。<br />
+- 若 12/09 FOMC 升息 50bp,或 dot plot 顯示 2027 年仍有升息 → 「利空出盡」論點失效,放棄轉多。<br />
+- 若 12 月中 30Y 拍賣 Bid-to-cover 低於 2.30,或尾差超過 2bp → 長端需求支柱失效。<br />
+- 若 TLT 收盤跌破 $79.11 → 價格結構支柱失效,下一個參考位 $76.43。</p>
+<h2>Monitoring trigger</h2>
+<p>若 11 月核心 CPI 月增 ≤0.2%、非農明顯放緩,且 TLT 帶量收盤站穩 $82.81 以上,重新送審 LONG 提案。屆時第一筆上限為正常倉位的 1/4,停損參考 $78.60,隔日收盤確認後才加碼。若只有價格突破而數據未配合,不進場。12/10 CPI 公布後無論結果都重新評估一次。</p>
+<h2>Catalyst calendar</h2>
+<ul>
+<li>2026-12-04 — 11 月非農就業數據</li>
+<li>2026-12-09 — FOMC 利率決議(看不到 12/10 的 CPI)</li>
+<li>2026-12-10 — 11 月 CPI</li>
+<li>2026-12 中旬 — 30Y 公債拍賣</li>
+<li>2027-02-03 — 財政部再融資公告</li>
+</ul>
+<p>FINAL DECISION COMPLETE</p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="px-6 pb-6">
+
+    <details class="mb-4 border border-slate-200 rounded">
+      <summary class="bg-slate-50 px-4 py-2 font-semibold">投資計劃 (Research manager)</summary>
+      <div class="agent-prose p-4 text-sm"><h1>Investment plan — TLT as of 2026-11-28</h1>
+<h2>Directional stance</h2>
+<p>NEUTRAL — conviction MEDIUM（略偏空；這裡的 MEDIUM 指「事件前沒有明確優勢」這個判斷有中等把握，不代表方向信心）</p>
+<h2>Crux of debate</h2>
+<ol>
+<li>Crux 1：12 月升息 25bp 是否已完全計價，真正的風險是不是 50bp 和 dot plot 偏鷹？10 月核心 CPI 月增 0.3% 已達到 Waller 說的 50bp 門檻，但只有單一來源估 50bp 機率約 1%。多方的「利空出盡」論點要成立，前提是這個數字可信。</li>
+<li>Crux 2：11 月數據（12/04 非農、12/10 CPI）會不會降溫？要注意 CPI 在 FOMC 隔日才發布，所以 12/09 的決議看不到這份數據，市場要到 12/10 才會重新定價。</li>
+<li>Crux 3：區間 $79.11–$82.81 會往哪邊突破？這是唯一能在事件前驗證方向的價格訊號。</li>
+</ol>
+<h2>Where the bull is right</h2>
+<ul>
+<li>30 日 SEC 殖利率 5.26%（iShares，11/23）有來源，carry 確實是多年高位。空方用 <code>yield</code> 欄位口徑矛盾來削弱這一點，說服力不足。</li>
+<li>30Y 拍賣尾差只有 0.4bp，需求轉弱但沒有失敗，長端還沒出現買盤枯竭。</li>
+<li>技術面出現更高的低點（$76.43 → $79.11），價格站上 MA20 和 MA50，MA50 已走平。</li>
+<li>實質薪資為負、U-6 升至 7.9%，代表勞動市場不是全面強勁，數據降溫的可能性存在。</li>
+</ul>
+<h2>Where the bear is right</h2>
+<ul>
+<li>宏觀證據多元、有日期、彼此同向：FOMC 投票 10–2 且兩位委員主張升息、Waller 提出 50bp、核心 CPI 超出預期、非農 +16.5 萬。多方對這些證據的回應大多是「已計價」，沒有實證支撐。</li>
+<li>資金流入數據停在 2026 年 8–9 月，已經過時；原文本身也警告這是「接刀」。多方把它當成近期機構布局，屬於誤用。</li>
+<li>多方的不對稱 R:R 是靠挑情境算出來的：上檔用 -50bp，下檔只算重測技術低點。如果對稱使用 ±35bp，上下檔都約 ±5.1%，沒有優勢。</li>
+<li>價格仍在下彎的 MA200（$84.00）之下，RSI 從 62.6 回落到 54，MACD 柱狀體連兩日收斂。</li>
+<li>再融資和期限溢酬是中期的結構性逆風，但期限溢酬數值的日期不明，權重應該打折。</li>
+</ul>
+<h2>Net verdict (3-5 sentences)</h2>
+<p>空方的宏觀證據在品質和時效上都勝過多方。多方最強的兩點（SEC 殖利率、拍賣沒有失敗）屬於緩衝，不足以構成催化劑。不過鷹派路徑大部分已反映在價格上，技術面也處在區間中段，空方「再上行 35–50bp」的情境同樣缺少新的觸發條件。12/04 到 12/10 這一週有三個高影響事件，在此之前以 ATR 約 $0.81 的低波動來看，任何方向的部位都主要是在押事件，不是在取得優勢。結論是中性：等區間突破或數據確認後再表態，偏向是「下檔意外的機率略高」。</p>
+<h2>What would change the verdict</h2>
+<ul>
+<li>Upside trigger：11 月核心 CPI 月增 ≤0.2%，同時非農明顯放緩，而且 TLT 帶量站穩 $82.81 以上；或者 FOMC 升 25bp 但沒有委員主張 50bp、聲明語氣軟化。這些情況可轉為低到中等信心的 LONG。</li>
+<li>Downside trigger：核心 CPI 月增 ≥0.3% 再度出現，或 dot plot 暗示 2027 年還會升息，而且 TLT 收盤跌破 $79.11。這些情況轉為 SHORT_OR_AVOID，下一個目標看 $76.43。</li>
+<li>Key data point to monitor：30Y 殖利率能否守在 5.46–5.47% 附近（11 月中高點），以及 12 月中 30Y 拍賣的 Bid-to-cover（11 月為 2.36，前次 2.54）。</li>
+</ul>
+<h2>Position-sizing guidance (qualitative, not advice)</h2>
+<p>中性判斷：維持零部位或極小觀察部位，不要在事件前建立方向性曝險。14.7 年的存續期間會把利率跳空放大。若之後觸發上述任一條件，第一筆以半倉為上限，確認後再加碼。停損參考價格結構：多單看 $79.11，空方立場失效點看 $82.81。</p>
+<h2>Time horizon</h2>
+<p>戰術層面是數日到兩週，聚焦 12/04–12/10 的事件窗口。中期的期限溢酬和供給論點則以季度為單位，下一次再融資公告在 2027-02-03。</p>
+<p>INVESTMENT PLAN COMPLETE</p></div>
+    </details>
+
+    <details class="mb-4 border border-slate-200 rounded">
+      <summary class="bg-slate-50 px-4 py-2 font-semibold">交易提案 (Trader)</summary>
+      <div class="agent-prose p-4 text-sm"><p>FINAL TRANSACTION PROPOSAL: <strong>HOLD</strong></p>
+<h1>Trade proposal — TLT as of 2026-11-28</h1>
+<h2>Direction</h2>
+<p>AVOID（中性，事件前不建倉；若目前已有部位則視為 HOLD 不加碼）</p>
+<h2>Setup</h2>
+<p>不提出進場價格區間。理由：research manager 的結論是 NEUTRAL、信心 MEDIUM（僅代表「事件前無明確優勢」的判斷把握度，不代表方向信心），且技術面本身也處於區間中段，無突破訊號：<br />
+- 現價 $81.33，站上 MA20 $81.04（+0.35%）與 MA50 $80.12（+1.51%），但仍低於下彎的 MA200 $84.00（-3.18%）。<br />
+- 過去五週區間為 $79.11（11/13 低點）至 $82.42–$82.81（11/06、11/25 高點），尚未向任一方向突破。<br />
+- RSI14 由 62.6 回落至 54.0，MACD 柱狀體連兩日收斂（+0.122 → +0.100），動能降溫、未確認加速。<br />
+- ATR14 僅 $0.81（約價格 1.0%），20 日年化波動率 11.8%，屬低波動區間整理，事件前波動尚未展開。</p>
+<p>空方宏觀證據（FOMC 10–2 投票且兩位委員主張升息、Waller 的 50bp 門檻、核心 CPI 月增 0.3%、非農 +16.5 萬）在品質與時效上優於多方（SEC 殖利率 5.26%、拍賣尾差 0.4bp），但多方的更高低點結構（$76.43 → $79.11）也未被破壞。雙方均缺乏在 12/04–12/10 事件窗口前可驗證的新催化劑，因此不具備足夠不對稱的 R:R 進場。</p>
+<h2>Sizing</h2>
+<p>不建倉 / 維持現有極小觀察倉（如有）。<br />
+Rationale：conviction MEDIUM 但方向信心低；ATR $0.81、20 日年化波動率 11.8% 屬低波動，但 TLT 存續期間約 14.7 年，利率事件日容易出現跳空，低 ATR 無法代表事件日風險，反而放大未來部位的實際波動暴露。</p>
+<h2>Time horizon</h2>
+<p>戰術層面：數日至兩週，聚焦 12/04（非農）、12/09（FOMC）、12/10（CPI）事件窗口；中期（期限溢酬、供給論點）以季度為單位，下次再融資公告在 2027-02-03。</p>
+<h2>Trigger</h2>
+<p>Wait for：<br />
+- 轉向 LONG（低至中信心）：11 月核心 CPI 月增 ≤0.2% 且非農明顯放緩，同時 TLT 帶量收盤站穩 $82.81 以上；或 FOMC 升 25bp 但無委員主張 50bp、聲明語氣轉軟。<br />
+- 轉向 SHORT_OR_AVOID（偏空情境，下一目標看 $76.43）：核心 CPI 月增 ≥0.3% 再現，或 dot plot 暗示 2027 年仍會升息，且 TLT 收盤跌破 $79.11。<br />
+- 事件前（12/04 之前）：不進場，僅觀察。</p>
+<h2>Invalidation</h2>
+<p>本提案的前提是「事件前無明確優勢」；一旦出現上述任一觸發條件並伴隨價格確認（站穩 $82.81 或跌破 $79.11），此 AVOID 判斷即失效，應依研究計畫的升級路徑重新評估方向與部位（第一筆以半倉為上限）。</p>
+<h2>Catalyst calendar</h2>
+<ul>
+<li>2026-12-04 — 11 月非農就業數據</li>
+<li>2026-12-09 — FOMC 利率決議（CPI 尚未公布，無法反映 12/10 數據）</li>
+<li>2026-12-10 — 11 月 CPI</li>
+<li>2027-02-03 — 下次財政部再融資公告</li>
+</ul>
+<p>TRADE PROPOSAL COMPLETE</p></div>
+    </details>
+
+    <details class="mb-4 border border-slate-200 rounded">
+      <summary class="bg-slate-50 px-4 py-2 font-semibold">Phase 1 — 四 Analyst 報告</summary>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+        <div>
+          <h4 class="font-bold text-slate-700 mb-2">基本面 (Fundamentals)</h4>
+          <div class="agent-prose text-sm bg-slate-50 p-3 rounded"><h1>Fundamentals — TLT as of 2026-11-28</h1>
+<p>資料說明：分析基準日 2026-11-28。工具回傳為快取資料（cached_at 2026-11-27 約 16:31–16:37 UTC），未見 2026-11-28 之後的資料。TLT 為 ETF（iShares 20+ Year Treasury Bond ETF，類別 Long Government），不適用公司營收、獲利、現金流、內部人交易分析，以下以基金結構指標取代。大部分 ETF 結構資料（存續期間、平均到期日、持有人、基金淨流量）工具無法提供，標示為 DATA_UNAVAILABLE。</p>
+<h2>Executive summary</h2>
+<p>TLT 為規模龐大的長天期美國公債 ETF（淨資產 47.52B USD，費用率 0.15%），結構面與流動性不構成問題，但存續期間、資金流向等核心結構資料缺失，無法完整評估。市價 81.26 USD 相對 NAV 82.19 USD 小幅折價約 1.1%，價格位於 52 週區間 76.43–90.86 的中下段，且低於 200 日均線（84.00）約 3.2%、高於 50 日均線（80.12）約 1.5%，技術面中性偏弱。估值指標（P/E、P/B、EV/EBITDA）對 ETF 不適用，本報告不提供買賣建議。</p>
+<h2>Revenue &amp; profitability</h2>
+<p>不適用。TLT 為被動追蹤指數的債券基金，無營收、毛利、營業利益或淨利。yfinance <code>financials</code> 回傳空值，EPS 欄位（trailing -12.586、forward -0.02）與 forwardPE（-4063）屬於無意義數值，不採用。</p>
+<p>基金層級的「收益面」僅能參考以下欄位：<br />
+- 3 年年化報酬（欄位原值 0.0136，推定為 1.36%）<br />
+- 5 年年化報酬（欄位原值 -0.0765，推定為 -7.65%）<br />
+- YTD 報酬 -2.92%<br />
+- 近 12 個月價格報酬 -8.83%（fiftyTwoWeekChangePercent）<br />
+- 近 3 個月報酬欄位 0.72213（單位未明，可能為 %，含配息口徑不明，未採用）</p>
+<h2>Cashflow &amp; balance sheet</h2>
+<p>不適用。ETF 無自身負債與現金流量表。<code>cashflow</code>、<code>quarterly_cf</code>、<code>balance_sheet</code> 工具回傳空值。</p>
+<p>基金資產端可取得：<br />
+- 淨資產（netAssets / totalAssets）：47,518,568,448 USD，即 47.52B USD<br />
+- bookValue 欄位為 148.865，與 NAV 82.19 明顯不一致，且 priceToBook 0.546 由此推算，判定為資料異常，不採用。</p>
+<h2>Capital allocation &amp; insider signal</h2>
+<ul>
+<li>配息：trailingAnnualDividendRate 2.152 USD（近 12 個月配息）。以 81.26 計算約 2.65%；以 trailingAnnualDividendYield 欄位 0.02617 為約 2.62%。但 <code>yield</code> 與 <code>dividendYield</code> 欄位為 4.76%（與 2.152 USD 配息不一致，推算需 3.87 USD 年配息），兩者無法調和，本報告以 2.6% 為較保守的推算值，4.76% 需以發行商公告 SEC yield 核對。</li>
+<li>買回（buyback）：ETF 不適用，無此項。</li>
+<li>內部人交易：ETF 無內部人，<code>insider</code> 工具回傳空值，判定不適用。</li>
+<li>機構持有人：<code>major_holders</code>、<code>inst_holders</code> 回傳空值，持有人集中度 DATA_UNAVAILABLE。</li>
+<li>基金淨流量（creation/redemption flows）：工具未提供，DATA_UNAVAILABLE。</li>
+</ul>
+<h2>Valuation</h2>
+<p>ETF 估值以 NAV 折溢價與費用率為主，傳統公司估值指標不適用。<br />
+- 市價 vs NAV：yf info 市價（regularMarketPrice）81.26 vs navPrice 82.19389，折價 -1.13%。fast_info 最新價 81.465（cnyes 來源）則折價約 -0.88%。兩者差異約 0.25%，屬報價時點差異，結論一致：小幅折價。<br />
+- 股數不一致：sharesOutstanding 109.7M 股，若以 NAV 82.19 計算僅約 9.0B USD，與 totalAssets 47.52B 不一致（以 AUM 反推約 578M 股）。股數欄位判定為異常，不採用。<br />
+- P/E、forward P/E、EV/EBITDA、P/FCF、P/S：不適用（ETF）。<br />
+- 費用率 0.15%：ETF 結構成本，相對被動長債基金屬低水準；同類（Long Government）中位數工具未提供，sector median 標示 n/a。<br />
+- 3 年 beta 2.30（yf 欄位原值）：相對大盤的敏感度欄位，對長債 ETF 而言代表其報酬對市場與利率變化高度敏感，僅作參考。</p>
+<h2>Key catalysts</h2>
+<ul>
+<li>無財報（ETF 不適用）。<code>earnings_dates</code> 工具回傳空值。</li>
+<li>利率與殖利率曲線：TLT 價格對長端公債殖利率高度敏感，為主要驅動因素。工具未提供即時殖利率或 Fed 政策資料，本節僅做定性描述，不宣稱特定排程事件。</li>
+<li>技術結構位（ta levels，依工具輸出）：</li>
+<li>壓力：87.79（2026-06-25）、83.60（2026-08-28）、82.42（2026-11-06）</li>
+<li>支撐：81.17（2026-08-18）、76.43（2026-10-07，亦為 52 週低點）</li>
+<li>現價 81.26 接近 81.17 支撐，且位於 82.42 壓力之下。</li>
+<li>成交量：當日量 17.99M 股，低於 3 個月均量 40.9M 與 10 日均量 42.3M，但快照可能為盤中值，不宜單獨解讀。</li>
+</ul>
+<h2>Metrics table</h2>
+<p>單位：價格 USD；AUM 為 USD B；其餘為比率或指標原值。本表無台幣或韓元金額，無需 億 換算。</p>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Latest</th>
+<th>YoY</th>
+<th>Sector median (estimate)</th>
+<th>Verdict</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>市價 (USD)</td>
+<td>81.26</td>
+<td>12M 價格 -8.83%</td>
+<td>n/a</td>
+<td>52 週區間中下段（距高點 -10.5%、距低點 +6.4%）</td>
+</tr>
+<tr>
+<td>NAV (USD)</td>
+<td>82.19</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>參考基準</td>
+</tr>
+<tr>
+<td>市價對 NAV 折溢價</td>
+<td>-1.13%</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>小幅折價</td>
+</tr>
+<tr>
+<td>淨資產 AUM (USD B)</td>
+<td>47.52</td>
+<td>DATA_UNAVAILABLE</td>
+<td>n/a</td>
+<td>規模大，流動性充足</td>
+</tr>
+<tr>
+<td>費用率</td>
+<td>0.15%</td>
+<td>n/a</td>
+<td>n/a（Long Government 中位數未提供）</td>
+<td>低，結構成本友善</td>
+</tr>
+<tr>
+<td>近 12 月配息 (USD)</td>
+<td>2.152</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>推算殖利率約 2.6%</td>
+</tr>
+<tr>
+<td>殖利率（yield 欄位）</td>
+<td>4.76%</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>與配息不一致，待核對</td>
+</tr>
+<tr>
+<td>存續期間 (duration)</td>
+<td>DATA_UNAVAILABLE</td>
+<td>DATA_UNAVAILABLE</td>
+<td>n/a</td>
+<td>無法評估利率敏感度</td>
+</tr>
+<tr>
+<td>平均到期日</td>
+<td>DATA_UNAVAILABLE</td>
+<td>DATA_UNAVAILABLE</td>
+<td>n/a</td>
+<td>無法評估</td>
+</tr>
+<tr>
+<td>持有人集中度</td>
+<td>DATA_UNAVAILABLE</td>
+<td>DATA_UNAVAILABLE</td>
+<td>n/a</td>
+<td>工具回傳空值</td>
+</tr>
+<tr>
+<td>基金淨流量</td>
+<td>DATA_UNAVAILABLE</td>
+<td>DATA_UNAVAILABLE</td>
+<td>n/a</td>
+<td>工具未提供</td>
+</tr>
+<tr>
+<td>3 年 beta</td>
+<td>2.30</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>對市場與利率敏感</td>
+</tr>
+<tr>
+<td>3 年年化報酬</td>
+<td>1.36%（推定）</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>欄位原值 0.0136</td>
+</tr>
+<tr>
+<td>5 年年化報酬</td>
+<td>-7.65%（推定）</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>欄位原值 -0.0765</td>
+</tr>
+<tr>
+<td>YTD 報酬</td>
+<td>-2.92%</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>年內偏弱</td>
+</tr>
+<tr>
+<td>價格 vs 200 日均線</td>
+<td>-3.18%</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>位於長期均線下方，偏弱</td>
+</tr>
+<tr>
+<td>價格 vs 50 日均線</td>
+<td>+1.51%</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>中期略偏多</td>
+</tr>
+<tr>
+<td>RSI(14)</td>
+<td>54.0</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>中性</td>
+</tr>
+<tr>
+<td>MACD 柱狀體</td>
+<td>+0.100</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>動能微正</td>
+</tr>
+<tr>
+<td>布林 %B</td>
+<td>0.58</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>中軸上方</td>
+</tr>
+<tr>
+<td>ATR(14)</td>
+<td>0.81（約 1.0% 價格）</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>波動中等偏低</td>
+</tr>
+<tr>
+<td>20 日年化波動</td>
+<td>11.8%</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>波動平穩</td>
+</tr>
+<tr>
+<td>P/E、EV/EBITDA、P/FCF、P/S</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>ETF 不適用</td>
+</tr>
+</tbody>
+</table>
+<h2>Red flags</h2>
+<ul>
+<li>存續期間、平均到期日、持有人與基金淨流量皆為 DATA_UNAVAILABLE，ETF 核心結構判斷缺口大。</li>
+<li>股數（109.7M）與 AUM / NAV 推算值不一致，股數欄位不可用。</li>
+<li>殖利率 4.76% 與 近 12 月配息 2.152 USD（約 2.6%）不一致，收益率口徑需核對。</li>
+<li>bookValue 148.865 與 NAV 82.19 不符，P/B 欄位不可用。</li>
+<li>買賣報價異常：bid 82.92、ask 82.97 高於現價 81.26，bidSize 1、askSize 17，報價同步性存疑。</li>
+<li>3 年 beta 2.30 顯示報酬對市場與利率的敏感度高。</li>
+<li>價格位於 200 日均線下方約 3.2%，52 週低點 76.43 與 81.26 距離僅約 6%，波動與利率變化下有再測低點的可能（僅描述結構，不構成建議）。</li>
+<li>快照資料來自快取，部分欄位（成交量、現價）可能為盤中值，數值之間存在 0.2 至 0.3 USD 的來源差異。</li>
+</ul>
+<p>FUNDAMENTALS REPORT COMPLETE</p></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-slate-700 mb-2">技術面 (Market / Technical)</h4>
+          <div class="agent-prose text-sm bg-slate-50 p-3 rounded"><h1>Technical — TLT as of 2026-11-28</h1>
+<p>資料基準：2026-11-27 收盤（最新可用 bar）。2026-11-28 之後資料視為未知，未納入。</p>
+<h2>Snapshot</h2>
+<p>Price $81.33, MA20 $81.04, MA50 $80.12, MA200 $84.00, RSI14=54.0, MACD hist=+0.10</p>
+<h2>Trend</h2>
+<p>橫盤偏多修復，長期趨勢仍弱。價格收於 MA20 ($81.04) 與 MA50 ($80.12) 之上，分別高出 +0.35% 與 +1.51%，但仍低於 MA200 ($84.00)，落差 -3.18%。MA20 自 10 月中的 $78.9 附近回升並持續上彎；MA50 在 11 月中後段由下彎轉為近乎走平（11/23 $80.09、11/25 $80.13、11/27 $80.12）；MA200 仍在下彎（9 月初 $86.28 至今 $84.00），趨勢結構上仍屬長期下降趨勢之中。</p>
+<p>MA50 與 MA200 之間仍有 -4.6% 的距離，距離黃金交叉或死亡交叉的判斷都尚遠，短期均線未形成明確交叉訊號。自 10/07 低點 $76.43（52 週低點）反彈後，價格在 $79.1–$82.9 區間震盪約五週；11/13 盤中低點 $79.11 與 11/06 高點 $82.42 之間構成目前區間主要邊界，11/25 盤中曾觸及 $82.81。趨勢強度屬中性，尚未形成趨勢性突破。</p>
+<h2>Momentum</h2>
+<p>MACD 線 +0.250 高於訊號線 +0.150，柱狀體為 +0.100，仍為正值。但柱狀體自 10/30 的 +0.506 高點持續收斂，11/12 轉負（-0.151），11/23 起轉正後，由 11/25 的 +0.122 回落至 11/27 的 +0.100，顯示動能偏弱且正在減速，尚未確認加速。MACD 線位於零軸附近，屬震盪區動能。</p>
+<p>RSI14 = 54.0，處於中性區間（非超買超賣），較 11/25 的 62.6 明顯回落，短線動能降溫。</p>
+<p>多週期報酬：1 個月 +0.42%、3 個月 -1.87%、6 個月 -5.17%、12 個月 -9.87%。短期（1 個月）轉為微幅正報酬，中長期報酬仍為負，與 MA200 之下的結構一致。</p>
+<h2>Key levels</h2>
+<ul>
+<li>阻力：$82.42（2026-11-06 區域高點）、$82.81（2026-11-25 盤中高點，來自 series 最近 bar，非 levels 輸出）、$83.60（2026-08-28 區域高點）、$87.79（2026-06-25 區域高點）</li>
+<li>支撐：$81.17（2026-08-18 區域低點，同時約略對應 MA20 $81.04）、$80.12（MA50）、$79.11（2026-11-13 盤中低點，近期區間下緣）、$76.43（2026-10-07，52 週低點）</li>
+<li>52 週高點：$90.86（距現價 -10.49%；本次 ta 輸出未提供該高點日期，不推測）</li>
+<li>52 週低點：$76.43（距現價 +6.41%）</li>
+<li>停損參考（邏輯性，非投資建議）：跌破 $79.11（近期區間下緣與 11/13 低點），若跌破則 $76.43 為下一個結構性支撐；後者距現價約 -6.0%。</li>
+</ul>
+<h2>Volatility profile</h2>
+<p>ATR14 = $0.81，約為價格的 1.0%，即一日典型波動約 ±$0.81。20 日年化波動率 11.8%，以此換算之一日標準差約 $0.60（81.33 × 11.8% / √252）。波動屬低檔區，布林帶寬（上軌 $82.94 - 下軌 $79.15）約為中軌的 4.7%。部位規模觀點：ATR 偏窄，同樣風險金額下可承受較大部位，但需注意債券類資產對利率事件的跳空風險，此處不作持倉建議。</p>
+<h2>Setup</h2>
+<p>中性，略偏多修復。條件如下：<br />
+- 價格站上 MA20 與 MA50，短期結構偏多；<br />
+- 自 10 月低點後形成更高的低點（$76.43 → $79.11），高點小幅墊高（$82.42 → $82.81）；<br />
+- 但價格仍在 MA200 之下，MA200 持續下彎，長期結構未翻正；<br />
+- MACD 柱狀體連續兩日收斂，RSI 由 62 回落至 54，動能降溫；<br />
+- 價格位於布林中軌附近（%B = 0.58），未觸及上下軌，無超買或超賣訊號。</p>
+<p>型態判讀：近五週為區間整理（range），下緣 $79.1、上緣 $82.4–$82.8。向上突破需站穩 $82.8 以上並伴隨量能放大；向下失守 $79.1 則區間結構失效，下一關為 $76.43。</p>
+<p>量能：11/27 成交量 17.21M，約為前 10 個交易日均量 42.3M 的 41%。需注意 11/27 為感恩節後交易日（11/26 休市），市場可能為提前收盤交易時段，且 cached 資料時間為 UTC 16:31，當日量能偏低可能受交易時段影響，不宜單獨解讀為量能萎縮。近期量能比較：11/20 上漲日量 66.1M 為期間最大量，11/12 下跌日量 47.1M，顯示區間內有明顯換手。</p>
+<p>資料附註：<code>fast_info</code> 回傳的 last_price 為 $81.465（cnyes cache，UTC 16:31 快照），與 <code>ta series</code> 最後一根收盤 $81.33 不一致，本報告以 <code>ta</code> 收盤為準。<code>fast_info</code> 之 50 日/200 日均線與 52 週高低欄位為 null 或 NaN，改採 <code>ta snapshot</code> 數值。報價與歷史資料皆來自 cache，依規定屬正常來源。</p>
+<h2>Indicators table</h2>
+<table>
+<thead>
+<tr>
+<th>Indicator</th>
+<th>Value</th>
+<th>Reading</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>收盤價 (2026-11-27)</td>
+<td>$81.33</td>
+<td>區間中段</td>
+</tr>
+<tr>
+<td>MA20</td>
+<td>$81.04</td>
+<td>價格略高 (+0.35%)，中性偏多</td>
+</tr>
+<tr>
+<td>MA50</td>
+<td>$80.12</td>
+<td>價格高於 (+1.51%)，MA50 走平</td>
+</tr>
+<tr>
+<td>MA200</td>
+<td>$84.00</td>
+<td>價格低於 (-3.18%)，長期偏弱</td>
+</tr>
+<tr>
+<td>MA50 vs MA200</td>
+<td>-4.6%</td>
+<td>未交叉，死亡交叉尚未形成</td>
+</tr>
+<tr>
+<td>RSI14</td>
+<td>54.0</td>
+<td>中性，較 11/25 (62.6) 回落</td>
+</tr>
+<tr>
+<td>MACD 線 / 訊號線</td>
+<td>+0.250 / +0.150</td>
+<td>多方排列</td>
+</tr>
+<tr>
+<td>MACD hist</td>
+<td>+0.100</td>
+<td>正值但由 +0.122 收斂，動能減速</td>
+</tr>
+<tr>
+<td>BB %B</td>
+<td>0.58</td>
+<td>中軌與上軌之間，無超買超賣</td>
+</tr>
+<tr>
+<td>BB 帶寬</td>
+<td>約 4.7%</td>
+<td>中低波動</td>
+</tr>
+<tr>
+<td>ATR14</td>
+<td>$0.81 (約 1.0%)</td>
+<td>一日典型波動</td>
+</tr>
+<tr>
+<td>20 日年化波動率</td>
+<td>11.8%</td>
+<td>低波動</td>
+</tr>
+<tr>
+<td>1 個月報酬</td>
+<td>+0.42%</td>
+<td>微幅正</td>
+</tr>
+<tr>
+<td>3 個月報酬</td>
+<td>-1.87%</td>
+<td>偏弱</td>
+</tr>
+<tr>
+<td>6 個月報酬</td>
+<td>-5.17%</td>
+<td>偏弱</td>
+</tr>
+<tr>
+<td>12 個月報酬</td>
+<td>-9.87%</td>
+<td>明顯弱勢</td>
+</tr>
+<tr>
+<td>距 52 週高點</td>
+<td>-10.49% ($90.86)</td>
+<td>遠低於前高</td>
+</tr>
+<tr>
+<td>距 52 週低點</td>
+<td>+6.41% ($76.43)</td>
+<td>距低點有緩衝</td>
+</tr>
+<tr>
+<td>成交量 vs 前 10 日均量</td>
+<td>17.2M vs 42.3M (41%)</td>
+<td>偏低，受感恩節後交易日影響，需謹慎解讀</td>
+</tr>
+</tbody>
+</table>
+<p>MARKET REPORT COMPLETE</p></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-slate-700 mb-2">新聞 (News)</h4>
+          <div class="agent-prose text-sm bg-slate-50 p-3 rounded"><h1>News — TLT as of 2026-11-28</h1>
+<p>資料說明：2026-11-28 為週六，最後交易日為 2026-11-27 (週五)。<code>pipeline/tools/yf TLT news</code> 回傳 proxy 403 (CONNECT tunnel failed)，無法取得 yfinance 新聞，本報告全部改以 WebSearch 補足。搜尋結果中有大量 2025 年舊文與日期不明的轉載，已排除；無法確認日期或數值者一律標 DATA_UNAVAILABLE。TLT 為 ETF，無財報、併購、高管異動等公司層級事件，因此「公司層級」段落改列基金層級資訊。</p>
+<h2>Top company-specific headlines (last 14d)</h2>
+<p>TLT 為 ETF，以下為基金層級與影響價格的供給面事件。</p>
+<ul>
+<li>2026-11-24 — iShares 基金頁 NAV 約 81.47 USD，當日 -0.23%，YTD NAV 報酬約 -2.92% (iShares 基金頁快照)。Impact: neutral。反映 11/17 低點後的反彈，NAV 與市價的對應日期需以官網為準。</li>
+<li>2026-11-17 — iShares 基金頁 NAV 約 79.55 USD，YTD 約 -5.2% (iShares 基金頁快照)。Impact: bearish (當時位階)。這是本段統計期內 NAV 低點之一，之後 11/24 回升約 2.4%。</li>
+<li>2026-11-12 — 30 年期公債拍賣 25B USD，殖利率 5.441%，尾差 0.4bp，Bid-to-cover 2.36 (前次 2.54) (roic.ai / newsquawk 轉述)。Impact: bearish (小幅)。需求轉弱，殖利率高於 when-issued。</li>
+<li>2026-11-02 — 月配息 0.34 USD 除息 (基金分配資訊，來源 Fox Business / TipRanks 快照)。Impact: neutral。除息為機械性 NAV 下調，不反映基本面。</li>
+<li>基金結構快照：有效存續期間 約 14.70 年 (11/17)；30 日 SEC 殖利率 5.26% (11/23)；費用率 0.15%。Impact: neutral，但 14.7 年存續期間代表殖利率每變動 1bp，價格約變動 0.15%，對利率最敏感。</li>
+</ul>
+<h2>Sector macro</h2>
+<ul>
+<li>2026-10-28 — FOMC 維持聯邦基金利率目標區間 3.75%–4.00%，投票 10–2，Governor Lisa Cook 與 Cleveland Fed 總裁 Beth Hammack 主張升息 25bp。聲明將經濟評為 "strong"（前次 "solid"），稱通膨 "remains elevated"，並暗示視通膨可能再升息。Kevin Warsh 主持會後記者會。Fed 同時宣布 2027 年起減少政策會議次數 (Fortune, Nation Thailand, investinglive 報導)。Impact on TLT: bearish。鷹派異議加上聲明偏鷹，市場將其解讀為升息而非降息的路徑。</li>
+<li>2026-11-10 — Governor Christopher Waller 表態支持 2026 年 12 月升息 25bp；若 10 月核心 CPI 月增達 0.3% 或以上，他會考慮 50bp (kfgo.com, investinglive 報導)。Impact: bearish。把 50bp 尾部風險納入定價。</li>
+<li>2026-11 中旬（確切發布日 DATA_UNAVAILABLE）— 10 月 CPI：總體月增 0.4%，高於預期；核心月增 0.3%，高於 0.2% 預期 (stockanalysis、ibtimes 報導，後者日期未能確認)。Impact: bearish。核心數據達到 Waller 的 50bp 觸發門檻，市場因此把升息機率推向高檔。9 月 CPI 年增 3.7%。10 月年增率的說法來源不一致（一份來源稱因 2025 年停擺未採價而缺漏），以 BLS 原文為準。</li>
+<li>2026-11-06 — 10 月非農就業新增 16.5 萬人，遠高於市場預估（約 6.2–6.5 萬人）；失業率降至 4.1%（9 月 4.2%）；8、9 月合計上修 8.4 萬人；U-6 升至 7.9%；非自願兼職人數大增 33.9 萬人；薪資年增 3.1%，低於 CPI 年增 3.7% (TheStreet、ABC、OPB、Fox Business 報導)。Impact: bearish。勞動市場強勁加上實質薪資負成長，同時支持升息與殖利率上行；U-6 上升是一個弱化訊號，但不足以扭轉方向。</li>
+<li>2026-11-13 當週 — 2Y 殖利率單週上漲約 35bp，10Y 上漲約 30bp 至 5.14% (stocktwits 週報)。Impact: bearish。通膨與鷹派 Fed 言論共同推升殖利率。</li>
+<li>2026-11-17 — 油價單日下跌逾 3%（中東緊張緩和，油價兩個月低點），美債殖利率回落，2Y 下跌 5.1bp 至 4.823% (The Star, Reuters 轉述)。Impact: bullish（短期）。但同期殖利率與油價出現脫鉤，顯示通膨憂慮已超出能源項目，油價回落不足以壓低長端利率。</li>
+<li>2026-11 — 期限溢酬 (term premium)：NY Fed 估計 10Y 期限溢酬約 0.80%（來源日期不明，未能確認是否為 11 月數值）；PIMCO 觀點認為除非經濟衰退，較高期限溢酬將持續 (PIMCO、Morningstar 摘要)。30 年期期限溢酬 2026 年 11 月數值 DATA_UNAVAILABLE。Impact: bearish（結構性）。</li>
+<li>2026 年 11 月季度再融資：名目票券與票息拍賣規模維持不變，3Y 58B、10Y 42B、30Y 25B USD。Citi 預期 2027 年 5 月前後會增加票息規模；TD 則認為長天期拍賣規模可能先被削減，但時點可能延後一到兩季 (Treasury 新聞稿、Yahoo Finance 轉述)。Impact: bearish（供給面中期）。下次再融資公告為 2027 年 2 月 3 日。</li>
+<li>地緣政治 / 能源（背景）：2026 年 9 月因伊朗戰爭與荷莫茲海峽運輸受阻，布蘭特原油一度逼近 110 USD/桶，推升全球殖利率至多年高點 (Fortune、Bloomberg 報導)。11 月起中東緊張緩和，油價回落。Impact on TLT: 若緩和延續，為通膨下行的潛在支撐；若再度升溫，則是升息與長端殖利率的上行風險。</li>
+<li>未確認：Fed 12 月前瞻（dot plot、市場對 2027 年路徑）僅見分歧報導，DATA_UNAVAILABLE。</li>
+</ul>
+<h2>Peer signals</h2>
+<ul>
+<li>IEF / TLH / EDV / ZROZ（同業長短天期美債 ETF）— 本次未取得可驗證的 11 月價格走勢，DATA_UNAVAILABLE。</li>
+<li>2026 年 11 月 30 年期公債拍賣（5.441%）可作為長端殖利率的替代觀察點，需求減弱但未失敗。</li>
+<li>券商觀點：Goldman Sachs 將 12 月升息列為基本情境，並表示 2027 年仍無法排除進一步升息（投資銀行研究摘要，來源為轉述）。Impact: bearish。</li>
+<li>注意：Kalshi 與 Newsquawk 的 12 月升息機率數字差距極大（見下方指標表），不宜把任何單一數字當作定論。</li>
+</ul>
+<h2>Forward calendar (next 14d)</h2>
+<ul>
+<li>2026-11-26 (四) — 美國感恩節，股市休市；債市依 SIFMA 慣例於 11-27 提早收盤（未確認）。</li>
+<li>2026-11-27 (五) — 感恩節後交易日，流動性與成交量可能偏低（未確認），為本報告所依據的最後交易日。</li>
+<li>2026-11-25 (三，已發布，早於本報告日期) — 10 月 PCE 物價指數預定發布；實際數值 DATA_UNAVAILABLE。</li>
+<li>2026-12-04 (五) 08:30 ET — 11 月非農就業報告 (BLS 2026 年 12 月發布時程)。Expected impact: 高。就業與薪資數據將決定 12 月升息幅度（25bp 或 50bp）。</li>
+<li>2026-12-08 至 12-09 — FOMC 會議，決策日為 12 月 9 日（StockAnalysis 標示 12/8–12/9，其餘來源為 12/9 決策）。Expected impact: 高。12 月升息 25bp 幾乎已被定價，真正的變數在於聲明語氣、dot plot（若有）與是否出現 50bp 支持者。</li>
+<li>2026-12-10 (四) 08:30 ET — 11 月 CPI 發布 (BLS；與 FOMC 隔日)。Expected impact: 高。核心 CPI 若再度高於 0.3% 月增，50bp 機率上升；若回落，升息定價可能收斂。</li>
+<li>2026-12 中旬 — 名目 3Y / 10Y / 30Y 公債拍賣（日期 DATA_UNAVAILABLE）。Expected impact: 中。30Y 拍賣需求若持續減弱，為長端殖利率的供給面壓力。</li>
+<li>2026-12-14 前後 — 其餘 Fed 官員公開演說（日期 DATA_UNAVAILABLE）。</li>
+</ul>
+<h2>Net read</h2>
+<p>淨標題傾向偏空 (bearish)，強度中高。過去一個月的主要訊號幾乎同向：10 月 FOMC 的 10–2 鷹派分歧與偏鷹聲明、Waller 對 50bp 的開口、10 月 CPI 核心月增 0.3% 超出預期、10 月非農大幅超預期且失業率降至 4.1%、以及 11/13 當週 10Y 上漲約 30bp 至 5.14%、30Y 一度逼近 5.5%。這些事件共同指向 12 月升息已被大幅定價，且 50bp 尾部風險仍在。反向訊號有限：11 月中旬油價回落與 11/17 殖利率回落、11/17 至 11/24 TLT NAV 反彈約 2.4%、以及 30Y 拍賣尾差僅 0.4bp，都屬於短期緩衝而非趨勢逆轉。期限溢酬偏高與再融資供給預期則是中期結構性的偏空因子。由於 12 月升息機率已處於高檔（多數來源 85%–99%），後續的意外風險相對不對稱：更熱的 11 月 CPI 或更鷹派的 dot plot 會把 50bp 推入主情境；反之，數據降溫則可能帶來修正性的殖利率回落。以上為新聞面分析，不構成交易建議。</p>
+<h2>指標與摘要表</h2>
+<table>
+<thead>
+<tr>
+<th>指標</th>
+<th>數值</th>
+<th>日期 / 單位</th>
+<th>來源與狀態</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>聯邦基金利率目標區間</td>
+<td>3.75%–4.00%</td>
+<td>2026-10-28 FOMC 維持</td>
+<td>多來源一致</td>
+</tr>
+<tr>
+<td>聯邦基金有效利率</td>
+<td>3.88%</td>
+<td>2026-11 中旬</td>
+<td>單一來源，中等可信</td>
+</tr>
+<tr>
+<td>12 月升息機率</td>
+<td>85%–99%（Kalshi 約 91%）</td>
+<td>2026-11-10 至 11-18</td>
+<td>來源分歧大，Newsquawk 的 26bp 疑為誤讀，DATA_UNAVAILABLE 確認</td>
+</tr>
+<tr>
+<td>12 月 50bp 機率</td>
+<td>約 1%（尾部）</td>
+<td>2026-11 中旬</td>
+<td>單一來源 (investinglive)</td>
+</tr>
+<tr>
+<td>2Y 殖利率</td>
+<td>4.823%</td>
+<td>2026-11-17</td>
+<td>Reuters 轉述</td>
+</tr>
+<tr>
+<td>10Y 殖利率</td>
+<td>約 5.14%–5.15%</td>
+<td>2026-11-13 至 11-16</td>
+<td>多來源</td>
+</tr>
+<tr>
+<td>30Y 殖利率</td>
+<td>5.47% (11-13)；5.46% (11-17)</td>
+<td>%</td>
+<td>FRED / MarketXLS</td>
+</tr>
+<tr>
+<td>30Y 拍賣利率</td>
+<td>5.441%，尾差 0.4bp，BTC 2.36</td>
+<td>2026-11-12，25B USD</td>
+<td>newsquawk / roic 轉述</td>
+</tr>
+<tr>
+<td>10 月 CPI 總體</td>
+<td>月增 0.4%</td>
+<td>2026-11 中旬，USD 不適用</td>
+<td>多來源</td>
+</tr>
+<tr>
+<td>10 月 CPI 核心</td>
+<td>月增 0.3%（預期 0.2%）</td>
+<td>2026-11 中旬</td>
+<td>單一來源 (ibtimes)，日期未確認</td>
+</tr>
+<tr>
+<td>9 月 CPI 年增</td>
+<td>3.7%</td>
+<td>2026 年 9 月</td>
+<td>stockanalysis 轉述</td>
+</tr>
+<tr>
+<td>10 月 PCE 核心</td>
+<td>DATA_UNAVAILABLE</td>
+<td>預定 2026-11-25</td>
+<td>無可靠數值</td>
+</tr>
+<tr>
+<td>10 月非農新增</td>
+<td>16.5 萬人</td>
+<td>2026-11-06</td>
+<td>多來源一致</td>
+</tr>
+<tr>
+<td>10 月失業率</td>
+<td>4.1%</td>
+<td>2026-11-06</td>
+<td>多來源一致</td>
+</tr>
+<tr>
+<td>10 月薪資年增</td>
+<td>3.1%</td>
+<td>2026-11-06</td>
+<td>OPB 轉述</td>
+</tr>
+<tr>
+<td>Q3 GDP</td>
+<td>年化 3.4%</td>
+<td>2026 年第 3 季</td>
+<td>單一來源</td>
+</tr>
+<tr>
+<td>2026 年 9 月 PCE 年增（總體）</td>
+<td>約 3.6%</td>
+<td>2026 年 9 月</td>
+<td>political.org (低可信)，未確認</td>
+</tr>
+<tr>
+<td>10Y 期限溢酬</td>
+<td>約 0.80%</td>
+<td>日期不明</td>
+<td>NY Fed 估計，轉述</td>
+</tr>
+<tr>
+<td>30Y 期限溢酬（11 月）</td>
+<td>DATA_UNAVAILABLE</td>
+<td>—</td>
+<td>無可靠數值</td>
+</tr>
+<tr>
+<td>布蘭特原油</td>
+<td>9 月一度逼近 110 USD/桶；11 月回落至兩個月低點</td>
+<td>2026-09 / 2026-11-17</td>
+<td>多來源</td>
+</tr>
+<tr>
+<td>TLT NAV</td>
+<td>79.55 USD (11-17)；81.47 USD (11-24)</td>
+<td>USD / 日</td>
+<td>iShares 快照</td>
+</tr>
+<tr>
+<td>TLT 52 週區間</td>
+<td>76.43–90.86 USD</td>
+<td>USD</td>
+<td>TipRanks / Fox Business</td>
+</tr>
+<tr>
+<td>TLT YTD NAV 報酬</td>
+<td>約 -2.92% (11-24)；約 -5.2% (11-17)</td>
+<td>%</td>
+<td>iShares 快照</td>
+</tr>
+<tr>
+<td>TLT 資產規模</td>
+<td>約 46.22B USD</td>
+<td>2026-11-16</td>
+<td>TipRanks 快照</td>
+</tr>
+<tr>
+<td>TLT 30 日 SEC 殖利率</td>
+<td>5.26%</td>
+<td>2026-11-23</td>
+<td>iShares 快照</td>
+</tr>
+<tr>
+<td>TLT 有效存續期間</td>
+<td>約 14.70 年</td>
+<td>2026-11-17</td>
+<td>iShares 快照</td>
+</tr>
+<tr>
+<td>TLT 費用率</td>
+<td>0.15%</td>
+<td>常態</td>
+<td>iShares</td>
+</tr>
+<tr>
+<td>TLT 月配息</td>
+<td>0.34 USD，除息 11-02</td>
+<td>2026-11-02</td>
+<td>基金分配資訊</td>
+</tr>
+<tr>
+<td>公司層級重大事件</td>
+<td>無（ETF 不適用）</td>
+<td>2026-11-28 前 14 日</td>
+<td>yfinance 新聞工具 proxy 403，改以 WebSearch 補足</td>
+</tr>
+</tbody>
+</table>
+<p>附註：yfinance <code>info</code> 回傳的 TLT 價格欄位（前收 82.24、日內 81.26、NAV 82.19、totalAssets 47.52B USD）日期未標示，與 iShares 快照不一致，未用於本報告的結論，僅供參考。</p>
+<p>NEWS REPORT COMPLETE</p></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-slate-700 mb-2">情緒 (Sentiment)</h4>
+          <div class="agent-prose text-sm bg-slate-50 p-3 rounded"><h1>Sentiment — TLT as of 2026-11-28</h1>
+<p>注意事項：<br />
+- 系統提示的今日日期為 2026-11-27，任務指定 DATE 為 2026-11-28。本報告以 2026-11-28 為基準，超過此日期的資料一律視為未知。<br />
+- 本次僅使用 WebSearch，未對財經頁面或受限網域做 WebFetch。Reddit 與 StockTwits 的直接 JSON 端點未使用。<br />
+- 搜尋結果中多數資料日期為 2026 年 8 月至 10 月，或無日期。2026 年 11 月的資料未能取得，下列多數結論為較早期資料推估。</p>
+<h2>Analyst consensus</h2>
+<p>TLT 為 ETF，沒有個股式的 buy/hold/sell 分析師評級分布，<code>rec_summary</code> 與 <code>recommendations</code> 不適用，本次未呼叫。<br />
+- 分析師評級分布：DATA_UNAVAILABLE（ETF 不適用）<br />
+- 近期升降評與目標價變動：DATA_UNAVAILABLE（ETF 不適用）<br />
+- 替代參考：策略師對久期（duration）與利率的立場，見下方「策略師定位」。</p>
+<h2>Retail social</h2>
+<ul>
+<li>Reddit：無法取得 r/wallstreetbets 或 r/stocks 的即時討論樣本，本次未以 WebFetch 直接讀取 Reddit JSON。能找到的只有第三方彙整資料。</li>
+<li>Tradestie 在 2026-10-01 的文章指出，TLT 的提及量較正常水準高出約 4.3 個標準差，其模型給予 HOLD 評級，並將討論描述為偏投機與總經恐慌驅動。</li>
+<li>247wallst 在 2026-10-02 的文章提到，TLT 於 2026-09-25 位列 Reddit 最受討論的股票之一。</li>
+<li>ChartExchange 的 Reddit 趨勢頁面為歷史追蹤工具，本次搜尋結果未顯示 2026-11 的讀數。</li>
+<li>語氣傾向：偏負面與防禦性（對利率上行與長債跌幅的不滿），但缺乏可核對的 2026-11 樣本，信心低。</li>
+<li>StockTwits：DATA_UNAVAILABLE（搜尋未找到 2026 年的 TLT 串流資料）。</li>
+<li>X 與其他社群：未找到可核實的 2026 年 11 月貼文。</li>
+<li>討論量相對基準：2026 年 9 月至 10 月曾明顯升溫（見 Tradestie 的 4.3 個標準差），2026-11 無法確認。</li>
+<li>主要主題（依可取得的文章歸納）：</li>
+<li>長端殖利率上行，TLT 跌破支撐（多篇文章提及 $80 至 $83 區間）。</li>
+<li>大量資金流入的矛盾：ETF 同時有資金流入與股價下跌，評論者對「抄底」與「接刀」意見分歧。</li>
+<li>Fed 降息預期降溫，市場一度轉向押注升息（見 Reuters 策略師民調摘要，2026-08）。</li>
+<li>美國政府債務規模與財政擔憂（Invezz 2026-08 文章）。</li>
+<li>注意：Invezz 的「AI Sentiment」分數（約 15 至 18）是自動化文章語氣評分，並非投資人情緒，不作為散戶情緒使用。</li>
+</ul>
+<h2>Insider activity</h2>
+<p>本次不適用。TLT 為 ETF，依任務指示略過內部人與持股分析。</p>
+<h2>Ownership shifts</h2>
+<p>本次不適用。依任務指示略過。替代資訊為資金流向：<br />
+- Invezz（2026-08-14）：TLT 單月資金流入約 $4.3B。<br />
+- Invezz（2026-09-15）：TLT 三個月資金流入約 $10B，股價下跌，資金仍流入。<br />
+- 以上為 USD 計，單位為 B。</p>
+<h2>選擇權與持倉情緒（時間不明，謹慎使用）</h2>
+<ul>
+<li>WealthManagement 文章指出，TLT 的看多買權未平倉量創歷史新高，put-call ratio 為 2003 年以來最低。文章日期不明，無法判定是否為 2026-11 的狀態。</li>
+<li>Pluang（2026-10-21）轉述某篇 Seeking Alpha 觀點，稱當時約 72% 的 TLT 委託單為賣單。來源為二手轉述，且日期早於基準日，僅作參考。</li>
+</ul>
+<h2>策略師定位（duration 與利率）</h2>
+<ul>
+<li>保守派（多數）：</li>
+<li>Advisor Perspectives（2026-10-28）：殖利率升高不代表長天期債券自動具吸引力，仍需等待多項訊號轉向。</li>
+<li>SSGA：高殖利率本身不足以抵消長天期債券的風險。</li>
+<li>Schwab 中期展望：目前不宜偏好長天期。</li>
+<li>偏好中短天期：</li>
+<li>UBS（2026-08-24）：偏好短至中期優質債，長端波動較大；若長端殖利率持續高檔，TIPS 可能具吸引力。</li>
+<li>逢低視角：</li>
+<li>Fidelity：此次拋售可能是較具吸引力的 duration 進場點，並提及財政部擴大長端買回計畫。</li>
+<li>偏多（少數）：</li>
+<li>InvestingLive 轉述 Barron's：兩位原本迴避公債的策略師轉為看好 10 年與 30 年期公債，理由為殖利率超過 5% 與潛在 Fed 降息。此文章無日期，無法確認是否為近期觀點。</li>
+<li>利率水準（來源彼此不一致，列為待核實）：</li>
+<li>J.P. Morgan Wealth Management（2026-10）：10 年期殖利率 2027 年中基準情境 5.00% 至 5.50%，悲觀情境 5.50% 至 6.00%。</li>
+<li>Invezz（2026-09-15）：10 年期約 5.0%，30 年期約 5.38%。</li>
+<li>Barron's 轉述（無日期）：10 年期約 5.3%，30 年期約 5.6%。</li>
+<li>Reuters 策略師民調（2026-08）：策略師仍預期殖利率下降，但信心減弱，市場已將降息機率歸零並押注至少一次升息。</li>
+<li>本次無法確認 2026-11 底的 Fed 利率路徑與 10 年期殖利率水準。</li>
+<li>TLT 價格來源亦不一致（$80.01 於 2026-10-21，$86.97 於 2026-11-03 Yahoo 頁面，$80.93 與 $83.3 為 9 月與 8 月的支撐位敘述）。未能確認 2026-11-27 收盤價，本報告不以任何單一價格作為基準。</li>
+</ul>
+<h2>Net sentiment score</h2>
+<ul>
+<li>策略師與新聞面：偏空至中性（多數策略師對長天期保守，但有逢低與偏多少數意見）。信心：中。</li>
+<li>散戶社群：無法判定方向。可得資料顯示 2026 年 9 至 10 月討論量偏高，語氣偏負面防禦，但缺 11 月樣本。信心：低。</li>
+<li>綜合：中性偏空（neutral-to-bearish），信心低。主要因為策略師立場偏保守，且缺乏可核實的 11 月散戶與社群資料。</li>
+</ul>
+<p>Divergence flag：不確定（資料不足）。<br />
+- 若以 2026 年 9 至 10 月的可得資料比較，策略師偏保守，散戶討論亦偏負面，兩者方向一致，未見明顯背離。<br />
+- 唯一偏多的訊號來自無日期的 Barron's 轉述與無日期的選擇權資料，時效不足，不足以判定背離。<br />
+- 建議在 2026-11-28 之後補查 Reddit、StockTwits 與 2026-11 的策略師報告，再重新判定。</p>
+<h2>指標表</h2>
+<table>
+<thead>
+<tr>
+<th>指標</th>
+<th>數值</th>
+<th>單位</th>
+<th>資料日期</th>
+<th>狀態</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>分析師評級分布（buy/hold/sell）</td>
+<td>DATA_UNAVAILABLE</td>
+<td>件</td>
+<td>—</td>
+<td>ETF 不適用</td>
+</tr>
+<tr>
+<td>Reddit 提及量相對基準</td>
+<td>約 +4.3 SD</td>
+<td>標準差</td>
+<td>2026-10-01</td>
+<td>第三方彙整，非 11 月</td>
+</tr>
+<tr>
+<td>Reddit 熱門排名</td>
+<td>位列最受討論股票之一</td>
+<td>排名</td>
+<td>2026-09-25</td>
+<td>第三方轉述</td>
+</tr>
+<tr>
+<td>StockTwits 情緒</td>
+<td>DATA_UNAVAILABLE</td>
+<td>—</td>
+<td>—</td>
+<td>未取得</td>
+</tr>
+<tr>
+<td>X 與其他社群情緒</td>
+<td>DATA_UNAVAILABLE</td>
+<td>—</td>
+<td>—</td>
+<td>未取得</td>
+</tr>
+<tr>
+<td>單月資金流入</td>
+<td>約 4.3</td>
+<td>B USD</td>
+<td>2026-08-14</td>
+<td>Invezz 轉述</td>
+</tr>
+<tr>
+<td>三個月資金流入</td>
+<td>約 10</td>
+<td>B USD</td>
+<td>2026-09-15</td>
+<td>Invezz 轉述</td>
+</tr>
+<tr>
+<td>看多買權未平倉量</td>
+<td>歷史新高</td>
+<td>—</td>
+<td>日期不明</td>
+<td>無法判定時效</td>
+</tr>
+<tr>
+<td>10 年期殖利率（區間）</td>
+<td>約 5.0%–5.3%</td>
+<td>%</td>
+<td>2026-09 至不明</td>
+<td>來源不一致</td>
+</tr>
+<tr>
+<td>30 年期殖利率（區間）</td>
+<td>約 5.38%–5.6%</td>
+<td>%</td>
+<td>2026-09 至不明</td>
+<td>來源不一致</td>
+</tr>
+<tr>
+<td>J.P. Morgan 10 年期 2027 年中基準</td>
+<td>5.00%–5.50%</td>
+<td>%</td>
+<td>2026-10</td>
+<td>機構預測</td>
+</tr>
+<tr>
+<td>策略師立場</td>
+<td>多數保守，少數逢低或偏多</td>
+<td>—</td>
+<td>2026-08 至 10</td>
+<td>無 11 月共識</td>
+</tr>
+<tr>
+<td>Net sentiment</td>
+<td>中性偏空</td>
+<td>—</td>
+<td>綜合</td>
+<td>信心低</td>
+</tr>
+<tr>
+<td>背離旗標</td>
+<td>不確定</td>
+<td>—</td>
+<td>—</td>
+<td>資料不足</td>
+</tr>
+</tbody>
+</table>
+<h2>來源</h2>
+<ul>
+<li><a href="https://chartexchange.com/symbol/nasdaq-tlt/trends/reddit">ChartExchange TLT Reddit 趨勢</a></li>
+<li><a href="https://tradestie.com/news/tlt-is-trending-on-reddit-our-data-says-wait-for-7676-20261001/">Tradestie TLT Reddit 文章（2026-10-01）</a></li>
+<li><a href="https://247wallst.com/investing/etf/2026/10/02/bloombergs-etf-guru-watched-7-billion-pour-into-a-falling-treasury-fund-then-warned-buyers-to-walk-away/">247wallst TLT 文章（2026-10-02）</a></li>
+<li><a href="https://invezz.com/news/2026/08/14/tlt-etf-at-risk-despite-soaring-inflows-as-bond-vigilantes-fight-back/">Invezz TLT 資金流入（2026-08-14）</a></li>
+<li><a href="https://invezz.com/news/2026/09/15/tlt-etf-slumps-inflows-jump-as-us-treasury-yields-soar/">Invezz TLT 資金流入與殖利率（2026-09-15）</a></li>
+<li><a href="https://www.wealthmanagement.com/etfs/options-traders-stack-up-record-bullish-bets-on-major-bond-etfs">WealthManagement 債券 ETF 選擇權（日期不明）</a></li>
+<li><a href="https://pluang.com/en/news-feed/tlt-refunding-bisa-membalikkan-tren-bear-obligasi">Pluang TLT 轉述（2026-10-21）</a></li>
+<li><a href="https://www.advisorperspectives.com/commentaries/2026/10/28/when-is-duration-worth-owning-again">Advisor Perspectives 久期觀點（2026-10-28）</a></li>
+<li><a href="https://www.ssga.com/us/en/institutional/insights/navigating-a-higher-for-longer-world">SSGA 高利率環境</a></li>
+<li><a href="https://www.ubs.com/global/en/wealthmanagement/insights/chief-investment-office/house-view/daily/2026/latest-24082026.html">UBS 長端殖利率（2026-08-24）</a></li>
+<li><a href="https://institutional.fidelity.com/advisors/insights/series/fidelity-market-signals-weekly/have-bond-yields-gone-too-far-or-just-far-enough">Fidelity 殖利率觀點</a></li>
+<li><a href="https://investinglive.com/stocks/two-veteran-bond-bears-turn-bullish-on-long-treasuries-as-yields-top-5/">InvestingLive 轉述 Barron's（日期不明）</a></li>
+<li><a href="https://www.chase.com/personal/investments/learning-and-insights/article/could-10-year-treasury-yield-reach-5-75-in-2027-what-jpmorgan-strategists-think">J.P. Morgan 10 年期預測（Chase 轉載）</a></li>
+<li><a href="https://www.kitco.com/news/off-the-wire/2026-08-11/us-treasury-yields-seen-heading-lower-strategists-conviction-wavering">Kitco Reuters 策略師民調（2026-08-11）</a></li>
+</ul></div>
+        </div>
+      </div>
+    </details>
+
+    <details class="mb-4 border border-slate-200 rounded">
+      <summary class="bg-slate-50 px-4 py-2 font-semibold">Phase 2 — Bull vs Bear 辯論</summary>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+        <div>
+          <h4 class="font-bold text-green-700 mb-2">🐂 多方 (Bull)</h4>
+          <div class="agent-prose text-sm bg-green-50 p-3 rounded border border-green-200"><h1>Bull case round 1 — TLT</h1>
+<h2>Thesis（一句話）</h2>
+<p>在 10 月 CPI、鷹派 FOMC、強勁非農等利空已大量計價、12 月升息機率逼近 90–99% 近乎確定的情況下，TLT 目前的 5.26% SEC 殖利率與 14.70 年存續期間，提供了罕見的「利空出盡＋高殖利率入場」組合，技術面已出現築底與更高低點，風險報酬偏向逢低布局。</p>
+<h2>Growth drivers（對 TLT 而言＝殖利率與資金流動力）</h2>
+<ul>
+<li><strong>殖利率已處於高檔，carry 吸引力大</strong>：30 日 SEC 殖利率 5.26%（2026-11-23，fundamentals.md／news.md），遠高於近 12 個月配息推算的 2.6%，顯示當前買入者可取得的前瞻收益率已顯著上升，是過去多年罕見的高位。</li>
+<li><strong>資金持續淨流入，顯示機構逢低布局</strong>：news/sentiment 顯示 2026-08 單月流入約 4.3B USD、2026-09 三個月流入約 10B USD（Invezz 轉述），即使價格下跌資金仍持續進場，為「邊跌邊買」的機構訊號。</li>
+<li><strong>拍賣需求未崩潰</strong>：11/12 的 30 年期公債拍賣（25B USD，殖利率 5.441%）尾差僅 0.4bp、Bid-to-cover 2.36，需求轉弱但未失敗，顯示長端供給尚未出現系統性買盤枯竭。</li>
+<li><strong>期限溢酬具均值回歸空間</strong>：NY Fed 估計 10Y 期限溢酬約 0.80%，處於結構性偏高水位；一旦通膨數據降溫或 Fed 路徑明朗化，期限溢酬壓縮將直接轉化為長債價格上漲。</li>
+</ul>
+<h2>Moat（對 ETF 而言＝結構優勢）</h2>
+<p>TLT 的「護城河」在於其規模與流動性：淨資產 47.52B USD、費用率僅 0.15%（低於多數主動型債券基金），加上 20+ 年期公債的高流動性，使其成為機構表達利率觀點的首選工具，不會因為個別事件被邊緣化。市價僅較 NAV 折價約 1.13%，交易效率良好，逢低布局的執行成本低。</p>
+<h2>Upside scenario（久期驅動，非 P/E）</h2>
+<p>TLT 不適用傳統 P/E 估值，改以存續期間 × 殖利率變動測算：<br />
+- 有效存續期間約 14.70 年（iShares，news.md）。<br />
+- <strong>基準情境</strong>：若 12 月 FOMC 符合市場預期（25bp 升息已被 85–99% 計價）後市場轉為「利空出盡」，10Y 殖利率自目前約 5.14–5.15%（sentiment/news）小幅回落 20bp，TLT 價格以久期估算上漲約 14.70 × 0.20% ≈ <strong>+2.9%</strong>，加上年化 5.26% 殖利率的 carry。<br />
+- <strong>樂觀情境</strong>：若 2027 年中前 Fed 轉向降息路徑（sentiment.md 中 Barron's 轉述兩位原本看空公債的策略師轉為看多 10Y/30Y，理由為殖利率已超過 5%），殖利率回落 50bp，價格漲幅約 14.70 × 0.50% ≈ <strong>+7.4%</strong>，由現價 81.26 推算目標約 <strong>87.3 美元</strong>，接近 52 週高點 90.86 的方向。<br />
+- 下檔有限：技術面支撐在 79.11／76.43（52 週低點），即使重測低點，久期估算的潛在跌幅（約 -3% 至 -6%）小於上述樂觀情境的潛在漲幅，風險報酬不對稱地偏向多方。</p>
+<h2>Catalysts（dated）</h2>
+<ul>
+<li><strong>2026-12-04</strong>：11 月非農就業報告公布，若薪資與新增就業降溫，將削弱升息理由，利多 TLT。</li>
+<li><strong>2026-12-08／09</strong>：FOMC 決議。25bp 升息已幾乎完全計價，真正變數在聲明語氣與是否出現 50bp 支持者；只要不升級為 50bp，即構成「利空出盡」反彈機會。</li>
+<li><strong>2026-12-10</strong>：11 月 CPI 公布（緊接 FOMC 後一天），核心月增若回落至 0.2% 以下，將顯著降低後續升息尾部風險，利多長債。</li>
+<li><strong>2026-12 中旬</strong>：下一輪 3Y/10Y/30Y 公債標售，若需求回穩（Bid-to-cover 回升），可緩解供給面壓力敘事。</li>
+</ul>
+<h2>Tactical（技術面）</h2>
+<p>market.md 顯示價格 81.33 已站上 MA20（81.04）與 MA50（80.12），自 10/07 低點 76.43 反彈後，形成「更高的低點」結構（76.43 → 79.11），且近高點亦小幅墊高（82.42 → 82.81），布林 %B 0.58 位於中軌與上軌之間，未超買。RSI14 回落至 54 屬動能降溫整理，而非趨勢轉弱訊號，為逢低進場創造更佳風險點位；只要守住 79.11，區間下緣風險可控，向上突破 82.8 將確認反彈延續。</p>
+<h2>Rebuttal to bear round 0（本輪為首輪，無既有熊方報告；以下針對新聞面最強的空方敘事預先反駁）</h2>
+<ul>
+<li>空方論點：「10 月 FOMC 10–2 鷹派分歧＋聲明偏鷹，12 月升息幾乎確定，殖利率將持續上行」。<br />
+  反駁：升息機率已被計價至 85–99%（news.md），市場價格已大量消化此訊息；根據「買在預期、賣在實現」的一般規律，只要 12 月決議不出現 50bp 意外（目前尾部機率僅約 1%），利空出盡後殖利率往往見頂回落，而非繼續失控上行。</li>
+<li>空方論點：「10 月 CPI 核心月增 0.3% 超預期，疊加非農大幅優於預期與失業率降至 4.1%，支持更鷹派路徑」。<br />
+  反駁：同份報告同時指出時薪年增 3.1% 低於 CPI 年增 3.7%，實質薪資為負，顯示消費動能存在隱憂；U-6 上升至 7.9% 顯示勞動市場並非全面強勁，一旦後續數據（12/4 非農、12/10 CPI）轉弱，當前鷹派共識的反轉空間更大。</li>
+<li>空方論點：「期限溢酬偏高與再融資供給增加，屬中期結構性利空」。<br />
+  反駁：期限溢酬偏高正是其均值回歸的來源，而非永久性折價理由；且 Fidelity 與 Barron's 轉述的策略師觀點已提出「此次拋售可能是較具吸引力的 duration 進場點」，顯示專業資金已開始將高期限溢酬視為買點而非賣點。</li>
+<li>空方論點：「價格仍在 MA200 之下，長期趨勢未翻正」。<br />
+  反駁：MA200 下彎幅度已明顯收斂，MA50 轉為走平，短中期結構已偏多修復；長期均線落後反映的是過去半年的鷹派衝擊，而非未來路徑，技術面「更高低點」的形成才是前瞻訊號。</li>
+</ul>
+<h2>Confidence</h2>
+<p>5/10。殖利率與久期的均值回歸邏輯、資金流入與拍賣需求穩健、技術面築底訊號是真實依據，但新聞面淨讀偏空且強度中高，12 月 FOMC 與 CPI 的尾部風險（50bp）未完全消除，須以 79.11 為嚴格風控線，故信心僅中性偏多，非高信心單邊多頭。</p>
+<p>BULL ROUND 1 COMPLETE</p></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-red-700 mb-2">🐻 空方 (Bear)</h4>
+          <div class="agent-prose text-sm bg-red-50 p-3 rounded border border-red-200"><h1>Bear case round 1 — TLT</h1>
+<h2>Thesis（一句話）</h2>
+<p>在 Fed 鷹派路徑未解除、核心 CPI 與非農雙雙超預期、期限溢酬結構性偏高、長端拍賣需求轉弱的背景下，TLT（有效存續期間 14.70 年）對利率的敏感度極高，現價 $81.33 仍處於下彎的 MA200（$84.00）之下，一旦 10 年期殖利率再上行 35–50bp，價格下行空間明顯大於配息收益，風險報酬不對稱偏空。</p>
+<h2>Demand / market risks（宏觀需求風險，取代個股需求面）</h2>
+<ul>
+<li>2026-10-28 FOMC 以 10–2 投票維持利率，但兩位委員（Cook、Hammack）主張升息，聲明將經濟評為「strong」並稱通膨「remains elevated」——鷹派訊號明確（news.md）。</li>
+<li>Waller（11/10）表態支持 12 月升息 25bp，若核心 CPI 月增達 0.3% 以上將考慮 50bp；10 月核心 CPI 月增恰好達到 0.3%（高於預期 0.2%），踩中 50bp 觸發門檻（news.md）。</li>
+<li>10 月非農 +16.5 萬人，遠高於預期 6.2–6.5 萬人，失業率降至 4.1%，勞動市場強勁持續支持升息路徑（news.md）。</li>
+<li>11/12 的 30 年期公債拍賣 Bid-to-cover 降至 2.36（前次 2.54），需求轉弱是長端供需失衡的直接證據（news.md）。</li>
+<li>策略師共識面偏保守：Advisor Perspectives、SSGA、Schwab、UBS 均表示「高殖利率本身不足以支撐長天期債券」或「目前不宜偏好長天期」，逢低買進僅為少數意見（sentiment.md）。</li>
+</ul>
+<h2>Margin / cashflow 風險（ETF 結構面類比）</h2>
+<ul>
+<li>NAV 報酬 YTD -2.92%、5 年年化 -7.65%（fundamentals.md），顯示價格資本損失長期侵蝕配息收益。</li>
+<li>殖利率口徑本身矛盾：<code>yield</code> 欄位 4.76% 與近 12 月配息推算約 2.6% 無法調和（fundamentals.md），顯示收益面不透明，不宜單憑帳面殖利率論證買點。</li>
+<li>存續期間 14.70 年（news.md）意味著殖利率每變動 1bp，價格約變動 0.147%——這是內建的高槓桿式利率曲度，任何升息路徑的意外都會放大為顯著資本損失。</li>
+</ul>
+<h2>Valuation risk（以利率敏感度取代 P/E）</h2>
+<ul>
+<li>現價 $81.33，存續期間 14.70 年。若 10 年期殖利率自目前約 5.14–5.15%（news.md，11/13–16）再上行 35bp（符合 Waller 50bp 尾部風險與期限溢酬結構性偏高的情境），價格衝擊約 -14.70 × 0.35% ≈ -5.1%，隱含目標價 ≈ $77.17，逼近 52 週低點 $76.43。</li>
+<li>Worst case：若殖利率上行 100bp（J.P. Morgan 2027 中期悲觀情境 10 年期 5.50–6.00%，sentiment.md），價格衝擊約 -14.7%，隱含目標價 ≈ $69.38，較現價下跌約 -14.7%。</li>
+<li>上行空間不對稱：即便殖利率回落 35bp，依相同邏輯上漲亦約 +5.1%（約 $85.5），但 Dec FOMC（12/9）前鷹派共識已大幅定價（12 月升息機率 85%–99%，news.md），下檔意外（CPI/非農再超預期）發生機率高於上檔驚喜。</li>
+</ul>
+<h2>競爭 / 結構性供給風險</h2>
+<ul>
+<li>2026 年 11 月季度再融資維持票息規模不變，但 Citi 預期 2027 年中前後會擴大票息規模，TD 也認為長天期拍賣規模可能被削減，顯示長端供給增加的中期風險未解除（news.md）。</li>
+<li>短中天期與 TIPS 替代效應：UBS 建議偏好短至中期優質債，長端波動大；若投資人持續以短天期/貨幣市場工具替代 TLT 的收益需求，20+ 年期細分市場的增量買盤將進一步減弱（sentiment.md）。</li>
+<li>期限溢酬（term premium）約 0.80%（NY Fed 估計），PIMCO 認為除非經濟衰退，此結構性溢酬將持續——這是長端定價的系統性拖累，而非短期雜訊（news.md）。</li>
+</ul>
+<h2>Tactical（技術面）</h2>
+<p>關鍵破位水準 $79.11（11/13 區間下緣），失守後下一結構性支撐為 52 週低點 $76.43（距現價約 -6.0%，market.md）。價格雖站上 MA20（$81.04）與 MA50（$80.12），但仍低於持續下彎的 MA200（$84.00，-3.18%），MA50 與 MA200 相差 -4.6%，長期結構未翻正。動能已出現降溫：RSI14 由 11/25 的 62.6 回落至 54.0，MACD 柱狀體自 10/30 高點 +0.506 持續收斂，近兩日由 +0.122 降至 +0.100，尚未確認加速。11/12 下跌日量 47.1M 高於多數上漲日，區間反彈期間存在換手與分配（distribution）跡象，而非單純吸籌。</p>
+<h2>Rebuttal to bull（本輪為第 1 輪，未見 round_0_bull.md，以下預先反駁 sentiment.md 中常見的偏多論點）</h2>
+<ul>
+<li>可能論點：「殖利率已逾 5%，為具吸引力的進場點（Fidelity 觀點）。」<br />
+  反駁：SSGA 與 Advisor Perspectives 明確指出「高殖利率本身不足以抵消長天期債券風險」，多數策略師（UBS、Schwab）仍偏好中短天期；唯一明確偏多的 Barron's 轉述文章無日期，時效性無法確認（sentiment.md）。</li>
+<li>可能論點：「資金流入強勁（單月 $4.3B、三個月 $10B），顯示聰明資金進場。」<br />
+  反駁：該數據來自 2026 年 8–9 月，且原文（247wallst）本身警告「資金流入與股價下跌同時發生」的矛盾，呼籲買方「walk away」，更像是下跌中接刀而非基本面轉強（sentiment.md）。</li>
+<li>可能論點：「技術面站上 MA20/MA50，動能轉強。」<br />
+  反駁：RSI 與 MACD 柱狀體皆已自高點回落，價格仍受制於下彎的 MA200，尚未形成趨勢性突破，區間上緣 $82.42–$82.8 是真正的測試關卡（market.md）。</li>
+</ul>
+<h2>Confidence</h2>
+<p>6/10。宏觀鷹派訊號（FOMC、CPI、非農、30Y 拍賣需求）與策略師保守共識方向一致且來源多元，支撐度較高；但存續期間、資金淨流量等結構資料缺口（DATA_UNAVAILABLE）、殖利率口徑矛盾，以及 11 月社群情緒樣本不足，使精確下檔目標的信心打折。</p>
+<p>BEAR ROUND 1 COMPLETE</p></div>
+        </div>
+      </div>
+    </details>
+
+    <details class="mb-4 border border-slate-200 rounded">
+      <summary class="bg-slate-50 px-4 py-2 font-semibold">Phase 4 — 風險辯論 (Risk debate)</summary>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 p-4">
+        <div>
+          <h4 class="font-bold text-red-700 mb-2">⚡ 進攻 (Aggressive)</h4>
+          <div class="agent-prose text-sm bg-red-50 p-3 rounded border border-red-200"><h1>Aggressive risk view — TLT</h1>
+<h2>Where trader是太保守</h2>
+<ul>
+<li>交易員方案是「事件前完全不進場」，等 $82.81 帶量站穩才轉多，等 $79.11 跌破才轉空。問題是：等到收盤確認時，前段 $1.5 以上的行情已經走完，alpha 被等待吃掉了。</li>
+<li>現價 $81.33 正好站在 MA20 $81.04 與 MA50 $80.12 的支撐匯合區，且結構是更高低點（$76.43 → $79.11），這是「可進場的結構訊號」，不是只能觀察的訊號。完全零曝險，等於放棄了在便宜位置卡位的機會。</li>
+<li>ATR14 僅 $0.81（約 1.0%）、20 日年化波動率 11.8%，屬於歷史低波動；但 12/04、12/09、12/10 三個高影響事件疊加，波動大概率會展開。低實現波動 + 確定的事件密集窗口，是典型的「便宜凸性」(cheap convexity) 情境，單純 AVOID 等於把這段便宜籌碼讓給別人。</li>
+</ul>
+<h2>Recommended adjustments</h2>
+<ul>
+<li>Size：零曝險 → 小型試探倉（非 Large，承認在三事件疊加前打大倉位確實不理性）。以 $100k 帳本為例、風險 1%（$1,000），用 $78.60 停損對應 $2.73/股風險，約可承接 366 股（約 $29,766 名義本金）。</li>
+<li>Stop：不要掛在交易員提的 $79.11（市場共識的整數結構位，容易被洗出場），往下留緩衝到 $78.60，犧牲一點風險金額換取不被假跌破掃出。</li>
+<li>Entry：現在卡位（MA20/MA50 匯合區），而非等 $82.81 收盤確認——確認訊號出現時，部分利潤已經被吃掉。</li>
+<li>Consider：用 define-risk 的 call spread（例如 $82/$85，12/19 到期）取代現股試探倉，把低 ATR 轉換成便宜的凸性曝險，無需承擔利率事件日跳空對整股部位的放大風險（存續期間 14.7 年）。</li>
+</ul>
+<h2>Asymmetry argument</h2>
+<p>現股試探倉：最大虧損 ≈ $2.73/股（停損 $78.60），以 366 股計 ≈ $996。保守目標 $84.00（MA200 收復）對應 ≈ $2.67/股（≈ $977），R:R 約 1:1；若鷹派利空出盡後延伸測前高區（估約 $86 附近），對應 ≈ $4.67/股（≈ $1,710），B/A ≈ 1.7。期權凸性結構的最大損失僅限權利金，若事件日出現方向性跳空，報酬倍數可遠高於現股方案，但須以實際報價覆核，此處僅為概念性建議。</p>
+<h2>What I'd push for</h2>
+<p>完全不進場把「等待確定性」當成免費選項，但確定性本身要付出時間成本與踏空成本。我主張：在 MA20/MA50 支撐匯合區用 1% 風險的小倉位先卡位，停損下移到 $78.60 避開整數洗盤位，同時用一組便宜的 call spread 當作事件日凸性加碼，而非完全旁觀；真正該避免的是在三事件疊加前押大倉位方向，這點我同意交易員——但「避免大倉位」不等於「必須零倉位」。</p>
+<p>AGGRESSIVE VIEW COMPLETE</p></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-blue-700 mb-2">🛡️ 保守 (Conservative)</h4>
+          <div class="agent-prose text-sm bg-blue-50 p-3 rounded border border-blue-200"><h1>Conservative risk view — TLT</h1>
+<h2>Where trader is too agg進取</h2>
+<ul>
+<li>方案本身是 AVOID/HOLD，方向正確，但「若觸發則第一筆以半倉為上限」這個預設仍嫌大。ATR14 僅 $0.81（約現價 1.0%），但這是事件前的低波動假象；TLT 存續期間約 14.7 年，12/04 非農、12/09 FOMC、12/10 CPI 三個事件疊加在六個交易日內，波動展開後的真實跳空幅度會遠大於目前 ATR 所暗示的風險，半倉等於用「平靜期的風險尺」去衡量「事件週的風險」。</li>
+<li>觸發條件本身仍存在時間差風險：FOMC（12/09）決議時看不到 12/10 CPI，若 FOMC 鷹派語氣符合轉空觸發、但隔天 CPI 卻意外降溫，價格可能在兩個交易日內反覆穿越 $79.11，造成假突破洗出或連續停損。</li>
+<li>停損參考點（多單 $79.11 / 空方失效點 $82.81）是結構價位，不是波動率調整後的停損；事件日跳空常見幅度可達 1.5–2 倍日均波動，用結構價位當停損，實際滑價風險未被納入。</li>
+</ul>
+<h2>Tail scenarios</h2>
+<ul>
+<li>Scenario A（機率約 5–10%）：FOMC 升息 50bp 或 dot plot 顯示 2027 年續升息 → TLT 跳空跌破 $79.11 直奔 $76.43，甚至滑向 $74–75（前波低點下方），若停損設在 $79.11，跳空情境下實際成交價可能落在 $77 附近，多出約 2.6% 的額外滑價損失。</li>
+<li>Scenario B（機率約 15–20%）：核心 CPI 月增回到 ≥0.3%，且非農不如預期降溫 → 區間下緣 $79.11 失守但未跳空，屬於「觸發轉空」的正常路徑，風險可控。</li>
+<li>Scenario C（機率約 10%）：三項數據皆溫和，但市場解讀為「暫停升息已計價完畢」，殖利率反而因獲利回吐走高（買預期賣事實）→ 多方站上 $82.81 後迅速回落，造成多單假突破。</li>
+</ul>
+<h2>Recommended adjustments</h2>
+<ul>
+<li>Size：半倉上限 → 建議再減半（即正常倉位的 1/4），待第二個事件（CPI）確認方向一致後再加碼至半倉，而非一次到半倉。</li>
+<li>Stop：結構價位 $79.11 / $82.81 不變，但建議加掛「時間停損」：若觸發後兩個交易日內未能延續方向（如突破 $82.81 後未站穩），應視為假突破立即出清，不等結構價位。</li>
+<li>Entry：不要在觸發當日追價，等隔日收盤確認（避免事件日單日波動的噪音）。</li>
+<li>Consider：若仍想參與,可用短期 TLT put 或 TBT 小額對沖，降低事件週的尾部缺口風險，而非持有裸多單。</li>
+</ul>
+<h2>Position-level $ risk</h2>
+<p>以 NAV $100,000、原半倉假設配置 20%（約 $20,000，現價 $81.33 約 246 股）、停損 $79.11 計算：正常路徑損失 = ($81.33-$79.11)×246 ≈ $546（0.55% NAV），可接受；但 Scenario A 跳空至 $77 時，損失 = ($81.33-$77)×246 ≈ $1,065（1.07% NAV），已是正常估計的近兩倍，且若維持原「半倉」而非我方建議的 1/4 倉，兩個數字會再放大一倍，分別達約 1.1%／2.1% NAV，在三重事件疊加週並不划算。</p>
+<h2>What I'd push for</h2>
+<p>維持 AVOID 立場至 12/10 CPI 公布後再表態；若研究團隊堅持要在觸發後立即進場，應把第一筆倉位降到正常半倉的一半（即總曝險的 1/4），停損維持結構價位但加掛兩日時間停損，並在觸發隔日收盤確認方向後才加碼，以避免用低波動期的 ATR 誤判事件週的真實跳空風險。</p>
+<p>CONSERVATIVE VIEW COMPLETE</p></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-slate-700 mb-2">⚖️ 中立 (Neutral)</h4>
+          <div class="agent-prose text-sm bg-slate-100 p-3 rounded border border-slate-300"><h1>Neutral risk view — TLT</h1>
+<h2>Points of agreement (both sides)</h2>
+<ul>
+<li>事件前（12/04–12/10）不應打滿倉：三場高影響事件疊加，方向信心仍是 MEDIUM 偏事件判斷，非方向判斷。</li>
+<li>ATR14 $0.81（約1.0%）是「平靜期假象」，不能代表事件週的真實跳空風險，存續期間 14.7 年會放大利率意外。</li>
+<li>結構價位 $79.11 / $82.81 本身有效，但單用收盤確認或單用價位停損都有被洗出場或滑價的風險，需要額外緩衝機制。</li>
+<li>可用 define-risk 衍生品（call/put spread、小額 TBT 對沖）取代裸倉，把低波動轉成便宜凸性或限損工具。</li>
+</ul>
+<h2>Aggressive overreach</h2>
+<ul>
+<li>Where：主張現在就在 MA20/MA50 匯合區卡位現股試探倉，並將「等待」視為必然的 alpha 流失。</li>
+<li>Why：research manager 與交易員皆明確指出「事件前無可驗證的新催化訊號」，多方結構（更高低點）尚未被空方宏觀證據（FOMC 10–2、Waller 50bp 門檻、核心 CPI、非農）推翻，也未被突破確認；提前卡位等於在雙方證據仍勢均力敵時先選邊，承擔的是方向不確定性，不只是時間成本。停損下移到 $78.60 合理，但「現在進場」本身缺乏不對稱優勢支撐。</li>
+</ul>
+<h2>Conservative overreach</h2>
+<ul>
+<li>Where：建議把觸發後第一筆倉位從半倉再砍到 1/4，且必須等隔日收盤＋兩日時間停損才行動；Scenario A 給出 5–10% 的 50bp／鷹派 dot plot 機率，高於原文本身引用的「單一來源估約 1%」。</li>
+<li>Why：在本已是 AVOID／零曝險的基礎方案上再疊加多層延遲與縮量，犧牲了觸發後應有的反應速度，且尾部機率估計缺乏來源支撐，有過度保守之嫌；雙重停損（結構價+時間停損）在雙向假突破情境下反而可能造成兩邊都被洗出。</li>
+</ul>
+<h2>Balanced adjustment proposal</h2>
+<ul>
+<li>Size：事件前不建立現股方向性倉位；僅容許極小規模 define-risk 選擇權結構（如 $82/$85 call spread 或對稱 put），名義風險上限約 NAV 的 0.4%。</li>
+<li>Stop：若仍想用現股卡位，採 $78.60（非 $79.11 整數位），不加二日時間停損（避免雙重洗出），但要求站上 $82.81 須帶量收盤確認才加碼。</li>
+<li>Entry：不在觸發當日追價，但也不要求等到完全突破後才有任何曝險；以選擇權小倉位先行卡位凸性。</li>
+<li>Hedge：保留反向小額 put/TBT 對沖 12/09 FOMC 跳空風險。</li>
+<li>Time horizon：戰術聚焦 12/04–12/10，12/10 CPI 後重新評估中期部位。</li>
+</ul>
+<h2>Net $ risk if stop hits</h2>
+<p>以 150 股試探倉、停損 $78.60 計：($81.33-$78.60)×150 ≈ $410（0.41% NAV）。</p>
+<h2>Net $ upside at T1 / T2</h2>
+<p>T1（$84.00 MA200）：($84.00-$81.33)×150 ≈ $400（0.40% NAV）；T2（約$86 前高延伸）：($86-$81.33)×150 ≈ $700（0.70% NAV）。</p>
+<p>NEUTRAL VIEW COMPLETE</p></div>
+        </div>
+      </div>
+    </details>
+
+  </div>
+
+  <script>
+    (function() {
+      var d = {};
+      if (!d.dates) return;
+      var traces = [
+        {x: d.dates, y: d.close, name: 'Close',  line: {color: '#1f2937', width: 2}},
+        {x: d.dates, y: d.ma20,  name: 'MA20',   line: {color: '#0ea5e9', width: 1, dash: 'dot'}},
+        {x: d.dates, y: d.ma50,  name: 'MA50',   line: {color: '#f59e0b', width: 1, dash: 'dot'}},
+        {x: d.dates, y: d.ma200, name: 'MA200',  line: {color: '#ef4444', width: 1, dash: 'dash'}}
+      ];
+      var layout = {
+        margin: {l: 50, r: 20, t: 10, b: 40},
+        legend: {orientation: 'h', y: -0.15},
+        xaxis: {showgrid: false},
+        yaxis: {title: '價格 ($)'}
+      };
+      Plotly.newPlot('chart-TLT', traces, layout, {displayModeBar: false, responsive: true});
+    })();
+  </script>
+
+</section>
+
+
+<section id="ticker-UUP" class="mb-10 bg-white rounded-lg shadow overflow-hidden">
+
+  <div class="flex items-start justify-between p-6 border-b border-slate-200 verdict-HOLD">
+    <div>
+      <h2 class="text-3xl font-bold">UUP</h2>
+      <p class="text-sm mt-1 opacity-80">Invesco DB US Dollar Bullish ETF</p>
+    </div>
+    <div class="text-right">
+      <div class="text-4xl font-bold">HOLD</div>
+      <div class="text-sm opacity-80 mt-1">REJECT</div>
+    </div>
+  </div>
+
+  <div class="p-6 grid grid-cols-1 lg:grid-cols-2 gap-6">
+
+    <div>
+      <h3 class="text-lg font-bold mb-2">價格 + 技術指標 (2 年)</h3>
+      <div id="chart-UUP" style="height: 380px;"></div>
+    </div>
+
+    <div>
+      <h3 class="text-lg font-bold mb-2">最終決策 (Final decision)</h3>
+      <div class="agent-prose text-sm bg-slate-50 p-4 rounded border border-slate-200">
+        <p>FINAL TRANSACTION PROPOSAL: <strong>HOLD</strong></p>
+<h1>Final decision — UUP as of 2026-11-28</h1>
+<h2>FINAL TRANSACTION PROPOSAL: <strong>HOLD</strong></h2>
+<h2>Verdict</h2>
+<p>REJECT</p>
+<h2>Final trade card (if not REJECT)</h2>
+<p>不適用。UUP 不在 <code>held_tickers.txt</code>，屬新倉評估（A 框架）；本次不進場，故不開立交易卡。帳上無部位，風險辯論中「既有多單減碼」的討論不適用。</p>
+<p><strong>否決理由（dealbreaker）</strong><br />
+1. R:R 不達標：以 $29.715 進場、$28.84 停損、$30.76 目標試算，R:R 約 1.2，低於 LONG 門檻 1.5。<br />
+2. 關鍵資料缺口：CME FedWatch 12 月升息機率最新值為 DATA_UNAVAILABLE，無法判斷升息是否已充分定價，這正是報酬不對稱的核心。<br />
+3. 雙向事件風險：12/04 非農與 12/09 FOMC 尚未落地，ATR14 $0.129 低估事件日跳空。<br />
+4. 多空信心 6/10 對 5/10，差距在雜訊範圍內。</p>
+<p><strong>重新評估條件</strong>：非農與 FOMC 皆落地後，帶量（高於 1.81M）收盤站上 $29.84，且以當時價位重算 R:R ≥ 1.5，可重新送審，規模上限為半倉。</p>
+<h2>Risk debate adjudication</h2>
+<ul>
+<li>Aggressive's strongest point：三條件全部確認後才進場，價格可能已跳空越過 $29.84；低波動環境下以 call spread 買凸性、下檔鎖在權利金，結構上優於現貨。</li>
+<li>Conservative's strongest point：FedWatch 資料缺口未補之前，任何方向性曝險都是在資訊不足下下注，紀律上應視為不可交易；RSI 於 11/23 見 75.14 高點、MACD hist 連 5 日收斂，單日突破容易是假突破。</li>
+<li>Net: I weight conservative more here because 激進方的 call spread 建立在未經驗證的假設上（權利金 $0.15 為估計值，UUP 選擇權流動性與報價未查證），且「非農前提前卡位」等於用猜測填補資料缺口。但我不採納保守方「站穩兩個交易日」的要求，改採中性方版本：雙事件落地後單日收盤確認即可重審。</li>
+</ul>
+<h2>論點支柱</h2>
+<table>
+<thead>
+<tr>
+<th>支柱</th>
+<th>當初的預期</th>
+<th>現況</th>
+<th>判定</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>趨勢結構</td>
+<td>MA20 &gt; MA50 &gt; MA200，低點墊高</td>
+<td>三線多頭排列未破，低點由 $28.84 墊高至 $29.56</td>
+<td>成立</td>
+</tr>
+<tr>
+<td>動能延續</td>
+<td>突破 52 週高 $29.84</td>
+<td>MACD hist 由 +0.0475 收斂至 +0.0167，尚未突破</td>
+<td>觀察中</td>
+</tr>
+<tr>
+<td>升息定價支撐美元</td>
+<td>12 月升息機率維持八成以上</td>
+<td>僅有 10 月底 78%–88%，最新值缺漏</td>
+<td>觀察中</td>
+</tr>
+<tr>
+<td>報酬不對稱</td>
+<td>R:R ≥ 1.5</td>
+<td>約 1.2</td>
+<td>已失效</td>
+</tr>
+</tbody>
+</table>
+<h2>論點失效條件</h2>
+<p>與價格停損分開；以下為論點紀律，決定日後是否仍值得重審做多。<br />
+- 若 12/09 FOMC 不升息，或點陣圖下修 2027 年利率路徑，升息定價支柱失效 → 取消做多重審，改評估空方情境。<br />
+- 若收盤跌破 MA50 $29.07 且 MACD hist 轉負，趨勢支柱失效 → 做多論點作廢。<br />
+- 若 12/04 非農新增就業低於 10 萬人或失業率上升，升息定價支柱失效 → FOMC 前不重審。<br />
+- 反向（觀望立場錯誤）：若雙事件落地後帶量收盤站上 $29.84 且重算 R:R ≥ 1.5 → 觀望理由消失，須立即重審。</p>
+<h2>Monitoring trigger</h2>
+<p>If CME FedWatch 12 月升息機率最新值取得（高於 85% 代表上行有限，低於 60% 代表鴿派風險升高），或 UUP 收盤越過 $29.84／跌破 $29.07，即重新評估，不必等到 FOMC。</p>
+<h2>Catalyst calendar</h2>
+<ul>
+<li>2026-12-04 — 美國非農就業數據</li>
+<li>2026-12-09 — FOMC 利率決議與點陣圖</li>
+<li>2026-12-10 — FOMC 後強制重審日</li>
+</ul>
+<p>FINAL DECISION COMPLETE</p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="px-6 pb-6">
+
+    <details class="mb-4 border border-slate-200 rounded">
+      <summary class="bg-slate-50 px-4 py-2 font-semibold">投資計劃 (Research manager)</summary>
+      <div class="agent-prose p-4 text-sm"><h1>Investment plan — UUP as of 2026-11-28</h1>
+<h2>Directional stance</h2>
+<p>NEUTRAL — conviction LOW（趨勢偏多，但事件風險不對稱，等待確認）</p>
+<h2>Crux of debate</h2>
+<ol>
+<li><strong>12 月升息是否已被充分定價</strong>：10 月底 CME FedWatch 約 78%–88%，11 月下旬最新數字 DATA_UNAVAILABLE。若定價仍在八成以上，12/09 FOMC 升息只是「符合預期」，上行有限；不升息或措辭偏鴿則會引發修正。這是報酬不對稱的核心。</li>
+<li><strong>$29.84 是突破還是頂部</strong>：價格距 52 週高僅 -0.42%，MACD hist 自 +0.0475 連 5 日收斂至 +0.0167。帶量收盤站上 $29.84 支持多方；收盤跌破 MA50 $29.07 且 MACD hist 轉負支持空方。</li>
+<li><strong>利差方向是否仍有利美元</strong>：Fed 3.75%–4.00% 對 ECB 2.50%、BoJ 1.25% 的利差水準有利美元，但 ECB 與 BoJ 皆處升息循環，利差在收窄。BBH（11/12）認為利差無法支撐 DXY 漲勢。</li>
+</ol>
+<h2>Where the bull is right</h2>
+<ul>
+<li>趨勢結構有據：MA20 &gt; MA50 &gt; MA200 三線上揚，高點與低點逐步墊高（11/04 低 28.84 → 11/25 低 29.56），$29.25 前高已轉為支撐。</li>
+<li>時序論點成立：11/19 鷹派紀要晚於 Warsh 10 月底的模糊表態與 10/23 的日圓避險報導，較貼近目前定價。</li>
+<li>結構效率屬實：溢價 +0.42%、價差 0.03%、10 日均量 1.81M，進出成本低。</li>
+<li>多方自承 6/10 信心，並主動揭露資料缺口，論證態度誠實。</li>
+</ul>
+<h2>Where the bear is right</h2>
+<ul>
+<li>動能確實在衰退：RSI 11/23 的 75.14 為高點，MACD hist 連續收斂，近 1 個月報酬 +2.25%，明顯落後 6 個月 +7.43%。</li>
+<li>利多大多已是舊資訊：升息機率是 10 月底數字，策略師（BBH、ING）普遍認為上行有限、2027 年起轉弱。</li>
+<li>資金流、CFTC 部位、DXY 即時水位全數缺漏，多方「價格本身即共識」的說法無法驗證。</li>
+<li><strong>但空方有三處證據品質偏弱</strong>：(a) 以 11/27 半日盤、未收盤的 349K 成交量論證「缺乏量能」，market.md 已明言不可比較；(b) 價格尚未創新高，稱為「頂背離」並不精確，只能算動能衰退；(c) contango 侵蝕滾倉的說法沒有依據，在美元利率高於一籃子貨幣時，DX 期貨多頭的 carry 通常為正。</li>
+</ul>
+<h2>Net verdict (3-5 sentences)</h2>
+<p>兩方信心分別為 6/10 與 5/10，差距落在雜訊範圍內，沒有一方勝出。多方的趨勢與利差論點較有數據支撐，空方則正確點出動能衰退與催化劑已被定價，但部分論據使用了不適用的資料。以 $29.715 進場、停損設在 $28.84、目標看 $30.76 計算，R:R 約 1.2，加上 12/04 非農與 12/09 FOMC 這兩個雙向事件，目前不具備足夠優勢。各報告之間的數據矛盾（DXY 101.6 vs 103、3 個月報酬 +3.02% vs +5.45%）也拉低整體信心。結論是維持中性，偏多趨勢可保留觀察，但建議等價格確認或事件落地後再表態。</p>
+<h2>What would change the verdict</h2>
+<ul>
+<li>Upside trigger：帶量收盤站上 $29.84（量能高於 1.81M 基準），且 12/04 非農強勁、FOMC 前升息定價維持高檔，可轉為 LONG（MEDIUM）。</li>
+<li>Downside trigger：收盤跌破 MA50 $29.07 且 MACD hist 轉負；若再跌破 $28.84，或 12/09 FOMC 不升息、點陣圖偏鴿，可轉為 SHORT_OR_AVOID。</li>
+<li>Key data point to monitor：CME FedWatch 的 12 月升息機率最新值（判斷 crux 1），以及 12/04 非農數據。</li>
+</ul>
+<h2>Position-sizing guidance (qualitative, not advice)</h2>
+<p>中性、低信心 → 不建立新方向性部位，或僅以極小試單參與。若已持有多單，可考慮在事件前減碼至半倉以下，並以 $29.07／$28.84 作為邏輯風控位。突破確認後再升級為中等信心時，可回到半倉至正常部位。注意 ATR 僅 $0.129，事件日的跳空幅度可能遠大於 ATR 所示，不宜因停損距離看似很近就放大部位。</p>
+<h2>Time horizon</h2>
+<p>數日至數週：此論點取決於 12/04 非農與 12/09 FOMC，建議在 FOMC 後重新評估。0.75% 費用率與 2027 年美元轉弱的共識預期，也不支持以季度為單位長抱。</p>
+<p>INVESTMENT PLAN COMPLETE</p></div>
+    </details>
+
+    <details class="mb-4 border border-slate-200 rounded">
+      <summary class="bg-slate-50 px-4 py-2 font-semibold">交易提案 (Trader)</summary>
+      <div class="agent-prose p-4 text-sm"><p>FINAL TRANSACTION PROPOSAL: <strong>HOLD</strong></p>
+<h1>Trade proposal — UUP as of 2026-11-28</h1>
+<h2>Direction</h2>
+<p>AVOID（不建立新方向性部位）</p>
+<h2>Setup</h2>
+<p>本次為 NEUTRAL、LOW 信心判斷，依規則不展開具體進場區間 / 停損 / 目標價位的操作計畫。僅記錄市場現況與觀察位，供日後確認訊號出現時參考：</p>
+<ul>
+<li>現價：$29.715（2026-11-27 收盤）</li>
+<li>關鍵壓力：$29.84（52 週高，盤中）、$29.97（BB 上軌，動態）</li>
+<li>關鍵支撐：$29.35（MA20）、$29.07（MA50）、$28.84–$28.85（結構性低點支撐帶）</li>
+<li>investment_plan.md 試算之情境數字（$29.715 進場、$28.84 停損、$30.76 目標）R:R 僅約 1.2，低於多方規則門檻（LONG 需 ≥1.5），本身即不構成可執行交易。</li>
+</ul>
+<p>未設定正式 Entry / Stop / Target，因為目前缺乏方向確認（詳見下方 Trigger）。</p>
+<h2>Sizing</h2>
+<p>不新增部位。若帳上已有多單，研究計畫建議在 12/04 非農、12/09 FOMC 事件前減碼至半倉以下，並以 $29.07（緊）／$28.84（結構）作為邏輯風控參考位，而非新建倉的操作依據。ATR14 僅 $0.129（約現價 0.43%），20 日年化波動 5.87%，屬低波動，但事件日跳空幅度可能遠超 ATR，不應以 ATR 距離近為由放大槓桿或部位。</p>
+<h2>Time horizon</h2>
+<p>數日至數週 — 待 12/04 非農與 12/09 FOMC 落地後重新評估，不宜以季度級別長抱（市場策略師普遍預期美元自 2027 年起轉弱，且 UUP 費用率 0.75% 不利長期持有）。</p>
+<h2>Trigger</h2>
+<ul>
+<li>Enter LONG（轉為 MEDIUM 信心）條件：帶量（高於 10 日均量基準約 1.81M）收盤站上 $29.84，且 12/04 非農強勁、FOMC 前升息定價維持高檔。</li>
+<li>Enter SHORT（轉為 SHORT_OR_AVOID）條件：收盤跌破 $29.07（MA50）且 MACD hist 轉負；若再跌破 $28.84，或 12/09 FOMC 不升息 / 點陣圖偏鴿，空方情境成立。</li>
+<li>現階段：Wait — 兩項事件（12/04 非農、12/09 FOMC）尚未落地，且多空信心差距（6/10 vs 5/10）落在雜訊範圍內，不具備足夠優勢進場。</li>
+</ul>
+<h2>Invalidation</h2>
+<p>本提案的前提（維持觀望）會在以下情況失效並需重新評估：價格明確突破或跌破上述關鍵位且伴隨量能確認；CME FedWatch 12 月升息機率最新數據公布（目前缺漏，为判斷 crux 1 的關鍵）；或非農 / FOMC 結果大幅偏離市場預期，打破目前雙向對稱的事件風險結構。</p>
+<h2>Catalyst calendar</h2>
+<ul>
+<li>2026-12-04 — 美國非農就業數據（NFP）</li>
+<li>2026-12-09 — FOMC 利率決議（市場聚焦是否升息及點陣圖措辭）</li>
+</ul>
+<p>TRADE PROPOSAL COMPLETE</p></div>
+    </details>
+
+    <details class="mb-4 border border-slate-200 rounded">
+      <summary class="bg-slate-50 px-4 py-2 font-semibold">Phase 1 — 四 Analyst 報告</summary>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+        <div>
+          <h4 class="font-bold text-slate-700 mb-2">基本面 (Fundamentals)</h4>
+          <div class="agent-prose text-sm bg-slate-50 p-3 rounded"><h1>Fundamentals — UUP as of 2026-11-28</h1>
+<h2>Executive summary</h2>
+<p>UUP 是 Invesco DB US Dollar Index Bullish Fund（美元指數多頭 ETF），不是operating company，因此不適用營收、利潤率、估值倍數等公司財務框架。截至 2026-11-27 的快照顯示基金規模約 $481.4M、費用率 0.75%、市價略高於 NAV（溢價約 +0.42%），價格位於 52 週高點附近（距高點 -0.42%）且站上 20/50/200 日均線，RSI14 為 67.6，技術面偏強但接近超買區。持有權重、資金流向與 AUM 歷史等關鍵資料工具未提供，無法確認基金內部部位與資金動向。</p>
+<h2>Revenue &amp; profitability</h2>
+<p>本節不適用。UUP 為 ETF，沒有營收、毛利、營業利益或淨利。基金的「經營結果」對應為淨值（NAV）表現與標的指數（DX，ICE US Dollar Index）的走勢：<br />
+- YTD 報酬：+7.13%（yfinance <code>ytdReturn</code>）<br />
+- 近三個月報酬：+3.02%（<code>trailingThreeMonthReturns</code>）<br />
+- 52 週報酬：+4.93%（<code>fiftyTwoWeekChangePercent</code>）<br />
+- 3 年平均年化報酬：+5.23%；5 年平均年化報酬：+5.74%（<code>threeYearAverageReturn</code> / <code>fiveYearAverageReturn</code>）<br />
+- 價格區間：52 週 26.40–29.84，歷史高點 30.76、歷史低點 20.84（<code>allTimeHigh</code> / <code>allTimeLow</code>）</p>
+<p>「營收成長 CAGR、毛利率、ROE、ROIC」均為 n/a（不適用於 ETF）。</p>
+<h2>Cashflow &amp; balance sheet</h2>
+<p>本節不適用。ETF 沒有公司層級的現金流量表與資產負債表。yfinance 的 <code>financials</code> / <code>balance_sheet</code> / <code>cashflow</code> 回傳空陣列，這是 ETF 結構使然，不是資料缺漏。</p>
+<p>基金層級的資產與負債以可得的快照數字表示：<br />
+- 淨資產（netAssets）：481,364,192 USD，約 $481.4M<br />
+- 基金為期貨部位結構（DX 期貨多頭），無債務槓桿報告欄位<br />
+- 期貨保證金、抵押品與現金配置：DATA_UNAVAILABLE</p>
+<h2>Capital allocation &amp; insider signal</h2>
+<ul>
+<li>股息：<code>trailingAnnualDividendRate</code> 與 <code>trailingAnnualDividendYield</code> 皆為 0.0，但 <code>yield</code> / <code>dividendYield</code> 欄位顯示 3.2%。兩者互相矛盾，且 UUP 為 DX 期貨多頭基金，理論上不以配息為主要報酬來源。此處不採用 3.2%，標示為資料不一致。</li>
+<li>買回：不適用（ETF 不回購）。</li>
+<li>內部人交易：不適用（ETF 無內部人）。<code>insider</code> 回傳空陣列。</li>
+<li>持股人（major_holders / inst_holders）：回傳空陣列，DATA_UNAVAILABLE。</li>
+<li>基金費用：費用率（netExpenseRatio）0.75%。以 AUM $481.4M 估算，年化費用約 $3.6M（0.75% × $481.4M，為推算值）。</li>
+<li>資金流向（creations / redemptions）與 AUM 歷史：DATA_UNAVAILABLE。只有單日快照 AUM，無時間序列，無法判斷近期是淨申購還是淨贖回。</li>
+<li>股數：yfinance 未提供 <code>sharesOutstanding</code>。以 netAssets / navPrice 推算約 16.27M 股（29.59 為 NAV 推算值，非工具直接輸出）。</li>
+</ul>
+<h2>Valuation</h2>
+<p>本節不適用公司估值倍數（P/E、EV/EBITDA、P/FCF、P/S）。ETF 的估值對照方式為「市價 vs NAV」與「價格相對均線」：</p>
+<ul>
+<li>市價（regularMarketPrice）：29.715 USD</li>
+<li>淨值（navPrice）：29.59 USD（標示為工具回傳值，可能為前一交易日 NAV，未確認時點）</li>
+<li>溢價：+0.42%（(29.715 / 29.59) − 1）。溢價幅度小，套利機制通常會維持在窄幅區間。</li>
+<li>Bid / Ask：29.71 / 29.72，價差約 0.03%，流動性尚可。</li>
+<li>成交量：當日 349,097 股（盤中快照，不完整），10 日均量 1,809,400 股，3 月均量 1,703,015 股。當日量僅為均量的約 19%，原因可能是盤中時點未收盤，此數字不宜直接與均量比較。</li>
+</ul>
+<p>技術面位置（來自 <code>ta snapshot</code>，as_of 2026-11-27）：<br />
+- 相對 MA20（29.350）：+1.24%<br />
+- 相對 MA50（29.068）：+2.22%<br />
+- 相對 MA200（28.155）：+5.54%<br />
+- 布林 %B：0.80；RSI14：67.6；MACD 柱狀體：+0.017（MACD 0.204 高於訊號線 0.187）<br />
+- ATR14：0.129 USD（約佔價格 0.43%）；20 日年化波動率：5.87%</p>
+<h2>Key catalysts</h2>
+<ul>
+<li>下次財報：不適用（ETF 無財報）。<code>earnings_dates</code> 回傳工具錯誤。</li>
+<li>宏觀催化因子（非工具輸出，屬定性說明）：美元指數受 Fed 利率路徑、美國與主要貿易夥伴的利差與經濟數據、地緣政治避險需求影響。這些是定性判斷，不含具體日期，工具未提供經濟日曆。</li>
+<li>基金結構催化：DX 期貨滾倉（roll）與指數重新平衡會影響期貨曲線報酬，工具未提供滾倉時程。</li>
+<li>資料時點提醒：本報告所有數字截至 2026-11-27，未使用 2026-11-28 之後的任何資料。</li>
+</ul>
+<h2>Metrics table</h2>
+<p>單位說明：UUP 以 USD 計價，AUM 以 USD M 表示。本報告無 TWD 或 KRW 金額，不涉及 億 換算。</p>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Latest</th>
+<th>YoY</th>
+<th>Sector median (estimate)</th>
+<th>Verdict</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>市價 (USD)</td>
+<td>29.715</td>
+<td>52 週報酬 +4.93%</td>
+<td>n/a</td>
+<td>中性偏強</td>
+</tr>
+<tr>
+<td>淨值 NAV (USD)</td>
+<td>29.59</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>時點未確認</td>
+</tr>
+<tr>
+<td>溢價 / 折價</td>
+<td>+0.42%</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>小幅溢價，正常</td>
+</tr>
+<tr>
+<td>淨資產 AUM (USD M)</td>
+<td>481.4</td>
+<td>n/a（僅單點）</td>
+<td>n/a</td>
+<td>規模中等，資金流 DATA_UNAVAILABLE</td>
+</tr>
+<tr>
+<td>費用率 Expense ratio</td>
+<td>0.75%</td>
+<td>n/a</td>
+<td>同類 currency ETF 中位數 n/a</td>
+<td>偏高，屬主動期貨型結構</td>
+</tr>
+<tr>
+<td>YTD 報酬</td>
+<td>+7.13%</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>強勢</td>
+</tr>
+<tr>
+<td>3 個月報酬</td>
+<td>+3.02%</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>正向</td>
+</tr>
+<tr>
+<td>3 年平均年化報酬</td>
+<td>+5.23%</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>正向</td>
+</tr>
+<tr>
+<td>5 年平均年化報酬</td>
+<td>+5.74%</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>正向</td>
+</tr>
+<tr>
+<td>距 52 週高點</td>
+<td>-0.42%</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>接近高點</td>
+</tr>
+<tr>
+<td>距 52 週低點</td>
+<td>+12.56%</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>區間上段</td>
+</tr>
+<tr>
+<td>相對 MA200</td>
+<td>+5.54%</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>長期趨勢向上</td>
+</tr>
+<tr>
+<td>RSI14</td>
+<td>67.6</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>接近超買，留意</td>
+</tr>
+<tr>
+<td>布林 %B</td>
+<td>0.80</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>偏上軌</td>
+</tr>
+<tr>
+<td>ATR14 (USD)</td>
+<td>0.129</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>日內波動約 0.43%</td>
+</tr>
+<tr>
+<td>20 日年化波動率</td>
+<td>5.87%</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>低波動</td>
+</tr>
+<tr>
+<td>10 日均量（股）</td>
+<td>1,809,400</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>流動性充足</td>
+</tr>
+<tr>
+<td>Bid / Ask spread</td>
+<td>0.03%</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>價差窄</td>
+</tr>
+<tr>
+<td>股息率（yield 欄位）</td>
+<td>3.2%</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>與 trailing 股息 0 矛盾，不採用</td>
+</tr>
+<tr>
+<td>Beta (3Y)</td>
+<td>-7.93</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>異常值，不可採用</td>
+</tr>
+<tr>
+<td>持股權重 / 期貨部位</td>
+<td>DATA_UNAVAILABLE</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>無法評估</td>
+</tr>
+<tr>
+<td>資金流向 / AUM 歷史</td>
+<td>DATA_UNAVAILABLE</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>無法評估</td>
+</tr>
+<tr>
+<td>財報 / 估值倍數</td>
+<td>不適用</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>ETF 不適用</td>
+</tr>
+</tbody>
+</table>
+<h2>Red flags</h2>
+<ul>
+<li>Beta (3Y) 為 -7.93，明顯不合理，系統不應使用此數字做風險計算。</li>
+<li>殖利率資料矛盾：yield 欄位 3.2%，但 trailing 股息為 0。</li>
+<li>持股權重、期貨部位組成、資金流向、AUM 時間序列全部 DATA_UNAVAILABLE，無法確認基金實際部位或申贖動態。</li>
+<li>目前價格與 RSI14（67.6）接近超買區，短線回檔風險需留意（僅為技術面觀察，不構成交易建議）。</li>
+<li>當日成交量為盤中不完整資料，不可直接與均量比較。</li>
+<li>工具大量使用 repo cache（Yahoo 連線 403），<code>fast_info</code> 的價格來自 cnyes feed 快取。價格與 <code>info</code> 吻合（29.715），但 NAV 時點不明。</li>
+<li>基金費用率 0.75% 偏高，長期持有時會侵蝕報酬。</li>
+<li>溢價 +0.42% 雖小，但 NAV 來源時點未確認，實際溢價可能與快照有偏差。</li>
+<li>歷史 CAGR 與 YoY 欄位對 ETF 的意義有限，表中已標示為 n/a。</li>
+</ul>
+<p>FUNDAMENTALS REPORT COMPLETE</p></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-slate-700 mb-2">技術面 (Market / Technical)</h4>
+          <div class="agent-prose text-sm bg-slate-50 p-3 rounded"><h1>Technical — UUP as of 2026-11-28</h1>
+<p>資料說明：價格與 K 線來自 pipeline/tools 快取（yf fast_info 顯示 source=cache、feed=cnyes），屬正常情況。最後一根 K 棒為 2026-11-27（感恩節後半日盤），快取時間 16:31 UTC（美東約 11:31），該根 volume 348,389 可能是未完成的盤中資料，不宜與完整交易日量能直接比較。2026-11-28 無資料，本報告未納入該日。</p>
+<h2>Snapshot</h2>
+<p>Price $29.72（29.715，日漲 +0.39%，前收 $29.60）, MA20 $29.35, MA50 $29.07, MA200 $28.15, RSI14=67.58, MACD hist=+0.0167</p>
+<h2>Trend</h2>
+<p>均線結構為多頭排列：價格 29.72 高於 MA20（29.35）、MA50（29.07）、MA200（28.15），三條均線皆向上。MA200 自 2026-09 初的約 27.73 緩步升至 28.15，MA50 自約 28.25 升至 29.07，中期趨勢為上升。MA50 已在 MA200 之上，無近期死亡交叉風險；距 MA200 約 +5.5%，距 MA50 約 +2.2%，距 MA20 僅 +1.2%。</p>
+<p>短線來看，價格在 2026-11-23 創下 52 週高 29.84（盤中）、收 29.78 後，於 11-24、11-25 回落至 29.60，11-27 小幅反彈至 29.715。走勢仍為高點與低點逐步墊高（11-04 低點 28.84，11-25 低點 29.56），但接近前高與 52 週高，趨勢強度屬於「上升但延伸」。</p>
+<h2>Momentum</h2>
+<p>MACD 線 0.2037 仍在訊號線 0.1870 之上，histogram 為 +0.0167，仍為正值，但已連續收斂：11-18 為 +0.0475，11-23 為 +0.0435，11-24 為 +0.0322，11-25 為 +0.0198，11-27 為 +0.0167。MACD 線於 11-23 達 0.2133 後回落，顯示上行動能減弱，尚未轉負。</p>
+<p>RSI14 為 67.58，位於中性偏強區，尚未達 70 超買門檻。近期 RSI 曾於 11-23 升至 75.14（超買），11-24 回落至 65.81，11-25 為 64.09，11-27 回升至 67.58，動能高點已出現且 RSI 未再創新高。</p>
+<p>多期間報酬：1 個月 +2.25%、3 個月 +5.45%、6 個月 +7.43%、12 個月 +4.96%。短中期報酬皆為正，但 1 個月報酬明顯低於 6 個月，顯示近一個月漲幅放緩。</p>
+<h2>Key levels</h2>
+<ul>
+<li>Resistance: $29.84（2026-11-23 盤中高點，52 週高，距現價 +0.4%）, $29.97（BB 上軌，動態帶，非水平位）</li>
+<li>Resistance（已轉為支撐）: $29.25（2026-10-14 local high；已於 2026-11-11 收盤 $29.35 站上）</li>
+<li>Support:    $29.35（MA20，動態）, $29.07（MA50，動態）, $28.85（2026-10-20 local low）, $28.84（2026-11-04 local low，與 10-20 形成 28.84–28.85 支撐帶）, $28.22（2026-07-15 local low）, $27.92（2026-09-09 local low）, $27.87（2026-08-20 local low）</li>
+<li>52 週低點 $26.40（距現價 +12.6%）</li>
+<li>Stop-loss suggestion (logical, not advice): below $28.84（最近結構性低點與支撐帶下緣；近期未見支撐跌破事件，故以結構低點作為邏輯停損參考）。較緊的參考為收盤跌破 $29.07（MA50）。</li>
+</ul>
+<h2>Volatility profile</h2>
+<p>ATR14 = $0.129，ATR-implied 單日波動約 $0.13（約佔現價 0.43%）。20 日年化波動 5.87%，屬低波動環境。BB 帶寬（上軌 29.97 與下軌 28.73 之差）約為中軌的 4.2%，與低波動一致。</p>
+<p>部位大小意涵：以 ATR 為單位設停損時，停損距離在絕對金額上很小，同樣風險預算下可容納較多股數；但 UUP 為美元指數 ETF，跳空與事件日（如央行、數據公布）的實際波動可能超過 ATR 所反映的日常幅度，因此不宜只依 ATR 推估極端情境。</p>
+<h2>Setup</h2>
+<p>偏多（bullish bias），但短線延伸、動能收斂，屬於「趨勢仍在、動能待確認」的狀態。</p>
+<p>型態：自 2026-09 起呈現高點與低點逐步墊高的上升結構，均線多頭排列；2026-10-14 前高 $29.25 已被突破並守住，目前正測試 52 週高 $29.84 一帶。</p>
+<p>觀察條件（僅為條件讀數，非操作建議）：<br />
+- 偏多延續條件：收盤站上 $29.84 並帶量（近期量能基準約 1.81M，11-20 曾出現 2.98M 的放量日），可視為突破 52 週高。<br />
+- 轉弱條件：收盤跌破 $29.07（MA50）且 MACD hist 轉負，短線結構會轉弱；若再跌破 $28.84，中期上升結構受挑戰。<br />
+- 超買條件：RSI14 若再升破 70 且價格貼近 BB 上軌（$29.97），需留意延伸後回檔風險。</p>
+<p>量能：11-27 volume 348,389 為半日盤且快取時間早於收盤，無法與 10 日均量（約 1.81M，取 11-12 至 11-25 共 10 個交易日平均）直接比較，本報告不以此判定量能是否萎縮。</p>
+<h2>Indicators table</h2>
+<table>
+<thead>
+<tr>
+<th>Indicator</th>
+<th>Value</th>
+<th>Reading</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Price（最後收盤，2026-11-27）</td>
+<td>29.715</td>
+<td>日漲 +0.39%（前收 29.60）</td>
+</tr>
+<tr>
+<td>MA20</td>
+<td>29.35</td>
+<td>價格上方，距離 +1.24%</td>
+</tr>
+<tr>
+<td>MA50</td>
+<td>29.07</td>
+<td>價格上方，距離 +2.22%</td>
+</tr>
+<tr>
+<td>MA200</td>
+<td>28.15</td>
+<td>價格上方，距離 +5.54%，遠高於長期均線</td>
+</tr>
+<tr>
+<td>MA 排列</td>
+<td>MA20 &gt; MA50 &gt; MA200</td>
+<td>多頭排列，三線皆上升</td>
+</tr>
+<tr>
+<td>MACD 線 / 訊號線</td>
+<td>0.2037 / 0.1870</td>
+<td>MACD 位於訊號線之上</td>
+</tr>
+<tr>
+<td>MACD hist</td>
+<td>+0.0167</td>
+<td>仍為正，但自 +0.0475（11-18）持續收斂，動能減弱</td>
+</tr>
+<tr>
+<td>RSI14</td>
+<td>67.58</td>
+<td>中性偏強，未達 70 超買；11-23 曾達 75.14</td>
+</tr>
+<tr>
+<td>BB %B</td>
+<td>0.80</td>
+<td>位於上下軌之間偏上段</td>
+</tr>
+<tr>
+<td>BB 上軌 / 中軌 / 下軌</td>
+<td>29.97 / 29.35 / 28.73</td>
+<td>帶寬約 4.2%，波動收斂</td>
+</tr>
+<tr>
+<td>ATR14</td>
+<td>0.129（約 0.43% 現價）</td>
+<td>單日波動約 $0.13，低波動</td>
+</tr>
+<tr>
+<td>20 日年化波動</td>
+<td>5.87%</td>
+<td>低波動</td>
+</tr>
+<tr>
+<td>1 個月報酬</td>
+<td>+2.25%</td>
+<td>正報酬，近月放緩</td>
+</tr>
+<tr>
+<td>3 個月報酬</td>
+<td>+5.45%</td>
+<td>正報酬</td>
+</tr>
+<tr>
+<td>6 個月報酬</td>
+<td>+7.43%</td>
+<td>正報酬，中期強</td>
+</tr>
+<tr>
+<td>12 個月報酬</td>
+<td>+4.96%</td>
+<td>正報酬</td>
+</tr>
+<tr>
+<td>距 52 週高（29.84）</td>
+<td>-0.42%</td>
+<td>接近 52 週高，待突破確認</td>
+</tr>
+<tr>
+<td>距 52 週低（26.40）</td>
+<td>+12.56%</td>
+<td>距低點遠，中期偏強</td>
+</tr>
+<tr>
+<td>最新量 vs 10 日均量</td>
+<td>348,389 vs 約 1,809,400（約 19%）</td>
+<td>半日盤且快取未完成，不具比較意義</td>
+</tr>
+<tr>
+<td>資料來源</td>
+<td>快取（cache）</td>
+<td>正常，最後 K 棒為 2026-11-27</td>
+</tr>
+</tbody>
+</table>
+<p>MARKET REPORT COMPLETE</p></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-slate-700 mb-2">新聞 (News)</h4>
+          <div class="agent-prose text-sm bg-slate-50 p-3 rounded"><h1>新聞 — UUP as of 2026-11-28</h1>
+<p>注意事項：<code>pipeline/tools/yf UUP news</code> 回傳 403，無法取得 yfinance 新聞清單，因此公司新聞以 WebSearch 補足。<code>info</code> 可用（快取時間 2026-11-27 16:37 UTC）。多數搜尋結果日期不明或為 2025 / 早期 2026 資料，已排除或標註。依指示，無法確認者以 DATA_UNAVAILABLE 標示。未引用 daily/ 下舊報告的任何數字。</p>
+<p>UUP 為 Invesco DB US Dollar Index Bullish Fund（做多 DXY 期貨的 ETF），本身沒有公司層級新聞，故「公司新聞」在此定義為 UUP 相關價格與基金事件。</p>
+<h2>Top company-specific headlines (last 14d)</h2>
+<ul>
+<li>2026-11-27 — UUP 收盤 29.715 USD，較前收 29.60 上漲 +0.39%（yf info 快取）。日內區間 29.665–29.72，成交量 349,097 股，低於 10 日均量 1.81M，屬於低量小幅反彈。Impact: neutral。原因：單日波動小，無法判斷趨勢轉折。</li>
+<li>2026-11-27 — 基金規模 totalAssets 約 0.48B USD（481,364,192 USD），費用率 0.75%。Impact: neutral。原因：流動性尚可，但 AUM 小，對資金流敏感。</li>
+<li>無 DATA_UNAVAILABLE 以外的 UUP 基金事件（分配、換倉、結構調整）可確認。yf info 顯示 trailing 配息為 0。</li>
+</ul>
+<h2>Sector macro</h2>
+<ul>
+<li>2026-11-19 — FOMC 會議紀錄（minutes）被 FXStreet 描述為「非常鷹派」(<a href="https://www.fxstreet.com/analysis/the-last-fed-meeting-minutes-were-very-hawkish-202611191521">FXStreet, 2026-11-19</a>)。Impact on 美元: bullish。原因：支撐 12 月升息預期，利差支撐美元。</li>
+<li>2026-10-28 — Fed 維持利率不變，區間 3.75%–4.00%（多數來源），投票 10–2，Cook 與 Hammack 主張立即升息。美元僅小幅走弱，DXY 約 102.1（<a href="https://www.fxstreet.com/news/the-federal-reserve-holds-rates-and-two-officials-vote-for-a-hike-why-the-us-dollar-stayed-flat-anyway-202610291142">FXStreet</a>、<a href="https://tradingeconomics.com/united-states/currency/news/595937">TradingEconomics</a>）。Impact on 美元: neutral to bullish。原因：市場反應有限，但鷹派異議票顯示內部偏緊。</li>
+<li>注意：一則 Forex.com 報導寫區間 3.50%–3.75%、11–1 投票，與其他來源矛盾，未採用。</li>
+<li>Fed 主席 Warsh 在 10 月會議後拒絕承諾 12 月行動，市場解讀為略偏鴿（<a href="https://investinglive.com/central-banks/warsh-won-t-prejudge-rest-of-2026-names-october-and-december-as-decision-points/">Investinglive</a>）。Impact on 美元: 略偏空。原因：保留彈性削弱升息的確定性。</li>
+<li>10 月會議後 12 月升息機率被引用為約 78%–88%（CME FedWatch，來源日期為 10 月底，目前數字 DATA_UNAVAILABLE）。Impact on 美元: 若 12 月升息定價被撤回，將引發美元修正。</li>
+<li>利差：ECB 存款利率 2.50%（9 月升息後），10 月底 FXStreet 仍認為 12 月升息為基本情境；BoJ 政策利率 1.25%（9 月升息），11 月初 BoJ 會議紀錄支持續升。Impact on 美元: 美元相對 EUR/JPY 的利差方向大致中性偏多，但近期 EUR/JPY、USD/JPY 即時水準 DATA_UNAVAILABLE。</li>
+<li>避險流向：一則 TradingEconomics 文章（日期 2026-10-23）提到殖利率急跌、日圓受益、美元接近三週低點。Impact on 美元: 偏空。原因：風險迴避時流向日圓而非美元，美元避險地位不再單純。</li>
+<li>DXY 水準：一則未標註日期的 TradingEconomics 摘要稱 DXY 跌至 101.6，為兩週低點，本週約跌 0.4%。日期無法確認，僅作參考。10 月初 DXY 高點約 101.61，為 2026 年 6 月以來最高（該標題數字與內文不一致，視為不可靠）。</li>
+<li>無法取得 11 月中至 11 月 27 日的 DXY 日線資料，以及 11 月內的關稅、地緣政治新聞：DATA_UNAVAILABLE。</li>
+</ul>
+<h2>Peer signals</h2>
+<ul>
+<li>EUR（ECB）— 基本情境 12 月再升息 1 次，利差支撐歐元相對美元（以 10 月底資料為準，目前 DATA_UNAVAILABLE）。</li>
+<li>JPY（BoJ）— 1.25%，持續升息預期，日圓為近期避險受益者。</li>
+<li>其他 G10 最新 11 月資料 DATA_UNAVAILABLE。</li>
+<li>無 UUP 直接同類 ETF（UDN 為做空 DXY，未查詢）。</li>
+</ul>
+<h2>Forward calendar (next 14d)</h2>
+<ul>
+<li>2026-12-04（週五）08:30 ET — 美國 11 月非農（Nonfarm Payrolls），由 BLS 公布，為 12 月 FOMC 前最後主要就業數據。預期影響：強勁數據支撐美元，弱數據削弱 12 月升息定價。</li>
+<li>2026-12-09 — FOMC 會議。預期影響：為本期最大事件，若升息定價撤回，UUP 承壓；點陣圖與 Warsh 措辭為關鍵。</li>
+<li>2026-12-10 — 11 月 CPI，僅單一來源（financecalendar.com），BLS 未確認：標註為未驗證。若落在 FOMC 後，影響延後至 12 月 10 日。</li>
+<li>ECB 與 BoJ 12 月會議日期 DATA_UNAVAILABLE（本次未查到確切日期）。</li>
+</ul>
+<h2>Net read</h2>
+<p>本期（近 30 日）新聞對美元的淨傾向為偏多但幅度有限，偏多 · 中低強度。支撐面來自 10 月底 FOMC 維持利率但兩票主張升息，以及 11 月 19 日公布的鷹派會議紀錄，市場仍定價 12 月升息的機率高（10 月底約 78%–88%）。反面因素包括 Warsh 拒絕承諾 12 月行動、避險資金流向日圓而非美元、以及 DXY 在 10 月高點 101.6 附近停滯，顯示美元上行動能減弱。UUP 當日收盤 29.715，位於 52 週區間 26.40–29.84 的上緣（距高點約 0.4%），高於 50 日均線 29.04 與 200 日均線 28.14，趨勢偏多。關鍵變數為 12 月 4 日非農與 12 月 9 日 FOMC。注意：本報告的數據多數為 10 月底至 11 月中，11 月下旬的 DXY 與利率期貨定價缺口較大，結論信心偏低。</p>
+<h2>指標摘要表</h2>
+<table>
+<thead>
+<tr>
+<th>指標</th>
+<th>數值</th>
+<th>日期 / 來源</th>
+<th>備註</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>UUP 收盤價</td>
+<td>29.715 USD</td>
+<td>2026-11-27 (yf info)</td>
+<td>前收 29.60，+0.39%</td>
+</tr>
+<tr>
+<td>日內區間</td>
+<td>29.665–29.72 USD</td>
+<td>2026-11-27 (yf info)</td>
+<td></td>
+</tr>
+<tr>
+<td>52 週區間</td>
+<td>26.40–29.84 USD</td>
+<td>yf info</td>
+<td>距高點約 -0.4%</td>
+</tr>
+<tr>
+<td>50 日均線</td>
+<td>29.04 USD</td>
+<td>yf info</td>
+<td></td>
+</tr>
+<tr>
+<td>200 日均線</td>
+<td>28.14 USD</td>
+<td>yf info</td>
+<td></td>
+</tr>
+<tr>
+<td>今年以來報酬 (YTD)</td>
+<td>+7.13%</td>
+<td>yf info</td>
+<td></td>
+</tr>
+<tr>
+<td>基金規模 (AUM)</td>
+<td>0.48B USD</td>
+<td>yf info</td>
+<td>481,364,192 USD</td>
+</tr>
+<tr>
+<td>費用率</td>
+<td>0.75%</td>
+<td>yf info</td>
+<td></td>
+</tr>
+<tr>
+<td>成交量 / 10 日均量</td>
+<td>349,097 / 1.81M 股</td>
+<td>yf info</td>
+<td>當日量偏低</td>
+</tr>
+<tr>
+<td>聯邦基金利率區間</td>
+<td>3.75%–4.00%</td>
+<td>2026-10-28 (多來源)</td>
+<td>一則來源 3.50%–3.75%，未採用</td>
+</tr>
+<tr>
+<td>10 月 FOMC 投票</td>
+<td>10–2（主張升息 2 票）</td>
+<td>2026-10-28</td>
+<td>Cook, Hammack</td>
+</tr>
+<tr>
+<td>12 月升息機率</td>
+<td>78%–88%</td>
+<td>10 月底</td>
+<td>目前 DATA_UNAVAILABLE</td>
+</tr>
+<tr>
+<td>DXY 水準</td>
+<td>約 101.6（未確認日期）</td>
+<td>TradingEconomics</td>
+<td>2026 年 10 月初高點約 101.61</td>
+</tr>
+<tr>
+<td>ECB 存款利率</td>
+<td>2.50%</td>
+<td>9 月升息後</td>
+<td>12 月再升息為基本情境</td>
+</tr>
+<tr>
+<td>BoJ 政策利率</td>
+<td>1.25%</td>
+<td>9 月升息後</td>
+<td></td>
+</tr>
+<tr>
+<td>下一次非農</td>
+<td>2026-12-04 08:30 ET</td>
+<td>BLS</td>
+<td></td>
+</tr>
+<tr>
+<td>下一次 FOMC</td>
+<td>2026-12-09</td>
+<td>FedRateCalc</td>
+<td></td>
+</tr>
+<tr>
+<td>11 月 CPI</td>
+<td>2026-12-10（未驗證）</td>
+<td>financecalendar.com</td>
+<td>單一來源</td>
+</tr>
+<tr>
+<td>美元淨傾向</td>
+<td>偏多，中低強度</td>
+<td>本報告</td>
+<td>信心偏低</td>
+</tr>
+</tbody>
+</table>
+<h2>來源</h2>
+<ul>
+<li><a href="https://www.fxstreet.com/analysis/the-last-fed-meeting-minutes-were-very-hawkish-202611191521">FXStreet — 2026-11-19 FOMC minutes very hawkish</a></li>
+<li><a href="https://www.fxstreet.com/news/the-federal-reserve-holds-rates-and-two-officials-vote-for-a-hike-why-the-us-dollar-stayed-flat-anyway-202610291142">FXStreet — Fed holds, two dissent for hike (2026-10-29)</a></li>
+<li><a href="https://tradingeconomics.com/united-states/currency/news/595937">TradingEconomics — Dollar weakens on dovish Fed signals</a></li>
+<li><a href="https://tradingeconomics.com/united-states/currency/news/594451">TradingEconomics — Dollar pressured by lower Treasury yields (2026-10-23)</a></li>
+<li><a href="https://investinglive.com/central-banks/warsh-won-t-prejudge-rest-of-2026-names-october-and-december-as-decision-points/">Investinglive — Warsh won't prejudge rest of 2026</a></li>
+<li><a href="https://investinglive.com/central-banks/much-ado-about-nothing-fed-chair-warsh-talks-up-a-storm-but-december-rate-hike-bets-barely-budge/">Investinglive — Much ado about nothing, December hike bets</a></li>
+<li><a href="https://www.babypips.com/analysis/event-guide-forex-us-fomc-statement-october-2026-10-27">BabyPips — FOMC event guide Oct 2026</a></li>
+<li><a href="https://www.fxstreet.com/analysis/central-banks-a-pause-while-waiting-for-more-information-202610301646">FXStreet — Central banks a pause (2026-10-30)</a></li>
+<li><a href="https://www.oanda.com/eu-en/node/369997">OANDA — Daily market news (2026-11-04 note)</a></li>
+<li><a href="https://www.fxstreet.com/analysis/the-us-dollar-index-just-hit-new-2026-highs-above-10220-this-chart-shows-the-runaway-move-202610021505">FXStreet — USD index new 2026 highs (2026-10-02)</a></li>
+<li><a href="https://www.bls.gov/schedule/2026/12_sched.htm">BLS — 2026 December release schedule</a></li>
+<li><a href="https://fedratecalc.com/us-economic-calendar/december-2026/">FedRateCalc — December 2026 US economic calendar</a></li>
+</ul></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-slate-700 mb-2">情緒 (Sentiment)</h4>
+          <div class="agent-prose text-sm bg-slate-50 p-3 rounded"><h1>Sentiment — UUP (Invesco DB US Dollar Index Bullish) as of 2026-11-28</h1>
+<p>注意事項: 本報告僅使用 WebSearch 搜尋摘要, 未抓取任何金融網頁或被封鎖的主機. 搜尋結果中 2026-11 的可用資料很少, 多數來源日期落在 2026 年 3 月以前或 2025 年, 依規定不引用舊報告數字, 缺漏項目一律標示 DATA_UNAVAILABLE. 本報告不含交易建議.</p>
+<h2>分析師共識 (Analyst consensus)</h2>
+<p>UUP 為 ETF, 無個股分析師評級, 不適用 buy/hold/sell 分布與目標價. 以 USD 策略師觀點替代 (見下方「美元策略師定位」).</p>
+<h2>美元策略師定位 (USD strategist positioning)</h2>
+<ul>
+<li>2026-11-12 前後 (FXStreet 轉載 BBH 評論): DXY 創 2025 年 4 月以來新高, 約 103 附近, BBH 認為相對利差看不出支撐, 漲勢顯得過度延伸. 來源: <a href="https://www.fxstreet.com/news/us-dollar-rally-cools-as-fed-talk-eyed-bbh-202611121219">FXStreet BBH 11/12</a></li>
+<li>2026-11-11 FXStreet 分析: 本段漲幅約 3.4 個百分點中, 約 2.7 點來自 8 月低點至 11/6 的區間, 並指出 Fed 貿易加權美元指數今年跌幅超過 4%, 與 DXY 敘事不同. 來源: <a href="https://www.fxstreet.com/analysis/why-the-us-dollars-rally-isnt-as-strong-as-it-looks-202611111707">FXStreet 11/11</a></li>
+<li>ING (Chris Turner), 2026-11 (透過 FXStreet 摘要): 預期 Fed 緊縮威脅支撐美元至 2027 年第一季, 第二季通膨降溫後轉弱. 來源: <a href="https://www.fxstreet.com/news/what-will-flip-the-us-dollars-trajectory-as-inflation-cools-toward-the-feds-2-target-in-2027-202611101205">FXStreet 11/10</a></li>
+<li>DBS (2026-11-02 與 11-06): 期中選舉 (11/3) 與 11/6 非農是否能延續美元弱勢的測試; 另一則認為風險重新定價限制美元上行空間. 來源: <a href="https://www.fxstreet.com/news/us-dollar-weak-momentum-faces-midterm-and-payrolls-tests-dbs-202611021357">FXStreet DBS 11/2</a>, <a href="https://www.mitrade.com/insights/news/live-news/article-4-2237250-20261106">Mitrade DBS 11/6</a></li>
+<li>OCBC (2026-11-18 標題): 認為 Fed 支撐延續至 2027 下半年才反轉; 正文摘要為空, 僅能確認標題. 來源: <a href="https://www.mitrade.com/insights/news/live-news/article-6-2261911-20261118">Mitrade OCBC 11/18</a></li>
+<li>偏空長期觀點 (Morgan Stanley 2025 年底的 2026 展望, 預測 DXY 先跌至 94 附近再於年底反彈): 屬於舊預測, 不作為 11 月現況依據. 來源: <a href="https://www.morganstanley.com/insights/articles/us-dollar-decline-continues-through-2026">Morgan Stanley</a></li>
+<li>整體: 11 月策略師偏向「短線美元偏強, 但上行受限, 2027 年前後才有轉弱預期」. 觀點分歧但不極端.</li>
+</ul>
+<h2>投機部位 (CFTC 非商業淨部位)</h2>
+<p>DATA_UNAVAILABLE. 搜尋找到的最新 CFTC 美元部位資料為 2026 年 2 月 (非商業淨多 328 口), 與 11 月無關, 不採用. 建議直接查 CFTC COT 週報的 11 月數字.</p>
+<h2>零售社群 (Retail social)</h2>
+<ul>
+<li>Reddit (r/wallstreetbets, r/stocks, r/investing): DATA_UNAVAILABLE. 搜尋未找到 2026 年相關討論串, 依規定不直接 WebFetch Reddit JSON 端點.</li>
+<li>StockTwits: DATA_UNAVAILABLE. 找到的 DXY 情緒頁面快照沒有日期 (一次顯示 43 偏空, 另一次顯示 Bullish), 無法確認是否為 11 月, 不採用. 來源: <a href="https://stocktwits.com/symbol/DXY">StockTwits DXY</a></li>
+<li>X / 新聞與論壇: 只找到 TradingView 創意文與部落格, 多數無日期, 未形成 11 月共識. 可參考之觀點: 「Dollar to the upside」與「bear market」兩派並存. 來源: <a href="https://www.tradingview.com/symbols/AMEX-UUP/ideas/page-3">TradingView UUP ideas</a></li>
+<li>散戶聲量: DATA_UNAVAILABLE (無法量化, 無法與平常比較).</li>
+<li>主要議題 (由策略師與新聞歸納, 非散戶原話): Fed 利率路徑與通膨降溫節奏; 期中選舉後政策不確定; 非農與假期流動性; 日圓干預與美債回購對美元的影響.</li>
+</ul>
+<h2>內部人與持股 (Insider / ownership)</h2>
+<p>依任務指示跳過 (ETF 不適用).</p>
+<h2>近期價格脈絡 (僅供參考)</h2>
+<ul>
+<li>2026-08 Zacks 報導: UUP 過去一個月約跌 1.9% (截至 8/21), 美元兌歐元一度回落至三個月低點. 來源: <a href="https://www.zacks.com/stock/news/2978814/dollar-at-3-month-lows-on-treasury-buyback-plans-etf-strategies-to-play">Zacks 2026-08</a></li>
+<li>2026-11 UUP 價格與淨值: DATA_UNAVAILABLE.</li>
+<li>Barchart 提醒 UUP 價格與 DXY 可能背離 (例如 2025-12-22 DXY 跌約 0.33%, UUP 跌 3.7%, 差異來自配息等), 解讀 UUP 時需留意. 來源: <a href="https://www.barchart.com/story/news/37200201/the-great-dollar-dump-of-2026-how-to-capitalize-on-the-greenback-s-retreat">Barchart</a></li>
+</ul>
+<h2>綜合情緒評分 (Net sentiment score)</h2>
+<ul>
+<li>策略師面 (以 11 月為準): 短線中性偏多美元 (Fed 支撐, DXY 創近一年半高點), 但 BBH 等認為漲勢過度延伸, 中期多數預期 2027 年前後轉弱. 判定: 中性 (neutral).</li>
+<li>零售面: DATA_UNAVAILABLE, 無法判定.</li>
+<li>綜合: 中性 (neutral), 信心低 (low). 主因是 11 月零售與 CFTC 資料全數缺漏, 且 Reddit/StockTwits 無法取得.</li>
+<li>分歧旗標 (Divergence flag): 無法判定 (no). 因零售資料缺漏, 無法確認零售傾向是否與策略師傾向相反.</li>
+</ul>
+<h2>資料缺口與可信度</h2>
+<ul>
+<li>零售與 CFTC 缺漏, 不能以舊資料替代.</li>
+<li>策略師觀點來源多為轉載摘要, OCBC 正文為空, 僅依標題採用.</li>
+<li>所有 2026 年 3 月以前或 2025 年的數字已排除於評分之外.</li>
+</ul>
+<h2>指標表 (Metrics table)</h2>
+<table>
+<thead>
+<tr>
+<th>指標</th>
+<th>數值</th>
+<th>日期</th>
+<th>狀態</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>分析師評級 (buy/hold/sell)</td>
+<td>不適用 (ETF)</td>
+<td>-</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>美元策略師傾向</td>
+<td>短線偏強, 中期 2027 前後轉弱</td>
+<td>2026-11</td>
+<td>可用 (摘要)</td>
+</tr>
+<tr>
+<td>DXY 水準</td>
+<td>約 103, 為 2025-04 以來新高</td>
+<td>2026-11-12 前後</td>
+<td>可用 (摘要)</td>
+</tr>
+<tr>
+<td>CFTC 美元非商業淨部位</td>
+<td>DATA_UNAVAILABLE (最新找到 2026-02 為淨多 328 口, 已排除)</td>
+<td>-</td>
+<td>DATA_UNAVAILABLE</td>
+</tr>
+<tr>
+<td>Reddit 提及量與傾向</td>
+<td>DATA_UNAVAILABLE</td>
+<td>-</td>
+<td>DATA_UNAVAILABLE</td>
+</tr>
+<tr>
+<td>StockTwits 情緒</td>
+<td>DATA_UNAVAILABLE</td>
+<td>-</td>
+<td>DATA_UNAVAILABLE</td>
+</tr>
+<tr>
+<td>X / 論壇傾向</td>
+<td>無 11 月共識</td>
+<td>-</td>
+<td>DATA_UNAVAILABLE</td>
+</tr>
+<tr>
+<td>內部人交易</td>
+<td>跳過 (ETF)</td>
+<td>-</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>機構持股變化</td>
+<td>跳過 (ETF)</td>
+<td>-</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>UUP 近一月表現</td>
+<td>約 -1.9% (截至 2026-08-21)</td>
+<td>2026-08</td>
+<td>過期, 僅供參考</td>
+</tr>
+<tr>
+<td>綜合情緒</td>
+<td>中性 (低信心)</td>
+<td>2026-11-28</td>
+<td>判定</td>
+</tr>
+<tr>
+<td>分歧旗標</td>
+<td>無法判定</td>
+<td>-</td>
+<td>DATA_UNAVAILABLE</td>
+</tr>
+</tbody>
+</table></div>
+        </div>
+      </div>
+    </details>
+
+    <details class="mb-4 border border-slate-200 rounded">
+      <summary class="bg-slate-50 px-4 py-2 font-semibold">Phase 2 — Bull vs Bear 辯論</summary>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+        <div>
+          <h4 class="font-bold text-green-700 mb-2">🐂 多方 (Bull)</h4>
+          <div class="agent-prose text-sm bg-green-50 p-3 rounded border border-green-200"><h1>Bull case round 1 — UUP</h1>
+<h2>Thesis（一句話）</h2>
+<p>在 Fed 鷹派會議紀要、10 月利差優勢與美元指數技術面多頭排列三方共振下，UUP 站上 52 週高點附近屬於健康延伸而非反轉前兆，12 月 FOMC 與非農數據是推動其突破新高的催化劑。</p>
+<h2>成長驅動（宏觀驅動）</h2>
+<ul>
+<li><strong>利率路徑偏鷹</strong>：2026-11-19 FOMC 會議紀要被 FXStreet 形容為「非常鷹派」，支撐 12 月升息預期（news.md）。10-28 FOMC 雖維持利率 3.75%–4.00%，但投票 10–2，Cook 與 Hammack 主張立即升息，顯示內部偏緊。</li>
+<li><strong>利差仍偏向美元</strong>：Fed 利率區間 3.75%–4.00% 對比 ECB 存款利率 2.50%、BoJ 政策利率 1.25%，美元持有的名義利差仍是 G3 最高（news.md），支撐套利需求。</li>
+<li><strong>動能數據</strong>：UUP YTD +7.13%、近 3 個月 +3.02%、52 週 +4.93%，且 3 年與 5 年平均年化報酬分別為 +5.23%／+5.74%（fundamentals.md），顯示多年期趨勢方向一致向上，非單一事件驅動。</li>
+<li><strong>策略師定位</strong>：11 月中策略師觀點雖分歧，但多數認為「短線美元偏強，上行受限但尚未反轉」，ING（Chris Turner）甚至預期 Fed 緊縮威脅支撐美元至 2027 Q1（sentiment.md）。</li>
+</ul>
+<h2>「護城河」（結構優勢）</h2>
+<p>UUP 作為追蹤 DX 期貨的基金，優勢在於結構效率而非公司護城河：溢價僅 +0.42%，顯示申贖套利機制運作正常、未出現折價拋售壓力；Bid/Ask 價差僅 0.03%，10 日均量 180.9 萬股，流動性充足，大額進出不易造成滑價（fundamentals.md）。這代表若宏觀催化劑兌現，資金可以低摩擦成本迅速建立或加碼多頭部位。</p>
+<h2>上行情境（價格情境，非 P/E，因 ETF 不適用倍數估值）</h2>
+<ul>
+<li><strong>Base（突破確認）</strong>：價格收盤站上 52 週高 $29.84 並帶量，measured move 指向布林上軌 $29.97，較現價 $29.715 約 +0.9%；若延伸測試歷史高點區域，短期目標可看 $30.76（歷史高點），較現價 +3.5%（market.md / fundamentals.md）。</li>
+<li><strong>Bull（利差擴大＋12 月升息兌現）</strong>：若 12 月 FOMC 升息且點陣圖偏鷹，疊加美元指數策略師所述「DXY 創 2025-04 以來新高、約 103」的動能延續，UUP 中期可望重現其 3–5 年平均年化 +5.2%～+5.7% 的斜率，季線級別上行空間estimate +5%～+8%（以 sentiment.md 之 DXY 103 水位與 fundamentals.md 歷史年化報酬為基礎的情境推估，非精確預測）。</li>
+</ul>
+<h2>催化劑（已排日期）</h2>
+<ul>
+<li>2026-12-04 — 美國 11 月非農（NFP），12 月 FOMC 前最後關鍵就業數據，強勁數據將強化升息定價、推升美元（news.md）。</li>
+<li>2026-12-09 — FOMC 會議，本期最大事件，鷹派點陣圖為美元上行觸發點（news.md）。</li>
+<li>2026-12-10 — 11 月 CPI（單一來源未驗證，但若落於 FOMC 後，仍具補充確認效果）。</li>
+</ul>
+<h2>戰術面（技術面）</h2>
+<p>均線呈多頭排列（MA20 29.35 &gt; MA50 29.07 &gt; MA200 28.15，三線皆上揚），價格高於三條均線且遠離 MA200（+5.54%），中期趨勢明確向上。RSI14 為 67.6，尚未觸及 70 超買門檻；11-23 曾達 75.14 後僅溫和回落至 64-67 區間整理，未破壞上升結構，顯示超買後的「健康消化」而非反轉。MACD 柱體雖自 11-18 的 +0.0475 收斂至 +0.0167，但仍維持在零軸之上，尚未轉負，趨勢未被證偽。關鍵觀察：收盤站上 $29.84 且放量（基準 1.81M 股）即可視為技術性突破確認（market.md）。</p>
+<h2>對熊方觀點之反駁（本回合無熊方報告，先行對沖最可能論點）</h2>
+<ul>
+<li>熊方可能稱「RSI 接近超買、短線有回檔風險」。<br />
+  反駁：RSI14 現為 67.6，距 70 門檻仍有緩衝，且前一次超買（75.14）已透過橫向整理而非下跌消化，均線結構未受破壞，顯示動能減弱是「上升楔形內的正常喘息」。</li>
+<li>熊方可能稱「Warsh 拒絕承諾 12 月升息、避險資金流向日圓而非美元，顯示美元走強基礎不穩」。<br />
+  反駁：Warsh 的模糊措辭發生在 10 月底，而更新、更具權重的 11-19 FOMC 會議紀要被市場解讀為「非常鷹派」，時間序列上後者更貼近當前定價；避險流向日圓的報導（10-23）同樣早於 11 月中旬的鷹派紀要，不足以推翻近期趨勢。</li>
+<li>熊方可能稱「資金流向、持倉與 CFTC 部位數據全缺，無法驗證多頭信念」。<br />
+  反駁：雖然流向數據確實缺失，但價格行為本身（NAV 溢價 +0.42%、站穩多條均線、創近 52 週高）已是市場共識的直接體現，不需依賴間接部位數據佐證。</li>
+</ul>
+<h2>Confidence</h2>
+<p>6/10。宏觀利差與鷹派紀要方向明確支持美元偏多，技術面結構健康，但 11 月下旬 DXY 即時水位、CFTC 部位與資金流向等關鍵驗證數據缺失（news.md、sentiment.md 均標示 DATA_UNAVAILABLE），加上動能已連續 5 個交易日收斂，上行需 12/4 與 12/9 催化劑兌現才能確認突破，故不給更高信心。</p>
+<p>BULL ROUND 1 COMPLETE</p></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-red-700 mb-2">🐻 空方 (Bear)</h4>
+          <div class="agent-prose text-sm bg-red-50 p-3 rounded border border-red-200"><h1>Bear case round 1 — UUP</h1>
+<h2>Thesis（一句話）</h2>
+<p>UUP 目前站在 52 週高點 $29.84 附近且 RSI 已自 75.14 回落、MACD 動能連續 5 日收斂，技術面呈「頂背離」，而基本面支撐（12 月升息定價、Fed 鷹派紀要）早已被市場消化，若 12 月 9 日 FOMC 或 12 月 4 日非農不如預期鷹派，美元指數有回吐近月漲幅、跌向 MA50（$29.07）甚至結構支撐 $28.84 的風險。</p>
+<h2>需求 / 宏觀風險</h2>
+<p>UUP 的「需求」等同於美元相對利差與避險買盤。news.md 顯示多項利多因子已反映在價格：11/19 FOMC 紀要「非常鷹派」與 78%–88% 的 12 月升息機率皆為 10 月底至 11 月中資訊，而 11/27 當日量僅 349,097 股、遠低於 10 日均量 1.81M，顯示近期上攻缺乏量能確認。更關鍵的是，Fed 主席 Warsh 於 10 月會議後「拒絕承諾 12 月行動」，市場解讀為略偏鴿；10/23 的避險流向資料顯示資金當時流向日圓而非美元，顯示美元的傳統避險地位已被稀釋 — 若未來風險事件重演類似情形，UUP 未必能如預期上漲。sentiment.md 中 BBH（11/12）直言美元漲勢「相對利差看不出支撐，顯得過度延伸」，ING 預期 Fed 緊縮支撐僅維持至 2027Q1、Q2 即轉弱。換言之，當前偏多敘事的保鮮期有限。</p>
+<h2>槓桿 / 資金流風險（對應公司現金流）</h2>
+<p>fundamentals.md 明確標示基金資金流向（creations/redemptions）與 AUM 歷史皆為 DATA_UNAVAILABLE，僅有單點 AUM $481.4M，無法確認近期是淨申購還是淨贖回 — 這是重大資訊缺口，意味著無法驗證目前上漲是否由實際買盤支撐。費用率 0.75% 偏高，長期持有將持續侵蝕報酬，以 AUM 估算年化成本約 $3.6M。此外殖利率欄位出現矛盾（3.2% vs trailing 股息 0），以及 Beta(3Y) 出現 -7.93 的異常值，顯示底層資料品質堪疑，不利於精確評估基金實際風險暴露。基金為 DX 期貨多頭結構，滾倉（roll）時程與期貨保證金配置皆 DATA_UNAVAILABLE，若曲線轉為逆價差（contango）將侵蝕滾倉報酬，但此風險目前無法量化驗證。</p>
+<h2>估值風險（NAV / 均線框架）</h2>
+<p>UUP 無 P/E，改以「價格 vs NAV」與「價格 vs 均線」衡量下行空間：<br />
+- Bear：若 12 月 FOMC 不如預期鷹派，價格回落至 MA50 $29.07，較現價 $29.715 下跌約 -2.2%；若進一步測試中期支撐 $28.84（10/20 與 11/04 低點共構的支撐帶），下跌約 -2.9%。<br />
+- Worst：若避險流向重演（流向 JPY 而非 USD）疊加美元利差敘事被證偽，價格可能跌破 $28.84 回測 MA200 $28.15，下跌約 -5.3%，抹去近三個月全部漲幅（3 個月報酬 +3.02% / +5.45%，兩份報告數字略有差異，均低於此跌幅）。<br />
+- 另需注意市價對 NAV 溢價 +0.42%，NAV 時點未確認，實際溢價可能被低估，一旦套利機制收斂，價格可能先於 NAV 回落。</p>
+<h2>競爭 / 政策威脅</h2>
+<p>利差敘事對美元並非單邊有利：ECB 存款利率 2.50%（9 月升息後，12 月再升息為基本情境）、BoJ 政策利率 1.25%（9 月升息後，11 月會議紀錄支持續升）。若歐元與日圓同步升息、而 Fed 在 Warsh 模糊立場下延後或不升息，利差優勢可能向 EUR、JPY 傾斜，削弱美元多頭邏輯。news.md 亦提示 DXY 在 10 月高點 101.6 附近已出現停滯訊號，顯示上行動能遞減。</p>
+<h2>Tactical（技術面）</h2>
+<p>關鍵跌破位：收盤跌破 MA50 $29.07 且 MACD 柱狀體轉負，視為短線轉弱訊號；若再跌破 $28.84，中期上升結構受挑戰。RSI14 目前 67.6，但已從 11/23 的 75.14（超買）連續回落三日（65.81 → 64.09 → 67.58），價格卻未能同步創新高（11/23 高點 $29.84 至今未被突破），形成動能背離。MACD histogram 自 11/18 的 +0.0475 收斂至 11/27 的 +0.0167，連續五日減弱，顯示買盤力道正在消退，屬於典型「上升但延伸末端、派發風險上升」的訊號。</p>
+<h2>Rebuttal to bull round 0</h2>
+<p>本輪（round 1）尚無多方報告可直接反駁，僅先針對市場可預期的多方論點預先回應：<br />
+- 預期論點：「均線多頭排列（MA20&gt;MA50&gt;MA200）且站上三線，趨勢明確向上。」<br />
+  反駁：均線排列反映的是過去趨勢，而非未來動能；RSI 與 MACD 皆已顯示動能峰值出現在 11/23，隨後連續收斂，趨勢強度與動能方向出現分歧，是典型見頂警訊而非延續訊號。<br />
+- 預期論點：「Fed 鷹派紀要與升息機率支撐美元續漲。」<br />
+  反駁：該升息機率數字為 10 月底資料，11 月下旬最新定價 DATA_UNAVAILABLE，且 Warsh 已明確拒絕承諾 12 月行動，鷹派敘事存在被證偽風險。</p>
+<h2>Confidence</h2>
+<p>5/10。技術面頂背離與資金流/AUM 資料缺口提供具體下行理由，但多份報告（news、sentiment）本身信心偏低、11 月下旬關鍵數字（DXY 即時水準、12 月升息機率、CFTC 部位）大量 DATA_UNAVAILABLE，且中期趨勢（MA200 之上、三年期正報酬）仍屬多頭結構，故不宜給出高信心的空方判斷。</p>
+<p>BEAR ROUND 1 COMPLETE</p></div>
+        </div>
+      </div>
+    </details>
+
+    <details class="mb-4 border border-slate-200 rounded">
+      <summary class="bg-slate-50 px-4 py-2 font-semibold">Phase 4 — 風險辯論 (Risk debate)</summary>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 p-4">
+        <div>
+          <h4 class="font-bold text-red-700 mb-2">⚡ 進攻 (Aggressive)</h4>
+          <div class="agent-prose text-sm bg-red-50 p-3 rounded border border-red-200"><h1>Aggressive risk view — UUP</h1>
+<h2>Where trader is too cautious</h2>
+<ul>
+<li>完全不建倉（0 size）會錯失兩個催化劑之間的提前佈局視窗。要求「帶量收盤站上 $29.84」且非農強勁且 FOMC 鷹派三條件同時確認才轉多，等到三者都成立時，價格很可能已在 12/4 非農後跳空超過該水位，alpha 早被市場吃掉。</li>
+<li>現貨完全迴避，等於放棄用目前極低 ATR（$0.129，僅現價 0.43%）環境去換取便宜選擇權凸性的機會——這才是本次最大的機會成本，而非停損位置本身。</li>
+<li>現價距 52 週高僅 -0.42%，MA20 &gt; MA50 &gt; MA200 三線多頭排列未破，結構仍偏多；不該用「雙向對稱事件」當成完全迴避的理由，應改用風險可控的小倉位 + 選擇權去參與不對稱結果。</li>
+</ul>
+<h2>Recommended adjustments</h2>
+<ul>
+<li>Size：AVOID（0）→ 小型試探倉位，建議正常部位的 15–20%，而非直接 Medium→Large 式大幅加碼。NEUTRAL/LOW 信心、現貨邏輯 R:R 僅 1.2，本身確實不支持重倉，這點同意保守方；但「完全不參與」矯枉過正。</li>
+<li>Stop：若以小倉位進場，建議用 $29.07（MA50）取代 $28.84 作為主要觀察停損，給出 MA20（$29.35）到 MA50 之間的正常波動空間，避免非農前雜訊震盤就被掃出；$28.84 僅保留為最終結構性滅定位。</li>
+<li>Entry：不等「帶量收盤站上 $29.84」才進場——那是確認完成後追高。建議只要 12/4 非農公布前價格仍守住 $29.35（MA20）之上，即可用小倉位提前卡位，用時間成本換取非農瞬間跳空的機會。</li>
+<li>Consider：以 call spread 取代現貨——買 $29.84 call、賣 $30.76 call（對應 trader 自己試算的目標價），到期選在 FOMC 後最近週選（約 2026-12-11），用定義風險方式參與雙事件，下檔鎖死在權利金，不受現貨停損是否被掃到影響。</li>
+</ul>
+<h2>Asymmetry argument</h2>
+<p>現貨小倉位（15% 正常部位，約名目 $3,000）：停損設 $29.07，風險約每股 $0.645 → 最大虧損約 $65；若站上 $29.84 並朝 $30.76 發展，上檔每股約 $1.045 → 獲利約 $105，Ratio ≈1.6。若改用 call spread 結構，假設權利金約 $0.15/股（低 ATR 環境下應偏便宜，需實單再確認），同倉位規模最大虧損僅約 $15–20，價差滿額獲利空間（$0.92 寬度扣權利金）可達權利金 5 倍以上，下檔封頂且優於現貨路徑。</p>
+<h2>What I'd push for</h2>
+<p>我不主張把這筆交易做成 Large 重倉的方向性賭注，現貨層面保守方基本是對的；但完全 0 曝險放棄了在低 ATR、雙事件公布前用便宜選擇權買進凸性的機會。我會推動以不超過正常倉位 15–20% 的規模，透過 $29.84/$30.76 call spread（FOMC 後到期）小額參與非農與 FOMC 的雙重催化劑，下檔風險鎖死在權利金，不需要在現貨停損該放哪裡上糾結。</p>
+<p>AGGRESSIVE VIEW COMPLETE</p></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-blue-700 mb-2">🛡️ 保守 (Conservative)</h4>
+          <div class="agent-prose text-sm bg-blue-50 p-3 rounded border border-blue-200"><h1>Conservative risk view — UUP</h1>
+<h2>Where trader是too aggressive</h2>
+<ul>
+<li>提案本身已是 HOLD / AVOID，方向正確，但「若已持有多單，減碼至半倉以下」的語氣仍偏寬鬆——半倉在 12/04 非農、12/09 FOMC 雙事件夾擊下仍是偏多風險暴露，應直接要求減到四分之一倉或全平，待事件落地再決定,而非給一個模糊的「半倉」緩衝區。</li>
+<li>以 $29.07（MA50）／$28.84（結構低點）作為「邏輯風控位」而非硬停損，等同於在事件前仍保留跳空式虧損的可能。ATR14 僅 $0.129，但 FOMC 决議日歷史跳空常達 1–2 倍 ATR 以上，用 ATR 衡量風險本身就低估尾部風險。</li>
+<li>突破觸發條件（帶量收盤站上 $29.84 轉 LONG）存在「假突破」風險：RSI 已於 11/23 觸及 75.14 高點、MACD hist 連續 5 日收斂，動能明顯鈍化。若順勢在事件前搶先進場，等同於在牛市末端、數據尚未明朗時加碼。</li>
+<li>利率定價資料缺口（CME FedWatch 最新機率 DATA_UNAVAILABLE）未解決前，任何方向性加碼都是在資訊不對稱下下注，紀律上應視為不可交易,而非僅「信心打折」處理。</li>
+</ul>
+<h2>Tail scenarios</h2>
+<ul>
+<li>Scenario A（機率約 25%）：12/04 非農大幅弱於預期（如低於 10 萬或失業率跳升）→ 升息預期瞬間降溫，UUP 跳空下破 $29.07，直奔 $28.84 甚至更低；若按 $29.715 進場、半倉參與，每股虧損 $0.875（進場至結構低點），以半倉計仍造成帳面顯著回撤。</li>
+<li>Scenario B（機率約 20%）：12/9 FOMC 維持利率不變但點陣圖偏鴿（下修 2027 升息路徑）→ 利差收窄敘事提前應驗，UUP 跌破 $28.84 支撐帶,引發技術性追殺,價格可能探至 $28.00 附近（-5.8%）。</li>
+<li>Scenario C（機率約 15%）：假突破陷阱——價格帶量收上 $29.84 後，隔日非農/FOMC 反轉向下，形成「衝高回落」,使剛轉多的新倉立即套在最高點,停損觸發於 $29.07，單日損失即吞掉原本看多的全部潛在獲利。</li>
+</ul>
+<h2>Recommended adjustments</h2>
+<ul>
+<li>Size：維持提案「不新增部位」立場，但對既有多單建議再收緊——由「半倉以下」改為「事件前降至 1/4 倉或全平」，避免雙事件疊加的尾部風險。</li>
+<li>Stop：若保留任何殘餘多單，停損應上移至 $29.35（MA20）作緊停損參考，而非寬鬆使用 $29.07/$28.84；寬停損在事件日等同放大潛在 $ 損失。</li>
+<li>Entry：拒絕在 $29.84 單純「帶量收盤突破」即轉多，建議等待非農與 FOMC 皆落地、且站穩 $29.84 之上兩個交易日再確認,避免被事件日的單日假突破誘多。</li>
+<li>Consider：若必須保留美元曝險觀點，可用短期 DXY/UUP put 價平選擇權做事件日避險，取代持有裸多單穿越雙事件。</li>
+</ul>
+<h2>Position-level $ risk</h2>
+<p>若以研究計畫試算（進場 $29.715、停損 $28.84）計算，每股風險 = $0.875，占進場價 2.9%；R:R 僅約 1.2，低於 LONG 門檻 1.5。即使只用半倉執行，事件日跳空仍可能使實際滑點損失超過停損設定值，$ 風險不可接受——這正是提案判定 AVOID 的核心理由，應完全支持並加碼執行力道。</p>
+<h2>What I'd push for</h2>
+<p>完全支持提案的 HOLD / AVOID 結論，但要求把既有多單的減碼力道從「半倉以下」加強為「1/4 倉或全平」，並將任何殘餘倉位的邏輯風控位由寬鬆的 MA50/結構低點，收緊為 MA20（$29.35），同時明確拒絕在非農與 FOMC 結果公布前，僅憑單日帶量突破 $29.84 就建立新多單——唯有雙事件落地且價格站穩確認兩日後，才可考慮重新以中等信心規模進場。</p>
+<p>CONSERVATIVE VIEW COMPLETE</p></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-slate-700 mb-2">⚖️ 中立 (Neutral)</h4>
+          <div class="agent-prose text-sm bg-slate-100 p-3 rounded border border-slate-300"><h1>Neutral risk view — UUP</h1>
+<h2>Points of agreement (both sides)</h2>
+<ul>
+<li>兩方都同意：不應以現貨建立大型方向性倉位，NEUTRAL/LOW 信心、R:R 僅 1.2 不支持重倉。</li>
+<li>都認為 ATR14（$0.129）在 12/04 非農、12/09 FOMC 雙事件前會低估跳空風險，不能當作放大槓桿的依據。</li>
+<li>都質疑「帶量收盤站上 $29.84」單一日確認過於粗糙，容易踩進假突破。</li>
+<li>都認為既有多單應在事件前減碼，差異只在幅度。</li>
+</ul>
+<h2>Aggressive overreach</h2>
+<ul>
+<li>Where：建議「只要非農前守住 $29.35 即可小倉位提前卡位」。</li>
+<li>Why：這與投資計畫自承的 crux 1（CME FedWatch 12 月機率 DATA_UNAVAILABLE）矛盾——在關鍵資訊缺口未解前方向性提前佈局,是用猜測填補資料缺口，而非紀律交易。call spread 的凸性想法合理，但「提前卡位」的時間點論證薄弱。</li>
+</ul>
+<h2>Conservative overreach</h2>
+<ul>
+<li>Where：要求事件落地後「站穩 $29.84 之上兩個交易日」才可重新轉多，以及把 25%/20%/15% 的尾部情境機率視為既定事實。</li>
+<li>Why：兩日確認在非農與FOMC這種快速重定價環境中，可能讓訊號確認完成時 alpha 已被吃掉，矯枉過正；而三個尾部情境機率並無模型或歷史基差支持，屬主觀加權放大風險敘事。</li>
+</ul>
+<h2>Balanced adjustment proposal</h2>
+<ul>
+<li>Size：維持不新增現貨部位；若要參與雙事件的不對稱結果，僅用成本封頂的 $29.84/$30.76 call spread（FOMC後到期），名目曝險 ≤ 正常倉位 10%。</li>
+<li>Stop：既有多單若有殘留，停損上移至 MA20 $29.35（採保守方更緊版本），放棄 MA50/結構低點的寬鬆邏輯位；選擇權結構則以權利金為天然停損。</li>
+<li>Entry：不接受單日帶量突破即轉多，但也不需等兩個交易日——以「非農與FOMC皆落地且站穩 $29.84 之上收盤」作單日確認即可重新評估。</li>
+<li>Hedge：既有多單可用短天期 $29.35 put 做事件日保險，取代裸多單穿越雙事件。</li>
+<li>Time horizon：數日至兩週，FOMC 後強制重新評估，不做季度級別長抱。</li>
+</ul>
+<h2>Net $ 風險if 停損觸發</h2>
+<p>以 10% 倉位、call spread 權利金約 $0.15/股估算，最大虧損約 $10–15（可忽略，遠低於 NAV 的 0.1%）；若為既有多單用 MA20 停損，每股風險約 $0.365，1/4 倉下虧損亦屬可控小額。</p>
+<h2>Net $ 上行at T1 / T2</h2>
+<p>call spread 滿額獲利空間（$0.92 寬度扣權利金）約為權利金的 5 倍以上；現貨殘倉若達 $30.76 目標，每股獲利約 $1.045，1/4 倉下獲利規模遠小於下檔已封頂的選擇權結構，風險報酬比明顯優於裸多單。</p>
+<p>NEUTRAL VIEW COMPLETE</p></div>
+        </div>
+      </div>
+    </details>
+
+  </div>
+
+  <script>
+    (function() {
+      var d = {};
+      if (!d.dates) return;
+      var traces = [
+        {x: d.dates, y: d.close, name: 'Close',  line: {color: '#1f2937', width: 2}},
+        {x: d.dates, y: d.ma20,  name: 'MA20',   line: {color: '#0ea5e9', width: 1, dash: 'dot'}},
+        {x: d.dates, y: d.ma50,  name: 'MA50',   line: {color: '#f59e0b', width: 1, dash: 'dot'}},
+        {x: d.dates, y: d.ma200, name: 'MA200',  line: {color: '#ef4444', width: 1, dash: 'dash'}}
+      ];
+      var layout = {
+        margin: {l: 50, r: 20, t: 10, b: 40},
+        legend: {orientation: 'h', y: -0.15},
+        xaxis: {showgrid: false},
+        yaxis: {title: '價格 ($)'}
+      };
+      Plotly.newPlot('chart-UUP', traces, layout, {displayModeBar: false, responsive: true});
+    })();
+  </script>
+
+</section>
+
+
+<section id="ticker-SH" class="mb-10 bg-white rounded-lg shadow overflow-hidden">
+
+  <div class="flex items-start justify-between p-6 border-b border-slate-200 verdict-HOLD">
+    <div>
+      <h2 class="text-3xl font-bold">SH</h2>
+      <p class="text-sm mt-1 opacity-80">ProShares Short S&P500 ETF</p>
+    </div>
+    <div class="text-right">
+      <div class="text-4xl font-bold">HOLD</div>
+      <div class="text-sm opacity-80 mt-1">REJECT</div>
+    </div>
+  </div>
+
+  <div class="p-6 grid grid-cols-1 lg:grid-cols-2 gap-6">
+
+    <div>
+      <h3 class="text-lg font-bold mb-2">價格 + 技術指標 (2 年)</h3>
+      <div id="chart-SH" style="height: 380px;"></div>
+    </div>
+
+    <div>
+      <h3 class="text-lg font-bold mb-2">最終決策 (Final decision)</h3>
+      <div class="agent-prose text-sm bg-slate-50 p-4 rounded border border-slate-200">
+        <p>FINAL TRANSACTION PROPOSAL: <strong>HOLD</strong></p>
+<h1>Final decision — SH as of 2026-11-28</h1>
+<h2>FINAL TRANSACTION PROPOSAL: <strong>HOLD</strong></h2>
+<h2>Verdict</h2>
+<p>REJECT</p>
+<p>框架判定：SH 不在 <code>held_tickers.txt</code>，屬新倉（A 框架），問題是「該不該進」。</p>
+<h2>Final trade card</h2>
+<p>不適用（REJECT，不建倉、不掛單）。</p>
+<p><strong>Dealbreaker：</strong> 提案唯一的進場觸發（收盤站回 $35.58）在緊停損 $33.64、目標 $36.12 下 R:R 僅約 0.28（寬停損 $33.27 更只有 0.23）。即使定位為對沖，這也是用 $1.94 的風險換 $0.54 的空間。現價 $34.15 的 R:R 雖好看（2.2–3.9），但動能正在衰退（MACD 柱狀體連三日收縮、RSI 76.3→55.5），且 11 月下旬 VIX、S&amp;P 500 收盤與資金流皆為 DATA_UNAVAILABLE，FedWatch 85% 是 11-10 的舊數據。兩個進場點都不成立，所以連條件式對沖也不核准，不只是否決方向性部位。</p>
+<p><strong>未來重啟條件（須同時成立）：</strong><br />
+1. SH 回測 $33.64–$34.15 區間後收盤守穩，以該區間進場的 R:R ≥ 2.0。<br />
+2. 12-04 就業／ISM 偏熱，且取得更新後的 FedWatch 升息機率 ≥ 90%。<br />
+3. 補齊 VIX 與 S&amp;P 500 收盤數據。</p>
+<p>屆時規模上限：既有多頭 Beta 調整後名義值的 1/4，12-10 CPI 後強制平倉。</p>
+<h2>Risk debate adjudication</h2>
+<ul>
+<li>Aggressive's strongest point：$35.58 觸發自相矛盾，「等確認」把交易變成負期望值。這點成立，也正是我否決條件式對沖的理由。但他的解法（現價試單 1/3、維持半倉）忽略了假突破機率上升與跳空滑點。</li>
+<li>Conservative's strongest point：耗損是唯一可驗證的硬證據（3 年年化 -10.19%、費用率 0.88%）；FOMC 跳空會讓 $33.27 停損無法成交；若目的是避險，SPY put 價差比 SH 更直接。</li>
+<li>Neutral：指出兩日確認制等同變相否決，且自行算出 T1 獲利僅 0.05% NAV、停損風險 0.18% NAV，等於替否決背書。</li>
+<li>Net：我較看重 conservative，因為可驗證的證據都在成本與風險一側，而多方論點全靠尚未落地的事件。但否決的直接依據來自 aggressive 揭露的 R:R 缺陷。</li>
+</ul>
+<h2>論點支柱</h2>
+<table>
+<thead>
+<tr>
+<th>支柱</th>
+<th>當初的預期</th>
+<th>現況</th>
+<th>判定</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FOMC 鷹派超預期</td>
+<td>升息加點陣圖偏鷹，提供增量動能</td>
+<td>升息機率約 85%（11-10 數據，自 98.6% 回落），大部分已 price-in</td>
+<td>觀察中</td>
+</tr>
+<tr>
+<td>技術結構延續</td>
+<td>突破 $33.96 後守住 $33.27–$33.64</td>
+<td>價格 $34.15 仍在 MA20 之上，但動能衰退、未守住 $35.58</td>
+<td>觀察中</td>
+</tr>
+<tr>
+<td>進場具不對稱性</td>
+<td>R:R ≥ 2</td>
+<td>觸發價 R:R 0.23–0.28</td>
+<td>已失效</td>
+</tr>
+<tr>
+<td>短窗口內耗損可控</td>
+<td>持有 ≤ 10 個交易日</td>
+<td>ATR14 由 $0.34 翻倍至 $0.69，波動率 31.8%</td>
+<td>觀察中</td>
+</tr>
+</tbody>
+</table>
+<h2>論點失效條件</h2>
+<p>以下任一發生，重啟條件作廢，SH 在本窗口內不再評估：<br />
+- SH 收盤跌破 $33.64（MA20）：技術結構支柱失效。<br />
+- 12-09 FOMC 不升息，或升息但點陣圖中位數未上修：催化劑支柱失效。<br />
+- 12-04 非農與 ISM 雙雙低於市場共識，或更新後 FedWatch 升息機率低於 75%：催化劑支柱失效。<br />
+- 至 12-10 CPI 公布仍未出現符合重啟條件的進場點：窗口關閉，耗損支柱失效。</p>
+<h2>Monitoring trigger</h2>
+<p>若 SH 收盤回落至 $33.64–$34.15 且守穩，同時 12-04 數據偏熱，於 FOMC 前重新評估。若 SH 直接放量站回 $35.58，不追價，R:R 不足的結論不變。</p>
+<h2>Catalyst calendar</h2>
+<ul>
+<li>2026-12-01～12-04 — ISM 製造業／就業數據</li>
+<li>2026-12-08～12-09 — FOMC 利率決議與點陣圖</li>
+<li>2026-12-10 — CPI；本案評估窗口關閉</li>
+</ul>
+<p>FINAL DECISION COMPLETE</p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="px-6 pb-6">
+
+    <details class="mb-4 border border-slate-200 rounded">
+      <summary class="bg-slate-50 px-4 py-2 font-semibold">投資計劃 (Research manager)</summary>
+      <div class="agent-prose p-4 text-sm"><h1>Investment plan — SH as of 2026-11-28</h1>
+<h2>Directional stance</h2>
+<p>NEUTRAL — conviction LOW（僅保留「催化劑窗口內之戰術性對沖」選項，不建立方向性部位）</p>
+<h2>Crux of debate</h2>
+<ol>
+<li>Crux 1：12 月 FOMC（12-08/09）是否鷹派落地且超出預期？CME FedWatch 升息機率約 85%（11-10 數據，已由 98.6% 回落），屬高度 price-in；只有「升息＋點陣圖偏鷹」才會給 SH 增量動能，符合預期或偏鴿則催化劑失效。</li>
+<li>Crux 2：11-20 突破 $33.96 後的回測能否守住 $33.27–$33.64？MACD 柱狀體連三日收縮（+0.192 → +0.070），RSI 由 76.3 回落至 55.5，11-27 SH 盤中 -1.3%；守住則上升結構延續，收盤跌破則反彈結構失效。</li>
+<li>Crux 3：選擇權短天期 put 集中（call 占比約 35%）與專業投資人目標上修（7,416 → 7,926）之間的張力，最終由哪一方主導？前者屬戰術保護，後者屬配置端訊號，目前證據皆為中低可信度。</li>
+</ol>
+<h2>Where the bull is right</h2>
+<ul>
+<li>宏觀催化劑密集且有明確日期（ISM/就業 12-01~04、FOMC 12-08/09、CPI 12-10），短窗口內事件風險偏向股市下行。</li>
+<li>技術結構未破：價格站上 MA20/MA50/MA200，MA50 斜率上揚、與 MA200 間距收斂，自 10-06 低點 $31.64 以來低點逐步抬高。</li>
+<li>多方自承耗損問題並把論述限定在短期戰術持有，論證範圍誠實。</li>
+<li>以 $33.27 為停損、$36.12 為目標，R:R 約 2:1，形式上具不對稱性。</li>
+</ul>
+<h2>Where the bear is right</h2>
+<ul>
+<li>結構性耗損證據最硬且可追溯：3 年年化 -10.19%、5 年 -5.79%、YTD -6.63%，加上 0.88% 費用率與 31.8% 波動率，持有期越長期望值越差。</li>
+<li>鷹派預期大部分已 price-in，SH 需要「超預期」才能受益，「符合預期」反而可能變成股市利多。</li>
+<li>動能明顯衰退：突破後未守住高點，在 $34.12–$35.58 區間整理，MACD 柱狀體收縮。</li>
+<li>配置端（專業投資人目標上修、券商目標 8,700）並未轉空。</li>
+<li>但空方有一處誤讀：其稱「標的指數突破壓力站上三條均線」，實際上站上均線的是 SH 本身（代表 S&amp;P 500 偏弱），此點不應計入空方論據。另，11-27 縮量屬感恩節後半日交易，空方以此推論「買盤減退」證據力偏弱。</li>
+</ul>
+<h2>Net verdict (3-5 sentences)</h2>
+<p>雙方信心皆 5/10，且關鍵方向性證據（11 月下旬 VIX、11-26/27 S&amp;P 500 收盤、資金流）均為 DATA_UNAVAILABLE，勝負落在雜訊範圍內。空方在「持有成本與耗損」這一可驗證事實上明確勝出，多方則在「近期催化劑時點與技術結構」上合理但依賴未落地的事件。由於 FOMC 鷹派預期已大量 price-in、動能正在衰退，現價追入 SH 的邊際優勢不足以抵銷耗損與方向不確定性。結論為 NEUTRAL：不建立方向性做空大盤部位；若交易端已有股票多頭需要對沖，SH 可作為限期（至 12-10 CPI 前後）的小額戰術對沖工具。</p>
+<h2>What would change the verdict</h2>
+<ul>
+<li>Upside trigger：SH 收盤站回 $35.58 並放量，且 12-04 就業／ISM 偏熱、FedWatch 升息機率回升至 90% 以上，可上調為 LOW～MEDIUM 戰術性 LONG，目標 $36.12。</li>
+<li>Downside trigger：SH 收盤跌破 $33.27（前高轉支撐），或 FOMC 不升息／偏鴿，轉為 SHORT_OR_AVOID，下方參考 $32.70 / $31.64。</li>
+<li>Key data point to monitor：12-08/09 FOMC 決議與點陣圖；次要為 VIX 是否重回 20 以上，以及 12-10 CPI。</li>
+</ul>
+<h2>Position-sizing guidance (qualitative, not advice)</h2>
+<p>NEUTRAL、低信心 → 不建立新的方向性部位。若作為既有股票多頭之對沖，建議以小於半倉的對沖比例進行，並因 ATR14 已由 $0.34 擴張至 $0.69，在同一風險預算下進一步縮小部位；停損以收盤跌破 $33.27 為準（較緊版本 $33.64）。</p>
+<h2>Time horizon</h2>
+<p>天至數週：僅限 2026-12-01 至 12-10 催化劑窗口，CPI 發布後重新評估；不適合以季為單位持有（每日重置耗損）。</p>
+<p>INVESTMENT PLAN COMPLETE</p></div>
+    </details>
+
+    <details class="mb-4 border border-slate-200 rounded">
+      <summary class="bg-slate-50 px-4 py-2 font-semibold">交易提案 (Trader)</summary>
+      <div class="agent-prose p-4 text-sm"><p>FINAL TRANSACTION PROPOSAL: <strong>HOLD</strong></p>
+<h1>Trade proposal — SH as of 2026-11-28</h1>
+<h2>Direction</h2>
+<p>AVOID（不建立新的方向性部位）<br />
+附帶選項：若交易端已持有股票多頭部位，可將 SH 作為<strong>限期、小於半倉的戰術性對沖工具</strong>；此非獨立的方向性交易。</p>
+<h2>為何不建立方向性部位</h2>
+<p>研究經理裁定為 NEUTRAL、信心 LOW。多空雙方信心皆僅 5/10，關鍵方向性證據（11 月下旬 VIX、11-26/27 S&amp;P 500 收盤、資金流）皆為 DATA_UNAVAILABLE，勝負落於雜訊範圍。空方在「持有成本與結構性耗損」(3 年年化 -10.19%、5 年 -5.79%、YTD -6.63%，費用率 0.88%，波動率 31.8%) 上證據最硬；多方的催化劑論述（12 月 FOMC 鷹派預期）則已大部分 price-in（CME FedWatch 升息機率約 85%，已由 98.6% 回落），且近日動能正在衰退（MACD 柱狀體連三日收縮、RSI 由 76.3 回落至 55.5、11-27 盤中 -1.3%）。現價 $34.15 追入 SH 的邊際優勢不足以抵銷每日重置的結構性耗損與方向不確定性，故拒絕以此建立獨立的 LONG/SHORT 部位。</p>
+<h2>條件式戰術對沖（非獨立交易，僅供既有多頭避險參考）</h2>
+<ul>
+<li>對沖觸發（上調情境）：SH 收盤站回 $35.58（2026-11-25 日內高）並放量，且 12-04 就業／ISM 數據偏熱、FedWatch 升息機率回升至 90% 以上 → 可視為戰術性避險加碼訊號。</li>
+<li>停損：收盤跌破 $33.27（2026-09-16 前高、已轉為支撐），較緊版本為跌破 MA20 $33.64（結構失效即撤出對沖）。</li>
+<li>目標：$36.12（2026-11-20 波段最高點）。</li>
+<li>R:R（以 $35.58 進場估算）：($36.12−$35.58)/($35.58−$33.27) ≈ 0.23，若以回測後較低點進場（如貼近 $34.15）估算則約 ($36.12−$34.15)/($34.15−$33.27) ≈ 2.2；實際 R:R 高度依進場價位，不宜以單一數字作為交易依據。</li>
+<li>失效（下調情境）：收盤跌破 $33.27，或 FOMC 不升息／偏鴿 → 對沖應立即解除，不轉為裸 SHORT 持有。</li>
+</ul>
+<h2>時間窗口</h2>
+<p>僅限 2026-12-01 至 12-10（ISM/就業、FOMC 12-08/09、CPI 12-10），CPI 公布後須重新評估；不適合以季為單位持有，因耗損每日重置。</p>
+<h2>規模</h2>
+<p>若執行對沖，建議對沖比例小於既有股票多頭名義值之半倉，且因 ATR14 已由 $0.34 擴張至 $0.69（約現價 2.0%），在同一風險預算下應進一步縮小名義金額。此為對沖工具，非獨立倉位的「small/medium/large」定位。</p>
+<h2>催化劑日曆</h2>
+<ul>
+<li>2026-12-01～12-04 — ISM 製造業／就業數據</li>
+<li>2026-12-08～12-09 — FOMC 利率決議與點陣圖</li>
+<li>2026-12-10 — CPI 公布，為本次對沖窗口之重新評估時點</li>
+</ul>
+<p>TRADE PROPOSAL COMPLETE</p></div>
+    </details>
+
+    <details class="mb-4 border border-slate-200 rounded">
+      <summary class="bg-slate-50 px-4 py-2 font-semibold">Phase 1 — 四 Analyst 報告</summary>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+        <div>
+          <h4 class="font-bold text-slate-700 mb-2">基本面 (Fundamentals)</h4>
+          <div class="agent-prose text-sm bg-slate-50 p-3 rounded"><h1>Fundamentals — SH as of 2026-11-28</h1>
+<h2>Executive summary</h2>
+<p>SH 為 ProShares Short S&amp;P500（-1x 反向 ETF），不是公司，本報告以基金結構、規模、費用、淨值折溢價與價格資料代替營收與獲利分析。截至 2026-11-27 收盤，股價約 34.11 美元（yfinance info 紀錄），淨值（NAV）34.5705 美元，折價約 1.33%；基金淨資產約 9.50 億美元（USD 0.95B），淨費用率 0.88%，財務報表與持股/Swap 組成、資金流向等資料本次工具無法取得（DATA_UNAVAILABLE）。以基金本身而言結構健全（規模約 USD 0.95B、流動性充足），但反向型商品的每日重置與波動耗損會使長期持有報酬與指數反向報酬出現偏離，3 年平均年化報酬為 -10.19%，屬於對沖/戰術工具而非價值型持有標的。</p>
+<h2>資料可得性與時間說明</h2>
+<ul>
+<li>資料來源：pipeline/tools/yf 與 pipeline/tools/ta，多數 Yahoo 端點因 CONNECT 403 失敗，本次 info 與 ta 資料皆來自 repo cache（cached_at 2026-11-27 16:36 UTC 附近）。</li>
+<li>本次分析 as-of 2026-11-28，所用最新行情為 2026-11-27 收盤附近，未見晚於 2026-11-28 的資料。</li>
+<li>三個來源的現價不一致：yf info regularMarketPrice 34.1101、yf fast_info last_price 34.205（cnyes feed）、ta snapshot price 34.15（as_of 2026-11-27）。本報告以 info 之 regularMarketPrice 為主，價差約 0.1 美元（約 0.3%），不影響結論。</li>
+<li>financials、balance_sheet、cashflow、quarterly 系列、earnings_dates、insider、major_holders、inst_holders 均回傳空值或錯誤，列為 DATA_UNAVAILABLE。</li>
+</ul>
+<h2>Revenue &amp; profitability（ETF 結構與績效替代）</h2>
+<ul>
+<li>基金類型：Exchange Traded Fund，類別 Trading--Inverse Equity，發行商 ProShares，交易所 NYSEArca。</li>
+<li>投資目標摘要（info.longBusinessSummary）：以金融工具達成相對標的指數每日報酬的 -1x 反向曝險；至少 80% 總資產為指數成分或具相似經濟特性之工具曝險（即 Swap 與期貨等衍生性工具，實際持股/Swap 對手方組成 DATA_UNAVAILABLE）。非分散型基金（non-diversified）。</li>
+<li>規模：totalAssets 與 netAssets 皆為 950,363,712 美元（USD 0.95B）。由 NAV 反推之流通股數約 2,749 萬股（派生估算，非基金公告數字）。</li>
+<li>績效（info 欄位）：</li>
+<li>YTD 報酬 -6.63%</li>
+<li>近 3 個月 NAV 報酬 -1.10%</li>
+<li>3 年平均年化報酬 -10.19%</li>
+<li>5 年平均年化報酬 -5.79%</li>
+<li>3 年 beta -0.92（對標的指數之反向關係）</li>
+<li>52 週區間：31.64 至 39.20 美元，現價距 52 週低點 +7.8%、距高點 -13.0%。</li>
+<li>歷史最高/最低（allTimeHigh 843.52、allTimeLow 31.64）：843.52 明顯與目前價位不連續，疑為歷史拆分/調整前價格資料異常，本報告不採用。</li>
+<li>AUM 趨勢：僅有單一時點規模，無歷史 AUM 序列，AUM 趨勢為 DATA_UNAVAILABLE。</li>
+</ul>
+<h2>Cashflow &amp; balance sheet（基金資產負債與費用）</h2>
+<ul>
+<li>財報（現金流量/資產負債）為 DATA_UNAVAILABLE，因 ETF 不適用公司層級財報；以基金層級指標替代。</li>
+<li>淨費用率（netExpenseRatio）0.88%。依淨資產 USD 0.95B 推算，年化費用約 USD 8.4M（派生估算）。</li>
+<li>基金若以衍生性工具達成曝險，報告中之現金與短期國債抵押品、Swap 交易對手風險等均無法由工具取得，列 DATA_UNAVAILABLE。</li>
+<li>槓桿與重置：-1x 每日重置，持有期間的報酬會受路徑影響（波動耗損）。在高波動、來回震盪的盤勢中，即使指數中期方向正確，基金報酬仍可能偏離 -1x 的累積結果。近 20 日年化波動率 31.8%（ta vol_20d_annualized），該值亦為觀察波動耗損風險的依據之一。</li>
+</ul>
+<h2>Capital allocation &amp; insider signal（分配、資金流與內部人替代）</h2>
+<ul>
+<li>股利/分配：info 之 dividendYield 與 yield 皆為 3.87%。反向基金通常無穩定配息，此數字可能反映近期或前期的收益分配（distribution）而非年化股息，本報告不將其視為穩定收益來源，且無分配明細可核對，標記為待驗證。</li>
+<li>內部人交易：insider 回傳空值，ETF 無內部人交易概念，此項不適用。</li>
+<li>機構持股：inst_holders 與 major_holders 回傳空值，為 DATA_UNAVAILABLE。</li>
+<li>資金流（creation/redemption、淨申購贖回）：DATA_UNAVAILABLE。</li>
+<li>成交量訊號：</li>
+<li>當日成交量 4,246,099 股</li>
+<li>3 個月平均成交量 10,424,033 股（當日約為其 40.7%）</li>
+<li>10 日平均成交量 13,837,640 股（當日約為其 30.7%）</li>
+<li>近 10 日量能高於 3 個月均量，但當日量偏低，顯示近期交易熱度先升後降。</li>
+</ul>
+<h2>Valuation（淨值折溢價與技術位置替代）</h2>
+<ul>
+<li>P/E、EV/EBITDA、P/FCF、P/S 均不適用於 ETF，列 n/a（ETF 不適用）。</li>
+<li>NAV 折溢價：市價 34.1101 對 NAV 34.5705，折價約 -1.33%（派生）。以 bid 34.18 / ask 34.19 中價 34.185 計算，折價約 -1.11%。NAV 為前一交易日計算值，盤中折溢價會隨標的指數變動，此為參考數字。</li>
+<li>技術位置（ta snapshot，as_of 2026-11-27）：</li>
+<li>價格 34.15 高於 MA20（33.635，+1.53%）、MA50（32.758，+4.25%）與 MA200（33.886，+0.78%）。</li>
+<li>RSI14 55.52，中性偏多；MACD 0.5423 高於 Signal 0.4727，柱狀體 +0.0696。</li>
+<li>布林 %B 0.646（中軌 33.635，上軌 35.395，下軌 31.875）。</li>
+<li>ATR14 0.692（約股價 2.0%）。</li>
+<li>動能：1 個月 +6.29%、3 個月 +5.63%、6 個月 +3.86%、12 個月 -7.10%。</li>
+<li>支撐/壓力（ta levels）：</li>
+<li>支撐：31.64（2026-10-06，同時為 52 週低點）、31.83（2026-08-13）、32.70（2026-07-10）</li>
+<li>壓力：33.27（2026-09-16）、33.96（2026-07-29）</li>
+<li>方向提醒：SH 上漲代表 S&amp;P 500 下跌，近 1 個月 SH 上漲、近 12 個月下跌，表示近期指數偏弱、長期指數偏強。此解讀僅為描述市場方向，不構成交易建議。</li>
+<li>同類中位數：inverse equity 類別之同類中位數無可靠來源，列 n/a。</li>
+</ul>
+<h2>Key catalysts</h2>
+<ul>
+<li>下一次財報/分配公告：earnings_dates 失敗，ETF 無財報；分配日期 DATA_UNAVAILABLE。</li>
+<li>基金層級催化劑：</li>
+<li>標的指數（S&amp;P 500）之波動與方向，為 SH 價格的主要驅動。</li>
+<li>基金規模、費用、折溢價之變化（需下次取得 AUM 與 NAV 序列）。</li>
+<li>基金經理人公告之收益分配（distribution）時程，DATA_UNAVAILABLE。</li>
+<li>技術面關注位置：31.64 為 52 週低點與關鍵支撐，33.27 與 33.96 為近期壓力；價格位於 MA20 與 MA200 之上，其相對位置隨盤勢變化。</li>
+</ul>
+<h2>Metrics table</h2>
+<p>單位：USD 以 B/M 標示；無 TWD/KRW 數字，故無億換算。</p>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Latest</th>
+<th>YoY</th>
+<th>Sector median (estimate)</th>
+<th>Verdict</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>基金淨資產 Net assets (USD B)</td>
+<td>0.95（950.36M）</td>
+<td>DATA_UNAVAILABLE</td>
+<td>n/a</td>
+<td>規模足夠，流動性中等偏上</td>
+</tr>
+<tr>
+<td>淨費用率 Net expense ratio</td>
+<td>0.88%</td>
+<td>DATA_UNAVAILABLE</td>
+<td>n/a</td>
+<td>反向槓桿型商品費用屬正常區間，持有成本偏高</td>
+</tr>
+<tr>
+<td>市價 Market price (USD)</td>
+<td>34.1101</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>2026-11-27 收盤附近</td>
+</tr>
+<tr>
+<td>NAV (USD)</td>
+<td>34.5705</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>前一交易日計算值</td>
+</tr>
+<tr>
+<td>折溢價 Premium/discount to NAV</td>
+<td>-1.33%（派生）</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>小幅折價，屬可接受區間</td>
+</tr>
+<tr>
+<td>YTD 報酬</td>
+<td>-6.63%</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>年內表現偏弱</td>
+</tr>
+<tr>
+<td>3 個月 NAV 報酬</td>
+<td>-1.10%</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>近季小幅下跌</td>
+</tr>
+<tr>
+<td>3 年平均年化報酬</td>
+<td>-10.19%</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>長期持有反向 ETF 之耗損明顯</td>
+</tr>
+<tr>
+<td>5 年平均年化報酬</td>
+<td>-5.79%</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>同上</td>
+</tr>
+<tr>
+<td>3 年 beta</td>
+<td>-0.92</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>與標的指數呈強反向關係</td>
+</tr>
+<tr>
+<td>殖利率 Dividend yield</td>
+<td>3.87%（待驗證）</td>
+<td>DATA_UNAVAILABLE</td>
+<td>n/a</td>
+<td>收益分配性質不明，不視為穩定收益</td>
+</tr>
+<tr>
+<td>52 週距高點 / 距低點</td>
+<td>-13.0% / +7.8%</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>位於區間中段偏低</td>
+</tr>
+<tr>
+<td>當日成交量 / 3M 均量</td>
+<td>40.7%</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>當日量縮</td>
+</tr>
+<tr>
+<td>10 日均量 / 3M 均量</td>
+<td>132.7%</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>近期量能偏高</td>
+</tr>
+<tr>
+<td>RSI14</td>
+<td>55.52</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>中性</td>
+</tr>
+<tr>
+<td>MACD 柱狀體</td>
+<td>+0.0696</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>短線偏多（對 SH 而言代表標的偏弱）</td>
+</tr>
+<tr>
+<td>BB %B</td>
+<td>0.646</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>中上位置</td>
+</tr>
+<tr>
+<td>20 日年化波動率</td>
+<td>31.8%</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>波動偏高，重置耗損風險提高</td>
+</tr>
+<tr>
+<td>價格 vs MA200</td>
+<td>+0.78%</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>站上長期均線，幅度小</td>
+</tr>
+<tr>
+<td>內部人交易</td>
+<td>n/a（ETF 不適用）</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>不適用</td>
+</tr>
+<tr>
+<td>資金流 Fund flows</td>
+<td>DATA_UNAVAILABLE</td>
+<td>DATA_UNAVAILABLE</td>
+<td>n/a</td>
+<td>無法評估</td>
+</tr>
+<tr>
+<td>持股/Swap 組成 Holdings</td>
+<td>DATA_UNAVAILABLE</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>無法評估</td>
+</tr>
+<tr>
+<td>P/E、EV/EBITDA、P/FCF、P/S</td>
+<td>n/a（ETF 不適用）</td>
+<td>n/a</td>
+<td>n/a</td>
+<td>不適用</td>
+</tr>
+</tbody>
+</table>
+<h2>Red flags</h2>
+<ul>
+<li>財務與持股資料缺失：financials、holdings/Swap 組成、資金流、AUM 歷史皆 DATA_UNAVAILABLE，無法驗證基金實際曝險與交易對手風險。</li>
+<li>報價來源不一致：info、fast_info、ta 三者現價差約 0.1 美元，且均來自 cache，非即時來源。</li>
+<li>殖利率 3.87% 性質不明，不應視為穩定收益。</li>
+<li>allTimeHigh 843.52 與現價不連續，疑為歷史資料調整問題，不採用。</li>
+<li>3 年平均年化報酬 -10.19%：長期持有反向 ETF 之波動耗損與費用拖累明顯，不適合作為長期持有工具，需由交易端自行判斷持有期間。</li>
+<li>近 20 日年化波動率 31.8%，每日重置之路徑依賴性提高。</li>
+<li>當日成交量僅為 3 個月均量的約 41%，流動性短期內偏弱，需留意盤中成交與價差。</li>
+</ul>
+<p>FUNDAMENTALS REPORT COMPLETE</p></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-slate-700 mb-2">技術面 (Market / Technical)</h4>
+          <div class="agent-prose text-sm bg-slate-50 p-3 rounded"><h1>Technical — SH as of 2026-11-28</h1>
+<blockquote>
+<p>資料說明：ta / yf 皆經 pricefeed 走 cache（quote_source / history_source = cache，屬正常）。最新日線 bar 為 <strong>2026-11-27</strong>，2026-11-28 資料不在快取，視為未知，本報告未使用。yf fast_info 之 last_price 為 34.205（cache，cached_at 2026-11-27T16:31:56Z），與 ta 日線收盤 34.15 相差 $0.055，本報告以日線收盤 $34.15 為準。fast_info 之 MA / 52w 欄位為 null / NaN，均取自 ta snapshot。</p>
+</blockquote>
+<h2>Snapshot</h2>
+<p>Price $34.15, MA20 $33.64, MA50 $32.76, MA200 $33.89, RSI14=55.5, MACD hist=+0.070</p>
+<h2>Trend</h2>
+<p>SH 為 -1x 反向 ETF，其走勢與 S&amp;P500 方向相反；以下僅描述 SH 自身圖形，SH 上行即代表大盤走弱，此解讀交由下游判讀。</p>
+<p>短期趨勢偏多：價格同時站上 MA20（+1.5%）、MA50（+4.2%）與 MA200（+0.8%），MA20 已上穿 MA50 且 MA50 斜率持續上揚（11-03 的 $32.35 升至 11-27 的 $32.76）。MA200 近一個月幾乎持平略降（11-02 $34.07 → 11-27 $33.89），價格剛好貼在 MA200 上方，尚未形成明確的長期趨勢確認。MA50 仍低於 MA200 約 3.3%，黃金交叉尚未出現，但兩線間距由 11-02 的 -$1.72 收斂至目前 -$1.13。</p>
+<p>中期結構仍偏弱但已止跌：近 52 週高點 $39.20（距今 -12.9%）與低點 $31.64（距今 +7.9%），12 個月報酬 -7.1%；但 3m（+5.6%）與 6m（+3.9%）轉為正報酬，顯示自 2026-10-06 低點後已有一段反彈。</p>
+<h2>Momentum</h2>
+<ul>
+<li>MACD：MACD 線 0.542 &gt; signal 0.473，hist +0.070，仍在多方區域。但 hist 自 11-23 的 +0.192 連續三日收縮至 +0.154、+0.125、+0.070，動能減弱中。MACD 線自 11-20 高點 0.588 回落。</li>
+<li>RSI14：55.5，中性。11-20 曾升至 76.3（超買），隨後回落至中性區。</li>
+<li>多期間報酬：1m +6.3%、3m +5.6%、6m +3.9%、12m -7.1%。近一個月強、中期轉正，長期仍弱。</li>
+</ul>
+<h2>Key levels</h2>
+<ul>
+<li>Resistance: $35.40 (布林上軌，動態)，$35.58 (2026-11-25 日內高)，$36.12 (2026-11-20 日內高，近期波段最高點)</li>
+<li>Support:    $33.89 (MA200)，$33.64 (MA20)，$33.27 (2026-09-16 局部高，已轉為支撐)，$32.76 (MA50)，$32.70 (2026-07-10 局部低)，$31.83 (2026-08-13 局部低)，$31.64 (2026-10-06 局部低，同時為 52w 低點)</li>
+<li>註：<code>ta levels</code> 僅列出價格下方的局部高點（$33.96 於 2026-07-29、$33.27 於 2026-09-16），目前皆已位於價格下方，角色已轉為支撐；上方阻力之日內高點取自 <code>ta series</code> 之 OHLC。</li>
+<li>Stop-loss suggestion (logical, not advice): below $33.27 (前高轉支撐，收盤跌破即視為結構失效；較緊版本可參考 MA20 $33.64 的收盤跌破)</li>
+</ul>
+<h2>Volatility profile</h2>
+<p>ATR-implied daily move ~$0.69 (約現價 2.0%)，annualized vol 31.8% (20d)。<br />
+- ATR14 自 11-02 的 $0.34 擴張至 11-27 的 $0.69，主因為 11-19 / 11-20 兩日的急漲（+2.0%、+3.6%）。<br />
+- 以年化波動率推算之日標準差約 2.0%（≈ $0.68），與 ATR 一致。<br />
+- 部位含意：以 1.5 × ATR（約 $1.04）為停損距離計，單股風險約 $1.04；ATR 近期擴張，同一風險預算下部位宜相應縮小。</p>
+<h2>Setup</h2>
+<p>中性（偏多結構仍在，動能減弱）。</p>
+<p>型態：自 2026-11-11 低點 $32.54 起，低點逐步抬高（11-13 $32.67 → 11-27 $34.12）。11-20 以 $36.12 日內高點與 $35.93 收盤突破先前 $33.96 壓力並放量（25.8M），隨後未能守住高點，11-23 至 11-27 在 $34.12–$35.58 區間整理，11-27 收於 $34.15。目前為突破後的回測整理，尚未確認延續或失敗。</p>
+<p>量能：11-27 量 4.18M，為近 10 日均量（11-12 至 11-25，約 13.8M）的約 30%。11-27 為美國感恩節後之週五，可能為縮短交易時段（此為推測，資料本身未標示），低量解讀需保留。11-19 / 11-20 之放量（21.8M、25.8M）為近期上漲的主要量能確認。</p>
+<h2>Indicators table</h2>
+<table>
+<thead>
+<tr>
+<th>Indicator</th>
+<th>Value</th>
+<th>Reading</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Price (日線收盤 11-27)</td>
+<td>$34.15</td>
+<td>站上 MA20 / MA50 / MA200</td>
+</tr>
+<tr>
+<td>MA20</td>
+<td>$33.64</td>
+<td>價格高於 +1.5%</td>
+</tr>
+<tr>
+<td>MA50</td>
+<td>$32.76</td>
+<td>價格高於 +4.2%；斜率上揚</td>
+</tr>
+<tr>
+<td>MA200</td>
+<td>$33.89</td>
+<td>價格高於 +0.8%；近月持平略降</td>
+</tr>
+<tr>
+<td>MA50 vs MA200</td>
+<td>-3.3%（-$1.13）</td>
+<td>未黃金交叉，間距收斂中</td>
+</tr>
+<tr>
+<td>RSI14</td>
+<td>55.5</td>
+<td>中性（11-20 曾達 76.3）</td>
+</tr>
+<tr>
+<td>MACD</td>
+<td>0.542</td>
+<td>位於多方區，較 11-20 高點 0.588 回落</td>
+</tr>
+<tr>
+<td>MACD signal</td>
+<td>0.473</td>
+<td>MACD 線高於 signal</td>
+</tr>
+<tr>
+<td>MACD hist</td>
+<td>+0.070</td>
+<td>正值但連三日收縮，動能減弱</td>
+</tr>
+<tr>
+<td>BB %B</td>
+<td>0.65</td>
+<td>中軌上方、未達上軌</td>
+</tr>
+<tr>
+<td>BB 寬度</td>
+<td>約 10.5%</td>
+<td>上軌 $35.40 / 下軌 $31.87</td>
+</tr>
+<tr>
+<td>ATR14</td>
+<td>$0.69</td>
+<td>約現價 2.0%；較 11-02 的 $0.34 擴張</td>
+</tr>
+<tr>
+<td>20d 年化波動率</td>
+<td>31.8%</td>
+<td>中高波動</td>
+</tr>
+<tr>
+<td>1m 報酬</td>
+<td>+6.3%</td>
+<td>近月偏強</td>
+</tr>
+<tr>
+<td>3m 報酬</td>
+<td>+5.6%</td>
+<td>中期轉正</td>
+</tr>
+<tr>
+<td>6m 報酬</td>
+<td>+3.9%</td>
+<td>半年正報酬</td>
+</tr>
+<tr>
+<td>12m 報酬</td>
+<td>-7.1%</td>
+<td>一年期仍弱</td>
+</tr>
+<tr>
+<td>距 52w 高點 $39.20</td>
+<td>-12.9%</td>
+<td>遠離高點</td>
+</tr>
+<tr>
+<td>距 52w 低點 $31.64</td>
+<td>+7.9%</td>
+<td>距低點仍有空間</td>
+</tr>
+<tr>
+<td>量能（11-27 vs 10d 均量）</td>
+<td>4.18M vs 約 13.8M，約 30%</td>
+<td>感恩節後縮短session推測，低量待確認</td>
+</tr>
+</tbody>
+</table>
+<p>MARKET REPORT COMPLETE</p></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-slate-700 mb-2">新聞 (News)</h4>
+          <div class="agent-prose text-sm bg-slate-50 p-3 rounded"><h1>News — SH as of 2026-11-28</h1>
+<blockquote>
+<p>資料說明: pipeline/tools/yf 新聞抓取失敗 (proxy 回傳 403 CONNECT tunnel failed), 本報告新聞部分僅依 WebSearch。yf info 快照為 2026-11-27 盤中 (cached_at 2026-11-27T16:36 UTC), 非收盤價。2026-11-26 為感恩節休市, 最近交易日為 2026-11-27 (半日交易)。搜尋結果中有多則日期混雜、數字互相矛盾, 已於文中標註。未取得的資料一律標 DATA_UNAVAILABLE。</p>
+</blockquote>
+<h2>標的層面 (SH 為反向 S&amp;P 500 ETF, 無公司個股新聞)</h2>
+<p>SH 為 ProShares Short S&amp;P500, 每日追蹤 S&amp;P 500 反向 -1x 報酬, 本身沒有公司層面的財報、併購或管理層事件。以下以基金快照與指數驅動因子替代。</p>
+<ul>
+<li>2026-11-27 (盤中) — SH 現價 34.11 USD, 前收 34.56, 日跌 -1.30%; 當日區間 34.11–34.45。Impact: 中性偏反向標的看空 (隱含 S&amp;P 500 當日偏強)。1 行原因: 反向 ETF 價格下跌即表示 S&amp;P 500 上漲, 此為由 SH 價格推論, 非直接的指數收盤數據。</li>
+<li>2026-11-27 (盤中) — 基金淨資產約 0.95 B USD (950,363,712 USD), NAV 34.57, 溢價/折價約 -1.3% (價格 34.11 vs NAV 34.57)。Impact: 中性。1 行原因: 規模穩定, 無贖回壓力跡象。</li>
+<li>2026-11-27 (盤中) — 成交量 4.25 M 股, 10 日平均 13.84 M 股, 3 個月平均 10.42 M 股。Impact: 中性。1 行原因: 感恩節後半日交易, 量低屬正常, 不宜據此判斷趨勢。</li>
+<li>2026 年初至今 (YTD) 報酬 -6.63%; 52 週區間 31.64–39.20 USD, 現價距 52 週低點約 +7.8%。Impact: 偏多頭 (反向標的) 的歷史位置仍偏弱。1 行原因: 價格接近 200 日均線 (33.89) 上方, 反映 S&amp;P 500 近期仍偏強勢。</li>
+</ul>
+<h2>Sector macro (指數與宏觀驅動)</h2>
+<ul>
+<li>2026-11-10 — 10 月 CPI 高於預期 (核心通膨略低於預期的說法與熱門說法並存)。CME FedWatch 報 12 月 8–9 日 FOMC 升息機率約 85%, 較前一日 98.6% 下降, 但仍高; 亦有交易員押注升至 4.25%–4.50% 的機率約 15.3%。Impact on 指數 / SH: 偏多 SH (升息預期壓抑估值, 利空股市)。來源: investinglive / investmentnews / realestatenews 等二手報導, 數字各家略有出入。</li>
+<li>2026-11-10 起 — Morningstar 認為熱 CPI 「保證」12 月升息, 若持續將帶動 2027 年多次升息。Wells Fargo 認為核心通膨軟化不足以改變 12 月升息預期。Impact: 偏多 SH。</li>
+<li>2026 年 9 月 — Fed 首次升息 (屬 2026 年內的政策轉向), 10 月 FOMC 維持利率, 聯邦基金目標區間約 3.75%–4.00%。Fed 主席為 Kevin Warsh, 表示 12 月決策取決於後續數據 (單一來源)。Impact: 偏多 SH (緊縮週期), 但 Fed 未承諾動作增加不確定性。</li>
+<li>2026-11-05 — S&amp;P 500 收於 7,353.73, 為 Fed 首次升息後的低點與 Q4 低點 (Morningstar / Dow Jones 轉述)。Impact: 偏空 SH (當時股市承壓, 反向標的受益)。</li>
+<li>2026-11-09 — 股市反彈, S&amp;P 500 收 7,549.94, 單日 +2.35%, 油價走低與科技股回升為主因。同日 CBOE VIX 單日下跌約 22% 至 19.92。Impact: 偏空 SH (風險偏好回升)。</li>
+<li>2026-11-12 — 油價單日約 +1%, 伊朗表示不會移出濃縮鈾。Brent 較 11 月初下跌約 21%, WTI 下跌約 17%, 但仍有地緣風險溢價。Impact: 中性, 偏多 SH 若地緣風險再起 (油價上升通常壓股市)。</li>
+<li>2026-11-16 — AI 股帶動科技股下跌, S&amp;P 500 單日跌約 1.9% (一來源) 或約 1.0% (另一來源, 收於 7,340.53), 兩者數字不一致, 本報告以收盤點數 (-76.06 點 / -1.0%) 為準, 1.9% 標註為待確認。Impact: 偏多 SH。</li>
+<li>2026-11-18 — S&amp;P 500 收 7,323.63 (-0.23%), 道瓊收 50,198.17 (-1.11%)。Morningstar 轉述: 11 月 MTD -3.38%, YTD +6.98%。Impact: 偏多 SH (指數接近 7 月以來低點)。</li>
+<li>2026-11-19 — 市場新聞 (Zacks) 指出科技股在 Nvidia 疲弱下承壓, 惟無完整收盤數據; 來源日期標示為 11-19, 內容待確認。Impact: 偏多 SH。</li>
+<li>2026-11-26 — 感恩節休市, 無收盤數據 (DATA_UNAVAILABLE)。</li>
+<li>2026-11-27 — 半日交易, 盤中 SH 下跌 -1.3% (由 yf 快照), 收盤與成交量 DATA_UNAVAILABLE。</li>
+</ul>
+<p>VIX 與波動率:<br />
+- CBOE 官網 (week of 11/9/2026 報告標題 "No Contagion (Yet): Equity Vol Spikes, Macro Vol Fades") 顯示股票波動率飆升但宏觀波動率消退。<br />
+- 最近一筆可引用的 VIX 價格為 19.30 (CBOE 頁面, 標示 2026-11-13)。<br />
+- 11-10 收盤爭議: 19.46 (-2.31%) vs 20.17 (+1.26%), 兩來源矛盾, 無法確認。<br />
+- 11-14 至 11-27 的 VIX 收盤: DATA_UNAVAILABLE。</p>
+<h2>Peer signals (同類 / 反向與核心權值)</h2>
+<ul>
+<li>Nvidia (NVDA) — 2026-11-17 公布財報 (盤後), 但未取得 11 月財報後的股價反應數據, 反應與指引: DATA_UNAVAILABLE。前次 2026 年 2 月財報後股價下跌 (EPS 1.62 USD, 營收 681 億 USD 的超預期仍下跌), 顯示市場對 AI 資本支出回報的耐心有限。</li>
+<li>AI 權值股 (科技) — 11 月中旬為指數下跌主因, 與 11-16 的 AI 股拖累一致 (來源同 Morningstar / TheStreet)。</li>
+<li>其他反向 ETF (SDS 2x、SPXU 3x 等) — DATA_UNAVAILABLE。</li>
+<li>SPY / VOO 等正向指數 ETF 當日價量 — DATA_UNAVAILABLE。</li>
+<li>油氣 / 能源 (地緣風險代理) — 11-12 油價小漲, Brent 仍高於年初; 如油價重新上行, 通常對股市偏空 (利多 SH)。</li>
+</ul>
+<h2>Forward calendar (next 14d, 2026-11-28 至 2026-12-12)</h2>
+<ul>
+<li>2026-11-28 (週六) — 週末, 無交易。最近交易日為 11-27 半日。</li>
+<li>2026-11-30 (週一) — Cyber Monday 前後的消費與零售數據, 時點與影響: 待確認 (日期為推定)。</li>
+<li>2026-12-01 至 12-04 — 11 月 ISM 製造業 / 就業報告 (約 12-04 週五, 時點依慣例推定, 未在搜尋中確認)。若就業或薪資強勁, 升息預期升溫, 偏多 SH。</li>
+<li>2026-12-08 至 12-09 — FOMC 會議 (多數來源採 12-08 至 12-09; EY 頁面列為 12-09 至 12-10, 日期矛盾, 以 12-08/09 為主)。CME FedWatch 12 月升息機率約 85% (11-10 數據)。升息若成真且點陣圖偏鷹, 偏多 SH; 若 Fed 維持不變或轉鴿, 偏空 SH。</li>
+<li>2026-12-10 — 11 月 CPI 發布 (來源明列)。通膨續熱將強化 2027 年多次升息預期, 偏多 SH。</li>
+<li>12-12 前後 — 11 月 PPI / 零售銷售 (時點推定, 未確認)。</li>
+</ul>
+<h2>Net read</h2>
+<p>近 30 天 (2026-10-29 至 2026-11-28) 的新聞以「升息預期 + AI 估值疑慮 + 地緣油價」為主軸。10 月 CPI 偏熱、CME 12 月升息機率約 85%, 是最主要的偏空股市 (偏多 SH) 因子; 同時 11 月初股市自 Fed 首次升息後的低點 (7,353.73) 反彈至 11-09 的 7,549.94, 之後 11-16 至 11-18 因 AI 權值股承壓回落至 7,323.63, 屬於區間震盪。VIX 在 11 月中約 19–20, 處於中性區間, 但 11 月下旬 VIX 缺漏, 無法確認波動率趨勢。最新盤中快照 (11-27) 顯示 SH 下跌 1.3%, 代表當日 S&amp;P 500 偏強, 與 11 月下旬的弱化訊號不同步, 需要收盤與 VIX 數據確認。綜合判斷: 新聞面淨傾向偏多 SH (hawkish Fed 與 AI 估值疑慮), 強度為中等; 但近期價格反映的風險偏好回升與 SH 每日重設的路徑損耗 (decay) 會限制持有期間的效果。本報告不構成交易建議。</p>
+<h2>指標與摘要表</h2>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>數值</th>
+<th>單位 / 備註</th>
+<th>來源 / 日期</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SH 現價 (盤中)</td>
+<td>34.11</td>
+<td>USD</td>
+<td>yf info, 2026-11-27 盤中</td>
+</tr>
+<tr>
+<td>SH 前收</td>
+<td>34.56</td>
+<td>USD</td>
+<td>yf info</td>
+</tr>
+<tr>
+<td>SH 日變動</td>
+<td>-1.30%</td>
+<td>%</td>
+<td>yf info, 2026-11-27 盤中</td>
+</tr>
+<tr>
+<td>SH NAV</td>
+<td>34.57</td>
+<td>USD</td>
+<td>yf info</td>
+</tr>
+<tr>
+<td>SH 淨資產</td>
+<td>0.95</td>
+<td>B USD</td>
+<td>yf info</td>
+</tr>
+<tr>
+<td>SH 成交量 / 10 日均量</td>
+<td>4.25 / 13.84</td>
+<td>M 股</td>
+<td>yf info</td>
+</tr>
+<tr>
+<td>SH 52 週區間</td>
+<td>31.64–39.20</td>
+<td>USD</td>
+<td>yf info</td>
+</tr>
+<tr>
+<td>SH YTD 報酬</td>
+<td>-6.63</td>
+<td>%</td>
+<td>yf info</td>
+</tr>
+<tr>
+<td>SH 費用率</td>
+<td>0.88</td>
+<td>%</td>
+<td>yf info</td>
+</tr>
+<tr>
+<td>S&amp;P 500 收盤 (最近可得)</td>
+<td>7,323.63</td>
+<td>點</td>
+<td>Morningstar / Dow Jones, 2026-11-18</td>
+</tr>
+<tr>
+<td>S&amp;P 500 月初至今 (MTD)</td>
+<td>-3.38</td>
+<td>%</td>
+<td>Morningstar, 2026-11-18 附近</td>
+</tr>
+<tr>
+<td>S&amp;P 500 年初至今 (YTD)</td>
+<td>+6.98</td>
+<td>%</td>
+<td>Morningstar, 2026-11-18 附近</td>
+</tr>
+<tr>
+<td>S&amp;P 500 11-05 低點</td>
+<td>7,353.73</td>
+<td>點</td>
+<td>Morningstar 轉述</td>
+</tr>
+<tr>
+<td>S&amp;P 500 11-09 收盤</td>
+<td>7,549.94</td>
+<td>點 (+2.35%)</td>
+<td>ad-hoc-news / 轉述</td>
+</tr>
+<tr>
+<td>道瓊收盤 (11-18)</td>
+<td>50,198.17</td>
+<td>點 (-1.11%)</td>
+<td>lanacion 轉述</td>
+</tr>
+<tr>
+<td>VIX (最近可得)</td>
+<td>19.30</td>
+<td>指數點</td>
+<td>CBOE, 2026-11-13</td>
+</tr>
+<tr>
+<td>VIX 11-10 收盤</td>
+<td>19.46 或 20.17</td>
+<td>矛盾, 待確認</td>
+<td>二手來源</td>
+</tr>
+<tr>
+<td>12 月 FOMC 升息機率</td>
+<td>約 85</td>
+<td>%</td>
+<td>CME FedWatch 轉述, 11-10</td>
+</tr>
+<tr>
+<td>聯邦基金目標區間</td>
+<td>3.75–4.00</td>
+<td>%</td>
+<td>Morningstar, 2026 年 10 月</td>
+</tr>
+<tr>
+<td>10 月 CPI</td>
+<td>高於預期</td>
+<td>定性</td>
+<td>11-10 發布</td>
+</tr>
+<tr>
+<td>11 月 CPI 發布日</td>
+<td>2026-12-10</td>
+<td>日期</td>
+<td>來源明列</td>
+</tr>
+<tr>
+<td>FOMC 會議</td>
+<td>2026-12-08 至 12-09</td>
+<td>日期 (EY 列 12-09/10, 矛盾)</td>
+<td>多來源</td>
+</tr>
+<tr>
+<td>Brent / WTI (11-12 附近)</td>
+<td>Brent 約 92.63 / WTI 約 88.78</td>
+<td>USD/bbl</td>
+<td>轉述, 日期不一</td>
+</tr>
+<tr>
+<td>Nvidia 11 月財報後股價反應</td>
+<td>DATA_UNAVAILABLE</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>11-14 至 11-27 VIX 收盤</td>
+<td>DATA_UNAVAILABLE</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>11-26 / 11-27 S&amp;P 500 收盤</td>
+<td>DATA_UNAVAILABLE</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr>
+<td>yf 新聞抓取</td>
+<td>失敗 (403)</td>
+<td>—</td>
+<td>pipeline/tools/yf</td>
+</tr>
+</tbody>
+</table>
+<p>NEWS REPORT COMPLETE</p></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-slate-700 mb-2">情緒 (Sentiment)</h4>
+          <div class="agent-prose text-sm bg-slate-50 p-3 rounded"><h1>Sentiment — SH (ProShares Short S&amp;P500, -1x inverse) as of 2026-11-28</h1>
+<p>注意事項:<br />
+- 本報告以 DATE=2026-11-28 為基準。11-28 之後的資料一律視為未知。<br />
+- 依任務要求,未引用任何舊版 daily/ 報告的數字。<br />
+- 本地 <code>pipeline/tools/yf SH rec_summary</code> 指令未執行。ETF 本身不適用分析師評級,故分析師共識標為 N/A,未嘗試繞過。<br />
+- 所有 Reddit、StockTwits 直接抓取皆未執行,依指示只用 WebSearch。WebSearch 未能回傳 r/wallstreetbets、r/stocks 或 StockTwits 上針對 SH 的貼文,故散戶社群數據皆為 DATA_UNAVAILABLE。</p>
+<h2>分析師共識 (Analyst consensus)</h2>
+<p>N/A。SH 為 inverse ETF,不具分析師買進/持有/賣出評級,本欄不適用。</p>
+<p>ETF 性質提醒: SH 追蹤 S&amp;P 500 每日報酬的 -1x,每日重設,並非長期持有工具。多日持有的結果可能與指數的單純反向報酬有明顯偏差(複利效應)。</p>
+<h2>散戶社群 (Retail social)</h2>
+<ul>
+<li>Reddit (r/wallstreetbets、r/stocks): DATA_UNAVAILABLE。搜尋未回傳 SH 相關的 2026-11 討論串,無法判斷熱度或多空傾向。</li>
+<li>StockTwits: DATA_UNAVAILABLE。未找到 SH 的 StockTwits 串流或情緒數據。</li>
+<li>X / 新聞型輿論: 未找到 SH 專屬的 2026-11 討論。間接可見的市場對沖話題如下:</li>
+<li>Cboe 2026-11-16 的周報提到,散戶對 NVDA 選擇權在財報前轉為較偏空(單一個股,非 SH 本身)。</li>
+<li>SpotGamma 與 24/7 Wall St. 的文章指出,S&amp;P 500 選擇權在 11-20、11-27 到期的部位偏向 put,且 call 占比偏低(約 35%,低於一般 50%–70%)。這些文章的發布日期無法完全確認,但內容明確提及 2026 年 11 月到期日。</li>
+<li>市場背景: Saxo 2026-11-13 選擇權簡報顯示,S&amp;P 500 當日跌 0.35% 至約 7,592.40,而一日波動率指標跳升 26.50% 至 15.99。另一份報導提到 2026-11-05 S&amp;P 500 跌 4.4%,VIX 收在 28.18(前一日 16.61)。</li>
+<li>主題 (Themes): (1) 避險需求升溫,尤其 11 月下旬到期的 put;(2) 波動率拉高後避險成本上升;(3) 短期 put 大量買入可能加劇下跌,造莊者反向避險;(4) 估值與集中度風險(Magnificent Seven 約占 S&amp;P 500 31%,為 Nasdaq 文章引述)。</li>
+<li>散戶傾向: 整體偏向避險、略偏空,但缺乏 SH 本身的直接社群數據,只能視為間接推論,信心低。</li>
+</ul>
+<h2>策略師部位 (Strategist positioning on equity exposure)</h2>
+<ul>
+<li>BofA 基金經理人調查: 有一篇報導引用 2026 年 11 月數據,現金比重 3.6%(低檔),科技股淨超配由 37% 降至 12%,為近 20 年來最快降幅。另有 3% 受訪者預期 2027 年衰退。注意: 同一批搜尋結果混有 2025 年 11 月的數字(如 3.7% 現金比重),可信度僅中等,須以 BofA 原始報告為準。Hartnett 團隊另稱部位擁擠是風險資產的逆風,並警告在無 12 月降息下情緒可能進一步修正(報導日期不明)。</li>
+<li>2026-11-17 專業投資人調查: 預期 S&amp;P 500 續漲,加權平均目標為 7,926(前值 7,416),對債券的低配幅度為 2025-11 以來最小。</li>
+<li>大型券商目標價: 一家大型券商策略師據報將 12 個月 S&amp;P 500 目標由 8,000 上調至 8,700(單一來源,日期待確認)。</li>
+<li>避險傾向: Deutsche Bank 的衡量指標據報顯示自由裁量股票部位為低配,但報導日期不明。</li>
+<li>結論: 最新可見的策略師觀點偏建設性,並未明確看到「全面減碼股票並加碼避險」的共識。避險需求存在,但多集中在選擇權市場而非策略師的資產配置。</li>
+<li>假日週效應: 有文章指出感恩節週歷史上偏多,但 2026 年感恩節週(11-26 前後)的實際表現 DATA_UNAVAILABLE。</li>
+</ul>
+<h2>股價與基金資訊 (僅供背景,非情緒數據)</h2>
+<ul>
+<li>價格: 一則 Barchart 快照顯示約 37.93 USD,無日期,不可作為當前價格。另一則 Yahoo 快照為 2026-02-02 的 36.07 USD(已過期)。11-27 收盤價 DATA_UNAVAILABLE。</li>
+<li>基金流向: 兩個來源數字矛盾(一年期 +96.45 M USD 與 -62.89 M USD),可能是不同股份類別或日期,標為不可用於結論。</li>
+<li>費用率: 約 0.89%(單一來源)。</li>
+</ul>
+<h2>淨情緒分數 (Net sentiment score)</h2>
+<ul>
+<li>綜合判斷: 中性偏謹慎(Neutral-to-cautious),信心低。理由是:</li>
+<li>偏多的訊號(避險需求升溫、put 集中、波動率上升)會使 SH 的需求上升,也就是市場層面偏空避險;但</li>
+<li>專業投資人與策略師的 2026-11 調查偏建設性,且多數報導未顯示大規模撤出股票;</li>
+<li>散戶社群數據全數缺失,無法判斷 SH 本身的散戶傾向。</li>
+<li>背離旗標 (Divergence flag): DATA_UNAVAILABLE。ETF 無分析師傾向可比對,散戶面亦無 SH 專屬數據,無法判定背離。若以「避險需求 vs 策略師建設性」粗略對照,兩者存在方向張力,但證據不足,不應視為確認的背離訊號。</li>
+</ul>
+<h2>指標表 (Metrics table)</h2>
+<table>
+<thead>
+<tr>
+<th>指標</th>
+<th>數值</th>
+<th>來源性質</th>
+<th>可信度 / 備註</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>分析師評級 (買/持/賣)</td>
+<td>N/A</td>
+<td>ETF 不適用</td>
+<td>不適用</td>
+</tr>
+<tr>
+<td>Reddit 提及量 / 傾向</td>
+<td>DATA_UNAVAILABLE</td>
+<td>WebSearch 無結果</td>
+<td>無</td>
+</tr>
+<tr>
+<td>StockTwits 情緒</td>
+<td>DATA_UNAVAILABLE</td>
+<td>WebSearch 無結果</td>
+<td>無</td>
+</tr>
+<tr>
+<td>X / 新聞避險話題</td>
+<td>避險需求升溫(定性)</td>
+<td>Cboe、SpotGamma、24/7 Wall St.</td>
+<td>中,日期部分不明</td>
+</tr>
+<tr>
+<td>S&amp;P 500 選擇權 call 占比 (11-20 到期)</td>
+<td>約 35%(一般 50%–70%)</td>
+<td>SpotGamma</td>
+<td>中,單一來源</td>
+</tr>
+<tr>
+<td>SPY 全鏈 put/call 比率</td>
+<td>1.19</td>
+<td>24/7 Wall St.</td>
+<td>低至中,日期不明</td>
+</tr>
+<tr>
+<td>11-27 到期 put/call 比率</td>
+<td>4.44(11-20 為 3.28)</td>
+<td>24/7 Wall St.</td>
+<td>低,來源不可靠</td>
+</tr>
+<tr>
+<td>VIX 收盤 (2026-11-05)</td>
+<td>28.18 (前一日 16.61)</td>
+<td>新聞報導</td>
+<td>中</td>
+</tr>
+<tr>
+<td>S&amp;P 500 單日跌幅 (2026-11-05)</td>
+<td>-4.4%</td>
+<td>新聞報導</td>
+<td>中</td>
+</tr>
+<tr>
+<td>BofA 基金經理人現金比重</td>
+<td>3.6%</td>
+<td>報導,疑似 2026-11</td>
+<td>中低,與 2025 數字混雜</td>
+</tr>
+<tr>
+<td>BofA 科技股淨超配</td>
+<td>12%(前月 37%)</td>
+<td>報導</td>
+<td>中低</td>
+</tr>
+<tr>
+<td>專業投資人加權 S&amp;P 500 目標</td>
+<td>7,926(前值 7,416)</td>
+<td>Interactive Investor, 2026-11-17</td>
+<td>中</td>
+</tr>
+<tr>
+<td>大型券商 S&amp;P 500 12 個月目標</td>
+<td>8,700(前值 8,000)</td>
+<td>單一來源</td>
+<td>低</td>
+</tr>
+<tr>
+<td>SH 價格</td>
+<td>37.93 USD(無日期)</td>
+<td>Barchart</td>
+<td>不可用</td>
+</tr>
+<tr>
+<td>SH 一年基金流向</td>
+<td>矛盾: +96.45 M / -62.89 M USD</td>
+<td>兩家來源</td>
+<td>不可用</td>
+</tr>
+<tr>
+<td>SH 費用率</td>
+<td>約 0.89%</td>
+<td>單一來源</td>
+<td>低</td>
+</tr>
+<tr>
+<td>內部人交易</td>
+<td>依指示略過</td>
+<td>—</td>
+<td>不適用</td>
+</tr>
+<tr>
+<td>機構持股變化</td>
+<td>依指示略過</td>
+<td>—</td>
+<td>不適用</td>
+</tr>
+<tr>
+<td>綜合情緒</td>
+<td>中性偏謹慎</td>
+<td>本報告推論</td>
+<td>低</td>
+</tr>
+</tbody>
+</table></div>
+        </div>
+      </div>
+    </details>
+
+    <details class="mb-4 border border-slate-200 rounded">
+      <summary class="bg-slate-50 px-4 py-2 font-semibold">Phase 2 — Bull vs Bear 辯論</summary>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+        <div>
+          <h4 class="font-bold text-green-700 mb-2">🐂 多方 (Bull)</h4>
+          <div class="agent-prose text-sm bg-green-50 p-3 rounded border border-green-200"><h1>Bull case round 1 — SH</h1>
+<h2>Thesis（一句話）</h2>
+<p>在聯準會偏鷹、科技權值集中度與估值均處於高檔、且選擇權市場已反映避險需求升溫的環境下，SH 作為低成本、高流動性的 -1x 對沖工具，現價（約 $34.11–34.15）提供合理的進場位置，持有至 12 月初一系列宏觀催化劑（ISM/就業、FOMC、CPI）具備不對稱的上行機率。</p>
+<h2>驅動因子（宏觀/結構，取代成長動能）</h2>
+<ul>
+<li><strong>升息機率仍高</strong>：CME FedWatch（2026-11-10）顯示 12 月 FOMC 升息機率約 85%，10 月 CPI 高於預期，聯邦基金目標區間已在 3.75%–4.00% 的緊縮高位（news.md）。鷹派確認將壓抑股票估值，對 SH 偏多。</li>
+<li><strong>部位擁擠的反轉風險</strong>：BofA 基金經理人調查顯示現金比重僅 3.6%（低檔），科技股淨超配由 37% 驟降至 12%，為近 20 年最快降幅（sentiment.md）；Hartnett 團隊明確警告擁擠部位是風險資產的逆風。超配倉位急速去化本身即是波動放大的訊號。</li>
+<li><strong>選擇權市場已搶先避險</strong>：11-20、11-27 到期的 S&amp;P 500 選擇權 call 占比僅約 35%（正常區間 50%–70%），put 需求明顯偏高（sentiment.md, SpotGamma）。這代表機構已在為下行風險付費，SH 現價相對選擇權避險成本仍屬便宜的替代方案。</li>
+<li><strong>波動率尖峰可重演</strong>：VIX 曾於 2026-11-05 單日由 16.61 飆升至 28.18，同日 S&amp;P 500 大跌 4.4%（sentiment.md）。SH 20 日年化波動率 31.8%（fundamentals.md），顯示市場仍存在快速重新定價的能量。</li>
+</ul>
+<h2>「護城河」替代：結構性優勢</h2>
+<p>SH 的優勢不在護城河，而在於「乾淨、低成本的對沖工具」地位：3 年 beta -0.92，與標的指數呈強反向關係（fundamentals.md）；淨費用率 0.88%，相較於目前偏貴的 put 選擇權（call 占比僅 35% 反映 put 需求溢價），直接持有 SH 是更便宜的尾部避險替代品；基金規模 0.95B 美元、NAV 折價僅約 -1.33%，交易成本可接受。</p>
+<h2>上行情境</h2>
+<ul>
+<li><strong>Base</strong>：若 12 月 FOMC 鷹派確認、S&amp;P 500 自高檔回落約 5%，SH 價格理論上同步上行約 5%，目標約 $35.8–36.1，恰好對應 market.md 標示的壓力位 $35.58（11-25 高）與 $36.12（11-20 波段高點），較現價 +5%～+6%。</li>
+<li><strong>Bull</strong>：若重演 2026-11-05 式風險事件（S&amp;P 500 單日 -4.4%、VIX 翻倍），累積跌幅達 10% 情境下 SH 上行約 10%，目標逼近 $37.5–38，接近 52 週高點 $39.20（fundamentals.md），較現價 +10%～+13%。</li>
+<li>需注意：每日重置下的路徑依賴（fundamentals.md 指出 3 年年化報酬 -10.19%）意味上述情境僅適用於短期戰術持有，非長期部位。</li>
+</ul>
+<h2>催化劑（附日期）</h2>
+<ul>
+<li>2026-12-01～12-04 — 11 月 ISM 製造業與就業報告：若數據強勁，升息預期升溫，偏多 SH。</li>
+<li>2026-12-08～12-09 — FOMC 會議：鷹派點陣圖或升息落地，為最大單一催化劑。</li>
+<li>2026-12-10 — 11 月 CPI 發布：若續熱，強化 2027 年多次升息預期。</li>
+</ul>
+<h2>戰術面（技術面）</h2>
+<p>價格 $34.15 同時站上 MA20（$33.64）、MA50（$32.76）、MA200（$33.89）；MA50 斜率持續上揚，與 MA200 間距由 -$1.72 收斂至 -$1.13，黃金交叉條件正在成形（market.md）。近 1 個月 +6.3%、近 3 個月 +5.6%、近 6 個月 +3.9% 皆轉正，顯示自 10-06 低點 $31.64 以來的上升結構未破。11-20 放量（25.8M）突破前高 $33.96 後進入回測整理，MACD 柱狀體雖連三日收縮（動能減弱）但仍為正值，屬健康回測而非趨勢反轉；邏輯停損可設於 $33.27（前高轉支撐）下方。</p>
+<h2>對上一輪空方論點的回應</h2>
+<p>本輪（round 1）無既有空方報告可供反駁；若對手主張「反向 ETF 長期必然耗損」，此論點本身成立（3 年年化 -10.19%），但不影響本次論述——本案本就定位為戰術性、至 12 月上旬催化劑窗口的短期對沖，而非長期持有建議，波動耗損風險在短窗口內可忽略。</p>
+<h2>信心</h2>
+<p>5/10。宏觀面（鷹派 Fed、部位擁擠去化、避險需求）與技術面（站上三條均線、回測未破）具一致性，但新聞面存在多處數據矛盾與缺失（VIX 11 月下旬收盤、S&amp;P 500 11-26/27 收盤均 DATA_UNAVAILABLE），且專業投資人調查（S&amp;P 500 目標上調至 7,926～8,700）與避險訊號方向相反，此為本案最大的不確定性來源。</p>
+<p>BULL ROUND 1 COMPLETE</p></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-red-700 mb-2">🐻 空方 (Bear)</h4>
+          <div class="agent-prose text-sm bg-red-50 p-3 rounded border border-red-200"><h1>Bear case round 1 — SH</h1>
+<h2>Thesis（一句話）</h2>
+<p>SH 是靠每日重置達成 -1x 曝險的避險工具，在波動率偏高（20日年化31.8%）、專業投資人部位仍偏建設性、且標的指數剛突破近期壓力站上三條均線的環境下，持有 SH 面臨「方向可能錯、時間成本必然錯」的雙重風險，此時加碼或維持此避險部位屬於時機與定價皆不利的交易。</p>
+<h2>Demand / market risks（避險需求面）</h2>
+<ul>
+<li>Sentiment 報告顯示，2026-11 專業投資人調查之 S&amp;P 500 加權目標由 7,416 上修至 7,926，另有單一來源提及大型券商將 12 個月目標由 8,000 上調至 8,700；BofA 基金經理人現金比重僅 3.6%，處於低檔。這些訊號與「市場需要加碼避險」的敘事方向相反，顯示專業資金配置端尚未形成系統性撤出股票、轉向避險的共識。</li>
+<li>真正偏空訊號集中在選擇權市場的短天期 put 集中（11-20、11-27 到期 call 占比僅約35%），屬於戰術性、短期的保護性買盤，而非長期配置轉向，用這類訊號支撐「現在應該持有 SH」的論點證據力薄弱。</li>
+<li>News 報告指出 CME FedWatch 12 月升息機率已由 98.6% 回落至約 85%，鷹派預期已大幅price-in；若 12 月 FOMC 符合預期甚至偏鴿，目前支撐 SH 的「升息敘事」會迅速反轉為股市正面因子，SH 失去催化劑。</li>
+<li>成交量訊號偏弱：當日量僅為 3 個月均量的 40.7%，10 日均量雖高於 3 個月均量，但近期熱度「先升後降」，顯示市場對加碼此避險工具的實際買盤動能正在減退，與「現在應該加碼避險」的論述不一致。</li>
+</ul>
+<h2>Margin / cashflow risks（持有成本與耗損）</h2>
+<ul>
+<li>3 年平均年化報酬 -10.19%、5 年平均年化報酬 -5.79%、YTD -6.63%：這是反向 ETF 結構性耗損（path dependency + 0.88% 淨費用率）的直接證據，長期或中期持有 SH 本身就是負期望值交易，必須靠精準的短期方向與時間點才能獲利。</li>
+<li>20 日年化波動率 31.8% 處於中高區間，根據複利耗損原理，波動越高、來回震盪越多，-1x 產品偏離「指數單純反向報酬」的程度越大；即使中期判斷方向正確（股市走弱），若過程中反覆震盪，SH 的累積報酬仍可能遜於理論值。</li>
+<li>殖利率 3.87%（fundamentals 標記「待驗證」）性質不明，不應被視為能補貼持有成本的穩定收益，實際持有成本仍是淨費用率 0.88% 加上耗損。</li>
+<li>NAV 折價約 -1.33%，雖幅度不大，但買進時即帶有折價成本，疊加耗損與費用，構成多重磨損。</li>
+</ul>
+<h2>Valuation risk（以「打平所需指數走勢」取代 P/E）</h2>
+<ul>
+<li>Bear 情境：若 S&amp;P 500 在未來 1 季持穩或緩步上揚（延續 sentiment 報告中專業投資人偏建設性的基調），SH 在 -1x 結構加上耗損下，價格可能跌向近期支撐 $33.27（-2.6%）甚至 MA50 $32.76（-4.1%）。</li>
+<li>Worst 情境：若指數明確延續上行並重測 11-09 反彈高點附近動能，SH 可能跌破 7 月低點 $32.70、8 月低點 $31.83，甚至測試 52 週低點 $31.64，較現價 $34.15 下跌約 -7.3%，此價位同時是技術面最後防線，一旦跌破代表近期整個反彈結構失敗。</li>
+<li>即使方向判斷正確（指數轉弱），耗損與費用仍會侵蝕避險效益，實際打平所需的指數跌幅會高於單純反向計算。</li>
+</ul>
+<h2>Competitive / regulatory（結構性風險）</h2>
+<ul>
+<li>基金持股/Swap 組成、交易對手風險、資金流向（creation/redemption）均為 DATA_UNAVAILABLE，無法驗證基金實際曝險品質與對手方集中度，屬於資訊盲區而非正面訊號。</li>
+<li>allTimeHigh 843.52 與現價不連續的資料異常，提示此類工具的歷史資料品質本身就不可靠，須對任何長期績效比較保持警覺。</li>
+</ul>
+<h2>Tactical（技術面風險）</h2>
+<ul>
+<li>關鍵支撐 $33.27（前高轉支撐）與 MA20 $33.64，收盤跌破視為結構失效；更關鍵的防線在 $32.70 / $31.83 / 52 週低點 $31.64。</li>
+<li>RSI14 由 11-20 的 76.3（超買）回落至 55.5，MACD 柱狀體連三日收縮（+0.192 → +0.070），動能已明顯減弱；11-20 的突破（收 $35.93，量 25.8M）之後未能守住高點，目前在 $34.12–$35.58 區間整理，屬於「突破後尚未確認」的中性轉弱結構，不是加碼避險的理想時點。</li>
+<li>ATR14 由 $0.34 擴張至 $0.69，波動擴大代表同一風險預算下部位應縮小，而非放大避險曝險。</li>
+</ul>
+<h2>Rebuttal to bull round 0（本回合尚無多方回合，主動反駁常見多方論點）</h2>
+<ul>
+<li>常見論點：「升息預期與 AI 估值疑慮會壓抑股市，SH 是合理避險」。<br />
+  反駁：News 報告明確指出 12 月升息機率已由 98.6% 回落至 85%，鷹派預期多已price-in；Sentiment 報告顯示專業投資人目標價反而上修，並非一致轉空，此避險敘事的邊際效益正在遞減。</li>
+<li>常見論點：「VIX 上升、put 買盤增加，代表避險需求確立，持有 SH 可受益」。<br />
+  反駁：VIX 最近可得數據僅 19.30（11-13），處於中性區間而非恐慌區間；put 集中於短天期到期，屬戰術性保護，非結構性轉空證據，不足以支撐中長期持有 SH。</li>
+<li>常見論點：「SH 站上 MA20/MA50/MA200，技術面偏多可持續」。<br />
+  反駁：MACD 動能已連三日收縮、RSI 從超買大幅回落，且近 10 日量能放量後近日明顯縮量（僅10日均量30%），顯示突破後買盤未能延續，技術面轉為「待確認」而非「可持續偏多」。</li>
+</ul>
+<h2>Confidence</h2>
+<p>5/10。理由：結構性耗損與費用證據（3年-10.19%、5年-5.79%）明確、可追溯，支持「不宜長期持有」的核心論點；但方向性判斷（短期指數走勢）本身證據混雜（News 報告提及新聞面與價格面不同步、VIX 數據缺漏至11月下旬），加上散戶社群數據全數缺失，使戰術層面的時點判斷信心有限。</p>
+<p>BEAR ROUND 1 COMPLETE</p></div>
+        </div>
+      </div>
+    </details>
+
+    <details class="mb-4 border border-slate-200 rounded">
+      <summary class="bg-slate-50 px-4 py-2 font-semibold">Phase 4 — 風險辯論 (Risk debate)</summary>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 p-4">
+        <div>
+          <h4 class="font-bold text-red-700 mb-2">⚡ 進攻 (Aggressive)</h4>
+          <div class="agent-prose text-sm bg-red-50 p-3 rounded border border-red-200"><h1>Aggressive risk view — SH</h1>
+<h2>Where trader is too cautious</h2>
+<ul>
+<li>進場邏輯本身自相矛盾：交易端自己算出以 $35.58 觸發進場的 R:R 僅約 0.23（停損 $33.27，目標 $36.12），卻仍把它設為唯一進場條件。等到收盤站回 $35.58 並放量才進場，等於是在把最有利的風險報酬區間讓給別人——這不是穩健，是用「等確認」的名義把一個不對稱交易改造成負期望值交易。</li>
+<li>停損邏輯選錯了參照點：若以現價 $34.15 附近進場、MA20 $33.64 作緊停損，風險僅 $0.51/股，目標 $36.12 的報酬為 $1.97/股，R:R 約 3.9:1，遠優於交易端自己提出的方案。交易端有算出這個數字（約 2.2），卻因為「不宜以單一數字作依據」就把它晾在一邊，這是邏輯上的自我閹割。</li>
+<li>規模上的雙重扣減：先要求「小於半倉」，再因 ATR14 擴張到 $0.69 而「進一步縮小名義金額」。但 ATR 擴張的影響應該已經反映在停損距離（MA20 $33.64 vs 前高 $33.27）上，沒有必要在停損已經拉寬風險預算後，再對名義金額二次打折，這是過度保守的雙重計價。</li>
+</ul>
+<h2>Recommended adjustments</h2>
+<ul>
+<li>Size：半倉以下再折減 → 維持半倉（不二次折減），因 ATR 擴張已由停損距離吸收。</li>
+<li>Stop：$33.27（前高支撐）→ 若用現價進場，改用 MA20 $33.64 緊停損，換取更佳 R:R；若堅持等待突破確認，則應放棄 $35.58 門檻、改在 $34.80 附近分批進場以兼顧確認與 R:R。</li>
+<li>Entry：現在小額試單（例如對沖額度的 1/3）於 $34.15 附近，剩餘 2/3 保留在 $35.58 放量確認後加碼，而非全部等確認才進場。</li>
+<li>Consider：以 SH call（strike $35，到期約 12/12，涵蓋 FOMC+CPI 窗口）取代部分現股對沖，用有限保費買進催化劑期間的凸性報酬，避免每日耗損問題（10 天窗口的耗損影響遠小於交易端引用的 3 年/5 年數據）。</li>
+</ul>
+<h2>Asymmetry argument</h2>
+<p>以現價試單情境（假設名義 $10,000，約 293 股）：最大損失（跌破 MA20 $33.64）≈ $149；若達標 $36.12，獲利 ≈ $577。B/A ≈ 3.9。即使此信號信心僅 LOW，風險絕對金額（約 $150）對投資組合極小，而上行若 FOMC 超預期鷹派，不只 $36.12，整個區間重估空間更大。</p>
+<h2>What I'd push for</h2>
+<p>不要空等 $35.58 的確認訊號把好賽局變差賽局：現在先用對沖額度的 1/3 在 $34.15 附近試單、停損設 MA20 $33.64，把最大損失鎖在約 $150（每 $10,000 名義），剩餘額度留給 $35.58 放量確認後加碼；同時用少量 SH call 覆蓋 FOMC/CPI 窗口以取得凸性,而非讓每日耗損的長期統計嚇退一個僅 10 天的戰術性部位。</p>
+<p>AGGRESSIVE VIEW COMPLETE</p></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-blue-700 mb-2">🛡️ 保守 (Conservative)</h4>
+          <div class="agent-prose text-sm bg-blue-50 p-3 rounded border border-blue-200"><h1>Conservative risk view — SH</h1>
+<h2>Where trader is too aggressive</h2>
+<ul>
+<li>提案已屬謹慎（HOLD / AVOID 方向性、僅條件式對沖），但觸發機制仍偏寬鬆：以「收盤站回 $35.58 並放量」作為進場，進場價已高於現價 $34.15 達 4.1%，一旦觸發，距停損 $33.27 已達 $2.31（約 6.5%），對一個每日重置、年化波動率 31.8% 的反向 ETF 而言，此停損距離換算 ATR14（$0.69）約 3.3 倍，屬偏寬，單次停損金額偏大。</li>
+<li>ATR14 已由 $0.34 擴張至 $0.69（翻倍），提案雖提及「同一風險預算下縮小名義金額」，但未給出具體縮小比例，執行時容易沿用舊假設的名義值，實際風險未真正降下來。</li>
+<li>「對沖比例小於半倉」仍可能偏大：SH 為 -1x 工具但隱含波動率遠高於多數個股多頭持倉，若多頭組合本身已分散，半倉對沖在 Beta 調整後可能造成過度對沖，等同額外做空大盤的方向性賭注。</li>
+</ul>
+<h2>Tail scenarions</h2>
+<ul>
+<li>Scenario A（機率約 35%）：FOMC（12-08/09）偏鴿或「符合預期即獲利」反應，S&amp;P 500 跳漲，SH 跳空跌破 $33.27 直奔 MA50 $32.76 甚至 52w 低點 $31.64；跳空開盤使停損在 $33.27 無法成交，實際滑點損失可能達 $2.5–$3.0/股（較計畫多 10-30%）。</li>
+<li>Scenario B（機率約 25%）：鷹派落地但屬「賣在消息面」，SH 觸發進場後隔日反轉向下，R:R 以進場價 $35.58 計僅約 0.23（遠低於 1），停損被觸發機率高於多方論述假設。</li>
+<li>Scenario C（機率約 20%）：窗口拖過 12-10 CPI 仍無明確方向，SH 在區間震盪中因每日重置耗損侵蝕（年化結構性耗損 -10.19%），即使方向判斷正確，獲利也被耗損吃掉。</li>
+</ul>
+<h2>Recommended adjustments</h2>
+<ul>
+<li>Size：半倉對沖 → 再降至 1/4 倉以下，且以 Beta 調整後的多頭名義值計算，不以原始股數平移。</li>
+<li>Stop：$33.27（寬版）→ 採緊版 $33.64（MA20 收盤跌破），降低單次停損金額並即時反映結構失效。</li>
+<li>Entry：不以單次站回 $35.58 進場，改為「站回且次日開盤確認未回落」的兩日確認制，避免假突破。</li>
+<li>Consider：若目的是避險，可改用 SPX/SPY put 價差直接對沖，避免 SH 的每日重置耗損與方向雙重風險疊加。</li>
+</ul>
+<h2>Position-level $ risk</h2>
+<p>以緊版停損計：損失 = ($35.58 − $33.64) × 股數 = $1.94/股；若以半倉對沖名義值（假設對應多頭倉位 10% NAV、對沖比例 50%、換算約 5% NAV 名義）估算，單次停損約佔 NAV 的 0.3%–0.5%，尚可接受，但寬版停損（$2.31/股）會將此風險放大近 20%，且不含跳空滑點。建議採緊版並降至 1/4 倉以控制在 0.15%–0.25% NAV 範圍。</p>
+<h2>What I'd push for</h2>
+<p>鑑於 SH 結構性耗損確定（3 年年化 -10.19%）且時間窗口僅至 12-10，任何對沖倉位必須嚴格限時、縮小至 1/4 倉以下、停損收緊至 MA20 $33.64，並要求兩日確認再進場，避免假突破與跳空滑點放大單次虧損；若 FOMC 前後無法在窗口內明確獲利,應主動平倉而非持有觀望，讓耗損侵蝕部位。</p>
+<p>CONSERVATIVE VIEW COMPLETE</p></div>
+        </div>
+        <div>
+          <h4 class="font-bold text-slate-700 mb-2">⚖️ 中立 (Neutral)</h4>
+          <div class="agent-prose text-sm bg-slate-100 p-3 rounded border border-slate-300"><h1>Neutral risk view — SH</h1>
+<h2>Points of agreement (both sides)</h2>
+<ul>
+<li>停損應由寬版 $33.27（前高）收緊為 MA20 收盤跌破 $33.64，降低單次虧損並更快反映結構失效。</li>
+<li>本倉位性質是限時、小於半倉的戰術性對沖，非獨立方向性 SHORT；須嚴格綁定 12-10 CPI 前的催化劑窗口。</li>
+<li>ATR14 由 $0.34 翻倍至 $0.69 必須反映在風險預算（停損距離與名義金額）上，而非照搬舊假設。</li>
+</ul>
+<h2>Aggressive overreach</h2>
+<ul>
+<li>Where：主張現價 $34.15 立即進場，並用停損 $33.64／目標 $36.12 算出 R:R≈3.9 作為「不該空等確認」的理由。</li>
+<li>Why：此 R:R 數字忽略了觸發機率——原始論點本身承認動能正在衰退（MACD 柱狀體連三日收縮、RSI 76.3→55.5、11-27 盤中 -1.3%），這正是「等確認」被設計的原因。只秀出有利的 R:R、不計入假突破機率上升,是選擇性引用數據的典型偏誤。「維持半倉不二次折減」也低估了 ATR 翻倍對尾部風險（跳空滑點）的影響,停損距離吸收的只是波動擴大的一部分。</li>
+</ul>
+<h2>Conservative overreach</h2>
+<ul>
+<li>Where：要求縮至 1/4 倉以下、且在 $35.58 站回後再加「次日開盤確認未回落」的兩日確認制。</li>
+<li>Why：本交易窗口僅 10 個交易日（12-01～12-10），FOMC 落在 12-08/09;二日確認制可能把進場推遲到窗口尾端甚至超出窗口，等同變相否決整個戰術性交易,而非單純的風險調整。同時 Scenario A/B/C 的機率估計（35%/25%/20%）缺乏可驗證依據,屬合理但未經校準的主觀假設,不宜作為把倉位砍到 1/4 的唯一支撐。</li>
+</ul>
+<h2>Balanced adjustment proposal</h2>
+<ul>
+<li>Size：對沖名義值設在原半倉的約 2/3（而非維持半倉或砍到 1/4），以部分反映 ATR 翻倍,避免雙重保守但也不忽視尾部風險。</li>
+<li>Stop：MA20 收盤跌破 $33.64（雙方一致採此緊版）。</li>
+<li>Entry：維持原「收盤站回 $35.58 並放量」單一觸發,不加二日確認;可將額度拆為 1/2 試單於觸發當日,1/2 保留待次日確認未破底再加碼,兼顧速度與防假突破。</li>
+<li>Hedge：以部分 SH call（strike $35、到期約 12/12）取代約 1/3 名義,降低耗損與方向雙重風險疊加,其餘以現股對沖維持流動性。</li>
+<li>Time horizon：僅限 12-01 至 12-10,CPI 後無論盈虧強制重新評估,不展延。</li>
+</ul>
+<h2>Net $ risk if stop hits</h2>
+<p>以假設名義 $6,700（原 $10,000 半倉對沖之 2/3，對應約 NAV 的 3.4%，NAV 假設 $200,000）、觸發價 $35.58、停損 $33.64 計：風險 ≈ $365（≈ 0.18% NAV）。</p>
+<h2>Net $ upside at T1 / T2</h2>
+<p>目標 $36.12（T1，亦為本案唯一明確目標）：獲利 ≈ $102（≈ 0.05% NAV）；若 FOMC 超預期鷹派延伸至前高 $36.5 附近（T2，粗估）：獲利 ≈ $170（≈ 0.09% NAV）。注意此 R:R 於 $35.58 觸發進場本身偏差（≈0.28:1），凸顯此交易的價值主要在於避險而非追求絕對報酬。</p>
+<p>NEUTRAL VIEW COMPLETE</p></div>
+        </div>
+      </div>
+    </details>
+
+  </div>
+
+  <script>
+    (function() {
+      var d = {};
+      if (!d.dates) return;
+      var traces = [
+        {x: d.dates, y: d.close, name: 'Close',  line: {color: '#1f2937', width: 2}},
+        {x: d.dates, y: d.ma20,  name: 'MA20',   line: {color: '#0ea5e9', width: 1, dash: 'dot'}},
+        {x: d.dates, y: d.ma50,  name: 'MA50',   line: {color: '#f59e0b', width: 1, dash: 'dot'}},
+        {x: d.dates, y: d.ma200, name: 'MA200',  line: {color: '#ef4444', width: 1, dash: 'dash'}}
+      ];
+      var layout = {
+        margin: {l: 50, r: 20, t: 10, b: 40},
+        legend: {orientation: 'h', y: -0.15},
+        xaxis: {showgrid: false},
+        yaxis: {title: '價格 ($)'}
+      };
+      Plotly.newPlot('chart-SH', traces, layout, {displayModeBar: false, responsive: true});
+    })();
+  </script>
+
+</section>
+
+
+</main>
+
+<footer class="bg-slate-200 text-slate-600 text-xs p-4 text-center">
+  多 agent 交易研究 — 純研究 / 教學用途, 非投資建議。
+</footer>
+
+</body>
+</html>
